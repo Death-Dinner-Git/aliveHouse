@@ -5,7 +5,7 @@
 -----------------------------------
 */
 
-namespace app\manage\controller;
+namespace app\Home\controller;
 
 use think\Controller;
 use think\Loader;

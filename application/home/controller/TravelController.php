@@ -10,16 +10,16 @@
 // | 拷贝、复制、传播、使用零云的任意代码，如有违反，请立即删除，否则您将面临承担相应
 // | 法律责任的风险。如果需要取得官方授权，请联系官方http://www.lingyun.net
 // +----------------------------------------------------------------------
-namespace app\manage\controller;
+namespace app\Home\controller;
 
 
-use app\manage\controller\ManageController;
-use app\manage\model\Car;
-use app\manage\model\TakeCarOrder;
-use app\manage\model\OutCar;
-use app\manage\model\City;
-use app\manage\model\Driver;
-use app\manage\model\Department;
+use app\Home\controller\ManageController;
+use app\Home\model\Car;
+use app\Home\model\TakeCarOrder;
+use app\Home\model\OutCar;
+use app\Home\model\City;
+use app\Home\model\Driver;
+use app\Home\model\Department;
 use think\Route;
 
 class TravelController extends ManageController
@@ -185,7 +185,7 @@ class TravelController extends ManageController
         if (request()->isAjax()){
             $ret = ['code'=>'1','result'=>[],'time'=>time().'000'];
 
-            $query = \app\manage\model\Gps::get()->where('SIM','1064849399578')->order('update_time','ASC');
+            $query = \app\Home\model\Gps::get()->where('SIM','1064849399578')->order('update_time','ASC');
             if (!empty($time)){
                 $ret['time'] = $time;
                 $time = date('Y-m-d H:i:s',strtotime(substr($time,0,10)));
@@ -210,8 +210,8 @@ class TravelController extends ManageController
         $startLat = 20.125;
         $endLng = 110;
         $endLat = 20.125;
-        $start = \app\manage\model\Gps::get()->where('SIM','1064849399538')->order('update_time','ASC')->limit(1)->select();
-        $end = \app\manage\model\Gps::get()->where('SIM','1064849399538')->order('update_time','DESC')->limit(1)->select();
+        $start = \app\Home\model\Gps::get()->where('SIM','1064849399538')->order('update_time','ASC')->limit(1)->select();
+        $end = \app\Home\model\Gps::get()->where('SIM','1064849399538')->order('update_time','DESC')->limit(1)->select();
         foreach($start as $key=>$value){
             $startLng = $value->lng;
             $startLat = $value->lat;

@@ -1,5 +1,5 @@
 <?php
-namespace app\manage\model;
+namespace app\Home\model;
 
 use app\common\model\Model;
 
@@ -92,7 +92,7 @@ class User extends Model
     ];
 
     /**
-     * @var \app\manage\model\User
+     * @var \app\Home\model\User
      */
     protected $_user;
 

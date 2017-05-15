@@ -10,14 +10,14 @@
 // | 拷贝、复制、传播、使用零云的任意代码，如有违反，请立即删除，否则您将面临承担相应
 // | 法律责任的风险。如果需要取得官方授权，请联系官方http://www.lingyun.net
 // +----------------------------------------------------------------------
-namespace app\manage\controller;
+namespace app\Home\controller;
 
 
-use app\manage\controller\ManageController;
-use app\manage\model\User;
-use app\manage\model\BaseUser;
-use app\manage\model\Manager;
-use app\manage\model\Department;
+use app\Home\controller\ManageController;
+use app\Home\model\User;
+use app\Home\model\BaseUser;
+use app\Home\model\Manager;
+use app\Home\model\Department;
 
 /**
  * 用户控制器

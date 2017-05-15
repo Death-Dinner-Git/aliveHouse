@@ -10,9 +10,9 @@
 // | 拷贝、复制、传播、使用零云的任意代码，如有违反，请立即删除，否则您将面临承担相应
 // | 法律责任的风险。如果需要取得官方授权，请联系官方http://www.lingyun.net
 // +----------------------------------------------------------------------
-namespace app\manage\controller;
+namespace app\Home\controller;
 
-use app\manage\controller\ManageController;
+use app\Home\controller\ManageController;
 
 /**
  * 后台默认控制器
@@ -26,6 +26,7 @@ class IndexController extends ManageController
      */
     public function indexAction()
     {
+        return view('index');
         // 临时选择其他模板的布局功能
         $this->view->engine->layout('common@layouts/index');
 

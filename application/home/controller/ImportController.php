@@ -1,10 +1,10 @@
 <?php
 
-namespace app\manage\controller;
+namespace app\Home\controller;
 
 use think\Controller;
 use \app\common\components\Helper;
-use \app\manage\model\Car;
+use \app\Home\model\Car;
 
 /**
  * @description The module Index base controller

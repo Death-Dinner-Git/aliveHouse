@@ -1,10 +1,10 @@
 <?php
 
-namespace app\manage\controller;
+namespace app\Home\controller;
 
 use app\common\controller\BaseController;
 use think\captcha\Captcha;
-use app\manage\model\User;
+use app\Home\model\User;
 
 /**
  * @description 后台唯一不需要权限验证的控制器

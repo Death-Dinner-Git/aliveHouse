@@ -10,15 +10,15 @@
 // | 拷贝、复制、传播、使用零云的任意代码，如有违反，请立即删除，否则您将面临承担相应
 // | 法律责任的风险。如果需要取得官方授权，请联系官方http://www.lingyun.net
 // +----------------------------------------------------------------------
-namespace app\manage\controller;
+namespace app\Home\controller;
 
 
-use app\manage\controller\ManageController;
-use app\manage\model\TakeCarOrder;
-use app\manage\model\OutCar;
-use app\manage\model\City;
-//use app\manage\model\OutCar;
-//use app\manage\model\OutCar;
+use app\Home\controller\ManageController;
+use app\Home\model\TakeCarOrder;
+use app\Home\model\OutCar;
+use app\Home\model\City;
+//use app\Home\model\OutCar;
+//use app\Home\model\OutCar;
 
 class DatacountController extends ManageController
 {

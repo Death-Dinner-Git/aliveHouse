@@ -1,6 +1,6 @@
 <?php
 
-namespace app\manage\validate;
+namespace app\Home\validate;
 
 use app\common\validate\Validate;
 
@@ -40,7 +40,7 @@ class UserValidate extends Validate
 
         $ret = false;
 
-        $result = \app\manage\model\User::get()->where([$fieldName=>$value])->select();
+        $result = \app\Home\model\User::get()->where([$fieldName=>$value])->select();
 
         if ($result){
             foreach ($result as $key => $model){
