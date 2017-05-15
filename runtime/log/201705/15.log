@@ -1,0 +1,77 @@
+[ 2017-05-15T09:50:35+08:00 ] 127.0.0.1 127.0.0.1 GET /manage/manage/
+[ log ] www.alivehouse.com/manage/manage/ [运行时间：0.104006s][吞吐率：9.61req/s] [内存消耗：489.76kb] [文件加载：46]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'manage',
+    1 => 'manage',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=5i47t78d33crdn6t54saheia37',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-15T09:50:35+08:00 ] 127.0.0.1 127.0.0.1 GET /manage/login/login.html
+[ log ] www.alivehouse.com/manage/login/login.html [运行时间：0.049003s][吞吐率：20.41req/s] [内存消耗：418.72kb] [文件加载：47]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'manage',
+    1 => 'login',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=5i47t78d33crdn6t54saheia37',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\manage\controller\LoginController->loginAction[ D:\upupw\aliveHouse\application\manage\controller\LoginController.php ]
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/manage\view\login\login.html [ array (
+  0 => 'url',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
