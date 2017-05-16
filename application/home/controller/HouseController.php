@@ -8,24 +8,24 @@ use app\home\controller\ManageController;
  * 默认控制器
  * @author Sir Fu
  */
-class IndexController extends ManageController
+class HouseController extends ManageController
 {
     /**
      * 默认方法
      * @author Sir Fu
      */
-    public function indexAction()
+    public function newHouseAction()
     {
-        return view('index');
+        return view('newHouse');
     }
 
     /**
      * 默认方法
      * @author Sir Fu
      */
-    public function homeAction()
+    public function secondHandHouseAction()
     {
-        return view('indexOld');
+        return view('secondHandHouse');
     }
 
 }
