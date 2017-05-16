@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Home\controller;
+namespace app\home\controller;
 
 use think\Controller;
 use \app\common\components\decode\Decode;

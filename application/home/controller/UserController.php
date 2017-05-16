@@ -10,14 +10,14 @@
 // | 拷贝、复制、传播、使用零云的任意代码，如有违反，请立即删除，否则您将面临承担相应
 // | 法律责任的风险。如果需要取得官方授权，请联系官方http://www.lingyun.net
 // +----------------------------------------------------------------------
-namespace app\Home\controller;
+namespace app\home\controller;
 
 
-use app\Home\controller\ManageController;
-use app\Home\model\User;
-use app\Home\model\BaseUser;
-use app\Home\model\Manager;
-use app\Home\model\Department;
+use app\home\controller\ManageController;
+use app\home\model\User;
+use app\home\model\BaseUser;
+use app\home\model\Manager;
+use app\home\model\Department;
 
 /**
  * 用户控制器
@@ -78,8 +78,8 @@ class UserController extends ManageController
                 $where =  array_merge($where, ['manager_type'=>$type]);
             }
         }
-        $dataProvider = Manager::get()->where($where)->page($pageNumber,$each)->select();
-        $count = Manager::get()->where($where)->count();
+        $dataProvider = Manager::load()->where($where)->page($pageNumber,$each)->select();
+        $count = Manager::load()->where($where)->count();
         $this->assign('meta_title', "账号管理");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);

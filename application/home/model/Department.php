@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Home\model;
+namespace app\home\model;
 
 use app\common\model\Model;
 
@@ -81,7 +81,7 @@ class Department extends Model
     {
         $key = $key === 'department' ? :'department';
         $key = __METHOD__.'_'.$key;
-        $res = Department::get()->cache(md5($key),1800)->select();
+        $res = Department::load()->cache(md5($key),1800)->select();
         return $res;
     }
 

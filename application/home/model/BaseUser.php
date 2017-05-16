@@ -1,5 +1,5 @@
 <?php
-namespace app\Home\model;
+namespace app\home\model;
 
 use app\common\model\Model;
 

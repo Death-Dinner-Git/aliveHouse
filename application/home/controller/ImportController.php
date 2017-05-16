@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Home\controller;
+namespace app\home\controller;
 
 use think\Controller;
 use \app\common\components\Helper;
-use \app\Home\model\Car;
+use \app\home\model\Car;
 
 /**
  * @description The module Index base controller
@@ -36,7 +36,7 @@ class ImportController extends Controller
             if ($key== '1'){
                 continue;
             }
-            $model = Car::get()->where(['number_plate'=>$value['B']])->find();
+            $model = Car::load()->where(['number_plate'=>$value['B']])->find();
             if ($model){
                 $model->SIM = $value['D'];
 //                $model->isUpdate(true)->save();

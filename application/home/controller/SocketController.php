@@ -4,7 +4,7 @@
  代码解析
 -----------------------------------
 */
-namespace app\Home\controller;
+namespace app\home\controller;
 
 use think\Controller;
 use app\common\components\decode\SocketConnect;

@@ -93,8 +93,8 @@
         <td style="width: 100px;">{$model.getDriver.status}</td>
         <td style="width: 100px;">{$model.driver_time}</td>
         <td style="width: 100px;" class="distance">{$model.driver_mileage}</td>
-        <td style="width: 100px;"><?php echo \app\Home\model\TakeCarOrder::getOrderByCarId($model['car_id']); ?></td>
-        <td style="width: 100px;"><?php echo \app\Home\model\TakeCarOrder::getNearby($model['getCar']['lat'],$model['getCar']['lng']); ?></td>
+        <td style="width: 100px;"><?php echo \app\home\model\TakeCarOrder::getOrderByCarId($model['car_id']); ?></td>
+        <td style="width: 100px;"><?php echo \app\home\model\TakeCarOrder::getNearby($model['getCar']['lat'],$model['getCar']['lng']); ?></td>
         <td style="width: 150px;text-align: center;" class="action">
             <a href="javascript:void(0);"><button onclick="showUrl('查看实时位置','/manage/travel/liveAddress.html?id={$model.car_id}','72%','88%','2',true,true,'LAY_TRAVEL_{$model.id}')" class="layui-btn layui-btn-small"><i class="fa fa-search"></i>查看实时位置</button></a>
         </td>
