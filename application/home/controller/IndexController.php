@@ -16,6 +16,8 @@ class IndexController extends ManageController
      */
     public function indexAction()
     {
+        // 临时选择其他模板的布局功能
+//        $this->view->engine->layout('layouts/index');
         return view('index');
     }
 

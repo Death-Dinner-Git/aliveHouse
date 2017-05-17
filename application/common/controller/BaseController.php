@@ -442,7 +442,7 @@ class BaseController extends Controller
                     $tmp .= "'" . $kk . "' => '" . $vv . "', ".$format;
                 }
             }
-            $data = "[".$format . rtrim($tmp, "', ".$format) . "]".$format;
+            $data = "[".$format . rtrim($tmp, ", ".$format) .$format. "]".$format;
         }
         return $data;
     }

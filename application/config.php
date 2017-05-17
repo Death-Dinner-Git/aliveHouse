@@ -138,12 +138,13 @@ return [
         'taglib_end'   => '}',
 
         'layout_on'     =>  true,
-        'layout_name'   =>  'common@layouts/main',
+        'layout_name'   =>  'layouts/main',
         'layout_item'   =>  '{__CONTENT__}'
     ],
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
+        '_TITLE_'=>'[ Alive House ]',
         '_LAYUI_'=>'/static/plugins/layui/src',
         '_PLUGINS_'=>'/static/plugins',
         '_SHORTCUT_'=>'/static/images/shortcut-icon-logo.png',

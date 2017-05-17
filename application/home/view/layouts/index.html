@@ -1,3 +1,561 @@
-<!-- 加载公共模板文件开启 -->
-{include file="common@layouts/index" /}
-<!-- 加载公共模板文件结束 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit">
+    <meta name="mobile-agent" content="format=html5;url=http://m.alivehouse.com/">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/aliveHouse/web/favicon.png" type="image/x-icon">
+    <link rel="canonical" href="/home/index/index.html">
+
+    <!-- Load base CSS -->
+    <link type="text/css" href="/aliveHouse/web/layer-base.css" rel="stylesheet">
+    <link type="text/css" href="/aliveHouse/web/fkTheme.min.css" rel="stylesheet" id="jzThemeFrame">
+    <link type="text/css" href="/aliveHouse/web/fkModule.min.css" rel="stylesheet" id="jzModule2_1">
+    <link type="text/css" href="/aliveHouse/web/searchBoxStyle1.min.css" rel="stylesheet">
+    <link type="text/css" href="/aliveHouse/web/newSearchBoxStyle.min.css" rel="stylesheet">
+    <link type="text/css" href="/aliveHouse/web/bannerAnimation.min.css" rel="stylesheet" >
+    <link type="text/css" href="/aliveHouse/web/jzcusstyle.css" rel="stylesheet">
+
+    <!-- This page CSS -->
+    <link type="text/css" href="/aliveHouse/web/floatBtn1.min.css" rel="stylesheet">
+    <link type="text/css" href="/aliveHouse/web/poshytipAndmCustomScrollbar.min.css" rel="stylesheet">
+
+    <!-- Load base JS -->
+    <script src="/aliveHouse/web/imageEffect.min.js"></script>
+    <script src="/aliveHouse/web/photoSlide.min.js"></script>
+    <script type="text/javascript">
+        var _cid = 13775917;
+    </script>
+
+    <!-- Define base CSS -->
+    <style id="stylemodule"></style>
+    <style id="styleWebSite" type="text/css">
+        #memberBar{width:1200px;}
+        #webTop{width:1200px;}
+        #absTopForms{width:1200px;}
+        .webNavDefault{width:1200px;}
+        #webHeader{width:1200px;}
+        #absForms{width:1200px;}
+        div#webContainer{width:1200px;}
+        #absBottomForms{width:1200px;}
+        #webFooter{width:1200px;}
+        div.webNav .navMainContent{width:1200px;}
+        div.nav .navMainContent{width:1200px;}
+        .fullmeasureContent{width:1200px;}
+        #fk-webHeaderZone {width:1200px;margin-left:-600.0px;}
+        #fk-webFooterZone {width:1200px;margin-left:-600.0px;}
+        #fk-webBannerZone {width:1200px;margin-left:-600.0px;}
+        #webBanner{width:100%;}
+    </style>
+    <style id="styleTitle" type="text/css"></style>
+
+    <!-- Define base JS -->
+    <script type="text/javascript">
+        (function(FUN,undefined){var list=[];FUN.run=function(){if(arguments.length<1){throw new Error("jzUtils.run 参数错误");return}var name=arguments[0].name,callMethod=arguments[0].callMethod||false,prompt=arguments[0].prompt||false,promptMsg=arguments[0].promptMsg||"功能还在加载中，请稍候",base=arguments[0].base||(window.Fai&&Fai.top.Site)||top.Site||window,args=Array.prototype.slice.call(arguments),funcArgs=args.slice(1),callbackFunc={},result;result=checkMethod(name,base);if(result.success){callMethod=false;try{result.func.apply(result.func,funcArgs)}catch(e){console&&console.log&&console.log("错误:name="+e.name+"; message="+e.message)}}else{if(prompt){window.Fai&&Fai.ing(promptMsg,true)}}if(callMethod){callbackFunc.name=name;callbackFunc.base=base;callbackFunc.args=funcArgs;list.push(callbackFunc)}};FUN.trigger=function(option){if(typeof option!=="object"){throw new Error("jzUtils.trigger 参数错误");return}var funcName=option.name||"",base=option.base||(window.Fai&&Fai.top.Site)||top.Site||window,newList=[],result,func,i,param;if(funcName.length<1){return}for(i=0;i<list.length;i++){param=list[i];if(param.name==funcName){result=checkMethod(funcName,base);if(result.success){try{result.func.apply(result.func,param.args)}catch(e){console&&console.log&&console.log("错误:name="+e.name+"; message="+e.message)}}}else{newList.push(param)}}list=newList};function checkMethod(funcName,base){var methodList=funcName.split("."),readyFunc=base,result={"success":true,"func":function(){}},methodName,i;for(i=0;i<methodList.length;i++){methodName=methodList[i];if(methodName in readyFunc){readyFunc=readyFunc[methodName]}else{result.success=false;return result}}result.func=readyFunc;return result}})(window.jzUtils||(window.jzUtils={}))
+        var _faiAjax = function(){
+            //for regexp
+            var r = /\?/;
+            var _o = {
+                type:"get",
+                url:"",
+                data:"",
+                error:function(){},
+                success:function(){}
+            };
+            var _sendRequest=function(o) {
+                var xmlhttp = null;
+                //init option code
+                o.type = o.type || _o.type;
+                o.url = o.url || _o.url;
+                o.data = o.data || _o.data;
+                o.error = o.error || _o.error;
+                o.success = o.success || _o.success;
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{
+                    // code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                //the instructions param takes the form of an eval statement
+                if(o.type != "post") {
+                    o.url += ( this.r.test( o.url ) ? "&" : "?" ) + o.data;
+                    xmlhttp.open("GET", o.url, true);
+                    xmlhttp.onreadystatechange=function() {
+                        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                            o.success( xmlhttp.responseText );
+                        }else if( o.error ){
+                            o.error();
+                        }
+                    }
+                    xmlhttp.send();
+                } else {
+                    xmlhttp.open("POST", o.url, true);
+                    //Send the proper header information along with the request
+                    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+                    xmlhttp.onreadystatechange=function() {
+                        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                            o.success( xmlhttp.responseText );
+                        }else{
+                            o.error();
+                        }
+                    }
+                    xmlhttp.send(o.data);
+                }
+            }
+            return {
+                ajax:function(option){
+                    try {
+                        //此次调用的错误不让抛出给window。防止函数重入
+                        _sendRequest(option);
+                    }catch(e){
+                        //alert(e);
+                    }
+                }
+            };
+        }();
+    </script>
+
+    <!-- For site css -->
+
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/bootstrap.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
+
+    <!-- Fake Loader start -->
+    <link rel="stylesheet" href="_PLUGINS_/fakeloader/css/fakeloader.css">
+    <script src="_PLUGINS_/fakeloader/js/fakeloader.js"></script>
+    <script>
+        var _spinner2 = {
+            timeToHide:1200,
+            bgColor:"#1abc9c",
+            spinner:"spinner2",
+            zIndex:'20170407',
+            loadCss:{
+                top:'46%',
+                left:'50%'
+            }
+        };
+        $(document).ready(function(){
+            $(".fakeloader").fakeLoader(_spinner2);
+        });
+    </script>
+    <!-- Fake Loader end -->
+
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
+
+</head>
+<body class="g_body g_locale2052 g_cusSiteWidth">
+
+
+<div id="g_main" class="g_main g_col2 " style="width: 1903px;">
+
+    <div id="web" class="g_web ">
+
+        <!-- 顶部区域开启 -->
+        {include file="layouts/header" /}
+        <!-- 顶级区域结束 -->
+
+        <div class="clearfloat"></div>
+
+        <!-- 中部部区域开启 -->
+        {__CONTENT__}
+        <!-- 中部区域结束 -->
+
+        <div class="clearfloat"></div>
+
+        <!-- 底部区域开启 -->
+        {include file="layouts/footer" /}
+        <!-- 底部区域结束 -->
+
+        <div class="clearfloat"></div>
+
+        <!-- 其他区域开启 -->
+        <!-- 其他区域结束 -->
+
+    </div>
+
+</div>
+
+<!-- fakeLoader start -->
+<div class="fakeloader"></div>
+<!-- fakeLoader end -->
+
+
+<!-- fixed Left-Top -->
+<div class="floatLeftTop" style="top: 0px;">
+    <div id="floatLeftTopForms" class="forms sideForms floatForms">
+
+    </div>
+</div>
+
+<!-- fixed Right-Top -->
+<div class="floatRightTop" style="top: 0px;">
+    <div id="floatRightTopForms" class="forms sideForms floatForms">
+
+    </div>
+</div>
+
+<!-- fixed Left-Bottom -->
+<div class="floatLeftBottom">
+    <div id="floatLeftBottomForms" class="forms sideForms floatForms">
+
+    </div>
+</div>
+
+<!-- fixed Right-Bottom -->
+<div class="floatRightBottom">
+    <div id="floatRightBottomForms" class="forms sideForms floatForms">
+
+    </div>
+</div>
+
+<!-- background music -->
+<div id="bgMusic" class="bgMusic"></div>
+
+<!-- Load Core CSS -->
+<link type="text/css" href="/aliveHouse/web/fontsIco.min.css" rel="stylesheet">
+
+<!-- Load Core JS -->
+<script type="text/javascript" src="/aliveHouse/web/jquery-core.min.js"></script>
+<script type="text/javascript" src="/aliveHouse/web/jquery-mousewheel.min.js"></script>
+<script type="text/javascript" src="/aliveHouse/web/fai.min.js"></script>
+<script type="text/javascript" src="/aliveHouse/web/jquery-ui-core.min.js"></script>
+<script type="text/javascript" src="/aliveHouse/web/site.min.js"></script>
+<script type="text/javascript" src="/aliveHouse/web/messageConfig.js"></script>
+
+
+<!-- define Core JS -->
+<script type="text/javascript">
+
+    function showYuanDanWindow(){
+        var hasShowYuanDanLuckyGuy = $.cookie("hasShowYuanDanLuckyGuy",{path:"/"});
+        var _hasGetYuanDanLuckyGuy_ = $.cookie("_hasGetYuanDanLuckyGuy_",{path:"/"});
+        var _openbigImg = false;
+
+        if(_openbigImg == true){
+            if(hasShowYuanDanLuckyGuy == 'true' || _hasGetYuanDanLuckyGuy_ != 'true' ){
+                Site.isShowThreeDaysLuckyGuy = "true";
+                Site.isTenMinutes = 'true';
+                $.cookie("hasShowYuanDanLuckyGuy",false,{path:"/"});
+                Site.drawLottery();
+            }else{
+
+                Site.sendResult2();
+            }
+        }
+    }
+    var fk_sale = new Object();
+    fk_sale.cid = 13775917;
+    fk_sale.siteVer = 10;
+    fk_sale.popupWindowSiteVer = 10;
+    fk_sale.isLuckyGuyFlag = false;
+    fk_sale.popupWindowEndYear = 2017;
+    fk_sale.popupWindowEndMonth = 5;
+    fk_sale.popupWindowEndDay = 31;
+    fk_sale.popupWindowDays = 16;
+    fk_sale.popupWindowMs = 1425837084;
+    fk_sale.openDays = 0;
+    fk_sale.openMinutes = 83;
+    fk_sale.popupWindowEndSignupHours = 720.0;
+    fk_sale.url = 'http://www.faisco.cn/portal.php#appId=shop';
+    fk_sale.showDomainWindowFlag = false;
+    fk_sale.cacct = 'ot13227318';
+    fk_sale.imgBigSrc = 'http://jz.faisys.com/image/pro/20170101/salesPromotion.png?v=201701101133';
+    fk_sale.imgBigBtn = 'http://jz.faisys.com/image/pro/20170101/btn_buy.png?v=201701101133';
+    fk_sale.imgClose = 'http://jz.faisys.com/image/pro/20170101/close.png?v=201701101133';
+    fk_sale.siteFirstLogin = true;
+    fk_sale.isShowAdvertisementWindowThreeMinute = false;
+    fk_sale.textUrl = 'http://www.faisco.cn/portal.php#appId=shop';
+    fk_sale.domainImgBigBg = 'http://jz.faisys.com/image/pro/20160101/domainSearchImg.png';
+    fk_sale.domainImgClose = 'http://jz.faisys.com/image/pro/20160101/close.png?v=201601181937';
+    fk_sale.siteBizBigClose = 'http://jz.faisys.com/image/pro/20160701/close_popup.png';
+    fk_sale.siteBizBigBg = 'http://jz.faisys.com/image/pro/20160701/popup02.png';
+    fk_sale.showSiteBizWindow = false;
+    fk_sale.showSitePopWindow = false;
+    fk_sale.openFlyer = false;
+
+</script>
+
+<script type="text/javascript">
+    // 为了避免用户误操作，在域名结尾输入多余字符导致cookie失效问题，这里校验一下浏览器的host是否与后台拿到的host一致
+    //        if (window.location.host != 'www.ot13227318.icoc.me') { window.location.href = 'http://' + 'www.ot13227318.icoc.me'; }
+    //        console.log(window.location.host.lastIndexOf("."));
+    var _jsErrCahche = [];
+
+    window.onerror = function(sMsg,sUrl,sLine){
+        if (typeof Site == 'undefined') {
+            alert('您的网页未加载完成，请尝试按“CTRL+功能键F5”重新加载。');
+        }
+        if( sLine < 1 || typeof sMsg != 'string' || sMsg.length < 1 ){
+            return;
+        }
+
+        var log = "Error:" + sMsg + ";Line:" + sLine + ";Url:" + sUrl;
+        var alertLog = "Error:"+sMsg+"\n" + "Line:" + sLine + "\n" + "Url:" + sUrl + "\n";
+        var encodeUrl = function (url){
+            return typeof url === "undefined" ? "" : encodeURIComponent(url);
+        };
+
+        var ajax = true;
+        var obj = { 'm' : sMsg, 'u' : sUrl, 'l' : sLine };
+        for( var i = 0; i < _jsErrCahche.length; i ++ ){
+            if( _jsErrCahche[i].m == obj.m && _jsErrCahche[i].u == obj.u && _jsErrCahche[i].l == obj.l  ){
+                ajax = false;
+                break;
+            }
+        }
+
+        if( ajax ){
+            _jsErrCahche.push( obj );
+            _faiAjax.ajax({
+                type	: "post",
+                url		: "ajax/logJsErr_h.php?cmd=jsErr",
+                data	: 'msg='+ encodeUrl(log)
+            });
+        }
+        if(false){
+            alert( alertLog );
+        }
+    };
+
+    Fai.top = window;
+    var bgmCloseToOpen = false;
+    var _debug = false;
+    var _isPre = false;
+    var _devMode = false;
+    var _colOtherStyleData = {"independentList":[],"y":0,"h":0,"layout4Width":0,"layout5Width":0};						// 当前页面的数据
+    var _templateOtherStyleData = {"independentList":[],"h":540,"y":0,"layout4Width":0,"layout5Width":0};						// 全局的数据
+
+    var _templateDefLayout = {BANNER_NAV:0,NAV_FLOAT:1,LEFT_NAV_BANNER_RIGHT_HIDE:3,LEFT_NAV_CENTER_BANNER_RIGHT_HIDE:4,LEFT_BANNER_NAV_RIGHT_HIDE:5,LEFT_NAV_EXPEND_CENTER_BANNER:6,CENTER_TOP_BANNER_RIGHT_HIDE:7,LEFT_HIDE_CENTER_TOP_BANNER:8,NAV_FLOAT_ON_BANNER:9,NAV_BANNER:10};
+
+    $(function() {
+
+        //Site.changeTheLogoSize();
+        Site.showOrHideMailBox();
+        Site.loginSiteInit('ot13227318','faisco.cn', false,"");
+
+        //topBarMember
+
+        // 绑定退出事件
+        Site.bindBeforeUnloadEvent(false, false, false);
+
+        Site.initTemplateLayout(_templateDefLayout.NAV_FLOAT, true, false );
+
+        // spider统计
+
+        // ajax统计
+        Site.total({colId:2, pdId:-1, ndId:-1, sc:0, rf:"http://m.ot13227318.faisco.cn/index.php"});
+        //前端性能数据上报
+        //Site.report();
+        //保留旧用户的初始化版式区域4 和区域5 中，区域4的padding-right空间
+        Site.colLayout45Width();
+        //各个模块inc吐出脚本
+        Site.initCorpTitleJump();
+        Site.hoverChangeImage();Site.hoverStyle();
+
+        Site.initModuleSiteSearch('316');
+
+        Site.initMulColModuleInIE('#module395');
+
+        Site.initBanner({"_open":true,"data":[{"title":"","desc":"","imgWidth":1920,"imgHeight":780,"ot":1,"src":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY.jpg","edgeLeft":"","edgeRight":""},{"title":"","desc":"","imgWidth":1920,"imgHeight":780,"ot":1,"src":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY.jpg","edgeLeft":"","edgeRight":""}],"width":1920,"height":780,"playTime":4000,"animateTime":1500,"from":"banner","btnType":0,"wideScreen":false}, {"_open":false}, 4);
+        Site.cacheModuleFunc.init('initFlBtnStyle', {"moduleId":416,"btnNumSystem":103,"btnStyle":{"s":{"t":1,"w":70,"h":26},"bg":{"t":1,"c":"transparent","r":3},"r":{"t":2,"lt":0,"rt":0,"lb":0,"rb":0},"sh":{"t":0,"dx":0,"dy":0,"f":0,"c":"#000000"},"b":{"t":2,"c":"#fe8300","w":1}},"otherStr":{"cc":"#c40000","utc":0,"gcc":"#fff","bcc":"#000","imc":0}});
+        Site.adjustFlBtnPos(416);
+
+        Site.cacheModuleFunc.init('initFlBtnStyle', {"moduleId":420,"btnNumSystem":103,"btnStyle":{"s":{"t":1,"w":70,"h":26},"bg":{"t":1,"c":"transparent","r":3},"r":{"t":2,"lt":0,"rt":0,"lb":0,"rb":0},"sh":{"t":0,"dx":0,"dy":0,"f":0,"c":"#000000"},"b":{"t":2,"c":"#fe8300","w":1}},"otherStr":{"cc":"#c40000","utc":0,"gcc":"#fff","bcc":"#000","imc":0}});
+        Site.adjustFlBtnPos(420);
+
+        Site.cacheModuleFunc.init('initFlBtnStyle', {"moduleId":425,"btnNumSystem":103,"btnStyle":{"s":{"t":1,"w":70,"h":26},"bg":{"t":1,"c":"transparent","r":3},"r":{"t":2,"lt":0,"rt":0,"lb":0,"rb":0},"sh":{"t":0,"dx":0,"dy":0,"f":0,"c":"#000000"},"b":{"t":2,"c":"#fe8300","w":1}},"otherStr":{"cc":"#c40000","utc":0,"gcc":"#fff","bcc":"#000","imc":0}});
+        Site.adjustFlBtnPos(425);
+
+        Site.cacheModuleFunc.init('initFlBtnStyle', {"moduleId":426,"btnNumSystem":103,"btnStyle":{"s":{"t":1,"w":70,"h":26},"bg":{"t":1,"c":"transparent","r":3},"r":{"t":2,"lt":0,"rt":0,"lb":0,"rb":0},"sh":{"t":0,"dx":0,"dy":0,"f":0,"c":"#000000"},"b":{"t":2,"c":"#fe8300","w":1}},"otherStr":{"cc":"#c40000","utc":0,"gcc":"#fff","bcc":"#000","imc":0}});
+        Site.adjustFlBtnPos(426);
+
+        Site.cacheModuleFunc.init('initFlBtnStyle', {"moduleId":440,"btnNumSystem":103,"btnStyle":{"s":{"t":1,"w":239,"h":55},"bg":{"t":1,"c":"#ffffff","r":3},"r":{"t":2,"lt":28,"rt":28,"lb":28,"rb":28},"sh":{"t":0,"dx":0,"dy":0,"f":0,"c":"#000000"},"b":{"t":0,"w":1,"c":"#000000"}},"otherStr":{"cc":"#c40000","utc":0,"gcc":"#fff","bcc":"#000","imc":0}});
+        Site.adjustFlBtnPos(440);
+
+        Site.initMulColModuleInIE('#module317');
+
+        Site.initMulColModuleInIE('#module401');
+        Site.setFullMeasureBgHightInIe6( 430);;$(function(){Site.inFullmeasueAnimation.animateFm(430,0,1,{"c":0,"d":4,"s":1});});
+        Site.initModulePhotoSwitch(538, {"data":[{"name":"悦利12000元/平","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/uploads/ima12.jpg","width":376,"height":280,"widthOr":376,"heightOr":280,"pic":"uploads/ima12.jpg"}],"width":376,"height":280,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch538","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
+
+        Site.initModulePhotoSwitch(539, {"data":[{"name":"锐丰13000元/平","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/uploads/ima06.jpg","width":376,"height":280,"widthOr":376,"heightOr":280,"pic":"uploads/ima06.jpg"}],"width":376,"height":280,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch539","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
+
+        Site.initModulePhotoSwitch(540, {"data":[{"name":"宝月15000元/平","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/uploads/ima06.jpg","width":376,"height":280,"widthOr":376,"heightOr":280,"pic":"uploads/ima06.jpg"}],"width":376,"height":280,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch540","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
+
+        Site.initMulColModuleInIE('#module543');
+        Site.setFullMeasureBgHightInIe6( 328);;$(function(){Site.inFullmeasueAnimation.animateFm(328,0,1,{"c":0,"d":4,"s":1});});
+        Site.loadProductTextList(438);
+        Site.productScroll({moduleId:438});
+
+        Site.loadPhotoList(541, 0, true, 7,'listPhotos');
+        jzUtils.run({ "name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true }, {"moduleId": 541, "imgEffOption": {"effType":7,"borderType":false,"borderColor":"#000","borderWidth":1,"borderStyle":1,"style":88,"fullMaskCusBg":false,"fullMaskCusDisc":false,"halfMaskCusBg":false,"halfMaskCusDisc":false,"fullMaskOpenDisc":false}, "tagetOption": {"nameHidden":false,"nameWordWrap":false,"targetParent":"photoForm","target":"imgDiv","picScale":0}, "callback": Site.createImageEffectContent_photo, "callbackArgs": []});
+        Site.initMulColModuleInIE('#module437');
+        Site.setFullMeasureBgHightInIe6( 336);;$(function(){Site.inFullmeasueAnimation.animateFm(336,0,1,{"c":0,"d":4,"s":1});});
+
+        Site.setFullMeasureBgHightInIe6( 346);;$(function(){Site.inFullmeasueAnimation.animateFm(346,0,1,{"c":0,"d":4.0,"s":1.0});});
+        Site.initModulePhotoSwitch(542, {"data":[{"name":"286亿！中国成美国房产\u201C第一买家\u201D","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/uploads/ima15.jpg","width":551,"height":359,"widthOr":551,"heightOr":359,"pic":"uploads/ima15.jpg"}],"width":551,"height":359,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch542","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
+
+        Site.loadNewsList(443, {"y":0,"s":0,"w":1}, false);
+        Site.loadNewsNewStyle(443, false,false,false,true,true,false,false,true,false);
+
+        Site.initMulColModuleInIE('#module441');
+        Site.setFullMeasureBgHightInIe6( 348);;$(function(){Site.inFullmeasueAnimation.animateFm(348,0,1,{"c":0,"d":4,"s":1});});
+        jzUtils.run({ "name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true }, {"moduleId": 555, "imgEffOption": {"effType":1,"borderType":false,"borderColor":"#000","borderWidth":1,"borderStyle":1,"hoverPicPath":"http://0.ss.faisys.com/image/floatImgHoverDef.png","openHoverPic":false,"isFontIcon":false,"ishovFont":false,"hovFont":"faisco-icons-contact2","hovFontColor":"#222222","picPath":"http://10428547.s61i.faiusr.com/4/shadow-buy-house.png","isInit":false}, "tagetOption": {"targetParent":"floatImg_J","target":"floatImg_J"}, "callback": Site.createImageEffectContent_photo, "callbackArgs": []});
+        jzUtils.run({ "name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true }, {"moduleId": 557, "imgEffOption": {"effType":1,"borderType":false,"borderColor":"#000","borderWidth":1,"borderStyle":1,"hoverPicPath":"http://0.ss.faisys.com/image/floatImgHoverDef.png","openHoverPic":false,"isFontIcon":false,"ishovFont":false,"hovFont":"faisco-icons-contact2","hovFontColor":"#222222","picPath":"http://10428547.s61i.faiusr.com/4/shadow-sale-house.png","isInit":false}, "tagetOption": {"targetParent":"floatImg_J","target":"floatImg_J"}, "callback": Site.createImageEffectContent_photo, "callbackArgs": []});
+        jzUtils.run({ "name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true }, {"moduleId": 558, "imgEffOption": {"effType":1,"borderType":false,"borderColor":"#000","borderWidth":1,"borderStyle":1,"hoverPicPath":"http://0.ss.faisys.com/image/floatImgHoverDef.png","openHoverPic":false,"isFontIcon":false,"ishovFont":false,"hovFont":"faisco-icons-contact2","hovFontColor":"#222222","picPath":"http://10428547.s61i.faiusr.com/4/shadow-rent-house.png","isInit":false}, "tagetOption": {"targetParent":"floatImg_J","target":"floatImg_J"}, "callback": Site.createImageEffectContent_photo, "callbackArgs": []});
+        jzUtils.run({ "name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true }, {"moduleId": 559, "imgEffOption": {"effType":1,"borderType":false,"borderColor":"#000","borderWidth":1,"borderStyle":1,"hoverPicPath":"http://0.ss.faisys.com/image/floatImgHoverDef.png","openHoverPic":false,"isFontIcon":false,"ishovFont":false,"hovFont":"faisco-icons-contact2","hovFontColor":"#222222","picPath":"http://10428547.s61i.faiusr.com/4/shadow-manage-money.png","isInit":false}, "tagetOption": {"targetParent":"floatImg_J","target":"floatImg_J"}, "callback": Site.createImageEffectContent_photo, "callbackArgs": []});
+
+        Site.initPage();	// 这个要放在最后，因为模块组初始化时会把一些模块隐藏，导致没有高度，所以要放最后执行
+
+        setTimeout(afterModuleLoaded, 0);
+        Site.loadCss("http://2.ss.faisys.com/css/bannerAnimation.min.css?v=201611091646");
+        Site.triggerGobalEvent("siteReadyLoad");
+    });
+
+
+    function afterModuleLoaded() {
+
+        Site.initPage2();
+
+        //Site.mallCartInit(_colId);
+        //Site.mobiWebInit();
+
+    } // afterModuleLoaded end
+
+    var _lcid = 2052;
+    var _siteDomain = 'http://www.ot13227318.icoc.me';
+    var _resRoot = 'http://0.ss.faisys.com';
+    var _colId = 2;
+    var _fromColId = -1;
+    var _designAuth = false;
+    var _manageMode = false;
+    var _oem = false;
+    var _siteVer = 10;
+    var _manageStatus = false;
+    var _webRightBar = false;
+    var _isMemberLogin = false;// 会员是否登陆了
+
+
+
+    var nav2SubMenu=[];
+    var nav109SubMenu=[];
+    var nav106SubMenu=[];
+    var nav105SubMenu=[];
+    var nav108SubMenu=[{"hidden":false,"colId":9,"href":"///home/contact/contact.html","target":" target='_self'","colName":"Contact","html":"<span class='itemName0'>Contact<\/span>","title":"","onclick":"return true;"}];
+
+    var _customBackgroundData = {"styleDefault":true,"s":true,"h":false,"r":3,"o":"","sw":-1,"e":0,"wbh":-1,"wbw":-1,"clw":-1,"crw":-1,"wbws":-1,"wbs":0,"id":"","p":"","bBg":{"y":0,"r":3,"f":"","p":"","c":"#000"},"cBg":{"y":0,"r":3,"f":"","p":"","c":"#000"},"cmBg":{"y":0,"r":3,"f":"","p":"","c":"#000"},"bm":{},"cm":{},"cp":{"y":0}};          //自定义的数据
+    var _templateBackgroundData = {"id":"","bBg":{"c":"#000","f":"","r":3,"p":"","y":0},"cBg":{"c":"#000","f":"","r":3,"p":"","y":0},"cmBg":{"c":"#000","f":"","r":3,"p":"","y":0},"sw":1200,"s":true,"h":false,"r":3,"o":"","e":0,"wbh":-1,"wbw":-1,"clw":-1,"crw":-1,"wbws":-1,"wbs":1,"p":"","bm":{},"cm":{},"cp":{"y":0}};// 模版的数据
+
+    var _templateBannerData = {"ce":{},"pl":0,"l":[{"i":"AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY.jpg","w":1920,"h":780,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY!100x100.jpg"},{"i":"AD0Ig8H8BBACGAAg8eaUwgUolPudngQwgA84jAY","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUolPudngQwgA84jAY.jpg","w":1920,"h":780,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUolPudngQwgA84jAY!100x100.jpg"},{"i":"AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY.jpg","w":1920,"h":780,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY!100x100.jpg"}],"n":[{"t":1,"i":"AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY","e":0,"u":"","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY.jpg","w":1920,"h":780,"el":"","er":""},{"t":1,"i":"AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY","e":0,"u":"","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY.jpg","w":1920,"h":780,"el":"","er":""}],"s":4,"bt":0,"at":2,"i":4000,"a":1500,"h":false,"o":false,"t":1,"p":0,"pt":0,"ws2":false,"f":{},"c":3,"ws":false};		// 模版的数据
+
+    var _pageBannerData = {"s":0,"i":4000,"a":1500,"h":false,"o":false,"t":1,"p":0,"pt":0,"pl":0,"bt":1,"ws2":false,"l":[],"f":{},"ce":{},"n":[],"c":3,"at":0,"ws":false};					// 当前页面的自定义数据（页面独立样式设置）
+    var _bannerData = _templateBannerData;
+
+    var _useTemplateHeaderZone = true;				// 是否使用全局模版
+    var _useTemplateFooterZone = true;				// 是否使用全局模版
+
+    var _mallOpen = false;
+    var _couponOpen = false
+
+    var toolBoxShowView = false;
+    var toolBoxShowSet = false;
+
+
+    var _navStyleData = {"no":true,"s":0,"ns":{"w":601,"h":-1},"cs":{"w":601,"h":-1},"np":{},"ncp":{"y":1,"t":45,"r":-1,"b":-1,"l":493,"hl":351,"ht":80},"cp":{"y":0,"t":-1,"l":-1},"nis":{"w":-1,"h":-1},"gt":{"f":"微软雅黑","s":16,"w":0,"c":"#4d4d4d","y":0},"ht":{"c":"#ffffff","y":0},"nb":{"c":"#000","f":"","r":0,"p":"","y":0},"cb":{"c":"#000","f":"","r":0,"p":"","y":0},"nib":{"c":"#000","r":0,"f":"","p":"","y":0},"nihb":{"c":"#fe8300","f":"AD0Ig8H8BBAEGAAg6_aUwgUotIO4ggEwZDgo","r":-1,"p":"http://10428547.s61i.faiusr.com/4/AD0Ig8H8BBAEGAAg6_aUwgUotIO4ggEwZDgo.png","y":0},"niss":{"w":-1,"h":-1},"nisb":{"c":"#000","r":0,"f":"","p":"","y":0},"nsigt":{"f":"微软雅黑","s":16,"w":0,"c":"#ffffff","ta":0,"y":0},"nsiht":{"c":"#ffffff","y":0},"nsis":{"w":-1,"h":-1},"nsib":{"c":"#fe8300","r":0,"f":"","p":"","y":0},"nsihb":{"c":"#ff9626","r":0,"f":"","p":"","y":0},"nsiho":0,"nmove":1,"v":2,"ntf":{"t":0,"ht":0},"nsmt":{},"nsmb":{},"nrs":{"n":{"t":0},"c":{"t":0},"i":{"t":0},"smt":{"t":0},"smb":{"t":0},"si":{"t":0},"is":{"t":0},"sis":{"t":0},"tmt":{"t":0},"tmb":{"t":0},"ti":{"t":0},"tis":{"t":0}},"nsw":{"n":{"t":0},"c":{"t":0},"i":{"t":0},"sm":{"t":0},"si":{"t":0},"is":{"t":0},"sis":{"t":0}},"nbr":{"n":{"t":0},"i":{"t":0},"sm":{"t":0},"si":{"t":0},"is":{"t":0},"sis":{"t":0},"tm":{"t":0},"ti":{"t":0},"tis":{"t":0}},"ntmt":{},"ntmb":{}};				      // 栏目导航样式
+    var _navHidden =false;                                  //true:隐藏；flase：显示
+    var _siteDemo = false;
+
+
+
+    var _backToTop = true;
+    var _aid = 13775917;
+    var _templateLayout = _templateDefLayout.NAV_FLOAT;
+    var _webBannerHeight = -1;
+    var _isTemplateVersion2 = true;
+    var _uiMode= false;
+
+    var _choiceCurrencyVal = "￥";
+    var _moduleAnimationPercent = -1;
+
+    var _useTemplateBackground = true;		// 是否使用模版
+
+</script>
+
+<script type="text/javascript">
+    var fk_old_onload = window.onload;
+    window.onload = function(){
+        Site.cacheModuleFunc.runSiteInit();
+        if(typeof fk_old_onload == "function"){
+            fk_old_onload.apply(this, arguments);
+        }
+
+        Site.pageOnload();
+    };
+
+    Site.beforeUnloadFunc();
+
+    $LAB.script("http://1.ss.faisys.com/js/photoSlide.min.js?v=201702271724");
+    $LAB.script("http://1.ss.faisys.com/js/imageEffect.min.js?v=201703131745")
+        .wait(function () {
+            jzUtils.trigger({
+                "name": "ImageEffect.FUNC.BASIC.Init",
+                "base":Site
+            });
+        });
+
+</script>
+
+
+<!--锁屏模板 start-->
+<!--<script type="text/template" id="lock-temp">-->
+<!--<div class="dinner-header-lock" id="lock-box">-->
+<!--<div class="dinner-header-lock-img">-->
+<!--<img src="/static/images/default-user.png"/>-->
+<!--</div>-->
+<!--<div class="dinner-header-lock-name" id="lockUserName">Dinner</div>-->
+<!--<input type="text" class="dinner-header-lock-input" value="输入密码解锁.." name="lockPwd" id="lockPwd" />-->
+<!--<button class="layui-btn layui-btn-small" id="unlock">解锁</button>-->
+<!--</div>-->
+<!--</script>-->
+<!--锁屏模板 end -->
+
+<!-- 菜单控件 -->
+<!-- <div class="dinner-tab-menu">
+	<span class="layui-btn dinner-test">刷新</span>
+</div> -->
+
+<!-- iframe框架刷新操作 -->
+<!-- <div id="refresh_iframe" class="layui-btn refresh_iframe">刷新</div> -->
+
+<!-- 加载js文件-->
+<!-- 侧栏菜单 -->
+<script type="text/javascript" src="__JS__/navbar.js"></script>
+<!-- 重定义layui 的tab -->
+<script type="text/javascript" src="__JS__/tab.js"></script>
+<!--  布局控制 -->
+<script type="text/javascript" src="__JS__/layout.js"></script>
+<!--  全局 -->
+<script type="text/javascript" src="__JS__/site.js"></script>
+<script>
+    layui.use('layer', function() {
+        var $ = layui.jquery,
+            layer = layui.layer;
+    });
+</script>
+
+</body>
+</html>
+

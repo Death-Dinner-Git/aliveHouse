@@ -1,40 +1,6 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:68:"D:\upupw\aliveHouse\public/../application/home\view\index\index.html";i:1494948086;s:71:"D:\upupw\aliveHouse\public/../application/common\view\layouts\main.html";i:1494938104;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:68:"D:\upupw\aliveHouse\public/../application/home\view\index\index.html";i:1495010242;s:69:"D:\upupw\aliveHouse\public/../application/home\view\layouts\main.html";i:1494989626;}*/ ?>
+<!-- 右侧主体内容开启 -->
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="url" content="">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
-
-    <!-- load css -->
-    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
-
-    <!-- For site js -->
-    <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/bootstrap.js"></script>
-    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
-
-    <title><?php echo !empty($meta_title)?$meta_title.' - ' : ''; ?>_TITLE_</title>
-
-</head>
-<body>
-
-<div class="wrap">
-
-    <div class="container"  id="container">
-
-        <div class="layui-layout layui-layout-back" id="layui_layout">
-
-            <!-- 右侧主体内容开启 -->
-            <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -52,19 +18,21 @@
 	<link rel="canonical" href="/home/index/index.html">
 
 	<!-- Load base CSS -->
-	<link type="text/css" href="/aliveHouse/web/base2.min.css" rel="stylesheet">
+	<link type="text/css" href="/aliveHouse/web/layer-base.css" rel="stylesheet">
 	<link type="text/css" href="/aliveHouse/web/fkTheme.min.css" rel="stylesheet" id="jzThemeFrame">
 	<link type="text/css" href="/aliveHouse/web/fkModule.min.css" rel="stylesheet" id="jzModule2_1">
 	<link type="text/css" href="/aliveHouse/web/searchBoxStyle1.min.css" rel="stylesheet">
 	<link type="text/css" href="/aliveHouse/web/newSearchBoxStyle.min.css" rel="stylesheet">
+	<link type="text/css" href="/aliveHouse/web/bannerAnimation.min.css" rel="stylesheet" >
+	<link type="text/css" href="/aliveHouse/web/jzcusstyle.css" rel="stylesheet">
+
+	<!-- This page CSS -->
 	<link type="text/css" href="/aliveHouse/web/floatBtn1.min.css" rel="stylesheet">
 	<link type="text/css" href="/aliveHouse/web/poshytipAndmCustomScrollbar.min.css" rel="stylesheet">
-	<link type="text/css" href="/aliveHouse/web/jzcusstyle.css" rel="stylesheet">
-	<link type="text/css" href="/aliveHouse/web/bannerAnimation.min.css" rel="stylesheet" >
 
 	<!-- Load base JS -->
-	<script src="/aliveHouse/web/imageEffect.min.js"></script>
-	<script src="/aliveHouse/web/photoSlide.min.js"></script>
+	<!--<script src="/aliveHouse/web/imageEffect.min.js"></script>-->
+	<!--<script src="/aliveHouse/web/photoSlide.min.js"></script>-->
 	<script type="text/javascript">
         var _cid = 13775917;
 	</script>
@@ -164,6 +132,7 @@
 	<div id="g_main" class="g_main g_col2 " style="width: 1903px;">
 
 		<div id="web" class="g_web ">
+
 			<table class="webTopTable" cellpadding="0" cellspacing="0">
 				<tbody>
 				<tr>
@@ -677,7 +646,7 @@
 											<td class="formMiddleLeft formMiddleLeft415"></td>
 											<td class="formMiddleCenter formMiddleCenter415 " valign="top">
 												<div class="formMiddleContent formMiddleContent415 fk-formContentOtherPadding" tabstyle="0">
-													<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="AD0Ig8H8BBACGAAg6uaUwgUo1NnZ_wEwnQI40wE" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg6uaUwgUo1NnZ_wEwnQI40wE.jpg" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/aliveHouse/web/AD0Ig8H8BBACGAAg6uaUwgUo1NnZ_wEwnQI40wE.jpg"></div><div class="richContent richContent3"><p style="clear:both;"><br></p></div></div>
+													<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima05.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="/aliveHouse/web/uploads/ima05.jpg" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/aliveHouse/web/uploads/ima05.jpg"></div><div class="richContent richContent3"><p style="clear:both;"><br></p></div></div>
 											</td>
 											<td class="formMiddleRight formMiddleRight415"></td>
 										</tr></tbody></table>
@@ -703,7 +672,7 @@
 											<td class="formMiddleLeft formMiddleLeft418"></td>
 											<td class="formMiddleCenter formMiddleCenter418 " valign="top">
 												<div class="formMiddleContent formMiddleContent418 fk-formContentOtherPadding" tabstyle="0">
-													<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="AD0Ig8H8BBACGAAg8OaUwgUo3oz-ngMwnQI40wE" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8OaUwgUo3oz-ngMwnQI40wE.jpg" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/aliveHouse/web/AD0Ig8H8BBACGAAg8OaUwgUo3oz-ngMwnQI40wE.jpg"></div><div class="richContent richContent3"></div></div>
+													<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima06.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/2/uploads/ima06.jpg" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/aliveHouse/web/uploads/ima06.jpg"></div><div class="richContent richContent3"></div></div>
 											</td>
 											<td class="formMiddleRight formMiddleRight418"></td>
 										</tr></tbody></table>
@@ -729,7 +698,7 @@
 											<td class="formMiddleLeft formMiddleLeft421"></td>
 											<td class="formMiddleCenter formMiddleCenter421 " valign="top">
 												<div class="formMiddleContent formMiddleContent421 fk-formContentOtherPadding" tabstyle="0">
-													<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="AD0Ig8H8BBACGAAg6uaUwgUosJrPqwcwnQI40wE" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg6uaUwgUosJrPqwcwnQI40wE.jpg" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/aliveHouse/web/AD0Ig8H8BBACGAAg6uaUwgUosJrPqwcwnQI40wE.jpg"></div><div class="richContent richContent3"></div></div>
+													<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima08.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/2/uploads/ima08.jpg" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/aliveHouse/web/uploads/ima08.jpg"></div><div class="richContent richContent3"></div></div>
 											</td>
 											<td class="formMiddleRight formMiddleRight421"></td>
 										</tr></tbody></table>
@@ -755,7 +724,7 @@
 											<td class="formMiddleLeft formMiddleLeft423"></td>
 											<td class="formMiddleCenter formMiddleCenter423 " valign="top">
 												<div class="formMiddleContent formMiddleContent423 fk-formContentOtherPadding" tabstyle="0">
-													<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="AD0Ig8H8BBACGAAg6eaUwgUo9Nj2ogQwnQI40wE" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg6eaUwgUo9Nj2ogQwnQI40wE.jpg" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/aliveHouse/web/AD0Ig8H8BBACGAAg6eaUwgUo9Nj2ogQwnQI40wE.jpg"></div><div class="richContent richContent3"></div></div>
+													<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima02.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/2/uploads/ima02.jpg" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/aliveHouse/web/uploads/ima02.jpg"></div><div class="richContent richContent3"></div></div>
 											</td>
 											<td class="formMiddleRight formMiddleRight423"></td>
 										</tr></tbody></table>
@@ -801,7 +770,7 @@
 											<td class="formMiddleCenter formMiddleCenter538 " valign="top">
 												<div class="formMiddleContent formMiddleContent538 fk-formContentOtherPadding" tabstyle="0">
 													<div id="photoSwitch538" class="J_carouselPhotos photoSwitch photoListSwitch carouselPhotosSwitch" style="height: 280px; margin: 0px auto; overflow: hidden; width: 376px;" lalala="280">
-														<div class="imageSwitchShowName photoSwitchBg" style="position: absolute; display: block; z-index: 2; height: auto; line-height: 30px; width: 376px; top: auto; bottom: 0px; margin-bottom: 2px; padding-bottom: 0px;"><span class="spanHiddenName spanShowName" style="margin-left: 10px; max-width: 98%; word-wrap: break-word; width: auto;">悦利12000元/平</span></div><div class="imageSwitchBtnArea" style="position: absolute; z-index: 3; display: none; width: 24px; bottom: 8px; top: auto;"><a class="imageSwitchBtn imageSwitchBtnSel"><span>1</span></a></div><div></div><div class="switchGroup" style="width: 376px; position: relative; overflow: hidden; height: 280px;"><a hidefocus="true" style="outline: none; width: 100%; height: 280px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; position: absolute; display: block; float: left; left: 0px; top: 0px;" onclick="return false;" id="photoListAD0Ig8H8BBACGAAg8eaUwgUo4bTj3AIw_AI4mAI" href="javascript:;" target="_blank" title=""><img src="/aliveHouse/web/AD0Ig8H8BBACGAAg8eaUwgUo4bTj3AIw_AI4mAI.jpg" width="376" height="280"></a></div></div>
+														<div class="imageSwitchShowName photoSwitchBg" style="position: absolute; display: block; z-index: 2; height: auto; line-height: 30px; width: 376px; top: auto; bottom: 0px; margin-bottom: 2px; padding-bottom: 0px;"><span class="spanHiddenName spanShowName" style="margin-left: 10px; max-width: 98%; word-wrap: break-word; width: auto;">悦利12000元/平</span></div><div class="imageSwitchBtnArea" style="position: absolute; z-index: 3; display: none; width: 24px; bottom: 8px; top: auto;"><a class="imageSwitchBtn imageSwitchBtnSel"><span>1</span></a></div><div></div><div class="switchGroup" style="width: 376px; position: relative; overflow: hidden; height: 280px;"><a hidefocus="true" style="outline: none; width: 100%; height: 280px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; position: absolute; display: block; float: left; left: 0px; top: 0px;" onclick="return false;" id="photoListuploads/ima12.jpg" href="javascript:;" target="_blank" title=""><img src="/aliveHouse/web/uploads/ima12.jpg" width="376" height="280"></a></div></div>
 												</div>
 											</td>
 											<td class="formMiddleRight formMiddleRight538"></td>
@@ -829,7 +798,7 @@
 											<td class="formMiddleCenter formMiddleCenter539 " valign="top">
 												<div class="formMiddleContent formMiddleContent539 fk-formContentOtherPadding" tabstyle="0">
 													<div id="photoSwitch539" class="J_carouselPhotos photoSwitch photoListSwitch carouselPhotosSwitch" style="height: 280px; margin: 0px auto; overflow: hidden; width: 376px;" lalala="280">
-														<div class="imageSwitchShowName photoSwitchBg" style="position: absolute; display: block; z-index: 2; height: auto; line-height: 30px; width: 376px; top: auto; bottom: 0px; margin-bottom: 2px; padding-bottom: 0px;"><span class="spanHiddenName spanShowName" style="margin-left: 10px; max-width: 98%; word-wrap: break-word; width: auto;">锐丰13000元/平</span></div><div class="imageSwitchBtnArea" style="position: absolute; z-index: 3; display: none; width: 24px; bottom: 8px; top: auto;"><a class="imageSwitchBtn imageSwitchBtnSel"><span>1</span></a></div><div></div><div class="switchGroup" style="width: 376px; position: relative; overflow: hidden; height: 280px;"><a hidefocus="true" style="outline: none; width: 100%; height: 280px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; position: absolute; display: block; float: left; left: 0px; top: 0px;" onclick="return false;" id="photoListAD0Ig8H8BBACGAAg7eaUwgUogOD5yAcw_AI4mAI" href="javascript:;" target="_blank" title=""><img src="/aliveHouse/web/AD0Ig8H8BBACGAAg7eaUwgUogOD5yAcw_AI4mAI.jpg" width="376" height="280"></a></div></div>
+														<div class="imageSwitchShowName photoSwitchBg" style="position: absolute; display: block; z-index: 2; height: auto; line-height: 30px; width: 376px; top: auto; bottom: 0px; margin-bottom: 2px; padding-bottom: 0px;"><span class="spanHiddenName spanShowName" style="margin-left: 10px; max-width: 98%; word-wrap: break-word; width: auto;">锐丰13000元/平</span></div><div class="imageSwitchBtnArea" style="position: absolute; z-index: 3; display: none; width: 24px; bottom: 8px; top: auto;"><a class="imageSwitchBtn imageSwitchBtnSel"><span>1</span></a></div><div></div><div class="switchGroup" style="width: 376px; position: relative; overflow: hidden; height: 280px;"><a hidefocus="true" style="outline: none; width: 100%; height: 280px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; position: absolute; display: block; float: left; left: 0px; top: 0px;" onclick="return false;" id="photoListuploads/ima06.jpg" href="javascript:;" target="_blank" title=""><img src="/aliveHouse/web/uploads/ima06.jpg" width="376" height="280"></a></div></div>
 												</div>
 											</td>
 											<td class="formMiddleRight formMiddleRight539"></td>
@@ -857,7 +826,7 @@
 											<td class="formMiddleCenter formMiddleCenter540 " valign="top">
 												<div class="formMiddleContent formMiddleContent540 fk-formContentOtherPadding" tabstyle="0">
 													<div id="photoSwitch540" class="J_carouselPhotos photoSwitch photoListSwitch carouselPhotosSwitch" style="height: 280px; margin: 0px auto; overflow: hidden; width: 376px;" lalala="280">
-														<div class="imageSwitchShowName photoSwitchBg" style="position: absolute; display: block; z-index: 2; height: auto; line-height: 30px; width: 376px; top: auto; bottom: 0px; margin-bottom: 2px; padding-bottom: 0px;"><span class="spanHiddenName spanShowName" style="margin-left: 10px; max-width: 98%; word-wrap: break-word; width: auto;">宝月15000元/平</span></div><div class="imageSwitchBtnArea" style="position: absolute; z-index: 3; display: none; width: 24px; bottom: 8px; top: auto;"><a class="imageSwitchBtn imageSwitchBtnSel"><span>1</span></a></div><div></div><div class="switchGroup" style="width: 376px; position: relative; overflow: hidden; height: 280px;"><a hidefocus="true" style="outline: none; width: 100%; height: 280px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; position: absolute; display: block; float: left; left: 0px; top: 0px;" onclick="return false;" id="photoListAD0Ig8H8BBACGAAg7eaUwgUokKaQhAMw_AI4mAI" href="javascript:;" target="_blank" title=""><img src="/aliveHouse/web/AD0Ig8H8BBACGAAg7eaUwgUokKaQhAMw_AI4mAI.jpg" width="376" height="280"></a></div></div>
+														<div class="imageSwitchShowName photoSwitchBg" style="position: absolute; display: block; z-index: 2; height: auto; line-height: 30px; width: 376px; top: auto; bottom: 0px; margin-bottom: 2px; padding-bottom: 0px;"><span class="spanHiddenName spanShowName" style="margin-left: 10px; max-width: 98%; word-wrap: break-word; width: auto;">宝月15000元/平</span></div><div class="imageSwitchBtnArea" style="position: absolute; z-index: 3; display: none; width: 24px; bottom: 8px; top: auto;"><a class="imageSwitchBtn imageSwitchBtnSel"><span>1</span></a></div><div></div><div class="switchGroup" style="width: 376px; position: relative; overflow: hidden; height: 280px;"><a hidefocus="true" style="outline: none; width: 100%; height: 280px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; position: absolute; display: block; float: left; left: 0px; top: 0px;" onclick="return false;" id="photoListuploads/ima06.jpg" href="javascript:;" target="_blank" title=""><img src="/aliveHouse/web/uploads/ima06.jpg" width="376" height="280"></a></div></div>
 												</div>
 											</td>
 											<td class="formMiddleRight formMiddleRight540"></td>
@@ -1217,12 +1186,12 @@
 														<div class="clearfloat"></div>
 														<div id="photoForms541" style="overflow:hidden;" class="J_photoForms photoForms" picwidth="355" picheight="256">
 															<div photoid="0" photoname="" photodisc="" class="J_photoForm photoForm" style="width: 355px; height: 266px;" faiwidth="355" faiheight="256">
-																<div class="J_sortDiv"><div id="photoListAD0Ig8H8BBACGAAg7OaUwgUost2qggEw4wI4gAI" photoname="" photodisc="" check="3" tmppic="AD0Ig8H8BBACGAAg7OaUwgUost2qggEw4wI4gAI" _lide="" class="J_listPhotoImg imgDiv" style="width:355px;height:256px;">
+																<div class="J_sortDiv"><div id="photoListuploads/ima07.jpg" photoname="" photodisc="" check="3" tmppic="uploads/ima07.jpg" _lide="" class="J_listPhotoImg imgDiv" style="width:355px;height:256px;">
 																	<table cellpadding="0" cellspacing="0">
 																		<tbody><tr>
 																			<td>
 																				<div class="J_photoImgPanel" style="width: 355px; height: 256px; position: relative; overflow: hidden; margin: 0px auto;">
-																					<img iwidth="355" iheight="256" picsca="0" class="J_photoImg photoImg imageEffectsAnimate_MoveLeft" src="/aliveHouse/web/AD0Ig8H8BBACGAAg7OaUwgUost2qggEw4wI4gAI.jpg" alt="" style="width: 365px; height: 256px; margin: 0px;">
+																					<img iwidth="355" iheight="256" picsca="0" class="J_photoImg photoImg imageEffectsAnimate_MoveLeft" src="/aliveHouse/web/uploads/ima07.jpg" alt="" style="width: 365px; height: 256px; margin: 0px;">
 																				</div>
 																			</td>
 																		</tr>
@@ -1304,7 +1273,7 @@
 											<td class="formMiddleCenter formMiddleCenter542 " valign="top">
 												<div class="formMiddleContent formMiddleContent542 fk-formContentOtherPadding" tabstyle="0">
 													<div id="photoSwitch542" class="J_carouselPhotos photoSwitch photoListSwitch carouselPhotosSwitch" style="height: 359px; margin: 0px auto; overflow: hidden; width: 551px;" lalala="359">
-														<div class="imageSwitchShowName photoSwitchBg" style="position: absolute; display: block; z-index: 2; height: auto; line-height: 30px; width: 551px; top: auto; bottom: 0px; margin-bottom: 2px; padding-bottom: 0px;"><span class="spanHiddenName spanShowName" style="margin-left: 10px; max-width: 98%; word-wrap: break-word; width: auto;">286亿！中国成美国房产“第一买家”</span></div><div class="imageSwitchBtnArea" style="position: absolute; z-index: 3; display: none; width: 24px; bottom: 8px; top: auto;"><a class="imageSwitchBtn imageSwitchBtnSel"><span>1</span></a></div><div></div><div class="switchGroup" style="width: 551px; position: relative; overflow: hidden; height: 359px;"><a hidefocus="true" style="outline: none; width: 100%; height: 359px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; position: absolute; display: block; float: left; left: 0px; top: 0px;" onclick="return false;" id="photoListAD0Ig8H8BBACGAAg8OaUwgUo9MfRIzCnBDjnAg" href="javascript:;" target="_blank" title=""><img src="/aliveHouse/web/AD0Ig8H8BBACGAAg8OaUwgUo9MfRIzCnBDjnAg.jpg" width="551" height="359"></a></div></div>
+														<div class="imageSwitchShowName photoSwitchBg" style="position: absolute; display: block; z-index: 2; height: auto; line-height: 30px; width: 551px; top: auto; bottom: 0px; margin-bottom: 2px; padding-bottom: 0px;"><span class="spanHiddenName spanShowName" style="margin-left: 10px; max-width: 98%; word-wrap: break-word; width: auto;">286亿！中国成美国房产“第一买家”</span></div><div class="imageSwitchBtnArea" style="position: absolute; z-index: 3; display: none; width: 24px; bottom: 8px; top: auto;"><a class="imageSwitchBtn imageSwitchBtnSel"><span>1</span></a></div><div></div><div class="switchGroup" style="width: 551px; position: relative; overflow: hidden; height: 359px;"><a hidefocus="true" style="outline: none; width: 100%; height: 359px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; position: absolute; display: block; float: left; left: 0px; top: 0px;" onclick="return false;" id="photoListuploads/ima15.jpg" href="javascript:;" target="_blank" title=""><img src="/aliveHouse/web/uploads/ima15.jpg" width="551" height="359"></a></div></div>
 												</div>
 											</td>
 											<td class="formMiddleRight formMiddleRight542"></td>
@@ -1393,7 +1362,8 @@
 						</div>
 					</td>
 				</tr>
-				</tbody></table>
+				</tbody>
+			</table>
 
 			<table id="webFooterTable" class="webFooterTable" cellpadding="0" cellspacing="0">
 				<tbody><tr>
@@ -1675,7 +1645,7 @@
 			Site.initTemplateLayout(_templateDefLayout.NAV_FLOAT, true, false );
 
 			// spider统计
-	
+
 			// ajax统计
 			Site.total({colId:2, pdId:-1, ndId:-1, sc:0, rf:"http://m.ot13227318.faisco.cn/index.php"});
 			//前端性能数据上报
@@ -1710,11 +1680,11 @@
 
             Site.initMulColModuleInIE('#module401');
             Site.setFullMeasureBgHightInIe6( 430);;$(function(){Site.inFullmeasueAnimation.animateFm(430,0,1,{"c":0,"d":4,"s":1});});
-            Site.initModulePhotoSwitch(538, {"data":[{"name":"悦利12000元/平","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo4bTj3AIw_AI4mAI.jpg","width":376,"height":280,"widthOr":376,"heightOr":280,"pic":"AD0Ig8H8BBACGAAg8eaUwgUo4bTj3AIw_AI4mAI"}],"width":376,"height":280,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch538","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
+            Site.initModulePhotoSwitch(538, {"data":[{"name":"悦利12000元/平","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/uploads/ima12.jpg","width":376,"height":280,"widthOr":376,"heightOr":280,"pic":"uploads/ima12.jpg"}],"width":376,"height":280,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch538","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
 
-            Site.initModulePhotoSwitch(539, {"data":[{"name":"锐丰13000元/平","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7eaUwgUogOD5yAcw_AI4mAI.jpg","width":376,"height":280,"widthOr":376,"heightOr":280,"pic":"AD0Ig8H8BBACGAAg7eaUwgUogOD5yAcw_AI4mAI"}],"width":376,"height":280,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch539","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
+            Site.initModulePhotoSwitch(539, {"data":[{"name":"锐丰13000元/平","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/uploads/ima06.jpg","width":376,"height":280,"widthOr":376,"heightOr":280,"pic":"uploads/ima06.jpg"}],"width":376,"height":280,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch539","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
 
-            Site.initModulePhotoSwitch(540, {"data":[{"name":"宝月15000元/平","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7eaUwgUokKaQhAMw_AI4mAI.jpg","width":376,"height":280,"widthOr":376,"heightOr":280,"pic":"AD0Ig8H8BBACGAAg7eaUwgUokKaQhAMw_AI4mAI"}],"width":376,"height":280,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch540","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
+            Site.initModulePhotoSwitch(540, {"data":[{"name":"宝月15000元/平","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/uploads/ima06.jpg","width":376,"height":280,"widthOr":376,"heightOr":280,"pic":"uploads/ima06.jpg"}],"width":376,"height":280,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch540","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
 
             Site.initMulColModuleInIE('#module543');
             Site.setFullMeasureBgHightInIe6( 328);;$(function(){Site.inFullmeasueAnimation.animateFm(328,0,1,{"c":0,"d":4,"s":1});});
@@ -1727,7 +1697,7 @@
             Site.setFullMeasureBgHightInIe6( 336);;$(function(){Site.inFullmeasueAnimation.animateFm(336,0,1,{"c":0,"d":4,"s":1});});
 
             Site.setFullMeasureBgHightInIe6( 346);;$(function(){Site.inFullmeasueAnimation.animateFm(346,0,1,{"c":0,"d":4.0,"s":1.0});});
-            Site.initModulePhotoSwitch(542, {"data":[{"name":"286亿！中国成美国房产\u201C第一买家\u201D","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8OaUwgUo9MfRIzCnBDjnAg.jpg","width":551,"height":359,"widthOr":551,"heightOr":359,"pic":"AD0Ig8H8BBACGAAg8OaUwgUo9MfRIzCnBDjnAg"}],"width":551,"height":359,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch542","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
+            Site.initModulePhotoSwitch(542, {"data":[{"name":"286亿！中国成美国房产\u201C第一买家\u201D","href":"","target":"_blank","src":"http://10428547.s61i.faiusr.com/2/uploads/ima15.jpg","width":551,"height":359,"widthOr":551,"heightOr":359,"pic":"uploads/ima15.jpg"}],"width":551,"height":359,"playTime":4000,"animateTime":1500,"showImageName":true,"switchWrapName":true,"moduleId":"photoSwitch542","cusPicSize":true,"picScale":false,"manuallyCarousel":false}, 1, 'carouselPhotos');
 
             Site.loadNewsList(443, {"y":0,"s":0,"w":1}, false);
             Site.loadNewsNewStyle(443, false,false,false,true,true,false,false,true,false);
@@ -1775,7 +1745,7 @@
         var nav109SubMenu=[];
         var nav106SubMenu=[];
         var nav105SubMenu=[];
-        var nav108SubMenu=[{"hidden":false,"colId":9,"href":"//home/contact/contact.html","target":" target='_self'","colName":"Contact","html":"<span class='itemName0'>Contact<\/span>","title":"","onclick":"return true;"}];
+        var nav108SubMenu=[{"hidden":false,"colId":9,"href":"///home/contact/contact.html","target":" target='_self'","colName":"Contact","html":"<span class='itemName0'>Contact<\/span>","title":"","onclick":"return true;"}];
 
         var _customBackgroundData = {"styleDefault":true,"s":true,"h":false,"r":3,"o":"","sw":-1,"e":0,"wbh":-1,"wbw":-1,"clw":-1,"crw":-1,"wbws":-1,"wbs":0,"id":"","p":"","bBg":{"y":0,"r":3,"f":"","p":"","c":"#000"},"cBg":{"y":0,"r":3,"f":"","p":"","c":"#000"},"cmBg":{"y":0,"r":3,"f":"","p":"","c":"#000"},"bm":{},"cm":{},"cp":{"y":0}};          //自定义的数据
         var _templateBackgroundData = {"id":"","bBg":{"c":"#000","f":"","r":3,"p":"","y":0},"cBg":{"c":"#000","f":"","r":3,"p":"","y":0},"cmBg":{"c":"#000","f":"","r":3,"p":"","y":0},"sw":1200,"s":true,"h":false,"r":3,"o":"","e":0,"wbh":-1,"wbw":-1,"clw":-1,"crw":-1,"wbws":-1,"wbs":1,"p":"","bm":{},"cm":{},"cp":{"y":0}};// 模版的数据
@@ -1839,27 +1809,6 @@
 
 	</script>
 
-	<div class="navSubMenu" id="g_menunav108SubMenuContainer"></div>
-
 </body>
 </html>
-            <!-- 右侧主体内容结束 -->
-
-        </div>
-    </div>
-
-</div>
-
-<!-- 加载js文件-->
-<!--  全局 -->
-<script type="text/javascript" src="__JS__/site.js"></script>
-<script>
-    layui.use('layer', function() {
-        var $ = layui.jquery,
-            layer = layui.layer;
-    });
-</script>
-
-</body>
-</html>
-
+<!-- 右侧主体内容结束 -->
