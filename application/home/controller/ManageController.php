@@ -13,8 +13,9 @@
 namespace app\home\controller;
 
 use app\common\controller\BaseController;
+use think\Controller;
 
-class ManageController extends BaseController
+class ManageController extends Controller
 {
     /**
      * 初始化方法
