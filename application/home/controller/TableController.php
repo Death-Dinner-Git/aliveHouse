@@ -12,16 +12,21 @@
 // +----------------------------------------------------------------------
 namespace app\home\controller;
 
-use app\common\controller\BaseController;
 
-class ManageController extends BaseController
+use app\home\controller\ManageController;
+
+class TableController extends ManageController
 {
     /**
-     * 初始化方法
-     * @author Sir Fu
+     * @description 数据
+     * @return mixed
      */
-    protected function _initialize()
+    public function indexAction()
     {
-        parent::_initialize();
+        // 临时却换当前模板的布局功能
+        $this->view->engine->layout('layouts/main');
+
+        $this->assign('meta_title', "维护列表");
+        return view('table/outCarListAdd');
     }
 }
