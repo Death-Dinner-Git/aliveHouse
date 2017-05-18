@@ -38,6 +38,7 @@ class UserValidate extends Validate
             return false;
         }
 
+        \think\Validate::make();
         $ret = false;
 
         $result = \app\home\model\User::load()->where([$fieldName=>$value])->select();
@@ -64,6 +65,7 @@ class UserValidate extends Validate
     protected $message = [
         '__token__.token'  =>  ':attribute 无效',
         'username.require'  =>  ':attribute 不能为空',
+        'username.unique'  =>  ':attribute 已存在',
         'password.require'  =>  ':attribute 不能为空',
         'password_rep.require'  =>  ':attribute 不能为空',
         'password_rep.comparePassword'  =>  '两次密码 不一致',

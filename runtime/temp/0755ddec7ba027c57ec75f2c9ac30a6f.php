@@ -1,3 +1,5 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:68:"D:\upupw\aliveHouse\public/../application/home\view\index\index.html";i:1495100633;s:69:"D:\upupw\aliveHouse\public/../application/home\view\layouts\main.html";i:1494989626;}*/ ?>
+<!-- 右侧主体内容开启 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -1952,3 +1954,4 @@
 
 </body>
 </html>
+<!-- 右侧主体内容结束 -->

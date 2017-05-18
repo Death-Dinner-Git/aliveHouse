@@ -90,7 +90,15 @@ class Department extends Model
      */
     public function getManagers()
     {
-        return $this->hasMany('RepairCar', 'department_id' , 'id');
+        return $this->hasMany('Manager', 'department_id' , 'id');
+    }
+
+    /**
+     * @return \think\model\relation\HasManyThrough
+     */
+    public function gatRepairCars()
+    {
+        return $this->hasManyThrough('RepairCar','Manager');
     }
 
     /**
