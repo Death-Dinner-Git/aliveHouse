@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:68:"D:\upupw\aliveHouse\public/../application/home\view\index\index.html";i:1495100633;s:69:"D:\upupw\aliveHouse\public/../application/home\view\layouts\main.html";i:1494989626;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:68:"D:\upupw\aliveHouse\public/../application/home\view\index\index.html";i:1495384206;s:69:"D:\upupw\aliveHouse\public/../application/home\view\layouts\main.html";i:1495354693;}*/ ?>
 <!-- 右侧主体内容开启 -->
 <!DOCTYPE html>
 <html>
@@ -140,12 +140,17 @@
 							<div id="webTop" class="webTop">
 								<div id="corpTitle" class="corpTitle corpTitle2" fontpatterntitle="false" style="top:42px;left:12px;;" _linktype="0" onpaste="Fai.top.Site.corpTitleFormatPasteDatacorpTitle();">
 									<div class="newPrimaryTitle">
-										<b>
+										<span style="position: absolute;top: -42px;left:-60px;">
+											<img src="/static/images/logo.png" alt="好房置业-LOGO" title="好房置业" style="width: 120px;height: 120px;" />
+										</span>
+										<div style="margin-left: 80px;">
+											<b>
 											<font color="#1e50ae" style="color: rgb(30, 80, 174);">
 												<font style="color: rgba(255, 101, 55, 1);">Alive</font>&nbsp;
 											</font>
 											<font color="#cccccc" style="color: rgba(204, 204, 204, 1);">House</font>
 										</b>
+										</div>
 									</div>
 								</div>
 							</div>
