@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:68:"D:\upupw\aliveHouse\public/../application/home\view\index\index.html";i:1495384206;s:69:"D:\upupw\aliveHouse\public/../application/home\view\layouts\main.html";i:1495354693;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:68:"D:\upupw\aliveHouse\public/../application/home\view\index\index.html";i:1495462629;s:69:"D:\upupw\aliveHouse\public/../application/home\view\layouts\main.html";i:1495462629;}*/ ?>
 <!-- 右侧主体内容开启 -->
 <!DOCTYPE html>
 <html>
