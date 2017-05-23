@@ -25,4 +25,18 @@ class Validate extends \think\Validate
         return Loader::model($name,$layer,$appendSuffix,$common);
     }
 
+    /**
+     * 验证是否唯一
+     * @access protected
+     * @param mixed     $value  字段值
+     * @param mixed     $rule  验证规则 格式：数据表,字段名,排除ID,主键名
+     * @param array     $data  数据
+     * @param string    $field  验证字段名
+     * @return bool
+     */
+    protected function exist($value, $rule, $data, $field)
+    {
+        return !$this->unique($value,$rule,$data,$field);
+    }
+
 }

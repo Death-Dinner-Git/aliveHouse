@@ -19,12 +19,12 @@ class BaseController extends Controller
         config('default_module',request()->module());
 
         // 登录检测,未登录，跳转到登录
-        if (!$this->isGuest()) {
-            //还没登录跳转到登录页面
-            if ( $this->getCurrentUrl() !== strtolower($this->getLoginUrl())){
-                $this->goBack($this->getLoginUrl());
-            }
-        }
+//        if (!$this->isGuest()) {
+//            //还没登录跳转到登录页面
+//            if ( $this->getCurrentUrl() !== strtolower($this->getLoginUrl())){
+//                $this->goBack($this->getLoginUrl());
+//            }
+//        }
 
         // 获取当前访问地址
         $currentUrl = $this->getCurrentUrl();
@@ -40,15 +40,13 @@ class BaseController extends Controller
             }
         }
         $this->assign('url',$url.$currentUrl.'.html?iframe=true');
+
         //模板转换
         if (!isset($_REQUEST['iframe']) || $_REQUEST['iframe'] !== 'true'){
-            $this->view->engine->layout('common@layouts/index');
+            $this->view->engine->layout('common@layouts/manage-index');
         }else{
-            $this->view->engine->layout('common@layouts/main');
+            $this->view->engine->layout('common@layouts/manage-main');
         }
-    }
-    public function abcAction(){
-        return 'sdsd';
     }
 
     /**
@@ -79,149 +77,8 @@ class BaseController extends Controller
     protected function isGuest()
     {
         //用户登录检测
-        $uid = Configs::getUser()->isGuest();
+        $uid = Configs::getIdentity()->isGuest();
         return $uid ? $uid : false;
-    }
-
-    /**
-     * @description 设置一条或者多条数据的状态
-     * 严格模式要求处理的纪录的uid等于当前登陆用户UID
-     * @param $model
-     * @param $strict
-     * @author Sir Fu
-     */
-    public function setStatus($model = '', $strict = null)
-    {
-        if ('' == $model) {
-            $model = request()->controller();
-        }
-        $ids    = array_unique((array) I('ids', 0));
-        $status = I('request.status');
-        if (empty($ids)) {
-            $this->error('请选择要操作的数据');
-        }
-
-        // 获取主键
-        $status_model      = D($model);
-        $model_primary_key = $status_model->getPk();
-
-        // 获取id
-        $ids                     = is_array($ids) ? implode(',', $ids) : $ids;
-        $map[$model_primary_key] = array('in', $ids);
-
-        // 严格模式
-        if ($strict === null) {
-            if (MODULE_MARK === 'Home') {
-                $strict = true;
-            }
-        }
-        if ($strict) {
-            $map['uid'] = array('eq', $this->isGuest());
-        }
-        switch ($status) {
-            case 'forbid': // 禁用条目
-                $data = array('status' => 0);
-                $this->editRow(
-                    $model,
-                    $data,
-                    $map,
-                    array('success' => '禁用成功', 'error' => '禁用失败')
-                );
-                break;
-            case 'resume': // 启用条目
-                $data = array('status' => 1);
-                $map  = array_merge(array('status' => 0), $map);
-                $this->editRow(
-                    $model,
-                    $data,
-                    $map,
-                    array('success' => '启用成功', 'error' => '启用失败')
-                );
-                break;
-            case 'recycle': // 移动至回收站
-                // 查询当前删除的项目是否有子代
-                if (in_array('pid', $status_model->getDbFields())) {
-                    $count = $status_model->where(array('pid' => array('in', $ids)))->count();
-                    if ($count > 0) {
-                        $this->error('无法删除，存在子项目！');
-                    }
-                }
-
-                // 标记删除
-                $data['status'] = -1;
-                $this->editRow(
-                    $model,
-                    $data,
-                    $map,
-                    array('success' => '成功移至回收站', 'error' => '回收失败')
-                );
-                break;
-            case 'restore': // 从回收站还原
-                $data = array('status' => 1);
-                $map  = array_merge(array('status' => -1), $map);
-                $this->editRow(
-                    $model,
-                    $data,
-                    $map,
-                    array('success' => '恢复成功', 'error' => '恢复失败')
-                );
-                break;
-            case 'delete': // 删除记录
-                // 查询当前删除的项目是否有子代
-                // 查询当前删除的项目是否有子代
-                if (in_array('pid', $status_model->getDbFields())) {
-                    $count = $status_model->where(array('pid' => array('in', $ids)))->count();
-                    if ($count > 0) {
-                        $this->error('无法删除，存在子项目！');
-                    }
-                }
-
-                // 删除记录
-                $result = $status_model->where($map)->delete();
-                if ($result) {
-                    $this->success('删除成功，不可恢复！');
-                } else {
-                    $this->error('删除失败');
-                }
-                break;
-            default:
-                $this->error('参数错误');
-                break;
-        }
-    }
-
-    /**
-     * @description 对数据表中的单行或多行记录执行修改 GET参数id为数字或逗号分隔的数字
-     * @param string $model 数据模型ssss
-     * @param array  $data  修改的数据
-     * @param array  $map   查询时的where()方法的参数
-     * @param array  $msg   执行正确和错误的消息
-     *                       array(
-     *                           'success' => '',
-     *                           'error'   => '',
-     *                           'url'     => '',   // url为跳转页面
-     *                           'ajax'    => false //是否ajax(数字则为倒数计时)
-     *                       )
-     * @author Sir Fu
-     */
-    final public function editRow($model, $data, $map, $msg)
-    {
-        $msg = array_merge(
-            array(
-                'success' => '操作成功！',
-                'error'   => '操作失败！',
-                'url'     => ' ',
-                'ajax'    => request()->isAjax(),
-            ),
-            (array) $msg
-        );
-        $model  = D($model);
-        $result = $model->where($map)->save($data);
-        if ($result != false) {
-            $this->success($msg['success'] . $model->getError(), $msg['url'], $msg['ajax']);
-        } else {
-            $this->error($msg['error'] . $model->getError(), $msg['url'], $msg['ajax']);
-        }
     }
 
     /**
@@ -446,7 +303,7 @@ class BaseController extends Controller
         }
         return $data;
     }
-//
+
 //    /**
 //     * @description before action function
 //     * @param $name
@@ -514,7 +371,7 @@ class BaseController extends Controller
             $this->redirect($defaultUrl,$params,$code);
         }
 
-        $backUrl = (array) session(config('user._manage_url'));
+        $backUrl = (array) session(config('identity._manage_url'));
         if (!empty($backUrl)){
             $index = count($backUrl);
             $this->success('正在恢复...',$backUrl[$index-1],1);
@@ -540,7 +397,7 @@ class BaseController extends Controller
             return $defaultUrl;
         }
 
-        $backUrl = (array) session(config('user._manage_url'));
+        $backUrl = (array) session(config('identity._manage_url'));
         if (!empty($backUrl)){
             $index = count($backUrl);
             return $backUrl[$index-1];
@@ -568,7 +425,7 @@ class BaseController extends Controller
         if ( stristr($url,$this->getLoginUrl()) ||  stristr($url,$this->getRegisterUrl()) || stristr($url,$this->getLogoutUrl()) ){
             return;
         }
-        $path = session(config('user._manage_url'));
+        $path = session(config('identity._manage_url'));
         $path = (array) $path;
         if (end($path) != $url){
             $path[] = $url;
@@ -577,7 +434,7 @@ class BaseController extends Controller
             unset($path[0]);
             $path = array_values($path);
         }
-        session(config('user._manage_url'),$path);
+        session(config('identity._manage_url'),$path);
     }
 
     /**
@@ -591,8 +448,8 @@ class BaseController extends Controller
             return $defaultUrl;
         }
 
-        if (config('user.loginUrl')){
-            return config('user.loginUrl');
+        if (config('identity.loginUrl')){
+            return config('identity.loginUrl');
         }
         return null;
     }
@@ -608,8 +465,8 @@ class BaseController extends Controller
             return $defaultUrl;
         }
 
-        if (config('user.logoutUrl')){
-            return config('user.logoutUrl');
+        if (config('identity.logoutUrl')){
+            return config('identity.logoutUrl');
         }
         return null;
     }
@@ -625,8 +482,8 @@ class BaseController extends Controller
             return $defaultUrl;
         }
 
-        if (config('user.registerUrl')){
-            return config('user.registerUrl');
+        if (config('identity.registerUrl')){
+            return config('identity.registerUrl');
         }
         return null;
     }

@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\Model;
+use app\manage\validate\OutCarValidate;
 
 /**
  * This is the model class for table "{{%out_car}}".
@@ -54,6 +55,25 @@ class OutCar extends Model
     {
         return parent::getTablePrefix().'out_car';
     }
+
+    /**
+     * 自动验证规则
+     * @author Sir Fu
+     */
+    protected $_validate = [
+        ['out_car_time','require',],
+        ['oil_cost','max:255',],
+        ['start_address','max:255',],
+        ['start_lat','max:255',],
+        ['start_lng','max:255',],
+    ];
+
+    /**
+     * 自动完成规则
+     * @author Sir Fu
+     */
+    protected $_auto = [
+    ];
 
     /**
      * @inheritdoc
@@ -154,4 +174,66 @@ class OutCar extends Model
     {
         return $this->belongsTo('City', 'end_city_id','id');
     }
+
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return OutCarValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
+
+    /**
+     * @description 同步我房后台数据
+     * @param $data
+     * @return string|int
+     */
+    public function synchroOutCar($data){
+        $validate = self::getValidate();
+
+        //设定场景
+        $validate->scene('sync');
+
+        $identity = isset($data['wofang_id']) ? $data['wofang_id'] : '0';
+        if($validate->check($data)){
+            //插入
+            $result = self::create($data);
+            if ($result){
+                $ret = !empty($identity) ? 'success-'.$identity : '0';
+            }
+        }else{
+            //更新
+            $validate->scene('syncUpdate');
+            if($validate->check($data)){
+                $where = ['wofang_id'=>(!empty($identity) ? $identity : '0')];
+                $result = self::update($data,$where);
+                if ($result){
+                    $ret = !empty($identity) ? 'update-'.$identity : '0';
+                }
+            }
+        }
+
+        if (!isset($ret)){
+            // 验证失败 输出提示信息
+            $ret = !empty($identity) ? 'fail-'.$identity : '0';
+        }
+
+        return $ret;
+    }
+
 }

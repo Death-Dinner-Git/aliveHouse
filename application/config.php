@@ -56,7 +56,7 @@ return [
     // +----------------------------------------------------------------------
 
     // 默认模块名
-    'default_module'         => 'home',
+    'default_module'         => 'manage',
     // 禁止访问模块
     'deny_module_list'       => ['common'],
     // 默认控制器名
@@ -138,13 +138,12 @@ return [
         'taglib_end'   => '}',
 
         'layout_on'     =>  true,
-        'layout_name'   =>  'layouts/main',
+        'layout_name'   =>  'common@layouts/default-main',
         'layout_item'   =>  '{__CONTENT__}'
     ],
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
-        '_TITLE_'=>'[ Alive House ]',
         '_LAYUI_'=>'/static/plugins/layui/src',
         '_PLUGINS_'=>'/static/plugins',
         '_SHORTCUT_'=>'/static/images/shortcut-icon-logo.png',
@@ -251,9 +250,9 @@ return [
     // 用户设置
     // +----------------------------------------------------------------------
 
-    'user'                    => [
-        // User 位置
-        'default_user_model'  => '\app\manage\model\UserModel',
+    'identity'                    => [
+        // Identity 位置
+        'default_user_model'  => '\app\manage\model\Identity',
         // 登录路由
         'loginUrl'  => 'manage/login/login',
         // 退出路由
@@ -261,7 +260,7 @@ return [
         // 注册路由
         'registerUrl'  => 'manage/login/register',
         // 当前用户对象SESSION　key
-        '_identity'  => '__USER__',
+        '_identity'  => '__IDENTITY__',
         // 当前用户 自动登录 SESSION　key
         '_auth_key'  => '__AUTH_KEY__',
         // 当前用户 登录有效期 SESSION　key

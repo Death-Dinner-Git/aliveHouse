@@ -27,7 +27,7 @@ class IndexController extends ManageController
     public function indexAction()
     {
         // 临时选择其他模板的布局功能
-        $this->view->engine->layout('common@layouts/index');
+        $this->view->engine->layout('layouts/index');
 
         // 模板赋值
         $this->assign('meta_title', "CAR");
