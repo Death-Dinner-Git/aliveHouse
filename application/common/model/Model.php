@@ -10,6 +10,7 @@ namespace app\common\model;
 
 use think\Db;
 use think\Loader;
+use think\Config;
 
 /**
  * 公共模型(基于TP5新版Model)
@@ -22,7 +23,7 @@ class Model extends \think\Model
      * @return mixed
      */
     public static function getTablePrefix(){
-        return config('database.prefix');
+        return Config('database.prefix');
     }
 
     /**

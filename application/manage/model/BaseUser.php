@@ -20,6 +20,9 @@ use app\manage\validate\BaseUserValidate;
  */
 class BaseUser extends Model
 {
+
+    protected $table = 'ah_back_user';
+
     /**
      * @var string
      */
@@ -42,7 +45,7 @@ class BaseUser extends Model
      */
     public static function tableName()
     {
-        return parent::getTablePrefix().'base_user';
+        return parent::tableName();
     }
 
     /**

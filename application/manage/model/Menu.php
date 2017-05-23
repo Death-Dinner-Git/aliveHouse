@@ -21,11 +21,11 @@ class Menu extends Model
     const TYPE_SYS = '1';   //type默认为1，表示网站后台系统菜单，
     const TYPE_APP = '2';    //type可能值为2，表示前端菜单，
 
-//    /**
-//     * 数据库表名
-//     * @author Sir Fu
-//     */
-//    protected $table = 'menu';
+    /**
+     * 数据库表名
+     * @author Sir Fu
+     */
+    protected $table = 'back_menu';
 
     /**
      * @var string
@@ -48,7 +48,8 @@ class Menu extends Model
      */
     public static function tableName()
     {
-        return parent::getTablePrefix().'menu';
+        $model = new self();
+        return parent::getTablePrefix().$model->table;
     }
 
     /**
