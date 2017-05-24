@@ -20,8 +20,12 @@ use app\manage\validate\BaseUserValidate;
  */
 class BaseUser extends Model
 {
-
-    protected $table = 'ah_back_user';
+    /**
+     * 数据库表名
+     * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
+     * @author Sir Fu
+     */
+    protected $table = '{{%base_user}}';
 
     /**
      * @var string
@@ -41,36 +45,28 @@ class BaseUser extends Model
     ];
 
     /**
-     * @return string
-     */
-    public static function tableName()
-    {
-        return parent::tableName();
-    }
-
-    /**
      * 自动验证规则
      * @author Sir Fu
      */
-    protected $_validate = array(
-        array('create_time', 'require', '创建时间 不能为空'),
-        array('is_delete', 'require', '删除标志 不能为空'),
-        array('update_time', 'require', '更新时间 不能为空'),
-        array('username', 'require', '登录名 不能为空'),
-        array('VERSION_NUM', 'require', '版本 不能为空'),
+    protected $_validate = [
+        ['create_time', 'require', '创建时间 不能为空'],
+        ['is_delete', 'require', '删除标志 不能为空'],
+        ['update_time', 'require', '更新时间 不能为空'],
+        ['username', 'require', '登录名 不能为空'],
+        ['VERSION_NUM', 'require', '版本 不能为空'],
 //        [['create_time', 'update_time', 'username', 'VERSION_NUM'], 'require'],
 //        [['create_time', 'update_time'], 'safe'],
 //        [['is_delete', 'VERSION_NUM'], 'integer'],
 //        [['remark'], 'string'],
 //        [['password', 'username'], 'string', 'max' => 255],
-    );
+    ];
 
     /**
      * 自动完成规则
      * @author Sir Fu
      */
-    protected $_auto = array(
-    );
+    protected $_auto = [
+    ];
 
     /**
      * @return \think\model\relation\HasOne

@@ -23,9 +23,10 @@ class Menu extends Model
 
     /**
      * 数据库表名
+     * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
      * @author Sir Fu
      */
-    protected $table = 'back_menu';
+    protected $table = '{{%back_menu}}';
 
     /**
      * @var string
@@ -42,15 +43,6 @@ class Menu extends Model
         'type',
         'data',
     ];
-
-    /**
-     * @return string
-     */
-    public static function tableName()
-    {
-        $model = new self();
-        return parent::getTablePrefix().$model->table;
-    }
 
     /**
      * 自动验证规则

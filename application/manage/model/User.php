@@ -38,13 +38,6 @@ use app\common\model\Model;
  */
 class User extends Model
 {
-    /**
-     * @return string
-     */
-    public static function tableName()
-    {
-        return parent::getTablePrefix().'user';
-    }
 
     /**
      * @var string

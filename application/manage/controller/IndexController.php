@@ -26,19 +26,7 @@ class IndexController extends ManageController
      */
     public function indexAction()
     {
-        // 临时选择其他模板的布局功能
-        $this->view->engine->layout('layouts/index');
-
-        // 模板赋值
-        $this->assign('meta_title', "CAR");
-
-        $url = '/';
-        $currentUrl = $this->getCurrentUrl();
-        // 权限检测，首页不需要权限
-        if ('manage/index/index' === strtolower($currentUrl)) {
-            $currentUrl = 'manage/index/home';
-        }
-        $this->assign('url',$url.$currentUrl.'.html?iframe=true');
+        $this->assign('meta_title', "后台首页");
         return view('index');
     }
 
@@ -48,9 +36,8 @@ class IndexController extends ManageController
      */
     public function homeAction()
     {
-        // 模板赋值
-        $this->assign('meta_title', "后台首页");
-        return view('index');
+        $this->assign('meta_title', "控制面板");
+        return view('home');
     }
 
     /**
