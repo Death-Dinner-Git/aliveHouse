@@ -56,7 +56,7 @@ return [
     // +----------------------------------------------------------------------
 
     // 默认模块名
-    'default_module'         => 'manage',
+    'default_module'         => 'home',
     // 禁止访问模块
     'deny_module_list'       => ['common'],
     // 默认控制器名
@@ -144,6 +144,7 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
+        '_TITLE_'=>'alive House',
         '_LAYUI_'=>'/static/plugins/layui/src',
         '_PLUGINS_'=>'/static/plugins',
         '_SHORTCUT_'=>'/static/images/shortcut-icon-logo.png',
