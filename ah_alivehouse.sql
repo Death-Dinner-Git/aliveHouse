@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2017-05-26 16:37:08
--- 服务器版本： 10.1.9-MariaDB
+-- Generation Time: 2017-05-26 22:12:34
+-- 服务器版本： 10.1.9-MariaDB-log
 -- PHP Version: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,22 +23,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_back_auth_assignment`
+-- 表的结构 `ah_auth_assignment`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_back_auth_assignment` (
+CREATE TABLE IF NOT EXISTS `ah_auth_assignment` (
   `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '分类权限等级',
-  `back_user_id` bigint(20) NOT NULL COMMENT '分配对象UID',
+  `user_id` bigint(20) NOT NULL COMMENT '分配对象UID',
   `created_at` datetime NOT NULL COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_back_auth_item`
+-- 表的结构 `ah_auth_item`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_back_auth_item` (
+CREATE TABLE IF NOT EXISTS `ah_auth_item` (
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限名',
   `type` tinyint(1) NOT NULL COMMENT '类型',
   `description` text COLLATE utf8_unicode_ci COMMENT '权限描述',
@@ -51,10 +51,10 @@ CREATE TABLE IF NOT EXISTS `ah_back_auth_item` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_back_auth_item_child`
+-- 表的结构 `ah_auth_item_child`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_back_auth_item_child` (
+CREATE TABLE IF NOT EXISTS `ah_auth_item_child` (
   `parent` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限上级',
   `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限下级'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='权限上下级关系';
@@ -62,10 +62,10 @@ CREATE TABLE IF NOT EXISTS `ah_back_auth_item_child` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_back_auth_rule`
+-- 表的结构 `ah_auth_rule`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_back_auth_rule` (
+CREATE TABLE IF NOT EXISTS `ah_auth_rule` (
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '规则名',
   `data` text COLLATE utf8_unicode_ci COMMENT '规则位置',
   `created_at` datetime NOT NULL COMMENT '创建时间',
@@ -592,7 +592,7 @@ CREATE TABLE IF NOT EXISTS `ah_menu` (
   `parent` int(11) DEFAULT NULL COMMENT '上级',
   `route` varchar(256) DEFAULT NULL COMMENT '路由',
   `order` int(11) DEFAULT NULL COMMENT '排序',
-  `app` tinyint(1) DEFAULT '1' COMMENT '菜单类型',
+  `type` tinyint(1) DEFAULT '1' COMMENT '菜单类型',
   `data` text COMMENT '补充'
 ) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
@@ -600,7 +600,7 @@ CREATE TABLE IF NOT EXISTS `ah_menu` (
 -- 转存表中的数据 `ah_menu`
 --
 
-INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `app`, `data`) VALUES
+INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`) VALUES
 (1, '控制面板', NULL, '/manage/index/home', 0, 1, '{"li_class":"","a_class":"Index-Home","i_class":"fa fa-circle-o"}'),
 (2, '我的面板', NULL, NULL, 1, 1, '{"li_class":"","a_class":"User","i_class":"fa fa-circle-o"}'),
 (3, '账号管理', NULL, NULL, 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -4463,31 +4463,31 @@ CREATE TABLE IF NOT EXISTS `ah_walk` (
 --
 
 --
--- Indexes for table `ah_back_auth_assignment`
+-- Indexes for table `ah_auth_assignment`
 --
-ALTER TABLE `ah_back_auth_assignment`
-  ADD PRIMARY KEY (`item_name`,`back_user_id`),
-  ADD KEY `ah_back_auth_assignment_ibfk_2` (`back_user_id`);
+ALTER TABLE `ah_auth_assignment`
+  ADD PRIMARY KEY (`item_name`,`user_id`),
+  ADD KEY `ah_auth_assignment_ibfk_2` (`user_id`) USING BTREE;
 
 --
--- Indexes for table `ah_back_auth_item`
+-- Indexes for table `ah_auth_item`
 --
-ALTER TABLE `ah_back_auth_item`
+ALTER TABLE `ah_auth_item`
   ADD PRIMARY KEY (`name`),
   ADD KEY `rule_name` (`rule_name`),
   ADD KEY `idx-auth_item-type` (`type`);
 
 --
--- Indexes for table `ah_back_auth_item_child`
+-- Indexes for table `ah_auth_item_child`
 --
-ALTER TABLE `ah_back_auth_item_child`
+ALTER TABLE `ah_auth_item_child`
   ADD PRIMARY KEY (`parent`,`child`),
   ADD KEY `child` (`child`);
 
 --
--- Indexes for table `ah_back_auth_rule`
+-- Indexes for table `ah_auth_rule`
 --
-ALTER TABLE `ah_back_auth_rule`
+ALTER TABLE `ah_auth_rule`
   ADD PRIMARY KEY (`name`);
 
 --
@@ -4945,30 +4945,30 @@ ALTER TABLE `ah_walk`
 --
 
 --
--- 限制表 `ah_back_auth_assignment`
+-- 限制表 `ah_auth_assignment`
 --
-ALTER TABLE `ah_back_auth_assignment`
-  ADD CONSTRAINT `ah_back_auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `ah_back_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_back_auth_assignment_ibfk_2` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `ah_auth_assignment`
+  ADD CONSTRAINT `ah_auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `ah_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ah_auth_assignment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_back_auth_item`
+-- 限制表 `ah_auth_item`
 --
-ALTER TABLE `ah_back_auth_item`
-  ADD CONSTRAINT `ah_back_auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `ah_back_auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `ah_auth_item`
+  ADD CONSTRAINT `ah_auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `ah_auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_back_auth_item_child`
+-- 限制表 `ah_auth_item_child`
 --
-ALTER TABLE `ah_back_auth_item_child`
-  ADD CONSTRAINT `ah_back_auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `ah_back_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_back_auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `ah_back_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `ah_auth_item_child`
+  ADD CONSTRAINT `ah_auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `ah_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ah_auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `ah_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `ah_back_ban`
 --
 ALTER TABLE `ah_back_ban`
-  ADD CONSTRAINT `ah_back_ban_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `ah_back_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ah_back_ban_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `ah_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ah_back_ban_ibfk_2` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

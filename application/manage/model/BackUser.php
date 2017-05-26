@@ -4,9 +4,9 @@ namespace app\manage\model;
 
 use app\common\model\BackUser as BaseBackUser;
 
-use app\common\model\BackAuthAssignment;
-use app\common\model\BackAuthItem;
-use app\manage\model\BackBan;
+use app\common\model\AuthAssignment;
+use app\common\model\AuthItem;
+use app\manage\model\Ban;
 use app\manage\model\Department;
 use app\manage\model\BackUserLog;
 use app\manage\model\Contact;
@@ -59,10 +59,10 @@ use app\manage\model\Upload;
  * @property string $logined_at
  * @property string $updated_at
  *
- * @property BackAuthAssignment[] $backAuthAssignments
- * @property BackAuthItem[] $itemNames
- * @property BackBan[] $backBans
- * @property BackAuthItem[] $itemNames0
+ * @property AuthAssignment[] $AuthAssignments
+ * @property AuthItem[] $itemNames
+ * @property Ban[] $Bans
+ * @property AuthItem[] $itemNames0
  * @property Department $department
  * @property BackUserLog[] $backUserLogs
  * @property Contact[] $contacts

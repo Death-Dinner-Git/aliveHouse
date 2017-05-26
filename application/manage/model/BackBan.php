@@ -2,9 +2,9 @@
 
 namespace app\manage\model;
 
-use app\common\model\BackBan as BaseBackBan;
+use app\common\model\Ban as BaseBan;
 
-use app\common\model\BackAuthItem;
+use app\common\model\AuthItem;
 use app\manage\model\BackUser;
 
 /**
@@ -15,10 +15,10 @@ use app\manage\model\BackUser;
  * @property integer $ban
  * @property string $created_at
  *
- * @property BackAuthItem $itemName
+ * @property AuthItem $itemName
  * @property BackUser $backUser
  */
-class BackBan extends BaseBackBan
+class Ban extends BaseBan
 {
 
 }

@@ -3,9 +3,9 @@
 namespace app\common\model;
 
 use app\common\model\Model;
-use app\common\model\BackAuthAssignment;
-use app\common\model\BackAuthItem;
-use app\common\model\BackBan;
+use app\common\model\AuthAssignment;
+use app\common\model\AuthItem;
+use app\common\model\Ban;
 use app\common\model\Department;
 use app\common\model\BackUserLog;
 use app\common\model\Contact;
@@ -58,10 +58,10 @@ use app\common\model\Upload;
  * @property string $logined_at
  * @property string $updated_at
  *
- * @property BackAuthAssignment[] $backAuthAssignments
- * @property BackAuthItem[] $itemNames
- * @property BackBan[] $backBans
- * @property BackAuthItem[] $itemNames0
+ * @property AuthAssignment[] $AuthAssignments
+ * @property AuthItem[] $itemNames
+ * @property Ban[] $Bans
+ * @property AuthItem[] $itemNames0
  * @property Department $department
  * @property BackUserLog[] $backUserLogs
  * @property Contact[] $contacts
@@ -161,9 +161,9 @@ class BackUser extends Model
     /**
      * @return \think\model\relation\HasMany
      */
-    public function getBackAuthAssignments()
+    public function getAuthAssignments()
     {
-        return $this->hasMany(BackAuthAssignment::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(AuthAssignment::tableNameSuffix(), ['back_user_id' => 'id']);
     }
 
     /**
@@ -171,15 +171,15 @@ class BackUser extends Model
      */
     public function getItemNames()
     {
-        return $this->hasMany(BackAuthItem::tableNameSuffix(), ['name' => 'item_name'])->viaTable('{{%back_auth_assignment}}', ['back_user_id' => 'id']);
+        return $this->hasMany(AuthItem::tableNameSuffix(), ['name' => 'item_name'])->viaTable('{{%back_auth_assignment}}', ['back_user_id' => 'id']);
     }
 
     /**
      * @return \think\model\relation\HasMany
      */
-    public function getBackBans()
+    public function getBans()
     {
-        return $this->hasMany(BackBan::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(Ban::tableNameSuffix(), ['back_user_id' => 'id']);
     }
 
     /**
@@ -187,7 +187,7 @@ class BackUser extends Model
      */
     public function getItemNames0()
     {
-        return $this->hasMany(BackAuthItem::tableNameSuffix(), ['name' => 'item_name'])->viaTable('{{%back_ban}}', ['back_user_id' => 'id']);
+        return $this->hasMany(AuthItem::tableNameSuffix(), ['name' => 'item_name'])->viaTable('{{%back_ban}}', ['back_user_id' => 'id']);
     }
 
     /**

@@ -46,6 +46,6 @@ class IndexController extends ManageController
      */
     public function navAction()
     {
-        return parent::nav();
+        return $this->nav();
     }
 }

@@ -125,7 +125,7 @@ class BaseController extends Controller
      * @param string $group
      * @return mixed
      */
-    public function nav($group = 'main')
+    protected function nav($group = 'main')
     {
         return json(\app\common\components\MenuHelper::getMenu(1));
     }
