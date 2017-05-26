@@ -67,7 +67,7 @@ class MenuHelper
         $cache = Configs::getCache();
         $manager = Configs::getIdentity();
 
-        $menus = Menu::get()->where(['type'=>'1'])->order('id asc')->column(Menu::getField());
+        $menus = Menu::load()->where(['type'=>'1'])->order('id asc')->column(Menu::getField());
         $key = __METHOD__.$userId.Configs::CACHE_TAG;
 
         if ($refresh || $cache === null || ($assigned = $cache->get($key)) === false) {
@@ -325,7 +325,7 @@ class MenuHelper
      * @param $userId
      * @param array $options
      * @param bool $refresh
-     * @return array|string
+     * @return string
      * @throws \think\Exception
      */
     public static function generateMenu($userId, $options = [], $refresh = true)
@@ -347,10 +347,10 @@ class MenuHelper
      * @param $userId
      * @param array $options
      * @param bool $refresh
-     * @return array|string
+     * @return array
      * @throws \think\Exception
      */
-    public static function getJsonMenu($userId, $options = ['class'=>'layui-nav layui-nav-tree'], $refresh = true)
+    public static function getMenu($userId, $options = ['class'=>'layui-nav layui-nav-tree'], $refresh = true)
     {
         $menus = self::getAssignedMenu($userId, null ,null ,$refresh);
         if ($menus && $options){
@@ -360,50 +360,6 @@ class MenuHelper
             throw new \think\Exception('该账号未激活-请联系管理员', 403);
         }
         return $menus;
-    }
-
-    /**
-     * Use to get assigned menu of user.
-     * @param mixed $userId
-     * @param integer $root
-     * @param $callback //use to reformat output.
-     * @param boolean  $refresh
-     * @param array  $where
-     * @return array
-     */
-    public static function getMenu($userId, $root = null, $callback = null, $refresh = false, $where = ['type'=>'1'] )
-    {
-        $config = Configs::instance();
-
-        /* @var $manager \yii\rbac\BaseManager */
-        $manager = Yii::$app->getAuthManager();
-        $menus = Menu::find()->where($where)->asArray()->indexBy('id')->orderBy('id ASC')->all();
-        $key = [__METHOD__, $userId, $manager->defaultRoles];
-        $cache = $config->cache;
-
-        if ($refresh || $cache === null || ($assigned = $cache->get($key)) === false) {
-
-            $assigned = Menu::find()->where($where)->select(['id'])->asArray()->column();
-
-            if ($cache !== null) {
-                $cache->set($key, $assigned, $config->cacheDuration, new TagDependency([
-                    'tags' => Configs::CACHE_TAG
-                ]));
-            }
-        }
-
-        $key = [__METHOD__, $assigned, $root];
-        $cache = null;
-        if ($refresh || $callback !== null || $cache === null || (($result = $cache->get($key)) === false)) {
-            $result = static::normalizeMenu($assigned, $menus, $callback, $root);
-            if ($cache !== null && $callback === null) {
-                $cache->set($key, $result, $config->cacheDuration, new TagDependency([
-                    'tags' => Configs::CACHE_TAG
-                ]));
-            }
-        }
-
-        return $result;
     }
 
 }

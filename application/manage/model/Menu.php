@@ -1,7 +1,7 @@
 <?php
 namespace app\manage\model;
 
-use app\common\model\Model;
+use app\common\model\Menu as BaseMenu;
 
 /**
  * @description TThis is the model class for table "wf_menu".  菜单模型
@@ -16,83 +16,7 @@ use app\common\model\Model;
  * @property string $data
  *
  */
-class Menu extends Model
+class Menu extends BaseMenu
 {
-    const TYPE_SYS = '1';   //type默认为1，表示网站后台系统菜单，
-    const TYPE_APP = '2';    //type可能值为2，表示前端菜单，
-
-    /**
-     * 数据库表名
-     * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
-     * @author Sir Fu
-     */
-    protected $table = '{{%back_menu}}';
-
-    /**
-     * @var string
-     */
-    protected $pk = 'id';
-
-    // 数据表字段信息 留空则自动获取
-    protected $field = [
-        'id',
-        'name',
-        'parent',
-        'route',
-        'order',
-        'type',
-        'data',
-    ];
-
-    /**
-     * 自动验证规则
-     * @author Sir Fu
-     */
-    protected $_validate = array(
-        array('name', 'require', '名称 不能为空'),
-        array('name', '0,128', '名称 长度为0-128位',  'length', ),
-        array('route', '0,256', '路由地址 长度为0-256位',  'length', ),
-        array('parent', 'number', '父级需要是 数值', ),
-        array('order', 'number', '排序是 数值', ),
-        array('type', self::TYPE_SYS.','.self::TYPE_APP, '类型 只能是'.self::TYPE_SYS.'或'.self::TYPE_APP,  'between', ),
-    );
-
-    /**
-     * 自动完成规则
-     * @author Sir Fu
-     */
-    protected $_auto = array(
-    );
-
-    /**
-     *
-     */
-    public static function getField(){
-        $model = new Menu();
-        return $model->field;
-    }
-
-    /**
-     * @return Object|\think\Validate
-     */
-    public static function getValidate(){
-        return MenuValidate::load();
-    }
-
-    /**
-     * @param $data
-     * @param string $scene
-     * @return bool
-     */
-    public static function check($data,$scene = ''){
-        $validate = self::getValidate();
-
-        //设定场景
-        if (is_string($scene) && $scene !== ''){
-            $validate->scene($scene);
-        }
-
-        return $validate->check($data);
-    }
 
 }

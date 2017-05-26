@@ -1,11 +1,4 @@
 <?php
-// +----------------------------------------------------------------------
-// | OpenCMF [ Simple Efficient Excellent ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2014 http://www.opencmf.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Author: Sir Fu
-// +----------------------------------------------------------------------
 namespace app\common\model;
 
 use think\Db;
@@ -19,6 +12,31 @@ use think\Config;
  */
 class Model extends \think\Model
 {
+
+    /**
+     * @return array
+     */
+    public function rules(){
+        return [];
+    }
+
+    /**
+     * Model constructor.
+     * @param array $data
+     */
+    public function __construct($data = [])
+    {
+
+        if (is_callable([$this,'rules'])){
+            $rules = $this->rules();
+            if (is_array($rules)){
+                $this->validate = $rules;
+            }
+        }
+
+        parent::__construct($data);
+    }
+
     /**
      * 获取当前模型的数据库查询对象
      * @access public

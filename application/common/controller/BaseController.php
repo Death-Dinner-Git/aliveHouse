@@ -127,7 +127,7 @@ class BaseController extends Controller
      */
     public function nav($group = 'main')
     {
-        return json(\app\common\components\MenuHelper::getJsonMenu(1));
+        return json(\app\common\components\MenuHelper::getMenu(1));
     }
 
     /**

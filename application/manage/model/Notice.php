@@ -2,83 +2,31 @@
 
 namespace app\manage\model;
 
-use app\common\model\Model;
+use app\common\model\Notice as BaseNotice;
+use app\manage\model\BackUser;
+use app\manage\model\NoticeRead;
 
 /**
- * This is the model class for table "wf_notice".
+ * This is the model class for table "{{%notice}}".
  *
  * @property integer $id
- * @property string $create_time
  * @property integer $is_delete
- * @property string $remark
- * @property string $update_time
- * @property integer $app_user_id
- * @property string $content
- * @property integer $readed
+ * @property integer $back_user_id
  * @property string $title
+ * @property string $content
+ * @property integer $is_passed
+ * @property integer $order
+ * @property string $remark
+ * @property integer $readed
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $start_at
+ * @property string $end_at
+ *
+ * @property BackUser $backUser
+ * @property NoticeRead[] $noticeReads
  */
-class Notice extends Model
+class Notice extends BaseNotice
 {
-    /**
-     * @return string
-     */
-    public static function tableName()
-    {
-        return parent::getTablePrefix().'notice';
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['create_time', 'update_time'], 'required'],
-            [['create_time', 'update_time'], 'safe'],
-            [['is_delete', 'app_user_id', 'readed'], 'integer'],
-            [['remark', 'content'], 'string'],
-            [['title'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'app', 'id',
-            'create_time' => 'app', '创建时间',
-            'is_delete' => 'app', '删除标识  默认值1',
-            'remark' => 'app', '备注字段',
-            'update_time' => 'app', '修改时间',
-            'app_user_id' => 'app', 'App User ID',
-            'content' => 'app', '内容',
-            'readed' => 'app', '是否阅读  0:未读  1:已读',
-            'title' => 'app', '通知标题',
-        ];
-    }
-
-    /**
-     * @return Object|\think\Validate
-     */
-    public static function getValidate(){
-        return CarValidate::load();
-    }
-
-    /**
-     * @param $data
-     * @param string $scene
-     * @return bool
-     */
-    public static function check($data,$scene = ''){
-        $validate = self::getValidate();
-
-        //设定场景
-        if (is_string($scene) && $scene !== ''){
-            $validate->scene($scene);
-        }
-
-        return $validate->check($data);
-    }
 }

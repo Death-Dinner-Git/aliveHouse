@@ -5,25 +5,23 @@ namespace app\manage\model;
 use app\common\model\Opinion as BaseOpinion;
 
 /**
- * This is the model class for table "{{%opinion}}".
+ * This is the model class for table "{{%opinion_read}}".
  *
  * @property integer $id
  * @property integer $is_delete
- * @property string $remark
- * @property integer $home_user_id
+ * @property integer $assign
  * @property integer $back_user_id
+ * @property integer $opinion_id
  * @property string $content
- * @property string $username
- * @property string $contact
- * @property integer $readed
+ * @property string $remark
+ * @property string $reback
  * @property string $created_at
  * @property string $updated_at
  *
  * @property BackUser $backUser
- * @property HomeUser $homeUser
- * @property OpinionRead[] $opinionReads
+ * @property Opinion $opinion
  */
-class Opinion extends BaseOpinion
+class OpinionRead extends BaseOpinion
 {
 
 }

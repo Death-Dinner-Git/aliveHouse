@@ -1,9 +1,9 @@
 <?php
 namespace app\manage\model;
 
-use app\common\model\Model;
+use app\common\model\BackUser;
+use app\common\model\Department;
 use app\manage\validate\IdentityValidate;
-use app\manage\model\Manager;
 
 /**
  * @description This is the model class for table "wf_manager".  扩展管理员
@@ -27,19 +27,17 @@ use app\manage\model\Manager;
  *
  * @property BaseUser $baseUser
  * @property Department $department
- * @property OutCar[] $outCars
- * @property RepairCar[] $repairCars
- * @property TakeCarOrder[] $takeCarOrders
  *
  */
-class Identity extends Model
+class Identity extends BackUser
 {
+
     /**
      * 数据库表名
      * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
      * @author Sir Fu
      */
-    protected $table = '{{%manager}}';
+    protected $table = '{{%back_user}}';
 
     //登录请求路由
     public $loginUrl = 'manage/login/login';
