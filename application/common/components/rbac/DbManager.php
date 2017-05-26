@@ -1,20 +1,13 @@
 <?php
-/**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 
-namespace yii\rbac;
+namespace app\common\components\rbac;
 
-use Yii;
-use yii\caching\Cache;
-use yii\db\Connection;
-use yii\db\Query;
-use yii\db\Expression;
-use yii\base\InvalidCallException;
-use yii\base\InvalidParamException;
-use yii\di\Instance;
+use think\Cache;
+use think\Db;
+use think\db\Connection;
+use think\db\Query;
+use think\Config;
+use think\exception;
 
 /**
  * DbManager represents an authorization manager that stores authorization information in database.
@@ -106,10 +99,9 @@ class DbManager extends BaseManager
      */
     public function init()
     {
-        parent::init();
-        $this->db = Instance::ensure($this->db, Connection::className());
-        if ($this->cache !== null) {
-            $this->cache = Instance::ensure($this->cache, Cache::className());
+        $this->db = Db::connect(Config('database'));
+        if ($this->cache === null) {
+            $this->cache = new Cache();
         }
     }
 

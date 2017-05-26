@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\rbac;
+namespace app\common\components\rbac;
 
 /**
  * @author Qiang Xue <qiang.xue@gmail.com>

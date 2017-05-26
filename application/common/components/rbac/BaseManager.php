@@ -1,15 +1,8 @@
 <?php
-/**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 
-namespace yii\rbac;
+namespace app\common\components\rbac;
 
-use yii\base\Component;
-use yii\base\InvalidConfigException;
-use yii\base\InvalidParamException;
+use think\exception;
 
 /**
  * BaseManager is a base class implementing [[ManagerInterface]] for RBAC management.
@@ -17,7 +10,7 @@ use yii\base\InvalidParamException;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-abstract class BaseManager extends Component implements ManagerInterface
+abstract class BaseManager implements ManagerInterface
 {
     /**
      * @var array a list of role names that are assigned to every user automatically without calling [[assign()]].
@@ -124,7 +117,7 @@ abstract class BaseManager extends Component implements ManagerInterface
         } elseif ($object instanceof Rule) {
             return $this->addRule($object);
         } else {
-            throw new InvalidParamException('Adding unsupported object type.');
+            throw new exception('Adding unsupported object type.');
         }
     }
 
@@ -138,7 +131,7 @@ abstract class BaseManager extends Component implements ManagerInterface
         } elseif ($object instanceof Rule) {
             return $this->removeRule($object);
         } else {
-            throw new InvalidParamException('Removing unsupported object type.');
+            throw new exception('Removing unsupported object type.');
         }
     }
 
@@ -157,7 +150,7 @@ abstract class BaseManager extends Component implements ManagerInterface
         } elseif ($object instanceof Rule) {
             return $this->updateRule($name, $object);
         } else {
-            throw new InvalidParamException('Updating unsupported object type.');
+            throw new exception('Updating unsupported object type.');
         }
     }
 
@@ -206,7 +199,7 @@ abstract class BaseManager extends Component implements ManagerInterface
      * @param Item $item the auth item that needs to execute its rule
      * @param array $params parameters passed to [[CheckAccessInterface::checkAccess()]] and will be passed to the rule
      * @return boolean the return value of [[Rule::execute()]]. If the auth item does not specify a rule, true will be returned.
-     * @throws InvalidConfigException if the auth item has an invalid rule.
+     * @throws exception if the auth item has an invalid rule.
      */
     protected function executeRule($user, $item, $params)
     {
@@ -217,7 +210,7 @@ abstract class BaseManager extends Component implements ManagerInterface
         if ($rule instanceof Rule) {
             return $rule->execute($user, $item, $params);
         } else {
-            throw new InvalidConfigException("Rule not found: {$item->ruleName}");
+            throw new exception("Rule not found: {$item->ruleName}");
         }
     }
 }
