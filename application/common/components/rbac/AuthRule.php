@@ -1,9 +1,9 @@
 <?php
 
-namespace app\common\model;
+namespace app\common\components\rbac;
 
 use app\common\model\Model;
-use app\common\model\AuthItem;
+use app\common\components\rbac\AuthItem;
 
 /**
  * This is the model class for table "{{%auth_rule}}".

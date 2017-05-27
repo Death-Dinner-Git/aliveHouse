@@ -1,7 +1,6 @@
 <?php
 namespace app\manage\model;
 
-use app\common\model\BackUser;
 use app\common\model\Department;
 use app\manage\validate\IdentityValidate;
 
@@ -591,16 +590,10 @@ class Identity extends BackUser
      */
     public static function getIdentityById($id)
     {
-        if (empty($id)) {
+        if (empty($id) || !is_numeric($id)) {
             return null;
         }
-        return self::load()
-            ->alias('t')
-            ->join(BaseUser::tableName().' b','t.base_user_id = b.id')
-            ->where(['t.base_user_id'=>$id])
-            ->where('t.manager_type','in',self::$allowList)
-            ->field('*,t.update_time as t_update_time,b.update_time as b_update_time')
-            ->find();
+        return self::load()->where(['id'=>$id])->find();
     }
 
     /**
@@ -1025,7 +1018,7 @@ class Identity extends BackUser
     public static function getIdentity($name = null)
     {
         $identity =  session(config('identity._identity'));
-        if ($identity && @get_class($identity) == self::class ){
+        if ($identity && $identity instanceof Identity){
             if (!is_string($name) || $name === '') {
                 return $identity;
             }

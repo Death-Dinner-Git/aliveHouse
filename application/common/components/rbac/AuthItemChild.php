@@ -1,9 +1,9 @@
 <?php
 
-namespace app\common\model;
+namespace app\common\components\rbac;
 
 use app\common\model\Model;
-use app\common\model\AuthItem;
+use app\common\components\rbac\AuthItem;
 
 /**
  * This is the model class for table "{{%auth_item_child}}".
@@ -37,10 +37,10 @@ class AuthItemChild extends Model
     public function rules()
     {
         return [
-            [['parent', 'child'], 'required'],
-            [['parent', 'child'], 'string', 'max' => 64],
-            [['parent'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['parent' => 'name']],
-            [['child'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['child' => 'name']],
+//            [['parent', 'child'], 'required'],
+//            [['parent', 'child'], 'string', 'max' => 64],
+//            [['parent'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['parent' => 'name']],
+//            [['child'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['child' => 'name']],
         ];
     }
 

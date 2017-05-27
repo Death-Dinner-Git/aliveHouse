@@ -31,9 +31,9 @@ class Configs
     private static $_menu = '\app\manage\model\Menu';
 
     /**
-     * @return \app\manage\model\Log
+     * @return \app\manage\model\BackUserLog
      */
-    private static $_manageLog = '\app\manage\model\Log';
+    private static $_manageLog = '\app\manage\model\BackUserLog';
 
     /**
      * @return \think\Cache | null
@@ -66,9 +66,9 @@ class Configs
     }
 
     /**
-     * @return \app\manage\model\Log | null
+     * @return \app\manage\model\BackUserLog | null
      */
-    public static function getLog(){
+    public static function getBackUserLog(){
         if (!class_exists(self::$_manageLog)){
             return null;
         }

@@ -1,10 +1,9 @@
 <?php
 
-namespace app\common\model;
+namespace app\common\components\rbac;
 
 use app\common\model\Model;
-use app\common\model\AuthItem;
-use app\common\model\BackUser;
+use app\common\components\rbac\AuthItem;
 
 /**
  * This is the model class for table "auth_assignment".
@@ -14,7 +13,6 @@ use app\common\model\BackUser;
  * @property string $created_at
  *
  * @property AuthItem $itemName
- * @property BackUser $backUser
  */
 class AuthAssignment extends Model
 {
@@ -40,12 +38,11 @@ class AuthAssignment extends Model
     public function rules()
     {
         return [
-            [['item_name', 'back_user_id', 'created_at'], 'required'],
-            [['back_user_id'], 'integer'],
-            [['created_at'], 'safe'],
-            [['item_name'], 'string', 'max' => 64],
-            [['item_name'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['item_name' => 'name']],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+//            [['item_name', 'back_user_id', 'created_at'], 'required'],
+//            [['back_user_id'], 'integer'],
+//            [['created_at'], 'safe'],
+//            [['item_name'], 'string', 'max' => 64],
+//            [['item_name'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['item_name' => 'name']],
         ];
     }
 
@@ -69,11 +66,4 @@ class AuthAssignment extends Model
         return $this->hasOne(AuthItem::tableNameSuffix(), ['name' => 'item_name']);
     }
 
-    /**
-     * @return \think\model\relation\HasOne
-     */
-    public function getBackUser()
-    {
-        return $this->hasOne(BackUser::tableNameSuffix(), ['id' => 'back_user_id']);
-    }
 }

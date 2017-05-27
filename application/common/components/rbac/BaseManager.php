@@ -4,12 +4,7 @@ namespace app\common\components\rbac;
 
 use think\exception;
 
-/**
- * BaseManager is a base class implementing [[ManagerInterface]] for RBAC management.
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
- */
+
 abstract class BaseManager implements ManagerInterface
 {
     /**

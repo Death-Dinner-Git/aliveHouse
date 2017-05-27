@@ -12,7 +12,9 @@
 // +----------------------------------------------------------------------
 namespace app\manage\controller;
 
-use app\manage\controller\ManageController;
+use app\common\controller\ManageController;
+use app\common\components\rbac\AccessControl;
+use Symfony\Component\Yaml\Tests\A;
 
 /**
  * 后台默认控制器
@@ -26,6 +28,9 @@ class IndexController extends ManageController
      */
     public function indexAction()
     {
+        $model = new AccessControl();
+        var_dump($model->check(1));
+        exit();
         $this->assign('meta_title', "后台首页");
         return view('index');
     }

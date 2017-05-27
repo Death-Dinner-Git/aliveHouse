@@ -1,13 +1,11 @@
 <?php
 
-namespace app\common\model;
+namespace app\common\components\rbac;
 
 use app\common\model\Model;
-use app\common\model\AuthAssignment;
-use app\common\model\BackUser;
-use app\common\model\AuthRule;
-use app\common\model\AuthItemChild;
-use app\common\model\Ban;
+use app\common\components\rbac\AuthAssignment;
+use app\common\components\rbac\AuthRule;
+use app\common\components\rbac\AuthItemChild;
 
 /**
  * This is the model class for table "{{%auth_item}}".
@@ -21,14 +19,11 @@ use app\common\model\Ban;
  * @property string $updated_at
  *
  * @property AuthAssignment[] $AuthAssignments
- * @property BackUser[] $backUsers
  * @property AuthRule $ruleName
  * @property AuthItemChild[] $AuthItemChildren
  * @property AuthItemChild[] $AuthItemChildren0
  * @property AuthItem[] $children
  * @property AuthItem[] $parents
- * @property Ban[] $Bans
- * @property BackUser[] $backUsers0
  */
 class AuthItem extends Model
 {
