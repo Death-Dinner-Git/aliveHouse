@@ -53,6 +53,37 @@ class HomeUser extends Model
      */
     protected $table = '{{%home_user}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'code',
+        'phone',
+        'phone_verified',
+        'email',
+        'email_verified',
+        'username',
+        'password',
+        'nickname',
+        'real_name',
+        'head_url',
+        'sex',
+        'signature',
+        'birthday',
+        'height',
+        'weight',
+        'token',
+        'auth_key',
+        'password_reset_token',
+        'password_reset_code',
+        'status',
+        'ip',
+        'reg_ip',
+        'reg_type',
+        'registered_at',
+        'logined_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

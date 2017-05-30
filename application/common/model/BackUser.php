@@ -90,6 +90,38 @@ class BackUser extends Model
      */
     protected $table = '{{%back_user}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'code',
+        'department_id',
+        'phone',
+        'phone_verified',
+        'email',
+        'email_verified',
+        'username',
+        'nickname',
+        'real_name',
+        'head_url',
+        'sex',
+        'signature',
+        'birthday',
+        'height',
+        'weight',
+        'password',
+        'token',
+        'auth_key',
+        'password_reset_token',
+        'password_reset_code',
+        'status',
+        'ip',
+        'reg_ip',
+        'reg_type',
+        'registered_at',
+        'logined_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表
@@ -103,20 +135,32 @@ class BackUser extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'department_id', 'phone_verified', 'email_verified', 'height', 'weight', 'status'], 'integer'],
-            [['username', 'password'], 'required'],
-            [['sex', 'ip'], 'string'],
-            [['birthday', 'registered_at', 'logined_at', 'updated_at'], 'safe'],
-            [['code', 'username', 'signature', 'auth_key', 'reg_ip'], 'string', 'max' => 32],
-            [['phone'], 'string', 'max' => 11],
-            [['email', 'nickname', 'real_name', 'head_url'], 'string', 'max' => 64],
-            [['password', 'token', 'password_reset_token', 'password_reset_code'], 'string', 'max' => 255],
-            [['reg_type'], 'string', 'max' => 15],
-            [['username'], 'unique'],
-            [['code'], 'unique'],
-            [['phone'], 'unique'],
-            [['email'], 'unique'],
-            [['department_id'], 'exist', 'skipOnError' => true, 'targetClass' => Department::tableNameSuffix(), 'targetAttribute' => ['department_id' => 'id']],
+            'rule'=>[
+                ['is_delete','number','时效 无效'],
+                ['department_id','number','部门 无效'],
+                ['height','number','身高 无效'],
+                ['weight','number','体重 无效'],
+                ['status','number','状态 无效'],
+                ['username','require','用户名 不能为空'],
+                ['password','require','密码 不能为空'],
+                ['department_id','require','部门 不能为空'],
+                ['sex','in:男,女',],
+                ['code','max:32',],
+                ['username','max:32',],
+                ['signature','max:32',],
+                ['auth_key','max:32',],
+                ['reg_ip','max:32',],
+                ['email','max:64',],
+                ['nickname','max:64',],
+                ['real_name','max:64',],
+                ['head_url','max:64',],
+                ['password','max:255',],
+                ['token','max:255',],
+                ['password_reset_token','max:255',],
+                ['password_reset_code','max:255',],
+                ['reg_type','max:15',],
+            ],
+            'msg'=>[]
         ];
     }
 
@@ -163,7 +207,7 @@ class BackUser extends Model
      */
     public function getAuthAssignments()
     {
-        return $this->hasMany(AuthAssignment::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(AuthAssignment::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -171,7 +215,7 @@ class BackUser extends Model
      */
     public function getItemNames()
     {
-        return $this->hasMany(AuthItem::tableNameSuffix(), ['name' => 'item_name'])->viaTable('{{%back_auth_assignment}}', ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(AuthItem::tableNameSuffix()), ['name' => 'item_name'])->viaTable('{{%back_auth_assignment}}', ['back_user_id' => 'id']);
     }
 
     /**
@@ -179,7 +223,7 @@ class BackUser extends Model
      */
     public function getBans()
     {
-        return $this->hasMany(Ban::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Ban::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -195,7 +239,7 @@ class BackUser extends Model
      */
     public function getDepartment()
     {
-        return $this->hasOne(Department::tableNameSuffix(), ['id' => 'department_id']);
+        return $this->hasOne(ucfirst(Department::tableNameSuffix()), 'id', 'department_id');
     }
 
     /**
@@ -203,7 +247,7 @@ class BackUser extends Model
      */
     public function getBackUserLogs()
     {
-        return $this->hasMany(BackUserLog::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(BackUserLog::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -211,7 +255,7 @@ class BackUser extends Model
      */
     public function getContacts()
     {
-        return $this->hasMany(Contact::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Contact::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -219,7 +263,7 @@ class BackUser extends Model
      */
     public function getContactReads()
     {
-        return $this->hasMany(ContactRead::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(ContactRead::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -227,7 +271,7 @@ class BackUser extends Model
      */
     public function getCustomerServices()
     {
-        return $this->hasMany(CustomerService::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(CustomerService::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -235,7 +279,7 @@ class BackUser extends Model
      */
     public function getDeleteLogs()
     {
-        return $this->hasMany(DeleteLog::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(DeleteLog::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -243,7 +287,7 @@ class BackUser extends Model
      */
     public function getDownloads()
     {
-        return $this->hasMany(Download::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Download::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -251,7 +295,7 @@ class BackUser extends Model
      */
     public function getGuestServers()
     {
-        return $this->hasMany(GuestServer::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(GuestServer::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -259,7 +303,7 @@ class BackUser extends Model
      */
     public function getHots()
     {
-        return $this->hasMany(Hot::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Hot::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -267,7 +311,7 @@ class BackUser extends Model
      */
     public function getHouseHostServers()
     {
-        return $this->hasMany(HouseHostServer::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(HouseHostServer::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -275,7 +319,7 @@ class BackUser extends Model
      */
     public function getNotices()
     {
-        return $this->hasMany(Notice::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Notice::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -283,7 +327,7 @@ class BackUser extends Model
      */
     public function getNoticeReads()
     {
-        return $this->hasMany(NoticeRead::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(NoticeRead::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -291,7 +335,7 @@ class BackUser extends Model
      */
     public function getOpinions()
     {
-        return $this->hasMany(Opinion::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Opinion::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -299,7 +343,7 @@ class BackUser extends Model
      */
     public function getOpinionReads()
     {
-        return $this->hasMany(OpinionRead::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(OpinionRead::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -307,7 +351,7 @@ class BackUser extends Model
      */
     public function getSliders()
     {
-        return $this->hasMany(Slider::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Slider::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -315,7 +359,7 @@ class BackUser extends Model
      */
     public function getTakeOrders()
     {
-        return $this->hasMany(TakeOrder::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(TakeOrder::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -323,6 +367,6 @@ class BackUser extends Model
      */
     public function getUploads()
     {
-        return $this->hasMany(Upload::tableNameSuffix(), ['back_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Upload::tableNameSuffix()), 'id', 'back_user_id');
     }
 }

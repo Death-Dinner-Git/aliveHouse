@@ -23,20 +23,27 @@ use app\common\model\Model;
  */
 class OpinionRead extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%opinion_read}}';
-    }
 
     /**
      * 数据库表名
      * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
      * @author Sir Fu
      */
-    protected $table = '{{%back_user_log}}';
+    protected $table = '{{%opinion_read}}';
+
+    protected $field = [
+        'id',
+        'back_user_id',
+        'route',
+        'url',
+        'user_agent',
+        'gets',
+        'posts',
+        'target',
+        'ip',
+        'created_at',
+        'updated_at',
+    ];
 
     // 保存自动完成列表
     protected $auto = [];

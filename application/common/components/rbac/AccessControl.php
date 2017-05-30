@@ -71,13 +71,14 @@ class AccessControl
      */
     public function check($userid = '',$action = '',$log = true)
     {
-        $ret = false;
+        $ret = true;
 
         $user = $this->getUser($userid);
 
         $result = $this->beforeAction($userid,$action);
 
         if (!$result){
+            $ret = false;
             $this->denyAccess($user);
         }
         if ($log){
@@ -94,28 +95,12 @@ class AccessControl
     protected function beforeAction($userid = '' , $action = '')
     {
         $actionId = $action ? $action :$this->getActionUrl();
-        $user = $this->getUser();
+        $actionId = trim($actionId,'/');
         if ($this->can($userid,'/' . $actionId)) {
             return true;
         }
 
-        $obj = $action->controller;
-        $permissionName = '/' . ltrim($obj->getUniqueId() . '/*', '/');
-//        $fullRoute = '/' . ltrim($obj->getRoute(), '/');
-        do {
-            if ($user->can($permissionName)) {
-                return true;
-            }
-            $obj = $obj->module;
-        } while ($obj !== null);
-
-        if (Yii::$app->authManager->checkAccess($user->id,$permissionName)){
-            return true;
-        }elseif(Yii::$app->defaultRoute . '/' . Yii::$app->controller->defaultAction == $actionId){
-            return true;
-        }
-
-        $this->denyAccess($user);
+        return false;
     }
 
     /**
@@ -135,10 +120,10 @@ class AccessControl
      */
     protected function denyAccess($user)
     {
-        if ($user->getIsGuest()) {
-            $user->loginRequired();
+        if ($user->isGuest()) {
+            $user->setLogout($user);
         } else {
-            throw new ForbiddenHttpException(Yii::t('yii', 'You are not allowed to perform this action.'));
+            throw new Exception('You are not allowed to perform this action.');
         }
     }
 
@@ -211,13 +196,43 @@ class AccessControl
         $ret = false;
         $manager = $this->getManager();
         $result = $manager->getPermissionsByUser($userid);
+        $permissions = array_keys($result);
 
-        var_dump($result);
-
-
-        if ($result){
-            $ret = true;
+        foreach ($permissions as $permission){
+            if (stristr($permission,'*') !== false ){
+                $tmpPermission = explode('*',$permission);
+                $newPermission = trim($tmpPermission[0],'/');
+                $tmp = explode('/',$newPermission);
+                if (isset($tmp[1])){
+                    if ($permission == $route){
+                        $ret = true;
+                        break;
+                    }else{
+                        if (strpos($route,'/'.$tmp[0].'/'.$tmp[1].'/') === 0 ){
+                            $ret = true;
+                            break;
+                        }
+                    }
+                }else{
+                    if (strpos($route,'/'.$tmp[0].'/') === 0 ){
+                        $ret = true;
+                        break;
+                    }
+                }
+            }else{
+                if ($permission == $route){
+                    $ret = true;
+                    break;
+                }else{
+                    $route = trim($route,'/');
+                    if ($permission == $route){
+                        $ret = true;
+                        break;
+                    }
+                }
+            }
         }
+
         return $ret;
     }
 }

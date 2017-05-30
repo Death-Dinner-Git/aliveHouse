@@ -13,6 +13,39 @@ use think\Config;
 class Model extends \think\Model
 {
 
+    private function getTableInformation($path = '',$namespace = ''){
+        if (!file_exists($path) || !is_dir($path)){
+            return;
+        }
+
+        if ($od = opendir($path)){
+            $str = '<?php'.PHP_EOL.PHP_EOL;
+            $str .= 'class ClassModel {'.PHP_EOL;
+            while (($file = readdir($od)) !== false)  //读取该目录内文件
+            {
+                $tmp = explode('.',$file);
+                $className = $tmp[0];
+                if (!empty($className) && $className != 'Model'){
+                    $str .= '/**'.$className.'**/'.PHP_EOL;
+                    $str .= 'protected $field = ['.PHP_EOL;
+                    $className = $namespace.$className;
+                    /**
+                     * @var $model \think\Model
+                     */
+                    $model = new $className;
+                    $info = $model->getTableInfo();
+                    foreach ($info['fields'] as $field){
+                        $str .= "'".$field."',".PHP_EOL;
+                    }
+                    $str .= "];".PHP_EOL.PHP_EOL;
+                }
+            }
+            $str .= "}".PHP_EOL.PHP_EOL;
+            @file_put_contents($path.'/ClassModel.php',$str);
+            closedir($od);
+        }
+    }
+
     /**
      * @return array
      */

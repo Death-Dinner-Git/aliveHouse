@@ -35,6 +35,21 @@ class TakeOrder extends Model
      */
     protected $table = '{{%take_order}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'back_user_id',
+        'guest_id',
+        'order_code',
+        'house_type',
+        'goods_id',
+        'deal_status',
+        'money',
+        'description',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

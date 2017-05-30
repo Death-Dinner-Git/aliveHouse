@@ -34,6 +34,20 @@ class SecondHandHouse extends Model
      */
     protected $table = '{{%second_hand_house}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'house_host_id',
+        'type',
+        'city_id',
+        'address',
+        'room',
+        'description',
+        'url',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

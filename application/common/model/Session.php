@@ -23,6 +23,14 @@ class Session extends Model
      */
     protected $table = '{{%session}}';
 
+    protected $field = [
+        'session_id',
+        'session_expire',
+        'session_data',
+        'uid',
+        'update_time',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

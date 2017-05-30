@@ -29,6 +29,15 @@ class GuestServer extends Model
      */
     protected $table = '{{%guest_server}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'guest_id',
+        'back_user_id',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

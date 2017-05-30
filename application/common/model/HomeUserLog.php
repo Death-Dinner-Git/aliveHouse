@@ -32,6 +32,20 @@ class HomeUserLog extends Model
      */
     protected $table = '{{%home_user_log}}';
 
+    protected $field = [
+        'id',
+        'home_user_id',
+        'route',
+        'url',
+        'user_agent',
+        'gets',
+        'posts',
+        'target',
+        'ip',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

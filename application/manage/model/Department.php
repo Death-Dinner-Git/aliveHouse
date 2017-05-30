@@ -26,4 +26,17 @@ use app\manage\model\BackUser;
 class Department extends BaseDepartment
 {
 
+    /**
+     * @description 获取全部部门
+     * @param $key
+     * @return array|false|\PDOStatement|string|\think\Collection
+     */
+    public static function getAllDepartment($key = 'department')
+    {
+        $key = $key === 'department' ? :'department';
+        $key = __METHOD__.'_'.$key;
+        $res = Department::load()->cache(md5($key),1800)->select();
+        return $res;
+    }
+
 }

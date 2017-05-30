@@ -32,6 +32,18 @@ class NoticeRead extends Model
      */
     protected $table = '{{%notice_read}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'back_user_id',
+        'notice_id',
+        'content',
+        'remark',
+        'reback',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

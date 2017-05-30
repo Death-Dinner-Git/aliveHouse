@@ -40,6 +40,24 @@ class Guest extends Model
      */
     protected $table = '{{%guest}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'server',
+        'ID_cards',
+        'real_name',
+        'phone',
+        'nickname',
+        'address',
+        'email',
+        'avatar',
+        'region_id',
+        'type',
+        'level',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

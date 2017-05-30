@@ -34,6 +34,23 @@ class HouseBetter extends Model
      */
     protected $table = '{{%house_better}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'is_passed',
+        'back_user_id',
+        'type',
+        'url',
+        'target',
+        'title',
+        'start_at',
+        'end_at',
+        'order',
+        'status',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

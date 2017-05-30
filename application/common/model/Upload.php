@@ -37,6 +37,25 @@ class Upload extends Model
      */
     protected $table = '{{%upload}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'back_user_id',
+        'name',
+        'path',
+        'url',
+        'ext',
+        'size',
+        'md5',
+        'sha1',
+        'location',
+        'download',
+        'create_time',
+        'update_time',
+        'sort',
+        'status',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

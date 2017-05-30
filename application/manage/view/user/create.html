@@ -21,16 +21,16 @@
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
 
     <style>
-        #updateUser .layui-form-item{
+        #registerUser .layui-form-item{
             font-size: 16px;
         }
-        #updateUser .layui-form-item .layui-form-label{
+        #registerUser .layui-form-item .layui-form-label{
             width: 130px;
         }
-        #updateUser .layui-form-item .layui-input-inline{
+        #registerUser .layui-form-item .layui-input-inline{
             width: 220px;
         }
-        #updateUser .layui-form-item .layui-input-inline .layui-input{
+        #registerUser .layui-form-item .layui-input-inline .layui-input{
             font-size: 16px;
         }
         .help-hint{
@@ -73,18 +73,18 @@
         <legend style="text-align: center;padding-right: 100px;">{$meta_title ? $meta_title : '表单'}</legend>
         <div style="display:flex; margin: 15px;">
             <div style="margin:auto;width: auto;height: auto;">
-                <form class="layui-form" method="post" id="updateUser" action="/manage/user/update.html?id={$model.id}">
+                <form class="layui-form" method="post" id="registerUser" action="/manage/login/register.html">
 
                     {:token()}
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">分配部门</label>
                         <div class="layui-input-inline">
-                            <select name="Update[department_id]" lay-search >
+                            <select name="Register[department_id]" lay-search >
                                 <option>请选择部门</option>
                                 {volist name="departmentList" id="item"}
                                 {if condition="$key neq 0"}
-                                <option value="{$key}" {if condition="$key eq $model.department_id"}selected{/if}>{$item}</option>
+                                <option value="{$key}">{$item}</option>
                                 {/if}
                                 {/volist}
                             </select>
@@ -98,7 +98,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">会员名称:</label>
                         <div class="layui-input-inline">
-                            <input type="text" value="{$model.username}" name="Update[username]" placeholder="会员名称" class="layui-input">
+                            <input type="text" value="" name="Register[username]" placeholder="会员名称" class="layui-input">
                         </div>
                         <div class="layui-input-inline help-msg">
                             <i class="fa"></i>
@@ -110,7 +110,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号码:</label>
                         <div class="layui-input-inline">
-                            <input type="text" value="{$model.phone}" name="Update[phone]" placeholder="手机号码" class="layui-input">
+                            <input type="text" value="" name="Register[phone]" placeholder="手机号码" class="layui-input">
                         </div>
                         <div class="layui-input-inline help-msg">
                             <i class="fa"></i>
@@ -121,7 +121,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">登录密码:</label>
                         <div class="layui-input-inline">
-                            <input type="password" value="" name="Update[password]" placeholder="登录密码" class="layui-input">
+                            <input type="password" value="" name="Register[password]" placeholder="登录密码" class="layui-input">
                         </div>
                         <div class="layui-input-inline help-msg">
                             <i class="fa"></i>
@@ -132,7 +132,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">确认密码:</label>
                         <div class="layui-input-inline">
-                            <input type="password" value="" name="Update[rePassword]" placeholder="确认密码" class="layui-input">
+                            <input type="password" value="" name="Register[rePassword]" placeholder="确认密码" class="layui-input">
                         </div>
                         <div class="layui-input-inline help-msg">
                             <i class="fa"></i>
@@ -141,7 +141,6 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label"></label>
                         <div class="layui-input-block">
                             <button class="layui-btn" lay-submit="" lay-filter="submit">注册</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -205,7 +204,7 @@
     };
 
     $(function(){
-        var form = $("#updateUser").Validform({
+        var form = $("#registerUser").Validform({
             tiptype:alertMsg,
             showAllError:false,
             onBlur:true,

@@ -28,6 +28,18 @@ class Region extends Model
      */
     protected $table = '{{%region}}';
 
+    protected $field = [
+        'id',
+        'code',
+        'name',
+        'parent',
+        'level',
+        'order',
+        'name_en',
+        'short_name_en',
+        'data',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

@@ -31,6 +31,19 @@ class CustomerService extends Model
      */
     protected $table = '{{%customer_service}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'level',
+        'back_user_id',
+        'duration',
+        'start_at',
+        'end_at',
+        'order',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

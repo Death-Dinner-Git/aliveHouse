@@ -13,10 +13,9 @@
 namespace app\manage\controller;
 
 
-use app\manage\controller\ManageController;
-use app\manage\model\User;
-use app\manage\model\BaseUser;
-use app\manage\model\Manager;
+use app\common\controller\ManageController;
+use app\manage\model\BackUser;
+use app\manage\model\Identity;
 use app\manage\model\Department;
 
 /**
@@ -31,8 +30,8 @@ class UserController extends ManageController
      */
     public function indexAction()
     {
-        $this->assign('meta_title', "个人信息");
-        return view('user/index');
+        $model = Identity::load()->where(['id'=>'100'])->find();
+        return view('user/index',['meta_title'=>'个人信息','model'=>$model]);
     }
 
     /**
@@ -51,8 +50,8 @@ class UserController extends ManageController
      */
     public function resetPasswordAction()
     {
-        $this->assign('meta_title', "安排出车界面");
-        return view('user/list');
+        $model = Identity::load()->where(['id'=>'100'])->find();
+        return view('user/reset',['meta_title'=>'修改密码','model'=>$model]);
     }
 
     /**
@@ -71,15 +70,16 @@ class UserController extends ManageController
             $key = trim(request()->request('key'));
             $where =  array_merge($where, ['real_name'=>$key]);
         }
-        $typeList = Manager::getManagerList();
-        if ($super == 'true' || request()->request('type')){
-            $type = $super == 'true' ? 'supperAdmin' :request()->request('type');
+        $typeList = BackUser::getDepartmentList();
+        if ($super == 'true' || request()->request('department_id')){
+            $type = $super == 'true' ? '1' : request()->request('department_id');
             if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['manager_type'=>$type]);
+                $where =  array_merge($where, ['department_id'=>$type]);
             }
         }
-        $dataProvider = Manager::load()->where($where)->page($pageNumber,$each)->select();
-        $count = Manager::load()->where($where)->count();
+        $dataProvider = BackUser::load()->where($where)->page($pageNumber,$each)->select();
+        $count = BackUser::load()->where($where)->count();
+
         $this->assign('meta_title', "账号管理");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
@@ -100,77 +100,46 @@ class UserController extends ManageController
      */
     public function updateAction($id,$target = null)
     {
-        $model = Manager::get($id);
-        if (request()->isAjax()){
-            foreach ($_REQUEST as $k=>$value){
-                $_REQUEST[$k] = trim($value);
-            }
+        $where = ['id'=>$id];
+        $model = Identity::load()->where($where)->find();
+        if (!$model){
+            return '';
+        }
+        if ($this->getRequest()->isAjax()){
             $res = ['status'=>'n','info'=>'更新失败'];
             $passed = true;
-            if (isset($_REQUEST['username'])){
-                if ($base = BaseUser::get(['username'=>$_REQUEST['username']])){
-                    if($base->id != $model->base_user_id){
-                        $res['info'] = '已存在此登录名 更新失败';
-                        $passed = false;
-                    }
-                }else{
-                    $model->getBaseUser->username = $_REQUEST['username'];
-                }
-            }
-            if (isset($_REQUEST['realName'])){
-                if (false){
-                    $res['info'] = '已存在此登录名 更新失败';
-                    $passed = false;
-                }else{
-                    if ($model->real_name != $_REQUEST['realName']){
-                        $model->real_name = $_REQUEST['realName'];
+            $validate = Identity::getValidate();
+            $validate->scene('update');
+            $data = (isset($_REQUEST['Update']) ? $_REQUEST['Update'] : []);
+            if ($data){
+                $field = [];
+                foreach ($data as $key=>$value){
+                    $value = trim($value);
+                    if (!empty($value)){
+                        $field[] = $key;
                     }
                 }
-            }
-            if (isset($_REQUEST['password']) && isset($_REQUEST['rePassword'])){
-                if (!empty($_REQUEST['password']) && ($_REQUEST['password'] != $_REQUEST['rePassword'])){
-                    $res['info'] = '两次密码不同';
+                $validate->scene('update',$field);
+                if (!$validate->check($data)){
+                    $res['info'] = $validate->getError();
                     $passed = false;
                 }else{
-                    if ($model->getBaseUser->password != md5($_REQUEST['password'])){
-                        $model->getBaseUser->password =  md5($_REQUEST['password']);
-                    }
-                }
-            }
-            if(isset($_REQUEST['managerType'])){
-                if (!in_array($_REQUEST['managerType'],array_keys(Manager::getManagerList()))){
-                    $res['info'] = '未找到该管理类型';
-                    $passed = false;
-                }else{
-                    if ($model->manager_type != $_REQUEST['managerType']){
-                        $model->manager_type = $_REQUEST['managerType'];
-                    }
-                }
-            }
-            if (isset($_REQUEST['department'])){
-                if (!Department::get($_REQUEST['department'])){
-                    $res['info'] = '未找到该部门';
-                    $passed = false;
-                }else{
-                    if ($model->department_id != $_REQUEST['department']){
-                        $model->department_id = $_REQUEST['department'];
-                    }
+
                 }
             }
             if ($passed){
                 $res['info'] = '更新成功';
                 $res['status'] = 'y';
-                if ($model->together('getBaseUser')->save()){
+                $data['updated_at'] = date('Y-m-d H:i:s');
+                $data['real_name'] = '小符';
+                if (Identity::update($data,$where)){
                     $res['info'] = '更新成功';
-                    $model->update_time = date('Y-m-d H:i:s');
-                    $model->save();
                 }
             }
             return json($res);
         }
         $this->assign('meta_title', "更新信息");
-        $this->assign('typeList', Manager::getManagerList());
-        $this->assign('departmentList', Department::getAllDepartment());
+        $this->assign('departmentList', Identity::getDepartmentList());
         $this->assign('model', $model);
         return view('user/update');
     }

@@ -36,6 +36,22 @@ class HouseHost extends Model
      */
     protected $table = '{{%house_host}}';
 
+    protected $field = [
+        'id',
+        'ID_cards',
+        'real_name',
+        'phone',
+        'nickname',
+        'address',
+        'email',
+        'avatar',
+        'is_delete',
+        'city_id',
+        'type',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

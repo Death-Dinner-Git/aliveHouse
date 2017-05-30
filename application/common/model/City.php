@@ -36,6 +36,20 @@ class City extends Model
      */
     protected $table = '{{%city}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'region_id',
+        'parent',
+        'name',
+        'level',
+        'order',
+        'code',
+        'name_en',
+        'short_name_en',
+        'data',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

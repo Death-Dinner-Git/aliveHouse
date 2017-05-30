@@ -24,6 +24,11 @@ class AuthItemChild extends Model
      */
     protected $table = '{{%auth_item_child}}';
 
+    protected $field = [
+        'parent',
+        'child',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

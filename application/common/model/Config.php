@@ -32,6 +32,23 @@ class Config extends Model
      */
     protected $table = '{{%config}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'app',
+        'title',
+        'name',
+        'value',
+        'group',
+        'type',
+        'options',
+        'tip',
+        'created_at',
+        'updated_at',
+        'order',
+        'status',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

@@ -36,6 +36,22 @@ class Notice extends Model
      */
     protected $table = '{{%notice}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'back_user_id',
+        'title',
+        'content',
+        'is_passed',
+        'order',
+        'remark',
+        'readed',
+        'created_at',
+        'updated_at',
+        'start_at',
+        'end_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

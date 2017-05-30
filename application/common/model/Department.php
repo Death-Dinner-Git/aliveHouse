@@ -32,6 +32,19 @@ class Department extends Model
      */
     protected $table = '{{%department}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'remark',
+        'name',
+        'parent',
+        'code',
+        'order',
+        'level',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

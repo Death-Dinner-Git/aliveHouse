@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\BaseController;
-use think\captcha\Captcha;
+//use think\captcha\Captcha;
 use app\manage\model\Identity;
 
 /**
@@ -53,7 +53,7 @@ class LoginController extends BaseController
             $validate = Identity::getValidate();
             $validate->scene('loginAjax');
             if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
-                return json(['status'=>'y','info'=>'验证通过']);
+                return json(['status'=>'y','info'=>'格式验证通过']);
             }else{
                 return json(['status'=>'n','info'=>$validate->getError()]);
             }
@@ -64,7 +64,7 @@ class LoginController extends BaseController
             $identity->username = $username;
             $identity->password = $password;
             $res = $identity->login();
-            if (is_object($res) && (@get_class($res) == Identity::class)){
+            if ($res instanceof Identity){
 
 //                // 验证管理员表里是否有该用户
 //                $account_object = new Access();
@@ -109,25 +109,18 @@ class LoginController extends BaseController
      */
     public function registerAction(){
         $identity = new Identity();
-        $identity->save();
-        $identity->username = input('WF_username');
-        $identity->password = input('WF_password');
-        $identity->password_rep = input('WF_password_rep');
-        $token = input('__token__');
-        if ( request()->isPost() && $identity->username && $identity->password && $identity->password_rep && $token){
+        $token = request()->request('__token__');
+        $data = (isset($_POST['Register']) ? $_POST['Register'] : []);
+        $departmentList = Identity::getDepartmentList();
+        if ( request()->isPost() && $token && $data){
             // 调用当前模型对应的Identity验证器类进行数据验证
-            $identity->data([
-                'username'=>input('WF_username'),
-                'password'=>input('WF_password'),
-                'password_rep'=>input('WF_password_rep'),
-                '__token__'=>input('__token__'),
-            ]);
-            $validate = \think\Loader::validate('userValidate');
+//            $data['__token__'] = $token;
+            $validate = Identity::getValidate();
             $validate->scene('register');
-            if($validate->check($identity)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
-                $res = $identity->signUp();
+            if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
+                $res = $identity->signUp($data);
                 if($res){
-                    if (get_class($res) == Identity::class){
+                    if ($res instanceof Identity){
                         $this->success('注册成功','login');
                     }else{
                         $this->error($res, 'register','',1);
@@ -137,7 +130,7 @@ class LoginController extends BaseController
                 $this->error($validate->getError(), 'register','',1);
             }
         }
-        return view('create',['title'=>'会员注册']);
+        return view('user/create',['meta_title'=>'会员注册','departmentList'=>$departmentList]);
     }
 
     /**

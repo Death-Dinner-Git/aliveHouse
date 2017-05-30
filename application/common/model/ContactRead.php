@@ -33,6 +33,19 @@ class ContactRead extends Model
      */
     protected $table = '{{%contact_read}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'assign',
+        'back_user_id',
+        'contact_id',
+        'content',
+        'remark',
+        'reback',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

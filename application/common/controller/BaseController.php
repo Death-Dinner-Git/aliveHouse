@@ -5,6 +5,7 @@ namespace app\common\controller;
 use think\Controller;
 use app\common\components\Configs;
 use think\response\View;
+use think\Request;
 
 /**
  * @description The module Index base controller
@@ -547,6 +548,13 @@ class BaseController extends Controller
             return config('identity.registerUrl');
         }
         return null;
+    }
+
+    /**
+     * @return Request
+     */
+    public function getRequest(){
+        return Request::instance();
     }
 
     public function _after(){

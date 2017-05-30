@@ -26,6 +26,12 @@ class AuthAssignment extends Model
      */
     protected $table = '{{%auth_assignment}}';
 
+    protected $field = [
+        'item_name',
+        'user_id',
+        'created_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

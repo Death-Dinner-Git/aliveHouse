@@ -30,6 +30,18 @@ class LabelPark extends Model
      */
     protected $table = '{{%label_park}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'label_id',
+        'target_id',
+        'type',
+        'name',
+        'description',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

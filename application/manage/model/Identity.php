@@ -1,17 +1,19 @@
 <?php
 namespace app\manage\model;
 
+use app\common\model\BackUser;
 use app\common\model\Department;
 use app\manage\validate\IdentityValidate;
+use think\Request;
 
 /**
  * @description This is the model class for table "wf_manager".  扩展管理员
  *
  * @property integer $id
- * @property string $create_time
+ * @property string $created_at
  * @property integer $is_delete
  * @property string $remark
- * @property string $update_time
+ * @property string $updated_at
  * @property string $identification_cards
  * @property string $manager_type
  * @property string $phone
@@ -24,7 +26,6 @@ use app\manage\validate\IdentityValidate;
  * @property string $sex
  * @property string $rongyun_token
  *
- * @property BaseUser $baseUser
  * @property Department $department
  *
  */
@@ -42,9 +43,9 @@ class Identity extends BackUser
     public $loginUrl = 'manage/login/login';
 
     //所有账号类型
-    private static $managerList = ['supperAdmin'=>'超级主管','manage'=>'主管','sales'=>'个人销售','derver'=>'司机'];
+    private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
     //允许登录账号类型
-    private static $allowList = ['manage','supperAdmin'];
+    private static $allowList = ['0','1','2','3'];
     //允许登录账号 匹配类型
     private static $allowFind = ['username','phone'];
     //密码加密前缀
@@ -52,9 +53,9 @@ class Identity extends BackUser
     //密码加密后缀
     private static $passwordSuffix = '';
     //加密方式；可选参数1和2；默认是1；
-    private static $encryptType = '1';
+    private static $encryptType = '2';
     //加密方式；可选参数1和2；默认是1；
-    private static $login_time = 'update_time';
+    private static $login_time = 'updated_at';
     //是否开启登录IP记录
     private static $isLog = false;
     //用户加密SSL
@@ -66,10 +67,12 @@ class Identity extends BackUser
     public $__token__;
     //用户名
     public $username;
+    //手机
+    public $phone;
     //密码
     public $password;
     //重设密码
-    public $password_rep;
+    public $rePassword;
     //记住我
     public $rememberMe;
     //记住我
@@ -87,79 +90,87 @@ class Identity extends BackUser
     // 数据表字段信息 留空则自动获取
     protected $field = [
         'id',
-        'create_time',
         'is_delete',
-        'remark',
-        'update_time',
-        'identification_cards',
-        'manager_type',
-        'phone',
-        'real_name',
-        'base_user_id',
-        'token',
-        'wofang_id',
+        'code',
         'department_id',
-        'head_portrait',
+        'phone',
+        'phone_verified',
+        'email',
+        'email_verified',
+        'username',
+        'nickname',
+        'real_name',
+        'head_url',
         'sex',
-        'rongyun_token',
+        'signature',
+        'birthday',
+        'height',
+        'weight',
+        'password',
+        'token',
+        'auth_key',
+        'password_reset_token',
+        'password_reset_code',
+        'status',
+        'ip',
+        'reg_ip',
+        'reg_type',
+        'registered_at',
+        'logined_at',
+        'updated_at',
     ];
 
     // 追加属性
     protected $append = [
         'password',
-        'password_rep',
+        'rePassword',
     ];
 
     /**
      * 自动验证规则
-     * @author Sir Fu
      */
-    protected $_validate = [
-        ['is_delete','require','删除标志 不能为空'],
-        ['manager_type','require','管理员类型 不能为空'],
-        ['base_user_id','require','基础用户ID 不能为空'],
-        ['department_id','require','分销处ID 不能为空'],
-        ['identification_cards','max:255',],
-        ['manager_type','max:255',],
-        ['phone','max:255',],
-        ['real_name','max:255',],
-        ['token','max:255',],
-        ['head_portrait','max:255',],
-        ['sex','max:255',],
-        ['rongyun_token','max:255',],
-
-        ['username', 'require', '用户名不能为空', 'regex',],
-        ['username', '3,32', '用户名长度为1-32个字符', 'length', ],
-        ['username', 'unique:base_user,username', '用户名被占用',  'unique',],
-        ['username', '/^(?!_)(?!\d)(?!.*?_$)[\w]+$/', '用户名只可含有数字、字母、下划线且不以下划线开头结尾，不以数字开头！',  'regex', ],
-        ['password', 'require', '密码不能为空',  'regex', ],
-        ['password', '6,30', '密码长度为6-30位',  'length'],
-        ['password', '/(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+)$)^[\w~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+$/', '密码至少由数字、字符、特殊字符三种中的两种组成',  'regex',],
-
-        // 验证注册来源
-        ['reg_type', 'require', '注册来源不能为空', 'regex',],
-    ];
+    public function rules()
+    {
+        return [
+            'rule'=>[
+                ['is_delete','number','时效 无效'],
+                ['department_id','number','部门 无效'],
+                ['height','number','身高 无效'],
+                ['weight','number','体重 无效'],
+                ['status','number','状态 无效'],
+                ['sex','in:男,女',],
+                ['code','max:32',],
+                ['username','max:32',],
+                ['signature','max:32',],
+                ['auth_key','max:32',],
+                ['reg_ip','max:32',],
+                ['email','max:64',],
+                ['nickname','max:64',],
+                ['real_name','max:64',],
+                ['head_url','max:64',],
+                ['password','max:255',],
+                ['token','max:255',],
+                ['password_reset_token','max:255',],
+                ['password_reset_code','max:255',],
+                ['reg_type','max:15',],
+            ],
+            'msg'=>[
+            ],
+        ];
+    }
 
     /**
      * 自动完成规则
-     * @author Sir Fu
      */
     protected $_auto = [
-        ['score', '0', ],
-        ['money', '0', ],
-        ['reg_ip', 'get_client_ip',  'function', 1],
-        ['password', 'user_md5',  'function'],
-        ['create_time', 'time',  'function'],
-        ['update_time', 'time',  'function'],
-        ['status', '1',],
     ];
 
     /**
      * @return array
      */
-    public static function getManagerList()
+    public static function getDepartmentList()
     {
-        return self::$managerList;
+        return self::$departmentList;
     }
 
     /**
@@ -183,26 +194,22 @@ class Identity extends BackUser
      * @return boolean whether the user is logged in successfully
      * @return Identity|bool
      */
-    public function signUp()
+    public function signUp($data)
     {
         $res = false;
-        $data = [
-            'username'=>$this->getData('username'),
-            'password'=>$this->getData('password'),
-        ];
         $validate = self::getValidate();
         $validate->scene('signUp');
         if( $validate->check($data)){
-            $this->thisTime = time();
-            $newPassword = $this->getJoinPassword($this->getData('password'));
-            $db= $this->save([
-                'uid'=>rand(100000,999999),
-                'username'=>$this->getData('username'),
-                'password'=>$this->generateHash($newPassword),
-                'create_time'=>$this->thisTime,
-                'update_time'=>$this->thisTime,
-            ]);  //这里的save()执行的是添加
+            $this->thisTime = date('Y-m-d H:i:s');
+            $newPassword = $this->getJoinPassword($data['password']);
+            $data['password'] = $this->generateHash($newPassword);
+            $data['reg_ip'] = Identity::getIp();
+            $data['created_at'] = $this->thisTime;
+            $data['updated_at'] = $this->thisTime;
+            $db= $this->save($data);  //这里的save()执行的是添加
             if ($db){
+                $code = '8'.$this->department_id.str_pad($this->id,4,'0',STR_PAD_LEFT);
+                Identity::update(['code'=>$code],['id'=>$this->id]);
                 $res = $this;
             }
         }
@@ -227,26 +234,24 @@ class Identity extends BackUser
         ]);
         $validate = self::getValidate();
         $validate->scene('login');
-        $ret = true;
         if( $validate->check($this -> data)){
             if ($identity = $this->findIdentity()){
-                if ( true || $this->validatePassword($this->password)){
+                if ( $this->validatePassword($this->password)){
                     if ($this->log()){
                         $login_time = self::$login_time;
                         $this->$login_time = date('Y-m-d H:i:s');
 
-                        $this->password = '888888';
                         $enPassword = $this->setPassword($this->password);
 
                         //这里的save()执行的是更新
                         $result = $identity->load()
                             ->alias('t')
-                            ->join(BaseUser::tableName().' b','t.base_user_id = b.id')
-                            ->where(['b.username'=>$this->username])
-                            ->where('t.manager_type','in',self::$allowList)
+                            ->join(Department::tableName().' d','t.department_id = d.id')
+                            ->where(['t.username'=>$this->username])
+                            ->where('d.level','in',self::$allowList)
                             ->update([
-                                'b.password'=>$enPassword,
-                                't.update_time'=>$this->$login_time
+                                't.password'=>$enPassword,
+                                't.updated_at'=>$this->$login_time
                             ]);
                         if($result){
                             //if true, default keep one week online;
@@ -277,6 +282,19 @@ class Identity extends BackUser
      * @return boolean whether the user is logged in successfully
      */
     public static function logout()
+    {
+        session(config('identity._identity'),null);
+        session(config('identity._auth_key'), null);
+        session(config('identity._duration'),null);
+        return true;
+    }
+
+    /**
+     * Logs in a user using the provided username and password.
+     * @param $user
+     * @return boolean whether the user is logged in successfully
+     */
+    public function setLogout($user = null)
     {
         session(config('identity._identity'),null);
         session(config('identity._auth_key'), null);
@@ -485,7 +503,7 @@ class Identity extends BackUser
         if ($duration<1 || !($_identity && $_identity->username)){
             return null;
         }
-        if ( @get_class($_identity) == get_class($this) ){
+        if ( $_identity instanceof Identity){
             $token = $this->generateRandomString() . '_' . time();
             $db= $this->isUpdate(true,['username'=>$_identity->getData('username')])->save([
                 'token'=> $token,
@@ -533,10 +551,11 @@ class Identity extends BackUser
 
         return self::load()
             ->alias('t')
-            ->join(BaseUser::tableName().' b','t.base_user_id = b.id')
-            ->where(['b.username'=>$username])
-            ->where('t.manager_type','in',self::$allowList)
-            ->field('*,t.update_time as t_update_time,b.update_time as b_update_time')
+            ->join(Department::tableName().' d','t.department_id = d.id')
+            ->where(['t.is_delete'=>'1'])
+            ->where(['t.username'=>$username])
+            ->where('d.level','in',self::$allowList)
+            ->field('*,t.updated_at as t_updated_at,d.updated_at as d_updated_at')
             ->find();
     }
 
@@ -554,10 +573,11 @@ class Identity extends BackUser
 
         return self::load()
             ->alias('t')
-            ->join(BaseUser::tableName().' b','t.base_user_id = b.id')
+            ->join(Department::tableName().' d','t.department_id = d.id')
+            ->where(['t.is_delete'=>'1'])
             ->where(['t.phone'=>$phone])
-            ->where('t.manager_type','in',self::$allowList)
-            ->field('*,t.update_time as t_update_time,b.update_time as b_update_time')
+            ->where('d.level','in',self::$allowList)
+            ->field('*,t.updated_at as t_updated_at,d.updated_at as d_updated_at')
             ->find();
     }
 
@@ -575,10 +595,11 @@ class Identity extends BackUser
 
         return self::load()
             ->alias('t')
-            ->join(BaseUser::tableName().' b','t.base_user_id = b.id')
+            ->join(Department::tableName().' d','t.department_id = d.id')
+            ->where(['t.is_delete'=>'1'])
             ->where(['t.email'=>$email])
-            ->where('t.manager_type','in',self::$allowList)
-            ->field('*,t.update_time as t_update_time,b.update_time as b_update_time')
+            ->where('d.level','in',self::$allowList)
+            ->field('*,t.updated_at as t_updated_at,d.updated_at as d_updated_at')
             ->find();
     }
 
@@ -593,7 +614,15 @@ class Identity extends BackUser
         if (empty($id) || !is_numeric($id)) {
             return null;
         }
-        return self::load()->where(['id'=>$id])->find();
+
+        return self::load()
+            ->alias('t')
+            ->join(Department::tableName().' d','t.department_id = d.id')
+            ->where(['t.is_delete'=>'1'])
+            ->where(['t.id'=>$id])
+            ->where('d.level','in',self::$allowList)
+            ->field('*,t.updated_at as t_updated_at,d.updated_at as d_updated_at')
+            ->find();
     }
 
     /**
@@ -1074,6 +1103,14 @@ class Identity extends BackUser
     }
 
     /**
+     * @return string
+     */
+    public static function getIp()
+    {
+        return Request::instance()->ip();
+    }
+
+    /**
      * @param string $name
      * @return mixed
      */
@@ -1096,7 +1133,6 @@ class Identity extends BackUser
 
         return parent::__get($name); // TODO: Change the autogenerated stub
     }
-
 
     /**
      * @description 与基础用户表一对一关联

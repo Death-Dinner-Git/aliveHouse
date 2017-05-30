@@ -31,6 +31,19 @@ class NewHouse extends Model
      */
     protected $table = '{{%new_house}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'building_base_id',
+        'type',
+        'room',
+        'description',
+        'address',
+        'url',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

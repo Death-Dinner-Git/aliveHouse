@@ -35,6 +35,17 @@ class BuildingBase extends Model
      */
     protected $table = '{{%building_base}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'type',
+        'city_id',
+        'name',
+        'address',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

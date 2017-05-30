@@ -27,6 +27,15 @@ class Walk extends Model
      */
     protected $table = '{{%walk}}';
 
+    protected $field = [
+        'id',
+        'is_delete',
+        'guest_id',
+        'on_server',
+        'created_at',
+        'updated_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表

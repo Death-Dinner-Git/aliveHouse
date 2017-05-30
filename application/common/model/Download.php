@@ -30,6 +30,18 @@ class Download extends Model
      */
     protected $table = '{{%download}}';
 
+    protected $field = [
+        'id',
+        'back_user_id',
+        'title',
+        'url',
+        'fileName',
+        'tb_name',
+        'tb_id',
+        'tb_category',
+        'created_at',
+    ];
+
     // 保存自动完成列表
     protected $auto = [];
     // 新增自动完成列表
