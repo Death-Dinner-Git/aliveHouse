@@ -14,7 +14,7 @@ class ContactController extends ManageController
      */
     public function indexAction()
     {
-        //
+
     }
 
     /**

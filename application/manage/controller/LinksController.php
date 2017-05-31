@@ -5,7 +5,7 @@ namespace app\manage\controller;
 use app\common\controller\ManageController;
 use think\Request;
 
-class OnLinksController extends ManageController
+class LinksController extends ManageController
 {
     /**
      * 显示资源列表

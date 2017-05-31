@@ -46,11 +46,12 @@ class UserController extends ManageController
 
     /**
      * @description 新增
+     * @param $id
      * @return string
      */
-    public function resetPasswordAction()
+    public function resetPasswordAction($id)
     {
-        $model = Identity::load()->where(['id'=>'100'])->find();
+        $model = Identity::load()->where(['id'=>$id])->find();
         return view('user/reset',['meta_title'=>'修改密码','model'=>$model]);
     }
 
