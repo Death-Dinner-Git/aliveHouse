@@ -132,7 +132,7 @@ class AccessControl
      */
     protected function isActive($action)
     {
-        $uniqueId = $action->getUniqueId();
+        $uniqueId =$this->getActionUrl();
         if ($uniqueId === Yii::$app->getErrorHandler()->errorAction) {
             return false;
         }

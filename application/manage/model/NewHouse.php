@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\NewHouse as BaseNewHouse;
+use app\manage\validate\NewHouseValidate;
 use app\manage\model\BuildingBase;
 
 /**
@@ -24,4 +25,26 @@ use app\manage\model\BuildingBase;
 class NewHouse extends BaseNewHouse
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return NewHouseValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

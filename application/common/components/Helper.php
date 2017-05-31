@@ -9,6 +9,17 @@ use app\common\components\Configs;
  */
 class Helper
 {
+    public static $_instance;
+    /**
+     * @return Helper
+     */
+    public static function getInstance(){
+        if (!self::$_instance){
+            self::$_instance = new static();
+        }
+        return self::$_instance;
+    }
+
     /**
      * @description 压缩图片 本函数用于 按照变量$format指定的格式，进行格式压缩.
      *
@@ -1227,6 +1238,28 @@ class Helper
         $ret = self::ch_urlencode($data);
         $ret = json_encode($ret);
         return urldecode($ret);
+    }
+
+    /**
+     * @param array |\think\Model |mixed  $resultSet
+     * @return array
+     */
+    public static function toArray($resultSet){
+        $ret = [];
+        if (empty($resultSet) || !(is_array($resultSet) || is_object($resultSet))){
+            return $ret;
+        }
+        $item = current($resultSet);
+        if ($resultSet instanceof \think\Model) {
+            $ret = $resultSet->toArray();
+        } elseif($item instanceof \think\Model){
+            foreach ($resultSet as $value){
+                $ret[] = $value->toArray();
+            }
+        } else {
+            $ret = (array)$resultSet;
+        }
+        return $ret;
     }
 
     /**

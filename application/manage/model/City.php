@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\City as BaseCity;
+use app\manage\validate\CityValidate;
 
 use app\common\model\Region;
 use app\manage\model\BuildingBase;
@@ -30,4 +31,26 @@ use app\manage\model\SecondHandHouse;
 class City extends BaseCity
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return CityValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

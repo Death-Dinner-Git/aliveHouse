@@ -13,11 +13,10 @@
 namespace app\manage\controller;
 
 
-use app\manage\controller\ManageController;
+use app\common\controller\ManageController;
 use app\manage\model\TakeCarOrder;
 use app\manage\model\OutCar;
 use app\manage\model\City;
-//use app\manage\model\OutCar;
 //use app\manage\model\OutCar;
 
 class DatacountController extends ManageController

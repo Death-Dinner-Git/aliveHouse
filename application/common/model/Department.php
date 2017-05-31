@@ -90,6 +90,6 @@ class Department extends Model
      */
     public function getBackUsers()
     {
-        return $this->hasMany(BackUser::tableNameSuffix(), ['department_id' => 'id']);
+        return $this->hasMany(ucfirst(BackUser::tableNameSuffix()), ['department_id' => 'id']);
     }
 }

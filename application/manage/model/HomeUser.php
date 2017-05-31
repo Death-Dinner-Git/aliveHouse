@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\HomeUser as BaseHomeUser;
+use app\manage\validate\HomeUserValidate;
 
 use app\manage\model\Contact;
 use app\manage\model\HomeUserLog;
@@ -47,4 +48,26 @@ use app\manage\model\Opinion;
 class HomeUser extends BaseHomeUser
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return HomeUserValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

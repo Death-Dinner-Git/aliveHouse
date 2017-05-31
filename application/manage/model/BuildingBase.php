@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\BuildingBase as BaseBuildingBase;
+use app\manage\validate\BuildingBaseValidate;
 
 use app\manage\model\City;
 use app\manage\model\BuildingDetail;
@@ -29,4 +30,26 @@ use app\manage\model\NewHouse;
 class BuildingBase extends BaseBuildingBase
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return BuildingBaseValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

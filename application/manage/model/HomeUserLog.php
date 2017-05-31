@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\HomeUserLog as BaseHomeUserLog;
+use app\manage\validate\HomeUserLogValidate;
 
 use app\manage\model\HomeUser;
 
@@ -26,4 +27,26 @@ use app\manage\model\HomeUser;
 class HomeUserLog extends BaseHomeUserLog
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return HomeUserLogValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

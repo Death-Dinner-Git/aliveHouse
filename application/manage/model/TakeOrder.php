@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\TakeOrder as BaseTakeOrder;
+use app\manage\validate\TakeOrderValidate;
 use app\manage\model\BackUser;
 use app\manage\model\Guest;
 
@@ -28,4 +29,26 @@ use app\manage\model\Guest;
 class TakeOrder extends BaseTakeOrder
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return TakeOrderValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

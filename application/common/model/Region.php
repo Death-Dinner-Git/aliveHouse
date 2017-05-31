@@ -7,12 +7,12 @@ use app\common\model\Model;
 /**
  * This is the model class for table "{{%region}}".
  *
- * @property double $id
+ * @property integer $id
  * @property string $code
  * @property string $name
- * @property double $parent
- * @property double $level
- * @property double $order
+ * @property integer $parent
+ * @property integer $level
+ * @property integer $order
  * @property string $name_en
  * @property string $short_name_en
  * @property string $data

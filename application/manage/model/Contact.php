@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\Contact as BaseContact;
+use app\manage\validate\ContactValidate;
 
 use app\manage\model\BackUser;
 use app\manage\model\HomeUser;
@@ -31,4 +32,26 @@ use app\manage\model\ContactRead;
 class Contact extends BaseContact
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return ContactValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

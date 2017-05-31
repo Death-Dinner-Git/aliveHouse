@@ -1,9 +1,10 @@
 <?php
 namespace app\manage\model;
 
+use app\manage\validate\IdentityValidate;
+
 use app\common\model\BackUser;
 use app\common\model\Department;
-use app\manage\validate\IdentityValidate;
 use think\Request;
 
 /**

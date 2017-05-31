@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\Download as BaseDownload;
+use app\manage\validate\DownloadValidate;
 
 use app\manage\model\BackUser;
 
@@ -24,4 +25,26 @@ use app\manage\model\BackUser;
 class Download extends BaseDownload
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return DownloadValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\Config as BaseConfig;
+use app\manage\validate\ConfigValidate;
 
 
 /**
@@ -26,4 +27,26 @@ use app\common\model\Config as BaseConfig;
 class Config extends BaseConfig
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return ConfigValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

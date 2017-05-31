@@ -3,6 +3,8 @@
 namespace app\manage\model;
 
 use app\common\model\Opinion as BaseOpinion;
+use app\manage\validate\OpinionReadValidate;
+use app\manage\validate\OpinionValidate;
 
 /**
  * This is the model class for table "{{%opinion_read}}".
@@ -24,4 +26,26 @@ use app\common\model\Opinion as BaseOpinion;
 class OpinionRead extends BaseOpinion
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return OpinionReadValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

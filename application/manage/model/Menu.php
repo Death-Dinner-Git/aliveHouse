@@ -2,6 +2,7 @@
 namespace app\manage\model;
 
 use app\common\model\Menu as BaseMenu;
+use app\manage\validate\MenuValidate;
 
 /**
  * @description TThis is the model class for table "wf_menu".  菜单模型
@@ -19,4 +20,26 @@ use app\common\model\Menu as BaseMenu;
 class Menu extends BaseMenu
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return MenuValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

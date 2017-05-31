@@ -41,8 +41,8 @@ function loadScript(url) {
     document.body.appendChild(script);
 }
 
-function showUrl(title,url,width,height,type,parentWin,maxmin,ele) {
-    var content = '',stop = true,shade;
+function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade) {
+    var content = '',stop = true;
     var myLayer = window.layer ? window.layer : top.window.layer;
     if(!myLayer) {
         myLayer = layer;
@@ -62,7 +62,7 @@ function showUrl(title,url,width,height,type,parentWin,maxmin,ele) {
     width = width || '800px';
     height = height || '500px';
     maxmin = maxmin !== undefined && maxmin === true && type == 2;
-    shade = maxmin !== undefined && maxmin === true && type == 2 ? 0 : 0.3;
+    shade = shade || (maxmin !== undefined && maxmin === true && type == 2 ? 0 : 0.3);
     if (parentWin){
         myLayer = top.window.layer ? top.window.layer : window.layer;
     }

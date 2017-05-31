@@ -63,13 +63,13 @@ class City extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'parent', 'level', 'order'], 'integer'],
-            [['region_id', 'parent', 'name', 'order', 'code', 'name_en', 'short_name_en'], 'required'],
-            [['region_id'], 'number'],
-            [['data'], 'string'],
-            [['name', 'code', 'name_en'], 'string', 'max' => 100],
-            [['short_name_en'], 'string', 'max' => 10],
-            [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::tableNameSuffix(), 'targetAttribute' => ['region_id' => 'id']],
+//            [['is_delete', 'parent', 'level', 'order'], 'integer'],
+//            [['region_id', 'parent', 'name', 'order', 'code', 'name_en', 'short_name_en'], 'required'],
+//            [['region_id'], 'number'],
+//            [['data'], 'string'],
+//            [['name', 'code', 'name_en'], 'string', 'max' => 100],
+//            [['short_name_en'], 'string', 'max' => 10],
+//            [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::tableNameSuffix(), 'targetAttribute' => ['region_id' => 'id']],
         ];
     }
 
@@ -94,11 +94,98 @@ class City extends Model
     }
 
     /**
+     * @param string $name
+     * @return array
+     */
+    public static function getCityList($name = null)
+    {
+        $ret = [];
+        $query = City::load();
+        if (!empty($name)){
+            $query = $query->where(['name'=>$name]);
+        }
+        $result = $query->select();
+        if ($result){
+            $helper = City::getHelper();
+            $result = $helper::toArray($result);
+            foreach ($result as $key => $value){
+                $ret[$value['id']] = $value['name'];
+            }
+        }
+        return $ret;
+    }
+
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public static function getRegionAllChild($id)
+    {
+        $ret = [];
+        $result = Region::load()->where(['parent'=>$id])->select();
+        if ($result){
+            $helper = City::getHelper();
+            $result = $helper::toArray($result);
+            foreach ($result as $key => $value){
+                $ret[$value['id']] = $value['name'];
+            }
+        }
+        return $ret;
+    }
+
+    /**
+     * @param $id
+     * @return string|Region
+     */
+    public static function getRegionById($id)
+    {
+        $ret = '1';
+        $result = Region::load()->where(['id'=>$id])->find();
+        if ($result){
+            $ret = $result;
+        }
+        return $ret;
+    }
+
+    /**
+     * @param $name
+     * @param $returnId
+     * @param null $parent
+     * @return string | Region
+     */
+    public static function getRegionByName($name,$parent = null,$returnId = false)
+    {
+        $ret = '1';
+        $result = Region::load()->where(['name'=>$name])->select();
+        if ($result){
+            if (!$parent || count($result) <= 1 ){
+                $ret = isset($result[0]) ? $result[0] : '1';
+            }else{
+                $result = Region::load()->alias('t')
+                    ->join([Region::tableName()=>'r'],'t.parent = r.id','LEFT')
+                    ->join([Region::tableName()=>'rr'],'r.parent = rr.id','LEFT')
+                    ->where(['t.name'=>$name])
+                    ->where(" r.name = '".$parent."' or  rr.name = '".$parent."' ")
+                    ->field('*,t.id as target_id')
+                    ->find();
+                if ($result){
+                    $ret = Region::load()->where(['id'=>$result->target_id])->find();
+                }
+            }
+            if ($ret instanceof Region && $returnId){
+                $ret = $ret->id;
+            }
+        }
+        return $ret;
+    }
+
+    /**
      * @return \think\model\relation\HasMany
      */
     public function getBuildingBases()
     {
-        return $this->hasMany(BuildingBase::tableNameSuffix(), ['city_id' => 'id']);
+        return $this->hasMany(ucfirst(BuildingBase::tableNameSuffix()), 'id','city_id');
     }
 
     /**
@@ -106,14 +193,14 @@ class City extends Model
      */
     public function getRegion()
     {
-        return $this->hasOne(Region::tableNameSuffix(), ['id' => 'region_id']);
+        return $this->hasOne(ucfirst(Region::tableNameSuffix()), 'region_id','id');
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \think\model\relation\HasMany
      */
     public function getSecondHandHouses()
     {
-        return $this->hasMany(SecondHandHouse::tableNameSuffix(), ['city_id' => 'id']);
+        return $this->hasMany(ucfirst(SecondHandHouse::tableNameSuffix()), 'id','city_id');
     }
 }

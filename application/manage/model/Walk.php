@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\Walk as BaseWalk;
+use app\manage\validate\WalkValidate;
 use app\manage\model\Guest;
 
 /**
@@ -20,4 +21,26 @@ use app\manage\model\Guest;
 class Walk extends BaseWalk
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return WalkValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

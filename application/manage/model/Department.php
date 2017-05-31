@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\Department as BaseDepartment;
+use app\manage\validate\DepartmentValidate;
 
 use app\manage\model\BackUser;
 
@@ -37,6 +38,29 @@ class Department extends BaseDepartment
         $key = __METHOD__.'_'.$key;
         $res = Department::load()->cache(md5($key),1800)->select();
         return $res;
+    }
+
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return DepartmentValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
     }
 
 }

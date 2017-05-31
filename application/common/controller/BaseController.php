@@ -13,6 +13,8 @@ use think\Request;
  */
 class BaseController extends Controller
 {
+    protected static $_helper;
+
     /**
      * @description before action function
      */
@@ -548,6 +550,17 @@ class BaseController extends Controller
             return config('identity.registerUrl');
         }
         return null;
+    }
+
+
+    /**
+     * @return \app\common\components\Helper
+     */
+    public static function getHelper(){
+        if (!self::$_helper){
+            self::$_helper = \app\common\components\Helper::getInstance();
+        }
+        return self::$_helper;
     }
 
     /**

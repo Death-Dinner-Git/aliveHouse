@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\NoticeRead as BaseNoticeRead;
+use app\manage\validate\NoticeReadValidate;
 use app\manage\model\BackUser;
 use app\manage\model\Notice;
 
@@ -25,4 +26,26 @@ use app\manage\model\Notice;
 class NoticeRead extends BaseNoticeRead
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return NoticeReadValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

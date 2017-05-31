@@ -45,17 +45,24 @@ class Label extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    //所有标签类型
+    private static $labelList = ['0'=>'失效','1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼房','7'=>'客服'];
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'type'], 'integer'],
-            [['name', 'description', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 32],
-            [['description'], 'string', 'max' => 255],
+            'rule'=>[
+                ['type','number|in:0,1,2,3,4,5,6,7','类型 无效'],
+                ['is_delete','in:0,1','时效 无效'],
+                ['name','max:32'],
+                ['description','max:255'],
+            ],
+            'msg'=>[
+                'type.in'=> '此类型不允许',
+            ]
         ];
     }
 
@@ -67,7 +74,7 @@ class Label extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'type' => '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服评价,8=;默认1;',
+            'type' => '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
             'name' => '标签',
             'description' => '详细描述',
             'created_at' => '创建时间',
@@ -76,10 +83,18 @@ class Label extends Model
     }
 
     /**
+     * @return array
+     */
+    public static function getLabelList()
+    {
+        return self::$labelList;
+    }
+
+    /**
      * @return \think\model\relation\HasMany
      */
     public function getLabelParks()
     {
-        return $this->hasMany(LabelPark::tableNameSuffix(), ['label_id' => 'id']);
+        return $this->hasMany(ucfirst(LabelPark::tableNameSuffix()), 'id', 'label_id');
     }
 }

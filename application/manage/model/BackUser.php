@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\BackUser as BaseBackUser;
+use app\manage\validate\BackUserValidate;
 
 use app\common\model\AuthAssignment;
 use app\common\model\AuthItem;
@@ -84,15 +85,27 @@ use app\manage\model\Upload;
 class BackUser extends BaseBackUser
 {
 
-    //所有账号类型
-    private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return BackUserValidate::load();
+    }
 
     /**
-     * @return array
+     * @param $data
+     * @param string $scene
+     * @return bool
      */
-    public static function getDepartmentList()
-    {
-        return self::$departmentList;
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
     }
 
 }

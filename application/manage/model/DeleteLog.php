@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\DeleteLog as BaseDeleteLog;
+use app\manage\validate\DeleteLogValidate;
 
 use app\manage\model\BackUser;
 
@@ -21,4 +22,26 @@ use app\manage\model\BackUser;
 class DeleteLog extends BaseDeleteLog
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return DeleteLogValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

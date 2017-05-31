@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\ContactRead as BaseContactRead;
+use app\manage\validate\ContactReadValidate;
 
 use app\manage\model\BackUser;
 use app\manage\model\Contact;
@@ -27,4 +28,26 @@ use app\manage\model\Contact;
 class ContactRead extends BaseContactRead
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return ContactReadValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

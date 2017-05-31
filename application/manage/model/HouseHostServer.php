@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\HouseHostServer as BaseHouseHostServer;
+use app\manage\validate\HouseHostServerValidate;
 
 use app\manage\model\BackUser;
 use app\manage\model\HouseHost;
@@ -23,4 +24,26 @@ use app\manage\model\HouseHost;
 class HouseHostServer extends BaseHouseHostServer
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return HouseHostServerValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

@@ -62,15 +62,20 @@ class Config extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'app', 'group', 'order', 'status'], 'integer'],
-            [['value', 'created_at', 'updated_at'], 'required'],
-            [['value'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['title', 'name'], 'string', 'max' => 32],
-            [['type'], 'string', 'max' => 16],
-            [['options'], 'string', 'max' => 255],
-            [['tip'], 'string', 'max' => 100],
-            [['name'], 'unique'],
+            'rule'=>[
+                ['group','number','分组 不是数值'],
+                ['order','number','排序 不是数值'],
+                ['status','in:0,1','状态标识 无效'],
+                ['is_delete','in:0,1','时效标识 无效'],
+                ['app','in:0,1','应用标识 无效'],
+                ['title','max:32'],
+                ['name','max:32'],
+                ['type','max:16'],
+                ['options','max:255'],
+                ['tip','max:100'],
+            ],
+            'msg'=>[
+            ]
         ];
     }
 
@@ -96,4 +101,21 @@ class Config extends Model
             'status' => '状态',
         ];
     }
+
+
+    //所有应用类型
+    private static $appList = ['0'=>'后台','1'=>'前台'];
+
+    public static function getAppList(){
+        return self::$appList;
+    }
+
+
+    //所有标签类型
+    private static $typeList = ['array'=>'数组','num'=>'数值','picture'=>'图片','select'=>'选择','text'=>'短文本','textarea'=>'长文本','toggle'=>'开关'];
+
+    public static function getTypeList(){
+        return self::$typeList;
+    }
+
 }

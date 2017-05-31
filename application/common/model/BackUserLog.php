@@ -93,6 +93,6 @@ class BackUserLog extends Model
      */
     public function getBackUser()
     {
-        return $this->hasOne(BackUser::tableNameSuffix(), ['id' => 'back_user_id']);
+        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id');
     }
 }

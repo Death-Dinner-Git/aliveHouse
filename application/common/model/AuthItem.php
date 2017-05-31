@@ -93,7 +93,7 @@ class AuthItem extends Model
      */
     public function getAuthAssignments()
     {
-        return $this->hasMany(AuthAssignment::tableNameSuffix(), ['item_name' => 'name']);
+        return $this->hasMany(ucfirst(AuthAssignment::tableNameSuffix()), 'name','item_name');
     }
 
     /**
@@ -101,7 +101,7 @@ class AuthItem extends Model
      */
     public function getBackUsers()
     {
-        return $this->hasMany(BackUser::tableNameSuffix(), ['id' => 'back_user_id'])->viaTable('{{%back_auth_assignment}}', ['item_name' => 'name']);
+        return $this->hasMany(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id')->viaTable('{{%back_auth_assignment}}', ['item_name' => 'name']);
     }
 
     /**
@@ -109,7 +109,7 @@ class AuthItem extends Model
      */
     public function getRuleName()
     {
-        return $this->hasOne(AuthRule::tableNameSuffix(), ['name' => 'rule_name']);
+        return $this->hasOne(ucfirst(AuthRule::tableNameSuffix()), 'rule_name', 'name');
     }
 
     /**
@@ -117,7 +117,7 @@ class AuthItem extends Model
      */
     public function getAuthItemChildren()
     {
-        return $this->hasMany(AuthItemChild::tableNameSuffix(), ['parent' => 'name']);
+        return $this->hasMany(ucfirst(AuthItemChild::tableNameSuffix()), 'name' ,'parent' );
     }
 
     /**
@@ -125,7 +125,7 @@ class AuthItem extends Model
      */
     public function getAuthItemChildren0()
     {
-        return $this->hasMany(AuthItemChild::tableNameSuffix(), ['child' => 'name']);
+        return $this->hasMany(ucfirst(AuthItemChild::tableNameSuffix()), 'name', 'child' );
     }
 
     /**
@@ -133,7 +133,7 @@ class AuthItem extends Model
      */
     public function getChildren()
     {
-        return $this->hasMany(AuthItem::tableNameSuffix(), ['name' => 'child'])->viaTable('{{%back_auth_item_child}}', ['parent' => 'name']);
+        return $this->hasMany(ucfirst(AuthItem::tableNameSuffix()),  'child','name')->viaTable('{{%back_auth_item_child}}', ['parent' => 'name']);
     }
 
     /**
@@ -141,7 +141,7 @@ class AuthItem extends Model
      */
     public function getParents()
     {
-        return $this->hasMany(AuthItem::tableNameSuffix(), ['name' => 'parent'])->viaTable('{{%back_auth_item_child}}', ['child' => 'name']);
+        return $this->hasMany(ucfirst(AuthItem::tableNameSuffix()), 'parent','name')->viaTable('{{%back_auth_item_child}}', ['child' => 'name']);
     }
 
     /**
@@ -149,7 +149,7 @@ class AuthItem extends Model
      */
     public function getBans()
     {
-        return $this->hasMany(Ban::tableNameSuffix(), ['item_name' => 'name']);
+        return $this->hasMany(ucfirst(Ban::tableNameSuffix()), 'name','item_name');
     }
 
     /**
@@ -157,6 +157,6 @@ class AuthItem extends Model
      */
     public function getBackUsers0()
     {
-        return $this->hasMany(BackUser::tableNameSuffix(), ['id' => 'back_user_id'])->viaTable('{{%back_ban}}', ['item_name' => 'name']);
+        return $this->hasMany(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id')->viaTable('{{%back_ban}}', ['item_name' => 'name']);
     }
 }

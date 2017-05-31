@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\Guest as BaseGuest;
+use app\manage\validate\GuestValidate;
 
 use app\manage\model\GuestServer;
 use app\manage\model\TakeOrder;
@@ -34,4 +35,26 @@ use app\manage\model\Walk;
 class Guest extends BaseGuest
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return GuestValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

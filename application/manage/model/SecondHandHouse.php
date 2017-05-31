@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\SecondHandHouse as BaseSecondHandHouse;
+use app\manage\validate\SecondHandHouseValidate;
 use app\manage\model\HouseHost;
 use app\manage\model\City;
 
@@ -27,4 +28,26 @@ use app\manage\model\City;
 class SecondHandHouse extends BaseSecondHandHouse
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return SecondHandHouseValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

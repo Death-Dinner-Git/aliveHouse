@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\Label as BaseLabel;
+use app\manage\validate\LabelValidate;
 
 use app\manage\model\LabelPark;
 
@@ -22,4 +23,26 @@ use app\manage\model\LabelPark;
 class Label extends BaseLabel
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return LabelValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

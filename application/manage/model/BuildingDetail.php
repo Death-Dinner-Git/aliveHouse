@@ -3,6 +3,7 @@
 namespace app\manage\model;
 
 use app\common\model\BuildingDetail as BaseBuildingDetail;
+use app\manage\validate\BuildingDetailValidate;
 
 use app\manage\model\BuildingBase;
 
@@ -23,4 +24,26 @@ use app\manage\model\BuildingBase;
 class BuildingDetail extends BaseBuildingDetail
 {
 
+    /**
+     * @return Object|\think\Validate
+     */
+    public static function getValidate(){
+        return BuildingDetailValidate::load();
+    }
+
+    /**
+     * @param $data
+     * @param string $scene
+     * @return bool
+     */
+    public static function check($data,$scene = ''){
+        $validate = self::getValidate();
+
+        //设定场景
+        if (is_string($scene) && $scene !== ''){
+            $validate->scene($scene);
+        }
+
+        return $validate->check($data);
+    }
 }

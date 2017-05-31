@@ -13,6 +13,17 @@ use think\Config;
 class Model extends \think\Model
 {
 
+    protected static $_helper;
+    /**
+     * @return \app\common\components\Helper
+     */
+    public static function getHelper(){
+        if (!self::$_helper){
+            self::$_helper = \app\common\components\Helper::getInstance();
+        }
+        return self::$_helper;
+    }
+
     private function getTableInformation($path = '',$namespace = ''){
         if (!file_exists($path) || !is_dir($path)){
             return;
