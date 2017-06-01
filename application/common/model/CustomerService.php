@@ -51,17 +51,26 @@ class CustomerService extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $levelList = ['0'=>'普通客服','1'=>'金牌客服'];
+
+    public static function getLevelList(){
+        return self::$levelList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'level', 'back_user_id', 'duration', 'order'], 'integer'],
-            [['back_user_id', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['start_at', 'end_at'], 'string', 'max' => 10],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['level','number','等级 不是数值'],
+                ['back_user_id','number','后台管理员 不是数值'],
+                ['duration','number','有效时间 不是数值'],
+                ['order','number','拖拽顺序 不是数值'],
+            ],
+            'msg'=>[]
         ];
     }
 

@@ -49,10 +49,29 @@ class UserController extends ManageController
      * @param $id
      * @return string
      */
-    public function resetPasswordAction($id)
+    public function resetPasswordAction($id = 0)
     {
+        $id = intval($id);
+        if (empty($id)){
+            $id = '1';
+        }
         $model = Identity::load()->where(['id'=>$id])->find();
         return view('user/reset',['meta_title'=>'修改密码','model'=>$model]);
+    }
+
+    /**
+     * @description 浏览
+     * @param $id
+     * @return string
+     */
+    public function viewAction($id = 0)
+    {
+        $id = intval($id);
+        if (empty($id)){
+            $id = '1';
+        }
+        $model = Identity::load()->where(['id'=>$id])->find();
+        return view('user/view',['meta_title'=>'个人信息','model'=>$model]);
     }
 
     /**
@@ -91,6 +110,36 @@ class UserController extends ManageController
         $this->assign('typeList', $typeList);
         $this->assign('super', $super);
         return view('user/list');
+    }
+
+    /**
+     * @description Register Home Page
+     * @return \think\response\View
+     */
+    public function registerAction(){
+        $identity = new Identity();
+        $token = request()->request('__token__');
+        $data = (isset($_POST['Register']) ? $_POST['Register'] : []);
+        $departmentList = Identity::getDepartmentList();
+        if ( request()->isPost() && $token && $data){
+            // 调用当前模型对应的Identity验证器类进行数据验证
+//            $data['__token__'] = $token;
+            $validate = Identity::getValidate();
+            $validate->scene('register');
+            if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
+                $res = $identity->signUp($data);
+                if($res){
+                    if ($res instanceof Identity){
+                        $this->success('注册成功','login');
+                    }else{
+                        $this->error($res, 'register','',1);
+                    }
+                }
+            }else{
+                $this->error($validate->getError(), 'register','',1);
+            }
+        }
+        return view('user/create',['meta_title'=>'会员注册','departmentList'=>$departmentList]);
     }
 
     /**

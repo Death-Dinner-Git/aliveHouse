@@ -3,7 +3,6 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\common\model\Region;
 use app\manage\model\City;
 use think\Request;
 
@@ -18,24 +17,24 @@ class CityController extends ManageController
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
+        $param = ['name'=>'','level'=>''];
         $query = City::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
+            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' ';
             $query = $query->where($nameWhere);
         }
-        $typeList = City::getCityList();
+        $typeList = City::getLevelList();
         if ($type && $type != ''){
-            $param['type'] = trim($type);
+            $param['level'] = trim($type);
             if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['type'=>$type]);
+                $where =  array_merge($where, ['level'=>$type]);
             }
         }
         $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
         $count = City::load()->where($where)->count();
 
-        $this->assign('meta_title', "标签清单");
+        $this->assign('meta_title', "城市清单");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
@@ -66,7 +65,7 @@ class CityController extends ManageController
                 foreach ($region as $key => $value){
                     switch ($key){
                         case 'id':{$data['region_id'] = $value;}break;
-                        case 'level':{$data['level'] = $value;}break;
+                        case 'level':{$data['level'] = $value == '0'? '2': $value;}break;
                         case 'order':{$data['order'] = $value;}break;
                         case 'code':{$data['code'] = $value;}break;
                         case 'name_en':{$data['name_en'] = $value;}break;
@@ -77,7 +76,7 @@ class CityController extends ManageController
                 }
             }else{
                 $data['region_id'] = '1';
-                $data['level'] = '0';
+                $data['level'] = '2';
                 $data['order'] = '1';
                 $data['code'] = '1';
                 $data['name_en'] = 'NOT';
@@ -102,48 +101,54 @@ class CityController extends ManageController
     }
 
     /**
-     * 保存新建的资源
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
-     */
-    public function saveAction(Request $request)
-    {
-        //
-    }
-
-    /**
      * 显示指定的资源
      *
      * @param  int  $id
      * @return \think\Response
      */
-    public function readAction($id)
+    public function viewAction($id)
     {
-        //
-    }
-
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function editAction($id)
-    {
-        //
+        $this->assign('meta_title', "详情");
+        $model = Config::load()->where(['id'=>$id])->find();
+        return view('config/view',['model'=>$model]);
     }
 
     /**
      * 保存更新的资源
      *
-     * @param  \think\Request  $request
      * @param  int  $id
-     * @return \think\Response
+     * @return \think\Response|string
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction($id)
     {
-        //
+        $where = ['is_delete'=>'1'];
+        $config = new Config();
+        $configList = Config::getTypeList();
+        $appList = Config::getAppList();
+        $model = Config::load()->where(['id'=>$id])->where($where)->find();
+        if (!$model){
+            return '';
+        }
+
+        if ($this->getRequest()->isPost()){
+            $data = (isset($_POST['Config']) ? $_POST['Config'] : []);
+            $data['updated_at'] = date('Y-m-d H:i:s');
+            $data['created_at'] = date('Y-m-d H:i:s');
+            if ($data){
+                $validate = Config::getValidate();
+                $validate->scene('update');
+                if ($validate->check($data) && Config::update($data,['id'=>$id])){
+                    $this->success('更新成功','create','',1);
+                }else{
+                    $error = $validate->getError();
+                    if (empty($error)){
+                        $error = $config->getError();
+                    }
+                    $this->error($error, 'create','',1);
+                }
+            }
+        }
+        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
     }
 
     /**
@@ -154,6 +159,13 @@ class CityController extends ManageController
      */
     public function deleteAction($id)
     {
-        //
+        $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
+        if ($this->getRequest()->isAjax()){
+            $result = Config::update(['is_delete'=>'0'],['id'=>$id]);
+            if ($result){
+                $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
+            }
+        }
+        return json($ret);
     }
 }

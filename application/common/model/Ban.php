@@ -41,18 +41,24 @@ class Ban extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $banList = ['0'=>'允许','1'=>'禁止'];
+
+    public static function getBanList(){
+        return self::$banList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['item_name', 'back_user_id', 'created_at'], 'required'],
-            [['back_user_id', 'ban'], 'integer'],
-            [['created_at'], 'safe'],
-            [['item_name'], 'string', 'max' => 64],
-            [['item_name'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['item_name' => 'name']],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+            'rule'=>[
+                ['back_user_id','number','用户 无效'],
+                ['ban','in:0,1','权限 无效'],
+                ['item_name','max:64',],
+            ],
+            'msg'=>[]
         ];
     }
 

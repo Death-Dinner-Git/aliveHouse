@@ -3,9 +3,9 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use think\Request;
+use app\manage\model\Ban;
 
-class NoticeController extends ManageController
+class BanController extends ManageController
 {
     /**
      * @description 显示资源列表
@@ -156,4 +156,5 @@ class NoticeController extends ManageController
         }
         return json($ret);
     }
+
 }

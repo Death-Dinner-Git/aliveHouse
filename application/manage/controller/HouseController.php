@@ -5,8 +5,49 @@ namespace app\manage\controller;
 use app\common\controller\ManageController;
 use think\Request;
 
-class NoticeController extends ManageController
+class HouseController extends ManageController
 {
+
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+    public function superAction()
+    {
+        //
+    }
+
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+    public function servicesAction()
+    {
+        //
+    }
+
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+    public function transferAction()
+    {
+        //
+    }
+
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+    public function receiveAction()
+    {
+        //
+    }
+
     /**
      * @description 显示资源列表
      * @param int $pageNumber

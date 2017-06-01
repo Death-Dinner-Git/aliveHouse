@@ -69,10 +69,10 @@
 
 <body>
 <div>
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend style="text-align: center;padding-right: 100px;">{$meta_title ? $meta_title : '表单'}</legend>
-        <div style="display:flex; margin: 15px;">
-            <div style="margin:auto;width: auto;height: auto;">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;position: relative;">
+        <legend style="position: absolute;left: 38%;top: -15px;">{$meta_title ? $meta_title : '表单'}</legend>
+        <div style="display: flex;">
+            <div style="margin: auto;width: 800px;margin-top: 80px;">
                 <form class="layui-form" method="post" id="updateUser" action="/manage/user/update.html?id={$model.id}">
 
                     {:token()}

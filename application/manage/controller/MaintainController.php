@@ -17,6 +17,8 @@ class MaintainController extends ManageController
         //
     }
 
+    public function companyAction(){}
+
     /**
      * 网站主题维护
      *

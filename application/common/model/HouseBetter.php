@@ -90,7 +90,7 @@ class HouseBetter extends Model
             'start_at' => '开始时间',
             'end_at' => '结束时间',
             'order' => '拖拽顺序',
-            'status' => '状态;0=失效,1=预定,1=上架,2=下架;默认1;',
+            'status' => '状态;0=失效,1=预定,2=上架,3=下架;默认1;',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];

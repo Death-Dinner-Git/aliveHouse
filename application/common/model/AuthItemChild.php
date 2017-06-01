@@ -42,10 +42,11 @@ class AuthItemChild extends Model
     public function rules()
     {
         return [
-            [['parent', 'child'], 'required'],
-            [['parent', 'child'], 'string', 'max' => 64],
-            [['parent'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['parent' => 'name']],
-            [['child'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['child' => 'name']],
+            'rule'=>[
+                ['parent','max:64',],
+                ['child','max:64',],
+            ],
+            'msg'=>[]
         ];
     }
 

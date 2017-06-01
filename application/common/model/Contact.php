@@ -59,20 +59,28 @@ class Contact extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $readType = ['0'=>'未读','1'=>'已读'];
+
+    public static function getReadType(){
+        return self::$readType;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'home_user_id', 'back_user_id', 'readed'], 'integer'],
-            [['username', 'contact', 'content', 'created_at'], 'required'],
-            [['content'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['username', 'contact', 'email'], 'string', 'max' => 255],
-            [['address'], 'string', 'max' => 200],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
-            [['home_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => HomeUser::tableNameSuffix(), 'targetAttribute' => ['home_user_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['username','max:255',],
+                ['contact','max:255',],
+                ['email','max:255',],
+                ['address','max:200',],
+                ['name_en','max:100',],
+                ['short_name_en','max:10',],
+            ],
+            'msg'=>[]
         ];
     }
 

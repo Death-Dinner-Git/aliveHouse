@@ -3,10 +3,10 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use think\Request;
 
-class NoticeController extends ManageController
+class ServicesController extends ManageController
 {
+    public function onServicesAction(){}
     /**
      * @description 显示资源列表
      * @param int $pageNumber

@@ -5,8 +5,27 @@ namespace app\manage\controller;
 use app\common\controller\ManageController;
 use think\Request;
 
-class NoticeController extends ManageController
+class OrderController extends ManageController
 {
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+    public function superAction()
+    {
+        //
+    }
+
+    /**
+     * 显示创建资源表单页.
+     *
+     * @return \think\Response
+     */
+    public function importAction()
+    {
+        //
+    }
     /**
      * @description 显示资源列表
      * @param int $pageNumber

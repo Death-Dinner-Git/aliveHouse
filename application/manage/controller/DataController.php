@@ -14,12 +14,8 @@ namespace app\manage\controller;
 
 
 use app\common\controller\ManageController;
-use app\manage\model\TakeCarOrder;
-use app\manage\model\OutCar;
-use app\manage\model\City;
-//use app\manage\model\OutCar;
 
-class DatacountController extends ManageController
+class DataController extends ManageController
 {
 
     /**
@@ -27,8 +23,9 @@ class DatacountController extends ManageController
      * @param integer $pageNumber
      * @return string
      */
-    public function countAction($pageNumber = 1)
+    public function indexAction($pageNumber = 1)
     {
+        return '';
             //发单数量、出车数量、行驶公里数、行驶时间、抢单数量
         //出车情况（时间段、地区分组）
         $dataProvider = [];
@@ -72,6 +69,7 @@ class DatacountController extends ManageController
      * @return \think\response\Json
      */
     public function chartAction($start = '',$end = ''){
+        return '';
         $res = [];
 
         $newStart = date('Y-m-d 00:00:00', time() - date('t', time()) * 24 * 60 * 60);

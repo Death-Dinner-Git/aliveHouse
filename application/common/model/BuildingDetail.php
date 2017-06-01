@@ -53,11 +53,14 @@ class BuildingDetail extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'building_base_id'], 'integer'],
-            [['building_base_id', 'description', 'address', 'url', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['description', 'address', 'url'], 'string', 'max' => 255],
-            [['building_base_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuildingBase::tableNameSuffix(), 'targetAttribute' => ['building_base_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['building_base_id','number','楼盘 无效'],
+                ['description','max:255',],
+                ['address','max:255',],
+                ['url','max:255',],
+            ],
+            'msg'=>[]
         ];
     }
 

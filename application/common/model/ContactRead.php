@@ -53,18 +53,25 @@ class ContactRead extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $assignList = ['0'=>'分配','1'=>'自由'];
+
+    public static function getAssignType(){
+        return self::$assignList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'assign', 'back_user_id', 'contact_id'], 'integer'],
-            [['back_user_id', 'contact_id', 'created_at'], 'required'],
-            [['content', 'remark', 'reback'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
-            [['contact_id'], 'exist', 'skipOnError' => true, 'targetClass' => Contact::tableNameSuffix(), 'targetAttribute' => ['contact_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['assign','number','分配 不是数值'],
+                ['back_user_id','number','后台管理员 不是数值'],
+                ['contact_id','number','联系我们表 不是数值'],
+            ],
+            'msg'=>[]
         ];
     }
 

@@ -57,19 +57,26 @@ class City extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    protected static $_levelList = ['1'=>'省级','2'=>'市级'];
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-//            [['is_delete', 'parent', 'level', 'order'], 'integer'],
-//            [['region_id', 'parent', 'name', 'order', 'code', 'name_en', 'short_name_en'], 'required'],
-//            [['region_id'], 'number'],
-//            [['data'], 'string'],
-//            [['name', 'code', 'name_en'], 'string', 'max' => 100],
-//            [['short_name_en'], 'string', 'max' => 10],
-//            [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::tableNameSuffix(), 'targetAttribute' => ['region_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['parent','number','父级 无效'],
+                ['level','number','等级 无效'],
+                ['order','number','顺序 无效'],
+                ['region_id','number','地区 无效'],
+                ['name','max:100',],
+                ['code','max:100',],
+                ['name_en','max:100',],
+                ['short_name_en','max:10',],
+            ],
+            'msg'=>[]
         ];
     }
 
@@ -113,6 +120,14 @@ class City extends Model
             }
         }
         return $ret;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getLevelList()
+    {
+        return self::$_levelList;
     }
 
 

@@ -65,6 +65,24 @@ class Guest extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $serverList = ['0'=>'已正式客户','1'=>'待开发客户'];
+
+    public static $typeList = ['0'=>'过客','1'=>'客户'];
+
+    public static $levelList = ['0'=>'贵宾','1'=>'普通'];
+
+    public static function getServiceList(){
+        return self::$serverList;
+    }
+
+    public static function getTypeList(){
+        return self::$typeList;
+    }
+
+    public static function getLevelList(){
+        return self::$levelList;
+    }
+
     /**
      * @inheritdoc
      */

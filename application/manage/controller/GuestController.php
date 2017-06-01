@@ -7,12 +7,53 @@ use think\Request;
 
 class GuestController extends ManageController
 {
+
     /**
      * 显示资源列表
      *
      * @return \think\Response
      */
-    public function indexAction()
+    public function importAction()
+    {
+        //
+    }
+
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+    public function assignAction()
+    {
+        //
+    }
+
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+    public function servicesAction()
+    {
+        //
+    }
+
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+    public function onServicesAction()
+    {
+        //
+    }
+
+    /**
+     * 显示资源列表
+     *
+     * @return \think\Response
+     */
+    public function transferAction()
     {
         //
     }
@@ -22,20 +63,100 @@ class GuestController extends ManageController
      *
      * @return \think\Response
      */
-    public function createAction()
+    public function logAction()
     {
         //
     }
 
     /**
-     * 保存新建的资源
+     * 显示创建资源表单页.
      *
-     * @param  \think\Request  $request
      * @return \think\Response
      */
-    public function saveAction(Request $request)
+    public function logDeleteAction()
     {
         //
+    }
+
+    /**
+     * @description 显示资源列表
+     * @param int $pageNumber
+     * @param string $name
+     * @param string $type
+     * @param string $app
+     * @return \think\Response
+     */
+    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    {
+        $where = ['is_delete'=>'1'];
+        $each = 12;
+        $param = ['name'=>'','type'=>'','app'=>''];
+        $query = Download::load();
+        if ($name && $name != ''){
+            $param['name'] = trim($name);
+            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
+            $query = $query->where($nameWhere);
+        }
+        $typeList = Download::getTypeList();
+        if (isset($typeList[0])){
+            unset($typeList[0]);
+        }
+        if ($type && $type != ''){
+            $param['type'] = trim($type);
+            if (in_array($type,array_keys($typeList))){
+                $where =  array_merge($where, ['type'=>$type]);
+            }
+        }
+        $appList = Download::getAppList();
+        if ($app && $app != ''){
+            $param['app'] = trim($app);
+            if (in_array($app,array_keys($appList))){
+                $where =  array_merge($where, ['app'=>$app]);
+            }
+        }
+        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
+        $count = Download::load()->where($where)->count();
+
+        $this->assign('meta_title', "标签清单");
+        $this->assign('pages', ceil(($count)/$each));
+        $this->assign('dataProvider', $dataProvider);
+        $this->assign('indexOffset', (($pageNumber-1)*$each));
+        $this->assign('count', $count);
+        $this->assign('param', $param);
+        $this->assign('typeList', $typeList);
+        $this->assign('appList', $appList);
+        return view('config/index');
+    }
+
+    /**
+     * 显示创建资源表单页.| 保存新建的资源
+     *
+     * @return \think\Response
+     */
+    public function createAction()
+    {
+        $config = new Download();
+        $configList = Download::getTypeList();
+        $appList = Download::getAppList();
+        if ($this->getRequest()->isPost()){
+            $data = (isset($_POST['Download']) ? $_POST['Download'] : []);
+            $data['updated_at'] = date('Y-m-d H:i:s');
+            $data['created_at'] = date('Y-m-d H:i:s');
+            if ($data){
+                $validate = Download::getValidate();
+                $validate->scene('create');
+                if ($validate->check($data) && $config->save($data)){
+                    $this->success('添加成功','create','',1);
+                }else{
+                    $error = $validate->getError();
+                    if (empty($error)){
+                        $error = $config->getError();
+                    }
+                    $this->error($error, 'create','',1);
+                }
+            }
+        }
+        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
     }
 
     /**
@@ -44,32 +165,49 @@ class GuestController extends ManageController
      * @param  int  $id
      * @return \think\Response
      */
-    public function readAction($id)
+    public function viewAction($id)
     {
-        //
-    }
-
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function editAction($id)
-    {
-        //
+        $this->assign('meta_title', "详情");
+        $model = Download::load()->where(['id'=>$id])->find();
+        return view('config/view',['model'=>$model]);
     }
 
     /**
      * 保存更新的资源
      *
-     * @param  \think\Request  $request
      * @param  int  $id
-     * @return \think\Response
+     * @return \think\Response|string
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction($id)
     {
-        //
+        $where = ['is_delete'=>'1'];
+        $config = new Download();
+        $configList = Download::getTypeList();
+        $appList = Download::getAppList();
+        $model = Download::load()->where(['id'=>$id])->where($where)->find();
+        if (!$model){
+            return '';
+        }
+
+        if ($this->getRequest()->isPost()){
+            $data = (isset($_POST['Download']) ? $_POST['Download'] : []);
+            $data['updated_at'] = date('Y-m-d H:i:s');
+            $data['created_at'] = date('Y-m-d H:i:s');
+            if ($data){
+                $validate = Download::getValidate();
+                $validate->scene('update');
+                if ($validate->check($data) && Download::update($data,['id'=>$id])){
+                    $this->success('更新成功','create','',1);
+                }else{
+                    $error = $validate->getError();
+                    if (empty($error)){
+                        $error = $config->getError();
+                    }
+                    $this->error($error, 'create','',1);
+                }
+            }
+        }
+        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
     }
 
     /**
@@ -80,6 +218,13 @@ class GuestController extends ManageController
      */
     public function deleteAction($id)
     {
-        //
+        $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
+        if ($this->getRequest()->isAjax()){
+            $result = Download::update(['is_delete'=>'0'],['id'=>$id]);
+            if ($result){
+                $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
+            }
+        }
+        return json($ret);
     }
 }

@@ -59,12 +59,14 @@ class BackUserLog extends Model
     public function rules()
     {
         return [
-            [['back_user_id', 'route', 'url', 'user_agent', 'ip'], 'required'],
-            [['back_user_id'], 'integer'],
-            [['gets', 'posts', 'target'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['route', 'url', 'user_agent', 'ip'], 'string', 'max' => 255],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+            'rule'=>[
+                ['back_user_id','number','用户 无效'],
+                ['route','max:255',],
+                ['url','max:255',],
+                ['user_agent','max:255',],
+                ['ip','max:255',],
+            ],
+            'msg'=>[]
         ];
     }
 

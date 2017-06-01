@@ -2846,6 +2846,10 @@ ul.states li {
     display: block;
 }
 
+.panel-default > .panel-collapse > .panel-body {
+    padding: 15px;
+}
+
 .panel-default > .panel-heading {
     color: #333;
     background-color: #fafafa;

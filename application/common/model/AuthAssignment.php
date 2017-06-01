@@ -46,12 +46,11 @@ class AuthAssignment extends Model
     public function rules()
     {
         return [
-            [['item_name', 'back_user_id', 'created_at'], 'required'],
-            [['back_user_id'], 'integer'],
-            [['created_at'], 'safe'],
-            [['item_name'], 'string', 'max' => 64],
-            [['item_name'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::tableNameSuffix(), 'targetAttribute' => ['item_name' => 'name']],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+            'rule'=>[
+                ['back_user_id','number','用户 无效'],
+                ['item_name','max:64',],
+            ],
+            'msg'=>[]
         ];
     }
 

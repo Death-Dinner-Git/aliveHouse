@@ -45,10 +45,10 @@ class AuthRule extends Model
     public function rules()
     {
         return [
-            [['name', 'created_at', 'updated_at'], 'required'],
-            [['data'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 64],
+            'rule'=>[
+                ['name','max:64',],
+            ],
+            'msg'=>[]
         ];
     }
 

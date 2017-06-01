@@ -63,12 +63,12 @@ class AuthItem extends Model
     public function rules()
     {
         return [
-            [['name', 'type', 'created_at', 'updated_at'], 'required'],
-            [['type'], 'integer'],
-            [['description', 'data'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name', 'rule_name'], 'string', 'max' => 64],
-            [['rule_name'], 'exist', 'skipOnError' => true, 'targetClass' => AuthRule::tableNameSuffix(), 'targetAttribute' => ['rule_name' => 'name']],
+            'rule'=>[
+                ['type','number','类型 无效'],
+                ['name','max:64',],
+                ['rule_name','max:64',],
+            ],
+            'msg'=>[]
         ];
     }
 

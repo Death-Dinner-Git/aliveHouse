@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2017-05-26 22:12:34
--- 服务器版本： 10.1.9-MariaDB-log
+-- Generation Time: 2017-06-01 18:22:50
+-- 服务器版本： 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -32,6 +32,13 @@ CREATE TABLE IF NOT EXISTS `ah_auth_assignment` (
   `created_at` datetime NOT NULL COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- 转存表中的数据 `ah_auth_assignment`
+--
+
+INSERT INTO `ah_auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
+('前端权限', 1, '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +55,14 @@ CREATE TABLE IF NOT EXISTS `ah_auth_item` (
   `updated_at` datetime NOT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- 转存表中的数据 `ah_auth_item`
+--
+
+INSERT INTO `ah_auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
+('/home/*', 2, NULL, NULL, NULL, '2017-05-27 00:00:00', '2017-05-27 00:00:00'),
+('前端权限', 1, NULL, NULL, NULL, '2017-05-27 00:00:00', '2017-05-27 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -58,6 +73,13 @@ CREATE TABLE IF NOT EXISTS `ah_auth_item_child` (
   `parent` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限上级',
   `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限下级'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='权限上下级关系';
+
+--
+-- 转存表中的数据 `ah_auth_item_child`
+--
+
+INSERT INTO `ah_auth_item_child` (`parent`, `child`) VALUES
+('前端权限', '/home/*');
 
 -- --------------------------------------------------------
 
@@ -121,7 +143,15 @@ CREATE TABLE IF NOT EXISTS `ah_back_user` (
   `registered_at` datetime DEFAULT NULL COMMENT '注册时间',
   `logined_at` datetime DEFAULT NULL COMMENT '登录时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
+
+--
+-- 转存表中的数据 `ah_back_user`
+--
+
+INSERT INTO `ah_back_user` (`id`, `is_delete`, `code`, `department_id`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
+(1, 1, '888888', 1, '10086110000', 0, NULL, 0, 'username', '888888', 'nickname', 'realName', NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, NULL, NULL),
+(4, 1, '8888888', 1, '10086110001', 0, NULL, 0, 'usernames', '888888', 'nickname', 'realName', NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -187,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `ah_city` (
   `id` bigint(20) NOT NULL,
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `region_id` double NOT NULL COMMENT '地区父级',
-  `parent` bigint(20) NOT NULL,
+  `parent` bigint(20) DEFAULT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `level` tinyint(1) DEFAULT '2' COMMENT '等级;0=全国,1=省级,2=市级,3=县级',
   `order` bigint(20) NOT NULL,
@@ -195,7 +225,32 @@ CREATE TABLE IF NOT EXISTS `ah_city` (
   `name_en` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `short_name_en` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `data` text COLLATE utf8_unicode_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='省市县行政区';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='省市县行政区';
+
+--
+-- 转存表中的数据 `ah_city`
+--
+
+INSERT INTO `ah_city` (`id`, `is_delete`, `region_id`, `parent`, `name`, `level`, `order`, `code`, `name_en`, `short_name_en`, `data`) VALUES
+(1, 1, 22, NULL, '海南省', 1, 0, '460000', 'Hainan Sheng', 'HI', NULL),
+(2, 1, 267, 1, '海口', 2, 0, '460100', 'Haikou Shi', 'HAK', NULL),
+(3, 1, 268, 1, '三亚', 2, 0, '460200', 'Sanya Shi', 'SYX', NULL),
+(4, 1, 2578, 1, '儋州', 2, 0, '469003', 'Danzhou Shi', '2', NULL),
+(5, 1, 2577, 1, '琼海', 2, 0, '469002', 'Qionghai Shi', '2', NULL),
+(6, 1, 2579, 1, '文昌', 2, 0, '469005', 'Wenchang Shi', '2', NULL),
+(7, 1, 2580, 1, '万宁', 2, 0, '469006', 'Wanning Shi', '2', NULL),
+(8, 1, 2576, 1, '五指山', 2, 0, '469001', 'Wuzhishan Qu', '2', NULL),
+(9, 1, 2581, 1, '东方', 2, 0, '469007', 'Dongfang Shi', '2', NULL),
+(10, 1, 2582, 1, '定安', 2, 0, '469021', 'Ding,an Xian', '2', NULL),
+(11, 1, 2583, 1, '屯昌', 2, 0, '469022', 'Tunchang Xian', '2', NULL),
+(12, 1, 2584, 1, '澄迈', 2, 0, '469023', 'Chengmai Xian', '2', NULL),
+(13, 1, 2585, 1, '临高', 2, 0, '469024', 'Lingao Xian', '2', NULL),
+(14, 1, 2586, 1, '白沙', 2, 0, '469025', 'Baisha Lizu Zizhixian', '2', NULL),
+(15, 1, 2587, 1, '昌江', 2, 0, '469026', 'Changjiang Lizu Zizhixian', '2', NULL),
+(16, 1, 2588, 1, '乐东', 2, 0, '469027', 'Ledong Lizu Zizhixian', '2', NULL),
+(17, 1, 2589, 1, '陵水', 2, 0, '469028', 'Lingshui Lizu Zizhixian', '2', NULL),
+(18, 1, 2590, 1, '保亭', 2, 0, '469029', 'Baoting Lizu Miaozu Zizhixian', '2', NULL),
+(19, 1, 2591, 1, '琼中', 2, 0, '469030', 'Qiongzhong Lizu Miaozu Zizhixian', '2', NULL);
 
 -- --------------------------------------------------------
 
@@ -208,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `ah_config` (
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `app` tinyint(1) unsigned DEFAULT '0' COMMENT '应用;0=后台;1=前台;',
   `title` varchar(32) NOT NULL DEFAULT '' COMMENT '配置标题',
-  `name` varchar(32) DEFAULT NULL COMMENT '配置名称',
+  `name` varchar(32) DEFAULT NULL COMMENT '配置标识',
   `value` text NOT NULL COMMENT '配置值',
   `group` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '配置分组',
   `type` varchar(16) NOT NULL DEFAULT '' COMMENT '配置类型',
@@ -346,7 +401,14 @@ CREATE TABLE IF NOT EXISTS `ah_department` (
   `level` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '等级;0=无效;1=默认;',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='部门表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='部门表';
+
+--
+-- 转存表中的数据 `ah_department`
+--
+
+INSERT INTO `ah_department` (`id`, `is_delete`, `remark`, `name`, `parent`, `code`, `order`, `level`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, '部门一', NULL, '000000', 0, 1, '2017-05-27 00:00:00', '2017-05-27 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -473,7 +535,7 @@ CREATE TABLE IF NOT EXISTS `ah_hot` (
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `is_passed` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核;0=未通过,1=审核中,2=已通过;默认1;',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=默认,1=首页,2=新房,3=二手房,4=楼房,5=联系我们;默认1;',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=默认,1=首页,2=新房,3=二手房,4=出租,5=楼房,6=客服,7=交易,;默认1;',
   `url` varchar(255) DEFAULT NULL COMMENT '图片地址',
   `target` varchar(255) DEFAULT NULL COMMENT '目标地址',
   `title` varchar(80) DEFAULT NULL COMMENT '标题',
@@ -481,7 +543,7 @@ CREATE TABLE IF NOT EXISTS `ah_hot` (
   `end_at` varchar(10) DEFAULT NULL COMMENT '结束时间',
   `order` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '拖拽顺序',
   `app` tinyint(1) NOT NULL DEFAULT '1' COMMENT '应用;0=后台;1=前台;',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态;0=失效,1=预定,1=上架,2=下架;默认1;',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态;0=失效,1=预定,2=上架,3=下架;默认1;',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='推荐表';
@@ -555,9 +617,9 @@ CREATE TABLE IF NOT EXISTS `ah_house_host_server` (
 CREATE TABLE IF NOT EXISTS `ah_label` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服评价,8=;默认1;',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
   `name` varchar(32) NOT NULL COMMENT '标签',
-  `description` varchar(255) NOT NULL COMMENT '详细描述',
+  `description` varchar(255) DEFAULT NULL COMMENT '详细描述',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='标签表';
@@ -573,7 +635,7 @@ CREATE TABLE IF NOT EXISTS `ah_label_park` (
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `label_id` bigint(20) NOT NULL COMMENT '标签表ID',
   `target_id` bigint(20) NOT NULL COMMENT '目标表ID;根据type值外联',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服评价,8=;默认1;',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
   `name` varchar(32) NOT NULL COMMENT '标签',
   `description` varchar(255) NOT NULL COMMENT '详细描述',
   `created_at` datetime NOT NULL COMMENT '创建时间',
@@ -594,7 +656,7 @@ CREATE TABLE IF NOT EXISTS `ah_menu` (
   `order` int(11) DEFAULT NULL COMMENT '排序',
   `type` tinyint(1) DEFAULT '1' COMMENT '菜单类型',
   `data` text COMMENT '补充'
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8 COMMENT='菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=279 DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
 --
 -- 转存表中的数据 `ah_menu`
@@ -602,44 +664,106 @@ CREATE TABLE IF NOT EXISTS `ah_menu` (
 
 INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`) VALUES
 (1, '控制面板', NULL, '/manage/index/home', 0, 1, '{"li_class":"","a_class":"Index-Home","i_class":"fa fa-circle-o"}'),
-(2, '我的面板', NULL, NULL, 1, 1, '{"li_class":"","a_class":"User","i_class":"fa fa-circle-o"}'),
-(3, '账号管理', NULL, NULL, 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(4, '数据统计', NULL, NULL, 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(5, '行驶记录', NULL, NULL, 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(6, '维护管理', NULL, NULL, 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(7, '车辆管理', NULL, NULL, 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(8, '工资结算', NULL, NULL, 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(9, '网站维护', NULL, NULL, 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(10, '系统配置', NULL, NULL, 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(11, '意见反馈', NULL, '/manage/about/contact', 10, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(12, '友情链接', NULL, '/manage/links/links', 11, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(28, '个人信息', 2, '/manage/user/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(29, '修改密码', 2, '/manage/user/reset-password', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(30, '日志信息', 2, '/manage/user/log', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(36, '超级管理', 3, '/manage/manage/super', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(37, '账号管理', 3, '/manage/manager/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(44, '数据统计', 4, '/manage/data/view', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(51, '行驶记录', 5, '/manage/travel/log', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(60, '维护列表', 6, '/manage/warranty/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(70, '安排出车', 7, '/manage/car/out', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(71, '抢单管理', 7, '/manage/car/transaction', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(72, '点评管理', 7, '/manage/car/comments', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(73, '车辆管理', 7, '/manage/car/update', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(74, '司机管理', 7, '/manage/car/driver', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(80, '工资结算', 8, '/manage/settlement/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(81, '区域时费', 8, '/manage/settlement/tip', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(90, '网站主题', 9, '/manage/maintain/theme', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(91, '数据库管理', 9, '/manage/maintain/database', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(92, '生成页面', 9, '/manage/maintain/page', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(93, '更新缓存', 9, '/manage/maintain/cache', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(100, '基本设置', 10, '/manage/settings/primary', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(101, '站点管理', 10, '/manage/settings/site', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(102, '安全设置', 10, '/manage/settings/safety', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(103, '短信接口设置', 10, '/manage/settings/message', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(104, '推送接口设置', 10, '/manage/settings/push', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(105, '邮箱设置', 10, '/manage/settings/email', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(106, '系统日志管理', 10, '/manage/settings/log', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(107, '防采集管理', 10, '/manage/settings/defend', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}');
+(2, '业务服务', NULL, NULL, 1, 1, '{"li_class":"","a_class":"User","i_class":"fa fa-circle-o"}'),
+(3, '个人信息', NULL, NULL, 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(4, '信息录入', NULL, NULL, 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(5, '房源管理', NULL, NULL, 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(6, '客户管理', NULL, NULL, 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(7, '反馈管理', NULL, NULL, 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(8, '交易管理', NULL, NULL, 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(9, '员工管理', NULL, NULL, 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(10, '广告管理', NULL, NULL, 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(11, '标签管理', NULL, NULL, 10, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(12, '网站维护', NULL, NULL, 11, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(13, '系统配置', NULL, NULL, 12, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(14, '其他管理', NULL, NULL, 13, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(15, '常见问题', NULL, '/manage/index/faq', 14, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(30, '数据统计', 2, '/manage/data/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(31, '跟进服务', 2, '/manage/services/onServices', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(32, '客户抢接', 2, '/manage/guest/services', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(33, '房源抢接', 2, '/manage/house/services', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(34, '反馈抢接', 2, '/manage/contact/services', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(35, '服务清单', 2, '/manage/services/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(50, '我的信息', 3, '/manage/user/view', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(51, '修改密码', 3, '/manage/user/resetPassword', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(52, '日志信息', 3, '/manage/user/log', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(70, '客户录入', 4, '/manage/guest/create', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(71, '房东录入', 4, '/manage/house_host/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(72, '新房录入', 4, '/manage/new_house/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(73, '二手房录入', 4, '/manage/second_hand_house/create', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(74, '出租录入', 4, '/manage/rent/create', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(75, '楼盘录入', 4, '/manage/build/create', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(76, '交易录入', 4, '/manage/order/create', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(77, '录入清单', 4, '/manage/import/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(90, '我的房源', 5, '/manage/house/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(91, '新房录入', 5, '/manage/new_house/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(92, '二手房录入', 5, '/manage/second_hand_house/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(93, '出租录入', 5, '/manage/rent/create', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(94, '房源抢接', 5, '/manage/house/services', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(95, '房源转接', 5, '/manage/house/transfer', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(96, '房源接收', 5, '/manage/house/receive', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(97, '房源清单', 5, '/manage/house/super', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(98, '楼盘清单', 5, '/manage/house/super', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(110, '我的客户', 6, '/manage/guest/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(111, '客户录入', 6, '/manage/guest/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(112, '房东录入', 6, '/manage/house_host/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(114, '客户分配', 6, '/manage/guest/assign', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(115, '客户抢接', 6, '/manage/guest/services', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(116, '客户转接', 6, '/manage/guest/transfer', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(117, '房源接收', 6, '/manage/house/receive', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(130, '我的反馈', 7, '/manage/contact/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(131, '反馈抢接', 7, '/manage/contact/services', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(132, '反馈清单', 7, '/manage/contact/super', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(133, '反馈分配', 7, '/manage/contact/assign', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(150, '我的交易', 8, '/manage/order/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(151, '交易清单', 8, '/manage/order/super', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(152, '交易录入', 8, '/manage/order/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(170, '管理员清单', 9, '/manage/guest/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(171, '添加管理员', 9, '/manage/user/register', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(172, '权限管理', 9, '/manage/ban/index', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(173, '浏览管理日志', 9, '/manage/guest/log', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(174, '浏览删除日志', 9, '/manage/guest/logDelete', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(175, '客服推荐', 9, '/manage/guest/logDelete', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(190, '首页广告', 10, '/manage/slider/home', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(191, '家装广告', 10, '/manage/slider/homeBetter', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(192, '新房广告', 10, '/manage/slider/newHouse', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(193, '二手房广告', 10, '/manage/slider/secondHandHouse', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(194, '出租广告', 10, '/manage/slider/rent', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(195, '楼盘广告', 10, '/manage/slider/build', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(196, '联系我们广告', 10, '/manage/slider/contact', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(210, '标签清单', 11, '/manage/label/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(211, '标签关联', 11, '/manage/label_park/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(230, '企业信息', 12, '/manage/maintain/company', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(231, '新房资讯', 13, '/manage/newHouse/hot', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(232, '二手房资讯', 12, '/manage/second_hand_house/hot', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(233, '出租资讯', 12, '/manage/rent/hot', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(234, '楼盘资讯', 12, '/manage/build/hot', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(235, '楼市资讯', 12, '/manage/hot/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(236, '客户反馈', 12, '/manage/opinion/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(237, '友情链接', 12, '/manage/links/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(238, '广告录入', 12, '/manage/slider/create', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(239, '网站主题', 12, '/manage/maintain/theme', 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(240, '生成页面', 12, '/manage/maintain/page', 10, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(241, '数据库管理', 12, '/manage/maintain/database', 11, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(242, '清理缓存', 12, '/manage/maintain/cache', 12, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(243, '通知信息', 12, '/manage/notice/index', 13, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(250, '基本设置', 13, '/manage/config/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(251, '站点管理', 13, '/manage/settings/site', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(252, '安全设置', 13, '/manage/settings/safety', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(253, '短信接口设置', 13, '/manage/settings/message', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(254, '推送接口设置', 13, '/manage/settings/push', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(255, '邮箱设置', 13, '/manage/settings/email', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(256, '系统日志管理', 13, '/manage/settings/log', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(257, '防采集管理', 13, '/manage/settings/defend', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(270, '日记管理', 14, '/manage/log/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(271, '删除日志', 14, '/manage/delete/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(272, '部门管理', 14, '/manage/department/index', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(273, '客服推荐', 14, '/manage/customer_service/index', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(274, '上传管理', 14, '/manage/upload/index', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(275, '下载管理', 14, '/manage/download/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(276, '城市管理', 14, '/manage/city/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(277, '前台会员', 14, '/manage/home_user/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(278, '前台会员日志', 14, '/manage/home_user/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}');
 
 -- --------------------------------------------------------
 
@@ -4384,7 +4508,7 @@ CREATE TABLE IF NOT EXISTS `ah_slider` (
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `is_passed` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核;0=未通过,1=审核中,2=已通过;默认1;',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=默认,1=首页,2=新房,3=二手房,4=楼房,5=联系我们;默认1;',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=默认,1=首页,2=新房,3=二手房,4=出租,5=楼房,6=联系我们,;默认1;',
   `url` varchar(255) DEFAULT NULL COMMENT '图片地址',
   `target` varchar(255) DEFAULT NULL COMMENT '目标地址',
   `title` varchar(80) DEFAULT NULL COMMENT '标题',
@@ -4774,7 +4898,7 @@ ALTER TABLE `ah_walk`
 -- AUTO_INCREMENT for table `ah_back_user`
 --
 ALTER TABLE `ah_back_user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `ah_back_user_log`
 --
@@ -4794,7 +4918,7 @@ ALTER TABLE `ah_building_detail`
 -- AUTO_INCREMENT for table `ah_city`
 --
 ALTER TABLE `ah_city`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `ah_config`
 --
@@ -4824,7 +4948,7 @@ ALTER TABLE `ah_delete_log`
 -- AUTO_INCREMENT for table `ah_department`
 --
 ALTER TABLE `ah_department`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `ah_download`
 --
@@ -4879,7 +5003,7 @@ ALTER TABLE `ah_label_park`
 -- AUTO_INCREMENT for table `ah_menu`
 --
 ALTER TABLE `ah_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=108;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=279;
 --
 -- AUTO_INCREMENT for table `ah_new_house`
 --

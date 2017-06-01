@@ -3,39 +3,83 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use think\Request;
+use app\manage\model\LabelPark;
 
 class LabelParkController extends ManageController
 {
     /**
-     * 显示资源列表
-     *
+     * @description 显示资源列表
+     * @param int $pageNumber
+     * @param string $name
+     * @param string $type
      * @return \think\Response
      */
-    public function indexAction()
+    public function indexAction($pageNumber = 1,$name = null, $type = null)
     {
-        //
+        $where = ['is_delete'=>'1'];
+        $each = 10;
+        $param = ['name'=>'','type'=>''];
+        if ($name && $name != ''){
+            $param['name'] = trim($name);
+            $where =  array_merge($where, ['name'=>['like','%'.$name.'%']]);
+        }
+        $typeList = LabelPark::getLabelParkList();
+        if (isset($typeList[0])){
+            unset($typeList[0]);
+        }
+        if ($type && $type != ''){
+            $param['type'] = trim($type);
+            if (in_array($type,array_keys($typeList))){
+                $where =  array_merge($where, ['type'=>$type]);
+            }
+        }
+        $dataProvider = LabelPark::load()->where($where)->page($pageNumber,$each)->select();
+        $count = LabelPark::load()->where($where)->count();
+
+        $this->assign('meta_title', "标签清单");
+        $this->assign('pages', ceil(($count)/$each));
+        $this->assign('dataProvider', $dataProvider);
+        $this->assign('indexOffset', (($pageNumber-1)*$each));
+        $this->assign('count', $count);
+        $this->assign('param', $param);
+        $this->assign('typeList', $typeList);
+        return view('label/index');
     }
 
     /**
-     * 显示创建资源表单页.
+     * 显示创建资源表单页.| 保存新建的资源
      *
      * @return \think\Response
      */
     public function createAction()
     {
-        //
-    }
-
-    /**
-     * 保存新建的资源
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
-     */
-    public function saveAction(Request $request)
-    {
-        //
+        $label = new LabelPark();
+        $labelList = LabelPark::getLabelParkList();
+        if ($this->getRequest()->isPost()){
+            $data = (isset($_POST['LabelPark']) ? $_POST['LabelPark'] : []);
+            $data['updated_at'] = date('Y-m-d H:i:s');
+            $data['created_at'] = date('Y-m-d H:i:s');
+            $result = LabelPark::load()->where(['name'=>$data['name'],'type'=>$data['type']])->find();
+            if ($data){
+                if ($result){
+                    $error = isset($labelList[$data['type']]) ? $labelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
+                    $this->error($error , 'create','',1);
+                }else{
+                    $validate = LabelPark::getValidate();
+                    $validate->scene('create');
+                    if ($validate->check($data) && $label->save($data)){
+                        $this->success('添加成功','create','',1);
+                    }else{
+                        $error = $validate->getError();
+                        if (empty($error)){
+                            $error = $label->getError();
+                        }
+                        $this->error($error, 'create','',1);
+                    }
+                }
+            }
+        }
+        return view('label/create',['meta_title'=>'添加标签','labelList'=>$labelList]);
     }
 
     /**
@@ -44,32 +88,54 @@ class LabelParkController extends ManageController
      * @param  int  $id
      * @return \think\Response
      */
-    public function readAction($id)
+    public function viewAction($id)
     {
-        //
-    }
-
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function editAction($id)
-    {
-        //
+        $this->assign('meta_title', "详情");
+        $model = LabelPark::load()->where(['id'=>$id])->find();
+        return view('label/view',['model'=>$model]);
     }
 
     /**
      * 保存更新的资源
      *
-     * @param  \think\Request  $request
      * @param  int  $id
-     * @return \think\Response
+     * @return \think\Response|string
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction($id)
     {
-        //
+        $where = ['is_delete'=>'1'];
+        $label = new LabelPark();
+        $labelList = LabelPark::getLabelParkList();
+        $model = LabelPark::load()->where(['id'=>$id])->where($where)->find();
+        if (!$model){
+            return '';
+        }
+
+        if ($this->getRequest()->isPost()){
+            $data = (isset($_POST['LabelPark']) ? $_POST['LabelPark'] : []);
+            $data['updated_at'] = date('Y-m-d H:i:s');
+            $data['created_at'] = date('Y-m-d H:i:s');
+            $result = LabelPark::load()->where(['name'=>$data['name'],'type'=>$data['type']])->where($where)->find();
+            if ($data){
+                if ($result){
+                    $error = isset($labelList[$data['type']]) ? $labelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
+                    $this->error($error , 'create','',1);
+                }else{
+                    $validate = LabelPark::getValidate();
+                    $validate->scene('update');
+                    if ($validate->check($data) && LabelPark::update($data,['id'=>$id])){
+                        $this->success('更新成功','create','',1);
+                    }else{
+                        $error = $validate->getError();
+                        if (empty($error)){
+                            $error = $label->getError();
+                        }
+                        $this->error($error, 'create','',1);
+                    }
+                }
+            }
+        }
+        return view('label/update',['meta_title'=>'编辑标签','labelList'=>$labelList,'model'=>$model]);
     }
 
     /**
@@ -80,6 +146,13 @@ class LabelParkController extends ManageController
      */
     public function deleteAction($id)
     {
-        //
+        $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
+        if ( $this->getRequest()->isAjax()){
+            $result = LabelPark::update(['is_delete'=>'0'],['id'=>$id]);
+            if ($result){
+                $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
+            }
+        }
+        return json($ret);
     }
 }

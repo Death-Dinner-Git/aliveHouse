@@ -52,6 +52,12 @@ class Department extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $levelList = ['0'=>'无效','1'=>'有效'];
+
+    public static function getLevelList(){
+        return self::$levelList;
+    }
+
     /**
      * @inheritdoc
      */
@@ -79,7 +85,7 @@ class Department extends Model
             'parent' => '上级',
             'code' => '编号',
             'order' => '顺序',
-            'level' => '等级;0=无效;1=默认;',
+            'level' => '等级;0=无效;1=有效;',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];

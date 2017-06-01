@@ -49,6 +49,8 @@ class LabelPark extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $labelParkList = ['1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼房','7'=>'客服','8'=>'出租'];
+
     /**
      * @inheritdoc
      */
@@ -74,7 +76,7 @@ class LabelPark extends Model
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'label_id' => '标签表ID',
             'target_id' => '目标表ID;根据type值外联',
-            'type' => '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服评价,8=;默认1;',
+            'type' => '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=出租;默认1;',
             'name' => '标签',
             'description' => '详细描述',
             'created_at' => '创建时间',
@@ -88,5 +90,9 @@ class LabelPark extends Model
     public function getLabel()
     {
         return $this->hasOne(Label::tableNameSuffix(), ['id' => 'label_id']);
+    }
+
+    public static function getLabelParkList(){
+        return self::$labelParkList;
     }
 }

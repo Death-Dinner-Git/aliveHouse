@@ -59,11 +59,14 @@ class BuildingBase extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'type', 'city_id'], 'integer'],
-            [['city_id', 'name', 'address', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name', 'address'], 'string', 'max' => 255],
-            [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => City::tableNameSuffix(), 'targetAttribute' => ['city_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['type','number','类型 无效'],
+                ['city_id','number','城市 无效'],
+                ['name','max:255',],
+                ['address','max:255',],
+            ],
+            'msg'=>[]
         ];
     }
 
