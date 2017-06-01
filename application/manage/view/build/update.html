@@ -1,4 +1,3 @@
-{__NOLAYOUT__}
 <!DOCTYPE html>
 <html>
 
@@ -22,16 +21,19 @@
 
     <style>
         #CreateForm .layui-form-item{
-            font-size: 16px;
+            font-size: 14px;
         }
         #CreateForm .layui-form-item .layui-form-label{
-            width: 130px;
+            width: 100px;
+        }
+        #CreateForm .layui-form-item .layui-input-block{
+            margin-left: 130px;
         }
         #CreateForm .layui-form-item .layui-input-inline{
             width: 220px;
         }
         #CreateForm .layui-form-item .layui-input-inline .layui-input{
-            font-size: 16px;
+            font-size: 14px;
         }
         .help-hint{
             display: block;
@@ -49,8 +51,8 @@
             position: absolute;
             border-radius: 50%;
             margin: 10px;
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             text-align: center;
             vertical-align: middle;
         }
@@ -69,86 +71,80 @@
 
 <body>
 
+<section style="margin: 15px;">
+    <form class="layui-form" method="post" id="CreateForm" style="margin-top: 20px;" action="/manage/build/update.html?iframe=true&id={$model.id}">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属城市:</label>
+            <div class="layui-input-inline">
+                <select name="Building[city_id]" lay-search >
+                    <option value="">选择城市</option>
+                    {volist name="lists" id="item"}
+                    <option value="{$key}" {if condition="$key eq $model.city_id"}selected{/if}>{$item}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="layui-input-inline help-msg">
+                <i class="fa"></i>
+                <label class="help-hint"></label>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">楼盘名称:</label>
+            <div class="layui-input-inline">
+                <input type="text" value="{$model.name}" name="Building[name]" placeholder="楼盘名称" class="layui-input">
+            </div>
+            <div class="layui-input-inline help-msg">
+                <i class="fa"></i>
+                <label class="help-hint"></label>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">楼盘地址:</label>
+            <div class="layui-input-inline">
+                <input type="text" value="{$model.address}" name="Building[address]" placeholder="楼盘地址" class="layui-input">
+            </div>
+            <div class="layui-input-inline help-msg">
+                <i class="fa"></i>
+                <label class="help-hint"></label>
+            </div>
+        </div>
+
+        <div class="more-input">
+
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">楼盘描述:</label>
+                <div class="layui-input-block">
+                    <textarea  name="BuildingDetail[description]" placeholder="请输入楼盘详情" class="layui-textarea" style="max-width: 700px;"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">楼盘图片:</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="" name="BuildingDetail[url]" placeholder="楼盘图片" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <button class="layui-btn" lay-submit="" lay-filter="submit">更新</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</section>
+
 <section>
     <div style="display:flex; margin: 30px;">
         <div style="margin:auto;width: auto;height: auto;margin-top: 50px;">
-            <form class="layui-form" method="post" id="CreateForm" action="/manage/config/update.html?iframe=true&id={$model.id}">
-
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">配置应用:</label>
-                    <div class="layui-input-inline">
-                        <select name="Config[app]" lay-search >
-                            <option>请选择应用</option>
-                            {volist name="appList" id="item"}
-                            <option value="{$key}" {if condition="$key eq $model.app"}selected{/if}>{$item}</option>
-                            {/volist}
-                        </select>
-                    </div>
-                    <div class="layui-input-inline help-msg">
-                        <i class="fa"></i>
-                        <label class="help-hint"></label>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">配置类型:</label>
-                    <div class="layui-input-inline">
-                        <select name="Config[type]" lay-search >
-                            <option>请选择类型</option>
-                            {volist name="configList" id="item"}
-                            <option value="{$key}" {if condition="$key eq $model.type"}selected{/if}>{$item}</option>
-                            {/volist}
-                        </select>
-                    </div>
-                    <div class="layui-input-inline help-msg">
-                        <i class="fa"></i>
-                        <label class="help-hint"></label>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">配置标识:</label>
-                    <div class="layui-input-inline">
-                        <input type="text" value="{$model.name}" name="Config[name]" placeholder="配置标识" class="layui-input">
-                    </div>
-                    <div class="layui-input-inline help-msg">
-                        <i class="fa"></i>
-                        <label class="help-hint"></label>
-                    </div>
-
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">配置此值:</label>
-                    <div class="layui-input-inline">
-                        <input type="text" value="{$model.value}" name="Config[value]" placeholder="配置此值" class="layui-input">
-                    </div>
-                    <div class="layui-input-inline help-msg">
-                        <i class="fa"></i>
-                        <label class="help-hint"></label>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">配置说明:</label>
-                    <div class="layui-input-inline">
-                        <input type="text" value="{$model.title}" name="Config[title]" placeholder="配置说明" class="layui-input">
-                    </div>
-                    <div class="layui-input-inline help-msg">
-                        <i class="fa"></i>
-                        <label class="help-hint"></label>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label"></label>
-                    <div class="layui-input-inline">
-                        <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 </section>

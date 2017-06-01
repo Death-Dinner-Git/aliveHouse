@@ -51,7 +51,6 @@ class Guest extends Model
         'address',
         'email',
         'avatar',
-        'region_id',
         'type',
         'level',
         'created_at',
@@ -89,12 +88,20 @@ class Guest extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'server', 'region_id', 'type', 'level'], 'integer'],
-            [['region_id', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['ID_cards', 'avatar'], 'string', 'max' => 255],
-            [['real_name', 'nickname', 'email'], 'string', 'max' => 64],
-            [['phone', 'address'], 'string', 'max' => 32],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['type','number','类型 无效'],
+                ['server','number','服务 无效'],
+                ['level','number','等级 无效'],
+                ['ID_cards','max:255',],
+                ['avatar','max:255',],
+                ['real_name','max:64',],
+                ['nickname','max:64',],
+                ['email','max:64',],
+                ['phone','max:32',],
+                ['address','max:32',],
+            ],
+            'msg'=>[]
         ];
     }
 
@@ -114,7 +121,6 @@ class Guest extends Model
             'address' => '地址',
             'email' => '邮箱',
             'avatar' => '头像地址',
-            'region_id' => '全国地区表ID',
             'type' => '类型;0=过客,1=客户;默认1;',
             'level' => '等级;0=贵宾,1=普通;默认1;',
             'created_at' => '创建时间',

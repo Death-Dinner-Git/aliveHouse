@@ -25,33 +25,29 @@
         <form class="layui-form layui-form-pane" action="">
             <div class="layui-form-item">
 
-                <label class="layui-form-label">标签:</label>
-                <div class="layui-input-inline">
-                    <input type="text" value="{$param.name}" name="name" placeholder="标签" class="layui-input">
-                </div>
-
-                <label class="layui-form-label">标签类型</label>
+                <label class="layui-form-label">所属城市:</label>
                 <div class="layui-input-inline">
                     <select name="city" lay-search >
-                        <option value="0">全部</option>
-                        {volist name="cityList" id="item"}
+                        <option value="">选择城市</option>
+                        {volist name="lists" id="item"}
                         <option value="{$key}" {if condition="$key eq $param.city"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
 
-                <label class="layui-form-label">应用类型</label>
+                <label class="layui-form-label">楼盘名称:</label>
                 <div class="layui-input-inline">
-                    <select name="app" lay-search >
-                        <option value="2">全部</option>
-                        {volist name="appList" id="item"}
-                        <option value="{$key}" {if condition="$key eq $param.app"}selected{/if}>{$item}</option>
-                        {/volist}
-                    </select>
+                    <input type="text" value="{$param.name}" name="name" placeholder="楼盘名称" class="layui-input">
                 </div>
+
+                <label class="layui-form-label">楼盘地址:</label>
+                <div class="layui-input-inline">
+                    <input type="text" value="{$param.address}" name="address" placeholder="楼盘地址" class="layui-input">
+                </div>
+
                 <button class="layui-btn" lay-submit="">查询</button>
 
-                <label class="layui-btn" onclick="showUrl('添加一个标签','/manage/config/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])">添加</label>
+                <label class="layui-btn" onclick="showUrl('添加一个标签','/manage/build/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])">添加</label>
             </div>
         </form>
     </div>
@@ -61,10 +57,9 @@
     <thead>
     <tr>
         <th>序号</th>
-        <th>配置标识</th>
-        <th>配置说明</th>
-        <th>配置值</th>
-        <th>配置类型</th>
+        <th>楼盘名称</th>
+        <th>所属城市</th>
+        <th>详细地址</th>
         <th style="width:50px; text-align: center">操作</th>
     </tr>
     </thead>
@@ -75,17 +70,16 @@
             {$key+($indexOffset)}
         </td>
         <td style="width: 100px;">{$model.name}</td>
-        <td>{$model.title}</td>
-        <td>{$model.value}</td>
         <td>
-            {if condition="isset($cityList[$model.city_id])"}
-            {$cityList[$model.city_id]}
+            {if condition="isset($lists[$model.city_id])"}
+            {$lists[$model.city_id]}
             {else} 无效
             {/if}
         </td>
+        <td>{$model.address}</td>
         <td style="width: 150px;text-align: center;" class="action">
             <a href="javascript:void(0);">
-                <button onclick="showUrl('编辑标签','/manage/config/update.html?iframe=true&id={$model.id}','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])" class="layui-btn layui-btn-small">
+                <button onclick="showUrl('编辑标签','/manage/build/update.html?iframe=true&id={$model.id}','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])" class="layui-btn layui-btn-small">
                     <i class="fa fa-pencil"></i>
                     编辑
                 </button>
@@ -105,7 +99,7 @@
     function deleteUser(id) {
         $.ajax({
             type : "post",
-            url : '/manage/config/delete?id='+ id,
+            url : '/manage/build/delete?id='+ id,
             dataType : 'json',
             beforeSend : function() {
                 loading();

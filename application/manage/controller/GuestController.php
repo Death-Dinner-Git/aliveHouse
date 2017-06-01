@@ -3,7 +3,11 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use think\Request;
+use app\manage\model\Guest;
+
+use app\manage\model\GuestServer;
+use app\manage\model\TakeOrder;
+use app\manage\model\Walk;
 
 class GuestController extends ManageController
 {
@@ -78,54 +82,55 @@ class GuestController extends ManageController
         //
     }
 
+
     /**
      * @description 显示资源列表
      * @param int $pageNumber
      * @param string $name
-     * @param string $type
-     * @param string $app
+     * @param string $city
+     * @param string $address
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction($pageNumber = 1,$name = null, $city = null,$address = null)
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
-        $query = Download::load();
+        $param = ['name'=>'','city'=>'','address'=>''];
+        $query = Guest::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
+            $nameWhere = ' `name` like '.' \'%'.$name.'%\'';
             $query = $query->where($nameWhere);
         }
-        $typeList = Download::getTypeList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
+        if ($address && $address != ''){
+            $param['address'] = trim($address);
+            $nameWhere = ' `address` like '.' \'%'.$address.'%\'';
+            $query = $query->where($nameWhere);
         }
-        if ($type && $type != ''){
-            $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['type'=>$type]);
+        $lists = Guest::getLevelList();
+        if ($city && $city != ''){
+            $param['city'] = trim($city);
+            if (in_array($city,array_keys($lists))){
+                $where =  array_merge($where, ['city_id'=>$city]);
             }
         }
-        $appList = Download::getAppList();
-        if ($app && $app != ''){
-            $param['app'] = trim($app);
-            if (in_array($app,array_keys($appList))){
-                $where =  array_merge($where, ['app'=>$app]);
-            }
-        }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Download::load()->where($where)->count();
+        $typeLists = Guest::getTypeList();
+        $serverLists = Guest::getServiceList();
 
-        $this->assign('meta_title', "标签清单");
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "楼盘清单");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
-        $this->assign('appList', $appList);
-        return view('config/index');
+        $this->assign('lists', $lists);
+        $this->assign('typeLists', $typeLists);
+        $this->assign('serverLists', $serverLists);
+        return view('guest/index');
     }
 
     /**
@@ -135,28 +140,29 @@ class GuestController extends ManageController
      */
     public function createAction()
     {
-        $config = new Download();
-        $configList = Download::getTypeList();
-        $appList = Download::getAppList();
+        $model = new Guest();
+        $lists = Guest::getLevelList();
+        $typeLists = Guest::getTypeList();
+        $serverLists = Guest::getServiceList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Download']) ? $_POST['Download'] : []);
+            $data = (isset($_POST['Guest']) ? $_POST['Guest'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Download::getValidate();
+                $validate = Guest::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
+                if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return view('guest/create',['meta_title'=>'添加客户','lists'=>$lists, 'typeLists'=>$typeLists, 'serverLists'=>$serverLists]);
     }
 
     /**
@@ -168,7 +174,7 @@ class GuestController extends ManageController
     public function viewAction($id)
     {
         $this->assign('meta_title', "详情");
-        $model = Download::load()->where(['id'=>$id])->find();
+        $model = Guest::load()->where(['id'=>$id])->find();
         return view('config/view',['model'=>$model]);
     }
 
@@ -181,33 +187,39 @@ class GuestController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new Download();
-        $configList = Download::getTypeList();
-        $appList = Download::getAppList();
-        $model = Download::load()->where(['id'=>$id])->where($where)->find();
+        $lists = Guest::getLevelList();
+        $typeLists = Guest::getTypeList();
+        $serverLists = Guest::getServiceList();
+        $model = Guest::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
-
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Download']) ? $_POST['Download'] : []);
+            $data = (isset($_POST['Building']) ? $_POST['Building'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Download::getValidate();
+                $validate = Guest::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && Download::update($data,['id'=>$id])){
+                if ($validate->check($data) && $model::update($data,['id'=>$id])){
                     $this->success('更新成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('guest/update',[
+            'meta_title'=>'添加客户',
+            'model'=>$model,
+            'lists'=>$lists,
+            'typeLists'=>$typeLists,
+            'serverLists'=>$serverLists
+        ]);
+
     }
 
     /**
@@ -220,11 +232,12 @@ class GuestController extends ManageController
     {
         $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
         if ($this->getRequest()->isAjax()){
-            $result = Download::update(['is_delete'=>'0'],['id'=>$id]);
+            $result = Guest::update(['is_delete'=>'0'],['id'=>$id]);
             if ($result){
                 $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
             }
         }
         return json($ret);
     }
+
 }

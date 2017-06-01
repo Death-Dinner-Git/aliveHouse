@@ -24,15 +24,6 @@ use app\manage\model\Department;
  */
 class UserController extends ManageController
 {
-    /**
-     * @description 数据
-     * @return mixed
-     */
-    public function indexAction()
-    {
-        $model = Identity::load()->where(['id'=>'100'])->find();
-        return view('user/index',['meta_title'=>'个人信息','model'=>$model]);
-    }
 
     /**
      * @description 日志
@@ -80,7 +71,7 @@ class UserController extends ManageController
      * @param integer $pageNumber
      * @return string
      */
-    public function listAction($super = false,$pageNumber = 1)
+    public function indexAction($super = false,$pageNumber = 1)
     {
         $where = [];
         $each = 10;
@@ -109,7 +100,7 @@ class UserController extends ManageController
         $this->assign('type', $type);
         $this->assign('typeList', $typeList);
         $this->assign('super', $super);
-        return view('user/list');
+        return view('user/index');
     }
 
     /**

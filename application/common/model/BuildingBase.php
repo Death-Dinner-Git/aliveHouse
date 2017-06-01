@@ -92,7 +92,7 @@ class BuildingBase extends Model
      */
     public function getCity()
     {
-        return $this->hasOne(City::tableNameSuffix(), ['id' => 'city_id']);
+        return $this->hasOne(ucfirst(City::tableNameSuffix()), 'city_id', 'id');
     }
 
     /**
@@ -100,7 +100,7 @@ class BuildingBase extends Model
      */
     public function getBuildingDetails()
     {
-        return $this->hasMany(BuildingDetail::tableNameSuffix(), ['building_base_id' => 'id']);
+        return $this->hasMany(ucfirst(BuildingDetail::tableNameSuffix()), 'id','building_base_id');
     }
 
     /**
@@ -108,7 +108,7 @@ class BuildingBase extends Model
      */
     public function getHouseBetters()
     {
-        return $this->hasMany(HouseBetter::tableNameSuffix(), ['building_base_id' => 'id']);
+        return $this->hasMany(ucfirst(HouseBetter::tableNameSuffix()), 'id', 'building_base_id');
     }
 
     /**
@@ -116,6 +116,6 @@ class BuildingBase extends Model
      */
     public function getNewHouses()
     {
-        return $this->hasMany(NewHouse::tableNameSuffix(), ['building_base_id' => 'id']);
+        return $this->hasMany(ucfirst(NewHouse::tableNameSuffix()), 'id', 'building_base_id');
     }
 }

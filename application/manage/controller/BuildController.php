@@ -17,28 +17,36 @@ class BuildController extends ManageController
      * @param int $pageNumber
      * @param string $name
      * @param string $city
+     * @param string $address
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $city = null)
+    public function indexAction($pageNumber = 1,$name = null, $city = null,$address = null)
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
-        $param = ['name'=>'','city'=>'','app'=>''];
+        $param = ['name'=>'','city'=>'','address'=>''];
         $query = BuildingBase::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
+            $nameWhere = ' `name` like '.' \'%'.$name.'%\'';
             $query = $query->where($nameWhere);
         }
-        $cityList = City::getCityList();
+        if ($address && $address != ''){
+            $param['address'] = trim($address);
+            $nameWhere = ' `address` like '.' \'%'.$address.'%\'';
+            $query = $query->where($nameWhere);
+        }
+        $lists = City::getCityList();
         if ($city && $city != ''){
             $param['city'] = trim($city);
-            if (in_array($city,array_keys($cityList))){
-                $where =  array_merge($where, ['city'=>$city]);
+            if (in_array($city,array_keys($lists))){
+                $where =  array_merge($where, ['city_id'=>$city]);
             }
         }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = BuildingBase::load()->where($where)->count();
+
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
 
         $this->assign('meta_title', "楼盘清单");
         $this->assign('pages', ceil(($count)/$each));
@@ -46,7 +54,7 @@ class BuildController extends ManageController
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('cityList', $cityList);
+        $this->assign('lists', $lists);
         return view('build/index');
     }
 
@@ -57,28 +65,27 @@ class BuildController extends ManageController
      */
     public function createAction()
     {
-        $config = new BuildingBase();
-        $configList = BuildingBase::getTypeList();
-        $appList = BuildingBase::getAppList();
+        $model = new BuildingBase();
+        $lists = City::getCityList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['BuildingBase']) ? $_POST['BuildingBase'] : []);
+            $data = (isset($_POST['Building']) ? $_POST['Building'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
                 $validate = BuildingBase::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
+                if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return view('build/create',['meta_title'=>'添加楼盘','lists'=>$lists,]);
     }
 
     /**
@@ -103,33 +110,31 @@ class BuildController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new BuildingBase();
-        $configList = BuildingBase::getTypeList();
-        $appList = BuildingBase::getAppList();
+        $lists = City::getCityList();
         $model = BuildingBase::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
 
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['BuildingBase']) ? $_POST['BuildingBase'] : []);
+            $data = (isset($_POST['Building']) ? $_POST['Building'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
                 $validate = BuildingBase::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && BuildingBase::update($data,['id'=>$id])){
+                if ($validate->check($data) && $model::update($data,['id'=>$id])){
                     $this->success('更新成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('build/update',['meta_title'=>'更新楼盘','model'=>$model,'lists'=>$lists,]);
     }
 
     /**

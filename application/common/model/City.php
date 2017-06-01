@@ -101,16 +101,17 @@ class City extends Model
     }
 
     /**
-     * @param string $name
+     * @param array|string $where
      * @return array
      */
-    public static function getCityList($name = null)
+    public static function getCityList($where = null)
     {
         $ret = [];
         $query = City::load();
-        if (!empty($name)){
-            $query = $query->where(['name'=>$name]);
+        if (empty($name)){
+            $where = ['level'=>'2'];
         }
+        $query = $query->where($where);
         $result = $query->select();
         if ($result){
             $helper = City::getHelper();
