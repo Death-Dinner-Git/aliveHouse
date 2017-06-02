@@ -41,6 +41,7 @@ use app\manage\model\Upload;
  * @property string $username
  * @property string $password
  * @property string $nickname
+ * @property string $service_name
  * @property string $real_name
  * @property string $head_url
  * @property string $sex

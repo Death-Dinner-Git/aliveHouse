@@ -4,60 +4,55 @@ namespace app\manage\controller;
 
 use app\common\controller\ManageController;
 use app\manage\model\Contact;
+use app\manage\model\CustomerService;
 
 class ContactController extends ManageController
 {
 
     public function servicesAction(){}
 
+
     /**
      * @description 显示资源列表
      * @param int $pageNumber
-     * @param string $name
-     * @param string $type
-     * @param string $app
+     * @param string $key
+     * @param string $status
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction($pageNumber = 1,$key = null, $status = null)
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
+        $param = ['key'=>'','status'=>''];
         $query = Contact::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $query = $query->where($nameWhere);
+        if ($key && $key != ''){
+            $param['key'] = trim($key);
+            $nameWhere = [' `username` like '.' \'%'.$key.'%\''.'or `contact` like '.' \'%'.$key.'%\''.'or `email` like '.' \'%'.$key.'%\''.'or `address` like '.' \'%'.$key.'%\''];
+            $where =  array_merge($where, $nameWhere);
         }
-        $typeList = Contact::getTypeList();
+        $lists = Contact::getReadType();
         if (isset($typeList[0])){
             unset($typeList[0]);
         }
-        if ($type && $type != ''){
-            $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['type'=>$type]);
+        if ($status && $status != ''){
+            $param['status'] = trim($status);
+            if (in_array($status,array_keys($lists))){
+                $where =  array_merge($where, ['readed'=>$status]);
             }
         }
-        $appList = Contact::getAppList();
-        if ($app && $app != ''){
-            $param['app'] = trim($app);
-            if (in_array($app,array_keys($appList))){
-                $where =  array_merge($where, ['app'=>$app]);
-            }
-        }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Contact::load()->where($where)->count();
 
-        $this->assign('meta_title', "标签清单");
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "联系清单");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
-        $this->assign('appList', $appList);
-        return view('config/index');
+        $this->assign('lists', $lists);
+        return view('contact/index');
     }
 
     /**
@@ -67,28 +62,32 @@ class ContactController extends ManageController
      */
     public function createAction()
     {
-        $config = new Contact();
-        $configList = Contact::getTypeList();
-        $appList = Contact::getAppList();
+        $model = new Contact();
+        $lists = CustomerService::getService();
+        $hotLists = CustomerService::getService(true);
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Contact']) ? $_POST['Contact'] : []);
+            $data = (isset($_POST['Building']) ? $_POST['Building'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
                 $validate = Contact::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
-                    $this->success('添加成功','create','',1);
+                if ($validate->check($data) && $model->save($data)){
+                    $this->success('提交成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return view('contact/create',[
+            'meta_title'=>'联系我们',
+            'lists'=>$lists,
+            'hotLists'=>$hotLists,
+        ]);
     }
 
     /**
@@ -101,46 +100,33 @@ class ContactController extends ManageController
     {
         $this->assign('meta_title', "详情");
         $model = Contact::load()->where(['id'=>$id])->find();
-        return view('config/view',['model'=>$model]);
+        return view('config/view',[
+            'meta_title'=>'详情',
+            'model'=>$model
+        ]);
     }
 
     /**
-     * 保存更新的资源
+     * 设置状态
      *
      * @param  int  $id
-     * @return \think\Response|string
+     * @return \think\Response
      */
-    public function updateAction($id)
+    public function readAction($id)
     {
-        $where = ['is_delete'=>'1'];
-        $config = new Contact();
-        $configList = Contact::getTypeList();
-        $appList = Contact::getAppList();
-        $model = Contact::load()->where(['id'=>$id])->where($where)->find();
-        if (!$model){
-            return '';
-        }
-
-        if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Contact']) ? $_POST['Contact'] : []);
-            $data['updated_at'] = date('Y-m-d H:i:s');
-            $data['created_at'] = date('Y-m-d H:i:s');
-            if ($data){
-                $validate = Contact::getValidate();
-                $validate->scene('update');
-                if ($validate->check($data) && Contact::update($data,['id'=>$id])){
-                    $this->success('更新成功','create','',1);
-                }else{
-                    $error = $validate->getError();
-                    if (empty($error)){
-                        $error = $config->getError();
-                    }
-                    $this->error($error, 'create','',1);
-                }
+        $ret = ['code'=>0,'msg'=>'设置失败','delete_id'=>$id];
+        if ($this->getRequest()->isAjax()){
+            $where = ['id'=>$id];
+            $model = Contact::load()->where($where)->find();
+            $read = $model->readed == '2' ? '1' : '2' ;
+            $result = Contact::update(['readed'=>$read],$where);
+            if ($result){
+                $ret = ['code'=>1,'msg'=>'设置成功','readed'=>$read];
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return json($ret);
     }
+
 
     /**
      * 删除指定资源
@@ -159,5 +145,6 @@ class ContactController extends ManageController
         }
         return json($ret);
     }
+
 
 }

@@ -51,12 +51,48 @@ class CustomerService extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $levelList = ['0'=>'普通客服','1'=>'金牌客服'];
+    public static $levelList = ['1'=>'普通客服','2'=>'金牌客服'];
 
     public static function getLevelList(){
         return self::$levelList;
     }
 
+    /**
+     * @param bool $hot
+     * @return array
+     */
+    public static function getService($hot = false){
+        $ret = [];
+        $query = CustomerService::load()->alias('t')
+            ->join([BackUser::tableName()=>'b'],'t.back_user_id = b.id')
+            ->where([
+            't.is_delete'=>'1',
+            'b.is_delete'=>'1',
+                ]);
+        $where = ['t.level'=>'1'];
+        if ($hot){
+            $where = ['t.level'=>'2'];
+        }
+        $result = $query->where($where)->order('t.order','ASC')->select();
+
+        if ($result){
+            $helper = CustomerService::getHelper();
+            $result = $helper::toArray($result);
+            foreach ($result as $value){
+                $name = $value['service_name'];
+                if (empty($name)){
+                    $name = $value['nickname'];
+                }
+                if (empty($name)){
+                    $name = $value['username'];
+                }
+                $ret[$value['back_user_id']] = $name;
+            }
+        }
+
+        return $ret;
+
+    }
     /**
      * @inheritdoc
      */
@@ -82,7 +118,7 @@ class CustomerService extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'level' => '等级;0=普通客服;1=金牌客服;',
+            'level' => '等级;1=普通客服;2=金牌客服;',
             'back_user_id' => '后台管理员ID',
             'duration' => '有效时间',
             'start_at' => '开始时间',

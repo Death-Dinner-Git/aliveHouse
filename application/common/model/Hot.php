@@ -44,6 +44,7 @@ class Hot extends Model
         'type',
         'url',
         'target',
+        'base_id',
         'title',
         'start_at',
         'end_at',
@@ -61,13 +62,13 @@ class Hot extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $is_passedList = ['0'=>'未通过','1'=>'审核中','2'=>'已通过'];
+    public static $is_passedList = ['1'=>'已通过','2'=>'审核中','3'=>'未通过'];
 
-    public static $typeList = ['0'=>'默认','1'=>'首页','2'=>'新房','3'=>'二手房','4'=>'出租','5'=>'楼房','6'=>'客服','7'=>'交易'];
+    public static $typeList = ['1'=>'首页','2'=>'新房','3'=>'二手房','4'=>'出租','5'=>'楼房','6'=>'交易'];
 
-    public static $appList = ['0'=>'后台','1'=>'前台'];
+    public static $appList = ['1'=>'后台','2'=>'前台'];
 
-    public static $statusList = ['0'=>'失效','1'=>'预定','2'=>'上架','3'=>'下架'];
+    public static $statusList = ['1'=>'预定','2'=>'上架','3'=>'下架'];
 
 
 
@@ -88,18 +89,59 @@ class Hot extends Model
     }
 
     /**
+     * @param array | string $where
+     * @return array
+     */
+    public static function getHot($where = null){
+        $ret = [];
+        $query = Hot::load()->where([
+            'is_delete'=>'1',
+            'is_passed'=>'1',
+            'app'=>'1',
+            'status'=>'2',
+        ]);
+        if ($where){
+            $query = $query->where($where);
+        }
+        $result = $query->select();
+
+        if ($result){
+            $helper = Contact::getHelper();
+            $result = $helper::toArray($result);
+            foreach ($result as $value){
+                $item = [];
+                $item['id'] = $value['id'];
+                if (!$where){
+                    $item['type'] = $value['type'];
+                }
+                $item['base_id'] = $value['base_id'];
+                $ret[] = $item;
+            }
+        }
+
+        return $ret;
+
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'is_passed', 'back_user_id', 'type', 'order', 'app', 'status'], 'integer'],
-            [['back_user_id', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['url', 'target'], 'string', 'max' => 255],
-            [['title'], 'string', 'max' => 80],
-            [['start_at', 'end_at'], 'string', 'max' => 10],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['is_passed','in:1,2,3','审核 无效'],
+                ['type','in:0,1,2,3,4,5,6','类型 无效'],
+                ['app','in:1,2','应用 无效'],
+                ['status','in:0,1,2,3','状态 无效'],
+                ['back_user_id','number',],
+                ['type','number',],
+                ['url','max:255',],
+                ['target','max:255',],
+                ['title','max:80',],
+            ],
+            'msg'=>[]
         ];
     }
 
@@ -111,16 +153,17 @@ class Hot extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'is_passed' => '审核;0=未通过,1=审核中,2=已通过;默认1;',
+            'is_passed' => '审核;1=已通过,2=审核中,3=未通过;默认1;',
             'back_user_id' => '后台管理员ID',
-            'type' => '父级类型:0=默认,1=首页,2=新房,3=二手房,4=出租,5=楼房,6=客服,7=交易,;默认1;',
+            'type' => '父级类型:0=默认,1=首页,2=新房,3=二手房,4=出租,5=楼房,6=交易,;默认1;',
             'url' => '图片地址',
             'target' => '目标地址',
+            'base_id' => '基础外键',
             'title' => '标题',
             'start_at' => '开始时间',
             'end_at' => '结束时间',
             'order' => '拖拽顺序',
-            'app' => '应用;0=后台;1=前台;',
+            'app' => '应用;1=后台;2=前台;',
             'status' => '状态;0=失效,1=预定,2=上架,3=下架;默认1;',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',

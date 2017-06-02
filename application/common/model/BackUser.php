@@ -39,6 +39,7 @@ use app\common\model\Upload;
  * @property string $username
  * @property string $password
  * @property string $nickname
+ * @property string $service_name
  * @property string $real_name
  * @property string $head_url
  * @property string $sex
@@ -101,6 +102,7 @@ class BackUser extends Model
         'email_verified',
         'username',
         'nickname',
+        'service_name',
         'real_name',
         'head_url',
         'sex',
@@ -192,6 +194,7 @@ class BackUser extends Model
             'username' => '用户名',
             'password' => '密码',
             'nickname' => '昵称',
+            'service_name' => '服务昵称',
             'real_name' => '真实姓名',
             'head_url' => '头像地址',
             'sex' => '性别',

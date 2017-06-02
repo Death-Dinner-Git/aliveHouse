@@ -59,7 +59,7 @@ class Contact extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $readType = ['0'=>'未读','1'=>'已读'];
+    public static $readType = ['1'=>'未读','2'=>'已读'];
 
     public static function getReadType(){
         return self::$readType;

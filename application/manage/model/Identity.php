@@ -8,24 +8,39 @@ use app\common\model\Department;
 use think\Request;
 
 /**
- * @description This is the model class for table "wf_manager".  扩展管理员
+ * @description This is the model class for table "{{%back_user}}".  扩展管理员
  *
  * @property integer $id
- * @property string $created_at
  * @property integer $is_delete
- * @property string $remark
- * @property string $updated_at
- * @property string $identification_cards
- * @property string $manager_type
- * @property string $phone
- * @property string $real_name
- * @property integer $base_user_id
- * @property string $token
- * @property integer $wofang_id
+ * @property string $code
  * @property integer $department_id
- * @property string $head_portrait
+ * @property string $phone
+ * @property integer $phone_verified
+ * @property string $email
+ * @property integer $email_verified
+ * @property string $username
+ * @property string $password
+ * @property string $nickname
+ * @property string $service_name
+ * @property string $real_name
+ * @property string $head_url
  * @property string $sex
- * @property string $rongyun_token
+ * @property string $signature
+ * @property string $birthday
+ * @property integer $height
+ * @property integer $weight
+ * @property string $token
+ * @property string $auth_key
+ * @property string $password_reset_token
+ * @property string $password_reset_code
+ * @property integer $status
+ * @property string $ip
+ * @property string $reg_ip
+ * @property string $reg_type
+ * @property string $registered_at
+ * @property string $logined_at
+ * @property string $updated_at
+ *
  *
  * @property Department $department
  *
@@ -100,6 +115,7 @@ class Identity extends BackUser
         'email_verified',
         'username',
         'nickname',
+        'service_name',
         'real_name',
         'head_url',
         'sex',

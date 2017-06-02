@@ -26,11 +26,12 @@
             height:'100%', // Default Height
             zIndex: '999999',  // Default zIndex
             bgColor: '#2ecc71', // Default background color
+            bgLoading: '#fff', // Default background color
             spinner:'spinner7', // Default Spinner
             imagePath:'', // Default Path custom image
             loadCss:{
                 position:'absolute',
-                top:'46%',
+                top:'40%',
                 left:'50%'
             }
         }, options);
@@ -39,15 +40,16 @@
         for (var i in settings.loadCss){
             f1Css += i + ':' + settings.loadCss[i] + ';'
         }
+        var loadingCss = 'style="background:'+settings.bgLoading+';"';
 
         //Customized Spinners
-        var spinner01 = '<div class="fl spinner1" style="display: none;'+f1Css+'"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>';
-        var spinner02 = '<div class="fl spinner2" style="display: none;'+f1Css+'"><div class="spinner-container container1"><div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div></div><div class="spinner-container container2"><div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div></div><div class="spinner-container container3"><div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div></div></div>';
-        var spinner03 = '<div class="fl spinner3" style="display: none;'+f1Css+'"><div class="dot1"></div><div class="dot2"></div></div>';
-        var spinner04 = '<div class="fl spinner4" style="display: none;'+f1Css+'"></div>';
-        var spinner05 = '<div class="fl spinner5" style="display: none;'+f1Css+'"><div class="cube1"></div><div class="cube2"></div></div>';
-        var spinner06 = '<div class="fl spinner6" style="display: none;'+f1Css+'"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>';
-        var spinner07 = '<div class="fl spinner7" style="display: none;'+f1Css+'"><div class="circ1"></div><div class="circ2"></div><div class="circ3"></div><div class="circ4"></div></div>';
+        var spinner01 = '<div class="fl spinner1" style="'+f1Css+'"><div class="double-bounce1" '+loadingCss+'></div><div class="double-bounce2" '+loadingCss+'></div></div>';
+        var spinner02 = '<div class="fl spinner2" style="'+f1Css+'"><div class="spinner-container container1"><div class="circle1" '+loadingCss+'></div><div class="circle2" '+loadingCss+'></div><div class="circle3" '+loadingCss+'></div><div class="circle4" '+loadingCss+'></div></div><div class="spinner-container container2"><div class="circle1" '+loadingCss+'></div><div class="circle2" '+loadingCss+'></div><div class="circle3" '+loadingCss+'></div><div class="circle4" '+loadingCss+'></div></div><div class="spinner-container container3"><div class="circle1" '+loadingCss+'></div><div class="circle2" '+loadingCss+'></div><div class="circle3" '+loadingCss+'></div><div class="circle4" '+loadingCss+'></div></div></div>';
+        var spinner03 = '<div class="fl spinner3" style="'+f1Css+'"><div class="dot1" '+loadingCss+'></div><div class="dot2" '+loadingCss+'></div></div>';
+        var spinner04 = '<div class="fl spinner4" style="'+f1Css+'"></div>';
+        var spinner05 = '<div class="fl spinner5" style="'+f1Css+'"><div class="cube1" '+loadingCss+'></div><div class="cube2" '+loadingCss+'></div></div>';
+        var spinner06 = '<div class="fl spinner6" style="'+f1Css+'"><div class="rect1" '+loadingCss+'></div><div class="rect2" '+loadingCss+'></div><div class="rect3" '+loadingCss+'></div><div class="rect4" '+loadingCss+'></div><div class="rect5" '+loadingCss+'></div></div>';
+        var spinner07 = '<div class="fl spinner7" style="'+f1Css+'"><div class="circ1" '+loadingCss+'></div><div class="circ2" '+loadingCss+'></div><div class="circ3" '+loadingCss+'></div><div class="circ4" '+loadingCss+'></div></div>';
 
         //The target
         var el = $(this);

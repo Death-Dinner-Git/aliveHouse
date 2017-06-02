@@ -12,6 +12,7 @@ class ContactValidate extends Validate
      */
     protected $rule = [
         'is_delete|标签','require|in:0,1',
+        'contact|联系方式','require',
     ];
 
     /**
@@ -26,7 +27,7 @@ class ContactValidate extends Validate
      * @var array
      */
     protected $scene = [
-        'create'   =>  ['is_delete'],
+        'create'   =>  ['is_delete','contact'],
         'update'  =>  [],
         'save'  =>  [],
         'not'  =>  [],
