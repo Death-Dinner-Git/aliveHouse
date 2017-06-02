@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2017-06-01 18:22:50
--- 服务器版本： 10.1.9-MariaDB
+-- Generation Time: 2017-06-02 20:28:57
+-- 服务器版本： 10.1.9-MariaDB-log
 -- PHP Version: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -181,14 +181,22 @@ CREATE TABLE IF NOT EXISTS `ah_back_user_log` (
 
 CREATE TABLE IF NOT EXISTS `ah_building_base` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
-  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类型;0=,1=;默认1;',
+  `is_delete` tinyint(1) DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `type` tinyint(1) DEFAULT '1' COMMENT '类型;0=,1=;默认1;',
   `city_id` bigint(20) NOT NULL COMMENT '城市表ID',
   `name` varchar(255) NOT NULL COMMENT '楼盘名',
   `address` varchar(255) NOT NULL COMMENT '地址',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='楼盘表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='楼盘表';
+
+--
+-- 转存表中的数据 `ah_building_base`
+--
+
+INSERT INTO `ah_building_base` (`id`, `is_delete`, `type`, `city_id`, `name`, `address`, `created_at`, `updated_at`) VALUES
+(2, 1, 1, 2, '中海国际', '海口中海国际', '2017-06-01 21:51:52', '2017-06-01 21:51:52'),
+(3, 1, 1, 4, '怡心花园', '儋州市怡心花园2期', '2017-06-01 21:54:42', '2017-06-01 21:54:42');
 
 -- --------------------------------------------------------
 
@@ -273,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `ah_config` (
   `updated_at` datetime NOT NULL COMMENT '更新时间',
   `order` tinyint(4) NOT NULL DEFAULT '0' COMMENT '排序',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态'
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='系统配置表';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='系统配置表';
 
 --
 -- 转存表中的数据 `ah_config`
@@ -308,7 +316,8 @@ INSERT INTO `ah_config` (`id`, `is_delete`, `app`, `title`, `name`, `value`, `gr
 (26, 1, 0, '导航分组', 'NAV_GROUP_LIST', 'top:顶部导航\nmain:主导航\nbottom:底部导航\nwap_bottom:Wap底部导航', 5, 'array', '', '导航分组', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, 1),
 (27, 1, 0, '配置分组', 'CONFIG_GROUP_LIST', '1:基本\r\n3:扩展\r\n5:系统\r\n7:部署', 5, 'array', '', '配置分组', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 7, 1),
 (28, 1, 0, '开发模式', 'DEVELOP_MODE', '1', 7, 'toggle', '1:开启\r\n0:关闭', '开发模式下会显示菜单管理、配置管理、数据字典等开发者工具', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
-(29, 1, 0, '页面Trace', 'APP_TRACE', '0', 7, 'toggle', '0:关闭\r\n1:开启', '是否显示页面Trace信息', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 1);
+(29, 1, 0, '页面Trace', 'APP_TRACE', '0', 7, 'toggle', '0:关闭\r\n1:开启', '是否显示页面Trace信息', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 1),
+(30, 1, 0, '', NULL, '', 0, '', '', '', '2017-06-01 21:49:07', '2017-06-01 21:49:07', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -445,12 +454,19 @@ CREATE TABLE IF NOT EXISTS `ah_guest` (
   `address` varchar(32) DEFAULT NULL COMMENT '地址',
   `email` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '邮箱',
   `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像地址',
-  `region_id` bigint(20) NOT NULL COMMENT '全国地区表ID',
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类型;0=过客,1=客户;默认1;',
   `level` tinyint(1) NOT NULL DEFAULT '1' COMMENT '等级;0=贵宾,1=普通;默认1;',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='客户表';
+
+--
+-- 转存表中的数据 `ah_guest`
+--
+
+INSERT INTO `ah_guest` (`id`, `is_delete`, `server`, `ID_cards`, `real_name`, `phone`, `nickname`, `address`, `email`, `avatar`, `type`, `level`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '12323232323', '小符', '1026652', '小符', '是的是的', NULL, 'sdsdsdsdsd', 1, 1, '2017-06-02 00:08:59', '2017-06-02 00:08:59'),
+(2, 1, 1, '565665', '程度上的', '656656', '是的是的', 'sdsd', NULL, 'SDsd', 1, 1, '2017-06-02 00:09:31', '2017-06-02 00:09:31');
 
 -- --------------------------------------------------------
 
@@ -703,7 +719,7 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (95, '房源转接', 5, '/manage/house/transfer', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (96, '房源接收', 5, '/manage/house/receive', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (97, '房源清单', 5, '/manage/house/super', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(98, '楼盘清单', 5, '/manage/house/super', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(98, '楼盘清单', 5, '/manage/build/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (110, '我的客户', 6, '/manage/guest/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (111, '客户录入', 6, '/manage/guest/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (112, '房东录入', 6, '/manage/house_host/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -718,7 +734,7 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (150, '我的交易', 8, '/manage/order/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (151, '交易清单', 8, '/manage/order/super', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (152, '交易录入', 8, '/manage/order/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(170, '管理员清单', 9, '/manage/guest/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(170, '管理员清单', 9, '/manage/user/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (171, '添加管理员', 9, '/manage/user/register', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (172, '权限管理', 9, '/manage/ban/index', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (173, '浏览管理日志', 9, '/manage/guest/log', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -4908,7 +4924,7 @@ ALTER TABLE `ah_back_user_log`
 -- AUTO_INCREMENT for table `ah_building_base`
 --
 ALTER TABLE `ah_building_base`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `ah_building_detail`
 --
@@ -4923,7 +4939,7 @@ ALTER TABLE `ah_city`
 -- AUTO_INCREMENT for table `ah_config`
 --
 ALTER TABLE `ah_config`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',AUTO_INCREMENT=30;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `ah_contact`
 --
@@ -4958,7 +4974,7 @@ ALTER TABLE `ah_download`
 -- AUTO_INCREMENT for table `ah_guest`
 --
 ALTER TABLE `ah_guest`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `ah_guest_server`
 --
