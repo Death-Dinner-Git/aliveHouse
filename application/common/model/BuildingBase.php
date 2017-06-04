@@ -38,6 +38,7 @@ class BuildingBase extends Model
     protected $field = [
         'id',
         'is_delete',
+        'is_open',
         'type',
         'city_id',
         'name',
@@ -61,6 +62,7 @@ class BuildingBase extends Model
         return [
             'rule'=>[
                 ['is_delete','in:0,1','时效 无效'],
+                ['is_open','in:2,1','开盘 无效'],
                 ['type','number','类型 无效'],
                 ['city_id','number','城市 无效'],
                 ['name','max:255',],
@@ -78,6 +80,7 @@ class BuildingBase extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
+            'is_open' => '开盘;2=封盘,1=开盘;默认1;',
             'type' => '类型;0=,1=;默认1;',
             'city_id' => '城市表ID',
             'name' => '楼盘名',

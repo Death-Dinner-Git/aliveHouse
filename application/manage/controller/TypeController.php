@@ -3,9 +3,9 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\LabelPark;
+use app\manage\model\Label;
 
-class LabelParkController extends ManageController
+class TypeController extends ManageController
 {
     /**
      * @description 显示资源列表
@@ -23,7 +23,7 @@ class LabelParkController extends ManageController
             $param['name'] = trim($name);
             $where =  array_merge($where, ['name'=>['like','%'.$name.'%']]);
         }
-        $typeList = LabelPark::getGroupList();
+        $typeList = Label::getGroupList();
         if (isset($typeList[0])){
             unset($typeList[0]);
         }
@@ -33,8 +33,8 @@ class LabelParkController extends ManageController
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $dataProvider = LabelPark::load()->where($where)->page($pageNumber,$each)->select();
-        $count = LabelPark::load()->where($where)->count();
+        $dataProvider = Label::load()->where($where)->page($pageNumber,$each)->select();
+        $count = Label::load()->where($where)->count();
 
         $this->assign('meta_title', "标签清单");
         $this->assign('pages', ceil(($count)/$each));
@@ -53,19 +53,19 @@ class LabelParkController extends ManageController
      */
     public function createAction()
     {
-        $label = new LabelPark();
-        $labelList = LabelPark::getGroupList();
+        $label = new Label();
+        $labelList = Label::getGroupList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['LabelPark']) ? $_POST['LabelPark'] : []);
+            $data = (isset($_POST['Label']) ? $_POST['Label'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
-            $result = LabelPark::load()->where(['name'=>$data['name'],'type'=>$data['type']])->find();
+            $result = Label::load()->where(['name'=>$data['name'],'type'=>$data['type']])->find();
             if ($data){
                 if ($result){
                     $error = isset($labelList[$data['type']]) ? $labelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
                     $this->error($error , 'create','',1);
                 }else{
-                    $validate = LabelPark::getValidate();
+                    $validate = Label::getValidate();
                     $validate->scene('create');
                     if ($validate->check($data) && $label->save($data)){
                         $this->success('添加成功','create','',1);
@@ -91,7 +91,7 @@ class LabelParkController extends ManageController
     public function viewAction($id)
     {
         $this->assign('meta_title', "详情");
-        $model = LabelPark::load()->where(['id'=>$id])->find();
+        $model = Label::load()->where(['id'=>$id])->find();
         return view('label/view',['model'=>$model]);
     }
 
@@ -104,26 +104,26 @@ class LabelParkController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $label = new LabelPark();
-        $labelList = LabelPark::getGroupList();
-        $model = LabelPark::load()->where(['id'=>$id])->where($where)->find();
+        $label = new Label();
+        $labelList = Label::getGroupList();
+        $model = Label::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
 
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['LabelPark']) ? $_POST['LabelPark'] : []);
+            $data = (isset($_POST['Label']) ? $_POST['Label'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
-            $result = LabelPark::load()->where(['name'=>$data['name'],'type'=>$data['type']])->where($where)->find();
+            $result = Label::load()->where(['name'=>$data['name'],'type'=>$data['type']])->where($where)->find();
             if ($data){
                 if ($result){
                     $error = isset($labelList[$data['type']]) ? $labelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
                     $this->error($error , 'create','',1);
                 }else{
-                    $validate = LabelPark::getValidate();
+                    $validate = Label::getValidate();
                     $validate->scene('update');
-                    if ($validate->check($data) && LabelPark::update($data,['id'=>$id])){
+                    if ($validate->check($data) && Label::update($data,['id'=>$id])){
                         $this->success('更新成功','create','',1);
                     }else{
                         $error = $validate->getError();
@@ -148,7 +148,7 @@ class LabelParkController extends ManageController
     {
         $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
         if ( $this->getRequest()->isAjax()){
-            $result = LabelPark::update(['is_delete'=>'0'],['id'=>$id]);
+            $result = Label::update(['is_delete'=>'0'],['id'=>$id]);
             if ($result){
                 $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
             }

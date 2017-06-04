@@ -23,7 +23,7 @@ class LabelController extends ManageController
             $param['name'] = trim($name);
             $where =  array_merge($where, ['name'=>['like','%'.$name.'%']]);
         }
-        $typeList = Label::getLabelList();
+        $typeList = Label::getGroupList();
         if (isset($typeList[0])){
             unset($typeList[0]);
         }
@@ -54,7 +54,7 @@ class LabelController extends ManageController
     public function createAction()
     {
         $label = new Label();
-        $labelList = Label::getLabelList();
+        $labelList = Label::getGroupList();
         if ($this->getRequest()->isPost()){
             $data = (isset($_POST['Label']) ? $_POST['Label'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
@@ -105,7 +105,7 @@ class LabelController extends ManageController
     {
         $where = ['is_delete'=>'1'];
         $label = new Label();
-        $labelList = Label::getLabelList();
+        $labelList = Label::getGroupList();
         $model = Label::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';

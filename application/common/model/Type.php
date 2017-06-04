@@ -3,10 +3,10 @@
 namespace app\common\model;
 
 use app\common\model\Model;
-use app\common\model\LabelPark;
+use app\common\model\TypePark;
 
 /**
- * This is the model class for table "{{%label}}".
+ * This is the model class for table "{{%type}}".
  *
  * @property integer $id
  * @property integer $is_delete
@@ -16,9 +16,9 @@ use app\common\model\LabelPark;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property LabelPark[] $labelParks
+ * @property TypePark[] $labelParks
  */
-class Label extends Model
+class Type extends Model
 {
 
     /**
@@ -26,7 +26,7 @@ class Label extends Model
      * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
      * @author Sir Fu
      */
-    protected $table = '{{%label}}';
+    protected $table = '{{%type}}';
 
     protected $field = [
         'id',
@@ -93,8 +93,8 @@ class Label extends Model
     /**
      * @return \think\model\relation\HasMany
      */
-    public function getLabelParks()
+    public function getTypeParks()
     {
-        return $this->hasMany(ucfirst(LabelPark::tableNameSuffix()), 'id', 'label_id');
+        return $this->hasMany(ucfirst(TypePark::tableNameSuffix()), 'id', 'type_id');
     }
 }

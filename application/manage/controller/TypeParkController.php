@@ -5,7 +5,7 @@ namespace app\manage\controller;
 use app\common\controller\ManageController;
 use app\manage\model\LabelPark;
 
-class LabelParkController extends ManageController
+class TypeParkController extends ManageController
 {
     /**
      * @description 显示资源列表
