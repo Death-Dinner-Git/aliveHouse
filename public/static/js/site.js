@@ -54,7 +54,7 @@ function loadScript(url) {
     document.body.appendChild(script);
 }
 
-function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade) {
+function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade,scroll) {
     var content = '',stop = true;
     var myLayer = window.layer ? window.layer : top.window.layer;
     if(!myLayer) {
@@ -71,7 +71,8 @@ function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade) {
             stop = false;
         },"html");
     }else {
-        content = [url, 'no'];
+        scroll = scroll === true ? 'yes' : 'no';
+        content = [url, scroll];
         stop = false;
     }
     if (stop){return;}

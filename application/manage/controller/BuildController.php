@@ -85,7 +85,7 @@ class BuildController extends ManageController
                 }
             }
         }
-        return view('build/create',['meta_title'=>'添加楼盘','lists'=>$lists,]);
+        return view('build/create',['meta_title'=>'添加楼盘','meta_util'=>'false','lists'=>$lists,]);
     }
 
     /**

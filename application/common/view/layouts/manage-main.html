@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="url" content="">
     <meta name="layout" content="no-layout">
+    <meta name="util" content="{$meta_util ? $meta_util : 'true'}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
@@ -51,12 +52,20 @@
             layer = layui.layer,
             util = layui.util;
 
+        var top = false, bar1 = false, bar2 = false,
+        metaUtil = $('meta[name="util"]').attr('content');
+        if (metaUtil !== undefined && metaUtil === 'true'){
+            top = true;
+            bar1 = true;
+            bar2 = true;
+        }
+
         //回到顶部
         //使用内部工具组件
         util.fixbar({
-            top: true,
-            // bar1: true,
-            bar2: true,
+            top: top,
+            // bar1: bar1,
+            bar2: bar2,
             css: {right: 15, bottom: 15},
             click: function(type){
                 if(type === 'bar1'){
