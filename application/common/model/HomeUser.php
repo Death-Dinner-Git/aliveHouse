@@ -91,25 +91,48 @@ class HomeUser extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    //所有账号类型
+    private static $regList = ['1'=>'手机','2'=>'电脑','3'=>'平板'];
+
+    /**
+     * @return array
+     */
+    public static function getRegList()
+    {
+        return self::$regList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'username', 'password'], 'required'],
-            [['id', 'is_delete', 'phone_verified', 'email_verified', 'height', 'weight', 'status'], 'integer'],
-            [['sex', 'ip'], 'string'],
-            [['birthday', 'registered_at', 'logined_at', 'updated_at'], 'safe'],
-            [['code', 'username', 'signature', 'auth_key', 'reg_ip'], 'string', 'max' => 32],
-            [['phone'], 'string', 'max' => 11],
-            [['email', 'nickname', 'real_name', 'head_url'], 'string', 'max' => 64],
-            [['password', 'token', 'password_reset_token', 'password_reset_code'], 'string', 'max' => 255],
-            [['reg_type'], 'string', 'max' => 15],
-            [['username'], 'unique'],
-            [['code'], 'unique'],
-            [['phone'], 'unique'],
-            [['email'], 'unique'],
+            'rule'=>[
+                ['is_delete','number','时效 无效'],
+                ['height','number','身高 无效'],
+                ['weight','number','体重 无效'],
+                ['status','number','状态 无效'],
+                ['username','require','用户名 不能为空'],
+                ['password','require','密码 不能为空'],
+                ['department_id','require','部门 不能为空'],
+                ['sex','in:男,女',],
+                ['code','max:32',],
+                ['username','max:32',],
+                ['signature','max:32',],
+                ['auth_key','max:32',],
+                ['reg_ip','max:32',],
+                ['email','max:64',],
+                ['nickname','max:64',],
+                ['real_name','max:64',],
+                ['head_url','max:64',],
+                ['password','max:255',],
+                ['token','max:255',],
+                ['password_reset_token','max:255',],
+                ['password_reset_code','max:255',],
+                ['reg_type','max:15',],
+            ],
+            'msg'=>[]
         ];
     }
 
@@ -155,7 +178,7 @@ class HomeUser extends Model
      */
     public function getContacts()
     {
-        return $this->hasMany(Contact::tableNameSuffix(), ['home_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Contact::tableNameSuffix()), 'id', 'home_user_id');
     }
 
     /**
@@ -163,7 +186,7 @@ class HomeUser extends Model
      */
     public function getHomeUserLogs()
     {
-        return $this->hasMany(HomeUserLog::tableNameSuffix(), ['home_user_id' => 'id']);
+        return $this->hasMany(ucfirst(HomeUserLog::tableNameSuffix()), 'id', 'home_user_id');
     }
 
     /**
@@ -171,6 +194,6 @@ class HomeUser extends Model
      */
     public function getOpinions()
     {
-        return $this->hasMany(Opinion::tableNameSuffix(), ['home_user_id' => 'id']);
+        return $this->hasMany(ucfirst(Opinion::tableNameSuffix()), 'id', 'home_user_id');
     }
 }

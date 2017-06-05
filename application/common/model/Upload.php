@@ -63,21 +63,41 @@ class Upload extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    //所有标签类型
+    private static $typeList = ['1'=>'jpg','2'=>'png','3'=>'gif','4'=>'excel'];
+
+    /**
+     * @return array
+     */
+    public static function getTypeList()
+    {
+        return self::$typeList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'back_user_id', 'size', 'download', 'sort', 'status'], 'integer'],
-            [['create_time', 'update_time'], 'required'],
-            [['create_time', 'update_time'], 'safe'],
-            [['name', 'path', 'url'], 'string', 'max' => 255],
-            [['ext'], 'string', 'max' => 4],
-            [['md5'], 'string', 'max' => 32],
-            [['sha1'], 'string', 'max' => 40],
-            [['location'], 'string', 'max' => 15],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['back_user_id','number'],
+                ['size','number'],
+                ['download','number'],
+                ['sort','number'],
+                ['status','number'],
+                ['ext','max:4'],
+                ['location','max:15'],
+                ['sha1','max:40'],
+                ['md5','max:32'],
+                ['name','max:255'],
+                ['path','max:255'],
+                ['url','max:255'],
+            ],
+            'msg'=>[
+                'group.in'=> '此类型不允许',
+            ]
         ];
     }
 

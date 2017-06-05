@@ -783,6 +783,22 @@ body .layui-footer .layui-main a{
 }
 
 /* =======================================
+		collapse
+================================== */
+
+
+/* =======================================
+		form
+================================== */
+.checkbox-left .layui-form-checkbox {
+	padding-left: 30px !important;
+	padding-right: 0px !important;
+}
+.checkbox-left .layui-form-checkbox i {
+left: 0px !important;
+}
+
+/* =======================================
 		独立组件
 ================================== */
 .alone{width:730px; margin:200px auto;}
@@ -861,7 +877,6 @@ body .layui-footer .layui-main a{
 	background-color: #eee;
 	cursor: pointer;
 }
-
 
 /* 首页banner部分 */
 .site-banner{position: relative; height: 600px; text-align: center; overflow: hidden; background-color: #393D49;}

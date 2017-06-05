@@ -52,7 +52,7 @@ class Department extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $levelList = ['0'=>'无效','1'=>'有效'];
+    public static $levelList = ['0'=>'无效','1'=>'部门一'];
 
     public static function getLevelList(){
         return self::$levelList;
@@ -85,7 +85,7 @@ class Department extends Model
             'parent' => '上级',
             'code' => '编号',
             'order' => '顺序',
-            'level' => '等级;0=无效;1=有效;',
+            'level' => '等级;0=无效;1=部门一;',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];
@@ -96,6 +96,6 @@ class Department extends Model
      */
     public function getBackUsers()
     {
-        return $this->hasMany(ucfirst(BackUser::tableNameSuffix()), ['department_id' => 'id']);
+        return $this->hasMany(ucfirst(BackUser::tableNameSuffix()), 'id', 'department_id');
     }
 }

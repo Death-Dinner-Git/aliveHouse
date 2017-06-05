@@ -49,6 +49,14 @@ class Type extends Model
     private static $groupList = ['0'=>'失效','1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼房','7'=>'客服'];
 
     /**
+     * @return array
+     */
+    public static function getGroupList()
+    {
+        return self::$groupList;
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -80,14 +88,6 @@ class Type extends Model
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];
-    }
-
-    /**
-     * @return array
-     */
-    public static function getGroupList()
-    {
-        return self::$groupList;
     }
 
     /**

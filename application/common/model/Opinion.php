@@ -54,19 +54,31 @@ class Opinion extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    private static $readList = ['1'=>'未读','2'=>'已读'];
+
+    /**
+     * @return array
+     */
+    public static function getReadList()
+    {
+        return self::$readList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'home_user_id', 'back_user_id', 'readed'], 'integer'],
-            [['remark', 'content'], 'string'],
-            [['username', 'contact', 'created_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['username', 'contact'], 'string', 'max' => 255],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
-            [['home_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => HomeUser::tableNameSuffix(), 'targetAttribute' => ['home_user_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['back_user_id','number'],
+                ['home_user_id','number'],
+                ['readed','number'],
+                ['username','max:255',],
+                ['contact','max:255',],
+            ],
+            'msg'=>[]
         ];
     }
 
@@ -103,7 +115,7 @@ class Opinion extends Model
      */
     public function getHomeUser()
     {
-        return $this->hasOne(HomeUser::tableNameSuffix(), ['id' => 'home_user_id']);
+        return $this->hasOne(ucfirst(HomeUser::tableNameSuffix()), 'home_user_id', 'id');
     }
 
     /**
@@ -111,6 +123,6 @@ class Opinion extends Model
      */
     public function getOpinionReads()
     {
-        return $this->hasMany(OpinionRead::tableNameSuffix(), ['opinion_id' => 'id']);
+        return $this->hasMany(ucfirst(OpinionRead::tableNameSuffix()), 'id', 'opinion_id');
     }
 }

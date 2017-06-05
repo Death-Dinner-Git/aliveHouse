@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Label;
+use app\manage\model\Type;
 
 class TypeController extends ManageController
 {
@@ -23,7 +23,7 @@ class TypeController extends ManageController
             $param['name'] = trim($name);
             $where =  array_merge($where, ['name'=>['like','%'.$name.'%']]);
         }
-        $typeList = Label::getGroupList();
+        $typeList = Type::getGroupList();
         if (isset($typeList[0])){
             unset($typeList[0]);
         }
@@ -33,8 +33,8 @@ class TypeController extends ManageController
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $dataProvider = Label::load()->where($where)->page($pageNumber,$each)->select();
-        $count = Label::load()->where($where)->count();
+        $dataProvider = Type::load()->where($where)->page($pageNumber,$each)->select();
+        $count = Type::load()->where($where)->count();
 
         $this->assign('meta_title', "标签清单");
         $this->assign('pages', ceil(($count)/$each));
@@ -43,7 +43,7 @@ class TypeController extends ManageController
         $this->assign('count', $count);
         $this->assign('param', $param);
         $this->assign('typeList', $typeList);
-        return view('label/index');
+        return view('type/index');
     }
 
     /**
@@ -53,33 +53,33 @@ class TypeController extends ManageController
      */
     public function createAction()
     {
-        $label = new Label();
-        $labelList = Label::getGroupList();
+        $model = new Type();
+        $modelList = Type::getGroupList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Label']) ? $_POST['Label'] : []);
+            $data = (isset($_POST['Type']) ? $_POST['Type'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
-            $result = Label::load()->where(['name'=>$data['name'],'type'=>$data['type']])->find();
+            $result = Type::load()->where(['name'=>$data['name'],'type'=>$data['type']])->find();
             if ($data){
                 if ($result){
-                    $error = isset($labelList[$data['type']]) ? $labelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
+                    $error = isset($modelList[$data['type']]) ? $modelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
                     $this->error($error , 'create','',1);
                 }else{
-                    $validate = Label::getValidate();
+                    $validate = Type::getValidate();
                     $validate->scene('create');
-                    if ($validate->check($data) && $label->save($data)){
+                    if ($validate->check($data) && $model->save($data)){
                         $this->success('添加成功','create','',1);
                     }else{
                         $error = $validate->getError();
                         if (empty($error)){
-                            $error = $label->getError();
+                            $error = $model->getError();
                         }
                         $this->error($error, 'create','',1);
                     }
                 }
             }
         }
-        return view('label/create',['meta_title'=>'添加标签','labelList'=>$labelList]);
+        return view('type/create',['meta_title'=>'添加标签','typeList'=>$modelList]);
     }
 
     /**
@@ -91,8 +91,8 @@ class TypeController extends ManageController
     public function viewAction($id)
     {
         $this->assign('meta_title', "详情");
-        $model = Label::load()->where(['id'=>$id])->find();
-        return view('label/view',['model'=>$model]);
+        $model = Type::load()->where(['id'=>$id])->find();
+        return view('type/view',['model'=>$model]);
     }
 
     /**
@@ -104,38 +104,38 @@ class TypeController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $label = new Label();
-        $labelList = Label::getGroupList();
-        $model = Label::load()->where(['id'=>$id])->where($where)->find();
+        $model = new Type();
+        $modelList = Type::getGroupList();
+        $model = Type::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
 
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Label']) ? $_POST['Label'] : []);
+            $data = (isset($_POST['Type']) ? $_POST['Type'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
-            $result = Label::load()->where(['name'=>$data['name'],'type'=>$data['type']])->where($where)->find();
+            $result = Type::load()->where(['name'=>$data['name'],'type'=>$data['type']])->where($where)->find();
             if ($data){
                 if ($result){
-                    $error = isset($labelList[$data['type']]) ? $labelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
+                    $error = isset($modelList[$data['type']]) ? $modelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
                     $this->error($error , 'create','',1);
                 }else{
-                    $validate = Label::getValidate();
+                    $validate = Type::getValidate();
                     $validate->scene('update');
-                    if ($validate->check($data) && Label::update($data,['id'=>$id])){
+                    if ($validate->check($data) && Type::update($data,['id'=>$id])){
                         $this->success('更新成功','create','',1);
                     }else{
                         $error = $validate->getError();
                         if (empty($error)){
-                            $error = $label->getError();
+                            $error = $model->getError();
                         }
                         $this->error($error, 'create','',1);
                     }
                 }
             }
         }
-        return view('label/update',['meta_title'=>'编辑标签','labelList'=>$labelList,'model'=>$model]);
+        return view('type/update',['meta_title'=>'编辑标签','typeList'=>$modelList,'model'=>$model]);
     }
 
     /**
@@ -148,7 +148,7 @@ class TypeController extends ManageController
     {
         $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
         if ( $this->getRequest()->isAjax()){
-            $result = Label::update(['is_delete'=>'0'],['id'=>$id]);
+            $result = Type::update(['is_delete'=>'0'],['id'=>$id]);
             if ($result){
                 $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
             }

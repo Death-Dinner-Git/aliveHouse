@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use think\Request;
+use app\manage\model\Notice;
 
 class NoticeController extends ManageController
 {
@@ -20,13 +20,13 @@ class NoticeController extends ManageController
         $where = ['is_delete'=>'1'];
         $each = 12;
         $param = ['name'=>'','type'=>'','app'=>''];
-        $query = Ban::load();
+        $query = Notice::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);
             $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
             $query = $query->where($nameWhere);
         }
-        $typeList = Ban::getTypeList();
+        $typeList = Notice::getPassList();
         if (isset($typeList[0])){
             unset($typeList[0]);
         }
@@ -36,7 +36,7 @@ class NoticeController extends ManageController
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $appList = Ban::getAppList();
+        $appList = Notice::getReadList();
         if ($app && $app != ''){
             $param['app'] = trim($app);
             if (in_array($app,array_keys($appList))){
@@ -44,7 +44,7 @@ class NoticeController extends ManageController
             }
         }
         $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Ban::load()->where($where)->count();
+        $count = Notice::load()->where($where)->count();
 
         $this->assign('meta_title', "标签清单");
         $this->assign('pages', ceil(($count)/$each));
@@ -54,7 +54,7 @@ class NoticeController extends ManageController
         $this->assign('param', $param);
         $this->assign('typeList', $typeList);
         $this->assign('appList', $appList);
-        return view('config/index');
+        return view('notice/index');
     }
 
     /**
@@ -64,28 +64,28 @@ class NoticeController extends ManageController
      */
     public function createAction()
     {
-        $config = new Ban();
-        $configList = Ban::getTypeList();
-        $appList = Ban::getAppList();
+        $model = new Notice();
+        $modelList = Notice::getPassList();
+        $appList = Notice::getReadList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Ban']) ? $_POST['Ban'] : []);
+            $data = (isset($_POST['Notice']) ? $_POST['Notice'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Ban::getValidate();
+                $validate = Notice::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
+                if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return view('notice/create',['meta_title'=>'添加配置','appList'=>$appList,'noticeList'=>$modelList]);
     }
 
     /**
@@ -97,8 +97,8 @@ class NoticeController extends ManageController
     public function viewAction($id)
     {
         $this->assign('meta_title', "详情");
-        $model = Ban::load()->where(['id'=>$id])->find();
-        return view('config/view',['model'=>$model]);
+        $model = Notice::load()->where(['id'=>$id])->find();
+        return view('notice/view',['model'=>$model]);
     }
 
     /**
@@ -110,33 +110,33 @@ class NoticeController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new Ban();
-        $configList = Ban::getTypeList();
-        $appList = Ban::getAppList();
-        $model = Ban::load()->where(['id'=>$id])->where($where)->find();
+        $model = new Notice();
+        $modelList = Notice::getPassList();
+        $appList = Notice::getReadList();
+        $model = Notice::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
 
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Ban']) ? $_POST['Ban'] : []);
+            $data = (isset($_POST['Notice']) ? $_POST['Notice'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Ban::getValidate();
+                $validate = Notice::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && Ban::update($data,['id'=>$id])){
+                if ($validate->check($data) && Notice::update($data,['id'=>$id])){
                     $this->success('更新成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('notice/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'noticeList'=>$modelList]);
     }
 
     /**
@@ -149,7 +149,7 @@ class NoticeController extends ManageController
     {
         $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
         if ($this->getRequest()->isAjax()){
-            $result = Ban::update(['is_delete'=>'0'],['id'=>$id]);
+            $result = Notice::update(['is_delete'=>'0'],['id'=>$id]);
             if ($result){
                 $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
             }

@@ -5,56 +5,90 @@ namespace app\manage\controller;
 use app\common\controller\ManageController;
 use app\manage\model\DeleteLog;
 
-class DeleteController extends ManageController
+class LogController extends ManageController
 {
     /**
      * @description 显示资源列表
      * @param int $pageNumber
-     * @param string $name
-     * @param string $type
-     * @param string $app
+     * @param string $key
+     * @param string $level
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction($pageNumber = 1,$key = null, $level = null)
     {
-        $where = ['is_delete'=>'1'];
+        $where = [];
         $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
+        $param = ['key'=>'','level'=>''];
         $query = DeleteLog::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $query = $query->where($nameWhere);
+        if ($key && ($key = trim($key)) != ''){
+            $param['key'] = $key;
+            $where[] = ['exp',"`username` like '%".$key."%' or `contact` like '%".$key."%' or `email` like '%".$key."%' or `address` like '%".$key."%'"];
         }
-        $typeList = DeleteLog::getTypeList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
+        $lists = DeleteLog::getTableList();
+        if (isset($lists[0])){
+            unset($lists[0]);
         }
-        if ($type && $type != ''){
-            $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['type'=>$type]);
+        if ($level && ($level = trim($level)) != ''){
+            $param['level'] = $level;
+            if (in_array($level,array_keys($lists))){
+                $where = array_merge($where,['level'=>$level]);
             }
         }
-        $appList = DeleteLog::getAppList();
-        if ($app && $app != ''){
-            $param['app'] = trim($app);
-            if (in_array($app,array_keys($appList))){
-                $where =  array_merge($where, ['app'=>$app]);
-            }
-        }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = DeleteLog::load()->where($where)->count();
 
-        $this->assign('meta_title', "标签清单");
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "服务清单");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
-        $this->assign('appList', $appList);
-        return view('config/index');
+        $this->assign('lists', $lists);
+        return view('log/index');
+    }
+
+    /**
+     * @description 显示资源列表
+     * @param int $pageNumber
+     * @param string $key
+     * @param string $level
+     * @return \think\Response
+     */
+    public function deleteLogAction($pageNumber = 1,$key = null, $level = null)
+    {
+        $where = [];
+        $each = 12;
+        $param = ['key'=>'','level'=>''];
+        $query = DeleteLog::load();
+        if ($key && ($key = trim($key)) != ''){
+            $param['key'] = $key;
+            $where[] = ['exp',"`username` like '%".$key."%' or `contact` like '%".$key."%' or `email` like '%".$key."%' or `address` like '%".$key."%'"];
+        }
+        $lists = DeleteLog::getTableList();
+        if (isset($lists[0])){
+            unset($lists[0]);
+        }
+        if ($level && ($level = trim($level)) != ''){
+            $param['level'] = $level;
+            if (in_array($level,array_keys($lists))){
+                $where = array_merge($where,['level'=>$level]);
+            }
+        }
+
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "服务清单");
+        $this->assign('pages', ceil(($count)/$each));
+        $this->assign('dataProvider', $dataProvider);
+        $this->assign('indexOffset', (($pageNumber-1)*$each));
+        $this->assign('count', $count);
+        $this->assign('param', $param);
+        $this->assign('lists', $lists);
+        return view('log/index');
     }
 
     /**
@@ -64,8 +98,8 @@ class DeleteController extends ManageController
      */
     public function createAction()
     {
-        $config = new DeleteLog();
-        $configList = DeleteLog::getTypeList();
+        $model = new DeleteLog();
+        $modelList = DeleteLog::getTypeList();
         $appList = DeleteLog::getAppList();
         if ($this->getRequest()->isPost()){
             $data = (isset($_POST['DeleteLog']) ? $_POST['DeleteLog'] : []);
@@ -74,18 +108,18 @@ class DeleteController extends ManageController
             if ($data){
                 $validate = DeleteLog::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
+                if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return view('log/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$modelList]);
     }
 
     /**
@@ -98,7 +132,7 @@ class DeleteController extends ManageController
     {
         $this->assign('meta_title', "详情");
         $model = DeleteLog::load()->where(['id'=>$id])->find();
-        return view('config/view',['model'=>$model]);
+        return view('log/view',['model'=>$model]);
     }
 
     /**
@@ -110,8 +144,8 @@ class DeleteController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new DeleteLog();
-        $configList = DeleteLog::getTypeList();
+        $model = new DeleteLog();
+        $modelList = DeleteLog::getTypeList();
         $appList = DeleteLog::getAppList();
         $model = DeleteLog::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
@@ -130,13 +164,13 @@ class DeleteController extends ManageController
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('log/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$modelList]);
     }
 
     /**
@@ -156,5 +190,6 @@ class DeleteController extends ManageController
         }
         return json($ret);
     }
+
 
 }

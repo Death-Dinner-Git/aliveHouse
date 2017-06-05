@@ -3,6 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
+use app\manage\model\BackUser;
 use app\manage\model\Ban;
 
 class BanController extends ManageController
@@ -10,51 +11,63 @@ class BanController extends ManageController
     /**
      * @description 显示资源列表
      * @param int $pageNumber
+     * @param string $id
+     * @param string $level
      * @param string $name
      * @param string $type
-     * @param string $app
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction($pageNumber = 1,$id = null, $level = null, $name = null, $type = null)
     {
-        $where = ['is_delete'=>'1'];
+        $where = [];
         $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
+        $param = ['level'=>'','name'=>'','type'=>''];
         $query = Ban::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $query = $query->where($nameWhere);
+        if ($id && ($id = trim($id)) != ''){
+            $param['id'] = $id;
+            $where = array_merge($where,['back_user_id'=>$id]);
         }
-        $typeList = Ban::getTypeList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
-        }
-        if ($type && $type != ''){
-            $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['type'=>$type]);
-            }
-        }
-        $appList = Ban::getAppList();
-        if ($app && $app != ''){
-            $param['app'] = trim($app);
-            if (in_array($app,array_keys($appList))){
-                $where =  array_merge($where, ['app'=>$app]);
-            }
-        }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Ban::load()->where($where)->count();
 
-        $this->assign('meta_title', "标签清单");
+        $levels = BackUser::getDepartmentList();
+        if (isset($levels[0])){
+            unset($levels[0]);
+        }
+        if ($level && ($level = trim($level)) != ''){
+            $param['level'] = $level;
+            if (in_array($level,array_keys($levels))){
+                $where = array_merge($where,['item_name'=>$level]);
+            }
+        }
+
+        if ($name && ($name = trim($name)) != ''){
+            $param['name'] = $name;
+            $where = array_merge($where,['item_name'=>$name]);
+        }
+
+        $lists = Ban::getBanList();
+        if (isset($lists[0])){
+            unset($lists[0]);
+        }
+        if ($type && ($type = trim($type)) != ''){
+            $param['type'] = $type;
+            if (in_array($type,array_keys($lists))){
+                $where = array_merge($where,['ban'=>$type]);
+            }
+        }
+
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "权限清单");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
-        $this->assign('appList', $appList);
-        return view('config/index');
+        $this->assign('lists', $lists);
+        $this->assign('levels', $levels);
+        return view('ban/index');
     }
 
     /**

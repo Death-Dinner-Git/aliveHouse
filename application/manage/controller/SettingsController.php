@@ -157,9 +157,13 @@ class SettingsController extends ManageController
         return json($ret);
     }
 
-    public function siteAction(){}
+    public function siteAction(){
+
+    }
     public function safetyAction(){}
-    public function messageAction(){}
+    public function messageAction(){
+
+    }
     public function pushAction(){}
     public function emailAction(){}
     public function logAction(){}

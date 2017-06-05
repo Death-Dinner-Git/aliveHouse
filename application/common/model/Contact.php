@@ -99,7 +99,7 @@ class Contact extends Model
             'content' => '联系内容',
             'home_user_id' => '前端用户表ID',
             'back_user_id' => '后台业务员ID',
-            'readed' => '是否阅读; 0=未读 ,1=已读',
+            'readed' => '是否阅读; 1=未读 ,2=已读',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];
@@ -118,7 +118,7 @@ class Contact extends Model
      */
     public function getHomeUser()
     {
-        return $this->hasOne(HomeUser::tableNameSuffix(), ['id' => 'home_user_id']);
+        return $this->hasOne(ucfirst(HomeUser::tableNameSuffix()), 'home_user_id', 'id');
     }
 
     /**
@@ -126,6 +126,6 @@ class Contact extends Model
      */
     public function getContactReads()
     {
-        return $this->hasMany(ContactRead::tableNameSuffix(), ['contact_id' => 'id']);
+        return $this->hasMany(ucfirst(ContactRead::tableNameSuffix()), 'id', 'contact_id');
     }
 }

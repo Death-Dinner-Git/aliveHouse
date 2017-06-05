@@ -20,7 +20,7 @@
 <body>
 
 
-<section style="margin: 15px;">
+<section>
     {if condition="isset($meta_title)"}
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>{$meta_title}</legend>
@@ -47,7 +47,7 @@
 
                 <button class="layui-btn" lay-submit="">查询</button>
 
-                <label class="layui-btn" onclick="showUrl('添加一个标签','/manage/guest/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])">添加</label>
+                <label class="layui-btn" onclick="showUrl('添加一个标签','/manage/guest/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])"><i class="layui-icon">&#xe608;</i> 添加</label>
             </div>
         </form>
     </div>
@@ -60,6 +60,7 @@
         <th>楼盘名称</th>
         <th>所属城市</th>
         <th>详细地址</th>
+        <th style="width:50px; text-align: center">操作</th>
         <th style="width:50px; text-align: center">操作</th>
     </tr>
     </thead>
@@ -85,6 +86,17 @@
                 </button>
             </a>
             <a href="javascript:void(0);"><button onclick="showDialog('信息确认','你确定删除此标签吗?',function(){deleteUser({$model.id});})" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
+        </td>
+        <td style="width: 150px;text-align: center;" class="action">
+            <button class="layui-btn layui-btn-primary layui-btn-small">
+                <i class="layui-icon">&#xe654;</i>
+            </button>
+            <button class="layui-btn layui-btn-primary layui-btn-small">
+                <i class="layui-icon">&#xe642;</i>
+            </button>
+            <button class="layui-btn layui-btn-primary layui-btn-small">
+                <i class="layui-icon">&#xe640;</i>
+            </button>
         </td>
     </tr>
     {/volist}

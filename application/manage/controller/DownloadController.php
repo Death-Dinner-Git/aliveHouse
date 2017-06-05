@@ -26,21 +26,14 @@ class DownloadController extends ManageController
             $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
             $query = $query->where($nameWhere);
         }
-        $typeList = Download::getTypeList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
+        $lists = Download::getTypeList();
+        if (isset($lists[0])){
+            unset($lists[0]);
         }
         if ($type && $type != ''){
             $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
+            if (in_array($type,array_keys($lists))){
                 $where =  array_merge($where, ['type'=>$type]);
-            }
-        }
-        $appList = Download::getAppList();
-        if ($app && $app != ''){
-            $param['app'] = trim($app);
-            if (in_array($app,array_keys($appList))){
-                $where =  array_merge($where, ['app'=>$app]);
             }
         }
         $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
@@ -52,9 +45,8 @@ class DownloadController extends ManageController
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
-        $this->assign('appList', $appList);
-        return view('config/index');
+        $this->assign('lists', $lists);
+        return view('download/index');
     }
 
     /**
@@ -64,9 +56,8 @@ class DownloadController extends ManageController
      */
     public function createAction()
     {
-        $config = new Download();
-        $configList = Download::getTypeList();
-        $appList = Download::getAppList();
+        $model = new Download();
+        $lists = Download::getTypeList();
         if ($this->getRequest()->isPost()){
             $data = (isset($_POST['Download']) ? $_POST['Download'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
@@ -74,18 +65,18 @@ class DownloadController extends ManageController
             if ($data){
                 $validate = Download::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
+                if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return view('download/create',['meta_title'=>'添加配置','lists'=>$lists]);
     }
 
     /**
@@ -98,7 +89,7 @@ class DownloadController extends ManageController
     {
         $this->assign('meta_title', "详情");
         $model = Download::load()->where(['id'=>$id])->find();
-        return view('config/view',['model'=>$model]);
+        return view('download/view',['model'=>$model]);
     }
 
     /**
@@ -110,8 +101,8 @@ class DownloadController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new Download();
-        $configList = Download::getTypeList();
+        $model = new Download();
+        $modelList = Download::getTypeList();
         $appList = Download::getAppList();
         $model = Download::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
@@ -130,13 +121,13 @@ class DownloadController extends ManageController
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('download/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'downloadList'=>$modelList]);
     }
 
     /**

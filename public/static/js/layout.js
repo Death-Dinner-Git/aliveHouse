@@ -119,6 +119,7 @@ layui.config({
     });
 
     window.addTab = addTab;
+    window.layui = layui;
 
     function addTab(ele) {
         var $this = $(ele);

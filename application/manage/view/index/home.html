@@ -20,17 +20,28 @@
         <form class="layui-form" action="" id="form-login">
 
             <div class="layui-form-item">
+                <label class="layui-form-label">图片懒加载</label>
+                <div class="layui-input-block checkbox-left">
+                    <div lay-filter="img" lay-src="/static/images/loading-1.gif" lay-class="user-images" lay-title="个人信息" lay-alt="我的头像" style="width: 100%;height: 40px;"></div>
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">复选框</label>
-                <div class="layui-input-block">
+                <div class="layui-input-block checkbox-left">
                     <input type="checkbox" name="like[write]" title="写作">
                     <input type="checkbox" name="like[read]" title="阅读" checked="">
                     <input type="checkbox" name="like[game]" title="游戏">
+
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">开关-关</label>
                 <div class="layui-input-block">
                     <input type="checkbox" name="close" lay-skin="switch" title="开关">
+                    <input type="checkbox" name="xxx" lay-skin="switch">
+                    <input type="checkbox" name="yyy" lay-skin="switch" lay-text="ON|OFF" checked>
+                    <input type="checkbox" name="zzz" lay-skin="switch" lay-text="开启|关闭">
+                    <input type="checkbox" name="aaa" lay-skin="switch" disabled>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -59,6 +70,70 @@
                     <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
                 </div>
             </div>
+            <div class="layui-collapse">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">销售状态：</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="sale" value="不限" title="不限" checked="">
+                        <input type="checkbox" lay-skin="primary" title="待售">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">均&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</label>
+                    <div class="layui-input-block">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline" style="width: 150px;">
+                                <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="1">不限</option>
+                                    <option value="2">50万</option>
+                                    <option value="3">80万</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</label>
+                            <div class="layui-input-inline" style="width: 150px;">
+                                <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="1">不限</option>
+                                    <option value="2">100万</option>
+                                    <option value="3">130万</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">开盘日期：</label>
+                            <div class="layui-input-inline" style="width: 150px;">
+                                <select name="modules" lay-verify="required" lay-search="">
+                                    <option value="1">不限</option>
+                                    <option value="2">form</option>
+                                    <option value="3">layim</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">面积：</label>
+                            <div class="layui-input-inline" style="width: 70px;">
+                                <input type="text" name="price_min" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid">-</div>
+                            <div class="layui-input-inline" style="width: 70px;">
+                                <input type="text" name="price_max" autocomplete="off" class="layui-input">
+                            </div>
+                            <span style="line-height: 38px;">(㎡)</span>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">范围</label>
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid">-</div>
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button>
@@ -66,6 +141,221 @@
                 </div>
             </div>
         </form>
+
+        分割线
+        <hr>
+
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">输入框</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码框</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="password" required="" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">辅助文字</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">选择框</label>
+                <div class="layui-input-block">
+                    <select name="city" lay-verify="required">
+                        <option value=""></option>
+                        <option value="0">北京</option>
+                        <option value="1">上海</option>
+                        <option value="2">广州</option>
+                        <option value="3">深圳</option>
+                        <option value="4">杭州</option>
+                    </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="0" class="">北京</dd><dd lay-value="1" class="">上海</dd><dd lay-value="2" class="">广州</dd><dd lay-value="3" class="">深圳</dd><dd lay-value="4" class="">杭州</dd></dl></div>
+                </div>
+            </div>
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">开关</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="switch" lay-skin="switch"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em></em><i></i></div>
+                </div>
+            </div>
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">单选框</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="sex" value="男" title="男"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><span>男</span></div>
+                    <input type="radio" name="sex" value="女" title="女" checked=""><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><span>女</span></div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">文本域</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn" lay-submit="" lay-filter="formDemoPane">立即提交</button>
+            </div>
+        </form>
+
+        分割线
+        <hr>
+
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>昵称</th>
+                <th>加入时间</th>
+                <th>签名</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>许闲心</td>
+                <td>2016-11-28</td>
+                <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+            </tr>
+            <tr>
+                <td>sentsin</td>
+                <td>2016-11-27</td>
+                <td> Life is either a daring adventure or nothing.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="layui-table" lay-skin="line">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>昵称</th>
+                <th>加入时间</th>
+                <th>签名</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="layui-table" lay-skin="row">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>昵称</th>
+                <th>加入时间</th>
+                <th>签名</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="layui-table" lay-even="" lay-skin="nob">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>昵称</th>
+                <th>加入时间</th>
+                <th>签名</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            </tbody>
+        </table>
+
+        分割线
+        <hr>
+
+        <blockquote class="layui-elem-quote">引用区域的文字</blockquote>
+        <blockquote class="layui-elem-quote layui-quote-nm">引用区域的文字</blockquote>
+
+        分割线
+        <hr>
+
+        <fieldset class="layui-elem-field">
+            <legend>字段集区块 - 默认风格</legend>
+            <div class="layui-field-box">
+                内容区域
+            </div>
+        </fieldset>
+
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>字段集区块 - 横线风格</legend>
+            <div class="layui-field-box">
+                内容区域
+            </div>
+        </fieldset>
+        <hr>
+        分割线
+
+        <pre class="layui-code" lay-title="" lay-height="" lay-skin="" lay-encode="">
+            var shazi = '';
+        </pre>
+
     </fieldset>
 
 </div>
@@ -73,7 +363,7 @@
 <script>
     layui.config({
         base: '/static/js/',
-    }).use(['layedit', 'laydate', 'validator'], function() {
+    }).use(['form','layedit', 'laydate', 'validator'], function() {
         var form = layui.validator(),
             layer = layui.layer,
             layedit = layui.layedit,
@@ -112,6 +402,8 @@
         });
 
         form.set({ELEM:'#form-login'});
+
+        imgLoading();
 
         //初始化
         form.init();

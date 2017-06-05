@@ -32,6 +32,7 @@ class Download extends Model
 
     protected $field = [
         'id',
+        'is_delete',
         'back_user_id',
         'title',
         'url',
@@ -49,19 +50,33 @@ class Download extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    //所有标签类型
+    private static $typeList = ['1'=>'jpg','2'=>'png','3'=>'gif','4'=>'excel'];
+
+    /**
+     * @return array
+     */
+    public static function getTypeList()
+    {
+        return self::$typeList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['back_user_id', 'title', 'url', 'tb_name', 'tb_id', 'tb_category', 'created_at'], 'required'],
-            [['back_user_id'], 'integer'],
-            [['url', 'tb_id', 'tb_category'], 'string'],
-            [['created_at'], 'safe'],
-            [['title', 'tb_name'], 'string', 'max' => 50],
-            [['fileName'], 'string', 'max' => 255],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['back_user_id','number'],
+                ['title','max:50'],
+                ['tb_name','max:50'],
+                ['fileName','max:255'],
+            ],
+            'msg'=>[
+                'group.in'=> '此类型不允许',
+            ]
         ];
     }
 

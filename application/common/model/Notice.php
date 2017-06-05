@@ -59,18 +59,42 @@ class Notice extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    //所有账号类型
+    private static $passList = ['1'=>'待审核','2'=>'已通过','3'=>'未通过','4'=>'保存','5'=>'已推送'];
+
+    /**
+     * @return array
+     */
+    public static function getPassList()
+    {
+        return self::$passList;
+    }
+
+    private static $readList = ['1'=>'未读','2'=>'已读'];
+
+    /**
+     * @return array
+     */
+    public static function getReadList()
+    {
+        return self::$readList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'back_user_id', 'is_passed', 'order', 'readed'], 'integer'],
-            [['back_user_id', 'title', 'content', 'order', 'created_at', 'updated_at', 'start_at', 'end_at'], 'required'],
-            [['content', 'remark'], 'string'],
-            [['created_at', 'updated_at', 'start_at', 'end_at'], 'safe'],
-            [['title'], 'string', 'max' => 50],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['back_user_id','number'],
+                ['is_passed','number'],
+                ['order','number'],
+                ['readed','number'],
+                ['title','max:50',],
+            ],
+            'msg'=>[]
         ];
     }
 
@@ -88,7 +112,7 @@ class Notice extends Model
             'is_passed' => '状态;0=无效;1=待审核,2=已通过,3=未通过,4=保存,5=已推送;',
             'order' => '顺序',
             'remark' => '备注',
-            'readed' => '是否阅读; 0=未读 ,1=已读',
+            'readed' => '是否阅读; 1=未读 ,2=已读',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
             'start_at' => '开始时间',
@@ -109,6 +133,6 @@ class Notice extends Model
      */
     public function getNoticeReads()
     {
-        return $this->hasMany(NoticeRead::tableNameSuffix(), ['notice_id' => 'id']);
+        return $this->hasMany(ucfirst(NoticeRead::tableNameSuffix()), 'id', 'notice_id');
     }
 }

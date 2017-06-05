@@ -13,7 +13,7 @@ class CityController extends ManageController
      *
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction($pageNumber = 1,$name = null, $level = null)
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
@@ -21,18 +21,19 @@ class CityController extends ManageController
         $query = City::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' ';
-            $query = $query->where($nameWhere);
+            $where[] = [ 'exp', ' `name` like '.' \'%'.$name.'%\''.' '];
         }
-        $typeList = City::getLevelList();
-        if ($type && $type != ''){
-            $param['level'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['level'=>$type]);
+        $lists = City::getLevelList();
+        if ($level && ($level = trim($level)) != ''){
+            $param['level'] = trim($level);
+            if (in_array($level,array_keys($lists))){
+                $where =  array_merge($where, ['level'=>$level]);
             }
         }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = City::load()->where($where)->count();
+
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
 
         $this->assign('meta_title', "城市清单");
         $this->assign('pages', ceil(($count)/$each));
@@ -40,7 +41,7 @@ class CityController extends ManageController
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
+        $this->assign('lists', $lists);
         return view('city/index');
     }
 

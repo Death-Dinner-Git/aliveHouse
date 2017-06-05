@@ -9,8 +9,52 @@ use app\manage\model\CustomerService;
 class ContactController extends ManageController
 {
 
+    /**
+     *
+     */
     public function servicesAction(){}
 
+    /**
+     * @description 显示资源列表
+     * @param int $pageNumber
+     * @param string $key
+     * @param string $status
+     * @return \think\Response
+     */
+    public function superAction($pageNumber = 1,$key = null, $status = null)
+    {
+        $where = ['is_delete'=>'1'];
+        $each = 12;
+        $param = ['key'=>'','status'=>''];
+        $query = Contact::load();
+        if ($key && $key != ''){
+            $param['key'] = trim($key);
+            $where[] = ['exp',"`username` like '%".$key."%' or `contact` like '%".$key."%' or `email` like '%".$key."%' or `address` like '%".$key."%'"];
+        }
+        $lists = Contact::getReadType();
+        if (isset($typeList[0])){
+            unset($typeList[0]);
+        }
+        if ($status && $status != ''){
+            $param['status'] = trim($status);
+            if (in_array($status,array_keys($lists))){
+                $where = array_merge($where,['readed'=>$status]);
+            }
+        }
+
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "全部求购清单");
+        $this->assign('pages', ceil(($count)/$each));
+        $this->assign('dataProvider', $dataProvider);
+        $this->assign('indexOffset', (($pageNumber-1)*$each));
+        $this->assign('count', $count);
+        $this->assign('param', $param);
+        $this->assign('lists', $lists);
+        return view('contact/index');
+    }
 
     /**
      * @description 显示资源列表
@@ -25,19 +69,18 @@ class ContactController extends ManageController
         $each = 12;
         $param = ['key'=>'','status'=>''];
         $query = Contact::load();
-        if ($key && $key != ''){
-            $param['key'] = trim($key);
-            $nameWhere = [' `username` like '.' \'%'.$key.'%\''.'or `contact` like '.' \'%'.$key.'%\''.'or `email` like '.' \'%'.$key.'%\''.'or `address` like '.' \'%'.$key.'%\''];
-            $where =  array_merge($where, $nameWhere);
+        if ($key && ($key = trim($key)) != ''){
+            $param['key'] = $key;
+            $where[] = ['exp',"`username` like '%".$key."%' or `contact` like '%".$key."%' or `email` like '%".$key."%' or `address` like '%".$key."%'"];
         }
         $lists = Contact::getReadType();
         if (isset($typeList[0])){
             unset($typeList[0]);
         }
-        if ($status && $status != ''){
-            $param['status'] = trim($status);
+        if ($status && ($status = trim($status)) != ''){
+            $param['status'] = $status;
             if (in_array($status,array_keys($lists))){
-                $where =  array_merge($where, ['readed'=>$status]);
+                $where = array_merge($where,['readed'=>$status]);
             }
         }
 
@@ -45,7 +88,7 @@ class ContactController extends ManageController
         $count = $query->where($where)->count();
         $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
 
-        $this->assign('meta_title', "联系清单");
+        $this->assign('meta_title', "我的求购清单");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
@@ -85,6 +128,7 @@ class ContactController extends ManageController
         }
         return view('contact/create',[
             'meta_title'=>'联系我们',
+            'meta_util'=>'false',
             'lists'=>$lists,
             'hotLists'=>$hotLists,
         ]);
@@ -127,6 +171,42 @@ class ContactController extends ManageController
         return json($ret);
     }
 
+    /**
+     * @description 求购分配
+     * @param $id $pageNumber
+     * @return \think\Response
+     */
+    public function assignAction($id = null)
+    {
+        return '';
+        $model = new Contact();
+        $lists = CustomerService::getService();
+        $hotLists = CustomerService::getService(true);
+        if ($this->getRequest()->isPost()){
+            $data = (isset($_POST['Building']) ? $_POST['Building'] : []);
+            $data['updated_at'] = date('Y-m-d H:i:s');
+            $data['created_at'] = date('Y-m-d H:i:s');
+            if ($data){
+                $validate = Contact::getValidate();
+                $validate->scene('create');
+                if ($validate->check($data) && $model->save($data)){
+                    $this->success('提交成功','create','',1);
+                }else{
+                    $error = $validate->getError();
+                    if (empty($error)){
+                        $error = $model->getError();
+                    }
+                    $this->error($error, 'create','',1);
+                }
+            }
+        }
+        return view('contact/create',[
+            'meta_title'=>'求购分配',
+            'meta_util'=>'false',
+            'lists'=>$lists,
+            'hotLists'=>$hotLists,
+        ]);
+    }
 
     /**
      * 删除指定资源

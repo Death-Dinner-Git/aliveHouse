@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
 
     <!-- For site js -->
     <script type="text/javascript" src="__JS__/jquery.js"></script>
@@ -62,17 +61,12 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend style="text-align:center;">{$meta_title ? $meta_title : '表单'}</legend>
         <div style="display: flex;">
-            <div class="panel-group faq-panels" id="accordion" style="margin: auto;width: 620px;">
-                <h3>contact us</h3>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
-                               href="#collapseOne">.........?</a>
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
-                        <div class="panel-body">
+            <div class="layui-collapse" id="accordion" style="margin: auto;width: 620px;">
+                <h3>类型一</h3>
+                <div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">contact us</h2>
+                        <div class="layui-colla-content layui-show">
                             <p> 1、........？<br/>
                                 ....：<a href=".">.....</a><br/>
                                 ......。
@@ -84,33 +78,48 @@
                             <p>do not break the try !</p>
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse"
-                               data-parent="#accordion" href="#collapseTen">how?</a>
-                        </h4>
-                    </div>
-                    <div id="collapseTen" class="panel-collapse collapse in">
-                        <div class="panel-body">
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">how?</h2>
+                        <div class="layui-colla-content layui-show">
                             <p>How to do?</p>
                             <p>And ?</p>
                         </div>
                     </div>
-                </div>
-                <br/>
-                <h3>More...</h3>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse"
-                               data-parent="#accordion" href="#collapseEleven">What?</a>
-                        </h4>
-                    </div>
-                    <div id="collapseEleven" class="panel-collapse collapse in">
-                        <div class="panel-body">
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">What?</h2>
+                        <div class="layui-colla-content layui-show">
                             <p>We are ...</p>
+                        </div>
+                    </div>
+                </div>
+                <h3>类型二</h3>
+                <div>
+                    <div class="layui-collapse" lay-accordion>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">contact us</h2>
+                            <div class="layui-colla-content layui-show">
+                                <p> 1、........？<br/>
+                                    ....：<a href=".">.....</a><br/>
+                                    ......。
+                                    <br/><br/>
+                                    2、.......？<br/>
+                                    ......：<a href="">.......</a><br/>
+                                    ....。
+                                </p>
+                                <p>do not break the try !</p>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">How?</h2>
+                            <div class="layui-colla-content layui-show">
+                                <p>do not break the try !</p>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">What?</h2>
+                            <div class="layui-colla-content layui-show">
+                                <p>do not break the try !</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,9 +128,10 @@
     </fieldset>
 </div>
 <script>
-    layui.use([ 'jquery','layer','flow'], function() {
+    layui.use([ 'jquery','layer','flow','element'], function() {
         var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
         var flow = layui.flow;
+        var element = layui.element;
         flow.load({
             elem: '#accordion' //指定列表容器
             ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
@@ -148,17 +158,11 @@
                             });
                         }
                         var _content = group +
-                            '<div class="panel panel-default">' +
-                            '<div class="panel-heading">' +
-                            '<h4 class="panel-title">' +
-                            '<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsePush_'+_index+'"> ' + title + '</a>' +
-                            '</h4>' +
-                            '</div>' +
-                            '<div id="collapsePush_'+_index+'" class="panel-collapse collapse in">' +
-                            '<div class="panel-body">' +
-                             bodyContent +
-                            '</div>' +
-                            '</div>' +
+                            '<div>' +
+                            '<div class="layui-colla-item" data-index="'+_index+'">' +
+                            '<h2 class="layui-colla-title">'+title+'</h2>' +
+                            '<div class="layui-colla-content layui-show">' + bodyContent +
+                            '</div>'+
                             '</div>';
 
                         if (push){
@@ -169,6 +173,7 @@
                     //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
                     //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
                     next(lis.join(''), page < res.pages);
+                    element().init();
                 });
             }
         });

@@ -57,18 +57,38 @@ class TakeOrder extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $houseType = ['1'=>'新房','2'=>'二手房'];
+
+    public static function getHouseType(){
+        return self::$houseType;
+    }
+
+    public static $dealStatus = ['1'=>'成交','2'=>'取消'];
+
+    public static function getDealStatus(){
+        return self::$dealStatus;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'back_user_id', 'guest_id', 'house_type', 'goods_id', 'deal_status'], 'integer'],
-            [['back_user_id', 'guest_id', 'order_code', 'goods_id', 'money', 'description', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['order_code', 'money', 'description'], 'string', 'max' => 255],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
-            [['guest_id'], 'exist', 'skipOnError' => true, 'targetClass' => Guest::tableNameSuffix(), 'targetAttribute' => ['guest_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['house_type','in:2,1','类型 无效'],
+                ['deal_status','in:2,1','交易状态 无效'],
+                ['back_user_id','number',],
+                ['guest_id','number',],
+                ['house_type','number',],
+                ['goods_id','number',],
+                ['deal_status','number',],
+                ['order_code','max:255',],
+                ['money','max:255',],
+                ['description','max:255',],
+            ],
+            'msg'=>[]
         ];
     }
 
@@ -85,7 +105,7 @@ class TakeOrder extends Model
             'order_code' => '订单号',
             'house_type' => '类型;1=新房,2=二手房;默认1;',
             'goods_id' => '目标商品ID',
-            'deal_status' => '交易状态;0=失败,1=成功;默认1;',
+            'deal_status' => '交易状态;2=失败,1=成功;默认1;',
             'money' => '交易金额',
             'description' => '备注',
             'created_at' => '创建时间',
@@ -106,6 +126,6 @@ class TakeOrder extends Model
      */
     public function getGuest()
     {
-        return $this->hasOne(Guest::tableNameSuffix(), ['id' => 'guest_id']);
+        return $this->hasOne(ucfirst(Guest::tableNameSuffix()), 'guest_id', 'id');
     }
 }

@@ -41,7 +41,7 @@ class Ban extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $banList = ['0'=>'允许','1'=>'禁止'];
+    public static $banList = ['0'=>'无效','1'=>'允许','2'=>'禁止'];
 
     public static function getBanList(){
         return self::$banList;
@@ -55,7 +55,7 @@ class Ban extends Model
         return [
             'rule'=>[
                 ['back_user_id','number','用户 无效'],
-                ['ban','in:0,1','权限 无效'],
+                ['ban','in:0,1,2','权限 无效'],
                 ['item_name','max:64',],
             ],
             'msg'=>[]
@@ -70,7 +70,7 @@ class Ban extends Model
         return [
             'item_name' => '名称',
             'back_user_id' => 'UID',
-            'ban' => '类型;0=允许;1=禁止;',
+            'ban' => '类型;0=无效,1=允许,2=禁止;',
             'created_at' => '变更时间',
         ];
     }
@@ -80,7 +80,7 @@ class Ban extends Model
      */
     public function getItemName()
     {
-        return $this->hasOne(AuthItem::tableNameSuffix(), ['name' => 'item_name']);
+        return $this->hasOne(ucfirst(AuthItem::tableNameSuffix()), 'item_name', 'name');
     }
 
     /**

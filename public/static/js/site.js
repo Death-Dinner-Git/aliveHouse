@@ -3,6 +3,7 @@ var layer = top.window.layer ? top.window.layer : window.layer;
 // var _height = document.documentElement.clientHeight;//获取页面可见高度
 var config = {
     shade:['0.372','#000'],
+    iframeShade:['0.628', '#4d4d4d'],
     width:{
         max:'800px',
         small:'700px',
@@ -54,7 +55,7 @@ function loadScript(url) {
     document.body.appendChild(script);
 }
 
-function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade,scroll) {
+function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade,scroll,shadeClose) {
     var content = '',stop = true;
     var myLayer = window.layer ? window.layer : top.window.layer;
     if(!myLayer) {
@@ -80,15 +81,16 @@ function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade,scroll) 
     height = height || config.height.max;
     maxmin = maxmin !== undefined && maxmin === true && type == 2;
     if (shade === true){
-        shade = config.shade;
+        shade = config.iframeShade;
     }
     shade = shade || (maxmin !== undefined && maxmin === true && type == 2 ? 0 : 0.3);
+    shadeClose = shadeClose || false;
     myLayer.open({
         type: type,
         area: [width,height],
         maxmin: maxmin,
         shade: shade,
-        shadeClose:true,
+        shadeClose:shadeClose,
         id: ele,
         title:'<p style="text-align: center;">'+title+'</p>',
         content: content
@@ -298,6 +300,43 @@ function tab(options,parentWin,width,height,shade) {
     });
 }
 
+function imgLoading(ele) {
+    var $this = $(ele);
+    if ($this ===undefined || $this.attr('lay-src') === undefined){
+        return;
+    }
+
+    var _width = layui.getStyle(ele,'width'),_height = layui.getStyle(ele,'height');
+
+    var img = '<div style="display: flex;width: '+_width+';height: '+_height+';"><div style="margin: auto;"><img src="/static/images/loading-2.gif"></div></div>';
+    $this.html(img);
+
+    var _src = $this.attr('lay-src'),
+        _class = $this.attr('lay-class') || '',
+        _title = $this.attr('lay-title') || '',
+        _alt = $this.attr('lay-alt') || '',
+        _error = $this.attr('lay-error') || '/static/images/lockscreenbg.png';
+    var attr = '';
+    if (_class !== ''){
+        attr +=  ' class="'+_class+'"';
+    }
+    if (_title !== ''){
+        attr +=  ' title="'+_title+'"';
+    }
+    if (_alt !== ''){
+        attr +=  ' alt="'+_alt+'"';
+    }
+    setTimeout(function () {
+        layui.img('sdsdsdd', function () {
+            img = '<img src="'+_src+'" '+ attr +'>';
+            $this.html(img);
+        }, function () {
+            img = '<img src="'+_error+'" '+ attr +' style="height: 100%;width: 100%;overflow: hidden;">';
+            $this.html(img);
+        })
+    },800);
+}
+
 function photos(type,target,json,parentWin,width,height,shade) {
     var myLayer = top.window.layer ? top.window.layer : window.layer;
     if (parentWin === false){
@@ -386,6 +425,12 @@ function resizeShowTab() {
         $(".layui-show").find("iframe").load();
     }
 }
+
+setTimeout(function () {
+    $('[lay-filter="img"]').each(function () {
+        imgLoading(this);
+    });
+},200);
 
 $.getUrlParam = function (name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
