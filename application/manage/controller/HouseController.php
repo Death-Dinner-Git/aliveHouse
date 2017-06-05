@@ -3,7 +3,8 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use think\Request;
+use app\manage\model\NewHouse;
+use app\manage\model\SecondHandHouse;
 
 class HouseController extends ManageController
 {
@@ -61,31 +62,24 @@ class HouseController extends ManageController
         $where = ['is_delete'=>'1'];
         $each = 12;
         $param = ['name'=>'','type'=>'','app'=>''];
-        $query = Ban::load();
+        $query = NewHouse::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);
             $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
             $query = $query->where($nameWhere);
         }
-        $typeList = Ban::getTypeList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
+        $lists = NewHouse::getTypeList();
+        if (isset($lists[0])){
+            unset($lists[0]);
         }
         if ($type && $type != ''){
             $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
+            if (in_array($type,array_keys($lists))){
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $appList = Ban::getAppList();
-        if ($app && $app != ''){
-            $param['app'] = trim($app);
-            if (in_array($app,array_keys($appList))){
-                $where =  array_merge($where, ['app'=>$app]);
-            }
-        }
         $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Ban::load()->where($where)->count();
+        $count = NewHouse::load()->where($where)->count();
 
         $this->assign('meta_title', "标签清单");
         $this->assign('pages', ceil(($count)/$each));
@@ -93,9 +87,8 @@ class HouseController extends ManageController
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
-        $this->assign('appList', $appList);
-        return view('config/index');
+        $this->assign('lists', $lists);
+        return view('newHouse/index');
     }
 
     /**
@@ -105,28 +98,27 @@ class HouseController extends ManageController
      */
     public function createAction()
     {
-        $config = new Ban();
-        $configList = Ban::getTypeList();
-        $appList = Ban::getAppList();
+        $model = new NewHouse();
+        $lists = NewHouse::getTypeList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Ban']) ? $_POST['Ban'] : []);
+            $data = (isset($_POST['NewHouse']) ? $_POST['NewHouse'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Ban::getValidate();
+                $validate = NewHouse::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
+                if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return view('newHouse/create',['meta_title'=>'添加配置','lists'=>$lists]);
     }
 
     /**
@@ -138,8 +130,8 @@ class HouseController extends ManageController
     public function viewAction($id)
     {
         $this->assign('meta_title', "详情");
-        $model = Ban::load()->where(['id'=>$id])->find();
-        return view('config/view',['model'=>$model]);
+        $model = NewHouse::load()->where(['id'=>$id])->find();
+        return view('newHouse/view',['model'=>$model]);
     }
 
     /**
@@ -151,33 +143,32 @@ class HouseController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new Ban();
-        $configList = Ban::getTypeList();
-        $appList = Ban::getAppList();
-        $model = Ban::load()->where(['id'=>$id])->where($where)->find();
+        $model = new NewHouse();
+        $lists = NewHouse::getTypeList();
+        $model = NewHouse::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
 
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Ban']) ? $_POST['Ban'] : []);
+            $data = (isset($_POST['NewHouse']) ? $_POST['NewHouse'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Ban::getValidate();
+                $validate = NewHouse::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && Ban::update($data,['id'=>$id])){
+                if ($validate->check($data) && NewHouse::update($data,['id'=>$id])){
                     $this->success('更新成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('newHouse/update',['meta_title'=>'编辑标签','model'=>$model,'lists'=>$lists]);
     }
 
     /**
@@ -190,7 +181,7 @@ class HouseController extends ManageController
     {
         $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
         if ($this->getRequest()->isAjax()){
-            $result = Ban::update(['is_delete'=>'0'],['id'=>$id]);
+            $result = NewHouse::update(['is_delete'=>'0'],['id'=>$id]);
             if ($result){
                 $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
             }

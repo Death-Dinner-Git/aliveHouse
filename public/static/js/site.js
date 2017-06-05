@@ -327,7 +327,7 @@ function imgLoading(ele) {
         attr +=  ' alt="'+_alt+'"';
     }
     setTimeout(function () {
-        layui.img('sdsdsdd', function () {
+        layui.img(_src, function () {
             img = '<img src="'+_src+'" '+ attr +'>';
             $this.html(img);
         }, function () {

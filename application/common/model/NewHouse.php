@@ -51,17 +51,28 @@ class NewHouse extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $typeList = ['1'=>'类型一','2'=>'类型二'];
+
+    public static function getTypeList(){
+        return self::$typeList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'building_base_id', 'type'], 'integer'],
-            [['building_base_id', 'room', 'description', 'address', 'url', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['room', 'description', 'address', 'url'], 'string', 'max' => 255],
-            [['building_base_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuildingBase::tableNameSuffix(), 'targetAttribute' => ['building_base_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['building_base_id','number',],
+                ['type','number',],
+                ['room','max:255',],
+                ['description','max:255',],
+                ['address','max:255',],
+                ['url','max:255',],
+            ],
+            'msg'=>[]
         ];
     }
 
@@ -74,7 +85,7 @@ class NewHouse extends Model
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'building_base_id' => '楼盘表ID',
-            'type' => '类型;0=,1=;默认1;',
+            'type' => '类型;1=类型;默认1;',
             'room' => '房号',
             'description' => '详细描述',
             'address' => '地址',
@@ -89,6 +100,6 @@ class NewHouse extends Model
      */
     public function getBuildingBase()
     {
-        return $this->hasOne(BuildingBase::tableNameSuffix(), ['id' => 'building_base_id']);
+        return $this->hasOne(ucfirst(BuildingBase::tableNameSuffix()),'building_base_id', 'id');
     }
 }

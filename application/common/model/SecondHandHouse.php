@@ -55,18 +55,29 @@ class SecondHandHouse extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public static $typeList = ['1'=>'类型一','2'=>'类型二'];
+
+    public static function getTypeList(){
+        return self::$typeList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['is_delete', 'house_host_id', 'type', 'city_id'], 'integer'],
-            [['house_host_id', 'city_id', 'address', 'room', 'description', 'url', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['address', 'room', 'description', 'url'], 'string', 'max' => 255],
-            [['house_host_id'], 'exist', 'skipOnError' => true, 'targetClass' => HouseHost::tableNameSuffix(), 'targetAttribute' => ['house_host_id' => 'id']],
-            [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => City::tableNameSuffix(), 'targetAttribute' => ['city_id' => 'id']],
+            'rule'=>[
+                ['is_delete','in:0,1','时效 无效'],
+                ['building_base_id','number',],
+                ['type','number',],
+                ['city_id','number',],
+                ['room','max:255',],
+                ['description','max:255',],
+                ['address','max:255',],
+                ['url','max:255',],
+            ],
+            'msg'=>[]
         ];
     }
 
