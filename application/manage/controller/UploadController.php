@@ -10,36 +10,37 @@ class UploadController extends ManageController
     /**
      * @description 显示资源列表
      * @param int $pageNumber
-     * @param string $name
+     * @param string $key
      * @param string $type
-     * @param string $app
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction($pageNumber = 1,$key = null, $type = null)
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
-        $query = Upload::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $query = $query->where($nameWhere);
+        $param = ['key'=>'','type'=>''];
+        if ($key && ($key = trim($key)) != ''){
+            $param['key'] = $key;
+            $where[] = ['exp',' `name` like '.' \'%'.$key.'%\''];
+            $where =  array_merge($where, ['md5'=>$key]);
         }
         $lists = Upload::getTypeList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
+        if (isset($lists[0])){
+            unset($lists[0]);
         }
         if ($type && $type != ''){
             $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['type'=>$type]);
+            if (in_array($type,array_keys($lists))){
+                $where =  array_merge($where, ['ext'=>$type]);
             }
         }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Upload::load()->where($where)->count();
 
-        $this->assign('meta_title', "标签清单");
+        $query = Upload::load();
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "上传记录");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));

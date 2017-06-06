@@ -16,7 +16,9 @@ class BuildController extends ManageController
      */
     public function buildAction()
     {
-        return view('build');
+        return view('build/build',[
+
+        ]);
     }
 
 }

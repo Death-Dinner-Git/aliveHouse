@@ -9,11 +9,11 @@
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 
-	<title> [ New House ] </title>
+	<title> [ Home ] </title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
-	<link rel="canonical" href="/home/house/newhouse.html">
+	<link rel="canonical" href="/home/build/build.html">
 
 	<!-- Load base CSS -->
 	<link type="text/css" href="/static/css/home/layerBase2.css" rel="stylesheet">
@@ -56,7 +56,9 @@
 
 	<!-- Define base JS -->
 	<script type="text/javascript">
-        (function(FUN,undefined){var list=[];FUN.run=function(){if(arguments.length<1){throw new Error("jzUtils.run 参数错误");return}var name=arguments[0].name,callMethod=arguments[0].callMethod||false,prompt=arguments[0].prompt||false,promptMsg=arguments[0].promptMsg||"功能还在加载中，请稍候",base=arguments[0].base||(window.Fai&&Fai.top.Site)||top.Site||window,args=Array.prototype.slice.call(arguments),funcArgs=args.slice(1),callbackFunc={},result;result=checkMethod(name,base);if(result.success){callMethod=false;try{result.func.apply(result.func,funcArgs)}catch(e){console&&console.log&&console.log("错误:name="+e.name+"; message="+e.message)}}else{if(prompt){window.Fai&&Fai.ing(promptMsg,true)}}if(callMethod){callbackFunc.name=name;callbackFunc.base=base;callbackFunc.args=funcArgs;list.push(callbackFunc)}};FUN.trigger=function(option){if(typeof option!=="object"){throw new Error("jzUtils.trigger 参数错误");return}var funcName=option.name||"",base=option.base||(window.Fai&&Fai.top.Site)||top.Site||window,newList=[],result,func,i,param;if(funcName.length<1){return}for(i=0;i<list.length;i++){param=list[i];if(param.name==funcName){result=checkMethod(funcName,base);if(result.success){try{result.func.apply(result.func,param.args)}catch(e){console&&console.log&&console.log("错误:name="+e.name+"; message="+e.message)}}}else{newList.push(param)}}list=newList};function checkMethod(funcName,base){var methodList=funcName.split("."),readyFunc=base,result={"success":true,"func":function(){}},methodName,i;for(i=0;i<methodList.length;i++){methodName=methodList[i];if(methodName in readyFunc){readyFunc=readyFunc[methodName]}else{result.success=false;return result}}result.func=readyFunc;return result}})(window.jzUtils||(window.jzUtils={}))
+        (function(FUN,undefined){
+            var list=[];
+            FUN.run=function(){if(arguments.length<1){throw new Error("jzUtils.run 参数错误");return}var name=arguments[0].name,callMethod=arguments[0].callMethod||false,prompt=arguments[0].prompt||false,promptMsg=arguments[0].promptMsg||"功能还在加载中，请稍候",base=arguments[0].base||(window.Fai&&Fai.top.Site)||top.Site||window,args=Array.prototype.slice.call(arguments),funcArgs=args.slice(1),callbackFunc={},result;result=checkMethod(name,base);if(result.success){callMethod=false;try{result.func.apply(result.func,funcArgs)}catch(e){console&&console.log&&console.log("错误:name="+e.name+"; message="+e.message)}}else{if(prompt){window.Fai&&Fai.ing(promptMsg,true)}}if(callMethod){callbackFunc.name=name;callbackFunc.base=base;callbackFunc.args=funcArgs;list.push(callbackFunc)}};FUN.trigger=function(option){if(typeof option!=="object"){throw new Error("jzUtils.trigger 参数错误");return}var funcName=option.name||"",base=option.base||(window.Fai&&Fai.top.Site)||top.Site||window,newList=[],result,func,i,param;if(funcName.length<1){return}for(i=0;i<list.length;i++){param=list[i];if(param.name==funcName){result=checkMethod(funcName,base);if(result.success){try{result.func.apply(result.func,param.args)}catch(e){console&&console.log&&console.log("错误:name="+e.name+"; message="+e.message)}}}else{newList.push(param)}}list=newList};function checkMethod(funcName,base){var methodList=funcName.split("."),readyFunc=base,result={"success":true,"func":function(){}},methodName,i;for(i=0;i<methodList.length;i++){methodName=methodList[i];if(methodName in readyFunc){readyFunc=readyFunc[methodName]}else{result.success=false;return result}}result.func=readyFunc;return result}})(window.jzUtils||(window.jzUtils={}))
         var _faiAjax = function(){
             //for regexp
             var r = /\?/;
@@ -124,7 +126,7 @@
 </head>
 <body class="g_body g_locale2052 g_cusSiteWidth">
 
-	<div id="g_main" class="g_main g_col105 " style="width: 1903px;">
+	<div id="g_main" class="g_main g_col108 " style="width: 1903px;">
 	<div id="web" class="g_web ">
 
 		<!-- This webTopTable start -->
@@ -166,7 +168,8 @@
 						</div>
 					</td>
 				</tr>
-				</tbody></table>
+				</tbody>
+			</table>
 
 		</section>
 		<!-- This absTopTable end -->
@@ -216,7 +219,7 @@
 															<tr>
 																<td class="itemLeft"></td>
 																<td class="itemCenter">
-																	<a hidefocus="true" style="outline:none;" href="/home/better/better.html" target="_self"><span class="itemName0">Better</span></a>
+																	<a hidefocus="true" style="outline:none;" href="/home/rent/rent.html" target="_self"><span class="itemName0">Rent</span></a>
 																</td>
 																<td class="itemRight"></td>
 															</tr>
@@ -237,12 +240,12 @@
 														</table>
 
 														<div class="itemSep"></div>
-														<table title="" class="item itemCol105 itemIndex4 itemSelected" cellpadding="0" cellspacing="0" colid="105" id="nav105">
+														<table title="" class="item itemCol105 itemIndex4" cellpadding="0" cellspacing="0" colid="105" id="nav105">
 															<tbody>
 															<tr>
 																<td class="itemLeft"></td>
 																<td class="itemCenter">
-																	<a hidefocus="true" style="outline:none;" href="/home/house/newhouse.html" target="_self" onclick="return false;"><span class="itemName0">New-House</span></a>
+																	<a hidefocus="true" style="outline:none;" href="/home/house/newhouse.html" target="_self"><span class="itemName0">New-House</span></a>
 																</td>
 																<td class="itemRight"></td>
 															</tr>
@@ -250,12 +253,12 @@
 														</table>
 
 														<div class="itemSep"></div>
-														<table title="" class="item itemCol108 itemIndex5" cellpadding="0" cellspacing="0" colid="108" id="nav108">
+														<table title="" class="item itemCol108 itemIndex5 itemSelected" cellpadding="0" cellspacing="0" colid="108" id="nav108">
 															<tbody>
 															<tr>
 																<td class="itemLeft"></td>
 																<td class="itemCenter">
-																	<a hidefocus="true" style="outline:none;" href="/home/build/build.html" target="_self"><span class="itemName0">Build</span></a>
+																	<a hidefocus="true" style="outline:none;" href="/home/build/build.html" target="_self" onclick="return false;"><span class="itemName0">Build</span></a>
 																</td>
 																<td class="itemRight"></td>
 															</tr>
@@ -290,30 +293,36 @@
 		</section>
 		<!-- This webNavTable end -->
 
-		<table class="webHeaderTable" cellpadding="0" cellspacing="0" id="webHeaderTable">
-			<tbody>
-			<tr>
-				<td align="center" class="webHeaderTd fk-moduleZoneWrap">
-					<div id="fk-webHeaderZone" class="J_moduleZone fk-webHeaderZone fk-moduleZone forms sideForms">
-						<div class="fk-moduleZoneBg"></div>
-					</div>
-					<div id="webHeader" class="webHeader">
-						<table class="headerTable" cellpadding="0" cellspacing="0">
-							<tbody><tr>
-								<td class="headerCusLeft"></td>
-								<td class="headerCusMiddle" align="center" valign="top">
-									<div class="headerNav">
-									</div>
-								</td>
-								<td class="headerCusRight"></td>
-							</tr>
-							</tbody>
-						</table>
-					</div>
-				</td>
-			</tr>
-			</tbody>
-		</table>
+		<!-- This webHeaderTable start -->
+		<section>
+
+			<table class="webHeaderTable" cellpadding="0" cellspacing="0" id="webHeaderTable">
+				<tbody>
+				<tr>
+					<td align="center" class="webHeaderTd fk-moduleZoneWrap">
+						<div id="fk-webHeaderZone" class="J_moduleZone fk-webHeaderZone fk-moduleZone forms sideForms">
+							<div class="fk-moduleZoneBg"></div>
+						</div>
+						<div id="webHeader" class="webHeader">
+							<table class="headerTable" cellpadding="0" cellspacing="0">
+								<tbody><tr>
+									<td class="headerCusLeft"></td>
+									<td class="headerCusMiddle" align="center" valign="top">
+										<div class="headerNav">
+										</div>
+									</td>
+									<td class="headerCusRight"></td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+
+		</section>
+		<!-- This webHeaderTable end -->
 
 		<table class="webBannerTable J_webBannerTable" cellpadding="0" cellspacing="0">
 			<tbody><tr>
@@ -334,7 +343,7 @@
 	
 	
 <div class="imageSwitchShowName photoSwitchBg" style="position: absolute; display: none; z-index: 2; width: 1903px; height: 30px; line-height: 30px;"><span class="spanHiddenName spanShowName" style="margin-left: 10px;"></span></div><div class="imageSwitchBtnArea" style="position: absolute; z-index: 3; display: none; width: 19px;"><a class="imageSwitchBtn imageSwitchBtnSel"><span>1</span></a></div><div></div><div class="switchGroup " style="width: 1903px; position: relative; height: 300px; overflow: hidden; margin: 0px auto;"><div class="numImg" id="numImg0" style="position:absolute;width:100%;">
-<a class="J_bannerItem" hidefocus="true" title="" href="javascript:;" target="" style="width: 1903px; height: 300px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; display: block; outline: none; margin: 0px auto; position: relative; z-index: 1; background-size: cover; background-image: url(&quot;http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7_aUwgUou4vvvgYwgA84rAI.jpg&quot;);" onclick="return false;">
+<a class="J_bannerItem" hidefocus="true" title="" href="javascript:;" target="" style="width: 1903px; height: 300px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; display: block; outline: none; margin: 0px auto; position: relative; z-index: 1; background-size: cover; background-image: url(&quot;http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI.jpg&quot;);" onclick="return false;">
 </a>
 </div>
 </div></div>
@@ -361,328 +370,63 @@
 
 
 		<div id="fullmeasureTopForms" class="fullmeasureContainer forms fk-fullmeasureForms fullmeasureForms fullmeasureTopForms">
-			<div id="module519" _indexclass="formIndex1" _modulestyle="80" _moduleid="519" class="form form519 formIndex1 formStyle80 fk-formFullmeasure " title="" style="height: 609px;" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="0" _inpack="0" _autoheight="0" _global="false" _independent="false" fmslidestyle="0" fmpage="1" iscarousel="0" displaytime="4" carouselspeed="1">
-<div class="fillContentRelative" style="position: relative; z-index: -1; height: 476px; width: 100%; display: none;"></div><div style="position: static;" class="fullmeasureOuterContentPage fullmeasureOuterContentPage1 J_fullmeasurePageShow" page="1">			<div class="fullmeasureOuterContentBg fullmeasureOuterContentBg519 fullmeasureStyle0"></div><div class="fullmeasureOuterContent fullmeasureOuterContent519">
-<div class="fullmeasureContent fullmeasureContent519" id="fullmeasureContent519_1" moduleid="519"><div class="fullmeasureContentBg fullmeasureContentBg519"></div><div id="module520" _indexclass="formIndex1" _modulestyle="3" _moduleid="520" systempattern="60" class="form form520 formStyle3 jz-modulePattern60 formIndex1" title="" style="" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="519" _inpack="0" _autoheight="1" _global="false" _independent="false">
-<table class="formTop formTop520" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
-<table class="formBanner formBanner520" cellpadding="0" cellspacing="0" style=""><tbody><tr>
-<td class="left left520"></td>
-<td class="center center520" valign="top">
-<table cellpadding="0" cellspacing="0" class="formBannerTitle formBannerTitle520"><tbody><tr>
-<td class="titleLeft titleLeft520" valign="top">
-</td>
-<td class="titleCenter titleCenter520" valign="top">
-<div class="titleText titleText520"><span class="bannerNormalTitle fk_mainTitle mainTitle mainTitle520">热门楼盘</span></div>
-</td>
-<td class="titleRight titleRight520" valign="top">
-</td>
-</tr></tbody></table>
-</td>
-<td class="right right520"></td>
-</tr></tbody></table>
-<table class=" formMiddle formMiddle520" style="" cellpadding="0" cellspacing="0"><tbody><tr>
-<td class="formMiddleLeft formMiddleLeft520"></td>
-<td class="formMiddleCenter formMiddleCenter520 " valign="top">
-<div class="formMiddleContent formMiddleContent520 fk-formContentOtherPadding" tabstyle="0">
-<div class="productMarqueeForms" newmarqueetoward="0" _bordertype="0" _bgtype="0" _borderwidth="1"><div class="demo" style="height: 269px;">
-<div class="demo0" id="demo0520" style="width: 2799px;">
-<div topclassname="productListTopIcon" topswitch="on" productid="21" productname="水悦湾" class="productMarqueeForm fk-productListForm  " faiwidth="281" faiheight="211">
-<div id="m520marqueeProduct21" class=" imgDiv " style="width:281px;height:211px;">
-<table cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td style="overflow:hidden;" valign="middle" align="center">
-<a hidefocus="true" href="http://www.ot13227318.icoc.me/pd.php?id=21&amp;_pp=105_520" target="_blank">
-<img src="/static/uploads/ima03.jpg" style="width:281px;height:211px;" alt="水悦湾" title="">
-</a></td>
+			<div id="module388" _indexclass="formIndex1" _modulestyle="80" _moduleid="388" class="form form388 formIndex1 formStyle80 fk-formFullmeasure " title="" style="height: 850px;" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="0" _inpack="0" _autoheight="0" _global="false" _independent="false" fmslidestyle="0" fmpage="1" iscarousel="0" displaytime="4" carouselspeed="1">
+<div class="fillContentRelative" style="position: relative; z-index: -1; height: 894px; width: 100%; display: none;"></div><div style="position: static;" class="fullmeasureOuterContentPage fullmeasureOuterContentPage1 J_fullmeasurePageShow" page="1">			<div class="fullmeasureOuterContentBg fullmeasureOuterContentBg388 fullmeasureStyle0"></div><div class="fullmeasureOuterContent fullmeasureOuterContent388">
+<div class="fullmeasureContent fullmeasureContent388" id="fullmeasureContent388_1" moduleid="388"><div class="fullmeasureContentBg fullmeasureContentBg388"></div><div id="module529" _indexclass="formIndex1" _modulestyle="7" _moduleid="529" class="form form529 formStyle7 formIndex1" title="" style="" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="388" _inpack="0" _autoheight="1" _global="false" _independent="false">
+<table class="formTop formTop529" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
+<table class=" formMiddle formMiddle529" style="" cellpadding="0" cellspacing="0"><tbody><tr>
+<td class="formMiddleLeft formMiddleLeft529"></td>
+<td class="formMiddleCenter formMiddleCenter529 " valign="top">
+<div class="formMiddleContent formMiddleContent529 fk-formContentOtherPadding" tabstyle="0">
+<div>
+<div class="newsList J_newsList  newsNewModuleStyle_four " id="newsList529" _showsetting="0" newslisttype="6" scroll="0">
+<div topclassname="top1" topswitch="on" newsid="14" newsname="二手房过户有什么需要准备的？" class="J_newsListLine line noHover   fk-newsLineHeight  newsListLine1" style="width: 310px; height: 340px;"><table id="lineBody14" class="J_lineBody lineBody" cellpadding="0" cellspacing="0"><tbody><tr id="module529tr14"><td class="mixNewsTitle newsListLineBodyTd" valign="top"><div class="J_articlePhotoBox articlePhotoBox" newid="14" newsflag="0"><a class="J_articlePicHref articlePicLink1" href="http://www.ot13227318.icoc.me/nd.php?id=14&amp;_np=108_529" target="_blank" style="width:320px;height:184px;"><div class="cutImgPanel J_cutImgPanel newsListCutImgPanel1" style="bottom:49.0px;"> <img class="J_newsListPic newsPic newsListNewsPic1" alt="文章附图" title="" src="/static/uploads/ima11.jpg" style="width:310.0px;height:282.0px;"></div></a></div><div class="J_articleDesc newsListArticleDesc"><div class="J_newsTitle newsTitle newsListNewsTitle1" style="width: 100%;"><div class="J_newsListTopFlag  newsListTopFlag1"><a class="no-mixNewsStyleTitleTip" href="http://www.ot13227318.icoc.me/nd.php?id=14&amp;_np=108_529" target="_blank"></a></div><a hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=14&amp;_np=108_529" target="_blank" title="二手房过户有什么需要准备的？" class="J_mixNewsStyleTitle fk-newsListTitle mixNewsStyleTitle " mix="1">二手房过户有什么需要准备的？</a></div><p class="mixNewsStyleSummary fk-newsListSummary ">购买二手房办理过户是重中之重，往往很多纠纷都会出现在过户的环节，所以我们再购买二手房之前先了解一下购房过户手续的一...</p>
+</div></td>
 </tr>
 </tbody></table>
 </div>
-<div class="J_marqueePropListInfo fk_marqueePropListInfo">
-<div class="propDiv productName productName_C  first_ProductName    " style="width: 281px; height: auto;"><a hidefocus="true" class="fk-productName" title="水悦湾" href="http://www.ot13227318.icoc.me/pd.php?id=21&amp;_pp=105_520" target="_blank">水悦湾</a></div>
-<div class="productName_C propDiv first_ProductName   " style="width: 281px;">
-<span class="propName fk-prop-name">户型：</span>
-<span class="propValue fk-prop-other">3房一厅</span>
-</div>
-</div>
-</div>
-<div topclassname="productListTopIcon" topswitch="on" productid="20" productname="明珠花园" class="productMarqueeForm fk-productListForm  " faiwidth="281" faiheight="211">
-<div id="m520marqueeProduct20" class=" imgDiv " style="width:281px;height:211px;">
-<table cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td style="overflow:hidden;" valign="middle" align="center">
-<a hidefocus="true" href="http://www.ot13227318.icoc.me/pd.php?id=20&amp;_pp=105_520" target="_blank">
-<img src="/static/uploads/ima14.jpg" style="width:281px;height:211px;" alt="明珠花园" title="">
-</a></td>
+<div topclassname="top1" topswitch="on" newsid="13" newsname="房企当下拿地 到底是&quot;馅饼&quot;还是&quot;陷阱&quot;？" class="J_newsListLine line noHover   fk-newsLineHeight  newsListLine1" style="width: 310px; height: 340px;"><table id="lineBody13" class="J_lineBody lineBody" cellpadding="0" cellspacing="0"><tbody><tr id="module529tr13"><td class="mixNewsTitle newsListLineBodyTd" valign="top"><div class="J_articlePhotoBox articlePhotoBox" newid="13" newsflag="0"><a class="J_articlePicHref articlePicLink1" href="http://www.ot13227318.icoc.me/nd.php?id=13&amp;_np=108_529" target="_blank" style="width:320px;height:184px;"><div class="cutImgPanel J_cutImgPanel newsListCutImgPanel1" style="bottom:48.90909px;"> <img class="J_newsListPic newsPic newsListNewsPic1" alt="文章附图" title="" src="/static/uploads/ima20.png" style="width:310.0px;height:281.81818px;"></div></a></div><div class="J_articleDesc newsListArticleDesc"><div class="J_newsTitle newsTitle newsListNewsTitle1" style="width: 100%;"><div class="J_newsListTopFlag  newsListTopFlag1"><a class="no-mixNewsStyleTitleTip" href="http://www.ot13227318.icoc.me/nd.php?id=13&amp;_np=108_529" target="_blank"></a></div><a hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=13&amp;_np=108_529" target="_blank" title="房企当下拿地 到底是&quot;馅饼&quot;还是&quot;陷阱&quot;？" class="J_mixNewsStyleTitle fk-newsListTitle mixNewsStyleTitle " mix="1">房企当下拿地 到底是"馅饼"还是"陷阱"？</a></div><p class="mixNewsStyleSummary fk-newsListSummary ">统计显示，仅7月前10天，全国单幅地块成交金额超过5亿的地块达29宗，其中溢价率超50%的地王达18宗。一二线城市...</p>
+</div></td>
 </tr>
 </tbody></table>
 </div>
-<div class="J_marqueePropListInfo fk_marqueePropListInfo">
-<div class="propDiv productName productName_C  first_ProductName    " style="width: 281px; height: auto;"><a hidefocus="true" class="fk-productName" title="明珠花园" href="http://www.ot13227318.icoc.me/pd.php?id=20&amp;_pp=105_520" target="_blank">明珠花园</a></div>
-<div class="productName_C propDiv first_ProductName   " style="width: 281px;">
-<span class="propName fk-prop-name">户型：</span>
-<span class="propValue fk-prop-other">3房一厅</span>
-</div>
-</div>
-</div>
-<div topclassname="productListTopIcon" topswitch="on" productid="19" productname="名鑫园" class="productMarqueeForm fk-productListForm  " faiwidth="281" faiheight="211">
-<div id="m520marqueeProduct19" class=" imgDiv " style="width:281px;height:211px;">
-<table cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td style="overflow:hidden;" valign="middle" align="center">
-<a hidefocus="true" href="http://www.ot13227318.icoc.me/pd.php?id=19&amp;_pp=105_520" target="_blank">
-<img src="/static/uploads/ima15.jpg" style="width:281px;height:211px;" alt="名鑫园" title="">
-</a></td>
+<div topclassname="top1" topswitch="on" newsid="12" newsname="房产中介套路深 虚假宣传渗透交易每个环节" class="J_newsListLine line noHover   fk-newsLineHeight  newsListLine1" style="width: 310px; height: 340px;"><table id="lineBody12" class="J_lineBody lineBody" cellpadding="0" cellspacing="0"><tbody><tr id="module529tr12"><td class="mixNewsTitle newsListLineBodyTd" valign="top"><div class="J_articlePhotoBox articlePhotoBox" newid="12" newsflag="0"><a class="J_articlePicHref articlePicLink1" href="http://www.ot13227318.icoc.me/nd.php?id=12&amp;_np=108_529" target="_blank" style="width:320px;height:184px;"><div class="cutImgPanel J_cutImgPanel newsListCutImgPanel1" style="bottom:-11.230766px;"> <img class="J_newsListPic newsPic newsListNewsPic1" alt="文章附图" title="" src="/static/uploads/ima20.png" style="width:310.0px;height:161.53847px;"></div></a></div><div class="J_articleDesc newsListArticleDesc"><div class="J_newsTitle newsTitle newsListNewsTitle1" style="width: 100%;"><div class="J_newsListTopFlag  newsListTopFlag1"><a class="no-mixNewsStyleTitleTip" href="http://www.ot13227318.icoc.me/nd.php?id=12&amp;_np=108_529" target="_blank"></a></div><a hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=12&amp;_np=108_529" target="_blank" title="房产中介套路深 虚假宣传渗透交易每个环节" class="J_mixNewsStyleTitle fk-newsListTitle mixNewsStyleTitle " mix="1">房产中介套路深 虚假宣传渗透交易每个环节</a></div><p class="mixNewsStyleSummary fk-newsListSummary ">一套叫价1.4亿元的所谓“清朝格格府邸”近日成为链家等房产中介网站上的“网红”，甚至引来北京市文物局辟谣：并非登记...</p>
+</div></td>
 </tr>
 </tbody></table>
 </div>
-<div class="J_marqueePropListInfo fk_marqueePropListInfo">
-<div class="propDiv productName productName_C  first_ProductName    " style="width: 281px; height: auto;"><a hidefocus="true" class="fk-productName" title="名鑫园" href="http://www.ot13227318.icoc.me/pd.php?id=19&amp;_pp=105_520" target="_blank">名鑫园</a></div>
-<div class="productName_C propDiv first_ProductName   " style="width: 281px;">
-<span class="propName fk-prop-name">户型：</span>
-<span class="propValue fk-prop-other">4房两厅</span>
-</div>
-</div>
-</div>
-<div topclassname="productListTopIcon" topswitch="on" productid="18" productname="中美林湖" class="productMarqueeForm fk-productListForm  " faiwidth="281" faiheight="211">
-<div id="m520marqueeProduct18" class=" imgDiv " style="width:281px;height:211px;">
-<table cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td style="overflow:hidden;" valign="middle" align="center">
-<a hidefocus="true" href="http://www.ot13227318.icoc.me/pd.php?id=18&amp;_pp=105_520" target="_blank">
-<img src="/static/uploads/ima09.jpg" style="width:281px;height:211px;" alt="中美林湖" title="">
-</a></td>
+<div topclassname="top1" topswitch="on" newsid="11" newsname="楼市上涨效应向二线传导:厦门信贷收紧 南京土地&quot;高烧&quot;" class="J_newsListLine line noHover   fk-newsLineHeight  newsListLine1" style="width: 310px; height: 340px;"><table id="lineBody11" class="J_lineBody lineBody" cellpadding="0" cellspacing="0"><tbody><tr id="module529tr11"><td class="mixNewsTitle newsListLineBodyTd" valign="top"><div class="J_articlePhotoBox articlePhotoBox" newid="11" newsflag="0"><a class="J_articlePicHref articlePicLink1" href="http://www.ot13227318.icoc.me/nd.php?id=11&amp;_np=108_529" target="_blank" style="width:320px;height:184px;"><div class="cutImgPanel J_cutImgPanel newsListCutImgPanel1" style="bottom:-1.4890518px;"> <img class="J_newsListPic newsPic newsListNewsPic1" alt="文章附图" title="" src="/static/uploads/ima20.png" style="width:310.0px;height:181.0219px;"></div></a></div><div class="J_articleDesc newsListArticleDesc"><div class="J_newsTitle newsTitle newsListNewsTitle1" style="width: 100%;"><div class="J_newsListTopFlag  newsListTopFlag1"><a class="no-mixNewsStyleTitleTip" href="http://www.ot13227318.icoc.me/nd.php?id=11&amp;_np=108_529" target="_blank"></a></div><a hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=11&amp;_np=108_529" target="_blank" title="楼市上涨效应向二线传导:厦门信贷收紧 南京土地&quot;高烧&quot;" class="J_mixNewsStyleTitle fk-newsListTitle mixNewsStyleTitle " mix="1">楼市上涨效应向二线传导:厦门信贷收紧 南京土地"高烧"</a></div><p class="mixNewsStyleSummary fk-newsListSummary ">近日,住建部部长座谈会召开,对于“经济走势仍然分化,新旧发展动力的转换需要一个过程,新动力的成长势头正在加快”,有...</p>
+</div></td>
 </tr>
 </tbody></table>
 </div>
-<div class="J_marqueePropListInfo fk_marqueePropListInfo">
-<div class="propDiv productName productName_C  first_ProductName    " style="width: 281px; height: auto;"><a hidefocus="true" class="fk-productName" title="中美林湖" href="http://www.ot13227318.icoc.me/pd.php?id=18&amp;_pp=105_520" target="_blank">中美林湖</a></div>
-<div class="productName_C propDiv first_ProductName   " style="width: 281px;">
-<span class="propName fk-prop-name">户型：</span>
-<span class="propValue fk-prop-other">2房一厅</span>
-</div>
-</div>
-</div>
-<div topclassname="productListTopIcon" topswitch="on" productid="17" productname="富力悦系" class="productMarqueeForm fk-productListForm  " faiwidth="281" faiheight="211">
-<div id="m520marqueeProduct17" class=" imgDiv " style="width:281px;height:211px;">
-<table cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td style="overflow:hidden;" valign="middle" align="center">
-<a hidefocus="true" href="http://www.ot13227318.icoc.me/pd.php?id=17&amp;_pp=105_520" target="_blank">
-<img src="/static/uploads/ima16.jpg" style="width:281px;height:211px;" alt="富力悦系" title="">
-</a></td>
+<div topclassname="top1" topswitch="on" newsid="10" newsname="北漂租房调查:月租跳涨千元 律师不愿接维权案" class="J_newsListLine line noHover   fk-newsLineHeight  newsListLine1" style="width: 310px; height: 340px;"><table id="lineBody10" class="J_lineBody lineBody" cellpadding="0" cellspacing="0"><tbody><tr id="module529tr10"><td class="mixNewsTitle newsListLineBodyTd" valign="top"><div class="J_articlePhotoBox articlePhotoBox" newid="10" newsflag="0"><a class="J_articlePicHref articlePicLink1" href="http://www.ot13227318.icoc.me/nd.php?id=10&amp;_np=108_529" target="_blank" style="width:320px;height:184px;"><div class="cutImgPanel J_cutImgPanel newsListCutImgPanel1" style="bottom:49.0px;"> <img class="J_newsListPic newsPic newsListNewsPic1" alt="文章附图" title="" src="/static/uploads/ima07.jpg" style="width:310.0px;height:282.0px;"></div></a></div><div class="J_articleDesc newsListArticleDesc"><div class="J_newsTitle newsTitle newsListNewsTitle1" style="width: 100%;"><div class="J_newsListTopFlag  newsListTopFlag1"><a class="no-mixNewsStyleTitleTip" href="http://www.ot13227318.icoc.me/nd.php?id=10&amp;_np=108_529" target="_blank"></a></div><a hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=10&amp;_np=108_529" target="_blank" title="北漂租房调查:月租跳涨千元 律师不愿接维权案" class="J_mixNewsStyleTitle fk-newsListTitle mixNewsStyleTitle " mix="1">北漂租房调查:月租跳涨千元 律师不愿接维权案</a></div><p class="mixNewsStyleSummary fk-newsListSummary ">“不租房不搬家，不足以谈北漂。”把最后一包行李拖进新租的房子，小段终于松了一口气。这是她来到北京三年第三次搬家，从...</p>
+</div></td>
 </tr>
 </tbody></table>
 </div>
-<div class="J_marqueePropListInfo fk_marqueePropListInfo">
-<div class="propDiv productName productName_C  first_ProductName    " style="width: 281px; height: auto;"><a hidefocus="true" class="fk-productName" title="富力悦系" href="http://www.ot13227318.icoc.me/pd.php?id=17&amp;_pp=105_520" target="_blank">富力悦系</a></div>
-<div class="productName_C propDiv first_ProductName   " style="width: 281px;">
-<span class="propName fk-prop-name">户型：</span>
-<span class="propValue fk-prop-other">三房两厅</span>
-</div>
-</div>
-</div>
-<div topclassname="productListTopIcon" topswitch="on" productid="21" productname="水悦湾" class="productMarqueeForm fk-productListForm  " faiwidth="281" faiheight="211" clonediv="true">
-<div id="m520marqueeProduct21_clone" class=" imgDiv " style="width:281px;height:211px;">
-<table cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td style="overflow:hidden;" valign="middle" align="center">
-<a hidefocus="true" href="http://www.ot13227318.icoc.me/pd.php?id=21&amp;_pp=105_520" target="_blank">
-<img src="/static/uploads/ima03.jpg" style="width:281px;height:211px;" alt="水悦湾" title="">
-</a></td>
+<div topclassname="top1" topswitch="on" newsid="9" newsname="2016年广州中考普高提前批统一计划录取19860人" class="J_newsListLine line noHover   fk-newsLineHeight  newsListLine1" style="width: 310px; height: 340px;"><table id="lineBody9" class="J_lineBody lineBody" cellpadding="0" cellspacing="0"><tbody><tr id="module529tr9"><td class="mixNewsTitle newsListLineBodyTd" valign="top"><div class="J_articlePhotoBox articlePhotoBox" newid="9" newsflag="0"><a class="J_articlePicHref articlePicLink1" href="http://www.ot13227318.icoc.me/nd.php?id=9&amp;_np=108_529" target="_blank" style="width:320px;height:184px;"><div class="cutImgPanel J_cutImgPanel newsListCutImgPanel1" style="bottom:49.0px;"> <img class="J_newsListPic newsPic newsListNewsPic1" alt="文章附图" title="" src="/static/uploads/ima10.jpg" style="width:310.0px;height:282.0px;"></div></a></div><div class="J_articleDesc newsListArticleDesc"><div class="J_newsTitle newsTitle newsListNewsTitle1" style="width: 100%;"><div class="J_newsListTopFlag  newsListTopFlag1"><a class="no-mixNewsStyleTitleTip" href="http://www.ot13227318.icoc.me/nd.php?id=9&amp;_np=108_529" target="_blank"></a></div><a hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=9&amp;_np=108_529" target="_blank" title="2016年广州中考普高提前批统一计划录取19860人" class="J_mixNewsStyleTitle fk-newsListTitle mixNewsStyleTitle " mix="1">2016年广州中考普高提前批统一计划录取19860人</a></div><p class="mixNewsStyleSummary fk-newsListSummary ">7月12日，普通高中提前批统一计划录取结束。今年提前批统一计划为20270个，共录取19860人，其中公办学校19...</p>
+</div></td>
 </tr>
 </tbody></table>
 </div>
-<div class="J_marqueePropListInfo fk_marqueePropListInfo">
-<div class="propDiv productName productName_C  first_ProductName    " style="width: 281px; height: auto;"><a hidefocus="true" class="fk-productName" title="水悦湾" href="http://www.ot13227318.icoc.me/pd.php?id=21&amp;_pp=105_520" target="_blank">水悦湾</a></div>
-<div class="productName_C propDiv first_ProductName   " style="width: 281px;">
-<span class="propName fk-prop-name">户型：</span>
-<span class="propValue fk-prop-other">3房一厅</span>
-</div>
-</div>
-</div><div topclassname="productListTopIcon" topswitch="on" productid="20" productname="明珠花园" class="productMarqueeForm fk-productListForm  " faiwidth="281" faiheight="211" clonediv="true">
-<div id="m520marqueeProduct20_clone" class=" imgDiv " style="width:281px;height:211px;">
-<table cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td style="overflow:hidden;" valign="middle" align="center">
-<a hidefocus="true" href="http://www.ot13227318.icoc.me/pd.php?id=20&amp;_pp=105_520" target="_blank">
-<img src="/static/uploads/ima14.jpg" style="width:281px;height:211px;" alt="明珠花园" title="">
-</a></td>
-</tr>
-</tbody></table>
-</div>
-<div class="J_marqueePropListInfo fk_marqueePropListInfo">
-<div class="propDiv productName productName_C  first_ProductName    " style="width: 281px; height: auto;"><a hidefocus="true" class="fk-productName" title="明珠花园" href="http://www.ot13227318.icoc.me/pd.php?id=20&amp;_pp=105_520" target="_blank">明珠花园</a></div>
-<div class="productName_C propDiv first_ProductName   " style="width: 281px;">
-<span class="propName fk-prop-name">户型：</span>
-<span class="propValue fk-prop-other">3房一厅</span>
-</div>
-</div>
-</div><div topclassname="productListTopIcon" topswitch="on" productid="19" productname="名鑫园" class="productMarqueeForm fk-productListForm  " faiwidth="281" faiheight="211" clonediv="true">
-<div id="m520marqueeProduct19_clone" class=" imgDiv " style="width:281px;height:211px;">
-<table cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td style="overflow:hidden;" valign="middle" align="center">
-<a hidefocus="true" href="http://www.ot13227318.icoc.me/pd.php?id=19&amp;_pp=105_520" target="_blank">
-<img src="/static/uploads/ima15.jpg" style="width:281px;height:211px;" alt="名鑫园" title="">
-</a></td>
-</tr>
-</tbody></table>
-</div>
-<div class="J_marqueePropListInfo fk_marqueePropListInfo">
-<div class="propDiv productName productName_C  first_ProductName    " style="width: 281px; height: auto;"><a hidefocus="true" class="fk-productName" title="名鑫园" href="http://www.ot13227318.icoc.me/pd.php?id=19&amp;_pp=105_520" target="_blank">名鑫园</a></div>
-<div class="productName_C propDiv first_ProductName   " style="width: 281px;">
-<span class="propName fk-prop-name">户型：</span>
-<span class="propValue fk-prop-other">4房两厅</span>
-</div>
-</div>
-</div><div topclassname="productListTopIcon" topswitch="on" productid="18" productname="中美林湖" class="productMarqueeForm fk-productListForm  " faiwidth="281" faiheight="211" clonediv="true">
-<div id="m520marqueeProduct18_clone" class=" imgDiv " style="width:281px;height:211px;">
-<table cellpadding="0" cellspacing="0">
-<tbody><tr>
-<td style="overflow:hidden;" valign="middle" align="center">
-<a hidefocus="true" href="http://www.ot13227318.icoc.me/pd.php?id=18&amp;_pp=105_520" target="_blank">
-<img src="/static/uploads/ima09.jpg" style="width:281px;height:211px;" alt="中美林湖" title="">
-</a></td>
-</tr>
-</tbody></table>
-</div>
-<div class="J_marqueePropListInfo fk_marqueePropListInfo">
-<div class="propDiv productName productName_C  first_ProductName    " style="width: 281px; height: auto;"><a hidefocus="true" class="fk-productName" title="中美林湖" href="http://www.ot13227318.icoc.me/pd.php?id=18&amp;_pp=105_520" target="_blank">中美林湖</a></div>
-<div class="productName_C propDiv first_ProductName   " style="width: 281px;">
-<span class="propName fk-prop-name">户型：</span>
-<span class="propValue fk-prop-other">2房一厅</span>
-</div>
+<div class="clearfloat"></div>
 </div>
 </div></div>
-</div>
-</div>
-</div>
 </td>
-<td class="formMiddleRight formMiddleRight520"></td>
+<td class="formMiddleRight formMiddleRight529"></td>
 </tr></tbody></table>
-<table class="formBottom formBottom520" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left520"></td><td class="center center520"></td><td class="right right520"></td></tr></tbody></table>
-<div class="clearfloat clearfloat520"></div>
+<table class="formBottom formBottom529" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left529"></td><td class="center center529"></td><td class="right right529"></td></tr></tbody></table>
+<div class="clearfloat clearfloat529"></div>
 </div>
 </div></div>
-<div class="clearfloat clearfloat519"></div>
-</div></div>
-
-<div id="module521" _indexclass="formIndex2" _modulestyle="80" _moduleid="521" class="form form521 formIndex2 formStyle80 fk-formFullmeasure " title="" style="height: 1288px;" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="0" _inpack="0" _autoheight="0" _global="false" _independent="false" fmslidestyle="0" fmpage="1" iscarousel="0" displaytime="4" carouselspeed="1">
-<div class="fillContentRelative" style="position: relative; z-index: -1; height: 929px; width: 100%; display: none;"></div><div style="position: static;" class="fullmeasureOuterContentPage fullmeasureOuterContentPage1 J_fullmeasurePageShow" page="1">			<div class="fullmeasureOuterContentBg fullmeasureOuterContentBg521 fullmeasureStyle0"></div><div class="fullmeasureOuterContent fullmeasureOuterContent521">
-<div class="fullmeasureContent fullmeasureContent521" id="fullmeasureContent521_1" moduleid="521"><div class="fullmeasureContentBg fullmeasureContentBg521"></div><div id="module368" _indexclass="formIndex1" _modulestyle="35" _moduleid="368" systempattern="60" class="form form368 formStyle35 layoutModule  formStyle35_2  fk-formCol  jz-moduleColPattern60 formIndex1" title="" style="" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="521" _inpack="0" _autoheight="1" _global="false" _independent="false">
-<table class="formTop formTop368" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
-<table class="formBanner formBanner368 f-colFormBanner " cellpadding="0" cellspacing="0" style=""><tbody><tr>
-<td class="left left368"></td>
-<td class="center center368" valign="top">
-<table cellpadding="0" cellspacing="0" class="formBannerTitle formBannerTitle368"><tbody><tr>
-<td class="titleLeft titleLeft368" valign="top">
-</td>
-<td class="titleCenter titleCenter368" valign="top">
-<div class="titleText titleText368"><span class="bannerNormalTitle fk_mainTitle mainTitle mainTitle368">最新开盘</span></div>
-</td>
-<td class="titleRight titleRight368" valign="top">
-</td>
-</tr></tbody></table>
-</td>
-<td class="right right368"></td>
-</tr></tbody></table>
-<table class=" formMiddle formMiddle368" style="" cellpadding="0" cellspacing="0"><tbody><tr>
-<td class="formMiddleLeft formMiddleLeft368"></td>
-<td class="formMiddleCenter formMiddleCenter368  f-colFormMiddleCenter " valign="top">
-<div class="formMiddleContent formMiddleContent368 multiColFormMiddleContent f-colFormMiddleContent  fk-formContentOtherPadding" tabstyle="0">
-<div class="mulMColContent" id="mulMColContent368"><table width="100%" border="0" cellspacing="0" class="mulMColContentTable" cellpadding="0"><tbody><tr><td class=" mulColLayout mulColPadding" style="width:390px;"><div id="mulMCol368_cid_1" class="mulMColList"><div id="module369" _modulestyle="1" _moduleid="369" class="form form369 formStyle1 formInMulMCol " title="" style="" _side="0" _intab="0" _inmulmcol="368" _infullmeasure="0" _inpack="0" _autoheight="1" _global="false" _independent="false">
-<table class="formTop formTop369" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
-<table class=" formMiddle formMiddle369" style="" cellpadding="0" cellspacing="0"><tbody><tr>
-<td class="formMiddleLeft formMiddleLeft369"></td>
-<td class="formMiddleCenter formMiddleCenter369 " valign="top">
-<div class="formMiddleContent formMiddleContent369 fk-formContentOtherPadding" tabstyle="0">
-<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima19.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/4/uploads/ima19.png" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/static/uploads/ima19.png"></div><div class="richContent richContent3"><p style="margin-top:15px;"><strong><span style="color:#2B2B2B;font-family:微软雅黑;font-size:18px;">　锦绣商业中心</span></strong><br></p><p><span style="font-family:微软雅黑;font-size:14px;"><span style="font-family:微软雅黑;font-size:14px;color:#2B2B2B;"><span style="font-family:微软雅黑;color:#2B2B2B;font-size:18px;">　</span>均价：</span><span style="font-family:微软雅黑;font-size:14px;color:#C40000;">21600</span><span style="font-family:微软雅黑;font-size:14px;color:#2B2B2B;">（元/平方）</span></span></p></div></div>
-</td>
-<td class="formMiddleRight formMiddleRight369"></td>
-</tr></tbody></table>
-<table class="formBottom formBottom369" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left369"></td><td class="center center369"></td><td class="right right369"></td></tr></tbody></table>
-<div class="clearfloat clearfloat369"></div>
-</div>
-<div id="module372" _modulestyle="1" _moduleid="372" class="form form372 formStyle1 formInMulMCol " title="" style="" _side="0" _intab="0" _inmulmcol="368" _infullmeasure="0" _inpack="0" _autoheight="1" _global="false" _independent="false">
-<table class="formTop formTop372" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
-<table class=" formMiddle formMiddle372" style="" cellpadding="0" cellspacing="0"><tbody><tr>
-<td class="formMiddleLeft formMiddleLeft372"></td>
-<td class="formMiddleCenter formMiddleCenter372 " valign="top">
-<div class="formMiddleContent formMiddleContent372 fk-formContentOtherPadding" tabstyle="0">
-<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima19.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/4/uploads/ima19.png" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/static/uploads/ima19.png"></div><div class="richContent richContent3"><p style="margin-top:15px;"><strong><span style="color:#2B2B2B;font-family:微软雅黑;font-size:18px;">　锦绣商业中心</span></strong><br></p><p><span style="font-family:微软雅黑;font-size:14px;"><span style="color:#2B2B2B;"><span style="font-size:18px;">　</span>均价：</span><span style="color:#C40000;">21600</span><span style="color:#2B2B2B;">（元/平方）</span></span></p><p><br></p></div></div>
-</td>
-<td class="formMiddleRight formMiddleRight372"></td>
-</tr></tbody></table>
-<table class="formBottom formBottom372" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left372"></td><td class="center center372"></td><td class="right right372"></td></tr></tbody></table>
-<div class="clearfloat clearfloat372"></div>
-</div>
-</div><div class="mulModuleColStyleLine" style=""></div></td><td class=" mulColLayout mulColPadding" style="width:390px;"><div id="mulMCol368_cid_2" class="mulMColList"><div id="module370" _modulestyle="1" _moduleid="370" class="form form370 formStyle1 formInMulMCol " title="" style="" _side="0" _intab="0" _inmulmcol="368" _infullmeasure="0" _inpack="0" _autoheight="1" _global="false" _independent="false">
-<table class="formTop formTop370" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
-<table class=" formMiddle formMiddle370" style="" cellpadding="0" cellspacing="0"><tbody><tr>
-<td class="formMiddleLeft formMiddleLeft370"></td>
-<td class="formMiddleCenter formMiddleCenter370 " valign="top">
-<div class="formMiddleContent formMiddleContent370 fk-formContentOtherPadding" tabstyle="0">
-<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima18.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/4/uploads/ima18.png" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/static/uploads/ima18.png"></div><div class="richContent richContent3"><p style="margin-top:15px;"><strong><span style="color:#2B2B2B;font-family:微软雅黑;font-size:18px;">　锦绣商业中心</span></strong><br></p><p><span style="font-family:微软雅黑;font-size:14px;"><span style="color:#2B2B2B;"><span style="font-size:18px;">　</span>均价：</span><span style="color:#C40000;">21600</span><span style="color:#2B2B2B;">（元/平方）</span></span></p><p><br></p></div></div>
-</td>
-<td class="formMiddleRight formMiddleRight370"></td>
-</tr></tbody></table>
-<table class="formBottom formBottom370" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left370"></td><td class="center center370"></td><td class="right right370"></td></tr></tbody></table>
-<div class="clearfloat clearfloat370"></div>
-</div>
-<div id="module373" _modulestyle="1" _moduleid="373" class="form form373 formStyle1 formInMulMCol " title="" style="" _side="0" _intab="0" _inmulmcol="368" _infullmeasure="0" _inpack="0" _autoheight="1" _global="false" _independent="false">
-<table class="formTop formTop373" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
-<table class=" formMiddle formMiddle373" style="" cellpadding="0" cellspacing="0"><tbody><tr>
-<td class="formMiddleLeft formMiddleLeft373"></td>
-<td class="formMiddleCenter formMiddleCenter373 " valign="top">
-<div class="formMiddleContent formMiddleContent373 fk-formContentOtherPadding" tabstyle="0">
-<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima19.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/4/uploads/ima19.png" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/static/uploads/ima19.png"></div><div class="richContent richContent3"><p style="margin-top:15px;"><strong><span style="color:#2B2B2B;font-family:微软雅黑;font-size:18px;">　锦绣商业中心</span></strong><br></p><p><span style="font-family:微软雅黑;font-size:14px;"><span style="color:#2B2B2B;"><span style="font-size:18px;">　</span>均价：</span><span style="color:#C40000;">21600</span><span style="color:#2B2B2B;">（元/平方）</span></span></p><p><br></p></div></div>
-</td>
-<td class="formMiddleRight formMiddleRight373"></td>
-</tr></tbody></table>
-<table class="formBottom formBottom373" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left373"></td><td class="center center373"></td><td class="right right373"></td></tr></tbody></table>
-<div class="clearfloat clearfloat373"></div>
-</div>
-</div><div class="mulModuleColStyleLine" style=""></div></td><td class="mulColLayout" style=""><div id="mulMCol368_cid_3" class="mulMColList"><div id="module371" _modulestyle="1" _moduleid="371" class="form form371 formStyle1 formInMulMCol " title="" style="" _side="0" _intab="0" _inmulmcol="368" _infullmeasure="0" _inpack="0" _autoheight="1" _global="false" _independent="false">
-<table class="formTop formTop371" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
-<table class=" formMiddle formMiddle371" style="" cellpadding="0" cellspacing="0"><tbody><tr>
-<td class="formMiddleLeft formMiddleLeft371"></td>
-<td class="formMiddleCenter formMiddleCenter371 " valign="top">
-<div class="formMiddleContent formMiddleContent371 fk-formContentOtherPadding" tabstyle="0">
-<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima17.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/4/uploads/ima17.png" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/static/uploads/ima17.png"></div><div class="richContent richContent3"><p style="margin-top:15px;"><strong><span style="color:#2B2B2B;font-family:微软雅黑;font-size:18px;"><span style="color:#2B2B2B;font-family:微软雅黑;font-size:16px;">　</span><span style="color:#2B2B2B;font-family:微软雅黑;font-size:12px;">　</span>锦绣商业中心</span></strong><br></p><p><span style="font-family:微软雅黑;font-size:14px;"><span style="color:#2B2B2B;"><span style="font-size:18px;">　<span style="font-family:微软雅黑;color:#2B2B2B;font-size:18px;"> &nbsp;</span></span>均价：</span><span style="color:#C40000;">21600</span><span style="color:#2B2B2B;">（元/平方）</span></span></p><p><br></p></div></div>
-</td>
-<td class="formMiddleRight formMiddleRight371"></td>
-</tr></tbody></table>
-<table class="formBottom formBottom371" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left371"></td><td class="center center371"></td><td class="right right371"></td></tr></tbody></table>
-<div class="clearfloat clearfloat371"></div>
-</div>
-<div id="module374" _modulestyle="1" _moduleid="374" class="form form374 formStyle1 formInMulMCol " title="" style="" _side="0" _intab="0" _inmulmcol="368" _infullmeasure="0" _inpack="0" _autoheight="1" _global="false" _independent="false">
-<table class="formTop formTop374" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
-<table class=" formMiddle formMiddle374" style="" cellpadding="0" cellspacing="0"><tbody><tr>
-<td class="formMiddleLeft formMiddleLeft374"></td>
-<td class="formMiddleCenter formMiddleCenter374 " valign="top">
-<div class="formMiddleContent formMiddleContent374 fk-formContentOtherPadding" tabstyle="0">
-<div class="richModuleSlaveImgContainer richTextImg textImg3"><img imgid="uploads/ima20.jpg" imgurl="" imglinktype="1" imgcolid="2" imgpath="http://10428547.s61i.faiusr.com/4/uploads/ima20.png" class="richModuleSlaveImg richImg richImg3" alt="" title="" src="/static/uploads/ima20.png"></div><div class="richContent richContent3"><p style="margin-top:15px;"><strong style="line-height:21.6px;"><span style="color:#2B2B2B;font-family:微软雅黑;font-size:18px;"><span style="font-size:14px;">　</span></span></strong><strong><span style="color:#2B2B2B;font-family:微软雅黑;font-size:18px;"><span style="color:#2B2B2B;font-family:微软雅黑;font-size:14px;">　</span>锦绣商业中心</span></strong><br></p><p><span style="font-family:微软雅黑;font-size:14px;"><span style="color:#2B2B2B;"><span style="font-size:18px;">　 &nbsp;</span>均价：</span><span style="color:#C40000;">21600</span><span style="color:#2B2B2B;">（元/平方）</span></span></p><p><br></p></div></div>
-</td>
-<td class="formMiddleRight formMiddleRight374"></td>
-</tr></tbody></table>
-<table class="formBottom formBottom374" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left374"></td><td class="center center374"></td><td class="right right374"></td></tr></tbody></table>
-<div class="clearfloat clearfloat374"></div>
-</div>
-</div></td></tr></tbody></table></div></div>
-</td>
-<td class="formMiddleRight formMiddleRight368"></td>
-</tr></tbody></table>
-<table class="formBottom formBottom368" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left368"></td><td class="center center368"></td><td class="right right368"></td></tr></tbody></table>
-<div class="clearfloat clearfloat368"></div>
-</div>
-</div></div>
-<div class="clearfloat clearfloat521"></div>
+<div class="clearfloat clearfloat388"></div>
 </div></div>
 
 
 		<wbr style="display:none;"></div>
 		
-		<table id="webContainerTable" class="webContainerTable fk-webContainerTableForNoLayout" cellpadding="0" cellspacing="0">
+		<table id="webContainerTable" class="webContainerTable" cellpadding="0" cellspacing="0">
 			<tbody><tr>
 				<td align="center">
 					<div id="webContainer" class="webContainer">
@@ -728,8 +472,92 @@
 
 							<td valign="top" id="containerFormsCenter" class="containerFormsCenter">
 					
-								<div id="centerTopForms" class="column forms mainForms centerTopForms" style="display:none">
-									
+								<div id="centerTopForms" class="column forms mainForms centerTopForms">
+									<div id="module385" _indexclass="formIndex1" _modulestyle="7" _moduleid="385" systempattern="110" class="form form385 formIndex1 formStyle7 jz-modulePattern110" title="" style="" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="0" _inpack="0" _autoheight="1" _global="false" _independent="false">
+<table class="formTop formTop385" cellpadding="0" cellspacing="0"><tbody><tr><td class="left"></td><td class="center"></td><td class="right"></td></tr></tbody></table>
+<table class=" formMiddle formMiddle385" style="" cellpadding="0" cellspacing="0"><tbody><tr>
+<td class="formMiddleLeft formMiddleLeft385"></td>
+<td class="formMiddleCenter formMiddleCenter385 " valign="top">
+<div class="formMiddleContent formMiddleContent385 fk-formContentOtherPadding" tabstyle="0">
+<div>
+<div class="newsList J_newsList  newsNewModuleStyle_three " id="newsList385" _showsetting="0" newslisttype="5" scroll="0">
+<div topclassname="top1" topswitch="on" newsid="12" newsname="房产中介套路深 虚假宣传渗透交易每个环节" class="J_newsListLine line noHover g_item   fk-newsLineHeight   "><div class="J_newsCalendar newsCalendar newsListCalendar2" style="vertical-align:top;">
+<a class="fk-newsListDate" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=12&amp;_np=108_385" target="_blank">2017/05/15</a>
+</div>
+<div id="lineBody12" class="J_lineBody lineBody newsListLineBody2"><div class="newsCircleOuter"><div class="newsCircle"></div>
+</div>
+<div class="newsTitlePanel">
+<div class="J_newsTitle newsTitle" style="width: 100%;">
+<div class="J_newsListTopFlag "></div>
+<a class="fk-newsListTitle" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=12&amp;_np=108_385" target="_blank" title="房产中介套路深 虚假宣传渗透交易每个环节">房产中介套路深 虚假宣传渗透交易每个环节</a>
+</div><div><p class="pic-mixNewsStyleSummary fk-newsListSummary">一套叫价1.4亿元的所谓“清朝格格府邸”近日成为链家等房产中介网站上的“网红”，甚至引来北京市文物局辟谣：并非登记...</p>
+</div></div>
+</div></div>
+<div class="J_separatorLine separatorLine g_separator "></div>
+<div topclassname="top1" topswitch="on" newsid="13" newsname="房企当下拿地 到底是&quot;馅饼&quot;还是&quot;陷阱&quot;？" class="J_newsListLine line noHover g_item   fk-newsLineHeight   "><div class="J_newsCalendar newsCalendar newsListCalendar2" style="vertical-align:top;">
+<a class="fk-newsListDate" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=13&amp;_np=108_385" target="_blank">2017/05/15</a>
+</div>
+<div id="lineBody13" class="J_lineBody lineBody newsListLineBody2"><div class="newsCircleOuter"><div class="newsCircle"></div>
+</div>
+<div class="newsTitlePanel">
+<div class="J_newsTitle newsTitle" style="width: 100%;">
+<div class="J_newsListTopFlag "></div>
+<a class="fk-newsListTitle" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=13&amp;_np=108_385" target="_blank" title="房企当下拿地 到底是&quot;馅饼&quot;还是&quot;陷阱&quot;？">房企当下拿地 到底是"馅饼"还是"陷阱"？</a>
+</div><div><p class="pic-mixNewsStyleSummary fk-newsListSummary">统计显示，仅7月前10天，全国单幅地块成交金额超过5亿的地块达29宗，其中溢价率超50%的地王达18宗。一二线城市...</p>
+</div></div>
+</div></div>
+<div class="J_separatorLine separatorLine g_separator "></div>
+<div topclassname="top1" topswitch="on" newsid="10" newsname="北漂租房调查:月租跳涨千元 律师不愿接维权案" class="J_newsListLine line noHover g_item   fk-newsLineHeight   "><div class="J_newsCalendar newsCalendar newsListCalendar2" style="vertical-align:top;">
+<a class="fk-newsListDate" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=10&amp;_np=108_385" target="_blank">2017/05/15</a>
+</div>
+<div id="lineBody10" class="J_lineBody lineBody newsListLineBody2"><div class="newsCircleOuter"><div class="newsCircle"></div>
+</div>
+<div class="newsTitlePanel">
+<div class="J_newsTitle newsTitle" style="width: 100%;">
+<div class="J_newsListTopFlag "></div>
+<a class="fk-newsListTitle" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=10&amp;_np=108_385" target="_blank" title="北漂租房调查:月租跳涨千元 律师不愿接维权案">北漂租房调查:月租跳涨千元 律师不愿接维权案</a>
+</div><div><p class="pic-mixNewsStyleSummary fk-newsListSummary">“不租房不搬家，不足以谈北漂。”把最后一包行李拖进新租的房子，小段终于松了一口气。这是她来到北京三年第三次搬家，从...</p>
+</div></div>
+</div></div>
+<div class="J_separatorLine separatorLine g_separator "></div>
+<div topclassname="top1" topswitch="on" newsid="14" newsname="二手房过户有什么需要准备的？" class="J_newsListLine line noHover g_item   fk-newsLineHeight   "><div class="J_newsCalendar newsCalendar newsListCalendar2" style="vertical-align:top;">
+<a class="fk-newsListDate" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=14&amp;_np=108_385" target="_blank">2017/05/15</a>
+</div>
+<div id="lineBody14" class="J_lineBody lineBody newsListLineBody2"><div class="newsCircleOuter"><div class="newsCircle"></div>
+</div>
+<div class="newsTitlePanel">
+<div class="J_newsTitle newsTitle" style="width: 100%;">
+<div class="J_newsListTopFlag "></div>
+<a class="fk-newsListTitle" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=14&amp;_np=108_385" target="_blank" title="二手房过户有什么需要准备的？">二手房过户有什么需要准备的？</a>
+</div><div><p class="pic-mixNewsStyleSummary fk-newsListSummary">购买二手房办理过户是重中之重，往往很多纠纷都会出现在过户的环节，所以我们再购买二手房之前先了解一下购房过户手续的一...</p>
+</div></div>
+</div></div>
+<div class="J_separatorLine separatorLine g_separator "></div>
+<div topclassname="top1" topswitch="on" newsid="11" newsname="楼市上涨效应向二线传导:厦门信贷收紧 南京土地&quot;高烧&quot;" class="J_newsListLine line noHover g_item   fk-newsLineHeight   "><div class="J_newsCalendar newsCalendar newsListCalendar2" style="vertical-align:top;">
+<a class="fk-newsListDate" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=11&amp;_np=108_385" target="_blank">2017/05/15</a>
+</div>
+<div id="lineBody11" class="J_lineBody lineBody newsListLineBody2"><div class="newsCircleOuter"><div class="newsCircle"></div>
+</div>
+<div class="newsTitlePanel">
+<div class="J_newsTitle newsTitle" style="width: 100%;">
+<div class="J_newsListTopFlag "></div>
+<a class="fk-newsListTitle" hidefocus="true" href="http://www.ot13227318.icoc.me/nd.php?id=11&amp;_np=108_385" target="_blank" title="楼市上涨效应向二线传导:厦门信贷收紧 南京土地&quot;高烧&quot;">楼市上涨效应向二线传导:厦门信贷收紧 南京土地"高烧"</a>
+</div><div><p class="pic-mixNewsStyleSummary fk-newsListSummary">近日,住建部部长座谈会召开,对于“经济走势仍然分化,新旧发展动力的转换需要一个过程,新动力的成长势头正在加快”,有...</p>
+</div></div>
+</div></div>
+<div class="J_separatorLine separatorLine g_separator  newsListSeparatorLine "></div>
+<div class="clearfloat"></div>
+<div class="J_timeLine newsListTimeLine" style="height: 620px; left: 105.797px;"></div>
+</div>
+</div></div>
+</td>
+<td class="formMiddleRight formMiddleRight385"></td>
+</tr></tbody></table>
+<table class="formBottom formBottom385" cellpadding="0" cellspacing="0"><tbody><tr><td class="left left385"></td><td class="center center385"></td><td class="right right385"></td></tr></tbody></table>
+<div class="clearfloat clearfloat385"></div>
+</div>
+
+
 								</div>
 								<div class="containerFormsCenterMiddle J_containerFormsCenterMiddle">
 									<div id="middleLeftForms" class="column forms mainForms middleLeftForms" style="display:none">
@@ -761,7 +589,7 @@
 						
 					</div>
 
-					<div id="containerPlaceholder" class="containerPlaceholder" style="height: 0px;"></div>
+					<div id="containerPlaceholder" class="containerPlaceholder"></div>
 					
 				</div>
 
@@ -841,7 +669,7 @@
 						</div>
 
 						<div id="module562" bannertitle="文本" _indexclass="formIndex7" _modulestyle="86" _moduleid="562" class="form form562 formIndex7 formStyle86 formInZone  siteEditor " title="" style="position: absolute; top: 195px; left: 646px; width: 202px; height: 40px;" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="0" _inpack="0" _autoheight="0" _global="false" _independent="false">
-							<div class="lightModuleOuterContent lightModuleOuterContent562"><div class="fk-editor simpleText  "><span style="color: rgb(255, 255, 255); font-size: 16px; text-align: center; display: block;">Better-Wanted</span></div></div>
+							<div class="lightModuleOuterContent lightModuleOuterContent562"><div class="fk-editor simpleText  "><span style="color: rgb(255, 255, 255); font-size: 16px; text-align: center; display: block;">Rent-Wanted</span></div></div>
 						</div>
 
 						<div id="module563" bannertitle="文本" _indexclass="formIndex8" _modulestyle="86" _moduleid="563" class="form form563 formIndex8 formStyle86 formInZone  siteEditor " title="" style="position: absolute; top: 195px; left: 944px; width: 202px; height: 40px;" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="0" _inpack="0" _autoheight="0" _global="false" _independent="false">
@@ -954,6 +782,8 @@
 	<!-- background music -->
 	<div id="bgMusic" class="bgMusic"></div>
 
+	<!-- Load Core CSS -->
+
 	<!-- Load Core JS -->
 	<script type="text/javascript" src="/static/js/home/jquery-core.min.js"></script>
 	<script type="text/javascript" src="/static/js/home/jquery-mousewheel.min.js"></script>
@@ -962,10 +792,8 @@
 	<script type="text/javascript" src="/static/js/home/site.min.js"></script>
 	<script type="text/javascript" src="/static/js/home/messageConfig.js"></script>
 
-
 	<!-- define Core JS -->
 	<script type="text/javascript">
-
 
 
         function showYuanDanWindow(){
@@ -997,7 +825,7 @@
         fk_sale.popupWindowEndMonth = 5;
         fk_sale.popupWindowEndDay = 31;
         fk_sale.popupWindowDays = 15;
-        fk_sale.popupWindowMs = 1346709879;
+        fk_sale.popupWindowMs = 1346686515;
         fk_sale.openDays = 0;
         fk_sale.openMinutes = 1402;
         fk_sale.popupWindowEndSignupHours = 720.0;
@@ -1108,34 +936,21 @@
 
 
             // ajax统计
-            Site.total({colId:105, pdId:-1, ndId:-1, sc:0, rf:"/home/house/secondhandhouse.html"});
+            Site.total({colId:108, pdId:-1, ndId:-1, sc:0, rf:"/home/house/newhouse.html"});
             //前端性能数据上报
             //Site.report();
             //保留旧用户的初始化版式区域4 和区域5 中，区域4的padding-right空间
             Site.colLayout45Width();
             //各个模块inc吐出脚本
             Site.initCorpTitleJump();
-            Site.cacheModuleFunc.init('initFlBtnStyle', {"moduleId":522,"btnNumSystem":103,"btnStyle":{"s":{"t":1,"w":226,"h":52},"bg":{"t":1,"c":"transparent","r":3},"r":{"t":2,"lt":0,"rt":0,"lb":0,"rb":0},"sh":{"t":0,"dx":0,"dy":0,"f":0,"c":"#000000"},"b":{"t":2,"c":"#dbdbdb","w":1}},"otherStr":{"cc":"#c40000","utc":0,"gcc":"#fff","bcc":"#000","imc":0}});
-            Site.adjustFlBtnPos(522);
+            Site.initBanner({"_open":true,"data":[{"title":"","desc":"","imgWidth":1920,"imgHeight":300,"ot":1,"src":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI.jpg","edgeLeft":"","edgeRight":""}],"width":1920,"height":300,"playTime":4000,"animateTime":1500,"from":"banner","btnType":1,"wideScreen":false}, {"_open":false}, 4);
+            Site.loadNewsList(529, {"y":0,"s":0,"w":1}, false);
+            Site.loadNewsNewStyle(529, false,false,false,true,false,true,false,false,false);
 
-            Site.initBanner({"_open":true,"data":[{"title":"","desc":"","imgWidth":1920,"imgHeight":300,"ot":1,"src":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7_aUwgUou4vvvgYwgA84rAI.jpg","edgeLeft":"","edgeRight":""}],"width":1920,"height":300,"playTime":4000,"animateTime":1500,"from":"banner","btnType":1,"wideScreen":false}, {"_open":false}, 4);
-            Fai.top.Product520 = {};
-            Fai.top.Product520.ieOpt = {"effType":1,"borderType":false,"backgroundType":false,"backgroundHalfType":false,"wordType":false,"borderColor":"","borderWidth":1,"borderStyle":1,"fullmaskBackgroundColor":"","fullmaskBackgroundOpacity":80,"fullmaskWordResize":12,"fullmaskWordStyle":"","fullmaskWordColor":"","halfmaskBackgroundColor":"","halfmaskBackgroundOpacity":80,"style":3,"spScaleUp":true};
-            Fai.top.Product520.tgOpt = {"mallShowBuy":false,"productSelect":true,"targetParent":"productMarqueeForm","target":"imgDiv","paramLayoutType":1,"propNameShow":true,"productNameShow":true,"productTextCenter":true,"productNameWordWrap":false,"mallBuyBtnType":0,"mallBuyBtnColor":"#c40000"};
-            Fai.top.Product520.callbackArgs = [{"m520marqueeProduct21":"[{\"propName\":\"户型\",\"propValue\":\"3房一厅\",\"type\":1,\"allowed\":true}]","productName":"水悦湾","productBuyBtnText":"购买","hasDiscount":false,"tmpPropPrice":"","tmpPropName":""},{"m520marqueeProduct20":"[{\"propName\":\"户型\",\"propValue\":\"3房一厅\",\"type\":1,\"allowed\":true}]","productName":"明珠花园","productBuyBtnText":"购买","hasDiscount":false,"tmpPropPrice":"","tmpPropName":""},{"m520marqueeProduct19":"[{\"propName\":\"户型\",\"propValue\":\"4房两厅\",\"type\":1,\"allowed\":true}]","productName":"名鑫园","productBuyBtnText":"购买","hasDiscount":false,"tmpPropPrice":"","tmpPropName":""},{"m520marqueeProduct18":"[{\"propName\":\"户型\",\"propValue\":\"2房一厅\",\"type\":1,\"allowed\":true}]","productName":"中美林湖","productBuyBtnText":"购买","hasDiscount":false,"tmpPropPrice":"","tmpPropName":""},{"m520marqueeProduct17":"[{\"propName\":\"户型\",\"propValue\":\"三房两厅\",\"type\":1,\"allowed\":true}]","productName":"富力悦系","productBuyBtnText":"购买","hasDiscount":false,"tmpPropPrice":"","tmpPropName":""}];
-            Fai.top.Product520.paramLayoutType = 1;
-            Site.loadProductMarquee(520, true, true, 0);
-            Fai.top.changeMarquee520 = function(){Fai.stopInterval('marquee520');Site.loadProductMarquee(520, true, true, 0);};
+            Site.setFullMeasureBgHightInIe6( 388);;$(function(){Site.inFullmeasueAnimation.animateFm(388,0,1,{"c":0,"d":4.0,"s":1.0});});
+            Site.loadNewsList(385, {"y":0,"s":0,"w":1}, false);
+            Site.loadNewsNewStyle(385, false,false,false,true,true,false,false,false,false);
 
-            Site.setFullMeasureBgHightInIe6( 519);;$(function(){Site.inFullmeasueAnimation.animateFm(519,0,1,{"c":0,"d":4.0,"s":1.0});});
-            Site.hoverChangeImage();Site.hoverStyle();
-
-
-
-
-
-            Site.initMulColModuleInIE('#module368');
-            Site.setFullMeasureBgHightInIe6( 521);;$(function(){Site.inFullmeasueAnimation.animateFm(521,0,1,{"c":0,"d":4.0,"s":1.0});});
             jzUtils.run({ "name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true }, {"moduleId": 555, "imgEffOption": {"effType":1,"borderType":false,"borderColor":"#000","borderWidth":1,"borderStyle":1,"hoverPicPath":"http://0.ss.faisys.com/image/floatImgHoverDef.png","openHoverPic":false,"isFontIcon":false,"ishovFont":false,"hovFont":"faisco-icons-contact2","hovFontColor":"#222222","picPath":"http://10428547.s61i.faiusr.com/4/shadow-buy-house.png","isInit":false}, "tagetOption": {"targetParent":"floatImg_J","target":"floatImg_J"}, "callback": Site.createImageEffectContent_photo, "callbackArgs": []});
             jzUtils.run({ "name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true }, {"moduleId": 557, "imgEffOption": {"effType":1,"borderType":false,"borderColor":"#000","borderWidth":1,"borderStyle":1,"hoverPicPath":"http://0.ss.faisys.com/image/floatImgHoverDef.png","openHoverPic":false,"isFontIcon":false,"ishovFont":false,"hovFont":"faisco-icons-contact2","hovFontColor":"#222222","picPath":"http://10428547.s61i.faiusr.com/4/shadow-sale-house.png","isInit":false}, "tagetOption": {"targetParent":"floatImg_J","target":"floatImg_J"}, "callback": Site.createImageEffectContent_photo, "callbackArgs": []});
             jzUtils.run({ "name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true }, {"moduleId": 558, "imgEffOption": {"effType":1,"borderType":false,"borderColor":"#000","borderWidth":1,"borderStyle":1,"hoverPicPath":"http://0.ss.faisys.com/image/floatImgHoverDef.png","openHoverPic":false,"isFontIcon":false,"ishovFont":false,"hovFont":"faisco-icons-contact2","hovFontColor":"#222222","picPath":"http://10428547.s61i.faiusr.com/4/shadow-rent-house.png","isInit":false}, "tagetOption": {"targetParent":"floatImg_J","target":"floatImg_J"}, "callback": Site.createImageEffectContent_photo, "callbackArgs": []});
@@ -1185,7 +1000,7 @@
         var _lcid = 2052;
         var _siteDomain = 'http://www.ot13227318.icoc.me';
         var _resRoot = 'http://0.ss.faisys.com';
-        var _colId = 105;
+        var _colId = 108;
         var _fromColId = -1;
         var _designAuth = false;
         var _manageMode = false;
@@ -1208,7 +1023,7 @@
 
         var _templateBannerData = {"ce":{},"pl":0,"l":[{"i":"AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY.jpg","w":1920,"h":780,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY!100x100.jpg"},{"i":"AD0Ig8H8BBACGAAg8eaUwgUolPudngQwgA84jAY","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUolPudngQwgA84jAY.jpg","w":1920,"h":780,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUolPudngQwgA84jAY!100x100.jpg"},{"i":"AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY.jpg","w":1920,"h":780,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY!100x100.jpg"}],"n":[{"t":1,"i":"AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY","e":0,"u":"","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY.jpg","w":1920,"h":780,"el":"","er":""},{"t":1,"i":"AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY","e":0,"u":"","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY.jpg","w":1920,"h":780,"el":"","er":""}],"s":4,"bt":0,"at":2,"i":4000,"a":1500,"h":false,"o":false,"t":1,"p":0,"pt":0,"ws2":false,"f":{},"c":3,"ws":false};		// 模版的数据
 
-        var _pageBannerData = {"ce":{},"pl":0,"l":[{"i":"AD0Ig8H8BBACGAAg7_aUwgUou4vvvgYwgA84rAI","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7_aUwgUou4vvvgYwgA84rAI.jpg","w":1920,"h":300,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7_aUwgUou4vvvgYwgA84rAI!100x100.jpg"},{"i":"AD0Ig8H8BBACGAAg7uaUwgUo_o-FiwUwgA84rAI","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7uaUwgUo_o-FiwUwgA84rAI.jpg","w":1920,"h":300,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7uaUwgUo_o-FiwUwgA84rAI!100x100.jpg"},{"i":"AD0Ig8H8BBACGAAg8eaUwgUo9_eTSDCADzisAg","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo9_eTSDCADzisAg.jpg","w":1920,"h":300,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo9_eTSDCADzisAg!100x100.jpg"}],"n":[{"t":1,"i":"AD0Ig8H8BBACGAAg7_aUwgUou4vvvgYwgA84rAI","e":0,"u":"","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7_aUwgUou4vvvgYwgA84rAI.jpg","w":1920,"h":300,"el":"","er":""}],"s":4,"i":4000,"a":1500,"h":false,"o":false,"t":1,"p":0,"pt":0,"bt":1,"ws2":false,"f":{},"c":3,"at":0,"ws":false};					// 当前页面的自定义数据（页面独立样式设置）
+        var _pageBannerData = {"ce":{},"pl":0,"l":[{"i":"AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI.jpg","w":1920,"h":300,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI!100x100.jpg"},{"i":"AD0Ig8H8BBACGAAg7uaUwgUo_o-FiwUwgA84rAI","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7uaUwgUo_o-FiwUwgA84rAI.jpg","w":1920,"h":300,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7uaUwgUo_o-FiwUwgA84rAI!100x100.jpg"},{"i":"AD0Ig8H8BBACGAAg6eaUwgUox5jZ4gMwgA84rAI","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg6eaUwgUox5jZ4gMwgA84rAI.jpg","w":1920,"h":300,"tp":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg6eaUwgUox5jZ4gMwgA84rAI!100x100.jpg"}],"n":[{"t":1,"i":"AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI","e":0,"u":"","p":"http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI.jpg","w":1920,"h":300,"el":"","er":""}],"s":4,"i":4000,"a":1500,"h":false,"o":false,"t":1,"p":0,"pt":0,"bt":1,"ws2":false,"f":{},"c":3,"at":0,"ws":false};					// 当前页面的自定义数据（页面独立样式设置）
         var _bannerData = _pageBannerData;
 
         var _useTemplateHeaderZone = true;				// 是否使用全局模版

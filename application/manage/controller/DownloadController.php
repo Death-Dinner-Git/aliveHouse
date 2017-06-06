@@ -10,36 +10,36 @@ class DownloadController extends ManageController
     /**
      * @description 显示资源列表
      * @param int $pageNumber
-     * @param string $name
+     * @param string $key
      * @param string $type
-     * @param string $app
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction($pageNumber = 1,$key = null, $type = null)
     {
         $where = [];
         $each = 12;
         $param = ['name'=>'','type'=>'','app'=>''];
-        $query = Download::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $query = $query->where($nameWhere);
+        if ($key && ($key = trim($key)) != ''){
+            $param['name'] = $key;
+            $where[] = ['exp',' `title` like '.' \'%'.$key.'%\''.' or `url` like '.' \'%'.$key.'%\' '." or `fileName` like '%".$key."%' "];
         }
         $lists = Download::getTypeList();
         if (isset($lists[0])){
             unset($lists[0]);
         }
-        if ($type && $type != ''){
-            $param['type'] = trim($type);
+        if ($type && ($type = trim($type)) != ''){
+            $param['type'] = $type;
             if (in_array($type,array_keys($lists))){
-                $where =  array_merge($where, ['type'=>$type]);
+                $where =  array_merge($where, ['tb_category'=>$type]);
             }
         }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Download::load()->where($where)->count();
 
-        $this->assign('meta_title', "标签清单");
+        $query = Download::load();
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "下载清单");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
@@ -85,11 +85,18 @@ class DownloadController extends ManageController
      * @param  int  $id
      * @return \think\Response
      */
-    public function viewAction($id)
+    public function viewAction($id=0)
     {
-        $this->assign('meta_title', "详情");
+        $id = intval($id);
+        if (empty($id)){
+            $id = '1';
+        }
         $model = Download::load()->where(['id'=>$id])->find();
-        return view('download/view',['model'=>$model]);
+        return view('download/view',[
+            'meta_title'=>'下载痕迹',
+            'meta_util'=>'false',
+            'model'=>$model
+        ]);
     }
 
     /**
@@ -98,36 +105,14 @@ class DownloadController extends ManageController
      * @param  int  $id
      * @return \think\Response|string
      */
-    public function updateAction($id)
+    public function downloadAction($id =0)
     {
-        $where = ['is_delete'=>'1'];
-        $model = new Download();
-        $modelList = Download::getTypeList();
-        $appList = Download::getAppList();
-        $model = Download::load()->where(['id'=>$id])->where($where)->find();
-        if (!$model){
-            return '';
+        $id = intval($id);
+        if (empty($id)){
+            $id = '1';
         }
-
-        if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Download']) ? $_POST['Download'] : []);
-            $data['updated_at'] = date('Y-m-d H:i:s');
-            $data['created_at'] = date('Y-m-d H:i:s');
-            if ($data){
-                $validate = Download::getValidate();
-                $validate->scene('update');
-                if ($validate->check($data) && Download::update($data,['id'=>$id])){
-                    $this->success('更新成功','create','',1);
-                }else{
-                    $error = $validate->getError();
-                    if (empty($error)){
-                        $error = $model->getError();
-                    }
-                    $this->error($error, 'create','',1);
-                }
-            }
-        }
-        return view('download/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'downloadList'=>$modelList]);
+        $model = Download::load()->where(['id'=>$id])->find();
+        return json(['code'=>'1','result'=>'']);
     }
 
     /**

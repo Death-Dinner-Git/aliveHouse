@@ -75,7 +75,6 @@ class Download extends Model
                 ['fileName','max:255'],
             ],
             'msg'=>[
-                'group.in'=> '此类型不允许',
             ]
         ];
     }
@@ -99,10 +98,10 @@ class Download extends Model
     }
 
     /**
-     * @return \think\model\relation\HasOne
+     * @return \think\model\relation\BelongsTo
      */
     public function getBackUser()
     {
-        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id');
+        return $this->belongsTo(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id');
     }
 }

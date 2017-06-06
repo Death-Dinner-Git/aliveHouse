@@ -35,12 +35,12 @@
 
                     <label class="layui-form-label">关键词:</label>
                     <div class="layui-input-inline">
-                        <input type="text" value="{$param.name}" name="key" placeholder=" 姓名 | 手机 | 邮箱 " class="layui-input">
+                        <input type="text" value="{$param.key}" name="key" placeholder="关键词" class="layui-input">
                     </div>
 
                     <label class="layui-form-label">状态:</label>
                     <div class="layui-input-inline">
-                        <select name="level" lay-search >
+                        <select name="type" lay-search >
                             <option value="0">全部</option>
                             {volist name="lists" id="item"}
                             <option value="{$key}" {if condition="$key eq $param.type"}selected{/if}>{$item}</option>
@@ -60,30 +60,32 @@
     <thead>
     <tr>
         <th>序号</th>
-        <th>客服</th>
-        <th>等级</th>
-        <th>有效时间</th>
-        <th>开始时间</th>
-        <th>结束时间</th>
+        <th>置业顾问</th>
+        <th>文件名</th>
+        <th>文件大小</th>
+        <th>下载次数</th>
+        <th>文件类型</th>
+        <th>创建时间</th>
         <th style="width:50px; text-align: center">操作</th>
     </tr>
     </thead>
     <tbody>
-    {volist name="dataProvider" id="model" key="key" empty="<tr class='empty'><td colspan='5' style='text-align: center;'> 没有数据 </td> </tr>"}
+    {volist name="dataProvider" id="model" key="key" empty="<tr class='empty'><td colspan='8' style='text-align: center;'> 没有数据 </td> </tr>"}
     <tr data-key="{$model.id}">
         <td style="width: 45px;text-align: center;">
             {$key+($indexOffset)}
         </td>
-        <td style="width: 100px;">{$model.back_user_id}</td>
-        <td>{$model.level}</td>
-        <td>{$model.duration}</td>
-        <td>{$model.start_at}</td>
-        <td>{$model.end_at}</td>
-        <td style="width: 250px;text-align: center;" class="action">
+        <td style="width: 100px;">{$model.getBackUser.username}</td>
+        <td>{$model.name}</td>
+        <td>{$model.size}</td>
+        <td>{$model.download}</td>
+        <td>{$model.ext}</td>
+        <td>{$model.created_at}</td>
+        <td style="width: 200px;text-align: center;" class="action">
             <a href="javascript:void(0);">
-                <button onclick="showUrl('查看详情','/manage/customer_service/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
+                <button onclick="showUrl('下载痕迹','/manage/download/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
                 <i class="fa fa-eye"></i>
-                查看详情
+                    下载痕迹
                 </button>
             </a>
             <a href="javascript:void(0);"><button onclick="showDialog('信息确认','你确定删除此项数据吗?',function(){deleteModel({$model.id});},true)" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
@@ -101,7 +103,7 @@
     function updateModel(id) {
         $.ajax({
             type : "post",
-            url : '/manage/customer_service/read?id='+ id,
+            url : '/manage/download/read?id='+ id,
             dataType : 'json',
             beforeSend : function() {
                 loading();
@@ -139,7 +141,7 @@
     function deleteModel(id) {
         $.ajax({
             type : "post",
-            url : '/manage/customer_service/delete?id='+ id,
+            url : '/manage/download/delete?id='+ id,
             dataType : 'json',
             beforeSend : function() {
                 loading();

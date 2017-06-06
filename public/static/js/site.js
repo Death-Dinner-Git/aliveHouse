@@ -303,7 +303,7 @@ function tab(options,parentWin,width,height,shade) {
 
 function imgLoading(ele) {
     var $this = $(ele);
-    if ($this ===undefined || $this.attr('lay-src') === undefined){
+    if ($this ===undefined || $this.attr('lay-src') === undefined || $this.attr('lay-filter') !== 'loading'){
         return;
     }
 
@@ -428,7 +428,7 @@ function resizeShowTab() {
 }
 
 setTimeout(function () {
-    $('[lay-filter="img"]').each(function () {
+    $('[lay-filter="loading"]').each(function () {
         imgLoading(this);
     });
 },200);

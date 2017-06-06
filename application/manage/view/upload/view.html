@@ -1,3 +1,4 @@
+{__NOLAYOUT__}
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
 
     <!-- For site js -->
     <script type="text/javascript" src="__JS__/jquery.js"></script>
@@ -20,47 +22,18 @@
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
 
     <style>
-        #registerUser .layui-form-item{
-            font-size: 16px;
-        }
-        #registerUser .layui-form-item .layui-form-label{
-            width: 130px;
-        }
-        #registerUser .layui-form-item .layui-input-inline{
-            width: 220px;
-        }
-        #registerUser .layui-form-item .layui-input-inline .layui-input{
-            font-size: 16px;
-        }
-        .help-hint{
-            display: block;
-            width: 100%;
-            padding-left: 30px;
-            height: 38px;
-            line-height: 38px;
-            border-radius: 2px;
-            text-align: left;
+        .view-body{
+            margin-top:40px !important;
+            border: 1px solid #ddd;
+            background-color: #f4f4f4;
+            padding: 20px;
             overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
         }
-        .help-msg .fa{
-            position: absolute;
-            border-radius: 50%;
-            margin: 10px;
-            width: 16px;
-            height: 16px;
-            text-align: center;
-            vertical-align: middle;
+        .view-body p{
+            color: #1fb5ac;
         }
-        .help-msg .fa.fa-close,.help-msg .fa.fa-check{
-            border: 1px solid #d4d4d4;
-        }
-        .help-msg .fa-close:before{
-            color: #E85445;
-        }
-        .help-msg .fa-check:before{
-            color: #0DBD9F;
+        .view-body p:hover{
+            opacity: 0.95;
         }
     </style>
 
@@ -69,16 +42,19 @@
 <body>
 <div>
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend style="margin-left: 200px;">{$meta_title ? $meta_title : '表单'}</legend>
-        <div style="margin:15px 15px 15px 215px;">
-            {volist name="model->getData()" id="value" key="key" empty="<p> 没有数据 </p>"}
-            <p>{$value}</p>
-            {/volist}
+        <legend style="text-align:center;">{$meta_title ? $meta_title : '表单'}</legend>
+        <div style="display: flex;">
+            <div class="view-body" style="margin: auto;width: 800px;">
+                {volist name="model->getData()" id="value" key="key" empty="<p> 没有数据 </p>"}
+                <p>{$value}</p>
+                {/volist}
+            </div>
         </div>
     </fieldset>
 </div>
 <script>
-    layui.use([ 'jquery','layer', 'form'], function() {});
+    layui.use([ 'jquery','layer'], function() {
+    });
 </script>
 
 </body>

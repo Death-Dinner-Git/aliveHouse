@@ -8,7 +8,7 @@ use app\home\controller\ManageController;
  * 默认控制器
  * @author Sir Fu
  */
-class RentController extends ManageController
+class BetterController extends ManageController
 {
     /**
      * 默认方法
@@ -16,7 +16,7 @@ class RentController extends ManageController
      */
     public function rentAction()
     {
-        return view('rent');
+        return view('better');
     }
 
 }

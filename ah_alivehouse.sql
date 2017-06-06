@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2017-06-06 18:29:59
--- 服务器版本： 10.1.9-MariaDB
+-- Generation Time: 2017-06-06 23:57:43
+-- 服务器版本： 10.1.9-MariaDB-log
 -- PHP Version: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -435,7 +435,14 @@ CREATE TABLE IF NOT EXISTS `ah_download` (
   `tb_id` text COLLATE utf8_unicode_ci NOT NULL COMMENT '表的id',
   `tb_category` text COLLATE utf8_unicode_ci NOT NULL COMMENT '类别信息',
   `created_at` datetime NOT NULL COMMENT '创建时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='赛事、福利、新闻 删除记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='赛事、福利、新闻 删除记录表';
+
+--
+-- 转存表中的数据 `ah_download`
+--
+
+INSERT INTO `ah_download` (`id`, `back_user_id`, `title`, `url`, `fileName`, `tb_name`, `tb_id`, `tb_category`, `created_at`) VALUES
+(1, 1, '标题', '/static/images/refresh.png', '刷新', 'ah_images', '1', '图片', '2017-06-06 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -689,7 +696,7 @@ CREATE TABLE IF NOT EXISTS `ah_menu` (
   `order` int(11) DEFAULT NULL COMMENT '排序',
   `type` tinyint(1) DEFAULT '1' COMMENT '菜单类型',
   `data` text COMMENT '补充'
-) ENGINE=InnoDB AUTO_INCREMENT=279 DEFAULT CHARSET=utf8 COMMENT='菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=280 DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
 --
 -- 转存表中的数据 `ah_menu`
@@ -710,7 +717,7 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (13, '系统配置', NULL, NULL, 12, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (14, '其他管理', NULL, NULL, 13, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (15, '常见问题', NULL, '/manage/index/faq', 14, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(16, '数据统计', NULL, '/manage/type/create.html?iframe=true', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(16, '数据统计', NULL, '/manage/data/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (31, '跟进服务', 2, '/manage/services/onServices', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (32, '客户抢接', 2, '/manage/guest/services', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (33, '房源抢接', 2, '/manage/house/services', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -778,8 +785,8 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (250, '基本设置', 13, '/manage/config/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (251, '站点管理', 13, '/manage/settings/site', 1, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (252, '安全设置', 13, '/manage/settings/safety', 2, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(253, '短信接口设置', 13, '/manage/settings/message', 3, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(254, '推送接口设置', 13, '/manage/settings/push', 4, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(253, '短信接口设置', 13, '/manage/settings/message', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(254, '推送接口设置', 13, '/manage/settings/push', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (255, '邮箱设置', 13, '/manage/settings/email', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (256, '系统日志管理', 13, '/manage/settings/log', 6, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (257, '防采集管理', 13, '/manage/settings/defend', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -4636,11 +4643,18 @@ CREATE TABLE IF NOT EXISTS `ah_upload` (
   `sha1` char(40) DEFAULT '' COMMENT '文件sha1编码',
   `location` varchar(15) NOT NULL DEFAULT '' COMMENT '文件存储位置',
   `download` bigint(20) NOT NULL DEFAULT '0' COMMENT '下载次数',
-  `create_time` datetime NOT NULL COMMENT '上传时间',
-  `update_time` datetime NOT NULL COMMENT '修改时间',
+  `created_at` datetime NOT NULL COMMENT '上传时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间',
   `sort` bigint(20) NOT NULL DEFAULT '0' COMMENT '排序',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文件上传表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文件上传表';
+
+--
+-- 转存表中的数据 `ah_upload`
+--
+
+INSERT INTO `ah_upload` (`id`, `is_delete`, `back_user_id`, `name`, `path`, `url`, `ext`, `size`, `md5`, `sha1`, `location`, `download`, `created_at`, `updated_at`, `sort`, `status`) VALUES
+(1, 1, 1, '文件名', '/static/', '/static/images', 'png', 0, '2017-06-06 00:00:00', 'sds', 'sd', 0, '2017-06-06 00:00:00', '2017-06-06 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5042,7 +5056,7 @@ ALTER TABLE `ah_department`
 -- AUTO_INCREMENT for table `ah_download`
 --
 ALTER TABLE `ah_download`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `ah_guest`
 --
@@ -5097,7 +5111,7 @@ ALTER TABLE `ah_label_park`
 -- AUTO_INCREMENT for table `ah_menu`
 --
 ALTER TABLE `ah_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=279;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=280;
 --
 -- AUTO_INCREMENT for table `ah_new_house`
 --
@@ -5162,7 +5176,7 @@ ALTER TABLE `ah_type_park`
 -- AUTO_INCREMENT for table `ah_upload`
 --
 ALTER TABLE `ah_upload`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `ah_walk`
 --

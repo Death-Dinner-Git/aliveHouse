@@ -50,8 +50,8 @@ class Upload extends Model
         'sha1',
         'location',
         'download',
-        'create_time',
-        'update_time',
+        'created_at',
+        'updated_at',
         'sort',
         'status',
     ];
@@ -96,7 +96,6 @@ class Upload extends Model
                 ['url','max:255'],
             ],
             'msg'=>[
-                'group.in'=> '此类型不允许',
             ]
         ];
     }
@@ -119,18 +118,18 @@ class Upload extends Model
             'sha1' => '文件sha1编码',
             'location' => '文件存储位置',
             'download' => '下载次数',
-            'create_time' => '上传时间',
-            'update_time' => '修改时间',
+            'created_at' => '上传时间',
+            'updated_at' => '修改时间',
             'sort' => '排序',
             'status' => '状态',
         ];
     }
 
     /**
-     * @return \think\model\relation\HasOne
+     * @return \think\model\relation\BelongsTo
      */
     public function getBackUser()
     {
-        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id');
+        return $this->belongsTo(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id');
     }
 }
