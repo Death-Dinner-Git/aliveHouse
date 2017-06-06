@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2017-06-02 20:28:57
--- 服务器版本： 10.1.9-MariaDB-log
+-- Generation Time: 2017-06-06 18:29:59
+-- 服务器版本： 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -518,7 +518,14 @@ CREATE TABLE IF NOT EXISTS `ah_home_user` (
   `registered_at` datetime DEFAULT NULL COMMENT '注册时间',
   `logined_at` datetime DEFAULT NULL COMMENT '登录时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
+
+--
+-- 转存表中的数据 `ah_home_user`
+--
+
+INSERT INTO `ah_home_user` (`id`, `is_delete`, `code`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
+(100, 1, '100100', '10086100100', 0, NULL, 0, 'username1', '888888', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -532,6 +539,7 @@ CREATE TABLE IF NOT EXISTS `ah_home_user_log` (
   `route` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '路由',
   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '地址',
   `user_agent` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '客户端',
+  `user_agent_type` tinyint(1) DEFAULT '1' COMMENT '客户类型;1=PC,2=Android,3=IOS;默认1',
   `gets` text COLLATE utf8_unicode_ci COMMENT 'GET方法',
   `posts` text COLLATE utf8_unicode_ci COMMENT 'POST方法',
   `target` text COLLATE utf8_unicode_ci COMMENT '目标',
@@ -635,10 +643,19 @@ CREATE TABLE IF NOT EXISTS `ah_label` (
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
   `name` varchar(32) NOT NULL COMMENT '标签',
-  `description` varchar(255) DEFAULT NULL COMMENT '详细描述',
+  `description` varchar(255) DEFAULT NULL COMMENT '标签备注',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='标签表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='标签表';
+
+--
+-- 转存表中的数据 `ah_label`
+--
+
+INSERT INTO `ah_label` (`id`, `is_delete`, `type`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 1, 6, '高级别墅', '', '2017-06-06 12:02:20', '2017-06-06 12:02:20'),
+(3, 1, 6, '高级住宅', '', '2017-06-06 12:22:57', '2017-06-06 12:22:57'),
+(4, 1, 6, '海边景房', '', '2017-06-06 12:23:27', '2017-06-06 12:23:27');
 
 -- --------------------------------------------------------
 
@@ -680,37 +697,35 @@ CREATE TABLE IF NOT EXISTS `ah_menu` (
 
 INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`) VALUES
 (1, '控制面板', NULL, '/manage/index/home', 0, 1, '{"li_class":"","a_class":"Index-Home","i_class":"fa fa-circle-o"}'),
-(2, '业务服务', NULL, NULL, 1, 1, '{"li_class":"","a_class":"User","i_class":"fa fa-circle-o"}'),
-(3, '个人信息', NULL, NULL, 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(4, '信息录入', NULL, NULL, 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(2, '业务服务', NULL, NULL, 1, 2, '{"li_class":"","a_class":"User","i_class":"fa fa-circle-o"}'),
+(3, '个人信息', NULL, NULL, 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(4, '信息录入', NULL, NULL, 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (5, '房源管理', NULL, NULL, 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (6, '客户管理', NULL, NULL, 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (7, '反馈管理', NULL, NULL, 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (8, '交易管理', NULL, NULL, 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (9, '员工管理', NULL, NULL, 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(10, '广告管理', NULL, NULL, 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(11, '标签管理', NULL, NULL, 10, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(10, '广告管理', NULL, NULL, 9, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (12, '网站维护', NULL, NULL, 11, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (13, '系统配置', NULL, NULL, 12, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (14, '其他管理', NULL, NULL, 13, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (15, '常见问题', NULL, '/manage/index/faq', 14, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(30, '数据统计', 2, '/manage/data/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(31, '跟进服务', 2, '/manage/services/onServices', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(32, '客户抢接', 2, '/manage/guest/services', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(33, '房源抢接', 2, '/manage/house/services', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(34, '反馈抢接', 2, '/manage/contact/services', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(35, '服务清单', 2, '/manage/services/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(50, '我的信息', 3, '/manage/user/view', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(51, '修改密码', 3, '/manage/user/resetPassword', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(52, '日志信息', 3, '/manage/user/log', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(70, '客户录入', 4, '/manage/guest/create', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(71, '房东录入', 4, '/manage/house_host/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(72, '新房录入', 4, '/manage/new_house/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(73, '二手房录入', 4, '/manage/second_hand_house/create', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(74, '出租录入', 4, '/manage/rent/create', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(75, '楼盘录入', 4, '/manage/build/create', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(76, '交易录入', 4, '/manage/order/create', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(77, '录入清单', 4, '/manage/import/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(16, '数据统计', NULL, '/manage/type/create.html?iframe=true', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(31, '跟进服务', 2, '/manage/services/onServices', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(32, '客户抢接', 2, '/manage/guest/services', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(33, '房源抢接', 2, '/manage/house/services', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(34, '反馈抢接', 2, '/manage/contact/services', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(35, '服务清单', 2, '/manage/services/index', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(50, '我的信息', 3, '/manage/user/view', 0, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(51, '修改密码', 3, '/manage/user/resetPassword', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(52, '日志信息', 3, '/manage/user/log', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(70, '客户录入', 4, '/manage/guest/create', 0, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(71, '房东录入', 4, '/manage/house_host/create', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(72, '新房录入', 4, '/manage/new_house/create', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(73, '二手房录入', 4, '/manage/second_hand_house/create', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(75, '楼盘录入', 4, '/manage/build/create', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(76, '交易录入', 4, '/manage/order/create', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(77, '录入清单', 4, '/manage/import/index', 7, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (90, '我的房源', 5, '/manage/house/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (91, '新房录入', 5, '/manage/new_house/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (92, '二手房录入', 5, '/manage/second_hand_house/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -727,10 +742,10 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (115, '客户抢接', 6, '/manage/guest/services', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (116, '客户转接', 6, '/manage/guest/transfer', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (117, '房源接收', 6, '/manage/house/receive', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(130, '我的反馈', 7, '/manage/contact/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(131, '反馈抢接', 7, '/manage/contact/services', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(132, '反馈清单', 7, '/manage/contact/super', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(133, '反馈分配', 7, '/manage/contact/assign', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(130, '我的求购', 7, '/manage/contact/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(131, '求购抢接', 7, '/manage/contact/services', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(132, '求购清单', 7, '/manage/contact/super', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(133, '求购分配', 7, '/manage/contact/assign', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (150, '我的交易', 8, '/manage/order/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (151, '交易清单', 8, '/manage/order/super', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (152, '交易录入', 8, '/manage/order/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -739,20 +754,17 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (172, '权限管理', 9, '/manage/ban/index', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (173, '浏览管理日志', 9, '/manage/guest/log', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (174, '浏览删除日志', 9, '/manage/guest/logDelete', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(175, '客服推荐', 9, '/manage/guest/logDelete', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(190, '首页广告', 10, '/manage/slider/home', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(191, '家装广告', 10, '/manage/slider/homeBetter', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(192, '新房广告', 10, '/manage/slider/newHouse', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(193, '二手房广告', 10, '/manage/slider/secondHandHouse', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(194, '出租广告', 10, '/manage/slider/rent', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(195, '楼盘广告', 10, '/manage/slider/build', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(196, '联系我们广告', 10, '/manage/slider/contact', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(210, '标签清单', 11, '/manage/label/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(211, '标签关联', 11, '/manage/label_park/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(175, '客服推荐', 9, '/manage/customer_service/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(176, '部门管理', 9, '/manage/department/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(190, '首页广告', 10, '/manage/slider/home', 0, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(191, '家装广告', 10, '/manage/slider/homeBetter', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(192, '新房广告', 10, '/manage/slider/newHouse', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(193, '二手房广告', 10, '/manage/slider/secondHandHouse', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(195, '楼盘广告', 10, '/manage/slider/build', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(196, '联系我们广告', 10, '/manage/slider/contact', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (230, '企业信息', 12, '/manage/maintain/company', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(231, '新房资讯', 13, '/manage/newHouse/hot', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(231, '新房资讯', 12, '/manage/newHouse/hot', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (232, '二手房资讯', 12, '/manage/second_hand_house/hot', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(233, '出租资讯', 12, '/manage/rent/hot', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (234, '楼盘资讯', 12, '/manage/build/hot', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (235, '楼市资讯', 12, '/manage/hot/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (236, '客户反馈', 12, '/manage/opinion/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -764,22 +776,20 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (242, '清理缓存', 12, '/manage/maintain/cache', 12, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (243, '通知信息', 12, '/manage/notice/index', 13, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (250, '基本设置', 13, '/manage/config/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(251, '站点管理', 13, '/manage/settings/site', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(252, '安全设置', 13, '/manage/settings/safety', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(253, '短信接口设置', 13, '/manage/settings/message', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(254, '推送接口设置', 13, '/manage/settings/push', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(251, '站点管理', 13, '/manage/settings/site', 1, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(252, '安全设置', 13, '/manage/settings/safety', 2, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(253, '短信接口设置', 13, '/manage/settings/message', 3, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(254, '推送接口设置', 13, '/manage/settings/push', 4, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (255, '邮箱设置', 13, '/manage/settings/email', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(256, '系统日志管理', 13, '/manage/settings/log', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(256, '系统日志管理', 13, '/manage/settings/log', 6, 0, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (257, '防采集管理', 13, '/manage/settings/defend', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (270, '日记管理', 14, '/manage/log/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(271, '删除日志', 14, '/manage/delete/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(272, '部门管理', 14, '/manage/department/index', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(273, '客服推荐', 14, '/manage/customer_service/index', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (274, '上传管理', 14, '/manage/upload/index', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (275, '下载管理', 14, '/manage/download/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (276, '城市管理', 14, '/manage/city/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(277, '前台会员', 14, '/manage/home_user/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(278, '前台会员日志', 14, '/manage/home_user/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}');
+(277, '用户清单', 14, '/manage/home_user/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(278, '标签清单', 14, '/manage/label/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(279, '类型清单', 14, '/manage/type/index', 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}');
 
 -- --------------------------------------------------------
 
@@ -4561,6 +4571,55 @@ CREATE TABLE IF NOT EXISTS `ah_take_order` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `ah_type`
+--
+
+CREATE TABLE IF NOT EXISTS `ah_type` (
+  `id` bigint(20) NOT NULL COMMENT 'ID',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
+  `name` varchar(32) NOT NULL COMMENT '类型名',
+  `description` varchar(255) DEFAULT NULL COMMENT '类型备注',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间'
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='类型表';
+
+--
+-- 转存表中的数据 `ah_type`
+--
+
+INSERT INTO `ah_type` (`id`, `is_delete`, `type`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 1, 6, '普通住宅', '', '2017-06-06 10:49:40', '2017-06-06 11:30:30'),
+(3, 1, 6, '写字楼', '', '2017-06-06 10:55:14', '2017-06-06 10:55:14'),
+(4, 1, 6, '商铺', '', '2017-06-06 10:55:25', '2017-06-06 10:55:25'),
+(5, 1, 6, '别墅', '', '2017-06-06 10:55:41', '2017-06-06 10:55:41'),
+(6, 1, 6, '酒店式公寓', '', '2017-06-06 10:55:50', '2017-06-06 10:55:50'),
+(7, 1, 6, '商住两用', '', '2017-06-06 10:55:57', '2017-06-06 10:55:57'),
+(8, 1, 6, '公寓', '', '2017-06-06 10:56:03', '2017-06-06 10:56:03'),
+(9, 1, 6, '厂房', '', '2017-06-06 10:56:10', '2017-06-06 10:56:10'),
+(10, 1, 6, '其他', '', '2017-06-06 10:56:17', '2017-06-06 10:56:17');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `ah_type_park`
+--
+
+CREATE TABLE IF NOT EXISTS `ah_type_park` (
+  `id` bigint(20) NOT NULL COMMENT 'ID',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `type_id` bigint(20) NOT NULL COMMENT '标签表ID',
+  `target_id` bigint(20) NOT NULL COMMENT '目标表ID;根据type值外联',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
+  `name` varchar(32) NOT NULL COMMENT '标签',
+  `description` varchar(255) NOT NULL COMMENT '详细描述',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='类型关系表';
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `ah_upload`
 --
 
@@ -4893,6 +4952,20 @@ ALTER TABLE `ah_take_order`
   ADD KEY `goods_id` (`goods_id`);
 
 --
+-- Indexes for table `ah_type`
+--
+ALTER TABLE `ah_type`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ah_type_park`
+--
+ALTER TABLE `ah_type_park`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `label_id` (`type_id`),
+  ADD KEY `target_id` (`target_id`);
+
+--
 -- Indexes for table `ah_upload`
 --
 ALTER TABLE `ah_upload`
@@ -4981,6 +5054,11 @@ ALTER TABLE `ah_guest`
 ALTER TABLE `ah_guest_server`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
+-- AUTO_INCREMENT for table `ah_home_user`
+--
+ALTER TABLE `ah_home_user`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=101;
+--
 -- AUTO_INCREMENT for table `ah_home_user_log`
 --
 ALTER TABLE `ah_home_user_log`
@@ -5009,7 +5087,7 @@ ALTER TABLE `ah_house_host_server`
 -- AUTO_INCREMENT for table `ah_label`
 --
 ALTER TABLE `ah_label`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `ah_label_park`
 --
@@ -5069,6 +5147,16 @@ ALTER TABLE `ah_slider`
 -- AUTO_INCREMENT for table `ah_take_order`
 --
 ALTER TABLE `ah_take_order`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+--
+-- AUTO_INCREMENT for table `ah_type`
+--
+ALTER TABLE `ah_type`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `ah_type_park`
+--
+ALTER TABLE `ah_type_park`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
 -- AUTO_INCREMENT for table `ah_upload`
