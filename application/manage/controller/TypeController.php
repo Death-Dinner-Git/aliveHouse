@@ -23,26 +23,29 @@ class TypeController extends ManageController
             $param['name'] = trim($name);
             $where =  array_merge($where, ['name'=>['like','%'.$name.'%']]);
         }
-        $typeList = Type::getGroupList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
+        $lists = Type::getTypeList();
+        if (isset($lists[0])){
+            unset($lists[0]);
         }
         if ($type && $type != ''){
             $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
+            if (in_array($type,array_keys($lists))){
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $dataProvider = Type::load()->where($where)->page($pageNumber,$each)->select();
-        $count = Type::load()->where($where)->count();
 
-        $this->assign('meta_title', "标签清单");
+        $query = Type::load();
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "类型清单");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
+        $this->assign('lists', $lists);
         return view('type/index');
     }
 
@@ -54,16 +57,22 @@ class TypeController extends ManageController
     public function createAction()
     {
         $model = new Type();
-        $modelList = Type::getGroupList();
+        $lists = Type::getTypeList();
         if ($this->getRequest()->isPost()){
             $data = (isset($_POST['Type']) ? $_POST['Type'] : []);
+            $data['is_delete'] = '1';
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
-            $result = Type::load()->where(['name'=>$data['name'],'type'=>$data['type']])->find();
+            $where = ['name'=>$data['name'],'type'=>$data['type']];
+            $result = Type::load()->where($where)->find();
             if ($data){
                 if ($result){
-                    $error = isset($modelList[$data['type']]) ? $modelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
-                    $this->error($error , 'create','',1);
+                    if ($result->is_delete == '0'){
+                        Type::update(['is_delete'=>'1'],$where);
+                    }else{
+                        $error = isset($lists[$data['type']]) ? '已存在 '.$data['name'] .' 此'.$lists[$data['type']].'类型名' : '无效类型名';
+                        $this->error($error , 'create','',1);
+                    }
                 }else{
                     $validate = Type::getValidate();
                     $validate->scene('create');
@@ -79,20 +88,11 @@ class TypeController extends ManageController
                 }
             }
         }
-        return view('type/create',['meta_title'=>'添加标签','typeList'=>$modelList]);
-    }
-
-    /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function viewAction($id)
-    {
-        $this->assign('meta_title', "详情");
-        $model = Type::load()->where(['id'=>$id])->find();
-        return view('type/view',['model'=>$model]);
+        return view('type/create',[
+            'meta_title'=>'添加一个类型名',
+            'meta_util'=>'false',
+            'lists'=>$lists
+        ]);
     }
 
     /**
@@ -104,8 +104,7 @@ class TypeController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $model = new Type();
-        $modelList = Type::getGroupList();
+        $lists = Type::getTypeList();
         $model = Type::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
@@ -114,28 +113,38 @@ class TypeController extends ManageController
         if ($this->getRequest()->isPost()){
             $data = (isset($_POST['Type']) ? $_POST['Type'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
-            $data['created_at'] = date('Y-m-d H:i:s');
-            $result = Type::load()->where(['name'=>$data['name'],'type'=>$data['type']])->where($where)->find();
+            $type = $model->type;
+            $where = array_merge($where,['name'=>$data['name'],'type'=>$type]);
+            $result = Type::load()->where($where)->find();
             if ($data){
                 if ($result){
-                    $error = isset($modelList[$data['type']]) ? $modelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
-                    $this->error($error , 'create','',1);
+                    if ($result->is_delete == '0'){
+                        Type::update(['is_delete'=>'1'],$where);
+                    }else{
+                        $error = isset($lists[$type]) ? '已存在 '.$data['name'] .' 此'.$lists[$type].'类型名' : '无效类型名';
+                        $this->error($error , 'update?id='.$id,'',1);
+                    }
                 }else{
                     $validate = Type::getValidate();
                     $validate->scene('update');
                     if ($validate->check($data) && Type::update($data,['id'=>$id])){
-                        $this->success('更新成功','create','',1);
+                        $this->success('更新成功','update?id='.$id,'',1);
                     }else{
                         $error = $validate->getError();
                         if (empty($error)){
                             $error = $model->getError();
                         }
-                        $this->error($error, 'create','',1);
+                        $this->error($error, 'update?id='.$id,'',1);
                     }
                 }
             }
         }
-        return view('type/update',['meta_title'=>'编辑标签','typeList'=>$modelList,'model'=>$model]);
+        return view('type/update',[
+            'meta_title'=>'编辑标签',
+            'meta_util'=>'false',
+            'lists'=>$lists,
+            'model'=>$model
+        ]);
     }
 
     /**

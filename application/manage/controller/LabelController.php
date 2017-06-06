@@ -23,18 +23,21 @@ class LabelController extends ManageController
             $param['name'] = trim($name);
             $where =  array_merge($where, ['name'=>['like','%'.$name.'%']]);
         }
-        $typeList = Label::getGroupList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
+        $lists = Label::getTypeList();
+        if (isset($lists[0])){
+            unset($lists[0]);
         }
         if ($type && $type != ''){
             $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
+            if (in_array($type,array_keys($lists))){
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $dataProvider = Label::load()->where($where)->page($pageNumber,$each)->select();
-        $count = Label::load()->where($where)->count();
+
+        $query = Label::load();
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
 
         $this->assign('meta_title', "标签清单");
         $this->assign('pages', ceil(($count)/$each));
@@ -42,7 +45,7 @@ class LabelController extends ManageController
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
+        $this->assign('lists', $lists);
         return view('label/index');
     }
 
@@ -53,46 +56,38 @@ class LabelController extends ManageController
      */
     public function createAction()
     {
-        $label = new Label();
-        $labelList = Label::getGroupList();
+        $model = new Label();
+        $lists = Label::getTypeList();
         if ($this->getRequest()->isPost()){
             $data = (isset($_POST['Label']) ? $_POST['Label'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
-            $result = Label::load()->where(['name'=>$data['name'],'type'=>$data['type']])->find();
+            $where = ['name'=>$data['name'],'type'=>$data['type']];
+            $result = Label::load()->where($where)->find();
             if ($data){
                 if ($result){
-                    $error = isset($labelList[$data['type']]) ? $labelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
+                    $error = isset($lists[$data['type']]) ? $lists[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
                     $this->error($error , 'create','',1);
                 }else{
                     $validate = Label::getValidate();
                     $validate->scene('create');
-                    if ($validate->check($data) && $label->save($data)){
+                    if ($validate->check($data) && $model->save($data)){
                         $this->success('添加成功','create','',1);
                     }else{
                         $error = $validate->getError();
                         if (empty($error)){
-                            $error = $label->getError();
+                            $error = $model->getError();
                         }
                         $this->error($error, 'create','',1);
                     }
                 }
             }
         }
-        return view('label/create',['meta_title'=>'添加标签','labelList'=>$labelList]);
-    }
-
-    /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function viewAction($id)
-    {
-        $this->assign('meta_title', "详情");
-        $model = Label::load()->where(['id'=>$id])->find();
-        return view('label/view',['model'=>$model]);
+        return view('label/create',[
+            'meta_title'=>'添加标签',
+            'meta_util'=>'false',
+            'lists'=>$lists
+        ]);
     }
 
     /**
@@ -104,8 +99,7 @@ class LabelController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $label = new Label();
-        $labelList = Label::getGroupList();
+        $lists = Label::getTypeList();
         $model = Label::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
@@ -115,10 +109,12 @@ class LabelController extends ManageController
             $data = (isset($_POST['Label']) ? $_POST['Label'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
-            $result = Label::load()->where(['name'=>$data['name'],'type'=>$data['type']])->where($where)->find();
+            $type = $model->type;
+            $newWhere = ['name'=>$data['name'],'type'=>$type];
+            $result = Label::load()->where($newWhere)->where($where)->find();
             if ($data){
                 if ($result){
-                    $error = isset($labelList[$data['type']]) ? $labelList[$data['type']].'类型已存在此标签：'.$data['name'] : '无效标签';
+                    $error = isset($lists[$model->type]) ? $lists[$model->type].'类型已存在此标签：'.$data['name'] : '无效标签';
                     $this->error($error , 'create','',1);
                 }else{
                     $validate = Label::getValidate();
@@ -127,15 +123,21 @@ class LabelController extends ManageController
                         $this->success('更新成功','create','',1);
                     }else{
                         $error = $validate->getError();
+
                         if (empty($error)){
-                            $error = $label->getError();
+                            $error = $model->getError();
                         }
                         $this->error($error, 'create','',1);
                     }
                 }
             }
         }
-        return view('label/update',['meta_title'=>'编辑标签','labelList'=>$labelList,'model'=>$model]);
+        return view('label/update',[
+            'meta_title'=>'编辑标签',
+            'meta_util'=>'false',
+            'lists'=>$lists,
+            'model'=>$model
+        ]);
     }
 
     /**

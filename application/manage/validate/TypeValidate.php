@@ -11,7 +11,7 @@ class TypeValidate extends Validate
      * @var array
      */
     protected $rule = [
-        'name|标签','require',
+        'name|类型','require',
     ];
 
     /**

@@ -20,7 +20,9 @@
 <body>
 
 <fieldset class="layui-elem-field">
-    <legend>标签清单</legend>
+    {if condition="isset($meta_title)"}
+    <legend>{$meta_title}</legend>
+    {/if}
     <div class="layui-field-box">
         <form class="layui-form layui-form-pane" action="">
             <div class="layui-form-item">
@@ -34,11 +36,12 @@
                 <div class="layui-input-inline">
                     <select name="type" lay-search >
                         <option value="0">全部</option>
-                        {volist name="typeList" id="item"}
+                        {volist name="lists" id="item"}
                         <option value="{$key}" {if condition="$key eq $param.type"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
+
                 <button class="layui-btn" lay-submit="">查询</button>
 
                 <label class="layui-btn" onclick="showUrl('添加一个标签','/manage/label/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])">添加</label>
@@ -52,8 +55,8 @@
     <tr>
         <th>序号</th>
         <th>标签名称</th>
-        <th>标签详情</th>
-        <th>标签类型</th>
+        <th>标签组别</th>
+        <th>标签备注</th>
         <th style="width:50px; text-align: center">操作</th>
     </tr>
     </thead>
@@ -63,22 +66,22 @@
         <td style="width: 45px;text-align: center;">
             {$key+($indexOffset)}
         </td>
-        <td style="width: 100px;">{$model.name}</td>
-        <td>{$model.description}</td>
+        <td>{$model.name}</td>
         <td>
-            {if condition="isset($typeList[$model.type])"}
-            {$typeList[$model.type]}
+            {if condition="isset($lists[$model.type])"}
+            {$lists[$model.type]}
             {else} 无效
             {/if}
         </td>
+        <td>{$model.description}</td>
         <td style="width: 150px;text-align: center;" class="action">
             <a href="javascript:void(0);">
-                <button onclick="showUrl('编辑标签','/manage/label/update.html?iframe=true&id={$model.id}','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])" class="layui-btn layui-btn-small">
+                <button onclick="showUrl('编辑标签','/manage/label/update.html?iframe=true&id={$model.id}','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'],true)" class="layui-btn layui-btn-small">
                     <i class="fa fa-pencil"></i>
                     编辑
                 </button>
             </a>
-            <a href="javascript:void(0);"><button onclick="showDialog('信息确认','你确定删除此标签吗?',function(){deleteUser({$model.id});})" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
+            <a href="javascript:void(0);"><button onclick="showDialog('信息确认','你确定删除此标签吗?',function(){deleteUser({$model.id});},true)" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
         </td>
     </tr>
     {/volist}

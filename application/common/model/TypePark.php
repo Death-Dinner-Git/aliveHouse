@@ -35,7 +35,7 @@ class TypePark extends Model
         'is_delete',
         'type_id',
         'target_id',
-        'group',
+        'type',
         'name',
         'description',
         'created_at',
@@ -49,7 +49,17 @@ class TypePark extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $groupList = ['1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼房','7'=>'客服','8'=>'出租'];
+    //所有标签类型
+    private static $typeList = ['0'=>'失效','1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼房','7'=>'客服'];
+
+    /**
+     * @return array
+     */
+    public static function getTypeList()
+    {
+        return self::$typeList;
+    }
+
 
     /**
      * @inheritdoc
@@ -57,12 +67,17 @@ class TypePark extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'type_id', 'target_id', 'group'], 'integer'],
-            [['type_id', 'target_id', 'name', 'description', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 32],
-            [['description'], 'string', 'max' => 255],
-            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => Type::tableNameSuffix(), 'targetAttribute' => ['type_id' => 'id']],
+            'rule'=>[
+                ['type','in:0,1,2,3,4,5,6,7'],
+                ['type_id','number'],
+                ['target_id','number'],
+                ['is_delete','in:0,1','时效 无效'],
+                ['name','max:32'],
+                ['description','max:255'],
+            ],
+            'msg'=>[
+                'group.in'=> '此类型不允许',
+            ]
         ];
     }
 
@@ -76,7 +91,7 @@ class TypePark extends Model
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'type_id' => '标签表ID',
             'target_id' => '目标表ID;根据group值外联',
-            'group' => '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=出租;默认1;',
+            'type' => '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=出租;默认1;',
             'name' => '标签',
             'description' => '详细描述',
             'created_at' => '创建时间',
@@ -90,9 +105,5 @@ class TypePark extends Model
     public function getType()
     {
         return $this->hasOne(ucfirst(Type::tableNameSuffix()), 'type_id', 'id');
-    }
-
-    public static function getGroupList(){
-        return self::$groupList;
     }
 }

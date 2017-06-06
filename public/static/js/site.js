@@ -3,7 +3,6 @@ var layer = top.window.layer ? top.window.layer : window.layer;
 // var _height = document.documentElement.clientHeight;//获取页面可见高度
 var config = {
     shade:['0.372','#000'],
-    iframeShade:['0.628', '#4d4d4d'],
     width:{
         max:'800px',
         small:'700px',
@@ -55,7 +54,7 @@ function loadScript(url) {
     document.body.appendChild(script);
 }
 
-function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade,scroll,shadeClose) {
+function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade,scroll,shadeClose,refresh) {
     var content = '',stop = true;
     var myLayer = window.layer ? window.layer : top.window.layer;
     if(!myLayer) {
@@ -81,16 +80,18 @@ function showUrl(title,url,width,height,type,parentWin,maxmin,ele,shade,scroll,s
     height = height || config.height.max;
     maxmin = maxmin !== undefined && maxmin === true && type == 2;
     if (shade === true){
-        shade = config.iframeShade;
+        shade = config.shade;
     }
     shade = shade || (maxmin !== undefined && maxmin === true && type == 2 ? 0 : 0.3);
     shadeClose = shadeClose || false;
+    refresh = refresh || false;
     myLayer.open({
         type: type,
         area: [width,height],
         maxmin: maxmin,
         shade: shade,
         shadeClose:shadeClose,
+        refresh:refresh,
         id: ele,
         title:'<p style="text-align: center;">'+title+'</p>',
         content: content

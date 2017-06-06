@@ -197,7 +197,8 @@ Class.pt.config = {
   moveType: 1,
   resize: true,
   scrollbar: true, //是否允许浏览器滚动条
-  tips: 2
+  tips: 2,
+  refresh: false
 };
 
 //容器
@@ -222,7 +223,8 @@ Class.pt.vessel = function(conType, callback){
         + (config.type == 1 && conType ? '' : (config.content||''))
       + '</div>'
       + '<span class="layui-layer-setwin">'+ function(){
-        var closebtn = ismax ? '<a class="layui-layer-min" href="javascript:;"><cite></cite></a><a class="layui-layer-ico layui-layer-max" href="javascript:;"></a>' : '';
+        var refresh = config.refresh && config.type == 2 ? '<a class="layui-layer-refrash" href="javascript:; lay-filter="refresh"></a>' : '';
+        var closebtn = ismax ? refresh+'<a class="layui-layer-min" href="javascript:;"><cite></cite></a><a class="layui-layer-ico layui-layer-max" href="javascript:;"></a>' : '';
         config.closeBtn && (closebtn += '<a class="layui-layer-ico '+ doms[7] +' '+ doms[7] + (config.title ? config.closeBtn : (config.type == 4 ? '1' : '2')) +'" href="javascript:;"></a>');
         return closebtn;
       }() + '</span>'

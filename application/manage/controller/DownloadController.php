@@ -17,7 +17,7 @@ class DownloadController extends ManageController
      */
     public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
     {
-        $where = ['is_delete'=>'1'];
+        $where = [];
         $each = 12;
         $param = ['name'=>'','type'=>'','app'=>''];
         $query = Download::load();

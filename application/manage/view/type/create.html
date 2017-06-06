@@ -1,4 +1,3 @@
-{__NOLAYOUT__}
 <!DOCTYPE html>
 <html>
 
@@ -21,16 +20,16 @@
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
 
     <style>
-        #CreateLabel .layui-form-item{
+        #CreateForm .layui-form-item{
             font-size: 16px;
         }
-        #CreateLabel .layui-form-item .layui-form-label{
+        #CreateForm .layui-form-item .layui-form-label{
             width: 130px;
         }
-        #CreateLabel .layui-form-item .layui-input-inline{
+        #CreateForm .layui-form-item .layui-input-inline{
             width: 220px;
         }
-        #CreateLabel .layui-form-item .layui-input-inline .layui-input{
+        #CreateForm .layui-form-item .layui-input-inline .layui-input{
             font-size: 16px;
         }
         .help-hint{
@@ -72,14 +71,14 @@
 <section>
     <div style="display:flex; margin: 30px;">
         <div style="margin:auto;width: auto;height: auto;margin-top: 50px;">
-            <form class="layui-form" method="post" id="CreateLabel" action="/manage/label/create.html">
+            <form class="layui-form" method="post" id="CreateForm" action="">
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">类型:</label>
                     <div class="layui-input-inline">
-                        <select name="Label[type]" lay-search >
-                            <option>请选择类型</option>
-                            {volist name="labelList" id="item"}
+                        <select name="Type[type]" lay-search >
+                            <option value="">请选择类型</option>
+                            {volist name="lists" id="item"}
                             {if condition="$key neq 0"}
                             <option value="{$key}">{$item}</option>
                             {/if}
@@ -93,9 +92,9 @@
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">标签:</label>
+                    <label class="layui-form-label">名称:</label>
                     <div class="layui-input-inline">
-                        <input type="text" value="" name="Label[name]" placeholder="标签" class="layui-input">
+                        <input type="text" value="" name="Type[name]" placeholder="类型名称" class="layui-input">
                     </div>
                     <div class="layui-input-inline help-msg">
                         <i class="fa"></i>
@@ -107,7 +106,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">备注:</label>
                     <div class="layui-input-inline">
-                        <input type="text" value="" name="Label[description]" placeholder="备注" class="layui-input">
+                        <input type="text" value="" name="Type[description]" placeholder="备注" class="layui-input">
                     </div>
                     <div class="layui-input-inline help-msg">
                         <i class="fa"></i>
@@ -180,7 +179,7 @@
     };
 
     $(function(){
-        var form = $("#CreateLabel").Validform({
+        var form = $("#CreateForm").Validform({
             tiptype:alertMsg,
             showAllError:false,
             onBlur:true,

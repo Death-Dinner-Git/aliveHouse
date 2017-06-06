@@ -1,4 +1,3 @@
-{__NOLAYOUT__}
 <!DOCTYPE html>
 <html>
 
@@ -78,8 +77,8 @@
                     <label class="layui-form-label">类型:</label>
                     <div class="layui-input-inline">
                         <select name="Label[type]" lay-search >
-                            <option>请选择类型</option>
-                            {volist name="labelList" id="item"}
+                            <option value="">请选择类型</option>
+                            {volist name="lists" id="item"}
                             {if condition="$key neq 0"}
                             <option value="{$key}">{$item}</option>
                             {/if}

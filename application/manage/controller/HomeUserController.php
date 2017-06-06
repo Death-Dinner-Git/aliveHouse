@@ -15,7 +15,7 @@ namespace app\manage\controller;
 
 use app\common\controller\ManageController;
 use app\manage\model\HomeUser;
-use app\manage\model\Identity;
+use app\manage\model\HomeUserLog;
 
 /**
  * 用户控制器
@@ -24,29 +24,47 @@ use app\manage\model\Identity;
 class HomeUserController extends ManageController
 {
 
-    /**
-     * @description 日志
-     * @return string
-     */
-    public function logAction()
-    {
-        $this->assign('meta_title', "日志信息");
-        return view('homeUser/layer');
-    }
 
     /**
-     * @description 新增
-     * @param $id
+     * @description 足迹
+     * @param integer $id
+     * @param integer $pageNumber
+     * @param string $key
+     * @param string $type
      * @return string
      */
-    public function resetPasswordAction($id = 0)
+    public function logAction($id = 0, $pageNumber = 1 ,$key = null, $type = null)
     {
-        $id = intval($id);
-        if (empty($id)){
-            $id = '1';
+        $where = ['home_user_id'=>$id];
+        $param = ['key'=>'','type'=>''];
+        $each = 12;
+
+        if ($key && ($key = trim($key)) != ''){
+            $param['key'] = $key;
+            $where[] =  ["exp"," `route` like '%".$key."%' or `url` like '%".$key."%' or `user_agent` like '%".$key."%' or `ip` like '%".$key."%' "];
         }
-        $model = Identity::load()->where(['id'=>$id])->find();
-        return view('homeUser/reset',['meta_title'=>'修改密码','model'=>$model]);
+
+        $lists = HomeUserLog::getTypeList();
+        if ($type && ($type = trim($type)) != ''){
+            $param['type'] = $type;
+            if (in_array($type,array_keys($lists))){
+                $where =  array_merge($where,['user_agent_type'=>$type]);
+            }
+        }
+
+        $query = HomeUserLog::load();
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "足迹");
+        $this->assign('pages', ceil(($count)/$each));
+        $this->assign('dataProvider', $dataProvider);
+        $this->assign('indexOffset', (($pageNumber-1)*$each));
+        $this->assign('count', $count);
+        $this->assign('param', $param);
+        $this->assign('lists', $lists);
+        return view('homeUser/log');
     }
 
     /**
@@ -60,95 +78,60 @@ class HomeUserController extends ManageController
         if (empty($id)){
             $id = '1';
         }
-        $model = Identity::load()->where(['id'=>$id])->find();
-        return view('homeUser/view',['meta_title'=>'个人信息','model'=>$model]);
+        $model = HomeUser::load()->where(['id'=>$id])->find();
+        return view('homeUser/view',[
+            'meta_title'=>'个人信息',
+            'meta_util'=>'false',
+            'model'=>$model
+        ]);
     }
 
     /**
      * @description 清单
-     * @param bool $super
      * @param integer $pageNumber
+     * @param string $key
      * @return string
      */
-    public function indexAction($super = false,$pageNumber = 1)
+    public function indexAction($pageNumber = 1,$key = null)
     {
-        $where = [];
-        $each = 10;
-        $key = '';
-        $type = '';
-        if (request()->request('key')){
-            $key = trim(request()->request('key'));
-            $where =  array_merge($where, ['real_name'=>$key]);
+        $where = ['is_delete'=>'1'];
+        $param = ['key'=>''];
+        $each = 12;
+        if ($key && ($key = trim($key)) != ''){
+            $param['key'] = $key;
+            $where[] =  ["exp"," `username` like '%".$key."%' or `real_name` like '%".$key."%' or `email` like '%".$key."%' or `phone` like '%".$key."%' "];
         }
-        $typeList = HomeUser::getRegList();
-        if ($super == 'true' || request()->request('department_id')){
-            $type = $super == 'true' ? '1' : request()->request('department_id');
-            if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['department_id'=>$type]);
-            }
-        }
-        $dataProvider = HomeUser::load()->where($where)->page($pageNumber,$each)->select();
-        $count = HomeUser::load()->where($where)->count();
 
-        $this->assign('meta_title', "账号管理");
+        $query = HomeUser::load();
+        $providerModel = clone $query;
+        $count = $query->where($where)->count();
+        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $this->assign('meta_title', "用户清单");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
-        $this->assign('key', $key);
-        $this->assign('type', $type);
-        $this->assign('typeList', $typeList);
-        $this->assign('super', $super);
+        $this->assign('param', $param);
         return view('homeUser/index');
-    }
-
-    /**
-     * @description Register Home Page
-     * @return \think\response\View
-     */
-    public function registerAction(){
-        $identity = new Identity();
-        $token = request()->request('__token__');
-        $data = (isset($_POST['Register']) ? $_POST['Register'] : []);
-        $departmentList = Identity::getDepartmentList();
-        if ( request()->isPost() && $token && $data){
-            // 调用当前模型对应的Identity验证器类进行数据验证
-//            $data['__token__'] = $token;
-            $validate = Identity::getValidate();
-            $validate->scene('register');
-            if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
-                $res = $identity->signUp($data);
-                if($res){
-                    if ($res instanceof Identity){
-                        $this->success('注册成功','login');
-                    }else{
-                        $this->error($res, 'register','',1);
-                    }
-                }
-            }else{
-                $this->error($validate->getError(), 'register','',1);
-            }
-        }
-        return view('homeUser/create',['meta_title'=>'会员注册','departmentList'=>$departmentList]);
     }
 
     /**
      * @description 编辑
      * @param $id
-     * @param $target
      * @return string
      */
-    public function updateAction($id,$target = null)
+    public function updateAction($id)
     {
         $where = ['id'=>$id];
-        $model = Identity::load()->where($where)->find();
+        $model = HomeUser::load()->where($where)->find();
         if (!$model){
             return '';
         }
         if ($this->getRequest()->isAjax()){
             $res = ['status'=>'n','info'=>'更新失败'];
             $passed = true;
-            $validate = Identity::getValidate();
+            $validate = HomeUser::getValidate();
             $validate->scene('update');
             $data = (isset($_REQUEST['Update']) ? $_REQUEST['Update'] : []);
             if ($data){
@@ -171,26 +154,43 @@ class HomeUserController extends ManageController
                 $res['info'] = '更新成功';
                 $res['status'] = 'y';
                 $data['updated_at'] = date('Y-m-d H:i:s');
-                $data['real_name'] = '小符';
-                if (Identity::update($data,$where)){
+                $data['real_name'] = 'Alive House';
+                if (HomeUser::update($data,$where)){
                     $res['info'] = '更新成功';
                 }
             }
             return json($res);
         }
         $this->assign('meta_title', "更新信息");
-        $this->assign('departmentList', Identity::getDepartmentList());
         $this->assign('model', $model);
-        return view('homeUser/update');
+        return view('homeUser/update',[
+            'meta_title'=>'更新信息',
+            'meta_util'=>'false',
+            'model'=>$model,
+        ]);
     }
 
+
     /**
-     * @description 删除
-     * @param $id
-     * @return string
+     * 删除指定资源
+     *
+     * @param  int  $id
+     * @return \think\Response
      */
-    public function deleteAction($id = 0)
+    public function deleteAction($id)
     {
-        return json(['code'=>1,'msg'=>'删除成功','delete_id'=>$id]);
+        $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
+        if ( true || $this->getRequest()->isAjax()){
+            $result = HomeUser::update(['is_delete'=>'0'],['id'=>$id],true);
+            if ($result !== false){
+                if (empty($result->getError())){
+                    $ret['code'] = '1';
+                    $ret['msg'] = '删除成功';
+                }else{
+                    $ret['msg'] = $result->getError();
+                }
+            }
+        }
+        return json($ret);
     }
 }

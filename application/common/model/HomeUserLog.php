@@ -38,6 +38,7 @@ class HomeUserLog extends Model
         'route',
         'url',
         'user_agent',
+        'user_agent_type',
         'gets',
         'posts',
         'target',
@@ -53,18 +54,32 @@ class HomeUserLog extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    //所有标签类型
+    private static $typeList = ['1'=>'PC','2'=>'Android','3'=>'IOS'];
+
+    /**
+     * @return array
+     */
+    public static function getTypeList()
+    {
+        return self::$typeList;
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['home_user_id', 'route', 'url', 'user_agent', 'ip'], 'required'],
-            [['home_user_id'], 'integer'],
-            [['gets', 'posts', 'target'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['route', 'url', 'user_agent', 'ip'], 'string', 'max' => 255],
-            [['home_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => HomeUser::tableNameSuffix(), 'targetAttribute' => ['home_user_id' => 'id']],
+            'rule'=>[
+                ['home_user_id','number'],
+                ['route','max:255'],
+                ['url','max:255'],
+                ['user_agent','max:255'],
+                ['ip','max:255'],
+            ],
+            'msg'=>[
+            ]
         ];
     }
 
@@ -79,6 +94,7 @@ class HomeUserLog extends Model
             'route' => '路由',
             'url' => '地址',
             'user_agent' => '客户端',
+            'user_agent_type' => '客户类型;1=PC,2=Android,3=IOS;默认1',
             'gets' => 'GET方法',
             'posts' => 'POST方法',
             'target' => '目标',
@@ -93,6 +109,6 @@ class HomeUserLog extends Model
      */
     public function getHomeUser()
     {
-        return $this->hasOne(HomeUser::tableNameSuffix(), ['id' => 'home_user_id']);
+        return $this->hasOne(ucfirst(HomeUser::tableNameSuffix()), 'home_user_id','id');
     }
 }

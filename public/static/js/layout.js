@@ -226,7 +226,7 @@ layui.config({
             var docElm = document.documentElement;
             var status = $(this).attr('data-full');
             var icon = $(this).find('i');
-            if ( status == 'false' ){
+            if ( status === 'false' ){
                 fullScreen(docElm);
                 $(this).attr('data-full','true');
                 icon.attr('class',icon.attr('data-close')).attr('title','退出全屏');

@@ -798,6 +798,73 @@ body .layui-footer .layui-main a{
 left: 0px !important;
 }
 
+.layui-form-select dl {
+	padding: 0px 0 !important;
+	min-height: 36px!important;
+}
+
+.layui-form-select p.layui-select-none {
+	line-height: 26px;
+}
+
+
+/* =======================================
+		table
+================================== */
+
+.layui-table[lay-even] tr:nth-child(even) {
+	background-color: #f8f8f8;
+}
+
+.layui-table[lay-even] tr:nth-child(odd) {
+	/*background-color: #d4d4d4;*/
+}
+.layui-table tr:hover {
+	background-color: #d4d4d4 !important;
+}
+
+
+/* =======================================
+		layer
+================================== */
+
+.layui-layer-dialog[type="dialog"]{
+
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-title{
+	padding: 0 80px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-content{
+	text-align: center;
+	font-size: 16px;
+	line-height: 16px;
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-btn{
+	text-align: center;
+	font-size: 16px;
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-btn .layui-layer-btn0{
+	border-color: #1fb5ac;
+	background-color: #1fb5ac;
+	color: #fff;
+	font-size: 16px;
+}
+
+a.layui-layer-refrash{
+	background-image: url("/static/images/refresh.png");
+	background-size: 100%;
+	opacity: 0.75;
+}
+a.layui-layer-refrash:hover{
+	opacity: 1;
+}
+
 /* =======================================
 		独立组件
 ================================== */
@@ -866,7 +933,7 @@ left: 0px !important;
 #tip-arrow-top{display: none !important;}
 
 .dinner-contextmenu{
-	position: absolute;line-height: 36px;padding: 5px 0;
+	position: absolute;line-height: 36px;
 	border: 1px solid #d2d2d2;background-color: white;z-index: 19940201;border-radius: 2px;white-space: nowrap;top:30px;
 	/*width: 100px;height: 200px; */
 }

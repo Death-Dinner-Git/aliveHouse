@@ -10,7 +10,7 @@ use app\common\model\TypePark;
  *
  * @property integer $id
  * @property integer $is_delete
- * @property integer $group
+ * @property integer $type
  * @property string $name
  * @property string $description
  * @property string $created_at
@@ -31,7 +31,7 @@ class Type extends Model
     protected $field = [
         'id',
         'is_delete',
-        'group',
+        'type',
         'name',
         'description',
         'created_at',
@@ -46,14 +46,14 @@ class Type extends Model
     protected $update = [];
 
     //所有标签类型
-    private static $groupList = ['0'=>'失效','1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼房','7'=>'客服'];
+    private static $typeList = ['1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼盘','7'=>'客服'];
 
     /**
      * @return array
      */
-    public static function getGroupList()
+    public static function getTypeList()
     {
-        return self::$groupList;
+        return self::$typeList;
     }
 
     /**
@@ -63,7 +63,7 @@ class Type extends Model
     {
         return [
             'rule'=>[
-                ['group','number|in:0,1,2,3,4,5,6,7','类型 无效'],
+                ['type','number|in:1,2,3,4,5,6,7','类型 无效'],
                 ['is_delete','in:0,1','时效 无效'],
                 ['name','max:32'],
                 ['description','max:255'],
@@ -82,9 +82,9 @@ class Type extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'group' => '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
+            'type' => '父级类型:1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
             'name' => '标签',
-            'description' => '详细描述',
+            'description' => '类型备注',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];
