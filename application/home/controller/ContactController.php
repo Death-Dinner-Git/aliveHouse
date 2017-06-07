@@ -2,13 +2,13 @@
 
 namespace app\home\controller;
 
-use app\home\controller\ManageController;
+use app\common\controller\HomeController;
 
 /**
  * 默认控制器
  * @author Sir Fu
  */
-class ContactController extends ManageController
+class ContactController extends HomeController
 {
     /**
      * 默认方法

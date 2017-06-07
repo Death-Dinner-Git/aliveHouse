@@ -2,13 +2,13 @@
 
 namespace app\home\controller;
 
-use app\home\controller\ManageController;
+use app\common\controller\HomeController;
 
 /**
  * 默认控制器
  * @author Sir Fu
  */
-class IndexController extends ManageController
+class IndexController extends HomeController
 {
     /**
      * 默认方法

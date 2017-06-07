@@ -10,12 +10,11 @@
 // | 拷贝、复制、传播、使用零云的任意代码，如有违反，请立即删除，否则您将面临承担相应
 // | 法律责任的风险。如果需要取得官方授权，请联系官方http://www.lingyun.net
 // +----------------------------------------------------------------------
-namespace app\home\controller;
+namespace app\common\controller;
 
 use app\common\controller\BaseController;
-use think\Controller;
 
-class ManageController extends Controller
+class HomeController extends BaseController
 {
     /**
      * 初始化方法
@@ -24,5 +23,6 @@ class ManageController extends Controller
     protected function _initialize()
     {
         parent::_initialize();
+        $this->view->engine->layout('common@layouts/default-index');
     }
 }

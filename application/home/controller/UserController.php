@@ -13,7 +13,7 @@
 namespace app\home\controller;
 
 
-use app\home\controller\ManageController;
+use app\common\controller\HomeController;
 use app\home\model\User;
 use app\home\model\BaseUser;
 use app\home\model\Manager;
@@ -23,7 +23,7 @@ use app\home\model\Department;
  * 用户控制器
  * @author Sir Fu
  */
-class UserController extends ManageController
+class UserController extends HomeController
 {
     /**
      * @description 数据
