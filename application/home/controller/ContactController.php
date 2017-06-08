@@ -16,7 +16,7 @@ class ContactController extends HomeController
      */
     public function contactAction()
     {
-        return view('contact');
+        return view('contact/contact');
     }
 
 }

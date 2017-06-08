@@ -18,7 +18,7 @@ class IndexController extends HomeController
     {
         // 临时选择其他模板的布局功能
 //        $this->view->engine->layout('layouts/index');
-        return view('index');
+        return view('index/index');
     }
 
     /**
@@ -27,7 +27,7 @@ class IndexController extends HomeController
      */
     public function homeAction()
     {
-        return view('indexOld');
+        return view('index/indexOld');
     }
 
 }

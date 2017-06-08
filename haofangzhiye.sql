@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2017-06-06 23:57:43
--- 服务器版本： 10.1.9-MariaDB-log
+-- Generation Time: 2017-06-08 12:27:06
+-- 服务器版本： 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -17,35 +17,35 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ah_alivehouse`
+-- Database: `haofangzhiye`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_auth_assignment`
+-- 表的结构 `hfzy_auth_assignment`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_auth_assignment` (
+CREATE TABLE IF NOT EXISTS `hfzy_auth_assignment` (
   `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '分类权限等级',
   `user_id` bigint(20) NOT NULL COMMENT '分配对象UID',
   `created_at` datetime NOT NULL COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `ah_auth_assignment`
+-- 转存表中的数据 `hfzy_auth_assignment`
 --
 
-INSERT INTO `ah_auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
+INSERT INTO `hfzy_auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 ('前端权限', 1, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_auth_item`
+-- 表的结构 `hfzy_auth_item`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_auth_item` (
+CREATE TABLE IF NOT EXISTS `hfzy_auth_item` (
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限名',
   `type` tinyint(1) NOT NULL COMMENT '类型',
   `description` text COLLATE utf8_unicode_ci COMMENT '权限描述',
@@ -56,38 +56,38 @@ CREATE TABLE IF NOT EXISTS `ah_auth_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `ah_auth_item`
+-- 转存表中的数据 `hfzy_auth_item`
 --
 
-INSERT INTO `ah_auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
+INSERT INTO `hfzy_auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
 ('/home/*', 2, NULL, NULL, NULL, '2017-05-27 00:00:00', '2017-05-27 00:00:00'),
 ('前端权限', 1, NULL, NULL, NULL, '2017-05-27 00:00:00', '2017-05-27 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_auth_item_child`
+-- 表的结构 `hfzy_auth_item_child`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_auth_item_child` (
+CREATE TABLE IF NOT EXISTS `hfzy_auth_item_child` (
   `parent` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限上级',
   `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限下级'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='权限上下级关系';
 
 --
--- 转存表中的数据 `ah_auth_item_child`
+-- 转存表中的数据 `hfzy_auth_item_child`
 --
 
-INSERT INTO `ah_auth_item_child` (`parent`, `child`) VALUES
+INSERT INTO `hfzy_auth_item_child` (`parent`, `child`) VALUES
 ('前端权限', '/home/*');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_auth_rule`
+-- 表的结构 `hfzy_auth_rule`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_auth_rule` (
+CREATE TABLE IF NOT EXISTS `hfzy_auth_rule` (
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '规则名',
   `data` text COLLATE utf8_unicode_ci COMMENT '规则位置',
   `created_at` datetime NOT NULL COMMENT '创建时间',
@@ -97,10 +97,10 @@ CREATE TABLE IF NOT EXISTS `ah_auth_rule` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_back_ban`
+-- 表的结构 `hfzy_back_ban`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_back_ban` (
+CREATE TABLE IF NOT EXISTS `hfzy_back_ban` (
   `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '名称',
   `back_user_id` bigint(20) NOT NULL COMMENT 'UID',
   `ban` tinyint(1) unsigned DEFAULT '0' COMMENT '类型;0=允许;1=禁止;',
@@ -110,10 +110,10 @@ CREATE TABLE IF NOT EXISTS `ah_back_ban` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_back_user`
+-- 表的结构 `hfzy_back_user`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_back_user` (
+CREATE TABLE IF NOT EXISTS `hfzy_back_user` (
   `id` bigint(20) NOT NULL COMMENT '自增ID',
   `is_delete` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `code` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '会员编号ID',
@@ -146,20 +146,20 @@ CREATE TABLE IF NOT EXISTS `ah_back_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
 
 --
--- 转存表中的数据 `ah_back_user`
+-- 转存表中的数据 `hfzy_back_user`
 --
 
-INSERT INTO `ah_back_user` (`id`, `is_delete`, `code`, `department_id`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
+INSERT INTO `hfzy_back_user` (`id`, `is_delete`, `code`, `department_id`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
 (1, 1, '888888', 1, '10086110000', 0, NULL, 0, 'username', '888888', 'nickname', 'realName', NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, NULL, NULL),
 (4, 1, '8888888', 1, '10086110001', 0, NULL, 0, 'usernames', '888888', 'nickname', 'realName', NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_back_user_log`
+-- 表的结构 `hfzy_back_user_log`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_back_user_log` (
+CREATE TABLE IF NOT EXISTS `hfzy_back_user_log` (
   `id` bigint(20) NOT NULL COMMENT '自增ID',
   `back_user_id` bigint(20) NOT NULL COMMENT '表user主键',
   `route` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '路由',
@@ -176,10 +176,10 @@ CREATE TABLE IF NOT EXISTS `ah_back_user_log` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_building_base`
+-- 表的结构 `hfzy_building_base`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_building_base` (
+CREATE TABLE IF NOT EXISTS `hfzy_building_base` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `type` tinyint(1) DEFAULT '1' COMMENT '类型;0=,1=;默认1;',
@@ -191,20 +191,20 @@ CREATE TABLE IF NOT EXISTS `ah_building_base` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='楼盘表';
 
 --
--- 转存表中的数据 `ah_building_base`
+-- 转存表中的数据 `hfzy_building_base`
 --
 
-INSERT INTO `ah_building_base` (`id`, `is_delete`, `type`, `city_id`, `name`, `address`, `created_at`, `updated_at`) VALUES
+INSERT INTO `hfzy_building_base` (`id`, `is_delete`, `type`, `city_id`, `name`, `address`, `created_at`, `updated_at`) VALUES
 (2, 1, 1, 2, '中海国际', '海口中海国际', '2017-06-01 21:51:52', '2017-06-01 21:51:52'),
 (3, 1, 1, 4, '怡心花园', '儋州市怡心花园2期', '2017-06-01 21:54:42', '2017-06-01 21:54:42');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_building_detail`
+-- 表的结构 `hfzy_building_detail`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_building_detail` (
+CREATE TABLE IF NOT EXISTS `hfzy_building_detail` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `building_base_id` bigint(20) NOT NULL COMMENT '楼盘表ID',
@@ -218,10 +218,10 @@ CREATE TABLE IF NOT EXISTS `ah_building_detail` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_city`
+-- 表的结构 `hfzy_city`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_city` (
+CREATE TABLE IF NOT EXISTS `hfzy_city` (
   `id` bigint(20) NOT NULL,
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `region_id` double NOT NULL COMMENT '地区父级',
@@ -236,10 +236,10 @@ CREATE TABLE IF NOT EXISTS `ah_city` (
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='省市县行政区';
 
 --
--- 转存表中的数据 `ah_city`
+-- 转存表中的数据 `hfzy_city`
 --
 
-INSERT INTO `ah_city` (`id`, `is_delete`, `region_id`, `parent`, `name`, `level`, `order`, `code`, `name_en`, `short_name_en`, `data`) VALUES
+INSERT INTO `hfzy_city` (`id`, `is_delete`, `region_id`, `parent`, `name`, `level`, `order`, `code`, `name_en`, `short_name_en`, `data`) VALUES
 (1, 1, 22, NULL, '海南省', 1, 0, '460000', 'Hainan Sheng', 'HI', NULL),
 (2, 1, 267, 1, '海口', 2, 0, '460100', 'Haikou Shi', 'HAK', NULL),
 (3, 1, 268, 1, '三亚', 2, 0, '460200', 'Sanya Shi', 'SYX', NULL),
@@ -263,10 +263,10 @@ INSERT INTO `ah_city` (`id`, `is_delete`, `region_id`, `parent`, `name`, `level`
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_config`
+-- 表的结构 `hfzy_config`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_config` (
+CREATE TABLE IF NOT EXISTS `hfzy_config` (
   `id` int(10) unsigned NOT NULL COMMENT '配置ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `app` tinyint(1) unsigned DEFAULT '0' COMMENT '应用;0=后台;1=前台;',
@@ -284,10 +284,10 @@ CREATE TABLE IF NOT EXISTS `ah_config` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='系统配置表';
 
 --
--- 转存表中的数据 `ah_config`
+-- 转存表中的数据 `hfzy_config`
 --
 
-INSERT INTO `ah_config` (`id`, `is_delete`, `app`, `title`, `name`, `value`, `group`, `type`, `options`, `tip`, `created_at`, `updated_at`, `order`, `status`) VALUES
+INSERT INTO `hfzy_config` (`id`, `is_delete`, `app`, `title`, `name`, `value`, `group`, `type`, `options`, `tip`, `created_at`, `updated_at`, `order`, `status`) VALUES
 (1, 1, 0, '站点开关', 'TOGGLE_WEB_SITE', '1', 1, 'toggle', '0:关闭\r\n1:开启', '站点关闭后将不能访问', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
 (2, 1, 0, '网站标题', 'WEB_SITE_TITLE', '[ Alive House ]', 1, 'text', '', '网站标题前台显示标题', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 1),
 (3, 1, 0, '网站口号', 'WEB_SITE_SLOGAN', '我房网 出车系统', 1, 'text', '', '网站口号、宣传标语、一句话介绍', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, 1),
@@ -322,10 +322,10 @@ INSERT INTO `ah_config` (`id`, `is_delete`, `app`, `title`, `name`, `value`, `gr
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_contact`
+-- 表的结构 `hfzy_contact`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_contact` (
+CREATE TABLE IF NOT EXISTS `hfzy_contact` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '联系人',
@@ -343,10 +343,10 @@ CREATE TABLE IF NOT EXISTS `ah_contact` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_contact_read`
+-- 表的结构 `hfzy_contact_read`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_contact_read` (
+CREATE TABLE IF NOT EXISTS `hfzy_contact_read` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `assign` tinyint(1) unsigned DEFAULT '1' COMMENT '分配;0=分配;1=自由;',
@@ -362,10 +362,10 @@ CREATE TABLE IF NOT EXISTS `ah_contact_read` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_customer_service`
+-- 表的结构 `hfzy_customer_service`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_customer_service` (
+CREATE TABLE IF NOT EXISTS `hfzy_customer_service` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `level` tinyint(1) NOT NULL DEFAULT '1' COMMENT '等级;0=普通客服;1=金牌客服;',
@@ -381,10 +381,10 @@ CREATE TABLE IF NOT EXISTS `ah_customer_service` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_delete_log`
+-- 表的结构 `hfzy_delete_log`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_delete_log` (
+CREATE TABLE IF NOT EXISTS `hfzy_delete_log` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `table_type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '目标表类型',
   `back_user_id` bigint(20) DEFAULT NULL COMMENT '后台业务员ID',
@@ -396,10 +396,10 @@ CREATE TABLE IF NOT EXISTS `ah_delete_log` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_department`
+-- 表的结构 `hfzy_department`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_department` (
+CREATE TABLE IF NOT EXISTS `hfzy_department` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `remark` longtext COLLATE utf8_unicode_ci COMMENT '备注',
@@ -413,19 +413,19 @@ CREATE TABLE IF NOT EXISTS `ah_department` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='部门表';
 
 --
--- 转存表中的数据 `ah_department`
+-- 转存表中的数据 `hfzy_department`
 --
 
-INSERT INTO `ah_department` (`id`, `is_delete`, `remark`, `name`, `parent`, `code`, `order`, `level`, `created_at`, `updated_at`) VALUES
+INSERT INTO `hfzy_department` (`id`, `is_delete`, `remark`, `name`, `parent`, `code`, `order`, `level`, `created_at`, `updated_at`) VALUES
 (1, 1, NULL, '部门一', NULL, '000000', 0, 1, '2017-05-27 00:00:00', '2017-05-27 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_download`
+-- 表的结构 `hfzy_download`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_download` (
+CREATE TABLE IF NOT EXISTS `hfzy_download` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
   `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '资源描述',
@@ -438,19 +438,19 @@ CREATE TABLE IF NOT EXISTS `ah_download` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='赛事、福利、新闻 删除记录表';
 
 --
--- 转存表中的数据 `ah_download`
+-- 转存表中的数据 `hfzy_download`
 --
 
-INSERT INTO `ah_download` (`id`, `back_user_id`, `title`, `url`, `fileName`, `tb_name`, `tb_id`, `tb_category`, `created_at`) VALUES
-(1, 1, '标题', '/static/images/refresh.png', '刷新', 'ah_images', '1', '图片', '2017-06-06 00:00:00');
+INSERT INTO `hfzy_download` (`id`, `back_user_id`, `title`, `url`, `fileName`, `tb_name`, `tb_id`, `tb_category`, `created_at`) VALUES
+(1, 1, '标题', '/static/images/refresh.png', '刷新', 'hfzy_images', '1', '图片', '2017-06-06 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_guest`
+-- 表的结构 `hfzy_guest`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_guest` (
+CREATE TABLE IF NOT EXISTS `hfzy_guest` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `server` tinyint(1) NOT NULL DEFAULT '1' COMMENT '服务;0=已正式客户,1=待开发客户;默认1;',
@@ -468,20 +468,20 @@ CREATE TABLE IF NOT EXISTS `ah_guest` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='客户表';
 
 --
--- 转存表中的数据 `ah_guest`
+-- 转存表中的数据 `hfzy_guest`
 --
 
-INSERT INTO `ah_guest` (`id`, `is_delete`, `server`, `ID_cards`, `real_name`, `phone`, `nickname`, `address`, `email`, `avatar`, `type`, `level`, `created_at`, `updated_at`) VALUES
+INSERT INTO `hfzy_guest` (`id`, `is_delete`, `server`, `ID_cards`, `real_name`, `phone`, `nickname`, `address`, `email`, `avatar`, `type`, `level`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, '12323232323', '小符', '1026652', '小符', '是的是的', NULL, 'sdsdsdsdsd', 1, 1, '2017-06-02 00:08:59', '2017-06-02 00:08:59'),
 (2, 1, 1, '565665', '程度上的', '656656', '是的是的', 'sdsd', NULL, 'SDsd', 1, 1, '2017-06-02 00:09:31', '2017-06-02 00:09:31');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_guest_server`
+-- 表的结构 `hfzy_guest_server`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_guest_server` (
+CREATE TABLE IF NOT EXISTS `hfzy_guest_server` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `guest_id` bigint(20) NOT NULL COMMENT '客户表ID',
@@ -493,10 +493,10 @@ CREATE TABLE IF NOT EXISTS `ah_guest_server` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_home_user`
+-- 表的结构 `hfzy_home_user`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_home_user` (
+CREATE TABLE IF NOT EXISTS `hfzy_home_user` (
   `id` bigint(20) NOT NULL COMMENT '自增ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `code` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '会员编号ID',
@@ -528,19 +528,19 @@ CREATE TABLE IF NOT EXISTS `ah_home_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
 
 --
--- 转存表中的数据 `ah_home_user`
+-- 转存表中的数据 `hfzy_home_user`
 --
 
-INSERT INTO `ah_home_user` (`id`, `is_delete`, `code`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
+INSERT INTO `hfzy_home_user` (`id`, `is_delete`, `code`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
 (100, 1, '100100', '10086100100', 0, NULL, 0, 'username1', '888888', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_home_user_log`
+-- 表的结构 `hfzy_home_user_log`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_home_user_log` (
+CREATE TABLE IF NOT EXISTS `hfzy_home_user_log` (
   `id` bigint(20) NOT NULL COMMENT '自增ID',
   `home_user_id` bigint(20) NOT NULL COMMENT '表user主键',
   `route` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '路由',
@@ -558,10 +558,10 @@ CREATE TABLE IF NOT EXISTS `ah_home_user_log` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_hot`
+-- 表的结构 `hfzy_hot`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_hot` (
+CREATE TABLE IF NOT EXISTS `hfzy_hot` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `is_passed` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核;0=未通过,1=审核中,2=已通过;默认1;',
@@ -582,10 +582,10 @@ CREATE TABLE IF NOT EXISTS `ah_hot` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_house_better`
+-- 表的结构 `hfzy_house_better`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_house_better` (
+CREATE TABLE IF NOT EXISTS `hfzy_house_better` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `is_passed` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核;0=未通过,1=审核中,2=已通过;默认1;',
@@ -605,10 +605,10 @@ CREATE TABLE IF NOT EXISTS `ah_house_better` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_house_host`
+-- 表的结构 `hfzy_house_host`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_house_host` (
+CREATE TABLE IF NOT EXISTS `hfzy_house_host` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `ID_cards` varchar(255) DEFAULT NULL COMMENT '身份证',
   `real_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '真实姓名',
@@ -627,10 +627,10 @@ CREATE TABLE IF NOT EXISTS `ah_house_host` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_house_host_server`
+-- 表的结构 `hfzy_house_host_server`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_house_host_server` (
+CREATE TABLE IF NOT EXISTS `hfzy_house_host_server` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `house_host_id` bigint(20) NOT NULL COMMENT '房东表ID',
@@ -642,10 +642,10 @@ CREATE TABLE IF NOT EXISTS `ah_house_host_server` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_label`
+-- 表的结构 `hfzy_label`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_label` (
+CREATE TABLE IF NOT EXISTS `hfzy_label` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
@@ -656,10 +656,10 @@ CREATE TABLE IF NOT EXISTS `ah_label` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='标签表';
 
 --
--- 转存表中的数据 `ah_label`
+-- 转存表中的数据 `hfzy_label`
 --
 
-INSERT INTO `ah_label` (`id`, `is_delete`, `type`, `name`, `description`, `created_at`, `updated_at`) VALUES
+INSERT INTO `hfzy_label` (`id`, `is_delete`, `type`, `name`, `description`, `created_at`, `updated_at`) VALUES
 (1, 1, 6, '高级别墅', '', '2017-06-06 12:02:20', '2017-06-06 12:02:20'),
 (3, 1, 6, '高级住宅', '', '2017-06-06 12:22:57', '2017-06-06 12:22:57'),
 (4, 1, 6, '海边景房', '', '2017-06-06 12:23:27', '2017-06-06 12:23:27');
@@ -667,10 +667,10 @@ INSERT INTO `ah_label` (`id`, `is_delete`, `type`, `name`, `description`, `creat
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_label_park`
+-- 表的结构 `hfzy_label_park`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_label_park` (
+CREATE TABLE IF NOT EXISTS `hfzy_label_park` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `label_id` bigint(20) NOT NULL COMMENT '标签表ID',
@@ -685,10 +685,10 @@ CREATE TABLE IF NOT EXISTS `ah_label_park` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_menu`
+-- 表的结构 `hfzy_menu`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_menu` (
+CREATE TABLE IF NOT EXISTS `hfzy_menu` (
   `id` int(11) NOT NULL COMMENT 'ID',
   `name` varchar(128) NOT NULL COMMENT '名称',
   `parent` int(11) DEFAULT NULL COMMENT '上级',
@@ -699,10 +699,10 @@ CREATE TABLE IF NOT EXISTS `ah_menu` (
 ) ENGINE=InnoDB AUTO_INCREMENT=280 DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
 --
--- 转存表中的数据 `ah_menu`
+-- 转存表中的数据 `hfzy_menu`
 --
 
-INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`) VALUES
+INSERT INTO `hfzy_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`) VALUES
 (1, '控制面板', NULL, '/manage/index/home', 0, 1, '{"li_class":"","a_class":"Index-Home","i_class":"fa fa-circle-o"}'),
 (2, '业务服务', NULL, NULL, 1, 2, '{"li_class":"","a_class":"User","i_class":"fa fa-circle-o"}'),
 (3, '个人信息', NULL, NULL, 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -801,10 +801,10 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_new_house`
+-- 表的结构 `hfzy_new_house`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_new_house` (
+CREATE TABLE IF NOT EXISTS `hfzy_new_house` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `building_base_id` bigint(20) NOT NULL COMMENT '楼盘表ID',
@@ -820,10 +820,10 @@ CREATE TABLE IF NOT EXISTS `ah_new_house` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_notice`
+-- 表的结构 `hfzy_notice`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_notice` (
+CREATE TABLE IF NOT EXISTS `hfzy_notice` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
@@ -842,10 +842,10 @@ CREATE TABLE IF NOT EXISTS `ah_notice` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_notice_read`
+-- 表的结构 `hfzy_notice_read`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_notice_read` (
+CREATE TABLE IF NOT EXISTS `hfzy_notice_read` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
@@ -860,10 +860,10 @@ CREATE TABLE IF NOT EXISTS `ah_notice_read` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_on_links`
+-- 表的结构 `hfzy_on_links`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_on_links` (
+CREATE TABLE IF NOT EXISTS `hfzy_on_links` (
   `id` bigint(20) unsigned NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `app` tinyint(1) unsigned DEFAULT '0' COMMENT '应用;0=后台;1=前台;',
@@ -880,10 +880,10 @@ CREATE TABLE IF NOT EXISTS `ah_on_links` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_opinion`
+-- 表的结构 `hfzy_opinion`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_opinion` (
+CREATE TABLE IF NOT EXISTS `hfzy_opinion` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `remark` longtext COMMENT '备注',
@@ -900,10 +900,10 @@ CREATE TABLE IF NOT EXISTS `ah_opinion` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_opinion_read`
+-- 表的结构 `hfzy_opinion_read`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_opinion_read` (
+CREATE TABLE IF NOT EXISTS `hfzy_opinion_read` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `assign` tinyint(1) unsigned DEFAULT '1' COMMENT '分配;0=分配;1=自由;',
@@ -919,10 +919,10 @@ CREATE TABLE IF NOT EXISTS `ah_opinion_read` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_region`
+-- 表的结构 `hfzy_region`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_region` (
+CREATE TABLE IF NOT EXISTS `hfzy_region` (
   `id` double NOT NULL,
   `code` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -935,10 +935,10 @@ CREATE TABLE IF NOT EXISTS `ah_region` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5029 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='省市县行政区';
 
 --
--- 转存表中的数据 `ah_region`
+-- 转存表中的数据 `hfzy_region`
 --
 
-INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
+INSERT INTO `hfzy_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
 (1, '全国', '全国', 0, 0, 0, 'Zhong Guo', '2', NULL),
 (2, '110000', '北京市', 1, 1, 0, 'Beijing Shi', 'BJ', NULL),
 (3, '120000', '天津市', 1, 1, 0, 'Tianjin Shi', 'TJ', NULL),
@@ -1764,7 +1764,7 @@ INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name
 (827, '152526', '西乌珠穆沁旗', 69, 0, 0, 'Xi Ujimqin Qi', 'XUJ', NULL),
 (828, '152527', '太仆寺旗', 69, 0, 0, 'Taibus Qi', 'TAB', NULL),
 (829, '152528', '镶黄旗', 69, 0, 0, 'Xianghuang(Hobot Xar) Qi', 'XHG', NULL);
-INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
+INSERT INTO `hfzy_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
 (830, '152529', '正镶白旗', 69, 0, 0, 'Zhengxiangbai(Xulun Hobot Qagan)Qi', 'ZXB', NULL),
 (831, '152530', '正蓝旗', 69, 0, 0, 'Zhenglan(Xulun Hoh)Qi', 'ZLM', NULL),
 (832, '152531', '多伦县', 69, 0, 0, 'Duolun (Dolonnur)Xian', 'DLM', NULL),
@@ -2585,7 +2585,7 @@ INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name
 (1652, '360601', '市辖区', 164, 0, 0, 'Shixiaqu', '2', NULL),
 (1653, '360602', '月湖区', 164, 0, 0, 'Yuehu Qu', 'YHY', NULL),
 (1654, '360622', '余江县', 164, 0, 0, 'Yujiang Xian', 'YUJ', NULL);
-INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
+INSERT INTO `hfzy_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
 (1655, '360681', '贵溪市', 164, 0, 0, 'Guixi Shi', 'GXS', NULL),
 (1656, '360701', '市辖区', 165, 0, 0, 'Shixiaqu', '2', NULL),
 (1657, '360702', '章贡区', 165, 0, 0, 'Zhanggong Qu', 'ZGG', NULL),
@@ -3398,7 +3398,7 @@ INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name
 (2466, '450222', '柳城县', 254, 0, 0, 'Liucheng Xian', 'LCB', NULL),
 (2467, '450223', '鹿寨县', 254, 0, 0, 'Luzhai Xian', '2', NULL),
 (2468, '450224', '融安县', 254, 0, 0, 'Rong,an Xian', '2', NULL);
-INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
+INSERT INTO `hfzy_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
 (2469, '450225', '融水苗族自治县', 254, 0, 0, 'Rongshui Miaozu Zizhixian', '2', NULL),
 (2470, '450226', '三江侗族自治县', 254, 0, 0, 'Sanjiang Dongzu Zizhixian', '2', NULL),
 (2471, '450301', '市辖区', 255, 0, 0, 'Shixiaqu', '2', NULL),
@@ -4189,7 +4189,7 @@ INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name
 (3257, '620105', '安宁区', 336, 0, 0, 'Anning Qu', 'ANQ', NULL),
 (3258, '620111', '红古区', 336, 0, 0, 'Honggu Qu', 'HOG', NULL),
 (3259, '620121', '永登县', 336, 0, 0, 'Yongdeng Xian', 'YDG', NULL);
-INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
+INSERT INTO `hfzy_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name_en`, `short_name_en`, `data`) VALUES
 (3260, '620122', '皋兰县', 336, 0, 0, 'Gaolan Xian', 'GAL', NULL),
 (3261, '620123', '榆中县', 336, 0, 0, 'Yuzhong Xian', 'YZX', NULL),
 (3262, '620201', '市辖区', 337, 0, 0, 'Shixiaqu', '2', NULL),
@@ -4499,10 +4499,10 @@ INSERT INTO `ah_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `name
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_second_hand_house`
+-- 表的结构 `hfzy_second_hand_house`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_second_hand_house` (
+CREATE TABLE IF NOT EXISTS `hfzy_second_hand_house` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `house_host_id` bigint(20) NOT NULL COMMENT '房东表ID',
@@ -4519,10 +4519,10 @@ CREATE TABLE IF NOT EXISTS `ah_second_hand_house` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_session`
+-- 表的结构 `hfzy_session`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_session` (
+CREATE TABLE IF NOT EXISTS `hfzy_session` (
   `session_id` varchar(255) NOT NULL COMMENT 'ID',
   `session_expire` int(11) NOT NULL COMMENT 'SESSION_ID',
   `session_data` blob COMMENT '数据',
@@ -4533,10 +4533,10 @@ CREATE TABLE IF NOT EXISTS `ah_session` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_slider`
+-- 表的结构 `hfzy_slider`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_slider` (
+CREATE TABLE IF NOT EXISTS `hfzy_slider` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `is_passed` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核;0=未通过,1=审核中,2=已通过;默认1;',
@@ -4557,10 +4557,10 @@ CREATE TABLE IF NOT EXISTS `ah_slider` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_take_order`
+-- 表的结构 `hfzy_take_order`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_take_order` (
+CREATE TABLE IF NOT EXISTS `hfzy_take_order` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
@@ -4578,10 +4578,10 @@ CREATE TABLE IF NOT EXISTS `ah_take_order` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_type`
+-- 表的结构 `hfzy_type`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_type` (
+CREATE TABLE IF NOT EXISTS `hfzy_type` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=失效,1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼房,7=客服,8=;默认1;',
@@ -4592,10 +4592,10 @@ CREATE TABLE IF NOT EXISTS `ah_type` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='类型表';
 
 --
--- 转存表中的数据 `ah_type`
+-- 转存表中的数据 `hfzy_type`
 --
 
-INSERT INTO `ah_type` (`id`, `is_delete`, `type`, `name`, `description`, `created_at`, `updated_at`) VALUES
+INSERT INTO `hfzy_type` (`id`, `is_delete`, `type`, `name`, `description`, `created_at`, `updated_at`) VALUES
 (1, 1, 6, '普通住宅', '', '2017-06-06 10:49:40', '2017-06-06 11:30:30'),
 (3, 1, 6, '写字楼', '', '2017-06-06 10:55:14', '2017-06-06 10:55:14'),
 (4, 1, 6, '商铺', '', '2017-06-06 10:55:25', '2017-06-06 10:55:25'),
@@ -4609,10 +4609,10 @@ INSERT INTO `ah_type` (`id`, `is_delete`, `type`, `name`, `description`, `create
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_type_park`
+-- 表的结构 `hfzy_type_park`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_type_park` (
+CREATE TABLE IF NOT EXISTS `hfzy_type_park` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `type_id` bigint(20) NOT NULL COMMENT '标签表ID',
@@ -4627,10 +4627,10 @@ CREATE TABLE IF NOT EXISTS `ah_type_park` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_upload`
+-- 表的结构 `hfzy_upload`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_upload` (
+CREATE TABLE IF NOT EXISTS `hfzy_upload` (
   `id` bigint(20) unsigned NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `back_user_id` bigint(20) NOT NULL DEFAULT '0' COMMENT 'UID',
@@ -4650,19 +4650,19 @@ CREATE TABLE IF NOT EXISTS `ah_upload` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文件上传表';
 
 --
--- 转存表中的数据 `ah_upload`
+-- 转存表中的数据 `hfzy_upload`
 --
 
-INSERT INTO `ah_upload` (`id`, `is_delete`, `back_user_id`, `name`, `path`, `url`, `ext`, `size`, `md5`, `sha1`, `location`, `download`, `created_at`, `updated_at`, `sort`, `status`) VALUES
+INSERT INTO `hfzy_upload` (`id`, `is_delete`, `back_user_id`, `name`, `path`, `url`, `ext`, `size`, `md5`, `sha1`, `location`, `download`, `created_at`, `updated_at`, `sort`, `status`) VALUES
 (1, 1, 1, '文件名', '/static/', '/static/images', 'png', 0, '2017-06-06 00:00:00', 'sds', 'sd', 0, '2017-06-06 00:00:00', '2017-06-06 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_walk`
+-- 表的结构 `hfzy_walk`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_walk` (
+CREATE TABLE IF NOT EXISTS `hfzy_walk` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `guest_id` bigint(20) NOT NULL COMMENT '客户表ID',
@@ -4676,44 +4676,44 @@ CREATE TABLE IF NOT EXISTS `ah_walk` (
 --
 
 --
--- Indexes for table `ah_auth_assignment`
+-- Indexes for table `hfzy_auth_assignment`
 --
-ALTER TABLE `ah_auth_assignment`
+ALTER TABLE `hfzy_auth_assignment`
   ADD PRIMARY KEY (`item_name`,`user_id`),
-  ADD KEY `ah_auth_assignment_ibfk_2` (`user_id`) USING BTREE;
+  ADD KEY `hfzy_auth_assignment_ibfk_2` (`user_id`) USING BTREE;
 
 --
--- Indexes for table `ah_auth_item`
+-- Indexes for table `hfzy_auth_item`
 --
-ALTER TABLE `ah_auth_item`
+ALTER TABLE `hfzy_auth_item`
   ADD PRIMARY KEY (`name`),
   ADD KEY `rule_name` (`rule_name`),
   ADD KEY `idx-auth_item-type` (`type`);
 
 --
--- Indexes for table `ah_auth_item_child`
+-- Indexes for table `hfzy_auth_item_child`
 --
-ALTER TABLE `ah_auth_item_child`
+ALTER TABLE `hfzy_auth_item_child`
   ADD PRIMARY KEY (`parent`,`child`),
   ADD KEY `child` (`child`);
 
 --
--- Indexes for table `ah_auth_rule`
+-- Indexes for table `hfzy_auth_rule`
 --
-ALTER TABLE `ah_auth_rule`
+ALTER TABLE `hfzy_auth_rule`
   ADD PRIMARY KEY (`name`);
 
 --
--- Indexes for table `ah_back_ban`
+-- Indexes for table `hfzy_back_ban`
 --
-ALTER TABLE `ah_back_ban`
+ALTER TABLE `hfzy_back_ban`
   ADD PRIMARY KEY (`item_name`,`back_user_id`),
-  ADD KEY `ah_back_ban_assignment_ibfk_2` (`back_user_id`);
+  ADD KEY `hfzy_back_ban_assignment_ibfk_2` (`back_user_id`);
 
 --
--- Indexes for table `ah_back_user`
+-- Indexes for table `hfzy_back_user`
 --
-ALTER TABLE `ah_back_user`
+ALTER TABLE `hfzy_back_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `uid` (`code`),
@@ -4722,30 +4722,30 @@ ALTER TABLE `ah_back_user`
   ADD KEY `department_id` (`department_id`);
 
 --
--- Indexes for table `ah_back_user_log`
+-- Indexes for table `hfzy_back_user_log`
 --
-ALTER TABLE `ah_back_user_log`
+ALTER TABLE `hfzy_back_user_log`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_building_base`
+-- Indexes for table `hfzy_building_base`
 --
-ALTER TABLE `ah_building_base`
+ALTER TABLE `hfzy_building_base`
   ADD PRIMARY KEY (`id`),
   ADD KEY `city_id` (`city_id`);
 
 --
--- Indexes for table `ah_building_detail`
+-- Indexes for table `hfzy_building_detail`
 --
-ALTER TABLE `ah_building_detail`
+ALTER TABLE `hfzy_building_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `building_base_id` (`building_base_id`);
 
 --
--- Indexes for table `ah_city`
+-- Indexes for table `hfzy_city`
 --
-ALTER TABLE `ah_city`
+ALTER TABLE `hfzy_city`
   ADD PRIMARY KEY (`id`),
   ADD KEY `name` (`name`),
   ADD KEY `parent` (`parent`),
@@ -4753,74 +4753,74 @@ ALTER TABLE `ah_city`
   ADD KEY `region_id` (`region_id`);
 
 --
--- Indexes for table `ah_config`
+-- Indexes for table `hfzy_config`
 --
-ALTER TABLE `ah_config`
+ALTER TABLE `hfzy_config`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `ah_contact`
+-- Indexes for table `hfzy_contact`
 --
-ALTER TABLE `ah_contact`
+ALTER TABLE `hfzy_contact`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`),
   ADD KEY `home_user_id` (`home_user_id`);
 
 --
--- Indexes for table `ah_contact_read`
+-- Indexes for table `hfzy_contact_read`
 --
-ALTER TABLE `ah_contact_read`
+ALTER TABLE `hfzy_contact_read`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`),
   ADD KEY `contact_id` (`contact_id`);
 
 --
--- Indexes for table `ah_customer_service`
+-- Indexes for table `hfzy_customer_service`
 --
-ALTER TABLE `ah_customer_service`
+ALTER TABLE `hfzy_customer_service`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_delete_log`
+-- Indexes for table `hfzy_delete_log`
 --
-ALTER TABLE `ah_delete_log`
+ALTER TABLE `hfzy_delete_log`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`),
   ADD KEY `delete_id` (`delete_id`);
 
 --
--- Indexes for table `ah_department`
+-- Indexes for table `hfzy_department`
 --
-ALTER TABLE `ah_department`
+ALTER TABLE `hfzy_department`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ah_download`
+-- Indexes for table `hfzy_download`
 --
-ALTER TABLE `ah_download`
+ALTER TABLE `hfzy_download`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`) USING BTREE;
 
 --
--- Indexes for table `ah_guest`
+-- Indexes for table `hfzy_guest`
 --
-ALTER TABLE `ah_guest`
+ALTER TABLE `hfzy_guest`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ah_guest_server`
+-- Indexes for table `hfzy_guest_server`
 --
-ALTER TABLE `ah_guest_server`
+ALTER TABLE `hfzy_guest_server`
   ADD PRIMARY KEY (`id`),
   ADD KEY `guest_id` (`guest_id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_home_user`
+-- Indexes for table `hfzy_home_user`
 --
-ALTER TABLE `ah_home_user`
+ALTER TABLE `hfzy_home_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `uid` (`code`),
@@ -4828,168 +4828,168 @@ ALTER TABLE `ah_home_user`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `ah_home_user_log`
+-- Indexes for table `hfzy_home_user_log`
 --
-ALTER TABLE `ah_home_user_log`
+ALTER TABLE `hfzy_home_user_log`
   ADD PRIMARY KEY (`id`),
   ADD KEY `home_user_id` (`home_user_id`);
 
 --
--- Indexes for table `ah_hot`
+-- Indexes for table `hfzy_hot`
 --
-ALTER TABLE `ah_hot`
+ALTER TABLE `hfzy_hot`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_house_better`
+-- Indexes for table `hfzy_house_better`
 --
-ALTER TABLE `ah_house_better`
+ALTER TABLE `hfzy_house_better`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_house_host`
+-- Indexes for table `hfzy_house_host`
 --
-ALTER TABLE `ah_house_host`
+ALTER TABLE `hfzy_house_host`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ah_house_host_server`
+-- Indexes for table `hfzy_house_host_server`
 --
-ALTER TABLE `ah_house_host_server`
+ALTER TABLE `hfzy_house_host_server`
   ADD PRIMARY KEY (`id`),
   ADD KEY `house_host_id` (`house_host_id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_label`
+-- Indexes for table `hfzy_label`
 --
-ALTER TABLE `ah_label`
+ALTER TABLE `hfzy_label`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ah_label_park`
+-- Indexes for table `hfzy_label_park`
 --
-ALTER TABLE `ah_label_park`
+ALTER TABLE `hfzy_label_park`
   ADD PRIMARY KEY (`id`),
   ADD KEY `label_id` (`label_id`),
   ADD KEY `target_id` (`target_id`);
 
 --
--- Indexes for table `ah_menu`
+-- Indexes for table `hfzy_menu`
 --
-ALTER TABLE `ah_menu`
+ALTER TABLE `hfzy_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ah_new_house`
+-- Indexes for table `hfzy_new_house`
 --
-ALTER TABLE `ah_new_house`
+ALTER TABLE `hfzy_new_house`
   ADD PRIMARY KEY (`id`),
   ADD KEY `building_base_id` (`building_base_id`);
 
 --
--- Indexes for table `ah_notice`
+-- Indexes for table `hfzy_notice`
 --
-ALTER TABLE `ah_notice`
+ALTER TABLE `hfzy_notice`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_notice_read`
+-- Indexes for table `hfzy_notice_read`
 --
-ALTER TABLE `ah_notice_read`
+ALTER TABLE `hfzy_notice_read`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`),
   ADD KEY `notice_id` (`notice_id`);
 
 --
--- Indexes for table `ah_on_links`
+-- Indexes for table `hfzy_on_links`
 --
-ALTER TABLE `ah_on_links`
+ALTER TABLE `hfzy_on_links`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ah_opinion`
+-- Indexes for table `hfzy_opinion`
 --
-ALTER TABLE `ah_opinion`
+ALTER TABLE `hfzy_opinion`
   ADD PRIMARY KEY (`id`),
   ADD KEY `home_user_id` (`home_user_id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_opinion_read`
+-- Indexes for table `hfzy_opinion_read`
 --
-ALTER TABLE `ah_opinion_read`
+ALTER TABLE `hfzy_opinion_read`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`),
   ADD KEY `opinion_id` (`opinion_id`);
 
 --
--- Indexes for table `ah_region`
+-- Indexes for table `hfzy_region`
 --
-ALTER TABLE `ah_region`
+ALTER TABLE `hfzy_region`
   ADD PRIMARY KEY (`id`),
   ADD KEY `name` (`name`),
   ADD KEY `parent` (`parent`),
   ADD KEY `level` (`level`);
 
 --
--- Indexes for table `ah_second_hand_house`
+-- Indexes for table `hfzy_second_hand_house`
 --
-ALTER TABLE `ah_second_hand_house`
+ALTER TABLE `hfzy_second_hand_house`
   ADD PRIMARY KEY (`id`),
   ADD KEY `house_host_id` (`house_host_id`),
   ADD KEY `city_id` (`city_id`);
 
 --
--- Indexes for table `ah_session`
+-- Indexes for table `hfzy_session`
 --
-ALTER TABLE `ah_session`
+ALTER TABLE `hfzy_session`
   ADD UNIQUE KEY `session_id` (`session_id`);
 
 --
--- Indexes for table `ah_slider`
+-- Indexes for table `hfzy_slider`
 --
-ALTER TABLE `ah_slider`
+ALTER TABLE `hfzy_slider`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_take_order`
+-- Indexes for table `hfzy_take_order`
 --
-ALTER TABLE `ah_take_order`
+ALTER TABLE `hfzy_take_order`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`),
   ADD KEY `guest_id` (`guest_id`),
   ADD KEY `goods_id` (`goods_id`);
 
 --
--- Indexes for table `ah_type`
+-- Indexes for table `hfzy_type`
 --
-ALTER TABLE `ah_type`
+ALTER TABLE `hfzy_type`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ah_type_park`
+-- Indexes for table `hfzy_type_park`
 --
-ALTER TABLE `ah_type_park`
+ALTER TABLE `hfzy_type_park`
   ADD PRIMARY KEY (`id`),
   ADD KEY `label_id` (`type_id`),
   ADD KEY `target_id` (`target_id`);
 
 --
--- Indexes for table `ah_upload`
+-- Indexes for table `hfzy_upload`
 --
-ALTER TABLE `ah_upload`
+ALTER TABLE `hfzy_upload`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `ah_walk`
+-- Indexes for table `hfzy_walk`
 --
-ALTER TABLE `ah_walk`
+ALTER TABLE `hfzy_walk`
   ADD PRIMARY KEY (`id`),
   ADD KEY `guest_id` (`guest_id`);
 
@@ -4998,385 +4998,385 @@ ALTER TABLE `ah_walk`
 --
 
 --
--- AUTO_INCREMENT for table `ah_back_user`
+-- AUTO_INCREMENT for table `hfzy_back_user`
 --
-ALTER TABLE `ah_back_user`
+ALTER TABLE `hfzy_back_user`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `ah_back_user_log`
+-- AUTO_INCREMENT for table `hfzy_back_user_log`
 --
-ALTER TABLE `ah_back_user_log`
+ALTER TABLE `hfzy_back_user_log`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID';
 --
--- AUTO_INCREMENT for table `ah_building_base`
+-- AUTO_INCREMENT for table `hfzy_building_base`
 --
-ALTER TABLE `ah_building_base`
+ALTER TABLE `hfzy_building_base`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `ah_building_detail`
+-- AUTO_INCREMENT for table `hfzy_building_detail`
 --
-ALTER TABLE `ah_building_detail`
+ALTER TABLE `hfzy_building_detail`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_city`
+-- AUTO_INCREMENT for table `hfzy_city`
 --
-ALTER TABLE `ah_city`
+ALTER TABLE `hfzy_city`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
--- AUTO_INCREMENT for table `ah_config`
+-- AUTO_INCREMENT for table `hfzy_config`
 --
-ALTER TABLE `ah_config`
+ALTER TABLE `hfzy_config`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',AUTO_INCREMENT=31;
 --
--- AUTO_INCREMENT for table `ah_contact`
+-- AUTO_INCREMENT for table `hfzy_contact`
 --
-ALTER TABLE `ah_contact`
+ALTER TABLE `hfzy_contact`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_contact_read`
+-- AUTO_INCREMENT for table `hfzy_contact_read`
 --
-ALTER TABLE `ah_contact_read`
+ALTER TABLE `hfzy_contact_read`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_customer_service`
+-- AUTO_INCREMENT for table `hfzy_customer_service`
 --
-ALTER TABLE `ah_customer_service`
+ALTER TABLE `hfzy_customer_service`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_delete_log`
+-- AUTO_INCREMENT for table `hfzy_delete_log`
 --
-ALTER TABLE `ah_delete_log`
+ALTER TABLE `hfzy_delete_log`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_department`
+-- AUTO_INCREMENT for table `hfzy_department`
 --
-ALTER TABLE `ah_department`
+ALTER TABLE `hfzy_department`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `ah_download`
+-- AUTO_INCREMENT for table `hfzy_download`
 --
-ALTER TABLE `ah_download`
+ALTER TABLE `hfzy_download`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `ah_guest`
+-- AUTO_INCREMENT for table `hfzy_guest`
 --
-ALTER TABLE `ah_guest`
+ALTER TABLE `hfzy_guest`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `ah_guest_server`
+-- AUTO_INCREMENT for table `hfzy_guest_server`
 --
-ALTER TABLE `ah_guest_server`
+ALTER TABLE `hfzy_guest_server`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_home_user`
+-- AUTO_INCREMENT for table `hfzy_home_user`
 --
-ALTER TABLE `ah_home_user`
+ALTER TABLE `hfzy_home_user`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=101;
 --
--- AUTO_INCREMENT for table `ah_home_user_log`
+-- AUTO_INCREMENT for table `hfzy_home_user_log`
 --
-ALTER TABLE `ah_home_user_log`
+ALTER TABLE `hfzy_home_user_log`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID';
 --
--- AUTO_INCREMENT for table `ah_hot`
+-- AUTO_INCREMENT for table `hfzy_hot`
 --
-ALTER TABLE `ah_hot`
+ALTER TABLE `hfzy_hot`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_house_better`
+-- AUTO_INCREMENT for table `hfzy_house_better`
 --
-ALTER TABLE `ah_house_better`
+ALTER TABLE `hfzy_house_better`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_house_host`
+-- AUTO_INCREMENT for table `hfzy_house_host`
 --
-ALTER TABLE `ah_house_host`
+ALTER TABLE `hfzy_house_host`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_house_host_server`
+-- AUTO_INCREMENT for table `hfzy_house_host_server`
 --
-ALTER TABLE `ah_house_host_server`
+ALTER TABLE `hfzy_house_host_server`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_label`
+-- AUTO_INCREMENT for table `hfzy_label`
 --
-ALTER TABLE `ah_label`
+ALTER TABLE `hfzy_label`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `ah_label_park`
+-- AUTO_INCREMENT for table `hfzy_label_park`
 --
-ALTER TABLE `ah_label_park`
+ALTER TABLE `hfzy_label_park`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_menu`
+-- AUTO_INCREMENT for table `hfzy_menu`
 --
-ALTER TABLE `ah_menu`
+ALTER TABLE `hfzy_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=280;
 --
--- AUTO_INCREMENT for table `ah_new_house`
+-- AUTO_INCREMENT for table `hfzy_new_house`
 --
-ALTER TABLE `ah_new_house`
+ALTER TABLE `hfzy_new_house`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_notice`
+-- AUTO_INCREMENT for table `hfzy_notice`
 --
-ALTER TABLE `ah_notice`
+ALTER TABLE `hfzy_notice`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_notice_read`
+-- AUTO_INCREMENT for table `hfzy_notice_read`
 --
-ALTER TABLE `ah_notice_read`
+ALTER TABLE `hfzy_notice_read`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_on_links`
+-- AUTO_INCREMENT for table `hfzy_on_links`
 --
-ALTER TABLE `ah_on_links`
+ALTER TABLE `hfzy_on_links`
   MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_opinion`
+-- AUTO_INCREMENT for table `hfzy_opinion`
 --
-ALTER TABLE `ah_opinion`
+ALTER TABLE `hfzy_opinion`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_opinion_read`
+-- AUTO_INCREMENT for table `hfzy_opinion_read`
 --
-ALTER TABLE `ah_opinion_read`
+ALTER TABLE `hfzy_opinion_read`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_region`
+-- AUTO_INCREMENT for table `hfzy_region`
 --
-ALTER TABLE `ah_region`
+ALTER TABLE `hfzy_region`
   MODIFY `id` double NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5029;
 --
--- AUTO_INCREMENT for table `ah_second_hand_house`
+-- AUTO_INCREMENT for table `hfzy_second_hand_house`
 --
-ALTER TABLE `ah_second_hand_house`
+ALTER TABLE `hfzy_second_hand_house`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_slider`
+-- AUTO_INCREMENT for table `hfzy_slider`
 --
-ALTER TABLE `ah_slider`
+ALTER TABLE `hfzy_slider`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_take_order`
+-- AUTO_INCREMENT for table `hfzy_take_order`
 --
-ALTER TABLE `ah_take_order`
+ALTER TABLE `hfzy_take_order`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_type`
+-- AUTO_INCREMENT for table `hfzy_type`
 --
-ALTER TABLE `ah_type`
+ALTER TABLE `hfzy_type`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `ah_type_park`
+-- AUTO_INCREMENT for table `hfzy_type_park`
 --
-ALTER TABLE `ah_type_park`
+ALTER TABLE `hfzy_type_park`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_upload`
+-- AUTO_INCREMENT for table `hfzy_upload`
 --
-ALTER TABLE `ah_upload`
+ALTER TABLE `hfzy_upload`
   MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `ah_walk`
+-- AUTO_INCREMENT for table `hfzy_walk`
 --
-ALTER TABLE `ah_walk`
+ALTER TABLE `hfzy_walk`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
 -- 限制导出的表
 --
 
 --
--- 限制表 `ah_auth_assignment`
+-- 限制表 `hfzy_auth_assignment`
 --
-ALTER TABLE `ah_auth_assignment`
-  ADD CONSTRAINT `ah_auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `ah_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_auth_assignment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_auth_assignment`
+  ADD CONSTRAINT `hfzy_auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `hfzy_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_auth_assignment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_auth_item`
+-- 限制表 `hfzy_auth_item`
 --
-ALTER TABLE `ah_auth_item`
-  ADD CONSTRAINT `ah_auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `ah_auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `hfzy_auth_item`
+  ADD CONSTRAINT `hfzy_auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `hfzy_auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_auth_item_child`
+-- 限制表 `hfzy_auth_item_child`
 --
-ALTER TABLE `ah_auth_item_child`
-  ADD CONSTRAINT `ah_auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `ah_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `ah_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_auth_item_child`
+  ADD CONSTRAINT `hfzy_auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `hfzy_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `hfzy_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_back_ban`
+-- 限制表 `hfzy_back_ban`
 --
-ALTER TABLE `ah_back_ban`
-  ADD CONSTRAINT `ah_back_ban_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `ah_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_back_ban_ibfk_2` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_back_ban`
+  ADD CONSTRAINT `hfzy_back_ban_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `hfzy_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_back_ban_ibfk_2` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_back_user`
+-- 限制表 `hfzy_back_user`
 --
-ALTER TABLE `ah_back_user`
-  ADD CONSTRAINT `ah_back_user_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `ah_department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_back_user`
+  ADD CONSTRAINT `hfzy_back_user_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `hfzy_department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_back_user_log`
+-- 限制表 `hfzy_back_user_log`
 --
-ALTER TABLE `ah_back_user_log`
-  ADD CONSTRAINT `ah_back_user_log_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_back_user_log`
+  ADD CONSTRAINT `hfzy_back_user_log_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_building_base`
+-- 限制表 `hfzy_building_base`
 --
-ALTER TABLE `ah_building_base`
-  ADD CONSTRAINT `ah_building_base_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `ah_city` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_building_base`
+  ADD CONSTRAINT `hfzy_building_base_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `hfzy_city` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_building_detail`
+-- 限制表 `hfzy_building_detail`
 --
-ALTER TABLE `ah_building_detail`
-  ADD CONSTRAINT `ah_building_detail_ibfk_1` FOREIGN KEY (`building_base_id`) REFERENCES `ah_building_base` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_building_detail`
+  ADD CONSTRAINT `hfzy_building_detail_ibfk_1` FOREIGN KEY (`building_base_id`) REFERENCES `hfzy_building_base` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_city`
+-- 限制表 `hfzy_city`
 --
-ALTER TABLE `ah_city`
-  ADD CONSTRAINT `ah_city_ibfk_1` FOREIGN KEY (`region_id`) REFERENCES `ah_region` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_city`
+  ADD CONSTRAINT `hfzy_city_ibfk_1` FOREIGN KEY (`region_id`) REFERENCES `hfzy_region` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_contact`
+-- 限制表 `hfzy_contact`
 --
-ALTER TABLE `ah_contact`
-  ADD CONSTRAINT `ah_contact_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_contact_ibfk_2` FOREIGN KEY (`home_user_id`) REFERENCES `ah_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_contact`
+  ADD CONSTRAINT `hfzy_contact_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_contact_ibfk_2` FOREIGN KEY (`home_user_id`) REFERENCES `hfzy_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_contact_read`
+-- 限制表 `hfzy_contact_read`
 --
-ALTER TABLE `ah_contact_read`
-  ADD CONSTRAINT `ah_contact_read_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_contact_read_ibfk_2` FOREIGN KEY (`contact_id`) REFERENCES `ah_contact` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_contact_read`
+  ADD CONSTRAINT `hfzy_contact_read_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_contact_read_ibfk_2` FOREIGN KEY (`contact_id`) REFERENCES `hfzy_contact` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_customer_service`
+-- 限制表 `hfzy_customer_service`
 --
-ALTER TABLE `ah_customer_service`
-  ADD CONSTRAINT `ah_customer_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_customer_service`
+  ADD CONSTRAINT `hfzy_customer_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_delete_log`
+-- 限制表 `hfzy_delete_log`
 --
-ALTER TABLE `ah_delete_log`
-  ADD CONSTRAINT `ah_delete_log_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_delete_log`
+  ADD CONSTRAINT `hfzy_delete_log_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_download`
+-- 限制表 `hfzy_download`
 --
-ALTER TABLE `ah_download`
-  ADD CONSTRAINT `ah_download_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_download`
+  ADD CONSTRAINT `hfzy_download_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_guest_server`
+-- 限制表 `hfzy_guest_server`
 --
-ALTER TABLE `ah_guest_server`
-  ADD CONSTRAINT `ah_guest_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_guest_server_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `ah_guest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_guest_server`
+  ADD CONSTRAINT `hfzy_guest_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_guest_server_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `hfzy_guest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_home_user_log`
+-- 限制表 `hfzy_home_user_log`
 --
-ALTER TABLE `ah_home_user_log`
-  ADD CONSTRAINT `ah_home_user_log_ibfk_1` FOREIGN KEY (`home_user_id`) REFERENCES `ah_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_home_user_log`
+  ADD CONSTRAINT `hfzy_home_user_log_ibfk_1` FOREIGN KEY (`home_user_id`) REFERENCES `hfzy_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_hot`
+-- 限制表 `hfzy_hot`
 --
-ALTER TABLE `ah_hot`
-  ADD CONSTRAINT `ah_hot_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_hot`
+  ADD CONSTRAINT `hfzy_hot_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_house_better`
+-- 限制表 `hfzy_house_better`
 --
-ALTER TABLE `ah_house_better`
-  ADD CONSTRAINT `ah_house_better_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_house_better`
+  ADD CONSTRAINT `hfzy_house_better_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_house_host_server`
+-- 限制表 `hfzy_house_host_server`
 --
-ALTER TABLE `ah_house_host_server`
-  ADD CONSTRAINT `ah_house_host_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_house_host_server_ibfk_2` FOREIGN KEY (`house_host_id`) REFERENCES `ah_house_host` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_house_host_server`
+  ADD CONSTRAINT `hfzy_house_host_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_house_host_server_ibfk_2` FOREIGN KEY (`house_host_id`) REFERENCES `hfzy_house_host` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_label_park`
+-- 限制表 `hfzy_label_park`
 --
-ALTER TABLE `ah_label_park`
-  ADD CONSTRAINT `ah_label_ibfk_1` FOREIGN KEY (`label_id`) REFERENCES `ah_label` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_label_park`
+  ADD CONSTRAINT `hfzy_label_ibfk_1` FOREIGN KEY (`label_id`) REFERENCES `hfzy_label` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_new_house`
+-- 限制表 `hfzy_new_house`
 --
-ALTER TABLE `ah_new_house`
-  ADD CONSTRAINT `ah_new_house_ibfk_1` FOREIGN KEY (`building_base_id`) REFERENCES `ah_building_base` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_new_house`
+  ADD CONSTRAINT `hfzy_new_house_ibfk_1` FOREIGN KEY (`building_base_id`) REFERENCES `hfzy_building_base` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_notice`
+-- 限制表 `hfzy_notice`
 --
-ALTER TABLE `ah_notice`
-  ADD CONSTRAINT `ah_notice_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_notice`
+  ADD CONSTRAINT `hfzy_notice_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_notice_read`
+-- 限制表 `hfzy_notice_read`
 --
-ALTER TABLE `ah_notice_read`
-  ADD CONSTRAINT `ah_notice_read_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_notice_read_ibfk_2` FOREIGN KEY (`notice_id`) REFERENCES `ah_notice` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_notice_read`
+  ADD CONSTRAINT `hfzy_notice_read_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_notice_read_ibfk_2` FOREIGN KEY (`notice_id`) REFERENCES `hfzy_notice` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_opinion`
+-- 限制表 `hfzy_opinion`
 --
-ALTER TABLE `ah_opinion`
-  ADD CONSTRAINT `ah_opinion_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_opinion_ibfk_2` FOREIGN KEY (`home_user_id`) REFERENCES `ah_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_opinion`
+  ADD CONSTRAINT `hfzy_opinion_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_opinion_ibfk_2` FOREIGN KEY (`home_user_id`) REFERENCES `hfzy_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_opinion_read`
+-- 限制表 `hfzy_opinion_read`
 --
-ALTER TABLE `ah_opinion_read`
-  ADD CONSTRAINT `ah_opinion_read_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_opinion_read_ibfk_2` FOREIGN KEY (`opinion_id`) REFERENCES `ah_opinion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_opinion_read`
+  ADD CONSTRAINT `hfzy_opinion_read_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_opinion_read_ibfk_2` FOREIGN KEY (`opinion_id`) REFERENCES `hfzy_opinion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_second_hand_house`
+-- 限制表 `hfzy_second_hand_house`
 --
-ALTER TABLE `ah_second_hand_house`
-  ADD CONSTRAINT `ah_second_hand_house_ibfk_1` FOREIGN KEY (`house_host_id`) REFERENCES `ah_house_host` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_second_hand_house_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `ah_city` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_second_hand_house`
+  ADD CONSTRAINT `hfzy_second_hand_house_ibfk_1` FOREIGN KEY (`house_host_id`) REFERENCES `hfzy_house_host` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_second_hand_house_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `hfzy_city` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_slider`
+-- 限制表 `hfzy_slider`
 --
-ALTER TABLE `ah_slider`
-  ADD CONSTRAINT `ah_slider_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_slider`
+  ADD CONSTRAINT `hfzy_slider_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_take_order`
+-- 限制表 `hfzy_take_order`
 --
-ALTER TABLE `ah_take_order`
-  ADD CONSTRAINT `ah_take_order_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_take_order_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `ah_guest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_take_order`
+  ADD CONSTRAINT `hfzy_take_order_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_take_order_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `hfzy_guest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_upload`
+-- 限制表 `hfzy_upload`
 --
-ALTER TABLE `ah_upload`
-  ADD CONSTRAINT `ah_upload_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_upload`
+  ADD CONSTRAINT `hfzy_upload_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_walk`
+-- 限制表 `hfzy_walk`
 --
-ALTER TABLE `ah_walk`
-  ADD CONSTRAINT `ah_walk_ibfk_1` FOREIGN KEY (`guest_id`) REFERENCES `ah_guest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_walk`
+  ADD CONSTRAINT `hfzy_walk_ibfk_1` FOREIGN KEY (`guest_id`) REFERENCES `hfzy_guest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

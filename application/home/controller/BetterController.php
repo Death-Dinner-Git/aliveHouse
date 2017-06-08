@@ -16,7 +16,7 @@ class BetterController extends HomeController
      */
     public function betterAction()
     {
-        return view('better');
+        return view('better/better');
     }
 
 }

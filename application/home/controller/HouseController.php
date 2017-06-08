@@ -16,7 +16,7 @@ class HouseController extends HomeController
      */
     public function newHouseAction()
     {
-        return view('newHouse');
+        return view('house/newHouse');
     }
 
     /**
@@ -25,7 +25,7 @@ class HouseController extends HomeController
      */
     public function secondHandHouseAction()
     {
-        return view('secondHandHouse');
+        return view('house/secondHandHouse');
     }
 
 }
