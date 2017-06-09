@@ -1,4 +1,8 @@
 @charset "utf-8";
+
+/*----------------------------------------
+  MODULE 60
+------------------------------------------*/
 .forms .jz-modulePattern60 .g_border {
     border: none;
 }
@@ -280,10 +284,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern60 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern60 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -310,11 +310,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern60 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern60 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern60 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -682,6 +678,10 @@
 .forms .jz-modulePattern60 .sort_item2 .g_borderSelected {
     border: 2px solid #999999;
 }
+
+/*----------------------------------------
+  MODULE 101
+------------------------------------------*/
 
 .forms .jz-modulePattern101 .g_border {
     border: none;
@@ -1055,10 +1055,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern101 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern101 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -1085,11 +1081,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern101 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern101 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern101 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -1614,6 +1606,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 200
+------------------------------------------*/
+
 .forms .jz-modulePattern200 .g_border {
     border: none;
 }
@@ -2034,10 +2030,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern200 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern200 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -2064,13 +2056,10 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern200 input::-ms-input-placeholder {
+.forms .jz-modulePattern200 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern200 textarea::-ms-textarea-placeholder {
-    font-family: 微软雅黑;
-}
 
 .forms .jz-modulePattern200 input[type="text"] {
     font-family: 微软雅黑;
@@ -2610,6 +2599,10 @@
     border-color: #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 201
+------------------------------------------*/
+
 .forms .jz-modulePattern201 .g_border {
     border: none;
 }
@@ -2979,10 +2972,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern201 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern201 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -3009,11 +2998,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern201 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern201 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern201 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -3559,6 +3544,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 202
+------------------------------------------*/
+
 .forms .jz-modulePattern202 .g_border {
     border: none;
 }
@@ -3922,10 +3911,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern202 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern202 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -3952,11 +3937,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern202 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern202 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern202 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -4502,6 +4483,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 203
+------------------------------------------*/
+
 .forms .jz-modulePattern203 .g_border {
     border: none;
 }
@@ -4843,10 +4828,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern203 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern203 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -4873,11 +4854,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern203 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern203 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern203 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -5423,6 +5400,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 336
+------------------------------------------*/
+
 .forms .jz-modulePattern336 .g_border {
     border: none;
 }
@@ -5460,15 +5441,15 @@
 }
 
 .forms .jz-modulePattern336 .g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern336 table.g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern336 div.g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern336 .g_title {
@@ -5763,10 +5744,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern336 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern336 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -5793,11 +5770,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern336 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern336 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern336 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -6428,12 +6401,16 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 337
+------------------------------------------*/
+
 .forms .jz-modulePattern337 .g_border {
     border: none;
 }
 
 .forms .jz-modulePattern337 .g_borderHover {
-    border: 1px solid #f13a3;
+    border: 1px solid #f13a3a;
 }
 
 .forms .jz-modulePattern337 .photoSmallPicForms .cs_triangle_up.g_borderSelected {
@@ -6465,15 +6442,15 @@
 }
 
 .forms .jz-modulePattern337 .g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern337 table.g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern337 div.g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern337 .g_title {
@@ -6768,10 +6745,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern337 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern337 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -6798,11 +6771,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern337 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern337 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern337 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -7442,6 +7411,10 @@
     border: 1px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 338
+------------------------------------------*/
+
 .forms .jz-modulePattern338 .g_border {
     border: none;
 }
@@ -7479,15 +7452,15 @@
 }
 
 .forms .jz-modulePattern338 .g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern338 table.g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern338 div.g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern338 .g_title {
@@ -7782,10 +7755,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern338 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern338 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -7812,11 +7781,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern338 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern338 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern338 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -8161,7 +8126,6 @@
     position: relative;
     text-align: left;
     font-size: 0;
-    line-height: auto;
     vertical-align: top;
 }
 
@@ -8450,6 +8414,10 @@
 .forms .jz-modulePattern338 .sort_item2 .g_borderSelected {
     border: 2px solid #f13a3a;
 }
+
+/*----------------------------------------
+  MODULE 339
+------------------------------------------*/
 
 .forms .jz-modulePattern339 .g_border {
     border: none;
@@ -8791,10 +8759,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern339 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern339 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -8821,11 +8785,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern339 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern339 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern339 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -9468,6 +9428,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 340
+------------------------------------------*/
+
 .forms .jz-modulePattern340 .g_border {
     border: none;
 }
@@ -9505,15 +9469,15 @@
 }
 
 .forms .jz-modulePattern340 .g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern340 table.g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern340 div.g_selected a {
-    color: #f13a3;
+    color: #f13a3a;
 }
 
 .forms .jz-modulePattern340 .g_title {
@@ -9812,10 +9776,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern340 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern340 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -9842,11 +9802,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern340 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern340 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern340 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -10492,6 +10448,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 341
+------------------------------------------*/
+
 .forms .jz-modulePattern341 .g_border {
     border: none;
 }
@@ -10836,10 +10796,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern341 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern341 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -10866,11 +10822,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern341 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern341 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern341 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -11513,6 +11465,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 366
+------------------------------------------*/
+
 .forms .jz-modulePattern366 .g_border {
     border: none;
 }
@@ -11861,10 +11817,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern366 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern366 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -11891,11 +11843,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern366 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern366 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern366 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -12432,6 +12380,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 379
+------------------------------------------*/
+
 .forms .jz-modulePattern379 .g_border {
     border: none;
 }
@@ -12780,10 +12732,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern379 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern379 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -12810,11 +12758,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern379 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern379 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern379 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -13356,6 +13300,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 392
+------------------------------------------*/
+
 .forms .jz-modulePattern392 .g_border {
     border: none;
 }
@@ -13700,10 +13648,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern392 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern392 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -13730,11 +13674,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern392 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern392 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern392 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -14280,6 +14220,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 404
+------------------------------------------*/
+
 .forms .jz-modulePattern404 .g_border {
     border: none;
 }
@@ -14513,7 +14457,6 @@
 
 .forms .jz-modulePattern404 .formBannerTitle .titleLeft {
     height: auto;
-    background: transparent url(http://1.s60i.faiusr.com/4/404/AJQDCAQQ-96OvgUY1pud8AQ.png) no-repeat center;
 }
 
 .forms .jz-modulePattern404 .formBannerTitle .titleLeft {
@@ -14623,10 +14566,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern404 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern404 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -14653,11 +14592,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern404 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern404 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern404 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -15203,6 +15138,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 416
+------------------------------------------*/
+
 .forms .jz-modulePattern416 .g_border {
     border: none;
 }
@@ -15437,7 +15376,6 @@
 
 .forms .jz-modulePattern416 .formBannerTitle .titleLeft {
     height: auto;
-    background: transparent url(http://1.s60i.faiusr.com/4/416/AKADCAQQkOSOvgUYja7jrQQ.png) no-repeat center;
 }
 
 .forms .jz-modulePattern416 .formBannerTitle .titleLeft {
@@ -15547,10 +15485,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern416 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern416 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -15577,11 +15511,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern416 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern416 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern416 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -16127,6 +16057,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 428
+------------------------------------------*/
+
 .forms .jz-modulePattern428 .g_border {
     border: none;
 }
@@ -16547,10 +16481,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern428 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern428 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -16577,11 +16507,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern428 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern428 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern428 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -17127,6 +17053,10 @@
     border-color: #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 440
+------------------------------------------*/
+
 .forms .jz-modulePattern440 .g_border {
     border: none;
 }
@@ -17471,10 +17401,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern440 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern440 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -17501,11 +17427,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern440 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern440 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern440 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -18044,6 +17966,10 @@
     border: 2px solid rgb(241, 58, 58);
 }
 
+/*----------------------------------------
+  MODULE 452
+------------------------------------------*/
+
 .forms .jz-modulePattern452 .g_border {
     border: none;
 }
@@ -18387,10 +18313,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern452 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern452 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -18417,11 +18339,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern452 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern452 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern452 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -18967,6 +18885,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 464
+------------------------------------------*/
+
 .forms .jz-modulePattern464 .g_border {
     border: none;
 }
@@ -19310,10 +19232,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern464 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern464 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -19340,11 +19258,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern464 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern464 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern464 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -19890,6 +19804,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 477
+------------------------------------------*/
+
 .forms .jz-modulePattern477 .g_border {
     border: none;
 }
@@ -20247,10 +20165,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern477 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern477 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -20277,11 +20191,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern477 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern477 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern477 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -20827,6 +20737,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 489
+------------------------------------------*/
+
 .forms .jz-modulePattern489 .g_border {
     border: none;
 }
@@ -21189,10 +21103,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern489 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern489 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -21219,11 +21129,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern489 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern489 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern489 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -21769,6 +21675,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 501
+------------------------------------------*/
+
 .forms .jz-modulePattern501 .g_border {
     border: none;
 }
@@ -22128,10 +22038,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern501 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern501 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -22158,11 +22064,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern501 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern501 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern501 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -22708,6 +22610,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 513
+------------------------------------------*/
+
 .forms .jz-modulePattern513 .g_border {
     border: none;
 }
@@ -23067,10 +22973,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern513 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern513 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -23097,11 +22999,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern513 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern513 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern513 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -23646,6 +23544,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 525
+------------------------------------------*/
+
 .forms .jz-modulePattern525 .g_border {
     border: none;
 }
@@ -24004,10 +23906,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern525 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern525 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -24034,11 +23932,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern525 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern525 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern525 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -24588,6 +24482,10 @@
     border: none;
 }
 
+/*----------------------------------------
+  MODULE 537
+------------------------------------------*/
+
 .forms .jz-modulePattern537 .g_borderHover {
     border: 1px solid #f13a3a;
 }
@@ -24947,10 +24845,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern537 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern537 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -24977,11 +24871,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern537 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern537 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern537 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -25527,6 +25417,10 @@
     border: none;
 }
 
+/*----------------------------------------
+  MODULE 549
+------------------------------------------*/
+
 .forms .jz-modulePattern549 .g_borderHover {
     border: 1px solid #f13a3a;
 }
@@ -25891,10 +25785,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern549 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern549 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -25921,11 +25811,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern549 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern549 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern549 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -26471,6 +26357,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 592
+------------------------------------------*/
+
 .forms .jz-modulePattern592 .g_border {
     border: none;
 }
@@ -26844,10 +26734,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern592 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern592 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -26874,13 +26760,10 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern592 input::-ms-input-placeholder {
+.forms .jz-modulePattern592 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern592 textarea::-ms-textarea-placeholder {
-    font-family: 微软雅黑;
-}
 
 .forms .jz-modulePattern592 input[type="text"] {
     font-family: 微软雅黑;
@@ -27424,6 +27307,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 823
+------------------------------------------*/
+
 .forms .jz-modulePattern823 .g_border {
     border: none;
 }
@@ -27777,10 +27664,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern823 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern823 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -27807,11 +27690,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern823 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern823 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern823 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -28357,6 +28236,10 @@
     border: 2px solid #f13a3a;
 }
 
+/*----------------------------------------
+  MODULE 987
+------------------------------------------*/
+
 .forms .jz-modulePattern987 .g_border {
     border: none;
 }
@@ -28564,7 +28447,7 @@
 }
 
 .forms .jz-modulePattern987 .formBanner {
-    background: rgba(0, 0, 0, 0) url(http://1.s60i.faiusr.com/2/987/ANsHCAIQnZayvwUYpPTDowU.jpg) repeat-x top;
+    background: rgba(0, 0, 0, 0)  repeat-x top;
 }
 
 .forms .jz-modulePattern987 .formBanner .left {
@@ -28714,10 +28597,6 @@
     line-height: 26px;
 }
 
-.forms .jz-modulePattern987 textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .jz-modulePattern987 input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -28744,11 +28623,7 @@
     font-family: 微软雅黑;
 }
 
-.forms .jz-modulePattern987 input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .jz-modulePattern987 textarea::-ms-textarea-placeholder {
+.forms .jz-modulePattern987 input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 

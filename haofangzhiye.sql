@@ -97,10 +97,10 @@ CREATE TABLE IF NOT EXISTS `hfzy_auth_rule` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `hfzy_back_ban`
+-- 表的结构 `hfzy_ban`
 --
 
-CREATE TABLE IF NOT EXISTS `hfzy_back_ban` (
+CREATE TABLE IF NOT EXISTS `hfzy_ban` (
   `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '名称',
   `back_user_id` bigint(20) NOT NULL COMMENT 'UID',
   `ban` tinyint(1) unsigned DEFAULT '0' COMMENT '类型;0=允许;1=禁止;',
@@ -4704,11 +4704,11 @@ ALTER TABLE `hfzy_auth_rule`
   ADD PRIMARY KEY (`name`);
 
 --
--- Indexes for table `hfzy_back_ban`
+-- Indexes for table `hfzy_ban`
 --
-ALTER TABLE `hfzy_back_ban`
+ALTER TABLE `hfzy_ban`
   ADD PRIMARY KEY (`item_name`,`back_user_id`),
-  ADD KEY `hfzy_back_ban_assignment_ibfk_2` (`back_user_id`);
+  ADD KEY `hfzy_ban_assignment_ibfk_2` (`back_user_id`);
 
 --
 -- Indexes for table `hfzy_back_user`
@@ -5207,11 +5207,11 @@ ALTER TABLE `hfzy_auth_item_child`
   ADD CONSTRAINT `hfzy_auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `hfzy_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `hfzy_back_ban`
+-- 限制表 `hfzy_ban`
 --
-ALTER TABLE `hfzy_back_ban`
-  ADD CONSTRAINT `hfzy_back_ban_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `hfzy_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hfzy_back_ban_ibfk_2` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_ban`
+  ADD CONSTRAINT `hfzy_ban_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `hfzy_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hfzy_ban_ibfk_2` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `hfzy_back_user`

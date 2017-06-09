@@ -22,7 +22,12 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">图片懒加载</label>
                 <div class="layui-input-block checkbox-left">
-                    <div lay-filter="loading" lay-src="/static/images/goods-background.png" lay-class="user-images" lay-title="个人信息" lay-alt="我的头像" style="width: 100%;"></div>
+                    <div lay-filter="loading" lay-src="/static/images/goods-background.png" lay-class="user-images" lay-title="个人信息" lay-alt="我的头像" style="width: 100%;">
+                    </div>
+                    <a data-url="/manage/user/view.html?iframe=true" class="img" lay-filter="url" data-title="个人信息">
+                        <div lay-filter="loading" lay-src="/static/images/default-user.png" lay-class="user-images" lay-title="个人信息" lay-alt="我的头像" style="width: 100%;">
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="layui-form-item">

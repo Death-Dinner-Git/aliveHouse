@@ -1,8 +1,16 @@
 @charset "utf-8";
+
+
+/*----------------------------------------
+  GLOBAL STYLE
+------------------------------------------*/
+
 @font-face {
     font-family: 'icomoon';
-    src: url('http://2.ss.faisys.com/css/fontsIco/icomoon.eot?-2mgmdr&v=135');
-    src: url('http://2.ss.faisys.com/css/fontsIco/icomoon.eot?#iefix-2mgmdr&v=135') format('embedded-opentype'), url('http://2.ss.faisys.com/css/fontsIco/icomoon.ttf?-2mgmdr&v=135') format('truetype'), url('http://2.ss.faisys.com/css/fontsIco/icomoon.woff?-2mgmdr&v=135') format('woff');
+    src: url('../fonts/icomoon.eot?-2mgmdr&v=135');
+    src: url('../fonts/icomoon.eot?#iefix-2mgmdr&v=135') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?-2mgmdr&v=135') format('truetype'),
+    url('../fonts/icomoon.woff?-2mgmdr&v=135') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -117,7 +125,7 @@ div.nav .navMainContent {
 }
 
 .banner {
-    background: url(http://1.s60i.faiusr.com/2/817/ALEGCAIQ_6CzvwUYmpnjsgcggA8o9AM.jpg) no-repeat 50% 50%;
+    background: url('/static/images/theme/theme-banner.jpg') no-repeat 50% 50%;
     height: 500px;
 }
 
@@ -273,11 +281,11 @@ div.nav .navMainContent {
 }
 
 #webFooterTable .footerItemTop .footerItemTopLink {
-    color: #8b939epx;
+    color: #8b939e;
 }
 
 #webFooterTable .footerItemBottom a {
-    color: #8b939epx;
+    color: #8b939e;
 }
 
 #footer .footerInfo a {
@@ -366,11 +374,15 @@ div.nav .navMainContent {
     color: #ffffff;
 }
 
+/*----------------------------------------
+  visitor counter STYLE
+------------------------------------------*/
+
 .visitorCounterBg {
     width: 16px;
     height: 22px;
     margin-right: 1px;
-    background-image: url('http://2.ss.faisys.com/image/theme2/visitorCounter/white.png');
+    background-image: url('/static/images/theme/theme-white.png');
 }
 
 .visitorCounter_cp_0 {
@@ -422,8 +434,12 @@ div.nav .navMainContent {
 }
 
 .pagenation .g_hover span {
-    background-color: none;
+    background-color: inherit;
 }
+
+/*----------------------------------------
+  main Font Color STYLE
+------------------------------------------*/
 
 .form div.pdStyle5 .fk-mainFontColor {
     color: #ff6537;
@@ -1038,10 +1054,6 @@ div.addAddrPopPanel .mstl_bg {
     border-bottom-right-radius: 20px;
 }
 
-#nav .item {
-    behavior: url(res/js/pie/PIE.min.htc?v=201605191556);
-}
-
 .navSubMenu .item {
     border-top-left-radius: 0;
 }
@@ -1074,10 +1086,6 @@ div.addAddrPopPanel .mstl_bg {
     border-bottom-right-radius: 20px;
 }
 
-#nav table.itemSelected {
-    behavior: url(res/js/pie/PIE.min.htc?v=201605191556);
-}
-
 #nav table.itemHover {
     border-top-left-radius: 20px;
 }
@@ -1092,10 +1100,6 @@ div.addAddrPopPanel .mstl_bg {
 
 #nav table.itemHover {
     border-bottom-right-radius: 20px;
-}
-
-#nav table.itemHover {
-    behavior: url(res/js/pie/PIE.min.htc?v=201605191556);
 }
 
 .navSubMenu table.itemSelected {
@@ -1148,10 +1152,6 @@ div.navSubMenu .navStyle .content .outMenuTop {
 
 div.navSubMenu .navStyle .content .outMenuTop {
     overflow: hidden;
-}
-
-div.navSubMenu .navStyle .content .outMenuTop {
-    behavior: url(res/js/pie/PIE.min.htc?v=201605191556);
 }
 
 div.navSubMenu .navStyle .content .outMenuBottom {
@@ -1174,10 +1174,6 @@ div.navSubMenu .navStyle .content .outMenuBottom {
     overflow: hidden;
 }
 
-div.navSubMenu .navStyle .content .outMenuBottom {
-    behavior: url(res/js/pie/PIE.min.htc?v=201605191556);
-}
-
 .navSubMenu .subMenu .item {
     border-top-left-radius: 0;
 }
@@ -1244,10 +1240,6 @@ div.navSubMenu .navStyle .content .thirdMenuTop {
 
 div.navSubMenu .navStyle .content .thirdMenuTop {
     overflow: hidden;
-}
-
-div.navSubMenu .navStyle .content .thirdMenuTop {
-    behavior: url(res/js/pie/PIE.min.htc?v=201605191556);
 }
 
 div.navSubMenu .navStyle .content .thirdMenuBottom {
@@ -1902,10 +1894,6 @@ div.navSubMenu .navStyle .subMenu .center .item {
     line-height: 26px;
 }
 
-.forms .form textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .form input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -1932,11 +1920,7 @@ div.navSubMenu .navStyle .subMenu .center .item {
     font-family: 微软雅黑;
 }
 
-.forms .form input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .form textarea::-ms-textarea-placeholder {
+.forms .form input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -2528,9 +2512,6 @@ div.navSubMenu .navStyle .subMenu .center .item {
     line-height: 26px;
 }
 
-.forms .fk-formTabX textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
 
 .forms .fk-formTabX input::-webkit-input-placeholder {
     font-family: 微软雅黑;
@@ -2558,11 +2539,7 @@ div.navSubMenu .navStyle .subMenu .center .item {
     font-family: 微软雅黑;
 }
 
-.forms .fk-formTabX input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .fk-formTabX textarea::-ms-textarea-placeholder {
+.forms .fk-formTabX input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -2855,10 +2832,6 @@ div.navSubMenu .navStyle .subMenu .center .item {
     line-height: 26px;
 }
 
-.forms .fk-formTabY textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .forms .fk-formTabY input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -2885,11 +2858,7 @@ div.navSubMenu .navStyle .subMenu .center .item {
     font-family: 微软雅黑;
 }
 
-.forms .fk-formTabY input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.forms .fk-formTabY textarea::-ms-textarea-placeholder {
+.forms .fk-formTabY input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -3500,10 +3469,6 @@ div.navSubMenu .navStyle .subMenu .center .item {
     line-height: 26px;
 }
 
-.leftForms .form textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .leftForms .form input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -3530,11 +3495,7 @@ div.navSubMenu .navStyle .subMenu .center .item {
     font-family: 微软雅黑;
 }
 
-.leftForms .form input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.leftForms .form textarea::-ms-textarea-placeholder {
+.leftForms .form input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -4397,10 +4358,6 @@ div.navSubMenu .navStyle .subMenu .center .item {
     line-height: 26px;
 }
 
-.absForms .form textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .absForms .form input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -4427,11 +4384,7 @@ div.navSubMenu .navStyle .subMenu .center .item {
     font-family: 微软雅黑;
 }
 
-.absForms .form input::-ms-input-placeholder {
-    font-family: 微软雅黑;
-}
-
-.absForms .form textarea::-ms-textarea-placeholder {
+.absForms .form input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
@@ -5294,10 +5247,6 @@ div.navSubMenu .navStyle .subMenu .center .item {
     line-height: 26px;
 }
 
-.floatForms .form textarea::-ms-textarea-placeholder {
-    line-height: 26px;
-}
-
 .floatForms .form input::-webkit-input-placeholder {
     font-family: 微软雅黑;
 }
@@ -5324,13 +5273,10 @@ div.navSubMenu .navStyle .subMenu .center .item {
     font-family: 微软雅黑;
 }
 
-.floatForms .form input::-ms-input-placeholder {
+.floatForms .form input:-ms-input-placeholder {
     font-family: 微软雅黑;
 }
 
-.floatForms .form textarea::-ms-textarea-placeholder {
-    font-family: 微软雅黑;
-}
 
 .floatForms .form input[type="text"] {
     font-family: 微软雅黑;

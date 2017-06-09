@@ -276,6 +276,12 @@ function showDialog(title,msg,callBack,parentWin,width,height,shade) {
     });
 }
 
+if (typeof top.window.addTab === 'function'){
+    $(document).on('click','[lay-filter="url"]',function () {
+        top.window.addTab(this);
+    });
+}
+
 function tab(options,parentWin,width,height,shade) {
     var myLayer = top.window.layer ? top.window.layer : window.layer;
     if (parentWin === false){

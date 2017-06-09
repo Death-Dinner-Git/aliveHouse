@@ -20,7 +20,7 @@
 #module317 .contentLineIcon {*padding:0;}
 #module317 .contentLineIcon {*width:0;}
 #module317 {background:none;}
-#module317 .formMiddle317 {background:transparent url(http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg6_aUwgUot_W1jAYwsAk4hgE.jpg) no-repeat center;}
+#module317 .formMiddle317 {background:transparent url('/static/images/modules/fourPart,jpg') no-repeat center;}
 #module317 .formMiddle317 .formMiddleCenter317{background:none;}
 #module317 .formMiddleContent317{background:none;}
 #module317 .formBannerBtn{position:relative;top:0;right:0;margin-right:10px;}
@@ -921,7 +921,7 @@
 #module328 .formBannerBtn{position:relative;top:0;right:0;margin-right:10px;}
 #module328 .g_close{background:none;font-family:"icomoon",微软雅黑,"microsoft yahei",宋体,新宋体;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:40px;width:40px;height:40px;}
 #module328 .fk-formContentOther .g_close{background:none;font-family:"icomoon",微软雅黑,"microsoft yahei",宋体,新宋体;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:40px;width:40px;height:40px;}
-#module328 .fullmeasureOuterContentPage1 .fullmeasureOuterContentBg328{background:transparent url(http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUokoTfoQQwhA84uwQ.jpg) no-repeat center;}
+#module328 .fullmeasureOuterContentPage1 .fullmeasureOuterContentBg328{background:transparent url('/static/images/modules/middlePart,jpg') no-repeat center;}
 #module328 .fullmeasureContent{padding:100px 0 100px 0;}
 #module543 {border:none;}
 #module543 .formMiddle543{border:none;}
@@ -1346,7 +1346,7 @@
 #module346 .formBannerBtn{position:relative;top:0;right:0;margin-right:10px;}
 #module346 .g_close{background:none;font-family:"icomoon",微软雅黑,"microsoft yahei",宋体,新宋体;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:40px;width:40px;height:40px;}
 #module346 .fk-formContentOther .g_close{background:none;font-family:"icomoon",微软雅黑,"microsoft yahei",宋体,新宋体;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:40px;width:40px;height:40px;}
-#module346 .fullmeasureOuterContentPage1 .fullmeasureOuterContentBg346{background:transparent url(http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8OaUwgUogMKZuwQwgA847wE.jpg) no-repeat center;}
+#module346 .fullmeasureOuterContentPage1 .fullmeasureOuterContentBg346{background:transparent url('/static/images/modules/middlePart,jpg') no-repeat center;}
 #module347 .mulColPadding {padding-right:0px;}
 #module347 {border:none;}
 #module347 .formMiddle347{border:none;}
@@ -1628,7 +1628,7 @@
 #webFooterTable .footerItemBottom a{color:rgb(153, 153, 153);}
 #footer .footerInfo a{ color:rgb(153, 153, 153);}
 #footer .footerSupport a{ color:rgb(153, 153, 153);}
-#webFooterTable {background:#333333 url(http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8OaUwgUowJrF6wEwgw84pQQ.jpg) no-repeat center;}
+#webFooterTable {background:#333333 url('/static/images/footer/webFooterTable.jpg') no-repeat center;}
 #webFooterTable .webFooter {background:none;}
 #webFooterTable .footer {background:none;border-color:transparent;}
 #webFooterTable .footerTop {display:none;}
