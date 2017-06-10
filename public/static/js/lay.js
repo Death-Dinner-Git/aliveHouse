@@ -30,19 +30,19 @@ fk_sale.popupWindowMs = 1346686515;
 fk_sale.openDays = 0;
 fk_sale.openMinutes = 1402;
 fk_sale.popupWindowEndSignupHours = 720.0;
-fk_sale.url = 'http://www.faisco.cn/portal.php#appId=shop';
+fk_sale.url = '';
 fk_sale.showDomainWindowFlag = false;
-fk_sale.cacct = 'ot13227318';
-fk_sale.imgBigSrc = 'http://jz.faisys.com/image/pro/20170101/salesPromotion.png?v=201701101133';
-fk_sale.imgBigBtn = 'http://jz.faisys.com/image/pro/20170101/btn_buy.png?v=201701101133';
-fk_sale.imgClose = 'http://jz.faisys.com/image/pro/20170101/close.png?v=201701101133';
+fk_sale.cacct = '';
+fk_sale.imgBigSrc = '';
+fk_sale.imgBigBtn = '';
+fk_sale.imgClose = '';
 fk_sale.siteFirstLogin = true;
 fk_sale.isShowAdvertisementWindowThreeMinute = false;
-fk_sale.textUrl = 'http://www.faisco.cn/portal.php#appId=shop';
-fk_sale.domainImgBigBg = 'http://jz.faisys.com/image/pro/20160101/domainSearchImg.png';
-fk_sale.domainImgClose = 'http://jz.faisys.com/image/pro/20160101/close.png?v=201601181937';
-fk_sale.siteBizBigClose = 'http://jz.faisys.com/image/pro/20160701/close_popup.png';
-fk_sale.siteBizBigBg = 'http://jz.faisys.com/image/pro/20160701/popup02.png';
+fk_sale.textUrl = '';
+fk_sale.domainImgBigBg = '';
+fk_sale.domainImgClose = '';
+fk_sale.siteBizBigClose = '';
+fk_sale.siteBizBigBg = '';
 fk_sale.showSiteBizWindow = false;
 fk_sale.showSitePopWindow = false;
 fk_sale.openFlyer = false;
@@ -53,7 +53,7 @@ fk_sale.openFlyer = false;
 //console.log(window.location.host.lastIndexOf("."));
 var _jsErrCahche = [];
 window.onerror = function (sMsg, sUrl, sLine) {
-    if (typeof Site == 'undefined') {
+    if (typeof Site === 'undefined') {
         alert('您的网页未加载完成，请尝试按“CTRL+功能键F5”重新加载。');
     }
     if (sLine < 1 || typeof sMsg != 'string' || sMsg.length < 1) {
@@ -79,7 +79,7 @@ window.onerror = function (sMsg, sUrl, sLine) {
         _jsErrCahche.push(obj);
         _faiAjax.ajax({
             type: "post",
-            url: "ajax/logJsErr_h.php?cmd=jsErr",
+            url: "/",
             data: 'msg=' + encodeUrl(log)
         });
     }
@@ -114,16 +114,11 @@ var _templateDefLayout = {
 
 $(function () {
 
-
-
-
-
-
     //Site.changeTheLogoSize();
     Site.showOrHideMailBox();
 
 
-    Site.loginSiteInit('ot13227318', 'faisco.cn', false, "");
+    Site.loginSiteInit('', '', false, "");
 
     //topBarMember
 
@@ -151,7 +146,7 @@ $(function () {
             "imgWidth": 1920,
             "imgHeight": 300,
             "ot": 1,
-            "src": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI.jpg",
+            "src": "/static/images/theme/theme-banner2.jpg",
             "edgeLeft": "",
             "edgeRight": ""
         }],
@@ -182,13 +177,13 @@ $(function () {
             "borderColor": "#000",
             "borderWidth": 1,
             "borderStyle": 1,
-            "hoverPicPath": "http://0.ss.faisys.com/image/floatImgHoverDef.png",
+            "hoverPicPath": "/static/images/floatImgHoverDef.png",
             "openHoverPic": false,
             "isFontIcon": false,
             "ishovFont": false,
             "hovFont": "faisco-icons-contact2",
             "hovFontColor": "#222222",
-            "picPath": "http://10428547.s61i.faiusr.com/4/shadow-buy-house.png",
+            "picPath": "/static/images/shadow-buy-house.png",
             "isInit": false
         },
         "tagetOption": {"targetParent": "floatImg_J", "target": "floatImg_J"},
@@ -203,13 +198,13 @@ $(function () {
             "borderColor": "#000",
             "borderWidth": 1,
             "borderStyle": 1,
-            "hoverPicPath": "http://0.ss.faisys.com/image/floatImgHoverDef.png",
+            "hoverPicPath": "/static/images/floatImgHoverDef.png",
             "openHoverPic": false,
             "isFontIcon": false,
             "ishovFont": false,
             "hovFont": "faisco-icons-contact2",
             "hovFontColor": "#222222",
-            "picPath": "http://10428547.s61i.faiusr.com/4/shadow-sale-house.png",
+            "picPath": "/static/images/shadow-sale-house.png",
             "isInit": false
         },
         "tagetOption": {"targetParent": "floatImg_J", "target": "floatImg_J"},
@@ -224,13 +219,13 @@ $(function () {
             "borderColor": "#000",
             "borderWidth": 1,
             "borderStyle": 1,
-            "hoverPicPath": "http://0.ss.faisys.com/image/floatImgHoverDef.png",
+            "hoverPicPath": "/static/images/floatImgHoverDef.png",
             "openHoverPic": false,
             "isFontIcon": false,
             "ishovFont": false,
             "hovFont": "faisco-icons-contact2",
             "hovFontColor": "#222222",
-            "picPath": "http://10428547.s61i.faiusr.com/4/shadow-rent-house.png",
+            "picPath": "/static/images/shadow-rent-house.png",
             "isInit": false
         },
         "tagetOption": {"targetParent": "floatImg_J", "target": "floatImg_J"},
@@ -245,13 +240,13 @@ $(function () {
             "borderColor": "#000",
             "borderWidth": 1,
             "borderStyle": 1,
-            "hoverPicPath": "http://0.ss.faisys.com/image/floatImgHoverDef.png",
+            "hoverPicPath": "/static/images/floatImgHoverDef.png",
             "openHoverPic": false,
             "isFontIcon": false,
             "ishovFont": false,
             "hovFont": "faisco-icons-contact2",
             "hovFontColor": "#222222",
-            "picPath": "http://10428547.s61i.faiusr.com/4/shadow-manage-money.png",
+            "picPath": "/static/images/shadow-manage-money.png",
             "isInit": false
         },
         "tagetOption": {"targetParent": "floatImg_J", "target": "floatImg_J"},
@@ -283,8 +278,8 @@ function afterModuleLoaded() {
 } // afterModuleLoaded end
 
 var _lcid = 2052;
-var _siteDomain = 'http://www.ot13227318.icoc.me';
-var _resRoot = 'http://0.ss.faisys.com';
+var _siteDomain = '';
+var _resRoot = '';
 var _colId = 108;
 var _fromColId = -1;
 var _designAuth = false;
@@ -360,40 +355,40 @@ var _templateBannerData = {
     "ce": {},
     "pl": 0,
     "l": [{
-        "i": "AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY",
-        "p": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY.jpg",
+        "i": "",
+        "p": "/static/images/theme/theme-banner1.jpg",
         "w": 1920,
         "h": 780,
-        "tp": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY!100x100.jpg"
+        "tp": "/static/images/theme/theme-banner1-icon.jpg"
     }, {
-        "i": "AD0Ig8H8BBACGAAg8eaUwgUolPudngQwgA84jAY",
-        "p": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUolPudngQwgA84jAY.jpg",
+        "i": "",
+        "p": "/static/images/theme/theme-banner1.jpg",
         "w": 1920,
         "h": 780,
-        "tp": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUolPudngQwgA84jAY!100x100.jpg"
+        "tp": "/static/images/theme/theme-banner1-icon.jpg"
     }, {
-        "i": "AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY",
-        "p": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY.jpg",
+        "i": "",
+        "p": "/static/images/theme/theme-banner3.jpg",
         "w": 1920,
         "h": 780,
-        "tp": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY!100x100.jpg"
+        "tp": "/static/images/theme/theme-banner-icon.jpg"
     }],
     "n": [{
         "t": 1,
-        "i": "AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY",
+        "i": "",
         "e": 0,
         "u": "",
-        "p": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7OaUwgUogKCStwUwgA84jAY.jpg",
+        "p": "/static/images/theme/theme-banner3.jpg",
         "w": 1920,
         "h": 780,
         "el": "",
         "er": ""
     }, {
         "t": 1,
-        "i": "AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY",
+        "i": "",
         "e": 0,
         "u": "",
-        "p": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo0MSLnQUwgA84jAY.jpg",
+        "p": "/static/images/theme/theme-banner-icon.jpg",
         "w": 1920,
         "h": 780,
         "el": "",
@@ -419,30 +414,30 @@ var _pageBannerData = {
     "ce": {},
     "pl": 0,
     "l": [{
-        "i": "AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI",
-        "p": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI.jpg",
+        "i": "",
+        "p": "/static/images/theme/theme-page-banner1.jpg",
         "w": 1920,
         "h": 300,
-        "tp": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI!100x100.jpg"
+        "tp": "/static/images/theme/theme-banner-icon.jpg"
     }, {
-        "i": "AD0Ig8H8BBACGAAg7uaUwgUo_o-FiwUwgA84rAI",
-        "p": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7uaUwgUo_o-FiwUwgA84rAI.jpg",
+        "i": "",
+        "p": "/static/images/theme/theme-page-banner2.jpg",
         "w": 1920,
         "h": 300,
-        "tp": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg7uaUwgUo_o-FiwUwgA84rAI!100x100.jpg"
+        "tp": "/static/images/theme/theme-page-banner2.jpg"
     }, {
-        "i": "AD0Ig8H8BBACGAAg6eaUwgUox5jZ4gMwgA84rAI",
-        "p": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg6eaUwgUox5jZ4gMwgA84rAI.jpg",
+        "i": "",
+        "p": "/static/images/theme/theme-page-banner3.jpg",
         "w": 1920,
         "h": 300,
-        "tp": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg6eaUwgUox5jZ4gMwgA84rAI!100x100.jpg"
+        "tp": "/static/images/theme/theme-page-banner3.jpg"
     }],
     "n": [{
         "t": 1,
-        "i": "AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI",
+        "i": "",
         "e": 0,
         "u": "",
-        "p": "http://10428547.s61i.faiusr.com/2/AD0Ig8H8BBACGAAg8eaUwgUo7uW9nwYwgA84rAI.jpg",
+        "p": "/static/images/theme/theme-page-banner2.jpg",
         "w": 1920,
         "h": 300,
         "el": "",
@@ -491,9 +486,9 @@ var _navStyleData = {
     "nib": {"c": "#000", "r": 0, "f": "", "p": "", "y": 0},
     "nihb": {
         "c": "#fe8300",
-        "f": "AD0Ig8H8BBAEGAAg6_aUwgUotIO4ggEwZDgo",
+        "f": "",
         "r": -1,
-        "p": "http://10428547.s61i.faiusr.com/4/AD0Ig8H8BBAEGAAg6_aUwgUotIO4ggEwZDgo.png",
+        "p": "/static/images/bg.png",
         "y": 0
     },
     "niss": {"w": -1, "h": -1},
@@ -583,8 +578,8 @@ window.onload = function () {
 Site.beforeUnloadFunc();
 
 
-$LAB.script("http://1.ss.faisys.com/js/photoSlide.min.js?v=201702271724");
-$LAB.script("http://1.ss.faisys.com/js/imageEffect.min.js?v=201703131745")
+$LAB.script("/static/js/home/photoSlide.min.js?v=201702271724");
+$LAB.script("/static/js/home//imageEffect.min.js?v=201703131745")
     .wait(function () {
         jzUtils.trigger({
             "name": "ImageEffect.FUNC.BASIC.Init",

@@ -94,18 +94,18 @@
         <td>{$model.registered_at}</td>
         <td style="width: 230px;text-align: center;" class="action">
             <a href="javascript:void(0);">
-                <button onclick="showUrl('查看用户信息','/manage/home_user/view.html?id={$model.id}&iframe=true','51%','62.8%','2',true,true,'LAY_LABEL_CREATE',true,true)" class="layui-btn layui-btn-small">
+                <button onclick="Site.showUrl('查看用户信息','/manage/home_user/view.html?id={$model.id}&iframe=true','51%','62.8%','2',true,true,'LAY_LABEL_CREATE',true,true)" class="layui-btn layui-btn-small">
                     <i class="fa fa-eye"></i>
                     详情
                 </button>
             </a>
             <a href="javascript:void(0);">
-                <button onclick="showUrl('查看用户 {$model.username} 足迹','/manage/home_user/log.html?id={$model.id}&iframe=true','72%','88%','2',true,true,'LAY_LABEL_CREATE',true,true,true,true)" class="layui-btn layui-btn-small">
+                <button onclick="Site.showUrl('查看用户 {$model.username} 足迹','/manage/home_user/log.html?id={$model.id}&iframe=true','72%','88%','2',true,true,'LAY_LABEL_CREATE',true,true,true,true)" class="layui-btn layui-btn-small">
                     <i class="fa fa-map-marker"></i>
                     用户足迹
                 </button>
             </a>
-            <a href="javascript:void(0);"><button onclick="showDialog('信息确认','你确定删除此用户吗?',function(){deleteUser({$model.id});},true)" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showDialog('信息确认','你确定删除此用户吗?',function(){deleteUser({$model.id});},true)" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
         </td>
     </tr>
     {/volist}
@@ -123,17 +123,17 @@
             url : '/manage/home_user/delete?id='+ id,
             dataType : 'json',
             beforeSend : function() {
-                loading();
+                Site.loading();
             },
             success : function(data) {
-                setTimeout(hide(),500);
+                setTimeout(Site.hide(),500);
                 if (data.code == '1'){
                     $('[data-key="'+id+'"]').remove();
                     success('删除成功');
                 }
             },
             error : function(data) {
-                hide();
+                Site.hide();
                 error('删除失败');
             }
         });
@@ -145,7 +145,7 @@
             var laypage = layui.laypage,
                 element = 'paging_0124',
                 _page = $('#'+element),
-                currPage = $.getUrlParam('pageNumber'),
+                currPage = Site.getUrlParam('pageNumber'),
                 count = _page.attr('data-count'),
                 pages = _page.attr('data-pages');
             currPage = currPage > 1 ? currPage : 1;
@@ -162,7 +162,7 @@
                         if(url.indexOf("?") == -1) {
                             location.href = url+"?pageNumber="+obj.curr;
                         }else {
-                            var page = $.getUrlParam('pageNumber');
+                            var page = Site.getUrlParam('pageNumber');
                             if(page) {
                                 location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
                             }else {

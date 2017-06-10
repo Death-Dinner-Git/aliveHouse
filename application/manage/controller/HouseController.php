@@ -81,14 +81,14 @@ class HouseController extends ManageController
         $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
         $count = NewHouse::load()->where($where)->count();
 
-        $this->assign('meta_title', "标签清单");
+        $this->assign('meta_title', "我的房源");
         $this->assign('pages', ceil(($count)/$each));
         $this->assign('dataProvider', $dataProvider);
         $this->assign('indexOffset', (($pageNumber-1)*$each));
         $this->assign('count', $count);
         $this->assign('param', $param);
         $this->assign('lists', $lists);
-        return view('newHouse/index');
+        return view('house/index');
     }
 
     /**
@@ -118,7 +118,7 @@ class HouseController extends ManageController
                 }
             }
         }
-        return view('newHouse/create',['meta_title'=>'添加配置','lists'=>$lists]);
+        return view('house/create',['meta_title'=>'添加配置','lists'=>$lists]);
     }
 
     /**
@@ -131,7 +131,7 @@ class HouseController extends ManageController
     {
         $this->assign('meta_title', "详情");
         $model = NewHouse::load()->where(['id'=>$id])->find();
-        return view('newHouse/view',['model'=>$model]);
+        return view('house/view',['model'=>$model]);
     }
 
     /**
@@ -168,7 +168,7 @@ class HouseController extends ManageController
                 }
             }
         }
-        return view('newHouse/update',['meta_title'=>'编辑标签','model'=>$model,'lists'=>$lists]);
+        return view('house/update',['meta_title'=>'编辑标签','model'=>$model,'lists'=>$lists]);
     }
 
     /**

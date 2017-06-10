@@ -1,5 +1,465 @@
 @charset "utf-8";
 
+
+/*==========================================
+ change  layui.css
+ ===========================================*/
+
+/** 初始化 **/
+
+
+/** 滚动条 **/
+
+
+/** 图标字体 **/
+
+
+/** 初始化全局标签 **/
+
+
+/** 基础通用 **/
+
+
+/* 消除第三方ui可能造成的冲突 */
+
+
+/* 三角形 */
+
+
+/* 单行溢出省略 */
+
+
+/* 屏蔽选中 */
+
+
+/* 纯圆角 */
+
+
+/* 布局 */
+
+
+/* 后台布局风格 */
+
+
+/** 页面元素 **/
+
+
+/* 引用 */
+
+
+/* 字段集合 */
+
+
+/* 进度条 */
+
+
+/* 折叠面板 */
+
+
+/* 背景颜色 */
+
+
+/* 文字 */
+
+/*========================*/
+/** 按钮 **/
+
+
+/* 圆角 */
+
+
+/* 原始 */
+
+/* 边框 */
+
+/* 百搭 */
+
+/* 暖色 */
+
+/* 警告 */
+
+/* 禁用 */
+
+
+/* 大型 */
+
+
+/* 小型 */
+
+
+/* 迷你 */
+
+
+/* 按钮组 */
+
+/* 自定义 新按钮 */
+
+.btn {
+	border-radius: 0px;
+	-o-border-radius: 0px;
+	-ms-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border: 0px;
+	font-family: Oswald, Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	text-shadow: none;
+}
+.btn:hover {
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	color: #fff;
+}
+
+.btn:active {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.btn + .btn {
+	margin-left: 10px;
+}
+
+
+
+.btn.btn-round {
+	border-radius: 50%;
+	-o-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+
+.btn.btn-corner {
+	border-radius: 8px;
+	-o-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+.btn.btn-border {
+	border: 2px solid #C9C9C9;
+	color: #555;
+	background: transparent;
+}
+
+.btn.btn-border.btn-success {
+	border: 2px solid rgba(102, 189, 120, 1.0);
+	color: rgba(102, 189, 120, 1.0);
+	background: transparent;
+}
+
+.btn.btn-border.btn-warning {
+	border: 2px solid #FDB45C;
+	color: #FDB45C;
+	background: transparent;
+}
+
+.btn.btn-border.btn-danger {
+	border: 2px solid rgba(240, 80, 80, 1.0);
+	color: rgba(240, 80, 80, 1.0);
+	background: transparent;
+}
+
+.btn.btn-border.btn-info {
+	border: 2px solid rgba(35, 183, 229, 1.0);
+	color: rgba(35, 183, 229, 1.0);
+	background: transparent;
+}
+
+.btn.btn-border.btn-orange {
+	border: 2px solid rgba(250, 133, 100, 1.0);
+	color: rgba(250, 133, 100, 1.0);
+	background: transparent;
+}
+
+.btn.btn-border.btn-purple {
+	border: 2px solid rgba(153, 114, 181, 1.0);
+	color: rgba(153, 114, 181, 1.0);
+	background: transparent;
+}
+
+.btn.btn-border.btn-primary {
+	border: 2px solid rgba(31, 181, 172, 1.0);
+	color: rgba(31, 181, 172, 1.0);
+	background: transparent;
+}
+
+.btn.btn-border.btn-secondary {
+	border: 2px solid rgba(169, 169, 169, 1.0);
+	color: rgba(169, 169, 169, 1.0);
+	background: transparent;
+}
+
+.btn.btn-border, .btn.btn-border.btn-default {
+	border: 2px solid #eaeaea;
+	color: #333333;
+	background: transparent;
+}
+
+.btn.btn-border.btn-link {
+	border: 2px solid transparent;
+	color: #337ab7;
+	background: transparent;
+}
+
+
+/*colors*/
+
+.btn.btn-success {
+	background: rgba(102, 189, 120, 1.0);
+	color: #ffffff;
+}
+
+.btn.btn-warning {
+	background: #FDB45C;
+	color: #ffffff;
+}
+
+.btn.btn-danger {
+	background: rgba(240, 80, 80, 1.0);
+	color: #ffffff;
+}
+
+.btn.btn-info {
+	background: rgba(35, 183, 229, 1.0);
+	color: #ffffff;
+}
+
+.btn.btn-orange {
+	background: rgba(250, 133, 100, 1.0);
+	color: #ffffff;
+}
+
+.btn.btn-purple {
+	background: rgba(153, 114, 181, 1.0);
+	color: #ffffff;
+}
+
+.btn.btn-primary {
+	background: rgba(31, 181, 172, 1.0);
+	color: #ffffff;
+}
+
+.btn.btn-secondary {
+	background: rgba(169, 169, 169, 1.0);
+	color: #ffffff;
+}
+
+.btn, .btn.btn-default {
+	background: #eaeaea;
+	color: #333333;
+}
+
+.btn.btn-link {
+	background: transparent;
+	color: #337ab7;
+}
+
+/*size*/
+
+.btn {
+	padding: 7px 18px;
+}
+
+.btn.btn-lg, .btn-lg, .btn-group-lg > .btn {
+	padding: 10px 21px;
+}
+
+.btn.btn-sm, .btn-sm, .btn-group-sm > .btn {
+	padding: 5px 13px;
+}
+
+.btn.btn-xs, .btn-xs, .btn-group-xs > .btn {
+	padding: 2px 8px;
+}
+
+.btn.btn-block, .btn-block, .btn-group-block > .btn {
+	padding: 11px 23px;
+	font-size: 19px;
+	line-height: 25px;
+}
+
+/*hover state*/
+/*.btn:hover, .btn:active, .btn:focus{color:#ffffff;}*/
+
+.btn:hover, .btn:active, .btn:focus, .btn-default:hover, .btn-default:active, .btn-default:focus {
+	color: #333333;
+	background: #e5e5e5;
+}
+
+.btn.btn-link:hover, .btn.btn-link:focus {
+	color: rgba(1, 131, 122, 1.0);
+	background: transparent;
+}
+
+.btn-success:hover, .btn-success:active, .btn-success:focus {
+	background: rgba(72, 159, 90, 1.0);
+	color: #ffffff;
+}
+
+.btn-warning:hover, .btn-warning:active, .btn-warning:focus {
+	background: #e9a048;
+	color: #ffffff;
+}
+
+.btn-danger:hover, .btn-danger:active, .btn-danger:focus {
+	background: rgba(210, 50, 50, 1.0);
+	color: #ffffff;
+}
+
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+	background: rgba(5, 153, 199, 1.0);
+	color: #ffffff;
+}
+
+.btn-orange:hover, .btn-orange:active, .btn-orange:focus {
+	background: rgba(215, 113, 80, 1.0);
+	color: #ffffff;
+}
+
+.btn-purple:hover, .btn-purple:active, .btn-purple:focus {
+	background: rgba(123, 74, 141, 1.0);
+	color: #ffffff;
+}
+
+.btn-primary.active, .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+	background: rgba(1, 151, 142, 1.0);
+	color: #ffffff;
+}
+
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus {
+	background: rgba(139, 139, 139, 1.0);
+	color: #ffffff;
+}
+
+.btn-default.active, .btn-default:hover, .btn-default:active, .btn-default:focus {
+	background: #d5d5d5;
+	color: #333333;
+}
+
+.btn-default:active, .btn-primary:active, .btn-success:active, .btn-info:active, .btn-warning:active, .btn-danger:active, .btn-default.active, .btn-primary.active, .btn-success.active, .btn-info.active, .btn-warning.active, .btn-danger.active {
+	box-shadow: none;
+	-o-box-shadow: none;
+	-moz-box-shadow: none;
+	-ms-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.btn-primary:disabled, .btn-primary[disabled] {
+	background: rgba(0, 131, 122, 1.0);
+	color: #ffffff;
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+	text-shadow: none;
+}
+
+.btn-colors .btn {
+	width: 80px;
+	margin: 0 15px 15px 0;
+}
+
+.btn-iconic .btn, .btn-social .btn {
+	width: 50px;
+	text-align: center;
+	margin: 0 10px 10px 0px;
+}
+
+
+/*=======================*/
+/** 表单 **/
+
+
+/* 分割块 */
+
+
+/* 警告域 */
+
+
+/* 下拉选择 */
+
+
+/* 复选框 */
+
+
+/* 复选框-原始风格 */
+
+
+/* 复选框-开关风格 */
+
+
+/* 单选框 */
+
+
+/* 表单方框风格 */
+
+
+/** 富文本编辑器 **/
+
+
+/*======================*/
+/** 表格修饰 **/
+
+
+/** 文件上传 **/
+
+
+/** 流加载 **/
+
+
+/** 分页 **/
+
+
+/** 代码修饰器 **/
+
+
+/** 树组件 **/
+
+
+/** 导航菜单 **/
+
+
+/* 垂直导航菜单 */
+
+
+/* 侧边 */
+
+
+/** 面包屑 **/
+
+
+/** Tab选项卡 **/
+
+
+/* Tab关闭 */
+
+
+/* Tab简洁风格 */
+
+
+/* Tab卡片风格 *
+
+ */
+/** fixbar **/
+
+
+/** 表情面板 **/
+
+
+/** 动画 **/
+
+
+
+/** 响应式（前期不作为重心） **/
+
+
+
+/*========== layui.css end ===========*/
+
+
+
 /*----------------------------------------
   General Layout Style
 ------------------------------------------*/
@@ -60,41 +520,6 @@ h1,h2,h3,h4,h5,h6,a,p,span{font-family: "微软雅黑","Microsoft YaHei","Micros
 /* 清除浮动样式 */
 .clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
 .clearfix { *zoom:1; }
-
-
-/*body *{  vertical-align: top; }*/
-
-.paddingLeft0 {
-	padding-left: 0px;
-}
-
-.paddingRight0 {
-	padding-right: 0px;
-}
-
-.bottom5 {
-	margin-bottom: 5px;
-}
-
-.bottom10 {
-	margin-bottom: 10px;
-}
-
-.bottom15 {
-	margin-bottom: 15px;
-}
-
-.top15 {
-	margin-top: 15px;
-}
-
-.right15 {
-	margin-right: 15px;
-}
-
-.left15 {
-	margin-left: 15px;
-}
 
 /*---------------------------------
     Typography

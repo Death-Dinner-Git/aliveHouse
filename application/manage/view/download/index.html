@@ -81,12 +81,12 @@
         <td>{$model.created_at}</td>
         <td style="width: 200px;text-align: center;" class="action">
             <a href="javascript:void(0);">
-                <button onclick="showUrl('下载痕迹','/manage/download/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
+                <button onclick="Site.showUrl('下载痕迹','/manage/download/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
                 <i class="fa fa-eye"></i>
                     下载痕迹
                 </button>
             </a>
-            <a href="javascript:void(0);"><button onclick="showDialog('信息确认','你确定删除此项数据吗?',function(){deleteModel({$model.id});},true)" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showDialog('信息确认','你确定删除此项数据吗?',function(){deleteModel({$model.id});},true)" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
         </td>
     </tr>
     {/volist}
@@ -104,10 +104,10 @@
             url : '/manage/download/read?id='+ id,
             dataType : 'json',
             beforeSend : function() {
-                loading();
+                Site.loading();
             },
             success : function(data) {
-                setTimeout(hide(),500);
+                setTimeout(Site.hide(),500);
                 if (data.code == '1'){
                     if (data.readed !== undefined){
                         var content = '已读',
@@ -126,12 +126,12 @@
                     }
                     success('更新成功',true);
                 }else {
-                    hide();
+                    Site.hide();
                     error('更新失败',true);
                 }
             },
             error : function(data) {
-                hide();
+                Site.hide();
                 error('更新失败',true);
             }
         });
@@ -142,20 +142,20 @@
             url : '/manage/download/delete?id='+ id,
             dataType : 'json',
             beforeSend : function() {
-                loading();
+                Site.loading();
             },
             success : function(data) {
-                setTimeout(hide(),500);
+                setTimeout(Site.hide(),500);
                 if (data.code == '1'){
                     $('[data-key="'+id+'"]').remove();
                     success('删除成功',true);
                 }else {
-                    hide();
+                    Site.hide();
                     error('删除失败',true);
                 }
             },
             error : function(data) {
-                hide();
+                Site.hide();
                 error('删除失败',true);
             }
         });
@@ -169,7 +169,7 @@
             var laypage = layui.laypage,
                 element = 'paging_0124',
                 _page = $('#'+element),
-                currPage = $.getUrlParam('pageNumber'),
+                currPage = Site.getUrlParam('pageNumber'),
                 count = _page.attr('data-count'),
                 pages = _page.attr('data-pages');
             currPage = currPage > 1 ? currPage : 1;
@@ -186,7 +186,7 @@
                         if(url.indexOf("?") == -1) {
                             location.href = url+"?pageNumber="+obj.curr;
                         }else {
-                            var page = $.getUrlParam('pageNumber');
+                            var page = Site.getUrlParam('pageNumber');
                             if(page) {
                                 location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
                             }else {

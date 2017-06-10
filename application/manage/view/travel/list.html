@@ -56,7 +56,7 @@
 
 <fieldset class="layui-elem-field">
     <legend style="margin: 0px auto !important;">
-        <label class="layui-btn" onclick="showUrl('','/manage/travel/showCar.html','72%','88%','2',true,true,'LAY_TRAVEL_FALL')" lay-submit="">弹出显示</label>
+        <label class="layui-btn" onclick="Site.showUrl('','/manage/travel/showCar.html','72%','88%','2',true,true,'LAY_TRAVEL_FALL')" lay-submit="">弹出显示</label>
     </legend>
     <div class="layui-field-box" style="height: 400px;">
         <div id="map">
@@ -96,7 +96,7 @@
         <td style="width: 100px;"><?php echo \app\manage\model\TakeCarOrder::getOrderByCarId($model['car_id']); ?></td>
         <td style="width: 100px;"><?php echo \app\manage\model\TakeCarOrder::getNearby($model['getCar']['lat'],$model['getCar']['lng']); ?></td>
         <td style="width: 150px;text-align: center;" class="action">
-            <a href="javascript:void(0);"><button onclick="showUrl('查看实时位置','/manage/travel/liveAddress.html?id={$model.car_id}','72%','88%','2',true,true,'LAY_TRAVEL_{$model.id}')" class="layui-btn layui-btn-small"><i class="fa fa-search"></i>查看实时位置</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('查看实时位置','/manage/travel/liveAddress.html?id={$model.car_id}','72%','88%','2',true,true,'LAY_TRAVEL_{$model.id}')" class="layui-btn layui-btn-small"><i class="fa fa-search"></i>查看实时位置</button></a>
         </td>
     </tr>
     {/volist}
@@ -114,7 +114,7 @@
         layui.use(['laypage', 'layer'], function(){
             var laypage = layui.laypage,
                 element = 'paging_0124',
-                currPage = $.getUrlParam('pageNumber'),
+                currPage = Site.getUrlParam('pageNumber'),
                 count = $('#'+element).attr('data-pages');
             currPage = currPage > 1 ? currPage : 1;
             count = count ? count : 0;
@@ -129,7 +129,7 @@
                         if(url.indexOf("?") == -1) {
                             location.href = url+"?pageNumber="+obj.curr;
                         }else {
-                            var page = $.getUrlParam('pageNumber');
+                            var page = Site.getUrlParam('pageNumber');
                             if(page) {
                                 location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
                             }else {

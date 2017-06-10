@@ -98,7 +98,7 @@
     }, preOutCar = [];
     function getOutCar() {
         var myChartOutCar = echarts.init(document.getElementById('chartCar'));
-        myChartOutCar.showLoading();
+        myChartOutCar.showSite.loading();
         if (_getOutCarUrl == ''){_getOutCarUrl = _baseUrl;}
         $.get(_getOutCarUrl, function (data) {
             if (data.code == '1') {
@@ -216,7 +216,7 @@
                 },
 
             };
-            myChartOutCar.hideLoading();
+            myChartOutCar.hideSite.loading();
             if (_outCarOption && typeof _outCarOption === "object") {
                 myChartOutCar.setOption(_outCarOption, true);
             }

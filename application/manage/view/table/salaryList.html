@@ -65,7 +65,7 @@
             0.00
         </td>
         <td style="width: 150px;text-align: center;">
-            <a href="javascript:void(0);"><button onclick="showUrl('编辑','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-pencil"></i>编辑</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('编辑','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-pencil"></i>编辑</button></a>
         </td>
     </tr>
     <tr data-key="2">
@@ -82,7 +82,7 @@
             0.00
         </td>
         <td style="width: 150px;text-align: center;">
-            <a href="javascript:void(0);"><button onclick="showUrl('编辑','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-pencil"></i>编辑</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('编辑','detail?id=158325')" class="layui-btn layui-btn-mini"><i class="fa fa-pencil"></i>编辑</button></a>
         </td>
     </tr>
     </tbody>
@@ -101,7 +101,7 @@
         layui.use(['laypage', 'layer'], function(){
             var laypage = layui.laypage,
                 element = 'paging_0124',
-                currPage = $.getUrlParam('pageNumber'),
+                currPage = Site.getUrlParam('pageNumber'),
                 count = $('#'+element).attr('data-pages');
             currPage = currPage > 1 ? currPage : 1;
             count = count ? count : 0;
@@ -116,7 +116,7 @@
                         if(url.indexOf("?") == -1) {
                             location.href = url+"?pageNumber="+obj.curr;
                         }else {
-                            var page = $.getUrlParam('pageNumber');
+                            var page = Site.getUrlParam('pageNumber');
                             if(page) {
                                 location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
                             }

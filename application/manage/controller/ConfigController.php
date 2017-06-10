@@ -20,6 +20,9 @@ class ConfigController extends ManageController
         $where = ['is_delete'=>'1'];
         $each = 12;
         $param = ['name'=>'','type'=>'','app'=>''];
+        if ($this->getRequest()->isPjax()){
+            $param['name'] = 'PJAX';
+        }
         $query = Config::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);

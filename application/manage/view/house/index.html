@@ -50,7 +50,7 @@
 
                     <button class="layui-btn" lay-submit="">查询</button>
 
-                    <label class="layui-btn" onclick="showUrl('添加房源','/manage/house/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'],true)">添加</label>
+                    <label class="layui-btn" onclick="Site.showUrl('添加房源','/manage/house/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'],true)">添加</label>
 
                 </div>
             </form>
@@ -83,12 +83,12 @@
         <td>{$model.end_at}</td>
         <td style="width: 250px;text-align: center;" class="action">
             <a href="javascript:void(0);">
-                <button onclick="showUrl('查看详情','/manage/customer_service/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
+                <button onclick="Site.showUrl('查看详情','/manage/customer_service/view.html?id={$model.id}','62.8%','82%','2',true,true,'LAY_TRAVEL_{$model.id}',['0.372','#000'])" class="layui-btn layui-btn-small" >
                 <i class="fa fa-eye"></i>
                 查看详情
                 </button>
             </a>
-            <a href="javascript:void(0);"><button onclick="showDialog('信息确认','你确定删除此项数据吗?',function(){deleteModel({$model.id});},true)" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showDialog('信息确认','你确定删除此项数据吗?',function(){deleteModel({$model.id});},true)" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
         </td>
     </tr>
     {/volist}
@@ -106,10 +106,10 @@
             url : '/manage/customer_service/read?id='+ id,
             dataType : 'json',
             beforeSend : function() {
-                loading();
+                Site.loading();
             },
             success : function(data) {
-                setTimeout(hide(),500);
+                setTimeout(Site.hide(),500);
                 if (data.code == '1'){
                     if (data.readed !== undefined){
                         var content = '已读',
@@ -128,12 +128,12 @@
                     }
                     success('更新成功',true);
                 }else {
-                    hide();
+                    Site.hide();
                     error('更新失败',true);
                 }
             },
             error : function(data) {
-                hide();
+                Site.hide();
                 error('更新失败',true);
             }
         });
@@ -144,20 +144,20 @@
             url : '/manage/customer_service/delete?id='+ id,
             dataType : 'json',
             beforeSend : function() {
-                loading();
+                Site.loading();
             },
             success : function(data) {
-                setTimeout(hide(),500);
+                setTimeout(Site.hide(),500);
                 if (data.code == '1'){
                     $('[data-key="'+id+'"]').remove();
                     success('删除成功',true);
                 }else {
-                    hide();
+                    Site.hide();
                     error('删除失败',true);
                 }
             },
             error : function(data) {
-                hide();
+                Site.hide();
                 error('删除失败',true);
             }
         });
@@ -171,7 +171,7 @@
             var laypage = layui.laypage,
                 element = 'paging_0124',
                 _page = $('#'+element),
-                currPage = $.getUrlParam('pageNumber'),
+                currPage = Site.getUrlParam('pageNumber'),
                 count = _page.attr('data-count'),
                 pages = _page.attr('data-pages');
             currPage = currPage > 1 ? currPage : 1;
@@ -188,7 +188,7 @@
                         if(url.indexOf("?") == -1) {
                             location.href = url+"?pageNumber="+obj.curr;
                         }else {
-                            var page = $.getUrlParam('pageNumber');
+                            var page = Site.getUrlParam('pageNumber');
                             if(page) {
                                 location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
                             }else {

@@ -245,7 +245,7 @@
     $(function() {
         layui.use(['laypage', 'layer'], function(){
             var laypage = layui.laypage;
-            var currPage = $.getUrlParam('pageNumber');
+            var currPage = Site.getUrlParam('pageNumber');
             laypage({
                 curr:currPage,
                 cont: 'paging_0124',
@@ -257,7 +257,7 @@
                         if(url.indexOf("?") == -1) {
                             location.href = url+"?pageNumber="+obj.curr;
                         }else {
-                            var page = $.getUrlParam('pageNumber');
+                            var page = Site.getUrlParam('pageNumber');
                             if(page) {
                                 location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
                             }
