@@ -16,7 +16,7 @@ class BuildController extends HomeController
      */
     public function buildAction()
     {
-        return view('build/build',[
+        return view('build/build-box',[
 
         ]);
     }
