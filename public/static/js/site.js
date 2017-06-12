@@ -20,7 +20,8 @@ var config = {
         min: '300px'
     },
     layuiBase:'/static/js/',
-    components:['jquery', 'element', 'layer', 'util', 'form', 'code', 'laydate', 'flow', 'layedit', 'upload']
+    initComponents:['jquery', 'element', 'layer', 'form', 'flow','laydate'],
+    allComponents:['jquery', 'element', 'layer', 'util', 'form', 'code', 'laydate', 'flow', 'layedit', 'upload','laypage']
 };
 
 var _width = document.documentElement.clientWidth;//获取页面可见宽度
@@ -34,7 +35,8 @@ var jquery,
     laydate,
     flow,
     layedit,
-    upload;
+    upload,
+    laypage;
 
 if (typeof Site === "undefined") {
     Site = {
@@ -44,21 +46,18 @@ if (typeof Site === "undefined") {
             //layui
             layui.config({
                 base:config.layuiBase
-            }).use(config.components, function () {
+            }).use(config.initComponents, function () {
                 window.jQuery = window.$ = layui.jquery;
-                window.element = element = layui.element();
+                window.element = element = layui.element;
                 window.layer = layer = layui.layer;
-                window.util = util = layui.util;
                 window.form = form = layui.form;
-                window.code = code = layui.code;
-                window.laydate = laydate = layui.laydate;
                 window.flow = flow = layui.flow;
-                window.layedit = layedit = layui.layedit;
-                window.upload = upload = layui.upload;
+                window.laydate = laydate = layui.laydate;
                 if (typeof $ === "undefined"){
                     $ = layui.jquery;
                 }
                 var device = layui.device();
+                element();
                 //阻止IE7以下访问
                 if (device.ie && device.ie < 8) {
                     layer.alert('Layui最低支持ie8，您当前使用的是古老的 IE' + device.ie + '，依旧怀旧');
@@ -78,73 +77,140 @@ if (typeof Site === "undefined") {
         },
 
         /*  */
-        getModule:function (name,parentWin,Layui) {
-            var module,stop = false;
-            if (Layui){
-                stop = true;
-            }else {
-                Layui = layui;
-            }
+        getModule:function (name,parentWin) {
+            var module;
 
             switch (name){
                 case 'jquery':{
-                    module = top.window.jQuery ? top.window.jQuery : (window.jQuery ? window.jQuery : (jQuery ? jQuery : Layui.jQuery ) );
+                    module = top.window.jQuery ? top.window.jQuery : (window.jQuery ? window.jQuery : (jQuery ? jQuery : layui.jQuery ) );
                 }break;
                 case 'element':{
-                    module = top.window.element ? top.window.element : (window.element ? window.element : (element ? element : Layui.element ) );
+                    module = top.window.element ? top.window.element : (window.element ? window.element : (element ? element : layui.element ) );
                     if (typeof module === 'function'){
                         module = module();
                     }
                 }break;
                 case 'layer':{
                     if (parentWin === false){
-                        module = Layui.layer ? Layui.layer : (layer ? layer : (window.layer ? window.layer : top.window.layer ));
+                        module = layui.layer ? layui.layer : (layer ? layer : (window.layer ? window.layer : top.window.layer ));
                     }else {
-                        module = top.window.layer ? top.window.layer : (window.layer ? window.layer : (layer ? layer : Layui.layer ));
+                        module = top.window.layer ? top.window.layer : (window.layer ? window.layer : (layer ? layer : layui.layer ));
                     }
                 }break;
-                case 'util':{
-                    module = top.window.util ? top.window.util : (window.util ? window.util : (util ? util : Layui.util ) );
-                }break;
                 case 'form':{
-                    module = window.form ? window.form : (form ? form : Layui.form );
+                    module = window.form ? window.form : (form ? form : layui.form );
                     if (!module){
                         layui.use(['form'], function(){
                             module = layui.form;
                         });
                     }
                 }break;
-                case 'code':{
-                    module = top.window.code ? top.window.code : (window.code ? window.code : (code ? code : Layui.code ) );
-                }break;
                 case 'laydate':{
-                    module = top.window.laydate ? top.window.laydate : (window.laydate ? window.laydate : (laydate ? laydate : Layui.laydate ) );
+                    module = top.window.laydate ? top.window.laydate : (window.laydate ? window.laydate : (laydate ? laydate : layui.laydate ) );
                 }break;
                 case 'flow':{
-                    module = top.window.flow ? top.window.flow : (window.flow ? window.flow : (flow ? flow : Layui.flow )  );
-                }break;
-                case 'layedit':{
-                    module = top.window.layedit ? top.window.layedit : (window.layedit ? window.layedit : (layedit ? layedit : Layui.layedit ) );
-                }break;
-                case 'upload':{
-                    module = top.window.upload ? top.window.upload : (window.upload ? window.upload : (upload ? upload : Layui.upload ) );
+                    module = top.window.flow ? top.window.flow : (window.flow ? window.flow : (flow ? flow : layui.flow )  );
                 }break;
                 default:{
-                    return;
                 }break;
-            }
-
-            if (!module){
-                layui.config({
-                    base:config.layuiBase
-                }).use(name, function () {
-                   if (!stop){
-                       module = Site.getModule(name,parentWin,layui);
-                   }
-                })
             }
 
             return module;
+        },
+
+        /*  */
+        getUtil:function (callback,component) {
+            if (util !== undefined){
+                if (typeof callback === 'function'){
+                    callback(util);
+                }
+            }else {
+                if (typeof component !== undefined){
+                    component.push('util');
+                }else {
+                    component = 'util';
+                }
+                layui.config({
+                    base:config.layuiBase
+                }).use(component, function () {
+                    window.util = util = layui.util;
+                    if (typeof callback === 'function'){
+                        callback(util);
+                    }
+                });
+            }
+        },
+
+        /*  */
+        getCoder:function (component,callback) {
+            if (code !== undefined){
+                if (typeof callback === 'function'){
+                    callback(code);
+                }
+            }else {
+                layui.config({
+                    base:config.layuiBase
+                }).use(component, function () {
+                    window.code = code = layui.code;
+                    if (typeof callback === 'function'){
+                        callback(code);
+                    }
+                });
+            }
+        },
+
+        /*  */
+        getLayEditor:function (component,callback) {
+            if (layedit !== undefined){
+                if (typeof callback === 'function'){
+                    callback(layedit);
+                }
+            }else {
+                layui.config({
+                    base:config.layuiBase
+                }).use(component, function () {
+                    window.layedit = layedit = layui.layedit;
+                    if (typeof callback === 'function'){
+                        callback(layedit);
+                    }
+                });
+            }
+        },
+
+        /*  */
+        getUploader:function (component,callback) {
+            if (upload !== undefined){
+                if (typeof callback === 'function'){
+                    callback(upload);
+                }
+            }else {
+                layui.config({
+                    base:config.layuiBase
+                }).use(component, function () {
+                    window.upload = upload = layui.upload;
+                    if (typeof callback === 'function'){
+                        callback(upload);
+                    }
+                });
+            }
+        },
+
+        /*  */
+        getLayPager:function (callback) {
+            if (laypage !== undefined){
+                if (typeof callback === 'function'){
+                    callback(laypage);
+                }
+            }else {
+                layui.config({
+                    base:config.layuiBase
+                }).use('laypage', function () {
+                    window.laypage = laypage = layui.laypage;
+                    if (typeof callback === 'function'){
+                        callback(laypage);
+                    }
+                });
+            }
         },
 
         /*  */
@@ -209,7 +275,6 @@ if (typeof Site === "undefined") {
         },
 
         /*  */
-
         wait: function (content) {
             var myLayer = Site.getModule('layer');
             if (!myLayer) {
@@ -633,7 +698,7 @@ if (typeof Site === "undefined") {
 
         /*  */
         loadPage: function (pageElement,total) {
-            layui.use(['laypage'], function(){
+            Site.getLayPager(function () {
                 var laypage = layui.laypage;
                 total = total || true;
                 pageElement = pageElement || 'paging_0124';
@@ -664,7 +729,7 @@ if (typeof Site === "undefined") {
                             }
                         }
                         if (total){
-                            _page.prepend('<span style="display: inline-block;text-align:center;padding: 0 20px;color: #333;font-size: 14px;"> 数量: '+(count)+' </span>');
+                            _page.prepend('<span class="dinner-page-total"> 数量: '+(count)+' </span>');
                         }
                     }
                 });

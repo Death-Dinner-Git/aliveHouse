@@ -739,18 +739,22 @@ a:hover, a:focus {
 .dinner-logo-box{
 	width: 300px; height: 70px; position: relative;
 }
-.logo{display:block;position: absolute; left: 10px; top: 10px;}
 .logo img{width: 50px; height: 50px;}
 #dinner-side-logo{
 	position:absolute;
+	display: flex;
 	z-index: 19940201;
 	top: 0px;
 	left: 0px;
-	width: 150px;
-	height: 50px;
+	width: 200px;
+	height: 70px;
+}
+#dinner-side-logo .logo{
+	display:inline-block;
+	margin: auto;
 }
 #dinner-side-logo .logo img{
-	width: 150px;
+	width: 50px;
 	height: 50px;
 }
 .dinner-logo-title{display:block;position: absolute; left: 70px; top: 10px;}
@@ -837,6 +841,56 @@ a:hover, a:focus {
 }
 .dinner-side-toggle{
 	left: 215px;
+}
+
+/* 头部控制侧栏按钮 样式二 */
+.dinner-sidebar-toggle{
+	position: fixed;
+	cursor: pointer;
+	z-index: 19940201;
+	/*left: 210px;*/
+	top: 0;
+	bottom: 0;
+	left: 200px;
+	width: 0;
+	height: 100%;
+	color: white;
+	text-align: center;
+	background-color: #1fb5ac;
+}
+
+.dinner-sidebar-toggle .dinner-sidebar-toggle-container{
+	display: flex;
+	position: absolute;
+	top: 45%;
+	width: 17px;
+	height: 94px;
+	background-image: url('/static/images/sidebar_toggle.png');
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.dinner-sidebar-toggle .dinner-sidebar-toggle-container:hover{
+	opacity: 0.872;
+}
+
+.dinner-sidebar-toggle .dinner-sidebar-toggle-container .dinner-sidebar-toggle-box{
+	margin: auto;
+	height: 45px;
+	width: 15px;
+}
+
+.dinner-sidebar-toggle .dinner-sidebar-toggle-container .dinner-sidebar-toggle-box i:before{
+	color: #1fb5ac;
+	text-align: center;
+	vertical-align: middle;
+	height: 45px;
+	line-height: 45px;
+	font-size: 15px;
+}
+.dinner-sidebar-toggle .dinner-sidebar-toggle-container .dinner-sidebar-toggle-box i:before:hover{
+	color: #1fb5ac;
+	opacity: 1;
 }
 
 /* 头部左侧 */
@@ -1244,9 +1298,70 @@ left: 0px !important;
 .layui-table[lay-even] tr:nth-child(odd) {
 	/*background-color: #d4d4d4;*/
 }
+
 .layui-table tr:hover {
 	background-color: #d4d4d4 !important;
 }
+
+.dinner-page-main{
+	display: flex;
+	overflow: hidden
+}
+
+.dinner-page-main .dinner-page-container{
+	margin: auto;
+	min-width: 500px;
+	min-height: 55px;
+}
+
+.dinner-page-main .dinner-page-container .dinner-page-content .dinner-page-total{
+	display: inline-block;
+	text-align:center;
+	padding: 0 20px;
+	color: #333;
+	font-size: 14px;
+}
+
+.layui-laypage .layui-laypage-total{
+	height: 28px;
+	line-height: 28px;
+	margin-left: 1px;
+	border: none;
+	padding: 0 0 0 15px;
+	font-weight: 400;
+}
+
+.layui-laypage .layui-laypage-total input, .layui-laypage .layui-laypage-total button {
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #009688;
+	border-radius: 2px;
+	vertical-align: top;
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}
+
+.layui-laypage .layui-laypage-total input {
+	width: 80px;
+	margin: 0 5px;
+	text-align: center;
+	background-color: #f4f4f4;
+}
+
+.layui-laypage .layui-laypage-total button {
+	height: 30px;
+	line-height: 30px;
+	border: none;
+	border-radius: 2px;
+	vertical-align: top;
+	background-color: #009688;
+	color: #FFFFFF;
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}
+
 
 
 /* =======================================

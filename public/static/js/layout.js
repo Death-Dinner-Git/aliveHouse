@@ -140,43 +140,58 @@ layui.config({
     }
 
     // dinner-side-menu向左折叠
-    $('#dinner-side-toggle').click(function() {
-        var sideWidth = $('#dinner-side').width();
-        var icon = $(this).find('i');
+    $('#dinner-sidebar-toggle').click(function() {
+        var body = $('#dinner-body'),
+            footer = $('#dinner-footer'),
+            side = $('#dinner-side'),
+            logo = $('#dinner-side-logo'),
+            icon = $(this).find('i'),
+            img = logo.find('img'),
+            sideWidth = side.width();
         if(sideWidth === 200) {
-            $('#dinner-body').animate({
+            body.animate({
                 left: '0'
             }); //admin-footer
-            $('#dinner-footer').animate({
+            footer.animate({
                 left: '0'
             });
-            $('#dinner-side').animate({
+            side.animate({
                 width: '0'
             });
             $(this).animate({
-                left: '15'
+                left: '0'
             });
-            $('#dinner-side-logo img').animate({
-                width: '0'
+            logo.animate({
+                width: '90'
             });
             icon.attr('class',icon.attr('data-close')).attr('title','展开侧栏');
+            img.animate({
+                width:'0'
+            }).animate({
+                width:'50'
+            });
         } else {
-            $('#dinner-body').animate({
+            body.animate({
                 left: '200px'
             });
-            $('#dinner-footer').animate({
+            footer.animate({
                 left: '200px'
             });
-            $('#dinner-side').animate({
+            side.animate({
                 width: '200px'
             });
             $(this).animate({
-                left: '215'
+                left: '200'
             });
-            $('#dinner-side-logo img').animate({
-                width: '150'
+            logo.animate({
+                width: '200'
             });
             icon.attr('class',icon.attr('data-open')).attr('title','隐藏侧栏');
+            img.animate({
+                width:'0'
+            }).animate({
+                width:'50'
+            });
         }
     });
 

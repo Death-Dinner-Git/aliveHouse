@@ -91,7 +91,7 @@
                         编辑
                     </button>
                 </a>
-                <a href="javascript:void(0);"><button onclick="Site.showDialog('信息确认','你确定删除此标签吗?',function(){deleteUser({$model.id});})" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
+                <a href="javascript:void(0);"><button onclick="Site.showDialog('信息确认','你确定删除此项吗?',function(){deleteUser({$model.id});})" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
             </td>
         </tr>
         {/volist}
@@ -100,10 +100,13 @@
 </section>
 
 <!-- 分页容器 -->
-<div id="paging_0124" style="text-align:right;" data-count="{$count}" data-pages="{$pages}" data-page=""></div>
+<section class="dinner-page-main">
+    <div class="dinner-page-container">
+        <div id="paging_0124" class="dinner-page-content" style="text-align:right;" data-count="{$count}" data-pages="{$pages}" data-page=""></div>
+    </div>
+</section>
 
 <script>
-    layui.use([ 'layer','laydate', 'form'], function() {});
     function deleteUser(id) {
         $.ajax({
             type : "post",
