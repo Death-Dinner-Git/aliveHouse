@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<title>我房网</title>
+	</head>
+
+	<body class="bgw">
+		<div class="menuList">
+			<p style="border-bottom: 1px solid #ebebeb; margin-bottom: 10px;padding-bottom: 10px;">共0条记录</p>
+			<div class="layui-form" style="border-bottom: 1px solid #ebebeb; margin-bottom: 10px;">
+				<div class="layui-form-item special" style="margin-bottom: 10px;">
+					<div class="layui-inline">
+						<span class="layui-btn layui-btn-radius layui-btn-small">所有动态</span>
+						<span class="layui-btn layui-btn-radius layui-btn-small">已采集</span>
+						<span class="layui-btn layui-btn-radius layui-btn-small">未审核</span>
+					</div>
+				</div>
+			</div>
+			<div class="list-box layui-form">
+				<div class="layui-form-item special" style="padding-left: 10px;">
+					<div class="layui-inline">
+						<input type="checkbox" lay-skin="primary" title="全选/反选">
+					</div>
+					<div class="layui-inline">
+						<button class="layui-btn layui-btn-danger">删除</button>
+						<button class="layui-btn">审核</button>
+						<button class="layui-btn add-trend">添加新动态</button>
+					</div>
+				</div>
+				<ul class="layui-form wordlist">
+					<li>
+						<div class="topic">
+							<input type="checkbox" lay-skin="primary" title="新世界·美丽沙C户型新世界·美丽沙C户型">
+							<div class="operation fr">
+								<span class="layer-edit">编辑</span>
+								<span class="none">删除</span>
+							</div>
+						</div>
+						<div class="word">
+							<p>新世界·美丽沙位于海口市海甸岛西部，项目现已封顶项目现已封顶项目现已封顶项目现已封顶项目现已封顶项目现已封顶，户型正在调整中，预计2013年中旬可以开盘，具体价格信息待定。</p>
+							<label class="layui-form-label">备注说明：</label>
+							<div class="layui-input-block" style="margin-left: 115px;">
+								<textarea disabled="disabled" class="layui-textarea"></textarea>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>				
+			<p class="record">1条记录 1/1页</p>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script src="/js/site.js"></script>
+		<script type="text/javascript">
+			layui.use('form', function() {
+				var $ = layui.jquery,
+					form = layui.form();
+				//全选
+				form.on('checkbox(allChoose)', function(data) {
+					var child = $(data.elem).parents('table').find('tbody input[name="checkbox"]');
+					child.each(function(index, item) {
+						item.checked = data.elem.checked;
+					});
+					form.render('checkbox');
+				});
+			});
+			$('.add-trend').on('click', function() {
+				top.layer.open({
+					type: 2,
+					title: '添加动态',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['640px', '300px'],
+					content: '/manage/building/update/addTrend.html',
+				});
+			});
+			$('.layer-edit').on('click', function() {
+				top.layer.open({
+					type: 2,
+					title: '动态编辑',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['640px', '300px'],
+					content: '/manage/building/update/editTrend.html',
+				});
+			});
+		</script>
+	</body>
+
+</html>

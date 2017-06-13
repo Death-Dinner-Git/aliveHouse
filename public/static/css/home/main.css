@@ -711,7 +711,15 @@ a:hover, a:focus {
 	background-color: rgba(0,0,0,0);
 }
 
-#alive-site-main{
+#alive-site-body .flex *{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content:center;
+	align-items: center;
+}
+
+#alive-site-main,#alive-site-web{
 	display: -webkit-flex; /* Safari */
 	display: flex;
 	flex-flow: column wrap;
@@ -725,7 +733,6 @@ a:hover, a:focus {
 #web-header-container{
 	order:1;
 	height: 120px;
-	background-color: #d4d4d4;
 }
 
 #web-header-container #header-content-container{
@@ -741,6 +748,7 @@ a:hover, a:focus {
 
 #web-main-container{
 	order: 2;
+	align-self: auto;
 	min-height: 600px;
 	background-color: #f4f4f4;
 }
@@ -811,13 +819,313 @@ a:hover, a:focus {
 	bottom: 0;
 }
 
-#header-content-container #header-content-button{
+/* 头部 */
+
+#header-content-container #header-button-container{
+	display: -webkit-flex; /* Safari */
+	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
 
 #header-content-container .header-body{
-
+	position: relative;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content:space-between;
+	align-items: stretch;
+	height: 100%;
+	width: 100%;
 }
 
+#header-content-container .header-body #headerAbsTable{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#header-content-container .header-body #headerAbsTable #headerAbs{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+}
+
+#header-content-container .header-body #headerTopTable{
+	order: 1;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+}
+
+#header-content-container .header-body #headerMiddleTable{
+	order: 2;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	height: 45px;
+	width: 100%;
+	flex-flow: row nowrap;
+	justify-content:space-between;
+	align-items: stretch;
+}
+
+#header-content-container .header-body #headerBottomTable{
+	order: 3;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+}
+
+#headerMiddleTable #headerLeft{
+	order: 1;
+	height: 100%;
+	width: 200px;
+}
+
+#headerMiddleTable #headerCenter{
+	order: 2;
+	height: 100%;
+	width: 0;
+}
+
+#headerMiddleTable #headerRight{
+	order: 3;
+	height: 100%;
+	width: 750px;
+}
+
+/* 头部 logo*/
+#headerMiddleTable #headerLeft #corpTitle{
+	width: 100%;
+	height: 100%;
+	padding-left: 15px;
+	font-size: 32px;
+	white-space: nowrap;
+}
+
+#headerMiddleTable #headerLeft #corpTitle span{
+	font-weight: bold;
+}
+
+#headerMiddleTable #headerLeft #corpTitle span:first-child{
+	color: rgba(255, 101, 55, 1)
+}
+
+#headerMiddleTable #headerLeft #corpTitle span:last-child{
+	color: rgba(204, 204, 204, 1);
+}
+
+/* 头部 中部 */
+
+
+/* 头部 右部 */
+#headerMiddleTable #headerRight #headerNav{
+	width: 100%;
+	height: 40px;
+	padding-right: 15px;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content:flex-end;
+	align-items: stretch;
+}
+
+#headerNav .item{
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+	margin-right: 5px;
+	min-width: 100px;
+	height: 40px;
+	background: none;
+	cursor: pointer;
+	border-spacing: 0;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content:center;
+	align-items: center;
+}
+
+#headerNav .item a {
+	padding: 5px;
+	outline:none;
+	text-decoration: none;
+	text-shadow: none;
+	color: #333333;
+	font-family: 微软雅黑;
+	font-weight: normal;
+	font-size: 16px;
+	text-align: center;
+	display: block;
+	word-break: keep-all;
+	white-space: nowrap;
+	width: auto;
+	min-width: 60px;
+	max-width: none;
+}
+
+#headerNav .item.itemSelected,#headerNav .item:hover{
+	background-color: #ff6633;
+}
+
+#headerNav .item.itemSelected a,#headerNav .item:hover a{
+	color: #F4F4F4;
+}
+
+/* 底部 */
+
+#footer-content-container #footer-button-container{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#footer-content-container .footer-body{
+	position: relative;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content:space-between;
+	align-items: stretch;
+	height: 100%;
+	width: 100%;
+}
+
+#footer-content-container .footer-body #footerAbsTable{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#footer-content-container .footer-body #footerAbsTable #footerAbs{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+}
+
+#footer-content-container .footer-body #footerTopTable{
+	order: 1;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+}
+
+#footer-content-container .footer-body #footerMiddleTable{
+	order: 2;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	height: 170px;
+	width: 100%;
+	flex-flow: row nowrap;
+	justify-content:space-between;
+	align-items: stretch;
+}
+
+#footer-content-container .footer-body #footerBottomTable{
+	order: 3;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	height: 130px;
+	width: 100%;
+	flex-flow: row nowrap;
+	justify-content:space-between;
+	align-items: stretch;
+}
+
+#headerMiddleTable #headerLeft{
+	order: 1;
+	height: 100%;
+	width: 200px;
+}
+
+#headerMiddleTable #headerCenter{
+	order: 2;
+	height: 100%;
+	width: 0;
+}
+
+#headerMiddleTable #headerRight{
+	order: 3;
+	height: 100%;
+	width: 750px;
+}
+
+/* 头部 logo*/
+#headerMiddleTable #headerLeft #corpTitle{
+	width: 100%;
+	height: 100%;
+	padding-left: 15px;
+	font-size: 32px;
+	white-space: nowrap;
+}
+
+#headerMiddleTable #headerLeft #corpTitle span{
+	font-weight: bold;
+}
+
+#headerMiddleTable #headerLeft #corpTitle span:first-child{
+	color: rgba(255, 101, 55, 1)
+}
+
+#headerMiddleTable #headerLeft #corpTitle span:last-child{
+	color: rgba(204, 204, 204, 1);
+}
+
+/* 头部 中部 */
+
+
+/* 头部 右部 */
+#headerMiddleTable #headerRight #headerNav{
+	width: 100%;
+	height: 40px;
+	padding-right: 15px;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content:flex-end;
+	align-items: stretch;
+}
+
+#headerNav .item{
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+	margin-right: 5px;
+	min-width: 100px;
+	height: 40px;
+	background: none;
+	cursor: pointer;
+	border-spacing: 0;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content:center;
+	align-items: center;
+}
+
+#headerNav .item a {
+	padding: 5px;
+	outline:none;
+	text-decoration: none;
+	text-shadow: none;
+	color: #333333;
+	font-family: 微软雅黑;
+	font-weight: normal;
+	font-size: 16px;
+	text-align: center;
+	display: block;
+	word-break: keep-all;
+	white-space: nowrap;
+	width: auto;
+	min-width: 60px;
+	max-width: none;
+}
+
+#headerNav .item.itemSelected,#headerNav .item:hover{
+	background-color: #ff6633;
+}
+
+#headerNav .item.itemSelected a,#headerNav .item:hover a{
+	color: #F4F4F4;
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<title>我房网</title>
+	</head>
+
+	<body>
+		<div class="contain">
+			<div class="building">
+				<div class="layui-collapse choice">
+					<form class="layui-form">
+						<div class="condition">
+							<div class="layui-inline select-box">
+								<div class="layui-input-inline">
+									<select name="modules" lay-search="">
+										<option value="">选择省份</option>
+										<option value="1">海南省</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-inline select-box">
+								<div class="layui-input-inline">
+									<select name="modules" lay-search="">
+										<option value="">选择城市</option>
+										<option value="1">海口市</option>
+										<option value="2">文昌市</option>
+										<option value="3">琼海市</option>
+										<option value="4">澄迈</option>
+										<option value="5">三亚</option>
+										<option value="6">临高</option>
+										<option value="7">儋州</option>
+										<option value="8">陵水</option>
+										<option value="9">万宁</option>
+										<option value="10">保亭</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-input-inline search">
+								<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="可搜索楼盘名称" class="layui-input">
+							</div>
+							<button class="layui-btn" type="button">搜索</button>
+						</div>
+						<div class="layui-colla-item">
+							<h2 class="more layui-colla-title short">更多</h2>
+							<div class="layui-colla-content">
+								<div class="layui-form-item">
+									<label class="layui-form-label">销售状态：</label>
+									<div class="layui-input-block">
+										<input type="radio" name="sale" value="不限" title="不限" checked="">
+										<input type="checkbox" lay-skin="primary" title="待售">
+										<input type="checkbox" lay-skin="primary" title="预售">
+										<input type="checkbox" lay-skin="primary" title="在售">
+										<input type="checkbox" lay-skin="primary" title="尾盘">
+										<input type="checkbox" lay-skin="primary" title="已售完">
+										<input type="checkbox" lay-skin="primary" title="停售">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">合作状态：</label>
+									<div class="layui-input-block">
+										<input type="radio" name="coo" value="不限" title="不限" checked="">
+										<input type="checkbox" lay-skin="primary" title="不合作">
+										<input type="checkbox" lay-skin="primary" title="暂封盘">
+										<input type="checkbox" lay-skin="primary" title="暂无协议">
+										<input type="checkbox" lay-skin="primary" title="合同到期">
+										<input type="checkbox" lay-skin="primary" title="合同中">
+										<input type="checkbox" lay-skin="primary" title="代理项目">
+										<input type="checkbox" lay-skin="primary" title="联合代理">
+										<input type="checkbox" lay-skin="primary" title="总渠道整合">
+										<input type="checkbox" lay-skin="primary" title="渠道整合">
+										<input type="checkbox" lay-skin="primary" title="房盟驻厂">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">楼盘类型：</label>
+									<div class="layui-input-block">
+										<input type="radio" name="type" value="不限" title="不限" checked="">
+										<input type="checkbox" lay-skin="primary" title="住宅">
+										<input type="checkbox" lay-skin="primary" title="公寓">
+										<input type="checkbox" lay-skin="primary" title="海景房">
+										<input type="checkbox" lay-skin="primary" title="别墅">
+										<input type="checkbox" lay-skin="primary" title="酒店式公寓">
+										<input type="checkbox" lay-skin="primary" title="产权式酒店">
+										<input type="checkbox" lay-skin="primary" title="写字楼">
+										<input type="checkbox" lay-skin="primary" title="商铺">
+										<input type="checkbox" lay-skin="primary" title="酒店">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">特色楼盘：</label>
+									<div class="layui-input-block">
+										<input type="radio" name="special" value="不限" title="不限" checked="">
+										<input type="checkbox" lay-skin="primary" title="特色别墅">
+										<input type="checkbox" lay-skin="primary" title="养老居所">
+										<input type="checkbox" lay-skin="primary" title="高档小区">
+										<input type="checkbox" lay-skin="primary" title="景观居">
+										<input type="checkbox" lay-skin="primary" title="花园洋房">
+										<input type="checkbox" lay-skin="primary" title="投资地产">
+										<input type="checkbox" lay-skin="primary" title="创意地产">
+										<input type="checkbox" lay-skin="primary" title="水景地产">
+										<input type="checkbox" lay-skin="primary" title="低密居住">
+										<div class="layui-inline others">
+											<label class="layui-form-label">其他：</label>
+											<div class="layui-input-inline">
+												<input type="text" name="number" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">装修状况：</label>
+									<div class="layui-input-block">
+										<input type="radio" name="condition" value="不限" title="不限" checked="">
+										<input type="checkbox" lay-skin="primary" title="毛坯">
+										<input type="checkbox" lay-skin="primary" title="简易装修">
+										<input type="checkbox" lay-skin="primary" title="中档装修">
+										<input type="checkbox" lay-skin="primary" title="精装修">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">均&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</label>
+									<div class="layui-input-block">
+										<div class="layui-inline">
+											<div class="layui-input-inline" style="width: 150px;">
+												<select name="modules" lay-search="">
+													<option value="1">不限</option>
+													<option value="2">50万</option>
+													<option value="3">80万</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-inline">
+											<label class="layui-form-label">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</label>
+											<div class="layui-input-inline" style="width: 150px;">
+												<select name="modules" lay-search="">
+													<option value="1">不限</option>
+													<option value="2">100万</option>
+													<option value="3">130万</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-inline">
+											<label class="layui-form-label">开盘日期：</label>
+											<div class="layui-input-inline" style="width: 150px;">
+												<select name="modules" lay-search="">
+													<option value="1">不限</option>
+													<option value="2">form</option>
+													<option value="3">layim</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-inline">
+											<label class="layui-form-label">面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;积：</label>
+											<div class="layui-input-inline" style="width: 70px;">
+												<input type="text" name="price_min" autocomplete="off" class="layui-input">
+											</div>
+											<div class="layui-form-mid">-</div>
+											<div class="layui-input-inline" style="width: 70px;">
+												<input type="text" name="price_max" autocomplete="off" class="layui-input">
+											</div>
+											<span style="line-height: 38px;">(㎡)</span>
+										</div>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">更新时间：</label>
+									<div class="layui-input-block">
+										<div class="layui-inline">
+											<div class="layui-input-inline" style="width: 150px;">
+												<select name="modules" lay-search="">
+													<option value="1">不限</option>
+													<option value="2">50万</option>
+													<option value="3">80万</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-inline">
+											<label class="layui-form-label">排序方式：</label>
+											<div class="layui-input-inline" style="width: 150px;">
+												<select name="modules" lay-search="">
+													<option value="1">不限</option>
+													<option value="2">100万</option>
+													<option value="3">130万</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-inline">
+											<label class="layui-form-label">是否分销：</label>
+											<div class="layui-input-inline" style="width: 150px;">
+												<select name="modules" lay-search="">
+													<option value="1">不限</option>
+													<option value="2">form</option>
+													<option value="3">layim</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="building-box">
+					<div class="station">
+						<span>楼盘状态</span>
+						<a onclick="clickA(this)">所有的</a>
+						<a onclick="clickA(this)">热售的</a>
+						<a onclick="clickA(this)">优惠的</a>
+						<a onclick="clickA(this)">最新的</a>
+						<a onclick="clickA(this)">置顶的</a>
+						<a onclick="clickA(this)">推荐的</a>
+						<a onclick="clickA(this)">未审核的</a>
+					</div>
+					<div class="operate layui-form">
+						<div class="layui-input-inline" style="margin: 0 20px;">
+							<input type="checkbox" class="allCheck" lay-skin="primary">
+						</div>
+						<button class="layui-btn layui-btn-danger"><i class="layui-icon"></i> 删除</button>
+						<button class="layui-btn">已删除楼盘</button>
+						<button class="layui-btn add-building">添加楼盘</button>
+					</div>
+					<h1 class="number">共<em>2090</em>个楼盘</h1>
+					<div class="building-list layui-form">
+						<ul>
+							<li>
+								<div class="building-title">
+									<div class="layui-input-inline">
+										<input class="building-name" type="checkbox" lay-skin="primary" title="四季华庭">
+										<span class="layui-btn layui-btn-radius layui-btn-mini">待售</span>
+										<a href="/manage/building/detailPage.html" target="_blank" style="color: #1E9FFF;margin-left: 10px;position: relative;top: 2px;">管理中心</a>
+									</div>
+									<div class="pic-num">
+										<a>效果图：<em>10</em>个</a>
+										<a>交通图：<em>10</em>个</a>
+										<a>实景图：<em>10</em>个</a>
+										<a>周边配套图：<em>10</em>个</a>
+										<a>样板间：<em>10</em>个</a>
+										<a>其他：<em>10</em>个</a>
+										<a>户型图：<em>10</em>个</a>
+									</div>
+								</div>
+								<div class="building-content">
+									<a href="#" target="_blank" class="building-img"><img src="../../images/pic.jpg" /></a>
+									<div class="detail-box">
+										<div class="building-detail">
+											<div class="details">
+												<p>起&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：0元/㎡</p>
+												<p>物业类型：住宅</p>
+												<p>开盘日期：待定</p>
+												<p>所在区域：澄迈市-老城镇</p>
+											</div>
+											<div class="details">
+												<p>均&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：0元/㎡</p>
+												<p>客户权属：暂无资料</p>
+												<p>入住日期：待定</p>
+												<p>楼盘地址：澄迈老城经济开发区生态软件</p>
+											</div>
+											<div class="details">
+												<p>优惠折扣：暂无资料</p>
+												<p>添加时间：2017-05-12</p>
+												<p>最近更新：2017-05-12</p>
+												<p>项目特色：养老居所 宜居生态 投资地产</p>
+											</div>
+										</div>
+										<div class="tab-choice">
+											<div class="layui-input-inline" style="margin-right: 20px;">
+												<input type="checkbox" lay-skin="primary" title="热售">
+											</div>
+											<div class="layui-input-inline" style="margin-right: 20px;">
+												<input type="checkbox" lay-skin="primary" title="优惠">
+											</div>
+											<div class="layui-input-inline" style="margin-right: 20px;">
+												<input type="checkbox" lay-skin="primary" title="最新">
+											</div>
+											<div class="layui-input-inline" style="margin-right: 20px;">
+												<input type="checkbox" lay-skin="primary" title="置顶">
+											</div>
+											<div class="layui-input-inline" style="margin-right: 20px;">
+												<input type="checkbox" lay-skin="primary" title="推荐">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="building-msg">
+									<div class="pic-num">
+										<a>访问数：<em>10</em>个</a>
+										<a>看房团：<em>10</em>个</a>
+										<a>楼盘动态：<em>10</em>条</a>
+										<a>楼盘新闻：<em>10</em>篇</a>
+										<a>楼盘问答：<em>10</em>个</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div id="page"></div>
+				</div>
+			</div>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script src="/js/site.js"></script>
+		<script type="text/javascript">
+			function clickA(e){
+				$(e).addClass('current');
+				$(e).siblings().removeClass('current');
+			}
+			layui.use(['laypage', 'layer'], function() {
+				var $ = layui.jquery,
+					laypage = layui.laypage,
+					layer = layui.layer;
+				laypage({
+					cont: 'page',
+					pages: 100,
+					skip: true
+				});
+			});
+			$('.building-list .pic-num a:last-of-type').addClass('lasta');
+			$('.add-building').on('click', function() {
+				top.layer.open({
+					type: 2,
+					title: '添加新楼盘',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['964px', '600px'],
+					content: '/manage/building/addBuilding.html',
+				});
+			});
+		</script>
+	</body>
+
+</html>

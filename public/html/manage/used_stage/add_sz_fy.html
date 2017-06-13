@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/layui.css" />
+  <link rel="stylesheet" type="text/css" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="/css/used.css">
+  <title>我房网</title>
+</head>
+
+<body>
+<div class="contain">
+  <div class="main">
+    <div class="usedBox">
+      <div class="step_box">
+        <ul class="clearfix">
+          <li class="active">
+            <div class="step_item">
+              <div class="num_box">1</div>
+              <div class="jiatou">
+                <div class="sanjiao"></div>
+              </div>
+              <div class="title">楼盘信息</div>
+            </div>
+          </li>
+          <li class="">
+            <div class="step_item">
+              <div class="num_box">2</div>
+              <div class="jiatou">
+                <div class="sanjiao"></div>
+              </div>
+              <div class="title">房屋信息</div>
+            </div>
+          </li>
+          <li class="">
+            <div class="step_item">
+              <div class="num_box">3</div>
+              <div class="jiatou">
+                <div class="sanjiao"></div>
+              </div>
+              <div class="title">业主信息</div>
+            </div>
+          </li>
+          <li class="">
+            <div class="step_item">
+              <div class="num_box">4</div>
+              <div class="title">附加信息</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="step_detail_box">
+        <div class="step_1 step_detail active">
+          <form class="layui-form md_form" action="">
+            <div class="layui-form-item" style="text-align: left">
+              <label class="layui-form-label">委托类型 :</label>
+              <div class="layui-input-block sale_zu">
+                <input type="radio" name="weituo" value="出租" title="出租" checked="">
+                <input type="radio" name="weituo" value="出售" title="出售">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">标题 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+              <i class="layui-txt" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">房源状态 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">物业名称 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+              <i class="layui-txt" style="font-size: 18px; color: #FF5722;">*</i>
+              <i class="layui-icon" style="font-size: 30px; color: #393D49;cursor: pointer">&#xe615;</i>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">所在区域 :</label>
+              <div class="layui-input-inline sm_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <div class="layui-input-inline sm_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <div class="layui-input-inline sm_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <i class="layui-txt" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">物业地址 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+              <i class="layui-txt" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">楼栋号 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <i class="layui-txt" >栋</i>
+              <i class="layui-txt" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">单元号 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <i class="layui-txt" >单元</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">门牌号 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <i class="layui-txt" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">所在楼层 :</label>
+              <div class="layui-input-inline sm_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <div class="layui-input-inline sm_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input md_input">
+                <i>层</i>
+              </div>
+              <div class="layui-input-inline sm_input" style="width: 140px">
+                <i>共</i>
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input md_input">
+                <i>层</i>
+              </div>
+              <i class="layui-txt" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item btn_box">
+              <button class="layui-btn ne_btn" id="panduan_btn" type="button">下一步</button>
+            </div>
+          </form>
+        </div>
+        <div class="step_2 step_detail">
+          <form class="layui-form md_form" action="">
+            <div class="layui-form-item" style="text-align: left">
+              <label class="layui-form-label">委托类型 :</label>
+              <div class="layui-input-block">
+               <i class="leixing layui-txt">出售</i>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">物业类型 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">物业类型 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+              <i class="layui-txt">元/月/㎡</i>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">房龄 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">朝向 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">户型 :</label>
+              <div class="layui-input-inline xs_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <div class="layui-form-mid">室</div>
+              <div class="layui-input-inline xs_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <div class="layui-form-mid">厅</div>
+              <div class="layui-input-inline xs_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <div class="layui-form-mid">厨</div>
+              <div class="layui-input-inline xs_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <div class="layui-form-mid">卫</div>
+              <div class="layui-input-inline xs_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <div class="layui-form-mid">阳台</div>
+              <i class="layui-icon" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">装修情况 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+              <i class="layui-icon" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">建筑结构 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">建筑面积 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <i class="layui-icon" >㎡</i>
+              <i class="layui-icon" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">使用面积 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <i class="layui-icon" >㎡</i>
+            </div>
+            <div class="layui-form-item sale_item">
+              <label class="layui-form-label">销售总价 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <i class="layui-icon" >万元</i>
+            </div>
+            <div class="layui-form-item zu_item">
+              <label class="layui-form-label">租金 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <i class="layui-icon" >元/月</i>
+            </div>
+            <div class="layui-form-item sale_item">
+              <label class="layui-form-label">销售单价 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <i class="layui-icon" >/㎡</i>
+            </div>
+            <div class="layui-form-item zu_item">
+              <label class="layui-form-label">销售单价 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item sale_item">
+              <label class="layui-form-label">底价 :</label>
+              <div class="layui-input-inline dijia_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <div class="layui-input-inline danwen_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>万元</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item zu_item">
+              <label class="layui-form-label">底价 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item sale_item">
+              <label class="layui-form-label">原价 :</label>
+              <div class="layui-input-inline dijia_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+              <div class="layui-input-inline danwen_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>万元</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item zu_item">
+              <label class="layui-form-label">原价 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item sale_item">
+              <label class="layui-form-label">付款方式 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item zu_item">
+              <label class="layui-form-label">付租方式 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">付佣方式 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">房屋现状 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">包税 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item btn_box">
+              <button class="layui-btn layui-btn-danger pre_btn" type="button">上一步</button>
+              <button class="layui-btn ne_btn" type="button">下一步</button>
+            </div>
+          </form>
+        </div>
+        <div class="step_3 step_detail">
+          <form class="layui-form md_form" action="">
+            <div class="layui-form-item" style="text-align: left">
+              <label class="layui-form-label">委托类型 :</label>
+              <div class="layui-input-block">
+               <i class="leixing layui-txt">出售</i>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">业主姓名 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+              <i class="layui-icon" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">委托类型 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">身份证号 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item tel_item">
+              <label class="layui-form-label tel_txt">手机号 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+              <i class="layui-icon" style="font-size: 18px; color: #FF5722;">*</i>
+              <i class="layui-icon add_tel" style="font-size: 24px; color: #5FB878;cursor: pointer">&#xe608;</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">固定电话 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">委托协议 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">钥匙情况 :</label>
+              <div class="layui-input-inline step_input">
+                <select name="interest" lay-filter="aihao">
+                  <option value="" selected>请选择</option>
+                  <option value="0">写作</option>
+                  <option value="1" >阅读</option>
+                  <option value="2">游戏</option>
+                  <option value="3">音乐</option>
+                  <option value="4">旅行</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">钥匙持有 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">业务员 :</label>
+              <div class="layui-input-inline step_input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">委托时间 :</label>
+              <div class="layui-input-inline step_input">
+                <input class="layui-input" id="date_01">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">信息来源 :</label>
+                <div class="layui-input-inline step_input">
+                  <select name="interest" lay-filter="aihao">
+                    <option value="" selected>请选择</option>
+                    <option value="0">写作</option>
+                    <option value="1" >阅读</option>
+                    <option value="2">游戏</option>
+                    <option value="3">音乐</option>
+                    <option value="4">旅行</option>
+                  </select>
+                </div>
+              <i class="layui-icon" style="font-size: 18px; color: #FF5722;">*</i>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">独家 :</label>
+                <div class="layui-input-inline step_input">
+                  <select name="interest" lay-filter="aihao">
+                    <option value="" selected>请选择</option>
+                    <option value="0">写作</option>
+                    <option value="1" >阅读</option>
+                    <option value="2">游戏</option>
+                    <option value="3">音乐</option>
+                    <option value="4">旅行</option>
+                  </select>
+                </div>
+            </div>
+            <div class="layui-form-item" style="text-align: left">
+              <label class="layui-form-label">是否藏盘 :</label>
+              <div class="layui-input-block">
+                <input type="radio" name="weituo" value="是" title="是" checked="">
+                <input type="radio" name="weituo" value="否" title="否">
+              </div>
+            </div>
+            <div class="layui-form-item btn_box">
+              <button class="layui-btn pre_btn layui-btn-danger" type="button">上一步</button>
+              <button class="layui-btn ne_btn" type="button">下一步</button>
+            </div>
+          </form>
+        </div>
+        <div class="step_4 step_detail" style="max-width: 752px;margin: auto">
+          <form class="layui-form md_form" action="">
+            <div class="layui-form-item" style="text-align: left">
+              <label class="layui-form-label">委托类型 :</label>
+              <div class="layui-input-block">
+               <i class="leixing layui-txt">出售</i>
+              </div>
+            </div>
+            <div class="layui-form-item" style="text-align: left">
+              <label class="layui-form-label">房源设施 :</label>
+              <div class="layui-input-block tj_margin">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="水" checked="">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="电">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="电话">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="电视">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="空调">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="电风扇">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="洗衣机">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="热水器">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="煤气灶">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="抽油烟机">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="电冰箱">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="微波炉">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="床">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="衣柜">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="书柜">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="橱柜">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="沙发">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="茶几">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="宽带">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="天然气">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="电梯">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="停车位">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="阁楼">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="暖气">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="地下室">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="花园小院">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="露台">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="全选">
+              </div>
+            </div>
+            <div class="layui-form-item" style="text-align: left">
+              <label class="layui-form-label">周边环境 :</label>
+              <div class="layui-input-block tj_margin">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="医院" checked="">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="银行">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="学校">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="邮局">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="超市">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="公园">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="停车场">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="健身房">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="菜市场">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="商城">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="体育场">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="幼儿园">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="地铁">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="汽车站">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="全选">
+              </div>
+            </div>
+            <div class="layui-form-item" style="text-align: left">
+              <label class="layui-form-label">房源标签 :</label>
+              <div class="layui-input-block tj_margin">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="精装修" checked="">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="拎包入住">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="随时看房">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="双学区">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="学区房">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="电梯房">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="海景房">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="送露台">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="带花园">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="观景房">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="全选">
+              </div>
+            </div>
+            <div class="layui-form-item" style="text-align: left">
+              <label class="layui-form-label">房源设置 :</label>
+              <div class="layui-input-block tj_margin">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="外网显示" checked="">
+                <input type="checkbox" name="sheshi" lay-skin="primary" value="" title="外网不显示">
+                <div class="layui-form-mid" style="font-size: 12px;float: right">（如果需要显示网站，请先设置房源标签，再选择外网显示）</div>
+              </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">交通状况 :</label>
+              <div class="layui-input-block tj_margin">
+                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">房源描述 :</label>
+              <div class="layui-input-block tj_margin">
+                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item btn_box">
+              <button class="layui-btn pre_btn layui-btn-danger" type="button">上一步</button>
+              <button class="layui-btn save_btn">保存</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/layui.js"></script>
+<script type="text/javascript" src="/js/site.js"></script>
+
+<script>
+  layui.use('laydate', function() {
+    var laydate = layui.laydate;
+    var start = {
+      min: laydate.now(),
+      max: '2099-06-16 23:59:59',
+      istoday: false,
+      choose: function (datas) {
+        end.min = datas; //开始日选好后，重置结束日的最小日期
+        end.start = datas //将结束日的初始值设定为开始日
+      }
+    };
+    var end = {
+      min: laydate.now(),
+      max: '2099-06-16 23:59:59',
+      istoday: false,
+      choose: function (datas) {
+        start.max = datas; //结束日选好后，重置开始日的最大日期
+      }
+    };
+    document.getElementById('date_01').onclick = function () {
+      start.elem = this;
+      laydate(start);
+    };
+  });
+  /*添加出售/租房源*/
+  $(document).ready(function(){
+    var _index = 0;
+    var step = $(".step_box ul li");
+    var step_item = $(".step_detail_box .step_detail");
+    var le = step.length-1;
+    $('.ne_btn').click(function(){
+      event.stopPropagation();
+      $('body,html').animate({scrollTop:0},100);
+      if(_index < le && _index >= 0){
+        step.eq(_index).find('.num_box').html('<i class="layui-icon" style="font-size: 28px; color:#fff;">&#xe618;</i>  ');
+        _index++;
+        $(".step_box ul li").eq(_index).addClass("active");
+        step_item.eq(_index).addClass('active').siblings().removeClass("active")
+      }
+    });
+    $('.pre_btn').click(function(){
+      var sal_zu = $('.sale_zu .layui-form-radioed span').html();
+      event.stopPropagation();
+      $('body,html').animate({scrollTop:0},100);
+      if(_index <= le && _index > 0){
+        step.eq(_index-1).find('.num_box').html(_index);
+        $(".step_box ul li").eq(_index).removeClass("active");
+        _index--;
+        step_item.eq(_index).addClass('active').siblings().removeClass("active");
+      }
+    });
+    $("#panduan_btn").click(function(){
+      var sal_zu = $('.sale_zu .layui-form-radioed span').html();
+      $(".leixing").html(sal_zu);
+      if(sal_zu === "出租"){
+        $(".sale_item").hide();
+        $(".zu_item").show()
+      }else{
+        $(".sale_item").show();
+        $(".zu_item").hide()
+      }
+    });
+  });
+  /*添加手机号*/
+  $(document).ready(function(){
+    var i = 2;
+    $('.add_tel').click(function(){
+      if( i <= 3){
+        var html1 = '<label class="layui-form-label tel_txt">手机号'+i+' :</label>';
+        var html2 = '<div class="layui-input-inline step_input"> <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input"> </div> ';
+        var html3 = '<i class="layui-icon" style="font-size: 18px; color: #FF5722;">*</i>';
+        var html = '<div class="layui-form-item tel_item">'+html1+html2+html3+'</div>';
+        $(this).siblings('.tel_txt').html("手机号1 :");
+        $('.tel_item:last').after(html);
+        i++;
+      }
+    });
+  });
+</script>
+</body>
+
+</html>

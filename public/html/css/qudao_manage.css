@@ -1,0 +1,31 @@
+.deco_txt{
+  color: #FF5722;
+}
+.gray_txt{
+  color: #c2c2c2;
+}
+.block_item{
+  padding: 10px;
+  /*border-bottom: 1px solid #e2e2e2;*/
+  margin-top: 30px;
+}
+.block_item .title{
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #5FB878;
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+}
+.block_item .kehu_box{
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #5FB878;
+}
+.layui-form-label{
+  width: 100px;
+}
+.box_border{
+  padding: 20px;
+  border: 1px solid #e2e2e2;
+}

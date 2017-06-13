@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<title>我房网</title>
+	</head>
+
+	<body class="bgw">
+		<div class="menuList">
+			<form class="layui-form">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">所属楼盘：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<span class="need">*所属楼盘不能为空</span>
+				</div>
+				<div class="layui-form-item special" style="margin-bottom: 0;">
+					<label class="layui-form-label">动态类型：</label>
+					<div class="layui-input-block">
+						<input type="radio" name="station" value="工程进度" title="工程进度" checked="">
+						<input type="radio" name="station" value="价格变动" title="价格变动">
+						<input type="radio" name="station" value="优惠政策" title="优惠政策">
+						<input type="radio" name="station" value="其他" title="其他">
+						<span class="need" style="position: relative;top: 3px;">*请选择类型</span>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">动态内容：</label>
+					<div class="layui-input-inline" style="width: 60%;">
+						<textarea class="layui-textarea" lay-verify="required"></textarea>
+					</div>
+					<span class="need">*请输入内容</span>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button type="button" class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
+						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script src="/js/site.js"></script>
+	</body>
+
+</html>

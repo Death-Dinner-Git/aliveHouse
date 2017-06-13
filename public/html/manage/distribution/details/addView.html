@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="/css/used.css">
+		<title>我房网</title>
+	</head>
+
+	<body>
+		<div class="message-box edit-data">
+			<form class="layui-form review">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">*发单时间：</label>
+						<div class="layui-input-block">
+							<input lay-verify="required" class="layui-input" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">*出车时间：</label>
+						<div class="layui-input-block">
+							<input lay-verify="required" class="layui-input" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">填写提示：</label>
+					<div class="layui-input-block">
+						<p class="layui-red">派车用途选择提交后，将无法更改，如非要修改派车用途，请在出车时间至少半小时前取消出车（出车时间前半小时内无法取消出车），重新填写一份看房安排；如若无法取消出车，请联系客服删除本次看房安排，并在出车列表内删除出车信息后，再填写一次看房安排！</p>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">*派车用途：</label>
+					<div class="layui-input-block">
+						<input type="radio" name="grade" value="客户看房" title="客户看房" checked="checked">
+						<input type="radio" name="grade" value="客户自驾" title="客户自驾">
+						<input type="radio" name="grade" value="踩盘用车" title="踩盘用车">
+						<input type="radio" name="grade" value="客户售后" title="客户售后">
+						<input type="radio" name="grade" value="接机" title="接机">
+						<input type="radio" name="grade" value="送客机场" title="送客机场">
+						<input type="radio" name="grade" value="送客火车站" title="送客火车站">
+						<input type="radio" name="grade" value="接客火车站" title="接客火车站">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">*出车城市：</label>
+					<div class="layui-input-inline">
+						<select name="modules" lay-search="">
+							<option value="">请选择</option>
+							<option value="1">海口</option>
+							<option value="2">文昌</option>
+							<option value="3">琼海</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">*出车楼盘：</label>
+						<div class="layui-input-block">
+							<input lay-verify="required" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">预看时间：</label>
+						<div class="layui-input-block">
+							<input class="layui-input" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">看房单：</label>
+						<div class="layui-input-block">
+							<input type="radio" name="order" value="有" title="有" checked="checked">
+							<input type="radio" name="order" value="无" title="无">
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">输入提示：</label>
+					<div class="layui-input-block">
+						<p class="layui-red">出车楼盘和报备楼盘：输入楼盘名称的时候系统会根据你输入的内容自动把结果列出来，点击选择你要的楼盘即可，记住是选择！选择！选择！重要的事情说三遍！否则购房明细里面看不到楼盘名称。</p>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">*接客地点类型：</label>
+						<div class="layui-input-inline">
+							<select name="modules" lay-verify="required" lay-search="">
+								<option value="">请选择</option>
+								<option value="1">市区</option>
+								<option value="2">机场</option>
+								<option value="3">酒店</option>
+								<option value="4">楼盘</option>
+								<option value="5">其他</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">*目的城市：</label>
+						<div class="layui-input-inline">
+							<select name="modules" lay-verify="required" lay-search="">
+								<option value="">请选择</option>
+								<option value="1">海口</option>
+								<option value="2">文昌</option>
+								<option value="3">琼海</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">*用车顾问：</label>
+						<div class="layui-input-inline">
+							<select name="modules" lay-verify="required" lay-search="">
+								<option value="">请选择</option>
+								<option value="1">小明</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">*出车人数：</label>
+						<div class="layui-input-inline">
+							<input type="text" lay-verify="required" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">油费：</label>
+					<div class="layui-input-block">
+						<input type="text" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">业务备注：</label>
+					<div class="layui-input-block">
+						<textarea class="layui-textarea"></textarea>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">*设置地址：</label>
+					<div class="layui-input-block">
+						<input type="text" lay-verify="required" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<!--地图-->
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<div id="l-map"></div>
+					</div>
+				</div>
+				<div class="layui-form-item tc" style="margin-top: 15px;">
+					<button type="button" class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</form>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script type="text/javascript" src="/js/site.js"></script>
+		<script type="text/javascript">
+			layui.use(['laydate'], function() {
+				var laydate = layui.laydate;
+			});
+		</script>
+	</body>
+
+</html>

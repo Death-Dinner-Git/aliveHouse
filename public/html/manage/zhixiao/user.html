@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<title>我房网</title>
+	</head>
+
+	<body>
+		<div class="contain">
+			<div class="building distribution">
+				<div class="layui-tab layui-tab-card">
+					<ul class="layui-tab-title">
+						<li class="layui-this" onclick="belong()">互动用户</li>
+						<li onclick="belong()">已删除互动用户</li>
+					</ul>
+					<a data-url="/manage/distribution/record.html" class="img layui-btn layui-btn-warm" lay-filter="url" data-title="互动记录" style="position: absolute;right: 8px;top: 22px;">互动记录</a>
+					<div class="layui-collapse choice">
+						<form class="layui-form">
+							<div class="condition">
+								<div class="layui-input-inline search" style="width: 840px;">
+									<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="可搜索楼盘名称" class="layui-input">
+								</div>
+								<button class="layui-btn" type="button">搜索</button>
+							</div>
+							<div class="layui-colla-item">
+								<h2 class="more layui-colla-title short">更多</h2>
+								<div class="layui-colla-content">
+									<div class="layui-form-item common">
+										<label class="layui-form-label">来自：</label>
+										<div class="layui-input-block">
+											<input type="radio" name="sale" value="不限" title="不限" checked="">
+											<input type="checkbox" lay-skin="primary" title="我房网">
+											<input type="checkbox" lay-skin="primary" title="0898">
+											<input type="checkbox" lay-skin="primary" title="三亚地产">
+											<input type="checkbox" lay-skin="primary" title="儋州地产">
+											<input type="checkbox" lay-skin="primary" title="海口地产">
+											<input type="checkbox" lay-skin="primary" title="万宁地产">
+											<input type="checkbox" lay-skin="primary" title="网站专题">
+											<input type="checkbox" lay-skin="primary" title="手机wap">
+										</div>
+									</div>
+									<div class="layui-form-item team">
+										<div class="layui-inline" style="position: relative;left: -10px;">
+											<label class="layui-form-label" style="width: 90px;">办事处组别：</label>
+											<div class="layui-input-inline">
+												<select name="modules" lay-search="">
+													<option value="">请选择</option>
+													<option value="1">分销置业部</option>
+													<option value="2">海口分销部</option>
+													<option value="3">海口东1组</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-inline">
+											<label class="layui-form-label">权属人：</label>
+											<div class="layui-input-inline">
+												<input type="text" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+									</div>
+									<div class="layui-form-item common">
+										<div class="layui-inline">
+											<label class="layui-form-label">互动时间：</label>
+											<div class="layui-input-inline">
+												<input class="layui-input" id="add-s">
+											</div>
+											<div class="layui-form-mid">-</div>
+											<div class="layui-input-inline">
+												<input class="layui-input" id="add-e">
+											</div>
+										</div>
+									</div>
+									<div class="layui-form-item common">
+										<label class="layui-form-label">客户状态：</label>
+										<div class="user-btn layui-inline">
+											<button type="button" class="layui-btn">所有客户</button>
+											<button type="button" class="layui-btn">未分配客户</button>
+											<button type="button" class="layui-btn">已分配客户</button>
+											<button type="button" class="layui-btn">过期未添加</button>
+										</div>
+										<div class="record-btn layui-inline">
+											<button type="button" class="layui-btn">所有互动</button>
+											<button type="button" class="layui-btn">看房团报名</button>
+											<button type="button" class="layui-btn">用户关注</button>
+											<button type="button" class="layui-btn">优惠定制</button>
+											<button type="button" class="layui-btn">定制动态</button>
+											<button type="button" class="layui-btn">用户备选</button>
+											<button type="button" class="layui-btn">发送楼盘信息定制</button>
+											<button type="button" class="layui-btn">购房联盟</button>
+											<button type="button" class="layui-btn">首次问答</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="layui-form data">
+					<div class="layui-form-item">
+						<div class="layui-inline" style="margin-left: 20px;margin-right: 15px;">
+							<input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose">
+						</div>
+						<div class="layui-inline">
+							<button type="button" class="layui-btn layui-btn-danger">删除</button>
+						</div>
+						<div class="layui-inline">
+							<label class="layui-form-label">客户操作：</label>
+							<div class="layui-input-inline">
+								<input type="text" placeholder="客户处理" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<button type="button" class="layui-btn layui-btn-normal">转移权属</button>
+						</div>
+					</div>
+					<div class="layui-form-item user-num">
+						<table class="layui-table">
+							<thead>
+								<tr>
+									<th>
+										<input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose">
+									</th>
+									<th>编号</th>
+									<th>互动用户</th>
+									<th>用户权属</th>
+									<th>互动时间</th>
+									<th>看房团</th>
+									<th>来自</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<input type="checkbox" name="" lay-skin="primary">
+									</td>
+									<td></td>
+									<td>
+										<a href="/manage/distribution/details/customer_detail.html" target="_blank">文靖涛</a>
+									</td>
+									<td>羊春燕</td>
+									<td>2017-06-06 10:00</td>
+									<td>1</td>
+									<td>手机wap</td>
+									<td>
+										<span class="myrecord handle">互动记录</span>
+										<span class="remark handle">备注信息</span>
+										<span class="add-to handle">添加到客户</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script src="/js/site.js"></script>
+		<script type="text/javascript">
+			//互动记录
+			$('.myrecord').on('click',function(){
+				top.layer.open({
+					type: 2,
+					title: '互动记录',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['900px', '400px'],
+					content: '/manage/distribution/myRecord.html'
+				});
+			});
+			//备注信息
+			$('.remark').on('click',function(){
+				top.layer.open({
+					type: 2,
+					title: '互动备注说明',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['450px', '350px'],
+					content: '/manage/distribution/remark.html'
+				});
+			});
+			//添加到客户
+			$('.add-to').on('click',function(){
+				top.layer.open({
+					type: 2,
+					title: '添加新客户',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['942px', '600px'],
+					content: '/manage/distribution/addToCustomer.html'
+				});
+			});
+			layui.use('laydate', function() {
+				var laydate = layui.laydate;
+				var start = {
+					min: laydate.now(),
+					max: '2099-06-16 23:59:59',
+					istoday: false,
+					choose: function(datas) {
+						end.min = datas; //开始日选好后，重置结束日的最小日期
+						end.start = datas //将结束日的初始值设定为开始日
+					}
+				};
+				var end = {
+					min: laydate.now(),
+					max: '2099-06-16 23:59:59',
+					istoday: false,
+					choose: function(datas) {
+						start.max = datas; //结束日选好后，重置开始日的最大日期
+					}
+				};
+				document.getElementById('add-s').onclick = function() {
+					start.elem = this;
+					laydate(start);
+				}
+				document.getElementById('add-e').onclick = function() {
+					end.elem = this
+					laydate(end);
+				}
+			});
+			layui.use('form', function() {
+				var $ = layui.jquery,
+					form = layui.form();
+				//全选
+				form.on('checkbox(allChoose)', function(data) {
+					var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+					child.each(function(index, item) {
+						item.checked = data.elem.checked;
+					});
+					form.render('checkbox');
+				});
+			});
+			belong();
+			//权属客户
+			function belong(){
+				$('.building.distribution .layui-colla-item .layui-form-item').hide();
+				$('.common').show();
+				$('.team').show();
+				$('.user-btn').show();
+				$('.record-btn').hide();
+			}
+		</script>
+	</body>
+
+</html>

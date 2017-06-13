@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="/css/used.css">
+		<title>我房网</title>
+	</head>
+
+	<body>
+		<div class="message-box">
+			<div class="top_bar clearfix">
+				<div class="bar_title">客户回访记录</div>
+				<div class="gonngneng_btn layui-form">
+					<div class="layui-input-inline">
+						<select>
+							<option value="">回访方式</option>
+							<option value="1">网络</option>
+							<option value="2">来电</option>
+							<option value="3">去电</option>
+							<option value="4">来访</option>
+							<option value="4">短信</option>
+							<option value="4">其他</option>
+						</select>
+					</div>
+					<div class="layui-input-inline">
+						<select>
+							<option value="">默认方式</option>
+							<option value="1">上次回访</option>
+							<option value="2">下次回访</option>
+							<option value="3">更新日期</option>
+						</select>
+					</div>
+					<button class="layui-btn add-visit">添加回访</button>
+					<button class="layui-btn add-view" style="margin-right: 10px;">添加看房安排</button>
+				</div>
+			</div>
+			<div class="client-list layui-form">
+				<form class="layui-form-item search">
+					<div class="layui-inline">
+						<input type="checkbox" lay-skin="primary" lay-filter="allChoose">
+					</div>
+					<div class="layui-inline">
+						<button class="layui-btn layui-btn-danger">删除</button>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">有17个回访记录</label>
+					</div>
+					<div class="layui-inline mrn fr">
+						<label class="layui-form-label">回访时间：</label>
+						<div class="layui-input-inline">
+							<input class="layui-input" id="LAY_demorange_s">
+						</div>
+						<div class="layui-form-mid">-</div>
+						<div class="layui-input-inline">
+							<input class="layui-input" id="LAY_demorange_e">
+						</div>
+						<button type="button" class="layui-btn">查找</button>
+						<button type="reset" class="layui-btn">重置</button>
+					</div>
+				</form>
+				<div class="layui-form-item">
+					<ul>
+						<li>
+							<div class="layui-inline">
+								<input type="checkbox" lay-skin="primary">
+								<label class="layui-form-label">回访时间：2017-06-06 18:00:00</label>
+								<label class="layui-form-label">回访人：陈和梅</label>
+								<label class="layui-form-label">回访方式：来电</label>
+							</div>
+							<p>对不起亲您要的号码无法接通</p>
+						</li>
+						<li>
+							<div class="layui-inline">
+								<input type="checkbox" lay-skin="primary">
+								<label class="layui-form-label">回访时间：2017-06-06 18:00:00</label>
+								<label class="layui-form-label">回访人：陈和梅</label>
+								<label class="layui-form-label">回访方式：来电</label>
+							</div>
+							<p>对不起亲您要的号码无法接通</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script type="text/javascript" src="/js/site.js"></script>
+		<script type="text/javascript">
+			layui.use(['form','laydate'], function() {
+				var $ = layui.jquery,
+					form = layui.form();
+				//全选
+				form.on('checkbox(allChoose)', function(data) {
+					var child = $(data.elem).parents('.layui-form').find('input[type="checkbox"]');
+					child.each(function(index, item) {
+						item.checked = data.elem.checked;
+					});
+					form.render('checkbox');
+				});
+				var laydate = layui.laydate;
+				var start = {
+					min: laydate.now(),
+					max: '2099-06-16 23:59:59',
+					istoday: false,
+					choose: function(datas) {
+						end.min = datas; //开始日选好后，重置结束日的最小日期
+						end.start = datas //将结束日的初始值设定为开始日
+					}
+				};
+				var end = {
+					min: laydate.now(),
+					max: '2099-06-16 23:59:59',
+					istoday: false,
+					choose: function(datas) {
+						start.max = datas; //结束日选好后，重置开始日的最大日期
+					}
+				};
+				document.getElementById('LAY_demorange_s').onclick = function() {
+					start.elem = this;
+					laydate(start);
+				}
+				document.getElementById('LAY_demorange_e').onclick = function() {
+					end.elem = this
+					laydate(end);
+				}
+			});
+			$('.add-visit').on('click',function(){
+				top.layer.open({
+					type: 2,
+					title: '添加/编辑回访记录',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['940px', '640px'],
+					content: '/manage/anchang/details/addRecord.html'
+				});
+			});
+			$('.add-view').on('click', function() {
+				top.layer.open({
+					type: 2,
+					title: '添加看房安排',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['1050px', '90%'],
+					content: '/manage/anchang/details/addView.html'
+				});
+			});
+		</script>
+	</body>
+
+</html>

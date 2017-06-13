@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="/css/used.css">
+		<link rel="stylesheet" type="text/css" href="/css/qudao_manage.css">
+		<title>我房网</title>
+	</head>
+
+	<body>
+		<div class="message-box edit-data">
+			<form class="layui-form review">
+				<div class="block_item">
+					<div class="title">客户资料</div>
+					<div class="kehu_box">
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">*客户姓名：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="username" lay-verify="required" autocomplete="off" class="layui-input">
+								</div>
+								<div class="layui-form-mid layui-word-aux need">*请填写客户姓名</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label">性别：</label>
+								<input type="radio" name="sex" value="男" title="男" checked="checked">
+								<input type="radio" name="sex" value="女" title="女">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">加密号码：</label>
+								<div class="layui-input-inline">
+									<input type="text" autocomplete="off" class="layui-input">
+								</div>
+								<div class="layui-form-mid layui-word-aux">可以添加</div>
+								<button class="layui-btn">新增手机号</button>
+								<button class="layui-btn">新增座机号</button>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">*需求类别：</label>
+								<div class="layui-input-block">
+									<input lay-verify="required" type="radio" name="need" value="新房" title="新房" checked="checked">
+									<input lay-verify="required" type="radio" name="need" value="二手房" title="二手房">
+									<input lay-verify="required" type="radio" name="need" value="综合投资" title="综合投资">
+								</div>
+							</div>
+							<div class="layui-inline fr">
+								<label class="layui-form-label">*来过海南：</label>
+								<div class="layui-input-block">
+									<input lay-verify="required" type="radio" name="place" value="是" title="是" checked="checked">
+									<input lay-verify="required" type="radio" name="place" value="否" title="否">
+									<input lay-verify="required" type="radio" name="place" value="未知" title="未知">
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline area">
+								<label class="layui-form-label">*客户区域：</label>
+								<div class="layui-input-inline">
+									<select lay-verify="required" lay-search="">
+										<option value="">请选择省份</option>
+										<option value="杭州">杭州</option>>
+										<option value="温州">温州</option>
+										<option value="温州">台州</option>
+										<option value="温州">绍兴</option>
+									</select>
+								</div>
+								<div class="layui-input-inline">
+									<select lay-verify="required" lay-search="">
+										<option value="">请选择</option>
+										<option value="西湖区">西湖区</option>
+										<option value="余杭区">余杭区</option>
+										<option value="拱墅区">临安市</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-inline fr">
+								<label class="layui-form-label">通讯地址：</label>
+								<div class="layui-input-inline">
+									<input type="text" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">电子邮箱：</label>
+								<div class="layui-input-inline">
+									<input type="text" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline fr">
+								<label class="layui-form-label">QQ：</label>
+								<div class="layui-input-inline">
+									<input type="text" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">客户生日：</label>
+								<div class="layui-input-inline">
+									<input type="text" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline fr">
+								<label class="layui-form-label">客户职业：</label>
+								<div class="layui-input-inline">
+									<input type="text" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">身份证：</label>
+								<div class="layui-input-inline">
+									<input type="text" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="block_item">
+					<div class="title">客户来源</div>
+					<div class="kehu_box">
+						<div class="layui-form-item">
+							<label class="layui-form-label">客户来源：</label>
+							<div class="layui-input-block more-radio">
+								<input type="radio" name="from" value="我房400" title="我房400" checked="checked">
+								<input type="radio" name="from" value="我房商桥" title="我房商桥">
+								<input type="radio" name="from" value="我房互动" title="我房互动">
+								<input type="radio" name="from" value="房盟400" title="房盟400">
+								<input type="radio" name="from" value="房盟商桥" title="房盟商桥">
+								<input type="radio" name="from" value="房盟互动" title="房盟互动">
+								<input type="radio" name="from" value="搜房发帖" title="搜房发帖">
+								<input type="radio" name="from" value="安居客发帖" title="安居客发帖">
+								<input type="radio" name="from" value="站外发帖" title="站外发帖">
+								<input type="radio" name="from" value="我房发帖" title="我房发帖">
+								<input type="radio" name="from" value="朋友介绍" title="朋友介绍">
+								<input type="radio" name="from" value="客户转介绍" title="客户转介绍">
+								<input type="radio" name="from" value="售楼处" title="售楼处">
+								<input type="radio" name="from" value="房展会" title="房展会">
+								<input type="radio" name="from" value="户外宣传" title="户外宣传">
+								<input type="radio" name="from" value="短信促销" title="短信促销">
+								<input type="radio" name="from" value="二手房" title="二手房">
+								<input type="radio" name="from" value="我房网" title="我房网">
+								<input type="radio" name="from" value="我房问答" title="我房问答">
+								<input type="radio" name="from" value="一号通来电" title="一号通来电">
+								<input type="radio" name="from" value="高铁站" title="高铁站">
+								<input type="radio" name="from" value="机场站" title="机场站">
+								<input type="radio" name="from" value="58发帖" title="58发帖">
+								<input type="radio" name="from" value="高铁外" title="高铁外">
+								<input type="radio" name="from" value="百度寻客" title="百度寻客">
+								<input type="radio" name="from" value="其他" title="其他">
+								<input type="radio" name="from" value="二级代理" title="二级代理">
+								<input type="radio" name="from" value="看房游" title="看房游">
+								<input type="radio" name="from" value="渠道活动" title="渠道活动">
+								<input type="radio" name="from" value="自主开发" title="自主开发">
+								<input type="radio" name="from" value="售楼处来电" title="售楼处来电">
+								<input type="radio" name="from" value="甲方客户" title="甲方客户">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="block_item">
+					<div class="title">第一次接洽及权属</div>
+					<div class="kehu_box">
+						<div class="layui-form-item">
+							<label class="layui-form-label">*接洽方式：</label>
+							<div class="layui-input-block">
+								<input lay-verify="required" type="radio" name="way" value="网络" title="网络" checked="checked">
+								<input lay-verify="required" type="radio" name="way" value="来电" title="来电">
+								<input lay-verify="required" type="radio" name="way" value="去电" title="去电">
+								<input lay-verify="required" type="radio" name="way" value="来访" title="来访">
+								<input lay-verify="required" type="radio" name="way" value="短信" title="短信">
+								<input lay-verify="required" type="radio" name="way" value="其他" title="其他">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">接洽时间：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="date" id="date" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+								</div>
+							</div>
+							<div class="layui-inline fr">
+								<label class="layui-form-label" style="width: 110px;">下次回访时间：</label>
+								<div class="layui-input-inline">
+									<input type="text" name="date" id="time" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">*客户等级：</label>
+							<div class="layui-input-block">
+								<input type="radio" name="grade" value="重要客户" title="重要客户" checked="checked">
+								<input type="radio" name="grade" value="近期看房" title="近期看房">
+								<input type="radio" name="grade" value="暂未确定" title="暂未确定">
+								<input type="radio" name="grade" value="看房客户" title="看房客户">
+								<input type="radio" name="grade" value="成交客户" title="成交客户">
+								<input type="radio" name="grade" value="退房客户" title="退房客户">
+								<input type="radio" name="grade" value="放弃客户" title="放弃客户">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">*客户权属：</label>
+								<div class="layui-input-inline">
+									<select name="modules" lay-verify="required" lay-search="">
+										<option value="">请选择</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-inline fr">
+								<label class="layui-form-label">*第一次接洽：</label>
+								<div class="layui-input-inline">
+									<select name="modules" lay-verify="required" lay-search="">
+										<option value="">请选择</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="block_item">
+					<div class="title">置业需求</div>
+					<div class="kehu_box">
+						<div class="layui-form-item special">
+							<label class="layui-form-label">*置业目的：</label>
+							<div class="layui-input-block">
+								<input type="checkbox" lay-skin="primary" title="居住">
+								<input type="checkbox" lay-skin="primary" title="养老">
+								<input type="checkbox" lay-skin="primary" title="休闲度假">
+								<input type="checkbox" lay-skin="primary" title="投资">
+								<div class="layui-inline" style="margin-bottom: 0;">
+									<label class="layui-form-label" style="width: 44px;">其他：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="number" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">*置业城市：</label>
+							<div class="layui-input-block">
+								<input type="checkbox" lay-skin="primary" title="海口">
+								<input type="checkbox" lay-skin="primary" title="三亚">
+								<input type="checkbox" lay-skin="primary" title="文昌">
+								<input type="checkbox" lay-skin="primary" title="琼海">
+								<input type="checkbox" lay-skin="primary" title="万宁">
+								<input type="checkbox" lay-skin="primary" title="五指山">
+								<input type="checkbox" lay-skin="primary" title="东方">
+								<input type="checkbox" lay-skin="primary" title="儋州">
+								<input type="checkbox" lay-skin="primary" title="临高">
+								<input type="checkbox" lay-skin="primary" title="澄迈">
+								<input type="checkbox" lay-skin="primary" title="定安">
+								<input type="checkbox" lay-skin="primary" title="屯昌">
+								<input type="checkbox" lay-skin="primary" title="昌江">
+								<input type="checkbox" lay-skin="primary" title="白沙">
+								<input type="checkbox" lay-skin="primary" title="琼中">
+								<input type="checkbox" lay-skin="primary" title="陵水">
+								<input type="checkbox" lay-skin="primary" title="保亭">
+								<input type="checkbox" lay-skin="primary" title="乐东">
+								<input type="checkbox" lay-skin="primary" title="西沙群岛">
+								<input type="checkbox" lay-skin="primary" title="博鳌">
+								<div class="layui-inline" style="margin-bottom: 0;">
+									<label class="layui-form-label" style="width: 44px;">其他：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="number" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">物业类型：</label>
+							<div class="layui-input-block">
+								<input type="checkbox" lay-skin="primary" title="住宅">
+								<input type="checkbox" lay-skin="primary" title="公寓">
+								<input type="checkbox" lay-skin="primary" title="海景房">
+								<input type="checkbox" lay-skin="primary" title="别墅">
+								<input type="checkbox" lay-skin="primary" title="酒店式公寓">
+								<input type="checkbox" lay-skin="primary" title="产权式公寓">
+								<input type="checkbox" lay-skin="primary" title="写字楼">
+								<input type="checkbox" lay-skin="primary" title="商铺">
+								<div class="layui-inline" style="margin-bottom: 0;">
+									<label class="layui-form-label" style="width: 44px;">其他：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="number" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">置业户型：</label>
+							<div class="layui-input-block">
+								<div class="layui-inline">
+									<div class="layui-input-inline sele">
+										<select name="modules" lay-search="">
+											<option value="">请选择</option>
+											<option value="1">1居</option>
+											<option value="2">2居</option>
+											<option value="3">3居</option>
+											<option value="4">4居</option>
+											<option value="5">5居</option>
+											<option value="6">5居以上</option>
+										</select>
+									</div>
+									<div class="layui-form-mid layui-word-aux">室</div>
+								</div>
+								<div class="layui-inline">
+									<div class="layui-input-inline sele">
+										<select name="modules" lay-search="">
+											<option value="">请选择</option>
+											<option value="1">1厅</option>
+											<option value="2">2厅</option>
+											<option value="3">3厅</option>
+											<option value="6">3厅以上</option>
+										</select>
+									</div>
+									<div class="layui-form-mid layui-word-aux">厅</div>
+								</div>
+								<div class="layui-inline">
+									<div class="layui-input-inline sele">
+										<select name="modules" lay-search="">
+											<option value="">请选择</option>
+											<option value="1">1厨</option>
+											<option value="2">2厨</option>
+											<option value="3">3厨</option>
+											<option value="6">3厨以上</option>
+										</select>
+									</div>
+									<div class="layui-form-mid layui-word-aux">厨</div>
+								</div>
+								<div class="layui-inline">
+									<div class="layui-input-inline sele">
+										<select name="modules" lay-search="">
+											<option value="">请选择</option>
+											<option value="1">1卫</option>
+											<option value="2">2卫</option>
+											<option value="3">3卫</option>
+											<option value="6">3卫以上</option>
+										</select>
+									</div>
+									<div class="layui-form-mid layui-word-aux">卫</div>
+								</div>
+								<div class="layui-inline">
+									<div class="layui-input-inline sele">
+										<select name="modules" lay-search="">
+											<option value="">请选择</option>
+											<option value="1">1阳台</option>
+											<option value="2">2阳台</option>
+											<option value="3">3阳台</option>
+											<option value="6">3阳台以上</option>
+										</select>
+									</div>
+									<div class="layui-form-mid layui-word-aux">阳台</div>
+								</div>
+								<div class="layui-inline">
+									<input type="checkbox" lay-skin="primary" title="复式">
+									<div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>复式</span><i class="layui-icon"></i></div>
+								</div>
+								<div class="layui-inline" style="margin-bottom: 0;position: relative;top: -2px;">
+									<label class="layui-form-label" style="width: 44px;">其他：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="number" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">置业面积：</label>
+							<div class="layui-input-block">
+								<input type="radio" name="unit" value="50㎡以内" title="50㎡以内" checked="checked">
+								<input type="radio" name="unit" value="50-80㎡" title="50-80㎡">
+								<input type="radio" name="unit" value="80-120㎡" title="80-120㎡">
+								<input type="radio" name="unit" value="120-160㎡" title="120-160㎡">
+								<input type="radio" name="unit" value="160-200㎡" title="160-200㎡">
+								<input type="radio" name="unit" value="200㎡以上" title="200㎡以上">
+								<div class="layui-inline" style="margin-bottom: 0;position: relative;top: 4px;">
+									<label class="layui-form-label" style="width: 44px;">其他：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="number" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">预算单价：</label>
+							<div class="layui-input-block">
+								<input type="radio" name="single" value="5000/元㎡以下" title="5000/元㎡以下" checked="checked">
+								<input type="radio" name="single" value="5000-8000元/㎡" title="5000-8000元/㎡">
+								<input type="radio" name="single" value="8000-1万元/㎡" title="8000-1万㎡">
+								<input type="radio" name="single" value="1万-1.2万元/㎡" title="1万-1.2万元/㎡">
+								<input type="radio" name="single" value="1.2万-1.5万元/㎡" title="1.2万-1.5万元/㎡">
+								<input type="radio" name="single" value="1.5万-2万元/㎡" title="1.5万-2万元/㎡">
+								<input type="radio" name="single" value="2万元/㎡以上" title="2万元/㎡以上">
+								<div class="layui-inline" style="margin-bottom: 0;position: relative;top: 4px;">
+									<label class="layui-form-label" style="width: 44px;">其他：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="number" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">预算总价：</label>
+							<div class="layui-input-block">
+								<input type="radio" name="all" value="30万元以下" title="30万元以下" checked="checked">
+								<input type="radio" name="all" value="30-50万元" title="30-50万元">
+								<input type="radio" name="all" value="50-80万元" title="50-80万元">
+								<input type="radio" name="all" value="80-120万元" title="80-120万元">
+								<input type="radio" name="all" value="120-160万元" title="120-160万元">
+								<input type="radio" name="all" value="160-200万元" title="160-200万元">
+								<input type="radio" name="all" value="200-300万元" title="200-300万元">
+								<input type="radio" name="all" value="300万元以上" title="300万元以上">
+								<div class="layui-inline" style="margin-bottom: 0;position: relative;top: 4px;">
+									<label class="layui-form-label" style="width: 44px;">其他：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="number" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">装修要求：</label>
+							<div class="layui-input-block">
+								<input type="radio" name="decorate" value="毛坯" title="毛坯" checked="checked">
+								<input type="radio" name="decorate" value="简易装修" title="简易装修">
+								<input type="radio" name="decorate" value="中档装修" title="中档装修">
+								<input type="radio" name="decorate" value="精装修" title="精装修">
+								<div class="layui-inline" style="margin-bottom: 0;position: relative;top: 4px;">
+									<label class="layui-form-label" style="width: 44px;">其他：</label>
+									<div class="layui-input-inline">
+										<input type="text" name="number" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">拟购套数：</label>
+							<div class="layui-input-inline">
+								<input type="text" value="0" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">*客户关注点：</label>
+							<div class="layui-input-block">
+								<textarea lay-verify="required" class="layui-textarea"></textarea>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">备注说明：</label>
+							<div class="layui-input-block">
+								<textarea class="layui-textarea"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item tc">
+					<button type="button" class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</form>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script type="text/javascript" src="/js/site.js"></script>
+		<script type="text/javascript">
+			layui.use(['laydate'], function() {
+				var laydate = layui.laydate;
+			});
+		</script>
+	</body>
+
+</html>

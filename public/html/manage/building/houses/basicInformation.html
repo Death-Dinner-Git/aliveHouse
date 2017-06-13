@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<title>我房网</title>
+	</head>
+
+	<body class="bgw">
+		<div class="menuList">
+			<form class="layui-form">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">楼盘名称：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<span class="need">*请输入楼盘名称</span>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">楼盘拼音：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<span class="need">*请输入楼盘拼音</span>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">楼盘Logo：</label>
+						<span style="margin: 9px 0; float: left;">查看</span>
+						<span class="layui-btn layui-btn-radius modify">修改</span>
+						<div class="upload">
+							<input type="file" name="file" class="layui-upload-file">
+							<span class="layui-btn layui-btn-radius cancel">取消</span>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item" style="margin: 0;">
+					<label class="layui-form-label">楼盘类型：</label>
+					<div class="layui-input-block">
+						<input type="checkbox" lay-skin="primary" title="住宅">
+						<input type="checkbox" lay-skin="primary" title="公寓">
+						<input type="checkbox" lay-skin="primary" title="海景房">
+						<input type="checkbox" lay-skin="primary" title="酒店式公寓">
+						<input type="checkbox" lay-skin="primary" title="产权式酒店">
+						<input type="checkbox" lay-skin="primary" title="写字楼">
+						<input type="checkbox" lay-skin="primary" title="商铺">
+						<input type="checkbox" lay-skin="primary" title="酒店">
+						<span class="need" style="position: relative;top: 5px;">*请至少选择一个楼盘类型</span>
+					</div>
+				</div>
+				<div class="layui-form-item special">
+					<label class="layui-form-label">项目特色：</label>
+					<div class="layui-input-block">
+						<input type="checkbox" lay-skin="primary" title="特色别墅">
+						<input type="checkbox" lay-skin="primary" title="养老居所">
+						<input type="checkbox" lay-skin="primary" title="高档小区">
+						<input type="checkbox" lay-skin="primary" title="景观居所">
+						<input type="checkbox" lay-skin="primary" title="宜居生态">
+						<input type="checkbox" lay-skin="primary" title="花园洋房">
+						<input type="checkbox" lay-skin="primary" title="投资地产">
+						<input type="checkbox" lay-skin="primary" title="创意地产">
+						<input type="checkbox" lay-skin="primary" title="水景地产">
+						<input type="checkbox" lay-skin="primary" title="低密居住">
+						<div class="layui-inline" style="margin-bottom: 0;">
+							<label class="layui-form-label" style="width: 44px;">其他：</label>
+							<div class="layui-input-inline">
+								<input type="text" name="number" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<span class="need">*请至少选择一个项目特色</span>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">所属区域：</label>
+					<div class="layui-input-inline">
+						<select name="modules" lay-search="">
+							<option value="">请选择</option>
+							<option value="1">海南</option>
+						</select>
+					</div>
+					<div class="layui-input-inline">
+						<select name="modules" lay-search="">
+							<option value="">请选择</option>
+							<option value="1">海南</option>
+						</select>
+					</div>
+					<div class="layui-input-inline">
+						<select name="modules" lay-search="">
+							<option value="">请选择</option>
+							<option value="1">海南</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">板块：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">楼盘标签：</label>
+					<div class="layui-input-inline">
+						<select name="modules" lay-search="">
+							<option value="1">不限</option>
+						</select>
+					</div>
+					<div class="layui-input-inline">
+						<select name="modules" lay-search="">
+							<option value="">请选择</option>
+							<option value="1"></option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">楼盘地址：</label>
+						<div class="layui-input-inline" style="width: 260px;">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<a>[显示地图]</a>
+					<span class="need">*不包括所属区域和板块</span>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<p>坐标值：<span>110.123456</span>，<span>18.464634</span></p>
+					</div>
+					<div id="l-map"></div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">广告语：</label>
+					<div class="layui-input-block">
+						<input type="text" name="username" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">推荐理由：</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">总栋数：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+						<span class="unit">栋</span>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">总套数：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+						<span class="unit">套</span>
+					</div>
+				</div>
+				<div class="layui-form-item special">
+					<label class="layui-form-label">装修情况：</label>
+					<div class="layui-input-block">
+						<input type="checkbox" lay-skin="primary" title="毛坯">
+						<input type="checkbox" lay-skin="primary" title="简易装修">
+						<input type="checkbox" lay-skin="primary" title="中档装修">
+						<input type="checkbox" lay-skin="primary" title="精装修">
+						<div class="layui-inline" style="margin-bottom: 0;">
+							<label class="layui-form-label" style="width: 44px;">其他：</label>
+							<div class="layui-input-inline">
+								<input type="text" name="number" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">停车位：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+						<span class="unit">个</span>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">产权年限：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+						<span class="unit">年</span>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">开盘日期：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">入住日期：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">楼层状况：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">主力户型：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item special" style="margin-bottom: 0;">
+					<label class="layui-form-label">楼盘状态：</label>
+					<div class="layui-input-block">
+						<input type="radio" name="station" value="正常" title="正常" checked="">
+						<input type="radio" name="station" value="已删除" title="已删除">
+					</div>
+				</div>
+				<div class="layui-form-item special">
+					<label class="layui-form-label">权重设置：</label>
+					<div class="layui-input-block">
+						<input type="checkbox" lay-skin="primary" title="热售">
+						<input type="checkbox" lay-skin="primary" title="优惠">
+						<input type="checkbox" lay-skin="primary" title="最新">
+						<input type="checkbox" lay-skin="primary" title="置顶">
+						<input type="checkbox" lay-skin="primary" title="推荐">
+					</div>
+				</div>
+				<div class="layui-form-item date">
+					<div class="layui-inline">
+						<span>添加日期：2017-06-02</span>
+						<span>添加人员：小明</span>
+					</div>
+					<div class="layui-inline fr">
+						<span>最近更新：2017-06-02</span>
+						<span>更新人员：小明</span>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-input-block" style="padding: 20px 0;text-align: center;">
+						<button type="button" class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
+						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script src="/js/site.js"></script>
+		<script type="text/javascript">
+			layui.use('layer', function() {
+				var $ = layui.jquery,
+					layer = layui.layer;
+			});
+			layui.use('upload', function() {
+				layui.upload({
+					url: '' //上传接口
+						,
+					success: function(res) { //上传成功后的回调
+						console.log(res)
+					}
+				});
+				layui.upload({
+					url: '/test/upload.json',
+					elem: '#test' //指定原始元素，默认直接查找class="layui-upload-file"
+						,
+					method: 'get' //上传接口的http类型
+						,
+					success: function(res) {
+						LAY_demo_upload.src = res.url;
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<title>我房网</title>
+	</head>
+
+	<body class="bgw">
+		<div class="menuList">
+			<div class="layui-form">
+				<div class="layui-form-item special" style="margin-bottom: 5px;margin-top: 10px;">
+					<label class="layui-form-label" style="width: 100px;">共有动态记录：</label>
+					<div class="layui-inline" style="margin-bottom: 2px;">
+						<span>1条</span>
+					</div>
+					<div class="layui-inline">
+						<span class="layui-btn layui-btn-radius layui-btn-small">所有动态</span>
+						<span class="layui-btn layui-btn-radius layui-btn-small">工程进度</span>
+						<span class="layui-btn layui-btn-radius layui-btn-small">价格变动</span>
+						<span class="layui-btn layui-btn-radius layui-btn-small">优惠政策</span>
+						<span class="layui-btn layui-btn-radius layui-btn-small">其他</span>
+					</div>
+				</div>
+				<div class="layui-form-item special" style="margin-bottom: 5px;">
+					<label class="layui-form-label">结果动态：</label>
+					<div class="layui-inline">
+						<span>1条</span>
+					</div>
+					<div class="layui-inline">
+						<div class="layui-input-inline">
+							<select>
+								<option value="1">默认排序</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="list-box layui-form">
+				<div class="layui-form-item special" style="padding-left: 10px;">
+					<div class="layui-inline">
+						<input type="checkbox" lay-skin="primary" title="全选/反选">
+					</div>
+					<div class="layui-inline">
+						<button class="layui-btn add-type">恢复</button>
+						<button class="layui-btn layui-btn-danger">删除</button>
+					</div>
+				</div>
+				<ul class="layui-form wordlist">
+						<li>
+							<div class="topic">
+								<input type="checkbox" lay-skin="primary" title="新世界·美丽沙C户型新世界·美丽沙C户型">
+								<div class="operation fr">
+									<span class="layer-edit">恢复</span>
+									<span class="none">删除</span>
+								</div>
+							</div>
+							<div class="word">
+								<p>新世界·美丽沙位于海口市海甸岛西部，项目现已封顶项目现已封顶项目现已封顶项目现已封顶项目现已封顶项目现已封顶，户型正在调整中，预计2013年中旬可以开盘，具体价格信息待定。</p>
+								<label class="layui-form-label">备注说明：</label>
+								<div class="layui-input-block" style="margin-left: 115px;">
+									<textarea disabled="disabled" class="layui-textarea"></textarea>
+								</div>
+							</div>
+							<div class="date">
+								<div class="layui-inline">
+									<span>添加日期：2017-06-02</span>
+									<span>添加人员：小明</span>
+								</div>
+								<div class="layui-inline fr">
+									<span>最近更新：2017-06-02</span>
+									<span>更新人员：小明</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+			</div>
+			<p class="record">1条记录 1/1页</p>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script src="/js/site.js"></script>
+
+	</body>
+
+</html>

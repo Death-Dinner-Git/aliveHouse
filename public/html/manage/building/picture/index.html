@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<title>我房网</title>
+	</head>
+
+	<body class="bgw">
+		<div class="menu">
+			<h1 class="building-name">楼盘名称-图片列表<span>(共<em>10</em>张图片)</span></h1>
+			<div class="type-list">
+				<div class="layui-form">
+					<div class="layui-form-item special" style="margin-bottom: 5px;margin-top: 10px;">
+						<label class="layui-form-label">类别：</label>
+						<div class="layui-input-block" style="margin-left: 95px;">
+							<input type="checkbox" lay-skin="primary" name="station" title="效果图">
+							<input type="checkbox" lay-skin="primary" name="station" title="交通图">
+							<input type="checkbox" lay-skin="primary" name="station" title="实景图">
+							<input type="checkbox" lay-skin="primary" name="station" title="周边配套图">
+							<input type="checkbox" lay-skin="primary" name="station" title="样板间">
+							<input type="checkbox" lay-skin="primary" name="station" title="其他">
+							<div class="layui-inline" style="margin-bottom: 0;">
+								<button type="button" class="layui-btn" lay-submit="" lay-filter="demo1">查找</button>
+								<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+							</div>
+						</div>
+					</div>
+					<div class="layui-form-item special" style="margin-bottom: 5px;">
+						<label class="layui-form-label">共有图片：</label>
+						<div class="layui-inline">
+							<span>5张</span>
+						</div>
+						<div class="layui-inline">
+							<span class="layui-btn layui-btn-radius layui-btn-small">所有的</span>
+							<span class="layui-btn layui-btn-radius layui-btn-small">楼盘幻灯的</span>
+							<span class="layui-btn layui-btn-radius layui-btn-small">普通推荐的</span>
+							<span class="layui-btn layui-btn-radius layui-btn-small">置顶的</span>
+						</div>
+						<div class="layui-inline fr">
+							<div class="layui-input-inline">
+								<select>
+									<option value="1">默认排序</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list-box layui-form">
+					<div class="layui-form-item special" style="padding-left: 10px;">
+						<div class="layui-inline">
+							<input type="checkbox" lay-skin="primary" title="全选/反选">
+						</div>
+						<div class="layui-inline">
+							<button class="layui-btn layui-btn-danger">删除</button>
+							<button class="layui-btn add-img">添加图片</button>
+							<button class="layui-btn checkall">查看所有已删除的图片</button>
+						</div>
+					</div>
+					<ul class="layui-form piclist">
+						<li>
+							<div class="list-title">
+								<input type="checkbox" lay-skin="primary" title="新世界·美丽沙C户型新世界·美丽沙C户型">
+							</div>
+							<a href="#" class="list-pic"><img src="../../../images/img.png" /></a>
+							<div class="list-content">
+								<p>所属类型：效果图</p>
+								<p style="margin-top: 5px;">浏览次数：0次</p>
+							</div>
+							<div class="layui-form-item">
+								<input type="checkbox" lay-skin="primary" title="楼盘幻灯">
+								<input type="checkbox" lay-skin="primary" title="普通推荐">
+								<input type="checkbox" lay-skin="primary" title="置顶">
+							</div>
+							<div class="layui-form-item">
+								<span class="layui-btn layui-btn-small layui-edit">编辑</span>
+								<span class="layui-btn layui-btn-danger layui-btn-small">删除</span>
+								<a class="layui-btn layui-btn-small fr">前台查看</a>
+							</div>
+						</li>
+						<li>
+							<div class="list-title">
+								<input type="checkbox" lay-skin="primary" title="新世界·美丽沙C户型新世界·美丽沙C户型">
+							</div>
+							<a href="#" class="list-pic"><img src="../../../images/img.png" /></a>
+							<div class="list-content">
+								<p>所属类型：效果图</p>
+								<p style="margin-top: 5px;">浏览次数：0次</p>
+							</div>
+							<div class="layui-form-item">
+								<input type="checkbox" lay-skin="primary" title="楼盘幻灯">
+								<input type="checkbox" lay-skin="primary" title="普通推荐">
+								<input type="checkbox" lay-skin="primary" title="置顶">
+							</div>
+							<div class="layui-form-item">
+								<span class="layui-btn layui-btn-small layui-edit">编辑</span>
+								<span class="layui-btn layui-btn-danger layui-btn-small">删除</span>
+								<a class="layui-btn layui-btn-small fr">前台查看</a>
+							</div>
+						</li>
+						<li>
+							<div class="list-title">
+								<input type="checkbox" lay-skin="primary" title="新世界·美丽沙C户型新世界·美丽沙C户型">
+							</div>
+							<a href="#" class="list-pic"><img src="../../../images/img.png" /></a>
+							<div class="list-content">
+								<p>所属类型：效果图</p>
+								<p style="margin-top: 5px;">浏览次数：0次</p>
+							</div>
+							<div class="layui-form-item">
+								<input type="checkbox" lay-skin="primary" title="楼盘幻灯">
+								<input type="checkbox" lay-skin="primary" title="普通推荐">
+								<input type="checkbox" lay-skin="primary" title="置顶">
+							</div>
+							<div class="layui-form-item">
+								<span class="layui-btn layui-btn-small layui-edit">编辑</span>
+								<span class="layui-btn layui-btn-danger layui-btn-small">删除</span>
+								<a class="layui-btn layui-btn-small fr">前台查看</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<p class="record">3条记录 1/1页</p>
+			</div>
+		</div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/layui.js"></script>
+		<script src="/js/site.js"></script>
+		<script type="text/javascript">
+			layui.use('layer', function() {
+				var $ = layui.jquery,
+					layer = layui.layer;
+			});
+			$('.add-img').on('click', function() {
+				top.layer.open({
+					type: 2,
+					title: '添加图片',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['660px', '420px'],
+					content: '/manage/building/picture/addImg.html',
+				});
+			});
+			$('.checkall').on('click', function() {
+				top.layer.open({
+					type: 2,
+					title: '已删除的图片',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['872px', '580px'],
+					content: '/manage/building/picture/check.html',
+				});
+			});
+			$('.layui-edit').on('click', function() {
+				top.layer.open({
+					type: 2,
+					title: '图片编辑',
+					shadeClose: true,
+					shade: 0.6,
+					area: ['720px', '580px'],
+					content: '/manage/building/picture/edit.html',
+				});
+			});
+		</script>
+	</body>
+
+</html>
