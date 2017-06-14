@@ -1032,52 +1032,29 @@ a:hover, a:focus {
 	align-items: stretch;
 }
 
-#headerMiddleTable #headerLeft{
+#headerMiddleTable .leftTable{
 	order: 1;
-	height: 100%;
-	width: 200px;
-}
-
-#headerMiddleTable #headerCenter{
-	order: 2;
 	height: 100%;
 	width: 0;
 }
 
-#headerMiddleTable #headerRight{
+#headerMiddleTable .centerTable{
+	order: 2;
+	height: 100%;
+	width: 100%;
+}
+
+#headerMiddleTable .rightTable{
 	order: 3;
 	height: 100%;
-	width: 750px;
+	width: 0;
 }
 
-/* 头部 logo*/
-#headerMiddleTable #headerLeft #corpTitle{
+
+/* 底部 中部 */
+#headerMiddleTable .centerTable #footerMiddle{
 	width: 100%;
-	height: 100%;
-	padding-left: 15px;
-	font-size: 32px;
-	white-space: nowrap;
-}
-
-#headerMiddleTable #headerLeft #corpTitle span{
-	font-weight: bold;
-}
-
-#headerMiddleTable #headerLeft #corpTitle span:first-child{
-	color: rgba(255, 101, 55, 1)
-}
-
-#headerMiddleTable #headerLeft #corpTitle span:last-child{
-	color: rgba(204, 204, 204, 1);
-}
-
-/* 头部 中部 */
-
-
-/* 头部 右部 */
-#headerMiddleTable #headerRight #headerNav{
-	width: 100%;
-	height: 40px;
+	height: 170px;
 	padding-right: 15px;
 	display: -webkit-flex; /* Safari */
 	display: flex;
