@@ -1381,7 +1381,7 @@ left: 0px !important;
 .layui-layer-dialog[type="dialog"] .layui-layer-content{
 	text-align: center;
 	font-size: 16px;
-	line-height: 16px;
+	line-height: 30px;
 }
 
 .layui-layer-dialog[type="dialog"] .layui-layer-btn{
