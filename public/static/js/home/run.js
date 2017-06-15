@@ -416,7 +416,7 @@
     })("addEventListener", "DOMContentLoaded")
 })(this);
 /*!
- * Site.js
+ * Run.js
  * URL:http://www.faisco.com
  * Only for Guest mode
  * Sort as
@@ -424,10 +424,10 @@
  * Sort time @2011-10-22
  * Partition time @2012-05-16
  */
-if (typeof Site == "undefined") {
-    Site = {}
+if (typeof Run == "undefined") {
+    Run = {}
 }
-Site.genAjaxUrl = function (b) {
+Run.genAjaxUrl = function (b) {
     var a = "";
     if (document.location.pathname.indexOf("/manage/") >= 0) {
         a = "../ajax/"
@@ -436,26 +436,26 @@ Site.genAjaxUrl = function (b) {
     }
     return a + b
 };
-Site.showMenu = function (n) {
+Run.showMenu = function (n) {
     var r = n.id;
-    if (Fai.isNull(r)) {
+    if (Helper.isNull(r)) {
         r = ""
     }
     var p = n.host;
     var m = 0;
-    if (!Fai.isNull(n.mode)) {
+    if (!Helper.isNull(n.mode)) {
         m = n.mode
     }
-    if (Fai.isNull(n.fixpos)) {
+    if (Helper.isNull(n.fixpos)) {
         n.fixpos = true
     }
     var k = n.rulerObj;
     var f = n.navSysClass;
-    if (Fai.isNull(f)) {
+    if (Helper.isNull(f)) {
         f = ""
     }
     var e = 0;
-    if (!Fai.isNull(n.closeMode)) {
+    if (!Helper.isNull(n.closeMode)) {
         e = n.closeMode
     }
     var j = 0;
@@ -474,7 +474,7 @@ Site.showMenu = function (n) {
             return c
         } else {
             c.attr("_mouseIn", 0);
-            Site.hideMenu();
+            Run.hideMenu();
             return null
         }
     }
@@ -499,19 +499,19 @@ Site.showMenu = function (n) {
     }
     var u = $("<div class='content contentLayer1'></div>");
     u.appendTo(c);
-    Site.addMenuItem(B, u, n);
+    Run.addMenuItem(B, u, n);
     if (n.fixpos) {
         if (q + c.height() + 20 > $(document).height()) {
             q = p.offset().top - c.height()
         }
     }
-    c.css("left", j - Fai.getCssInt(u, "border-left-width") + "px");
+    c.css("left", j - Helper.getCssInt(u, "border-left-width") + "px");
     c.css("top", q + "px");
     if (e == 0) {
         c.mouseleave(function () {
             c.attr("_mouseIn", 0);
             setTimeout(function () {
-                Site.hideMenu()
+                Run.hideMenu()
             }, 100)
         });
         c.mouseover(function () {
@@ -519,12 +519,12 @@ Site.showMenu = function (n) {
         });
         c.click(function () {
             c.attr("_mouseIn", 0);
-            Site.hideMenu()
+            Run.hideMenu()
         });
         p.mouseleave(function () {
             c.attr("_mouseIn", 0);
             setTimeout(function () {
-                Site.hideMenu()
+                Run.hideMenu()
             }, 100)
         });
         p.mouseover(function () {
@@ -538,21 +538,21 @@ Site.showMenu = function (n) {
             if (c.attr("_mouseIn") != 2) {
                 c.attr("_mouseIn", 0);
                 setTimeout(function () {
-                    Site.hideMenu()
+                    Run.hideMenu()
                 }, 100)
             }
         });
         c.focus()
     }
-    if (typeof Site.g_bindMenuMousewheel == "undefined") {
-        Site.g_bindMenuMousewheel = 1;
+    if (typeof Run.g_bindMenuMousewheel == "undefined") {
+        Run.g_bindMenuMousewheel = 1;
         $("body").bind("mousewheel", function () {
             $("#g_menu").remove()
         })
     }
     c.attr("_mouseIn", 1);
     c.slideDown(200);
-    Site.calcMenuSize(c, n);
+    Run.calcMenuSize(c, n);
     var s = $("#g_menu" + r + ">div.content>table>tbody>tr>td.center>table.item");
     var w = $("#g_menu" + r);
     var C = (w.outerWidth() - w.width()) + (w.find(".content").outerWidth() - w.find(".content").width()) + (w.find(".content .middle").outerWidth() - w.find(".content .middle").width()) + (w.find(".content .middle .left").outerWidth() - w.find(".content .middle .right").outerWidth()) + (w.find(".content .middle .center").outerWidth() - w.find(".content .middle .center").width());
@@ -615,7 +615,7 @@ Site.showMenu = function (n) {
     }
     return c
 };
-Site.addMenuItem = function (t, b, j, g) {
+Run.addMenuItem = function (t, b, j, g) {
     if (t.length <= 0) {
         return
     }
@@ -686,13 +686,13 @@ Site.addMenuItem = function (t, b, j, g) {
             var m = $("<div class='subMenu' itemId='" + l + "'><div class='content contentLayer2'></div></div>");
             m.appendTo(n);
             var a = m.find(" > .content");
-            Site.addMenuItem(f, a, j, "thirdMenu");
+            Run.addMenuItem(f, a, j, "thirdMenu");
             m.mouseleave(function () {
                 $(this).attr("_mouseIn", 0);
                 setTimeout(function () {
-                    Site.hideSubMenu()
+                    Run.hideSubMenu()
                 }, 100);
-                if (j.navBar == true && Fai.isIE()) {
+                if (j.navBar == true && Helper.isIE()) {
                     var w = $("#g_menu" + j.id);
                     var y = w.find(".contentLayer1");
                     var i = y.outerHeight(true);
@@ -707,7 +707,7 @@ Site.addMenuItem = function (t, b, j, g) {
             });
             m.click(function () {
                 $(this).attr("_mouseIn", 0);
-                Site.hideSubMenu()
+                Run.hideSubMenu()
             })
         }
         k.hover(function () {
@@ -732,14 +732,14 @@ Site.addMenuItem = function (t, b, j, g) {
                         K.css("left", v + "px");
                         K.css("top", F + "px");
                         K.slideDown(200);
-                        Site.calcMenuSize(K, j);
+                        Run.calcMenuSize(K, j);
                         K.attr("_hadShow", 1)
                     } else {
                         K.slideDown(200)
                     }
                 }
                 K.attr("_mouseIn", 1);
-                if (j.navBar == true && Fai.isIE()) {
+                if (j.navBar == true && Helper.isIE()) {
                     var i = $("#g_menu" + j.id);
                     var y = i.find(".contentLayer1");
                     var w = K.find(".contentLayer2");
@@ -757,7 +757,7 @@ Site.addMenuItem = function (t, b, j, g) {
                 }
             } else {
                 if ($(this).parents(".subMenu").length <= 0) {
-                    if (j.navBar == true && Fai.isIE()) {
+                    if (j.navBar == true && Helper.isIE()) {
                         var i = $("#g_menu" + j.id);
                         var y = i.find(".contentLayer1");
                         var D = y.children(".middle").first().outerWidth(true);
@@ -782,7 +782,7 @@ Site.addMenuItem = function (t, b, j, g) {
             if (v != null && v.length == 1) {
                 v.attr("_mouseIn", 0);
                 setTimeout(function () {
-                    Site.hideSubMenu()
+                    Run.hideSubMenu()
                 }, 100)
             } else {
                 i.removeClass("itemHover");
@@ -791,7 +791,7 @@ Site.addMenuItem = function (t, b, j, g) {
         }).click(function () {
             $(".g_menu").attr("_mouseIn", 0);
             setTimeout(function () {
-                Site.hideMenu()
+                Run.hideMenu()
             }, 100)
         });
         if (j.closeMode == 1) {
@@ -801,12 +801,12 @@ Site.addMenuItem = function (t, b, j, g) {
         }
     }
 };
-Site.calcMenuSize = function (a, d) {
+Run.calcMenuSize = function (a, d) {
     a.find(" > .content").each(function () {
         var l = 0;
         var k = $(" > .middle", this);
-        if (!Fai.isNull(d.minWidth)) {
-            l = d.minWidth - Fai.getCssInt(k.find(".left").first(), "width") - Fai.getCssInt(k.find(".right").first(), "width")
+        if (!Helper.isNull(d.minWidth)) {
+            l = d.minWidth - Helper.getCssInt(k.find(".left").first(), "width") - Helper.getCssInt(k.find(".right").first(), "width")
         }
         var m = l;
         var j = k.find(" > tbody > tr > .center > .item");
@@ -828,15 +828,15 @@ Site.calcMenuSize = function (a, d) {
         $(" > .top", this).width(k.width());
         $(" > .bottom", this).width(k.width())
     });
-    var c = Fai.top.$(".outMenuTriangle"), b = (parseInt(c.css("borderBottomWidth")) || 0), g = c.length > 0,
-        h = d.host, f = h.outerWidth(), e = Fai.top.$(".outMenuMiddle").width(), i = 0;
+    var c = Helper.top.$(".outMenuTriangle"), b = (parseInt(c.css("borderBottomWidth")) || 0), g = c.length > 0,
+        h = d.host, f = h.outerWidth(), e = Helper.top.$(".outMenuMiddle").width(), i = 0;
     i = (Math.min(f, e) - b) / 2;
     if (g && b) {
         c.css("left", i)
     }
 };
-Site.hideMenu = function () {
-    if (Fai.top._uiMode) {
+Run.hideMenu = function () {
+    if (Helper.top._uiMode) {
         return
     }
     $(".g_menu").each(function () {
@@ -850,8 +850,8 @@ Site.hideMenu = function () {
         a.remove()
     })
 };
-Site.hideSubMenu = function () {
-    if (Fai.top._uiMode) {
+Run.hideSubMenu = function () {
+    if (Helper.top._uiMode) {
         return
     }
     $(".g_menu .subMenu").each(function () {
@@ -870,24 +870,24 @@ Site.hideSubMenu = function () {
         })
     })
 };
-Site.popupWindow = function (a) {
+Run.popupWindow = function (a) {
     var b = true;
-    if (!Fai.isNull(a.saveBeforePopup)) {
+    if (!Helper.isNull(a.saveBeforePopup)) {
         b = a.saveBeforePopup
     }
-    if (b && Site.checkSaveBar(a)) {
+    if (b && Run.checkSaveBar(a)) {
         return
     }
-    if ($.isFunction(Site.removeAllEditLayer)) {
-        Site.removeAllEditLayer()
+    if ($.isFunction(Run.removeAllEditLayer)) {
+        Run.removeAllEditLayer()
     }
     if (a.version == 2) {
-        Fai.popupWindowVersionTwo.createPopupWindow(a)
+        Helper.popupWindowVersionTwo.createPopupWindow(a)
     } else {
-        Fai.popupWindow(a)
+        Helper.popupWindow(a)
     }
 };
-Site.total = function (c) {
+Run.total = function (c) {
     var g = {colId: -1, pdId: -1, ndId: -1};
     var d = $.extend({}, g, c);
     if (d.colId == null || d.colId == "" || d.colId < 0) {
@@ -900,16 +900,16 @@ Site.total = function (c) {
         d.ndId = -1
     }
     var a = "", b = navigator.userAgent;
-    if (!b.match(/AppleWebKit.*Mobile.*/) && !Fai.isIpad()) {
+    if (!b.match(/AppleWebKit.*Mobile.*/) && !Helper.isIpad()) {
         a = "pc"
     } else {
-        if (Fai.isIpad()) {
+        if (Helper.isIpad()) {
             a = "ipad"
         } else {
-            if (Fai.isAndroid()) {
+            if (Helper.isAndroid()) {
                 a = "android"
             } else {
-                if (Fai.isIphone()) {
+                if (Helper.isIphone()) {
                     a = "iphone"
                 } else {
                     a = "other"
@@ -922,18 +922,18 @@ Site.total = function (c) {
     f.push("&colId=" + d.colId);
     f.push("&pdId=" + d.pdId);
     f.push("&ndId=" + d.ndId);
-    f.push("&browserType=" + Fai.getBrowserType());
-    f.push("&screenType=" + Fai.getScreenType(Fai.Screen().width, Fai.Screen().height));
+    f.push("&browserType=" + Helper.getBrowserType());
+    f.push("&screenType=" + Helper.getScreenType(Helper.Screen().width, Helper.Screen().height));
     f.push("&sc=" + d.sc);
-    f.push("&rf=" + Fai.encodeUrl(d.rf));
-    f.push("&visitUrl=" + Fai.encodeUrl(document.location.href));
+    f.push("&rf=" + Helper.encodeUrl(d.rf));
+    f.push("&visitUrl=" + Helper.encodeUrl(document.location.href));
     f.push("&visitEquipment=" + a);
     $.ajax({
         url: e, type: "post", cache: false, data: f.join(""), success: function (h) {
         }
     })
 };
-Site.siteStatVisitTime = function () {
+Run.siteStatVisitTime = function () {
     var a = "ajax/statistics_h.php?cmd=visitTime";
     var b = [];
     $.ajax({
@@ -941,7 +941,7 @@ Site.siteStatVisitTime = function () {
         }
     })
 };
-Site.report = function (a) {
+Run.report = function (a) {
     setTimeout(function () {
         if (window.performance) {
             var d = performance.timing;
@@ -962,7 +962,7 @@ Site.report = function (a) {
             j.push("&rt=" + f);
             j.push("&wt=" + n);
             j.push("&pt=" + o);
-            j.push("&bt=" + Fai.getBrowserType());
+            j.push("&bt=" + Helper.getBrowserType());
             var c = "ajax/statistics_h.php?cmd=report";
             $.ajax({
                 url: c, type: "post", cache: false, data: j.join(""), success: function (p) {
@@ -971,7 +971,7 @@ Site.report = function (a) {
         }
     }, 500)
 };
-Site.fileUpload2 = function (e, c, f) {
+Run.fileUpload2 = function (e, c, f) {
     var d = {
         title: "添加文件",
         showTitle: true,
@@ -992,12 +992,12 @@ Site.fileUpload2 = function (e, c, f) {
     if (d.title === "添加图片" && d.maxSize > 5) {
         d.maxSize = 5
     }
-    if (Fai.top._siteVer != "undefined" && Fai.top._siteVer == 10) {
+    if (Helper.top._siteVer != "undefined" && Helper.top._siteVer == 10) {
         d.maxSize = 1
     }
     var b = d.title;
     if (d.type.length > 0 && d.showTitle) {
-        if (Fai.top._siteVer != "undefined" && Fai.top._siteVer == 10) {
+        if (Helper.top._siteVer != "undefined" && Helper.top._siteVer == 10) {
             b += "<span style='font-size:12px; color:#666;'> (&nbsp;只能添加" + d.type.join(",") + ", 免费版大小不超过" + d.maxSize + "MB&nbsp;)</span>"
         } else {
             b += "<span style='font-size:12px; color:#666;'> (&nbsp;只能添加" + d.type.join(",") + ", 大小不超过" + d.maxSize + "MB&nbsp;)</span>"
@@ -1007,7 +1007,7 @@ Site.fileUpload2 = function (e, c, f) {
     }
     var a = {
         title: b,
-        frameSrcUrl: (top._siteDomain ? top._siteDomain : "") + "/manage/fileUploadV2.php?settings=" + Fai.encodeUrl($.toJSON(d)) + "&ram=" + Math.random() + "&crossiframe=" + Fai.encodeUrl(d.crossiframe),
+        frameSrcUrl: (top._siteDomain ? top._siteDomain : "") + "/manage/fileUploadV2.php?settings=" + Helper.encodeUrl($.toJSON(d)) + "&ram=" + Math.random() + "&crossiframe=" + Helper.encodeUrl(d.crossiframe),
         width: 950,
         height: 690,
         saveBeforePopup: false,
@@ -1021,33 +1021,33 @@ Site.fileUpload2 = function (e, c, f) {
     }
     if (e) {
         $(e).unbind("click").bind("click", function () {
-            Site.popupWindow(a)
+            Run.popupWindow(a)
         })
     } else {
-        Site.popupWindow(a)
+        Run.popupWindow(a)
     }
 };
-Site.initIframeLoading = function (b, d, g, f) {
+Run.initIframeLoading = function (b, d, g, f) {
     var h = b + d;
-    var c = Fai.top.$("#" + h).parent().width();
-    var a = Fai.top.$("#" + h).parent().height();
+    var c = Helper.top.$("#" + h).parent().width();
+    var a = Helper.top.$("#" + h).parent().height();
     var e = 1;
     $("#" + h).attr("src", g).load(function () {
         $("#moduleLoading" + d).hide();
         $("#refreshFrame" + d).hide();
-        Fai.top.$("#" + h).parent().show();
+        Helper.top.$("#" + h).parent().show();
         e = 2
     });
     if (f) {
         $("#moduleLoading" + d).show();
-        Fai.top.$("#" + h).parent().hide();
+        Helper.top.$("#" + h).parent().hide();
         $("#refreshFrame" + d).hide()
     } else {
         setTimeout(function () {
             if (e == 1) {
                 var i = "<div id='moduleLoading" + d + "' class='ajaxLoading2' style='width:" + c + "px;height:" + a + "px'></div>";
-                Fai.top.$("#" + h).parent().before(i);
-                Fai.top.$("#" + h).parent().hide()
+                Helper.top.$("#" + h).parent().before(i);
+                Helper.top.$("#" + h).parent().hide()
             }
         }, 3000)
     }
@@ -1057,14 +1057,14 @@ Site.initIframeLoading = function (b, d, g, f) {
             if (f) {
                 $("#refreshFrame" + d).show()
             } else {
-                var i = "<div id='refreshFrame" + d + "' style='width:" + c + "px;height:" + a + "px;text-align:center;padding-top:5px;'><a href=\"javascript:Site.initModuleWeather('" + b + "'," + d + ", '" + g + "', true);\">" + LS.refresh + "</a></div>";
-                Fai.top.$("#" + h).parent().before(i)
+                var i = "<div id='refreshFrame" + d + "' style='width:" + c + "px;height:" + a + "px;text-align:center;padding-top:5px;'><a href=\"javascript:Run.initModuleWeather('" + b + "'," + d + ", '" + g + "', true);\">" + LS.refresh + "</a></div>";
+                Helper.top.$("#" + h).parent().before(i)
             }
             e = 3
         }
     }, 30000)
 };
-Site.logMsg = function (c) {
+Run.logMsg = function (c) {
     if (!c) {
         return
     }
@@ -1073,15 +1073,15 @@ Site.logMsg = function (c) {
     if (a >= 0) {
         b = c.slice(a, c.length - 1)
     }
-    $.ajax({type: "GET", url: "/ajax/log_h.php?cmd=log&msg=" + Fai.encodeUrl(c), data: b})
+    $.ajax({type: "GET", url: "/ajax/log_h.php?cmd=log&msg=" + Helper.encodeUrl(c), data: b})
 };
-Site.logDog = function (b, a) {
-    $.ajax({type: "GET", url: "/ajax/log_h.php?cmd=dog&dogId=" + Fai.encodeUrl(b) + "&dogSrc=" + Fai.encodeUrl(a)})
+Run.logDog = function (b, a) {
+    $.ajax({type: "GET", url: "/ajax/log_h.php?cmd=dog&dogId=" + Helper.encodeUrl(b) + "&dogSrc=" + Helper.encodeUrl(a)})
 };
-Site.logProf = function (b, a) {
-    $.ajax({type: "GET", url: "/ajax/log_h.php?cmd=prof&profId=" + Fai.encodeUrl(b) + "&profVal=" + Fai.encodeUrl(a)})
+Run.logProf = function (b, a) {
+    $.ajax({type: "GET", url: "/ajax/log_h.php?cmd=prof&profId=" + Helper.encodeUrl(b) + "&profVal=" + Helper.encodeUrl(a)})
 };
-Site.popupBox = function (q) {
+Run.popupBox = function (q) {
     var f = {
         boxId: 0,
         title: "",
@@ -1101,17 +1101,17 @@ Site.popupBox = function (q) {
         a = parseInt(Math.random() * 10000)
     }
     if (f.displayBg) {
-        Fai.bg(a, f.opacity, f.popupBoxZIndex)
+        Helper.bg(a, f.opacity, f.popupBoxZIndex)
     }
     var o = "";
     if (f.height != "") {
         o = " min-height:" + (f.height - 45) + "px;"
     }
     var e = ["<div id='popupBoxContent", a, "' style='width:", f.width, "px;", o, " padding-bottom: 20px;", "' class='popupCnBg'>", f.htmlContent, "</div>"];
-    var j = Fai.top.document.documentElement.clientHeight;
-    var d = Fai.top.$("body").scrollTop();
+    var j = Helper.top.document.documentElement.clientHeight;
+    var d = Helper.top.$("body").scrollTop();
     if (d <= 0) {
-        d = Fai.top.$("html").scrollTop()
+        d = Helper.top.$("html").scrollTop()
     }
     if (d <= 0) {
         d = $(window).scrollTop()
@@ -1149,15 +1149,15 @@ Site.popupBox = function (q) {
     if (f.popupBoxZIndex) {
         c = "z-index:" + f.popupBoxZIndex
     }
-    var m = ["<div id='popupBox", a, "' class='formBox " + f.extClass + "' style='width:", f.width, "px;", o, "left:", (Fai.top.document.documentElement.clientWidth - f.width) / 2, "px; " + c + "'>", "<div class='formTLSite'><div ", h, "class='formTCSite ", f.title == "" ? "formMulLanSite" : "", "'>", f.title, "</div></div>", "<div class='formMSG' style='position:relative;'>", e.join(""), "</div>", "<a href='javascript:void(0);' class='formXSite popupBClose' hidefocus='true' onclick='return false;'", n, "></a>", "</div>"];
+    var m = ["<div id='popupBox", a, "' class='formBox " + f.extClass + "' style='width:", f.width, "px;", o, "left:", (Helper.top.document.documentElement.clientWidth - f.width) / 2, "px; " + c + "'>", "<div class='formTLRun'><div ", h, "class='formTCRun ", f.title == "" ? "formMulLanRun" : "", "'>", f.title, "</div></div>", "<div class='formMSG' style='position:relative;'>", e.join(""), "</div>", "<a href='javascript:void(0);' class='formXRun popupBClose' hidefocus='true' onclick='return false;'", n, "></a>", "</div>"];
     m = m.join("");
-    var l = Fai.top.$(m).appendTo("body");
+    var l = Helper.top.$(m).appendTo("body");
     var k = (j - f.height) / 2;
     if (f.height == "") {
         k = (j - $(".popupCnBg").height()) / 2
     }
     $(l).css("top", k + d);
-    var i = Fai.top.$("#popupBg" + a).outerHeight(true), g = Fai.top.$("#popupBoxContent" + a).outerHeight(true) + 120,
+    var i = Helper.top.$("#popupBg" + a).outerHeight(true), g = Helper.top.$("#popupBoxContent" + a).outerHeight(true) + 120,
         p = 100 - (g - i) > 0 ? 100 - (g - i) : 0;
     if (i < g) {
         l.css("top", p + "px")
@@ -1171,16 +1171,16 @@ Site.popupBox = function (q) {
     l.ready(function () {
         l.draggable({
             start: function () {
-                Fai.top.$("body").disableSelection()
-            }, handle: ".formTLSite", stop: function () {
-                Fai.top.$("body").enableSelection()
+                Helper.top.$("body").disableSelection()
+            }, handle: ".formTLRun", stop: function () {
+                Helper.top.$("body").enableSelection()
             }
         });
         l.find(".popupBClose").bind("click", function () {
             if (b(f.closeFunc)) {
                 f.closeFunc()
             }
-            Fai.top.$("#popupBg" + a).remove();
+            Helper.top.$("#popupBg" + a).remove();
             l.remove()
         })
     });
@@ -1191,9 +1191,9 @@ Site.popupBox = function (q) {
     }
     return l
 };
-Site.hasXScrollBar = function () {
+Run.hasXScrollBar = function () {
     var a;
-    if (Fai.top._manageMode) {
+    if (Helper.top._manageMode) {
         a = $("#web")
     } else {
         a = $("#g_main")
@@ -1202,7 +1202,7 @@ Site.hasXScrollBar = function () {
         return a.width() > $(window).width()
     }
 };
-Site.checkEnv = function (p) {
+Run.checkEnv = function (p) {
     function l(t, s) {
         var n = 0;
         if (t < 960) {
@@ -1230,23 +1230,23 @@ Site.checkEnv = function (p) {
         p = function () {
         }
     }
-    if (!Site.hasXScrollBar()) {
+    if (!Run.hasXScrollBar()) {
         p(k);
         return
     }
-    if (Fai.top._manageMode) {
+    if (Helper.top._manageMode) {
         m = $("#web").width()
     } else {
         m = $("#g_main").width()
     }
     o = (m / 2);
     if (a.length > 0 && a.height() > d.height()) {
-        i = i - Fai.getScrollWidth()
+        i = i - Helper.getScrollWidth()
     }
-    Fai.top.$(".absForms >.form").each(function (s, n) {
+    Helper.top.$(".absForms >.form").each(function (s, n) {
         e($(n))
     });
-    Fai.top.$(".floatForms >.form").each(function (s, n) {
+    Helper.top.$(".floatForms >.form").each(function (s, n) {
         e($(n))
     });
     if (j.length > 0) {
@@ -1264,7 +1264,7 @@ Site.checkEnv = function (p) {
         }
         if (b) {
             g = f.find(".navContent");
-            if (Fai.top._navStyleData.cp.y == 1 || Fai.top._navStyleData.cs.w !== -1) {
+            if (Helper.top._navStyleData.cp.y == 1 || Helper.top._navStyleData.cs.w !== -1) {
                 if (g.length > 0 && l(i, g)) {
                     k.push("fullmeasureNav")
                 }
@@ -1284,7 +1284,7 @@ Site.checkEnv = function (p) {
         k.push("background")
     }
     if (l(i, $("#webBanner"))) {
-        if (Site.getWebBackgroundData().wbws === 1) {
+        if (Run.getWebBackgroundData().wbws === 1) {
             k.push("banner")
         }
     }
@@ -1319,17 +1319,17 @@ Site.checkEnv = function (p) {
     if (!h) {
         p(k, i)
     }
-    if (Fai.top._manageMode) {
+    if (Helper.top._manageMode) {
         $.each(j, function (s, n) {
             $("#" + n).css("border", "dashed black 5px")
         })
     }
 };
-Site.checkManageEnv = function () {
-    if (!Fai.top._manageMode) {
+Run.checkManageEnv = function () {
+    if (!Helper.top._manageMode) {
         return
     }
-    Site.checkEnv(function (c, e) {
+    Run.checkEnv(function (c, e) {
         var a = c.length, g = "", b = "", d = [], f;
         f = {
             floatModule: "--网站浮动模块位置；\n",
@@ -1354,14 +1354,14 @@ Site.checkManageEnv = function () {
             d.push("没有检测到横向超出的元素。")
         }
         g = '<a href="http://it.faisco.cn/page/forum/createShare.php?articleId=1447" style="position:absolute;right:20px;bottom:60px;font-size:14px;" target="_blank">[了解更多]</a>';
-        b = '<button style="position:absolute;right:20px;bottom:20px;padding:4px;width:64px;cursor:pointer;padding:0px;" onclick="Site.closeCheckEnvWindow()">确定</button>';
+        b = '<button style="position:absolute;right:20px;bottom:20px;padding:4px;width:64px;cursor:pointer;padding:0px;" onclick="Run.closeCheckEnvWindow()">确定</button>';
         d.push(g);
         d.push(b);
         d = '<div style="padding:10px;font-size:14px;cursor:point">' + $.trim(d.join("<br>")) + "</div>";
-        Site.popupWindow({title: "横向滚动条检测结果", divContent: d, closeBtnClass: "J_checkEvnCloseBtn"})
+        Run.popupWindow({title: "横向滚动条检测结果", divContent: d, closeBtnClass: "J_checkEvnCloseBtn"})
     })
 };
-Site.checkVisitEnv = function () {
+Run.checkVisitEnv = function () {
     var b = {
         get: function (c) {
             return sessionStorage ? sessionStorage.getItem(c) : $.cookie(c)
@@ -1394,13 +1394,13 @@ Site.checkVisitEnv = function () {
             return a.get().indexOf(c) > -1
         }
     };
-    if (Fai.top._manageMode) {
+    if (Helper.top._manageMode) {
         return
     }
     if (a.has(location.href)) {
         return
     }
-    Site.checkEnv(function (h) {
+    Run.checkEnv(function (h) {
         function i(m, l) {
             if (!m || !l) {
                 return
@@ -1411,7 +1411,7 @@ Site.checkVisitEnv = function () {
                 }
                 l = $.toJSON(l)
             }
-            Site.logDog(m, l)
+            Run.logDog(m, l)
         }
 
         var g = h.length, e = $(window).width(), d = [], j, c, k, f;
@@ -1449,17 +1449,17 @@ Site.checkVisitEnv = function () {
         i(j, d)
     })
 };
-Site.closeCheckEnvWindow = function () {
+Run.closeCheckEnvWindow = function () {
     var a = $(".J_checkEvnCloseBtn");
     if (a.length > 0) {
         a.trigger("click")
     }
 };
-Site.initPdNavfold = function (b) {
+Run.initPdNavfold = function (b) {
     var e = $("#module" + b);
     if (e.find(".g_vertFold").length > 0) {
         var j = e.find(".pdLevel a");
-        if (Fai.isIE6() || Fai.isIE7()) {
+        if (Helper.isIE6() || Helper.isIE7()) {
             $.each(j, function (r, s) {
                 if ($(s).width() > 155) {
                     $(s).width(155)
@@ -1539,7 +1539,7 @@ Site.initPdNavfold = function (b) {
     h = [];
     e.find(".g_productNav").fadeTo(400, 1)
 };
-Site.foldChange = function (b, c) {
+Run.foldChange = function (b, c) {
     var a = $("#module" + b);
     a.find(".fold_h_J").mouseover(function () {
         $(this).addClass("g_hover")
@@ -1556,16 +1556,16 @@ Site.foldChange = function (b, c) {
             e.find(".fold_btn_J").removeClass("g_fold").addClass("g_unfold")
         }
     });
-    Site.initContentSplitLine(b, c)
+    Run.initContentSplitLine(b, c)
 };
-Site.floatTip = function (d) {
+Run.floatTip = function (d) {
     var q = {moduleId: "", targetId: "", tipText: "", cusClass: "", direction: 3};
     q = $.extend(q, d);
     if (q.moduleId.length == 0 || q.targetId.length == 0 || q.tipText.length == 0) {
         return
     }
-    $(Fai.top.document).find(".J_floatTip_" + q.moduleId).remove();
-    var k = Fai.isIE6() || Fai.isIE7() || Fai.isIE8();
+    $(Helper.top.document).find(".J_floatTip_" + q.moduleId).remove();
+    var k = Helper.isIE6() || Helper.isIE7() || Helper.isIE8();
     var t = [];
     var j = "floatTip_content";
     var r = "floatTip_right";
@@ -1584,13 +1584,13 @@ Site.floatTip = function (d) {
     t.push("<div class='" + p + "'></div>");
     t.push("<div class='" + j + q.cusClass + "'>" + q.tipText + "</div>");
     t.push("</div>\n");
-    $(Fai.top.document).find("#g_main").append(t.join(""));
+    $(Helper.top.document).find("#g_main").append(t.join(""));
     var b = $("#" + q.moduleId);
     var s = $(b).find("#" + q.targetId);
     var a = $("#" + o);
     var h = $(".floatLeftTop").offset().top;
-    var c = (Fai.top._manageMode) ? $("#g_main").scrollTop() : $("body").scrollTop();
-    if (Fai.isIE6()) {
+    var c = (Helper.top._manageMode) ? $("#g_main").scrollTop() : $("body").scrollTop();
+    if (Helper.isIE6()) {
         c = $("#g_main").scrollTop()
     }
     if (c == 0) {
@@ -1619,10 +1619,10 @@ Site.floatTip = function (d) {
         $("#floatTip_" + q.moduleId + "_" + q.targetId).remove()
     })
 };
-Site.floatTip_clear = function (a) {
-    $(Fai.top.document).find(".J_floatTip_" + a).remove()
+Run.floatTip_clear = function (a) {
+    $(Helper.top.document).find(".J_floatTip_" + a).remove()
 };
-Site.moduleSubPanel = function (m) {
+Run.moduleSubPanel = function (m) {
     var e = {that: null, moduleId: null, idStr: "", clsStr: "", contentStr: ""};
     $.extend(e, m);
     if (e.that == null) {
@@ -1631,7 +1631,7 @@ Site.moduleSubPanel = function (m) {
     var a, c = e.moduleId, d = $("#module" + c), l = j(d), n = h(d, c);
     n = n + " modulePattern " + d.attr("class");
     n = n.replace("formInZone", "");
-    var b = ["<div id='", e.idStr, "' class='", e.clsStr, " g_m_s_J ", l, "' _mouseIn=1 style='display:none;'>", "<div class='", n, "' style='zoom:0;margin:0;overflow:visible;position:relative;'>", "<div class='formMiddle' style='zoom:0;width:auto;border:0;'>", "<div class='formMiddleCenter' style='zoom:0;width:auto;margin:0;'>", "<div class='formMiddleContent' style='", Fai.isIE6() ? "_display:inline;" : "", "width:auto;margin:0;overflow:visible;'>", e.contentStr, "</div>", "</div>", "</div>", "</div>", "</div>"];
+    var b = ["<div id='", e.idStr, "' class='", e.clsStr, " g_m_s_J ", l, "' _mouseIn=1 style='display:none;'>", "<div class='", n, "' style='zoom:0;margin:0;overflow:visible;position:relative;'>", "<div class='formMiddle' style='zoom:0;width:auto;border:0;'>", "<div class='formMiddleCenter' style='zoom:0;width:auto;margin:0;'>", "<div class='formMiddleContent' style='", Helper.isIE6() ? "_display:inline;" : "", "width:auto;margin:0;overflow:visible;'>", e.contentStr, "</div>", "</div>", "</div>", "</div>", "</div>"];
     a = $(b.join(""));
     a.appendTo("body");
     if (d.hasClass("formStyle76")) {
@@ -1649,7 +1649,7 @@ Site.moduleSubPanel = function (m) {
         a.off("mouseleave.pr").on("mouseleave.pr", function () {
             g(e.moduleId);
             if (parseInt(d.attr("_side")) === 2) {
-                Site.startFlutterInterval(d)
+                Run.startFlutterInterval(d)
             }
             if (parseInt(d.attr("_side")) === 1) {
                 var r = d.outerWidth();
@@ -1660,7 +1660,7 @@ Site.moduleSubPanel = function (m) {
             if (p) {
                 clearTimeout(p);
                 if (parseInt(d.attr("_side")) === 2) {
-                    Site.stopFlutterInterval(d)
+                    Run.stopFlutterInterval(d)
                 }
                 if (parseInt(d.attr("_side")) === 1) {
                     d.animate({left: 0}, {queue: false, duration: 500})
@@ -1686,10 +1686,10 @@ Site.moduleSubPanel = function (m) {
         });
         if (parseInt(d.attr("_side")) === 2) {
             a.mouseleave(function () {
-                Site.startFlutterInterval(d)
+                Run.startFlutterInterval(d)
             });
             a.mouseenter(function () {
-                Site.stopFlutterInterval(d)
+                Run.stopFlutterInterval(d)
             })
         }
     }
@@ -1743,7 +1743,7 @@ Site.moduleSubPanel = function (m) {
                     }
                 }
             }
-            u = Fai.top.$("#module" + p);
+            u = Helper.top.$("#module" + p);
             return j(u)
         }
     }
@@ -1768,7 +1768,7 @@ Site.moduleSubPanel = function (m) {
                         }
                     }
                 }
-                v = Fai.top.$("#module" + w);
+                v = Helper.top.$("#module" + w);
                 return h(v, p)
             }
         }
@@ -1776,25 +1776,25 @@ Site.moduleSubPanel = function (m) {
 
     return a
 };
-Site.mobiPlatform = function (b) {
-    if (!Fai.top._siteDemo || Fai.top._designAuth) {
+Run.mobiPlatform = function (b) {
+    if (!Helper.top._siteDemo || Helper.top._designAuth) {
         return
     }
-    if (typeof(Fai.top.top) != "undefined" && typeof(Fai.top.top.$) != "undefined") {
-        var v = Fai.top.top.$(".fk-quickViewTemplateContent");
+    if (typeof(Helper.top.top) != "undefined" && typeof(Helper.top.top.$) != "undefined") {
+        var v = Helper.top.top.$(".fk-quickViewTemplateContent");
         if (v.length > 0 && v.is(":visible")) {
             return
         }
     }
     var g = [], h = false, r = "mobiPlatform", m = document.domain, p = {}, d = {}, l = {w: 0, h: 0},
-        s = Fai.top.$("body"), y = Fai.getScrollWidth(), j = 400, n = 600,
+        s = Helper.top.$("body"), y = Helper.getScrollWidth(), j = 400, n = 600,
         c = $.cookie("mobiPlatformBg", {domain: m, path: "/"}) || 0,
         z = parseInt($.cookie("mobiPlatformIconFlag", {domain: m, path: "/"})) || 0, w = "display:none;", q = "",
         o = "", f, x, k, a, u, t;
     var A = {refresh: false};
     $.extend(A, b);
-    if (Fai.isIE) {
-        if (Fai.isIE6() || Fai.isIE7() || Fai.isIE8()) {
+    if (Helper.isIE) {
+        if (Helper.isIE6() || Helper.isIE7() || Helper.isIE8()) {
             h = true
         }
     }
@@ -1815,13 +1815,13 @@ Site.mobiPlatform = function (b) {
     p.small.h = 400;
     p.small.cw = 291;
     p.small.ch = 483;
-    l = Site.mobiPlatform.getWindowSize();
+    l = Run.mobiPlatform.getWindowSize();
     if (l.h <= 800) {
         d = p.small
     } else {
         d = p.big
     }
-    Site.mobiPlatform.nowSize = d;
+    Run.mobiPlatform.nowSize = d;
     if (s.children("#mobiPlatform").length < 1) {
         g.push("<div id='mobiPlatform' class='mobiPlatform mobiPlatform-hide " + d.className + "' direction='0' moved='0' style='" + q + "'>");
         g.push("	<div class='J_innerCover mp-innerCover' style='display:none;'></div>");
@@ -1840,9 +1840,9 @@ Site.mobiPlatform = function (b) {
         g.push("	<div class='J_hoverTip mp-hoverTip' style='display:none;'></div>");
         g.push("</div>");
         g.push("<div id='mobiPlatformIcon' class='mobiPlatformIcon " + o + "' style='" + w + "'>");
-        g.push("	<a href='javascript:;' class='mobiPlatformIcon-handle' onclick='Site.mobiPlatform();return false;' hidefocus='true'></a>");
+        g.push("	<a href='javascript:;' class='mobiPlatformIcon-handle' onclick='Run.mobiPlatform();return false;' hidefocus='true'></a>");
         g.push("</div>");
-        Fai.top.$("body").append(g.join(""));
+        Helper.top.$("body").append(g.join(""));
         f = s.children("#mobiPlatform");
         x = s.children("#mobiPlatformIcon");
         a = f.find(".J_closeBtn");
@@ -1863,8 +1863,8 @@ Site.mobiPlatform = function (b) {
                     c = 1;
                     $.cookie("mobiPlatformBg", 1, {expires: 365, domain: m, path: "/"})
                 }
-                d = Site.mobiPlatform.nowSize;
-                l = Site.mobiPlatform.getWindowSize();
+                d = Run.mobiPlatform.nowSize;
+                l = Run.mobiPlatform.getWindowSize();
                 var G = true, I = {x: 1, y: 1}, C = 4, F = s.children(".floatLeftTop"), M = F.offset(),
                     E = ~~(F.css("top").replace("px", "")), L = l.h - d.ch, D = L - (H.offset.top - (M.top - E)),
                     K = l.w - d.cw, J = K - (H.offset.left - M.left);
@@ -1955,7 +1955,7 @@ Site.mobiPlatform = function (b) {
             e.style.width = d.w + "px";
             e.style.height = d.h + "px";
             e.style.border = "none";
-            e.src = Fai.top._mobiAdmHost;
+            e.src = Helper.top._mobiAdmHost;
             if (e.attachEvent) {
                 e.attachEvent("onload", function () {
                     f.find(".J_loading").remove();
@@ -1973,13 +1973,13 @@ Site.mobiPlatform = function (b) {
         } else {
             f.removeClass("mobiPlatform-hide")
         }
-        Fai.top.$(window).off("resize.mobiPlatform");
-        Fai.top.$(window).on("resize.mobiPlatform", function () {
-            Site.mobiPlatform({refresh: true})
+        Helper.top.$(window).off("resize.mobiPlatform");
+        Helper.top.$(window).on("resize.mobiPlatform", function () {
+            Run.mobiPlatform({refresh: true})
         });
         a.click(function () {
-            d = Site.mobiPlatform.nowSize;
-            l = Site.mobiPlatform.getWindowSize();
+            d = Run.mobiPlatform.nowSize;
+            l = Run.mobiPlatform.getWindowSize();
             rangeHeight = l.h - d.ch;
             rangeWidth = l.w - d.cw;
             nowWidth = rangeWidth - f.offset().left;
@@ -2026,7 +2026,7 @@ Site.mobiPlatform = function (b) {
             }
         });
         f.hover(function () {
-            t = Fai.top.$("#mobiPlatformBg");
+            t = Helper.top.$("#mobiPlatformBg");
             if (t.length < 1) {
                 var B = [];
                 B.push("<div id='mobiPlatformBg' class='popupBg' style='z-index:9032;opacity:0;' >");
@@ -2036,7 +2036,7 @@ Site.mobiPlatform = function (b) {
                     B.push("</div>")
                 }
                 f.before(B.join(""));
-                t = Fai.top.$("#mobiPlatformBg")
+                t = Helper.top.$("#mobiPlatformBg")
             }
             t.stop(true).show().animate({opacity: 0.6}, 500);
             if (!c) {
@@ -2113,8 +2113,8 @@ Site.mobiPlatform = function (b) {
         }
         return b
     }
-})(Site.mobiPlatform);
-Site.Pagenation = (function (d) {
+})(Run.mobiPlatform);
+Run.Pagenation = (function (d) {
     var c;
 
     function b(h, f, i) {
@@ -2208,7 +2208,7 @@ Site.Pagenation = (function (d) {
 
     return b
 })(jQuery);
-Site.loadCss = function (b, f, e) {
+Run.loadCss = function (b, f, e) {
     var c = document.createElement("link");
     supportOnload = "onload" in c, isOldWebKit = +navigator.userAgent.replace(/.*(?:AppleWebKit|AndroidWebKit)\/?(\d+).*/i, "$1") < 536, protectNum = 600000;
     f = typeof f == "function" ? f : function () {
@@ -2279,7 +2279,7 @@ Site.loadCss = function (b, f, e) {
         }, 20)
     }
 };
-Site.checkScriptLoad = function (f) {
+Run.checkScriptLoad = function (f) {
     if (typeof f == "undefined" || f.length < 1) {
         return
     }
@@ -2293,11 +2293,11 @@ Site.checkScriptLoad = function (f) {
     }
     return a
 };
-Site.demandLoadJs = function (b, a) {
+Run.demandLoadJs = function (b, a) {
     if (typeof b == "undefined" || b.length < 1) {
         return
     }
-    if (!Site.checkScriptLoad(b)) {
+    if (!Run.checkScriptLoad(b)) {
         if (typeof a == "function") {
             $LAB.script(b).wait(function () {
                 a()
@@ -2307,7 +2307,7 @@ Site.demandLoadJs = function (b, a) {
         }
     }
 };
-Site.checkCssLoad = function (c) {
+Run.checkCssLoad = function (c) {
     if (typeof c == "undefined" || c.length < 1) {
         return
     }
@@ -2321,15 +2321,15 @@ Site.checkCssLoad = function (c) {
     }
     return a
 };
-Site.demandLoadCss = function (a, b) {
+Run.demandLoadCss = function (a, b) {
     if (typeof a == "undefined" || a.length < 1) {
         return
     }
-    if (!Site.checkCssLoad(a)) {
-        Site.loadCss(a, b)
+    if (!Run.checkCssLoad(a)) {
+        Run.loadCss(a, b)
     }
 };
-Site.initContentSplitLine = function (a, c) {
+Run.initContentSplitLine = function (a, c) {
     var b = $("#module" + a);
     if (b.length < 1 || typeof c == "undefined" || c.y != 2) {
         return
@@ -2338,7 +2338,7 @@ Site.initContentSplitLine = function (a, c) {
     if (isNaN(h) || h < 3 || h > 8 || e.length < 1) {
         return
     }
-    if (Fai.isIE6() || Fai.isIE7()) {
+    if (Helper.isIE6() || Helper.isIE7()) {
         e.css({
             fontSize: 0,
             height: 0,
@@ -2360,9 +2360,9 @@ Site.initContentSplitLine = function (a, c) {
     }
     l += g + "</span>";
     e.addClass("g_foldTextLine").html(l);
-    Site.checkSplitLineEnough(a)
+    Run.checkSplitLineEnough(a)
 };
-Site.checkSplitLineEnough = function (g) {
+Run.checkSplitLineEnough = function (g) {
     var c = $("#module" + g), d = c.find(".g_separator");
     if (c.length < 1 || d.length < 1) {
         return
@@ -2374,17 +2374,17 @@ Site.checkSplitLineEnough = function (g) {
     } else {
         if (a < b) {
             e.html(doubleText);
-            Site.checkSplitLineEnough(g)
+            Run.checkSplitLineEnough(g)
         }
     }
     if (c.hasClass("formStyle11")) {
         d.css("width", c.find(".formMiddleContent").width() + "px")
     }
 };
-Site.chageTheWebVersion = function (a) {
+Run.chageTheWebVersion = function (a) {
     $.ajax({
         type: "POST", url: "/ajax/webTools_h.php?cmd=changeWebVersion", data: "verNum=" + a, error: function () {
-            Fai.ing("系统异常，请稍后重试", true)
+            Helper.ing("系统异常，请稍后重试", true)
         }, success: function (b) {
             var c = jQuery.parseJSON(b);
             if (c.success) {
@@ -2395,26 +2395,26 @@ Site.chageTheWebVersion = function (a) {
         }
     })
 };
-Site.getCloneAid = function () {
+Run.getCloneAid = function () {
     $.ajax({
         type: "post", url: "/ajax/webTools_h.php", data: "cmd=getCloneAid", beforeSend: function () {
-            Fai.ing("正在克隆处理......")
+            Helper.ing("正在克隆处理......")
         }, error: function () {
-            Fai.ing("系统异常，请稍后重试", true)
+            Helper.ing("系统异常，请稍后重试", true)
         }, success: function (a) {
             var b = jQuery.parseJSON(a);
             if (b.success) {
-                Fai.ing("克隆成功, 账号：" + b.account + ", aid：" + b.aid)
+                Helper.ing("克隆成功, 账号：" + b.account + ", aid：" + b.aid)
             } else {
-                Fai.ing(b.msg)
+                Helper.ing(b.msg)
             }
         }
     })
 };
-Site.cloneWebVersion = function () {
+Run.cloneWebVersion = function () {
     $.ajax({
         type: "POST", url: "/ajax/webTools_h.php", data: "cmd=getAcctInfo", error: function () {
-            Fai.ing("系统异常，请稍后重试", true)
+            Helper.ing("系统异常，请稍后重试", true)
         }, success: function (b) {
             var c = jQuery.parseJSON(b);
             if (c.success) {
@@ -2447,7 +2447,7 @@ Site.cloneWebVersion = function () {
                                 url: "/ajax/webTools_h.php",
                                 data: "cmd=getAcctInfo&inputAcctName=" + c + "&inputAtype=" + d,
                                 error: function () {
-                                    Fai.ing("系统异常，请稍后重试", true)
+                                    Helper.ing("系统异常，请稍后重试", true)
                                 },
                                 success: function (e) {
                                     var i = jQuery.parseJSON(e);
@@ -2455,7 +2455,7 @@ Site.cloneWebVersion = function () {
                                         if (i.aid == b.aid) {
                                             alert("所输入的账号与当前网站账号相同，不能克隆！")
                                         } else {
-                                            if (!i.isFaier) {
+                                            if (!i.isHelperer) {
                                                 alert("你所输入网站账号不是内部账号，不能克隆！");
                                                 return
                                             }
@@ -2468,9 +2468,9 @@ Site.cloneWebVersion = function () {
                                                 $.ajax({
                                                     type: "POST",
                                                     url: "/ajax/webTools_h.php",
-                                                    data: "cmd=cloneWebSite&fromAid=" + b.aid + "&toAid=" + i.aid,
+                                                    data: "cmd=cloneWebRun&fromAid=" + b.aid + "&toAid=" + i.aid,
                                                     error: function () {
-                                                        Fai.ing("系统异常，请稍后重试", true)
+                                                        Helper.ing("系统异常，请稍后重试", true)
                                                     },
                                                     success: function (j) {
                                                         var k = jQuery.parseJSON(j);
@@ -2504,12 +2504,12 @@ Site.cloneWebVersion = function () {
         }
     }
 };
-Site.updateVersionTwoStyle = function () {
+Run.updateVersionTwoStyle = function () {
     var a, b;
     a = prompt("请输入更新2.0样式版本号的方式：\n\n指定样式id请输入0；  更新全部样式请输入1");
     if (a == 0) {
         b = prompt("请输入需要更新的2.0样式的id！！！");
-        if (!Fai.isNumber(b)) {
+        if (!Helper.isNumber(b)) {
             alert("输入有误！");
             return
         }
@@ -2518,7 +2518,7 @@ Site.updateVersionTwoStyle = function () {
             var c = "请输入需要更新2.0的样式的类型：\n\n更新全部类型的2.0样式请输入0\n\n更新所有主题样式请输入1\n\n更新所有模块样式请输入2\n\n更新所有导航样式请输入3";
             c += "\n\n更新所有模块组样式（横向）样式请输入4\n\n更新所有模块组样式（竖向）样式请输入5\n\n更新所有模块列样式请输入6\n\n更新所有自由容器样式请输入7";
             var b = prompt(c);
-            if (!Fai.isNumber(b)) {
+            if (!Helper.isNumber(b)) {
                 alert("输入有误！");
                 return
             }
@@ -2538,7 +2538,7 @@ Site.updateVersionTwoStyle = function () {
         url: "/ajax/webTools_h.php",
         data: "cmd=updateStyleVersion&updateType=" + a + "&updateId=" + b,
         error: function () {
-            Fai.ing("系统异常，请稍后重试", true)
+            Helper.ing("系统异常，请稍后重试", true)
         },
         success: function (d) {
             var e = jQuery.parseJSON(d);
@@ -2546,7 +2546,7 @@ Site.updateVersionTwoStyle = function () {
         }
     })
 };
-Site.setMallTrialTime = function (e) {
+Run.setMallTrialTime = function (e) {
     var f, b = new Date(), d = b.getFullYear(), g = b.getMonth() + 1, a = b.getDate();
     if (e == 0) {
         f = d + "-" + g + "-" + a + " 00:00:00"
@@ -2567,7 +2567,7 @@ Site.setMallTrialTime = function (e) {
         url: "/ajax/webTools_h.php",
         data: "cmd=setMallTrialTimeEnd&trialTime=" + f,
         error: function () {
-            Fai.ing("系统异常，请稍后重试", true)
+            Helper.ing("系统异常，请稍后重试", true)
         },
         success: function (h) {
             var i = jQuery.parseJSON(h);
@@ -2584,8 +2584,8 @@ Site.setMallTrialTime = function (e) {
         }
     })
 };
-Site.getModuleStatus = function (d) {
-    var e = 1, g = "module" + d, b = Fai.top.$("#" + g), c = b.attr("_side"), a = b.parent(), f = a.attr("id") || "";
+Run.getModuleStatus = function (d) {
+    var e = 1, g = "module" + d, b = Helper.top.$("#" + g), c = b.attr("_side"), a = b.parent(), f = a.attr("id") || "";
     if (c == 2) {
         e = 4
     } else {
@@ -2603,13 +2603,13 @@ Site.getModuleStatus = function (d) {
     }
     return e
 };
-Site.jumpToModulePosition = function (e, a, c) {
+Run.jumpToModulePosition = function (e, a, c) {
     var d = $("#module" + e), f = 0;
     if (d.length < 1) {
         if (!c) {
             return
         } else {
-            if (c == ("/col.php?id=" + Fai.top._colId)) {
+            if (c == ("/col.php?id=" + Helper.top._colId)) {
                 return
             }
             document.location.href = c + "#fai_" + e + "_" + a
@@ -2630,23 +2630,23 @@ Site.jumpToModulePosition = function (e, a, c) {
         $("#navCenter").find(".itemHover").removeClass("itemHover")
     }
 };
-Site.getTopWindow = function () {
-    return (typeof Fai != "undefined" && Fai.top) || window
+Run.getTopWindow = function () {
+    return (typeof Helper != "undefined" && Helper.top) || window
 };
-Site.changeABVersion = function (a) {
+Run.changeABVersion = function (a) {
     if (window.localStorage && window.localStorage.setItem && window.localStorage.removeItem) {
         window.localStorage.removeItem("ABVesion");
         if (a) {
-            window.localStorage.setItem("ABVesion", Fai.top._aid + "-A")
+            window.localStorage.setItem("ABVesion", Helper.top._aid + "-A")
         } else {
-            window.localStorage.setItem("ABVesion", Fai.top._aid + "-B")
+            window.localStorage.setItem("ABVesion", Helper.top._aid + "-B")
         }
     }
     window.location.reload()
 };
-Site.getABVersion = function () {
+Run.getABVersion = function () {
     var c = false;
-    if (Fai.top._aid % 2 == 1) {
+    if (Helper.top._aid % 2 == 1) {
         c = true
     }
     if (window.localStorage && window.localStorage.getItem) {
@@ -2656,7 +2656,7 @@ Site.getABVersion = function () {
             var d = {};
             d.aid = b[0];
             d.ver = b[1];
-            if (d.aid == Fai.top._aid) {
+            if (d.aid == Helper.top._aid) {
                 if (d.ver == "A") {
                     c = false
                 } else {
@@ -2670,7 +2670,7 @@ Site.getABVersion = function () {
     return c
 };
 (function (c, a, d) {
-    a.runSiteInit = function () {
+    a.runRunInit = function () {
         var k = [81, 97], l = k.length, g, h, f, e;
         for (f = 0; f < l; f++) {
             g = c(".formStyle" + k[f]);
@@ -2707,8 +2707,8 @@ Site.getABVersion = function () {
         }
         return false
     }
-})(jQuery, Site.cacheModuleFunc || (Site.cacheModuleFunc = {}));
-Site.onLogout = function () {
+})(jQuery, Run.cacheModuleFunc || (Run.cacheModuleFunc = {}));
+Run.onLogout = function () {
     $("#topBarMsg").show();
     $("#topBarMsg").html(LS.topBarLogouting);
     $.ajax({
@@ -2725,24 +2725,24 @@ Site.onLogout = function () {
         }
     })
 };
-Site.ajaxLoadModuleDom = function (b, a, c) {
+Run.ajaxLoadModuleDom = function (b, a, c) {
     $.ajax({
         type: "post",
         url: "ajax/ajaxLoadModuleDom_h.php",
-        data: "cmd=loadModuleDom&colId=" + b + "&extId=" + a + "&ajaxOptionInfo=" + Fai.encodeUrl($.toJSON(c)),
+        data: "cmd=loadModuleDom&colId=" + b + "&extId=" + a + "&ajaxOptionInfo=" + Helper.encodeUrl($.toJSON(c)),
         error: function () {
-            Fai.ing("系统异常，请稍后重试", true)
+            Helper.ing("系统异常，请稍后重试", true)
         },
         success: function (d) {
             var d = jQuery.parseJSON(d);
             if (d.success) {
                 var j = jQuery.parseJSON(d.rtInfo);
                 if (j.topBar) {
-                    var f = Fai.top.$("#memberBarArea");
+                    var f = Helper.top.$("#memberBarArea");
                     f.children().remove();
                     f.append(j.topBar);
-                    Site.mallCartInit(Fai.top._colId);
-                    Site.mobiWebInit()
+                    Run.mallCartInit(Helper.top._colId);
+                    Run.mobiWebInit()
                 }
                 if (j.moduleDomList) {
                     for (var e = 0; e < j.moduleDomList.length; e++) {
@@ -2751,23 +2751,23 @@ Site.ajaxLoadModuleDom = function (b, a, c) {
                         var k = h.dom;
                         loadWholeModuleDom(g, k)
                     }
-                    Site.fixSiteWidth(Fai.top._manageMode);
-                    Site.fixWebFooterHeight();
-                    jzUtils.run({name: "moduleAnimation.publish", base: Site})
+                    Run.fixRunWidth(Helper.top._manageMode);
+                    Run.fixWebFooterHeight();
+                    jzUtils.run({name: "moduleAnimation.publish", base: Run})
                 }
             }
         }
     })
 };
 function loadWholeModuleDom(b, c) {
-    var a = Fai.top.$("#module" + b);
+    var a = Helper.top.$("#module" + b);
     a.children().remove();
     a.prepend(c)
 }
-Site.bindInTabSwitch = function () {
+Run.bindInTabSwitch = function () {
     $(".formStyle29").each(function () {
         var g = $(this).attr("id").replace("module", "");
-        if (Fai.top["tabModule" + g + "Switch"]) {
+        if (Helper.top["tabModule" + g + "Switch"]) {
             $(this).find(".formTabButton").off("mouseenter.tab").addClass("formTabButtonClick")
         } else {
             $(this).find(".formTabButton").off("mouseenter,tab").on("mouseenter.tab", function () {
@@ -2776,8 +2776,8 @@ Site.bindInTabSwitch = function () {
         }
     });
     var b = new Array();
-    var e = Fai.top.location.hash;
-    var a = Fai.top.location.search;
+    var e = Helper.top.location.hash;
+    var a = Helper.top.location.search;
     var d = 0;
     if (a) {
         var f = a.indexOf("pageno");
@@ -2795,7 +2795,7 @@ Site.bindInTabSwitch = function () {
                 b.push(parseInt(k));
                 return false
             }
-            var j = Fai.getUrlParam(Fai.top.location.href, "m" + k + "pageno");
+            var j = Helper.getUrlParam(Helper.top.location.href, "m" + k + "pageno");
             if (typeof(j) != "undefined" && j.length > 0) {
                 b.push(parseInt(k))
             }
@@ -2809,18 +2809,18 @@ Site.bindInTabSwitch = function () {
                 b.push(parseInt(k));
                 return false
             }
-            var j = Fai.getUrlParam(Fai.top.location.href, "m" + k + "pageno");
+            var j = Helper.getUrlParam(Helper.top.location.href, "m" + k + "pageno");
             if (typeof(j) != "undefined" && j.length > 0) {
                 b.push(parseInt(k))
             }
         })
     });
     $.each(b, function (g, h) {
-        Site.changeLiCnt(h, false, 29)
+        Run.changeLiCnt(h, false, 29)
     })
 };
-Site.restartMarquee = function (a, c, d) {
-    var f = Fai.top.$("#module" + a),
+Run.restartMarquee = function (a, c, d) {
+    var f = Helper.top.$("#module" + a),
         g = f.hasClass("formStyle4") || f.hasClass("formStyle5") || f.hasClass("formStyle16") || f.hasClass("formStyle77") || f.hasClass("formStyle31") || f.hasClass("formStyle42"),
         h = f.hasClass("formStyle2") || f.hasClass("formStyle3") || f.hasClass("formStyle8") || f.hasClass("formStyle12") || f.hasClass("formStyle30") || f.hasClass("formStyle41") || f.hasClass("formStyle74"),
         b = g ? "photoList" : "productList";
@@ -2829,22 +2829,22 @@ Site.restartMarquee = function (a, c, d) {
         b = "listPhotos"
     }
     if (c) {
-        if (Fai.top[b + a]) {
-            var e = Fai.top[b + a].data;
-            Fai.stopInterval("marquee" + a);
+        if (Helper.top[b + a]) {
+            var e = Helper.top[b + a].data;
+            Helper.stopInterval("marquee" + a);
             if (g) {
-                Site.loadPhotoMarquee(a, !e.picScale, e.cusPicSize, e.newMarqueeToward)
+                Run.loadPhotoMarquee(a, !e.picScale, e.cusPicSize, e.newMarqueeToward)
             } else {
                 if (h) {
-                    Site.loadProductMarquee(a, !e.picScale, e.cusPicSize, e.newMarqueeToward)
+                    Run.loadProductMarquee(a, !e.picScale, e.cusPicSize, e.newMarqueeToward)
                 } else {
                     if (i) {
-                        Site.loadPhotoMarquee(a, e.picScale, e.cusPicSize, e.newMarqueeToward, "listPhotos")
+                        Run.loadPhotoMarquee(a, e.picScale, e.cusPicSize, e.newMarqueeToward, "listPhotos")
                     }
                 }
             }
         } else {
-            new Function("Fai.top.changeMarquee" + a + "()")()
+            new Function("Helper.top.changeMarquee" + a + "()")()
         }
     }
     if (d == 29) {
@@ -2853,7 +2853,7 @@ Site.restartMarquee = function (a, c, d) {
                 $(this).show();
                 if ($(this).attr("styleId") == 3 || $(this).attr("styleId") == 16 || $(this).attr("styleId") == 90) {
                     var j = $($(this).find(">div")[0]).attr("id").replace("module", "");
-                    new Function("Fai.top.changeMarquee" + j + "()")()
+                    new Function("Helper.top.changeMarquee" + j + "()")()
                 }
             } else {
                 $(this).hide()
@@ -2861,7 +2861,7 @@ Site.restartMarquee = function (a, c, d) {
         })
     }
 };
-Site.changeLiCnt = function (g, d, a) {
+Run.changeLiCnt = function (g, d, a) {
     var c = $("#formTabCntId" + g).parent().find(".formTabCntId").eq(0).find(" >.form"), b = c.attr("id");
     if (b == ("module" + g)) {
         return
@@ -2879,55 +2879,55 @@ Site.changeLiCnt = function (g, d, a) {
     f.prependTo(f.parent());
     f.attr("show", true);
     f.addClass("formTabCntIdHover");
-    Site.restartMarquee(g, d, a);
-    Site.triggerGobalEvent("site_moduleTabSwitch", g);
-    Site.fixModuleInTabSwitchBug(g);
-    jzUtils.run({name: "moduleAnimation.publish", base: Fai.top.Site});
-    jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Fai.top.Site})
+    Run.restartMarquee(g, d, a);
+    Run.triggerGobalEvent("site_moduleTabSwitch", g);
+    Run.fixModuleInTabSwitchBug(g);
+    jzUtils.run({name: "moduleAnimation.publish", base: Helper.top.Run});
+    jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Helper.top.Run})
 };
-Site.initTabYStyle = function (d) {
-    var c = Fai.top.$("#module" + d), a = c.find(".titleTable");
-    if (Fai.isIE6()) {
+Run.initTabYStyle = function (d) {
+    var c = Helper.top.$("#module" + d), a = c.find(".titleTable");
+    if (Helper.isIE6()) {
         var e = c.find(".formMiddleCenter" + d).width(), b = a.width();
         c.find("#formTabContent" + d).css({width: (e - b - 40) + "px", "float": "left"})
     }
 };
-Site.fixModuleInTabSwitchBug = function (c) {
+Run.fixModuleInTabSwitchBug = function (c) {
     var b = $("#module" + c), a;
     if (b.hasClass("formStyle83") && !!!b.data("fk_fixEffect")) {
-        Site.adjustPhotoCardImgSize(b);
+        Run.adjustPhotoCardImgSize(b);
         b.data("fk_fixEffect", 1)
     }
     if (b.hasClass("formStyle85") && !!!b.data("fk_fixEffect")) {
-        Site.adjustPhotoNewCardImgSize(b);
+        Run.adjustPhotoNewCardImgSize(b);
         b.data("fk_fixEffect", 1)
     }
     if (b.hasClass("formStyle98") && !!!b.data("fk_fixEffect")) {
-        Site.adjustPhotoMoreCardImgSize(b);
+        Run.adjustPhotoMoreCardImgSize(b);
         b.data("fk_fixEffect", 1)
     }
     if (b.hasClass("formStyle1") && !!!b.data("fk_fixEffect")) {
-        Site.richMarquee(Fai.top["richMarqueeInTab" + c]);
+        Run.richMarquee(Helper.top["richMarqueeInTab" + c]);
         b.data("fk_fixEffect", 1)
     }
     if (b.hasClass("formStyle7") || b.hasClass("formStyle6")) {
-        a = Fai.top["newsScrollOptions" + c];
+        a = Helper.top["newsScrollOptions" + c];
         if ((typeof a != "undefined") && a.scroll) {
             b.find(".separatorLine").css("display", "")
         }
     }
     if ((b.hasClass("formStyle2") || b.hasClass("formStyle3") || b.hasClass("formStyle4") || b.hasClass("formStyle12") || b.hasClass("formStyle30") || b.hasClass("formStyle74") || b.hasClass("formStyle41") || b.hasClass("formStyle8")) && !!!b.data("fk_fixEffect")) {
-        if (Site.ImageEffect && Site.ImageEffect.cashOptions && c.toString() in Site.ImageEffect.cashOptions) {
-            jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Site.ImageEffect.cashOptions[c]);
+        if (Run.ImageEffect && Run.ImageEffect.cashOptions && c.toString() in Run.ImageEffect.cashOptions) {
+            jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Run.ImageEffect.cashOptions[c]);
             b.data("fk_fixEffect", 1)
         }
     }
 };
-Site.callMusicUnload = function (a, c) {
-    var b = Site.callMusicPosition(a);
+Run.callMusicUnload = function (a, c) {
+    var b = Run.callMusicPosition(a);
     $.cookie(c, b)
 };
-Site.callMusicPlayButton = function (e, d, f, c) {
+Run.callMusicPlayButton = function (e, d, f, c) {
     $("#" + e).bind("click", function () {
         var j = $.cookie(c);
         var i = $(this);
@@ -2939,28 +2939,28 @@ Site.callMusicPlayButton = function (e, d, f, c) {
         if (j == "true") {
             $("#" + e).attr("bgMusicStatus", "false");
             $.cookie(c, false);
-            Site.reStartMusic(d);
+            Run.reStartMusic(d);
             i.attr("title", "点击暂停播放音乐");
             i.removeClass("bgplayerButtonP")
         } else {
             if (i.hasClass("bgplayerButtonP")) {
                 $("#" + e).attr("bgMusicStatus", "false");
-                Site.reStartMusic(d);
+                Run.reStartMusic(d);
                 i.attr("title", "点击暂停播放音乐");
                 i.removeClass("bgplayerButtonP")
             } else {
-                var g = Site.callMusicPosition(d);
+                var g = Run.callMusicPosition(d);
                 $.cookie(f, g);
                 $("#" + e).attr("bgMusicStatus", "true");
                 $.cookie(c, true);
-                Site.stopMusic(d);
+                Run.stopMusic(d);
                 i.attr("title", "点击播放音乐");
                 i.addClass("bgplayerButtonP")
             }
         }
     });
     var b = $.cookie(c);
-    var a = Fai.top.$("#" + e);
+    var a = Helper.top.$("#" + e);
     if (b == "true") {
         a.attr("title", "点击播放音乐");
         a.addClass("bgplayerButtonP");
@@ -2971,68 +2971,68 @@ Site.callMusicPlayButton = function (e, d, f, c) {
         a.removeClass("bgplayerButtonP")
     }
 };
-Site.SetPositionZero = function () {
+Run.SetPositionZero = function () {
     $.cookie("bgplayerTime", "0");
     var a = $("#bgplayerButton");
     a.attr("title", "点击播放音乐");
     a.addClass("bgplayerButtonP")
 };
-Site.callMusicPosition = function (a) {
+Run.callMusicPosition = function (a) {
     var b;
     try {
-        b = Site.callMusic(a).getMusicPosition()
+        b = Run.callMusic(a).getMusicPosition()
     } catch (c) {
     }
     return b
 };
-Site.stopMusic = function (a) {
+Run.stopMusic = function (a) {
     var b;
     try {
-        b = Site.callMusic(a).stopMusic()
+        b = Run.callMusic(a).stopMusic()
     } catch (c) {
     }
     return b
 };
-Site.reStartMusic = function (b) {
+Run.reStartMusic = function (b) {
     var a;
     try {
-        a = Site.callMusic(b).reStartMusic()
+        a = Run.callMusic(b).reStartMusic()
     } catch (c) {
     }
     return a
 };
-Site.getMusicLength = function (a) {
+Run.getMusicLength = function (a) {
     var b = -1;
     try {
         while (b < 0) {
-            b = Site.callMusic(a).getSoundLength()
+            b = Run.callMusic(a).getSoundLength()
         }
     } catch (c) {
     }
     return b
 };
-Site.changeVol = function (a, b) {
+Run.changeVol = function (a, b) {
     try {
-        Site.callMusic(a).changeVolume(b)
+        Run.callMusic(a).changeVolume(b)
     } catch (c) {
         console.log(c.stack)
     }
 };
-Site.callMusic = function (a) {
-    var b = document[a] || window[a] || Site.getTopWindow().document[a];
+Run.callMusic = function (a) {
+    var b = document[a] || window[a] || Run.getTopWindow().document[a];
     return b
 };
-Site.bgmFlushContinue = function () {
+Run.bgmFlushContinue = function () {
     var a = $("#bgplayerButton").attr("bgmusicstatus");
     if (a == "false") {
         $.cookie("bgplayerPause", "false");
         $.cookie("hasMusicPlaying", "false")
     }
     if (a == "false") {
-        Site.callMusicUnload("faiBgMusicPlayer", "bgplayerTime")
+        Run.callMusicUnload("faiBgMusicPlayer", "bgplayerTime")
     }
 };
-Site.appendQuickTime = function (b) {
+Run.appendQuickTime = function (b) {
     var e = new Array(), d = b.width, c = b.height, a = b.path;
     e.push("<object width='" + d + "' height='" + c + "' classid='clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B' codebase='http://www.apple.com/qtactivex/qtplugin.cab'>");
     e.push("<param name='src' value='" + a + "'>");
@@ -3048,7 +3048,7 @@ Site.appendQuickTime = function (b) {
     e.push("</object>");
     $("#" + b.parentId).append(e.join(""))
 };
-Site.appendWMP = function (b) {
+Run.appendWMP = function (b) {
     var a = new Array(), e = b.width, d = b.height, c = b.path;
     a.push("<embed type='application/x-mplayer2' classid='clsid:6bf52a52-394a-11d3-b153-00c04f79faa6' ");
     a.push("src='" + c + "' wmode='opaque' quality='high' ");
@@ -3057,9 +3057,9 @@ Site.appendWMP = function (b) {
     a.push("</embed>");
     $("#" + b.parentId).append(a.join(""))
 };
-Site.vote = function (f, i, d, e) {
+Run.vote = function (f, i, d, e) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行投票。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行投票。");
         return
     }
     var j = $("#voteMsg" + f + i), g = parseInt($.cookie("vote" + f)), a = true;
@@ -3092,11 +3092,11 @@ Site.vote = function (f, i, d, e) {
         type: "post",
         url: "ajax/vote_h.php?cmd=voteItem",
         async: false,
-        data: "vid=" + f + "&itemlist=" + Fai.encodeUrl($.toJSON(c)),
+        data: "vid=" + f + "&itemlist=" + Helper.encodeUrl($.toJSON(c)),
         error: function () {
-            var l = Site.getDialogContent(false, Fai.format(LS.voteError));
+            var l = Run.getDialogContent(false, Helper.format(LS.voteError));
             var k = {htmlContent: l, width: 205, height: 78};
-            Site.popupBox(k);
+            Run.popupBox(k);
             setTimeout(function () {
                 document.location.reload()
             }, 3000)
@@ -3105,9 +3105,9 @@ Site.vote = function (f, i, d, e) {
             var k = jQuery.parseJSON(m);
             if (k.success) {
                 j.hide();
-                var n = Site.getDialogContent(true, Fai.format(LS.voteSuccess));
+                var n = Run.getDialogContent(true, Helper.format(LS.voteSuccess));
                 var l = {htmlContent: n, width: 205, height: 78};
-                Site.popupBox(l);
+                Run.popupBox(l);
                 setTimeout(function () {
                     document.location.reload()
                 }, 1000);
@@ -3137,9 +3137,9 @@ Site.vote = function (f, i, d, e) {
                         b();
                         return
                     }
-                    var n = Site.getDialogContent(false, k.msg);
+                    var n = Run.getDialogContent(false, k.msg);
                     var l = {htmlContent: n, width: 205, height: 78};
-                    Site.popupBox(l);
+                    Run.popupBox(l);
                     setTimeout(function () {
                         document.location.reload()
                     }, 1000)
@@ -3160,14 +3160,14 @@ Site.vote = function (f, i, d, e) {
         k.push("<div class='voteCodeLine'>");
         k.push("<div class='voteCodeTitle'>验证码：</div>");
         k.push("<div id='voteCodeInput' class='voteCodeInput'><input id='needVoteCode' class='voteCodeInputText myTradeInputPlaceholder' type='text' onfocus='$(\"#needVoteCode\").css(\"border-color\", \"#E3E2E8\");' placeholder='请输入图片验证码，防止刷票'/></div>");
-        k.push("<div class='voteCodePicPanel'><img alt='' class='voteCodePic' onclick='Site.changeCaptchaImg(this, 3)' title='看不清，换一张' id='memberCaptchaImg' src='validateCode.php?Math.random()*1000'></div>");
+        k.push("<div class='voteCodePicPanel'><img alt='' class='voteCodePic' onclick='Run.changeCaptchaImg(this, 3)' title='看不清，换一张' id='memberCaptchaImg' src='validateCode.php?Math.random()*1000'></div>");
         k.push("</div>");
         k.push("<div class='voteCodePanelSubmit'>确定</div><div class='voteCodePanelCannel 'voteCodePanelClose'>取消</div>");
         k.push("</div>");
         k.push("</div>");
         $("#g_main").after(k.join(""));
-        var l = (Fai.top.document.documentElement.clientWidth - $(".voteCodePanel").width()) / 2;
-        var m = (Fai.top.document.documentElement.clientHeight - $(".voteCodePanel").height()) / 2 + $(window).scrollTop();
+        var l = (Helper.top.document.documentElement.clientWidth - $(".voteCodePanel").width()) / 2;
+        var m = (Helper.top.document.documentElement.clientHeight - $(".voteCodePanel").height()) / 2 + $(window).scrollTop();
         $(".voteCodePanel").css({left: l, top: m});
         $(".voteCodePicPanel>.voteCodePic").attr("src", "validateCode.php?" + Math.random() * 1000 + "&validateCodeRegType=3");
         $(".voteCodePanelClose, .voteCodePanelClose").unbind("click").bind("click", function () {
@@ -3189,7 +3189,7 @@ Site.vote = function (f, i, d, e) {
             $.ajax({
                 type: "post",
                 url: "/ajax/vote_h.php?cmd=voteItem",
-                data: "vid=" + f + "&itemlist=" + Fai.encodeUrl($.toJSON(c)) + "&verificationCode=" + Fai.encodeUrl(n),
+                data: "vid=" + f + "&itemlist=" + Helper.encodeUrl($.toJSON(c)) + "&verificationCode=" + Helper.encodeUrl(n),
                 error: function () {
                     alert("服务繁忙，请稍后再试。")
                 },
@@ -3222,8 +3222,8 @@ Site.vote = function (f, i, d, e) {
         k.push("		<div class='voteSuccessTitle'>感谢您的投票</div>");
         k.push("</div>");
         $("#g_main ").after(k.join(""));
-        var l = (Fai.top.document.documentElement.clientWidth - $(".voteSuccessPanel").width()) / 2;
-        var m = (Fai.top.document.documentElement.clientHeight - $(".voteSuccessPanel").height()) / 2 + $(window).scrollTop();
+        var l = (Helper.top.document.documentElement.clientWidth - $(".voteSuccessPanel").width()) / 2;
+        var m = (Helper.top.document.documentElement.clientHeight - $(".voteSuccessPanel").height()) / 2 + $(window).scrollTop();
         $(".voteSuccessPanel").css({left: l, top: m});
         $(".voteSuccessPanelClose").unbind("click").bind("click", function () {
             $(".voteCodePanelBg").remove();
@@ -3235,7 +3235,7 @@ Site.vote = function (f, i, d, e) {
         }, 2000)
     }
 };
-Site.initModuleVote = function (d) {
+Run.initModuleVote = function (d) {
     var e = d.id, c = d.delay, b = d.mid, a = d.isVoted;
     if (c == 0) {
         $.cookie("vote" + e, null)
@@ -3251,10 +3251,10 @@ Site.initModuleVote = function (d) {
         }
     }
     $("#vote" + e + b).click(function () {
-        Site.vote(e, b, c, a)
+        Run.vote(e, b, c, a)
     })
 };
-Site.fixModuleVoteStyle = function (b, a) {
+Run.fixModuleVoteStyle = function (b, a) {
     if ($("#module" + a).width() <= 400) {
         $("#module" + a).find(".voteItems" + b + a).find(".voteItemPanel").css({
             width: "100%",
@@ -3263,7 +3263,7 @@ Site.fixModuleVoteStyle = function (b, a) {
         $("#module" + a).find(".voteItems" + b + a).find(".voteItemCheck").css({padding: "10px 0 0px 5px"})
     }
 };
-Site.fixVoteResultImgStyle = function (c, a, d, b) {
+Run.fixVoteResultImgStyle = function (c, a, d, b) {
     if ($("#module" + a).width() > 400) {
         if (d != -1 && b == "img") {
             $("#module" + a).find(".voteResult").find(".vi-percent").find(".voteVfmImg").each(function () {
@@ -3286,7 +3286,7 @@ Site.fixVoteResultImgStyle = function (c, a, d, b) {
         }
     }
 };
-Site.fixModuleVoteResultStyle = function (b, a, c) {
+Run.fixModuleVoteResultStyle = function (b, a, c) {
     if ($("#module" + a).width() <= 400) {
         $("#module" + a).find(".voteResult").find(".vi-name").css({width: "30%"});
         $("#module" + a).find(".voteResult").find(".vi-percent").css({width: "50%"});
@@ -3300,12 +3300,12 @@ Site.fixModuleVoteResultStyle = function (b, a, c) {
         })
     }
 };
-Site.showNavSubMenu = function (b) {
+Run.showNavSubMenu = function (b) {
     var a = 0;
     if (b == 1) {
         a = 1
     }
-    $.each(Fai.top.$("#nav .navCenter .item"), function (u, q) {
+    $.each(Helper.top.$("#nav .navCenter .item"), function (u, q) {
         $(this).unbind();
         if (b == 100) {
             var y = $(this);
@@ -3315,12 +3315,12 @@ Site.showNavSubMenu = function (b) {
             var o = y.attr("id");
             var k = [];
             try {
-                k = Fai.fkEval(o + "SubMenu")
+                k = Helper.fkEval(o + "SubMenu")
             } catch (v) {
                 return false
             }
-            var m = Fai.top._colId;
-            var A = Fai.top._fromColId;
+            var m = Helper.top._colId;
+            var A = Helper.top._fromColId;
             var g = y.attr("colId");
             if (g == m || g == A) {
                 y.addClass("itemSelected")
@@ -3343,7 +3343,7 @@ Site.showNavSubMenu = function (b) {
                         d = 2;
                         break
                     }
-                    if (!Fai.isNull(k[u].sub)) {
+                    if (!Helper.isNull(k[u].sub)) {
                         var r = k[u].sub;
                         for (var q = 0; q < r.length; ++q) {
                             var z = r[q].colId;
@@ -3359,7 +3359,7 @@ Site.showNavSubMenu = function (b) {
                 }
             }
             if (k) {
-                Site.removeNavHiddenMenu(k)
+                Run.removeNavHiddenMenu(k)
             }
             if (g == m || g == A) {
                 if (k && k.length >= 1) {
@@ -3389,7 +3389,7 @@ Site.showNavSubMenu = function (b) {
                 if (d == 2 && m != k[u].colId && A != k[u].colId) {
                     continue
                 }
-                if (Fai.isNull(k[u].sub) || k[u].sub.length < 1) {
+                if (Helper.isNull(k[u].sub) || k[u].sub.length < 1) {
                     continue
                 }
                 var r = k[u].sub;
@@ -3425,13 +3425,13 @@ Site.showNavSubMenu = function (b) {
             })
         } else {
             var y = $(this);
-            var m = Fai.top._colId;
-            var A = Fai.top._fromColId;
+            var m = Helper.top._colId;
+            var A = Helper.top._fromColId;
             var g = y.attr("colId");
             var o = y.attr("id");
             var k = [];
             try {
-                k = Fai.fkEval(o + "SubMenu")
+                k = Helper.fkEval(o + "SubMenu")
             } catch (v) {
                 return false
             }
@@ -3447,7 +3447,7 @@ Site.showNavSubMenu = function (b) {
                             p = true;
                             break
                         }
-                        if (!Fai.isNull(k[u].sub)) {
+                        if (!Helper.isNull(k[u].sub)) {
                             var r = k[u].sub;
                             for (var q = 0; q < r.length; ++q) {
                                 var z = r[q].colId;
@@ -3464,7 +3464,7 @@ Site.showNavSubMenu = function (b) {
                 }
             }
             if (k) {
-                Site.removeNavHiddenMenu(k)
+                Run.removeNavHiddenMenu(k)
             }
             if (p) {
                 y.addClass("itemSelected");
@@ -3478,7 +3478,7 @@ Site.showNavSubMenu = function (b) {
                 var G = B.attr("id");
                 var n = [];
                 try {
-                    n = Fai.fkEval(G + "SubMenu")
+                    n = Helper.fkEval(G + "SubMenu")
                 } catch (E) {
                     return false
                 }
@@ -3496,12 +3496,12 @@ Site.showNavSubMenu = function (b) {
                         }
                     })
                 } else {
-                    if (Fai.top._isTemplateVersion2 || Fai.top._uiMode) {
+                    if (Helper.top._isTemplateVersion2 || Helper.top._uiMode) {
                         i = "navStyle "
                     }
                 }
                 var C = "<div class='navSubMenu'></div>";
-                var F = Site.showMenu({
+                var F = Run.showMenu({
                     container: C,
                     mode: a,
                     id: G + "SubMenu",
@@ -3510,7 +3510,7 @@ Site.showNavSubMenu = function (b) {
                     clsIndex: x,
                     data: n,
                     fixpos: false,
-                    rulerObj: Fai.top.$("#nav"),
+                    rulerObj: Helper.top.$("#nav"),
                     navSysClass: i,
                     navBar: true
                 });
@@ -3536,7 +3536,7 @@ Site.showNavSubMenu = function (b) {
         }
     })
 };
-Site.removeNavHiddenMenu = function (c) {
+Run.removeNavHiddenMenu = function (c) {
     for (var b = c.length - 1; b >= 0; --b) {
         if (c[b].hidden) {
             c.splice(b, 1);
@@ -3552,21 +3552,21 @@ Site.removeNavHiddenMenu = function (c) {
         }
     }
 };
-Site.showNavItemContainer = function () {
-    var b = Fai.top.$("#nav"), f = b.find(".navCenter"), k = b.width();
+Run.showNavItemContainer = function () {
+    var b = Helper.top.$("#nav"), f = b.find(".navCenter"), k = b.width();
     if (f.length > 0) {
         f.removeAttr("style")
     }
-    Site.hideNavItemContainer();
+    Run.hideNavItemContainer();
     var m = b.find(".itemContainer"), o = f.outerWidth(true), c = 0;
     var j = b.find(".item"), i = b.find(".itemSep"), a = j.css("float") === "none";
     if (a) {
         return
     }
-    Fai.top.$.each(j, function () {
+    Helper.top.$.each(j, function () {
         c += $(this).outerWidth(true)
     });
-    Fai.top.$.each(i, function () {
+    Helper.top.$.each(i, function () {
         c += $(this).outerWidth(true)
     });
     m.off("mouseover.navigator").on("mouseover.navigator", ".item", function () {
@@ -3578,23 +3578,23 @@ Site.showNavItemContainer = function () {
             m.css("width", p)
         }
     });
-    if (Fai.isIE() || Fai.isMozilla()) {
+    if (Helper.isIE() || Helper.isMozilla()) {
         c += 4
     }
     var e = b.find(".itemPrev"), h = b.find(".itemNext");
-    if (Fai.top._isTemplateVersion2) {
+    if (Helper.top._isTemplateVersion2) {
         e.css("display", "none");
         h.css("display", "none")
     }
-    if (Fai.isIE6() || Fai.isIE7()) {
-        k = Fai.top._navStyleData.ns.w
+    if (Helper.isIE6() || Helper.isIE7()) {
+        k = Helper.top._navStyleData.ns.w
     }
     function l(s) {
-        if (!Fai.top._cusResponsive) {
+        if (!Helper.top._cusResponsive) {
             m.css("width", c + "px")
         }
         h.css("display", "block");
-        Fai.top._templateOtherStyleData.h = 0;
+        Helper.top._templateOtherStyleData.h = 0;
         var r = 0, q = 0, w = 0, v;
         if (i.is(":hidden")) {
             v = 0
@@ -3642,7 +3642,7 @@ Site.showNavItemContainer = function () {
             }
             $(this).addClass("itemPrevHover");
             m.css("left", (m.position().left + w) + "px");
-            if ((Math.abs(Fai.top.$("#nav .itemContainer").position().left) + s) < c) {
+            if ((Math.abs(Helper.top.$("#nav .itemContainer").position().left) + s) < c) {
                 h.width(h.data("width"))
             }
             if (m.position().left >= 0) {
@@ -3662,33 +3662,33 @@ Site.showNavItemContainer = function () {
     if (c > o) {
         l(o)
     } else {
-        if (Fai.top.$("#nav")[0].className && Fai.top.$("#nav")[0].className.indexOf("nav2") > -1) {
+        if (Helper.top.$("#nav")[0].className && Helper.top.$("#nav")[0].className.indexOf("nav2") > -1) {
             var g = m.css("margin-left") ? m.css("margin-left").replace("px", "") : 0, d = c + parseInt(g),
                 n = parseInt(d) + 10;
             f.css("width", Math.min(k, n));
             if (k === Math.min(k, n) && c > k) {
                 l(k)
             }
-            if (Fai.isIE11()) {
+            if (Helper.isIE11()) {
                 f.css("height", m.outerHeight(true) + "px")
             }
-            if (Fai.top._manageMode) {
+            if (Helper.top._manageMode) {
                 jzUtils.run({name: "reSaveNavCenterWidth"}, d)
             }
         }
     }
 };
-Site.hideNavItemContainer = function () {
+Run.hideNavItemContainer = function () {
     $("#nav .itemContainer").removeAttr("style");
     $("#nav").find(".itemPrev").hide();
     $("#nav").find(".itemNext").hide()
 };
-Site.hideNavSubMenu = function () {
-    Fai.top.$.each(Fai.top.$("#nav .navCenter .item"), function (a, b) {
+Run.hideNavSubMenu = function () {
+    Helper.top.$.each(Helper.top.$("#nav .navCenter .item"), function (a, b) {
         $(this).unbind()
     })
 };
-Site.initModuleNavListGroup = function (c, b) {
+Run.initModuleNavListGroup = function (c, b) {
     $("#module" + c + " .g_foldValueCenter").mouseover(function () {
         $(this).addClass("g_hover")
     }).mouseleave(function () {
@@ -3715,7 +3715,7 @@ Site.initModuleNavListGroup = function (c, b) {
         })
     }
 };
-Site.initModuleNavListAcrossDisplay = function (c, d, b, e) {
+Run.initModuleNavListAcrossDisplay = function (c, d, b, e) {
     var a = $("#module" + c);
     m_formMiddleWidth = a.find(".formMiddle").width(), mSOptions = {
         moduleId: c,
@@ -3725,7 +3725,7 @@ Site.initModuleNavListAcrossDisplay = function (c, d, b, e) {
         var n = $(this), h = n.attr("_colId"), j = d[h], i = a.attr("_side"), m = a.parent(), l = a.parent().attr("id"),
             k = true;
         mSOptions.that = n;
-        if (Fai.isIE6() || Fai.isIE7()) {
+        if (Helper.isIE6() || Helper.isIE7()) {
             k = false
         } else {
             if (i == 2) {
@@ -3750,7 +3750,7 @@ Site.initModuleNavListAcrossDisplay = function (c, d, b, e) {
                 o.push("<div class='s_navList'>");
                 $.each(j, function (s, r) {
                     var v = r.allowed;
-                    var u = "onclick = 'Fai.ing(LS.memberLoginNoPermission, false);'";
+                    var u = "onclick = 'Helper.ing(LS.memberLoginNoPermission, false);'";
                     if (!_isMemberLogin) {
                         v = true
                     }
@@ -3779,7 +3779,7 @@ Site.initModuleNavListAcrossDisplay = function (c, d, b, e) {
                 o.push("</div>");
                 mSOptions.idStr = "navAcM" + c + "C" + h + "Panel";
                 mSOptions.contentStr = o.join("");
-                f = Site.moduleSubPanel(mSOptions);
+                f = Run.moduleSubPanel(mSOptions);
                 var p = n.offset().left, g = n.offset().top;
                 if (!k) {
                     p += n.outerWidth()
@@ -3806,7 +3806,7 @@ Site.initModuleNavListAcrossDisplay = function (c, d, b, e) {
                         r.push("<div class='s_navList'>");
                         $.each(u, function (y, C) {
                             var B = C.allowed;
-                            var A = "onclick = 'Fai.ing(LS.memberLoginNoPermission, false);'";
+                            var A = "onclick = 'Helper.ing(LS.memberLoginNoPermission, false);'";
                             if (!_isMemberLogin) {
                                 B = true
                             }
@@ -3827,7 +3827,7 @@ Site.initModuleNavListAcrossDisplay = function (c, d, b, e) {
                         r.push("</div>");
                         mSOptions.idStr = "navAcM" + c + "C" + x + "Panel";
                         mSOptions.contentStr = r.join("");
-                        t = Site.moduleSubPanel(mSOptions);
+                        t = Run.moduleSubPanel(mSOptions);
                         var w = s.offset().left, v = s.offset().top;
                         if (!k) {
                             w += s.outerWidth()
@@ -3869,19 +3869,19 @@ Site.initModuleNavListAcrossDisplay = function (c, d, b, e) {
     }).mouseleave(function () {
         a.css("z-index", "")
     });
-    Site.initContentSplitLine(c, e)
+    Run.initContentSplitLine(c, e)
 };
-Site.onSiteFixTop = function () {
-    if (Fai.top._navHidden) {
+Run.onRunFixTop = function () {
+    if (Helper.top._navHidden) {
         return
     }
-    var d, q = false, c = false, k = false, A = Fai.isIE6(), z = Fai.isIE7(), r = Fai.top.$("#nav"),
-        C = Fai.top.$(window), w = Fai.top.$("#g_main"), i = Fai.top.$("#web"), t = Fai.top.$("body"),
-        a = Fai.top.$(".webNavTable"), j = Fai.top.$(".webHeaderTable"), m = Fai.top.$(".webBannerTable"),
-        p = Fai.top.$(".floatLeftTop"), e = r.parent(), u = Fai.top.$("#sitetips"), o = Fai.top.$("#webBanner"),
-        b = Fai.top.$("#webHeader"), l = Fai.top.$("#webNav"), s, n = parseInt(r.css("top").replace("px", "")),
+    var d, q = false, c = false, k = false, A = Helper.isIE6(), z = Helper.isIE7(), r = Helper.top.$("#nav"),
+        C = Helper.top.$(window), w = Helper.top.$("#g_main"), i = Helper.top.$("#web"), t = Helper.top.$("body"),
+        a = Helper.top.$(".webNavTable"), j = Helper.top.$(".webHeaderTable"), m = Helper.top.$(".webBannerTable"),
+        p = Helper.top.$(".floatLeftTop"), e = r.parent(), u = Helper.top.$("#sitetips"), o = Helper.top.$("#webBanner"),
+        b = Helper.top.$("#webHeader"), l = Helper.top.$("#webNav"), s, n = parseInt(r.css("top").replace("px", "")),
         D = r.offset().top, y = u.height() || 0, h = D - y, g = p.css("top").replace("px", "") || 0,
-        x = Fai.top.$(window), F = x;
+        x = Helper.top.$(window), F = x;
     if (A || z) {
         c = true;
         F = w
@@ -3903,7 +3903,7 @@ Site.onSiteFixTop = function () {
     F.on("scroll.nav", function () {
         var H = F.scrollTop(), G = parseInt(p.css("top").replace("px", "")) - 1;
         g = G || 0;
-        d = Site.getNavInClientPosition(r).left;
+        d = Run.getNavInClientPosition(r).left;
         if (!q && h < H) {
             if (A) {
                 B = r.parent();
@@ -3952,7 +3952,7 @@ Site.onSiteFixTop = function () {
             q = false
         }
     });
-    Fai.top.$(window).on("resize.nav", function () {
+    Helper.top.$(window).on("resize.nav", function () {
         if (A && !k && r.offset().top == 0) {
             r.css("left", B.offset().left + E)
         } else {
@@ -3975,12 +3975,12 @@ Site.onSiteFixTop = function () {
         }
     })
 };
-Site.getNavInClientPosition = function (b) {
+Run.getNavInClientPosition = function (b) {
     var a = b[0];
     if (typeof a.getBoundingClientRect !== "undefined") {
         return a.getBoundingClientRect()
     } else {
-        var c = Fai.top._manageMode ? Fai.top.$("#g_main") : Fai.top.$(window), e = {left: 0, right: 0},
+        var c = Helper.top._manageMode ? Helper.top.$("#g_main") : Helper.top.$(window), e = {left: 0, right: 0},
             d = a.offsetParent;
         e.left = a.offsetLeft;
         e.top = a.offsetTop;
@@ -3995,26 +3995,26 @@ Site.getNavInClientPosition = function (b) {
         return {left: e.left - c.scrollLeft(), top: e.top - c.scrollTop()}
     }
 };
-Site.onNavCntPositionFixTop = function () {
-    if (Fai.top._navHidden || !Fai.top._navStyleData.no) {
+Run.onNavCntPositionFixTop = function () {
+    if (Helper.top._navHidden || !Helper.top._navStyleData.no) {
         return
     }
-    if (Fai.top._manageMode) {
-        Site.onManageFixTop()
+    if (Helper.top._manageMode) {
+        Run.onManageFixTop()
     } else {
-        Site.onSiteFixTop()
+        Run.onRunFixTop()
     }
 };
 (function () {
-    if (Fai.top != window) {
+    if (Helper.top != window) {
         return
     }
-    var g = Fai.top.window.location.hash, d, f, b;
+    var g = Helper.top.window.location.hash, d, f, b;
     var c = 0;
     var e;
     var h = $("#module" + e);
     var a = $("#nav a");
-    f = Fai.top._manageMode ? "#g_main" : Fai.top.window;
+    f = Helper.top._manageMode ? "#g_main" : Helper.top.window;
     $(f).bind("scroll", function () {
         a.each(function () {
             e = $(this).attr("_module");
@@ -4072,8 +4072,8 @@ Site.onNavCntPositionFixTop = function () {
         })
     })
 })();
-Site.initModulePhotoSwitch = function (x, D, A, z) {
-    var d = Fai.top.$("#module" + x), f = d.find(".formMiddleContent"), m = !D.picScale, v = f.width(), q = f.height(),
+Run.initModulePhotoSwitch = function (x, D, A, z) {
+    var d = Helper.top.$("#module" + x), f = d.find(".formMiddleContent"), m = !D.picScale, v = f.width(), q = f.height(),
         e = D.data, b;
     d.data("photoSwitchData", D);
     d.data("photoSwitchType", A);
@@ -4091,7 +4091,7 @@ Site.initModulePhotoSwitch = function (x, D, A, z) {
         B.css("margin", "0 auto");
         var r = f.width();
         var w = {id: x, switchType: "1", width: r, photoSwitch: B};
-        Site.formMiddleContentWidthArray.push(w);
+        Run.formMiddleContentWidthArray.push(w);
         B.imageSwitch(D);
         if (f.width() < B.width()) {
             B.css("width", f.width())
@@ -4139,7 +4139,7 @@ Site.initModulePhotoSwitch = function (x, D, A, z) {
             if (D.switchWrapName == true) {
                 n.css("padding-bottom", "0px");
                 u.css({"word-wrap": "break-word", width: "auto"});
-                if (Fai.isIE6() || Fai.isIE7()) {
+                if (Helper.isIE6() || Helper.isIE7()) {
                     if (c > 1) {
                         u.css("padding-bottom", "15px")
                     }
@@ -4176,10 +4176,10 @@ Site.initModulePhotoSwitch = function (x, D, A, z) {
                     }
                 }
             }
-            if (Fai.isIE6()) {
-                for (var y = 0; y < Site.formMiddleContentWidthArray.length; y++) {
-                    if (Site.formMiddleContentWidthArray[y].switchType == 1) {
-                        $("#photoSwitch" + Site.formMiddleContentWidthArray[y].id).css("width", Site.formMiddleContentWidthArray[y].width + "px")
+            if (Helper.isIE6()) {
+                for (var y = 0; y < Run.formMiddleContentWidthArray.length; y++) {
+                    if (Run.formMiddleContentWidthArray[y].switchType == 1) {
+                        $("#photoSwitch" + Run.formMiddleContentWidthArray[y].id).css("width", Run.formMiddleContentWidthArray[y].width + "px")
                     }
                 }
             }
@@ -4189,7 +4189,7 @@ Site.initModulePhotoSwitch = function (x, D, A, z) {
             var g = $("#photoDotSwitch" + x);
             var r = f.width();
             var w = {id: x, switchType: "2", width: r, photoDotSwitch: g};
-            Site.formMiddleContentWidthArray.push(w);
+            Run.formMiddleContentWidthArray.push(w);
             g.imageSwitch(D);
             var n = g.find(".imageSwitchShowName").eq(0);
             var l = g.find(".imageSwitchBtnArea").eq(0);
@@ -4242,13 +4242,13 @@ Site.initModulePhotoSwitch = function (x, D, A, z) {
                     u.css("white-space", "nowrap")
                 }
             }
-            if (Fai.isIE6()) {
-                for (var y = 0; y < Site.formMiddleContentWidthArray.length; y++) {
-                    if (Site.formMiddleContentWidthArray[y].switchType == 2) {
-                        $("#photoDotSwitch" + Site.formMiddleContentWidthArray[y].id).css("width", Site.formMiddleContentWidthArray[y].width + "px");
-                        if (Site.formMiddleContentWidthArray[y].width < 300) {
+            if (Helper.isIE6()) {
+                for (var y = 0; y < Run.formMiddleContentWidthArray.length; y++) {
+                    if (Run.formMiddleContentWidthArray[y].switchType == 2) {
+                        $("#photoDotSwitch" + Run.formMiddleContentWidthArray[y].id).css("width", Run.formMiddleContentWidthArray[y].width + "px");
+                        if (Run.formMiddleContentWidthArray[y].width < 300) {
                             l.css("align", "center");
-                            l.css("width", Site.formMiddleContentWidthArray[y].width + "px")
+                            l.css("width", Run.formMiddleContentWidthArray[y].width + "px")
                         }
                     }
                 }
@@ -4256,8 +4256,8 @@ Site.initModulePhotoSwitch = function (x, D, A, z) {
         }
     }
 };
-Site.refreshModulePhotoSwitch = function (b) {
-    var c = Fai.top.$("#module" + b);
+Run.refreshModulePhotoSwitch = function (b) {
+    var c = Helper.top.$("#module" + b);
     if (c.length > 0) {
         var a = c.data("photoSwitchData");
         var d = c.data("photoSwitchType");
@@ -4269,14 +4269,14 @@ Site.refreshModulePhotoSwitch = function (b) {
             }
         }
         if (typeof a != "undefined") {
-            Site.initModulePhotoSwitch(b, a, d)
+            Run.initModulePhotoSwitch(b, a, d)
         }
     }
 };
-Site.loadPhotoMarquee = function (u, F, C, n, x) {
-    var e = Fai.top["Photo" + u].ieOpt, h = Fai.top["Photo" + u].tgOpt, o = Fai.top["Photo" + u].callbackArgs;
+Run.loadPhotoMarquee = function (u, F, C, n, x) {
+    var e = Helper.top["Photo" + u].ieOpt, h = Helper.top["Photo" + u].tgOpt, o = Helper.top["Photo" + u].callbackArgs;
     var b = $("#module" + u);
-    if (Fai.isNull(b)) {
+    if (Helper.isNull(b)) {
         return
     }
     if (x == "listPhotos") {
@@ -4293,20 +4293,20 @@ Site.loadPhotoMarquee = function (u, F, C, n, x) {
         t.each(function () {
             var H = $(this).attr("faiWidth");
             var G = $(this).attr("faiHeight");
-            if (Fai.isNull(G)) {
+            if (Helper.isNull(G)) {
                 return
             }
             var L = $(this).find(".imgDiv");
             var K = L.width();
             var I = L.height();
-            var J = Fai.Img.calcSize(H, G, K, I, Fai.Img.MODE_SCALE_FILL);
+            var J = Helper.Img.calcSize(H, G, K, I, Helper.Img.MODE_SCALE_FILL);
             if (J.height > w) {
                 w = J.height
             }
         })
     }
     if (e.effType >= 4 && e.effType < 6) {
-        Site.clearImageEffectContent_photo("module" + u, "propDiv")
+        Run.clearImageEffectContent_photo("module" + u, "propDiv")
     }
     var d = 0;
     var i = 0;
@@ -4314,11 +4314,11 @@ Site.loadPhotoMarquee = function (u, F, C, n, x) {
     var g = 0;
     var B = 0;
     var p = 0;
-    var E = Site.getFormMiddleContentHeight(b, u);
+    var E = Run.getFormMiddleContentHeight(b, u);
     t.each(function () {
         var I = $(this);
         var R = I.attr("faiHeight");
-        if (Fai.isNull(R)) {
+        if (Helper.isNull(R)) {
             return
         }
         var Q = I.attr("faiWidth");
@@ -4354,9 +4354,9 @@ Site.loadPhotoMarquee = function (u, F, C, n, x) {
             }
             if (F) {
                 if (C) {
-                    P = Fai.Img.calcSize(Q, R, S, w, Fai.Img.MODE_SCALE_FILL)
+                    P = Helper.Img.calcSize(Q, R, S, w, Helper.Img.MODE_SCALE_FILL)
                 } else {
-                    P = Fai.Img.calcSize(Q, R, S, w, Fai.Img.MODE_SCALE_DEFLATE_HEIGHT)
+                    P = Helper.Img.calcSize(Q, R, S, w, Helper.Img.MODE_SCALE_DEFLATE_HEIGHT)
                 }
             }
             if (O.length > 0) {
@@ -4406,7 +4406,7 @@ Site.loadPhotoMarquee = function (u, F, C, n, x) {
     });
     i = d;
     if ($(".photoMarqueeForm").length > 0) {
-        Site.unifiedAttrVal(b, ".photoMarqueeForm", "height")
+        Run.unifiedAttrVal(b, ".photoMarqueeForm", "height")
     }
     var m = b.find(".demo");
     var A = b.find(".demo0");
@@ -4422,7 +4422,7 @@ Site.loadPhotoMarquee = function (u, F, C, n, x) {
                 moduleId: u,
                 imgEffOption: e,
                 tagetOption: h,
-                callback: Site.createImageEffectContent_photo,
+                callback: Run.createImageEffectContent_photo,
                 callbackArgs: o
             });
             return
@@ -4435,7 +4435,7 @@ Site.loadPhotoMarquee = function (u, F, C, n, x) {
                 moduleId: u,
                 imgEffOption: e,
                 tagetOption: h,
-                callback: Site.createImageEffectContent_photo,
+                callback: Run.createImageEffectContent_photo,
                 callbackArgs: o
             });
             return
@@ -4460,7 +4460,7 @@ Site.loadPhotoMarquee = function (u, F, C, n, x) {
             $(I).css("clear", "both");
             G.css("clear", "both")
         }
-        if (Fai.isIE6() || Fai.isIE7()) {
+        if (Helper.isIE6() || Helper.isIE7()) {
             if (H === c) {
                 $(t[H]).after('<div style="clear:both;"></div>');
                 G.after('<div style="clear:both;"></div>')
@@ -4511,65 +4511,65 @@ Site.loadPhotoMarquee = function (u, F, C, n, x) {
 
     if (n == 0) {
         m.scrollLeft(2 * d);
-        Fai.addInterval("marquee" + u, y, 35)
+        Helper.addInterval("marquee" + u, y, 35)
     } else {
         if (n == 1) {
-            Fai.addInterval("marquee" + u, f, 35)
+            Helper.addInterval("marquee" + u, f, 35)
         } else {
             if (n == 2) {
                 m.scrollTop(2 * D);
-                Fai.addInterval("marquee" + u, v, 35)
+                Helper.addInterval("marquee" + u, v, 35)
             } else {
                 if (n == 3) {
-                    Fai.addInterval("marquee" + u, l, 35)
+                    Helper.addInterval("marquee" + u, l, 35)
                 }
             }
         }
     }
     m.mouseover(function () {
-        Fai.stopInterval("marquee" + u)
+        Helper.stopInterval("marquee" + u)
     }).mouseleave(function () {
-        Fai.startInterval("marquee" + u)
+        Helper.startInterval("marquee" + u)
     });
     setTimeout(function () {
-        Fai.startInterval("marquee" + u)
+        Helper.startInterval("marquee" + u)
     }, 100);
     if (!b.data("first1")) {
         b.data("first1", true);
         b.data("options", {id: u, scale: F, fixHeight: C, phoMarqueeDirection: n, flag: x})
     }
-    if (b.data("first2") && Fai.top._manageMode) {
+    if (b.data("first2") && Helper.top._manageMode) {
         var q = b.data("photoOptions");
-        Site.initModulePhotoListItemManage(q);
+        Run.initModulePhotoListItemManage(q);
         if (x == "listPhotos") {
-            Site.moduleListPhotosItemManage.init(q)
+            Run.moduleListPhotosItemManage.init(q)
         }
     }
     jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, {
         moduleId: u,
         imgEffOption: e,
         tagetOption: h,
-        callback: Site.createImageEffectContent_photo,
+        callback: Run.createImageEffectContent_photo,
         callbackArgs: o
     });
-    Site.restartPhotoMarquee(b)
+    Run.restartPhotoMarquee(b)
 };
-Site.restartPhotoMarquee = function (a) {
+Run.restartPhotoMarquee = function (a) {
     if (!a.data("first2")) {
         a.data("first2", true);
-        a.on("Fai_onModuleSizeChange", function () {
+        a.on("Helper_onModuleSizeChange", function () {
             var b = a.data("options");
-            Fai.stopInterval("marquee" + b.id);
-            Site.loadPhotoMarquee(b.id, b.scale, b.fixHeight, b.phoMarqueeDirection, b.flag)
+            Helper.stopInterval("marquee" + b.id);
+            Run.loadPhotoMarquee(b.id, b.scale, b.fixHeight, b.phoMarqueeDirection, b.flag)
         });
-        a.on("Fai_onModuleLayoutChange", function () {
+        a.on("Helper_onModuleLayoutChange", function () {
             var b = a.data("options");
-            Fai.stopInterval("marquee" + b.id);
-            Site.loadPhotoMarquee(b.id, b.scale, b.fixHeight, b.phoMarqueeDirection, b.flag)
+            Helper.stopInterval("marquee" + b.id);
+            Run.loadPhotoMarquee(b.id, b.scale, b.fixHeight, b.phoMarqueeDirection, b.flag)
         })
     }
 };
-Site.getFormMiddleContentHeight = function (b, a) {
+Run.getFormMiddleContentHeight = function (b, a) {
     var m = b.height(), f = b.find(".formTop").first(), e = b.find(".formBanner" + a).first(),
         i = b.find(".formMiddle").first(), k = b.find(".formBottom").first(), c = 0;
     if (f.css("display") != "none") {
@@ -4583,19 +4583,19 @@ Site.getFormMiddleContentHeight = function (b, a) {
     if (k.css("display") != "none") {
         h = k.outerHeight(true)
     }
-    var g = m - c - j - h - Fai.getFrameHeight(i);
+    var g = m - c - j - h - Helper.getFrameHeight(i);
     var l = i.find(".formMiddleCenter").first();
-    g = g - Fai.getFrameHeight(l);
+    g = g - Helper.getFrameHeight(l);
     var d = i.find(".formMiddleContent").first();
-    g = g - Fai.getFrameHeight(d);
+    g = g - Helper.getFrameHeight(d);
     return g
 };
-Site.loadPhotoGallery = function (w) {
+Run.loadPhotoGallery = function (w) {
     var M = w.id, J = w.scale, f = w.cus;
     var K = w.flag;
     var d = $("#" + M), a = d.find("div.photo-container");
     if (w.effType >= 4 && w.effType < 6) {
-        Site.clearImageEffectContent_photo(w.id, "prop-container")
+        Run.clearImageEffectContent_photo(w.id, "prop-container")
     }
     if (K == "listPhotos") {
         f = 1
@@ -4628,7 +4628,7 @@ Site.loadPhotoGallery = function (w) {
                     S.css({width: m, height: H, position: "relative", overflow: "hidden"})
                 }
             } else {
-                var k = Fai.Img.calcSize(B, F, m, H, Fai.Img.MODE_SCALE_FILL);
+                var k = Helper.Img.calcSize(B, F, m, H, Helper.Img.MODE_SCALE_FILL);
                 if (typeof J == "number") {
                     J = !!!J
                 }
@@ -4785,7 +4785,7 @@ Site.loadPhotoGallery = function (w) {
             $(this).height(v)
         });
         d.find(".photo-gallery-preview").height(v);
-        Site.unifiedAttrVal(d, ".prop-wordwrap-container", "height")
+        Run.unifiedAttrVal(d, ".prop-wordwrap-container", "height")
     }
     if (K == "listPhotos") {
         if (a.length != 0) {
@@ -4818,7 +4818,7 @@ Site.loadPhotoGallery = function (w) {
     }
 };
 var isInShareContent = false;
-Site.loadPhotoResultMarquee = function (f) {
+Run.loadPhotoResultMarquee = function (f) {
     var m = f.id, t = f.scale;
     var c = $("#module" + m);
     var s = c.find(".J_imgDiv");
@@ -4831,17 +4831,17 @@ Site.loadPhotoResultMarquee = function (f) {
     p.width(e);
     var q = e / 2;
     if (r.width() < p.width()) {
-        Fai.addInterval("marquee" + m, h, 35)
+        Helper.addInterval("marquee" + m, h, 35)
     }
     s.hover(function () {
-        Fai.stopInterval("marquee" + m);
+        Helper.stopInterval("marquee" + m);
         s.removeClass("J_selectedDiv");
         $(this).addClass("J_selectedDiv");
         var u = $(this).find("img");
         $(this).find(".imgMask").show();
         d(u)
     }, function () {
-        Fai.startInterval("marquee" + m);
+        Helper.startInterval("marquee" + m);
         $(this).find(".imgMask").hide()
     });
     function d(B) {
@@ -4862,7 +4862,7 @@ Site.loadPhotoResultMarquee = function (f) {
         var D = x.find(".photoGroupUp .imgContainer img");
         var u = x.find(".photoGroupUp .imgContainer a");
         if (!t) {
-            var G = Fai.Img.calcSize(F, w, 852, 453, Fai.Img.MODE_SCALE_FILL);
+            var G = Helper.Img.calcSize(F, w, 852, 453, Helper.Img.MODE_SCALE_FILL);
             D.width(G.width);
             D.height(G.height);
             if (G.height < 452) {
@@ -4913,7 +4913,7 @@ Site.loadPhotoResultMarquee = function (f) {
         d(u)
     });
     s.eq(0).mouseover().mouseleave();
-    Fai.startInterval("marquee" + m);
+    Helper.startInterval("marquee" + m);
     var r = c.find(".showPhotoContent");
 
     function h() {
@@ -4956,15 +4956,15 @@ Site.loadPhotoResultMarquee = function (f) {
         b.removeClass("pageDiv-hover")
     })
 };
-Site.loadPhotoSmallPic = function (e) {
+Run.loadPhotoSmallPic = function (e) {
     var m = e.id, A = e.scale, d = e.cus;
     var t = e.flag;
     var c = $("#" + m);
-    c.on("Fai_onModuleSizeChange", function () {
-        Site.smallPicPhotoModuleFix(m, t)
+    c.on("Helper_onModuleSizeChange", function () {
+        Run.smallPicPhotoModuleFix(m, t)
     });
-    c.on("Fai_onModuleLayoutChange", function () {
-        Site.smallPicPhotoModuleFix(m, t)
+    c.on("Helper_onModuleLayoutChange", function () {
+        Run.smallPicPhotoModuleFix(m, t)
     });
     var z = c.find("div.photoSmallPicBox");
     var r = c.find(".photoSmallPicUpForms").height();
@@ -4979,7 +4979,7 @@ Site.loadPhotoSmallPic = function (e) {
     var k = c.find(".photoSmallPrePicContainer");
     var a = c.find(".photoSmallPrePicOuter").outerWidth(true);
     var x = 0;
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         x = 2
     }
     k.width(a * z.length + x);
@@ -4999,7 +4999,7 @@ Site.loadPhotoSmallPic = function (e) {
     var l = z.length < i ? z.length : i;
     for (var s = 0; s < l; s++) {
         var B = $(z[s]).find("img");
-        Site.loadPhotoSmallPicItem(B, t)
+        Run.loadPhotoSmallPicItem(B, t)
     }
     var p = c.find(".photoSmallPicDownForms a.g_imgPrev"), q = c.find(".photoSmallPicDownForms a.g_imgNext"),
         g = c.find(".photoSmallPicUpForms a.photoSmallPicArrow_left"),
@@ -5021,16 +5021,16 @@ Site.loadPhotoSmallPic = function (e) {
         c.find(".photoContainerLeft").mouseenter(function () {
             var j = $(this).parents(".form").attr("id");
             if (_manageMode == true) {
-                Site.initModulePhotoSmallPicItemManage(j, e.isOpenImgEff)
+                Run.initModulePhotoSmallPicItemManage(j, e.isOpenImgEff)
             }
         }).mouseleave(function () {
             var j = $(this).parents(".form");
             var C = j.find("div.photoContainerLeft");
             if (_manageMode == true) {
                 if (e.isOpenImgEff) {
-                    Site.removeEditLayer(C, null, 5)
+                    Run.removeEditLayer(C, null, 5)
                 } else {
-                    Site.removeEditLayer(C, null, 106)
+                    Run.removeEditLayer(C, null, 106)
                 }
             }
         })
@@ -5041,13 +5041,13 @@ Site.loadPhotoSmallPic = function (e) {
     z.mouseleave(function () {
         $(this).parent().removeClass("photoSmallPrePicOuterHover").removeClass("g_borderHover").removeClass("g_border")
     });
-    c.find(".photoSmallPicUpFormsMid .photoContainerLeft img").attr("onload", "Site.removePhotoSmallPicMask(" + m.replace("module", "") + ")");
+    c.find(".photoSmallPicUpFormsMid .photoContainerLeft img").attr("onload", "Run.removePhotoSmallPicMask(" + m.replace("module", "") + ")");
     z.click(function () {
         var ai = $(this).find("img");
         var G = $("#" + m);
         var L = G.find(".photoSmallPicUpFormsMid .photoContainerLeft img");
-        Site.loadPhotoSmallPicItem($(this).parent().next().find("img"), t);
-        Site.loadPhotoSmallPicItem(ai, t);
+        Run.loadPhotoSmallPicItem($(this).parent().next().find("img"), t);
+        Run.loadPhotoSmallPicItem(ai, t);
         var M = e.scale;
         var D = $(this).parent();
         D.siblings(".photoSmallPrePicOuter").find("div.photoSmallPicBox").removeClass("photoSmallPrePicSelected");
@@ -5072,11 +5072,11 @@ Site.loadPhotoSmallPic = function (e) {
             G.find(".imgContainer").attr("id", "photoList" + T);
             if (_manageMode) {
                 var H = G.data("carouselPhotosOptions");
-                Site.moduleCarouselPhotosItemManage.init(H)
+                Run.moduleCarouselPhotosItemManage.init(H)
             }
         }
         if (M) {
-            var R = Fai.Img.calcSize(F, K, X, S, Fai.Img.MODE_SCALE_FILL);
+            var R = Helper.Img.calcSize(F, K, X, S, Helper.Img.MODE_SCALE_FILL);
             L.width(R.width);
             L.height(R.height)
         } else {
@@ -5104,7 +5104,7 @@ Site.loadPhotoSmallPic = function (e) {
             G.find(".photoContainerLeft").css("overflow", "hidden")
         }
         L.wrap("<a id='bigImgDetail' " + P + "></a>");
-        G.find("#imgInnerNameDiv p").html(Fai.encodeHtml(W));
+        G.find("#imgInnerNameDiv p").html(Helper.encodeHtml(W));
         var ad = G.find("#imgInnerNameDiv");
         if (t == "carouselPhotos") {
             var aa = parseInt(ad.css("padding-left").replace("px", "")) + parseInt(ad.css("padding-right").replace("px", ""));
@@ -5121,7 +5121,7 @@ Site.loadPhotoSmallPic = function (e) {
             ad.css("left", Z + "px").css("overflow", "hidden")
         }
         if (e.isOpenImgEff) {
-            Site.bindImageEffectCusEvent_photo(G.find(".photoSmallPic_td"), e.tgOpt)
+            Run.bindImageEffectCusEvent_photo(G.find(".photoSmallPic_td"), e.tgOpt)
         }
         var Q = G.find(".photoSmallPrePicSelected").parent().index();
         g.removeClass("photoBigPic-control-prev-disabled");
@@ -5252,7 +5252,7 @@ Site.loadPhotoSmallPic = function (e) {
         }
         for (var H = C; H <= I; H++) {
             var J = $(z[H]).find("img");
-            Site.loadPhotoSmallPicItem(J, t)
+            Run.loadPhotoSmallPicItem(J, t)
         }
         if (!D) {
             j.animate({left: "-=" + O + "px"})
@@ -5282,10 +5282,10 @@ Site.loadPhotoSmallPic = function (e) {
         C.animate({left: "+=" + j + "px"})
     })
 };
-Site.removePhotoSmallPicMask = function (a) {
+Run.removePhotoSmallPicMask = function (a) {
     $("#module" + a).find(".loadingImg").remove()
 };
-Site.loadPhotoSmallPicItem = function (e, d) {
+Run.loadPhotoSmallPicItem = function (e, d) {
     if (!e.attr("src")) {
         e.attr("src", e.attr("lzurl"))
     }
@@ -5307,7 +5307,7 @@ Site.loadPhotoSmallPicItem = function (e, d) {
     }
     e.show()
 };
-Site.smallPicPhotoModuleFix = function (v, r) {
+Run.smallPicPhotoModuleFix = function (v, r) {
     var c = $("#" + v), y = c.find("div.photoSmallPicBox");
     var p = c.find(".photoSmallPicUpForms").height();
     var l = c.find(".photoSmallPicDownForms").height();
@@ -5322,7 +5322,7 @@ Site.smallPicPhotoModuleFix = function (v, r) {
     var i = c.find(".photoSmallPrePicContainer");
     var a = $(".photoSmallPrePicOuter").outerWidth(true);
     var w = 0;
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         w = 2
     }
     i.width(a * y.length + w);
@@ -5347,14 +5347,14 @@ Site.smallPicPhotoModuleFix = function (v, r) {
     for (var q = 0; q < k; q++) {
         var z = $(y[q]).find("img");
         if (!z.attr("src")) {
-            Site.loadPhotoSmallPicItem(z, r)
+            Run.loadPhotoSmallPicItem(z, r)
         }
     }
     c.find(".photoSmallPrePicSelected").click()
 };
-Site.loadPhotoList = function (b, e, f, i, g) {
+Run.loadPhotoList = function (b, e, f, i, g) {
     var c = $("#module" + b);
-    if (Fai.isNull(c)) {
+    if (Helper.isNull(c)) {
         return
     }
     var j = 0;
@@ -5365,20 +5365,20 @@ Site.loadPhotoList = function (b, e, f, i, g) {
         c.find(".photoForm").each(function () {
             var l = $(this).attr("faiWidth");
             var k = $(this).attr("faiHeight");
-            if (Fai.isNull(k)) {
+            if (Helper.isNull(k)) {
                 return
             }
             var p = $(this).find(".imgDiv");
             var o = p.width();
             var m = p.height();
-            var n = Fai.Img.calcSize(l, k, o, m, Fai.Img.MODE_SCALE_FILL);
+            var n = Helper.Img.calcSize(l, k, o, m, Helper.Img.MODE_SCALE_FILL);
             if (n.height > j) {
                 j = n.height
             }
         })
     }
     if (i >= 4 && i < 6) {
-        Site.clearImageEffectContent_photo("module" + b, "parametersDiv")
+        Run.clearImageEffectContent_photo("module" + b, "parametersDiv")
     }
     var h = c.find(".nameWordWrap");
     if (h.length > 0) {
@@ -5396,7 +5396,7 @@ Site.loadPhotoList = function (b, e, f, i, g) {
     var d = 0;
     c.find(".photoForm").each(function () {
         var t = $(this).attr("faiHeight");
-        if (Fai.isNull(t)) {
+        if (Helper.isNull(t)) {
             return
         }
         var s = $(this).attr("faiWidth");
@@ -5432,7 +5432,7 @@ Site.loadPhotoList = function (b, e, f, i, g) {
                 e = !!!e
             }
             if (e) {
-                r = Fai.Img.calcSize(s, t, u, j, Fai.Img.MODE_SCALE_FILL)
+                r = Helper.Img.calcSize(s, t, u, j, Helper.Img.MODE_SCALE_FILL)
             }
             if (q.length > 0) {
                 q.css({
@@ -5458,7 +5458,7 @@ Site.loadPhotoList = function (b, e, f, i, g) {
     });
     c.find(".photoForm").css("height", d + "px")
 };
-Site.multiPhoto = function (n, m, e) {
+Run.multiPhoto = function (n, m, e) {
     var f = false;
     var p = "leftIcon";
     var s = "rightIcon";
@@ -5494,7 +5494,7 @@ Site.multiPhoto = function (n, m, e) {
         q = parseInt(c / g)
     }
     if (r == "horizontal") {
-        if (Fai.isIE6()) {
+        if (Helper.isIE6()) {
             a++
         }
         var j = (a) * k;
@@ -5567,7 +5567,7 @@ Site.multiPhoto = function (n, m, e) {
         $(this).addClass("g_borderHover");
         if (f) {
             if (_manageMode && b) {
-                Site.removeEditLayer(m, null, 106)
+                Run.removeEditLayer(m, null, 106)
             }
             d.removeClass("fk-mainBorderColor");
             $(this).addClass("fk-mainBorderColor")
@@ -5589,9 +5589,9 @@ Site.multiPhoto = function (n, m, e) {
         }
         var D;
         if (f) {
-            D = Fai.Img.calcSize(B, E, C, y, Fai.Img.MODE_SCALE_FILL)
+            D = Helper.Img.calcSize(B, E, C, y, Helper.Img.MODE_SCALE_FILL)
         } else {
-            D = Fai.Img.calcSize(B, E, C, y, Fai.Img.MODE_SCALE_DEFLATE_FILL)
+            D = Helper.Img.calcSize(B, E, C, y, Helper.Img.MODE_SCALE_DEFLATE_FILL)
         }
         var z = m.find("img");
         if (z.is(":animated")) {
@@ -5632,13 +5632,13 @@ Site.multiPhoto = function (n, m, e) {
     }).mouseleave(function () {
     })
 };
-Site.createImageEffectContent_photo = function (j, l, c, p) {
+Run.createImageEffectContent_photo = function (j, l, c, p) {
     var f = $(j).parents("." + c.targetParent);
     var k = $(j).find(".imageEffects");
     var d = $(f).attr("photoName");
     var m = $(f).attr("photoDisc");
-    var i = l[Site.ImageEffect.DATA.KEY.FULL_MASK_OPEN_DISC];
-    var n = l[Site.ImageEffect.DATA.KEY.HALF_MASK_OPEN_DISC];
+    var i = l[Run.ImageEffect.DATA.KEY.FULL_MASK_OPEN_DISC];
+    var n = l[Run.ImageEffect.DATA.KEY.HALF_MASK_OPEN_DISC];
     var o = c.nameHidden;
     if (o && !i && !n) {
         return
@@ -5678,11 +5678,11 @@ Site.createImageEffectContent_photo = function (j, l, c, p) {
         var A = 3;
         if (u.length != 0 && !o) {
             e(w, q);
-            Site.clamp($(u)[0], {clamp: A})
+            Run.clamp($(u)[0], {clamp: A})
         }
         if (z.length != 0 && w.effType == 4 && i) {
             b(w);
-            Site.clamp($(z)[0], {clamp: A});
+            Run.clamp($(z)[0], {clamp: A});
             setTimeout(function () {
                 var C = $(k).height();
                 var E = $(k).find(".props").height();
@@ -5690,7 +5690,7 @@ Site.createImageEffectContent_photo = function (j, l, c, p) {
                     var B = $(z).height();
                     var D = E - C;
                     A = (B) - D + "px";
-                    Site.clamp($(z)[0], {clamp: A})
+                    Run.clamp($(z)[0], {clamp: A})
                 }
             }, 100)
         }
@@ -5721,9 +5721,9 @@ Site.createImageEffectContent_photo = function (j, l, c, p) {
         var t = "";
         $(r).removeAttr("style");
         if (u.effType == 4) {
-            var s = u[Site.ImageEffect.DATA.KEY.FULL_MASK_CUS_NAME];
-            var w = u[Site.ImageEffect.DATA.KEY.FULL_MASK_NAME_ALIG];
-            var q = u[Site.ImageEffect.DATA.KEY.FULL_MASK_NAME_STYLE];
+            var s = u[Run.ImageEffect.DATA.KEY.FULL_MASK_CUS_NAME];
+            var w = u[Run.ImageEffect.DATA.KEY.FULL_MASK_NAME_ALIG];
+            var q = u[Run.ImageEffect.DATA.KEY.FULL_MASK_NAME_STYLE];
             if (s && typeof q == "string" && q.length > 0) {
                 q = $.parseJSON(q);
                 t += "color: " + q.fc + ";";
@@ -5755,9 +5755,9 @@ Site.createImageEffectContent_photo = function (j, l, c, p) {
     function b(w) {
         var q = $(k).find(".photoDisc");
         var v = "";
-        var s = w[Site.ImageEffect.DATA.KEY.FULL_MASK_CUS_DISC];
-        var r = w[Site.ImageEffect.DATA.KEY.FULL_MASK_DISC_STYLE];
-        var u = w[Site.ImageEffect.DATA.KEY.FULL_MASK_DISC_ALIG];
+        var s = w[Run.ImageEffect.DATA.KEY.FULL_MASK_CUS_DISC];
+        var r = w[Run.ImageEffect.DATA.KEY.FULL_MASK_DISC_STYLE];
+        var u = w[Run.ImageEffect.DATA.KEY.FULL_MASK_DISC_ALIG];
         $(q).removeAttr("style");
         if (s && typeof r == "string" && r.length > 0) {
             r = $.parseJSON(r);
@@ -5767,7 +5767,7 @@ Site.createImageEffectContent_photo = function (j, l, c, p) {
             v += " text-align:" + ((u == 1) ? "center;" : (u == 2) ? "left;" : "right;")
         }
         if (!o) {
-            var t = (Fai.isIE6() || Fai.isIE7()) ? 16 : 18;
+            var t = (Helper.isIE6() || Helper.isIE7()) ? 16 : 18;
             v += " margin-top: " + t + "px;"
         }
         $(q).attr("style", v)
@@ -5776,10 +5776,10 @@ Site.createImageEffectContent_photo = function (j, l, c, p) {
     function a(v) {
         var s = $(k).find(".photoDisc");
         var u = "";
-        var t = v[Site.ImageEffect.DATA.KEY.HALF_MASK_CUS_DISC];
-        var w = v[Site.ImageEffect.DATA.KEY.HALF_MASK_DISC_STYLE];
-        var r = v[Site.ImageEffect.DATA.KEY.HALF_MASK_DISC_ALIG];
-        var q = v[Site.ImageEffect.DATA.KEY.HALF_MASK_OPEN_DISC];
+        var t = v[Run.ImageEffect.DATA.KEY.HALF_MASK_CUS_DISC];
+        var w = v[Run.ImageEffect.DATA.KEY.HALF_MASK_DISC_STYLE];
+        var r = v[Run.ImageEffect.DATA.KEY.HALF_MASK_DISC_ALIG];
+        var q = v[Run.ImageEffect.DATA.KEY.HALF_MASK_OPEN_DISC];
         if (!q) {
             return
         }
@@ -5793,10 +5793,10 @@ Site.createImageEffectContent_photo = function (j, l, c, p) {
         $(s).attr("style", u)
     }
 };
-Site.clearImageEffectContent_photo = function (b, a) {
+Run.clearImageEffectContent_photo = function (b, a) {
     $("#" + b).find("." + a).remove()
 };
-Site.bindImageEffectCusEvent_photo = function (g, c) {
+Run.bindImageEffectCusEvent_photo = function (g, c) {
     var f = $(g).find(".imageEffects");
     var a = true;
     var e = $(g).parents("." + c.targetParent).find("a");
@@ -5812,7 +5812,7 @@ Site.bindImageEffectCusEvent_photo = function (g, c) {
     }
     $(f).unbind("click").bind("click", function () {
         var l = $(this).parents("." + c.targetParent).find("a");
-        if (Fai.isNull(l)) {
+        if (Helper.isNull(l)) {
             return
         }
         var i = $(l).attr("href");
@@ -5828,12 +5828,12 @@ Site.bindImageEffectCusEvent_photo = function (g, c) {
         }
     })
 };
-Site.formMiddleContentWidthArray = new Array();
-Site.initModuleWeather = function (a, b, d, c) {
-    Site.initIframeLoading(a, b, d, c)
+Run.formMiddleContentWidthArray = new Array();
+Run.initModuleWeather = function (a, b, d, c) {
+    Run.initIframeLoading(a, b, d, c)
 };
-Site.initModuleWeather2 = function (b, j, a, d, l) {
-    var f = (a == 11 ? 2 : 1), i = 0, k = "json", e = Fai.isIE6(), g = [];
+Run.initModuleWeather2 = function (b, j, a, d, l) {
+    var f = (a == 11 ? 2 : 1), i = 0, k = "json", e = Helper.isIE6(), g = [];
     var m = "//platform.sina.com.cn/weather/forecast?app_key=1315597423&city=" + encodeURIComponent(j) + "&startday=" + i + "&lenday=" + f + "&format=" + k + "&auth_type=uuid&auth_value=0123456789012345&callback=?";
     $(".formMiddleContent" + b).css("overflow", "hidden");
     $(".formMiddleContent" + b).append("<div class='weather2Loading'></div>");
@@ -5851,7 +5851,7 @@ Site.initModuleWeather2 = function (b, j, a, d, l) {
                 if (!d) {
                     return
                 }
-                Site.initModuleWeather2(b, d, a);
+                Run.initModuleWeather2(b, d, a);
                 return
             }
             var p = t.data.city;
@@ -6036,7 +6036,7 @@ Site.initModuleWeather2 = function (b, j, a, d, l) {
                 }
             }
             if (g.length == 0) {
-                var w = "<div id='toolTips" + a + "' style='margin: 0 auto;width: 120px; cursor:pointer;' onclick='Site.initModuleWeather2( " + b + ',"' + j + '", ' + a + ',"' + d + "\")'>网络缓慢，请重新加载</div>";
+                var w = "<div id='toolTips" + a + "' style='margin: 0 auto;width: 120px; cursor:pointer;' onclick='Run.initModuleWeather2( " + b + ',"' + j + '", ' + a + ',"' + d + "\")'>网络缓慢，请重新加载</div>";
                 $(".formMiddleContent" + b + " .includeWeather" + a).append(w)
             } else {
                 $(".formMiddleContent" + b + " .includeWeather" + a).append(g.join(""))
@@ -6049,7 +6049,7 @@ Site.initModuleWeather2 = function (b, j, a, d, l) {
                 if (!d) {
                     return
                 }
-                Site.initModuleWeather2(b, d, a);
+                Run.initModuleWeather2(b, d, a);
                 return
             }
             var v = $(".formMiddleContent" + b + " .weather2"), z = C.data.city[0].days.day, D = false;
@@ -6170,7 +6170,7 @@ Site.initModuleWeather2 = function (b, j, a, d, l) {
                 }
             }
             if (g.length == 0) {
-                var r = "<div id='toolTips" + a + "' style='margin: 0 auto;width: 120px; cursor:pointer;' onclick='Site.initModuleWeather2( " + b + ',"' + j + '", ' + a + ',"' + d + "\")'>网络缓慢，请重新加载</div>";
+                var r = "<div id='toolTips" + a + "' style='margin: 0 auto;width: 120px; cursor:pointer;' onclick='Run.initModuleWeather2( " + b + ',"' + j + '", ' + a + ',"' + d + "\")'>网络缓慢，请重新加载</div>";
                 $(".formMiddleContent" + b + " .includeWeather" + a).append(r)
             } else {
                 $(".formMiddleContent" + b + " .includeWeather" + a).append(g.join(""))
@@ -6179,18 +6179,18 @@ Site.initModuleWeather2 = function (b, j, a, d, l) {
         })
     }
 };
-Site.initWeatherOfIP = function (b, a) {
+Run.initWeatherOfIP = function (b, a) {
     $.ajax({
         url: "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",
         type: "POST",
         dataType: "script",
         success: function (c) {
             var d = remote_ip_info.city;
-            Site.initModuleWeather2(b, d, a)
+            Run.initModuleWeather2(b, d, a)
         }
     })
 };
-Site.initModuleDate = function () {
+Run.initModuleDate = function () {
     var a = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
         c = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], d, e, b;
     return {
@@ -6248,7 +6248,7 @@ Site.initModuleDate = function () {
 (function (a) {
     jQuery.fn.extend({
         bannerImageSwitch: function (c) {
-            if (typeof Fai == "undefined") {
+            if (typeof Helper == "undefined") {
                 alert("must import fai.js");
                 return
             }
@@ -6288,17 +6288,17 @@ Site.initModuleDate = function () {
                 var S = b.index;
                 var e = I < f.width() ? I : f.width();
                 var J = f.width();
-                var w = (Site.checkBrowser() && Fai.top._bannerData.at > 0) ? true : false;
+                var w = (Run.checkBrowser() && Helper.top._bannerData.at > 0) ? true : false;
                 var n = 1000;
-                var B = Site.getWebBackgroundData();
+                var B = Run.getWebBackgroundData();
                 var m = B.wbs ? true : false;
                 var O = (b.width <= f.width()) ? b.width : "100%";
                 if (m) {
-                    var L = Fai.top._manageMode ? Fai.getScrollWidth() : 0;
+                    var L = Helper.top._manageMode ? Helper.getScrollWidth() : 0;
                     U = (U >= n) ? n : U;
                     var p, z = false;
-                    if ((Fai.top.$(".g_web").width() + L) > a(window).width()) {
-                        p = Fai.top.$(".g_web").width() + L
+                    if ((Helper.top.$(".g_web").width() + L) > a(window).width()) {
+                        p = Helper.top.$(".g_web").width() + L
                     } else {
                         p = a(window).width();
                         z = true
@@ -6306,9 +6306,9 @@ Site.initModuleDate = function () {
                     J = J > (p - L) ? p - L : J;
                     O = J;
                     e = J;
-                    if (Fai.top._wideBanner && z) {
-                        Fai.top.$("#g_main").width("auto");
-                        Fai.top.$("#web").width("auto")
+                    if (Helper.top._wideBanner && z) {
+                        Helper.top.$("#g_main").width("auto");
+                        Helper.top.$("#web").width("auto")
                     }
                 }
                 f.css("overflow", "hidden");
@@ -6330,7 +6330,7 @@ Site.initModuleDate = function () {
                 a("<div />").appendTo(f);
                 var V = "";
                 if (w) {
-                    V = "billboard billboard" + Fai.top._bannerData.at
+                    V = "billboard billboard" + Helper.top._bannerData.at
                 }
                 var l = a('<div class="switchGroup ' + V + '"/>').appendTo(f).css("width", O).css("position", "relative").height("y,show-y".indexOf(b.animateStyle) != -1 ? U * P : U).css("overflow", "hidden").css("margin", "0 auto");
                 if (b.wideScreen) {
@@ -6413,10 +6413,10 @@ Site.initModuleDate = function () {
                         g += "background-image:url(" + ah.src + ");"
                     }
                     if (b.wideScreen) {
-                        T.push("<a class='J_bannerEdge J_bannerEdgeLeft bannerEdge bannerEdgeLeft' hidefocus='true' title='" + (ah.tip ? ah.tip : "") + "' href='" + (ah.href ? Fai.encodeHtml(ah.href) : "javascript:;") + "' target='" + (ah.target ? ah.target : "") + "' " + ad + " style='" + C + "'></a>");
-                        T.push("<a class='J_bannerEdge J_bannerEdgeRight bannerEdge bannerEdgeRight' hidefocus='true' title='" + (ah.tip ? ah.tip : "") + "' href='" + (ah.href ? Fai.encodeHtml(ah.href) : "javascript:;") + "' target='" + (ah.target ? ah.target : "") + "' " + ad + " style='" + o + "'></a>")
+                        T.push("<a class='J_bannerEdge J_bannerEdgeLeft bannerEdge bannerEdgeLeft' hidefocus='true' title='" + (ah.tip ? ah.tip : "") + "' href='" + (ah.href ? Helper.encodeHtml(ah.href) : "javascript:;") + "' target='" + (ah.target ? ah.target : "") + "' " + ad + " style='" + C + "'></a>");
+                        T.push("<a class='J_bannerEdge J_bannerEdgeRight bannerEdge bannerEdgeRight' hidefocus='true' title='" + (ah.tip ? ah.tip : "") + "' href='" + (ah.href ? Helper.encodeHtml(ah.href) : "javascript:;") + "' target='" + (ah.target ? ah.target : "") + "' " + ad + " style='" + o + "'></a>")
                     }
-                    T.push("<a class='J_bannerItem' hidefocus='true' title='" + (ah.tip ? ah.tip : "") + "' href='" + (ah.href ? Fai.encodeHtml(ah.href) : "javascript:;") + "' target='" + (ah.ot == 1 ? "_blank" : "") + "' style='" + g + "' " + ad + ">\n");
+                    T.push("<a class='J_bannerItem' hidefocus='true' title='" + (ah.tip ? ah.tip : "") + "' href='" + (ah.href ? Helper.encodeHtml(ah.href) : "javascript:;") + "' target='" + (ah.ot == 1 ? "_blank" : "") + "' style='" + g + "' " + ad + ">\n");
                     T.push(h);
                     T.push("</a>\n");
                     T.push("</div>\n");
@@ -6442,7 +6442,7 @@ Site.initModuleDate = function () {
                         }
                     }
                     if (b.btnType == 1) {
-                        aa += Fai.getDivWidth(af)
+                        aa += Helper.getDivWidth(af)
                     }
                 });
                 if (b.btnType == 0) {
@@ -6477,7 +6477,7 @@ Site.initModuleDate = function () {
                 }
                 if (P > 1) {
                     if (b.btnType != 0) {
-                        if (Fai.top.$("#banner").length > 0) {
+                        if (Helper.top.$("#banner").length > 0) {
                             if (b.btnType == 1) {
                                 if (I >= f.width()) {
                                     Y.css("right", "40px")
@@ -6579,35 +6579,35 @@ Site.initModuleDate = function () {
                 }
                 if (P > 1) {
                     if (w) {
-                        Site.bannerAnimate.init({
-                            container: Fai.top.$("#banner .switchGroup"),
-                            effectIndex: Fai.top._bannerData.at,
+                        Run.bannerAnimate.init({
+                            container: Helper.top.$("#banner .switchGroup"),
+                            effectIndex: Helper.top._bannerData.at,
                             currentIndex: b.index,
-                            speed: Fai.top._bannerData.a,
-                            duration: Fai.top._bannerData.i
+                            speed: Helper.top._bannerData.a,
+                            duration: Helper.top._bannerData.i
                         });
                         if (b.btnType != 0) {
                             M.click(function (ad) {
                                 ad.stopPropagation();
                                 var ac = M.index(this);
-                                Site.bannerAnimate.stop();
-                                Site.bannerAnimate.goTo(ac)
+                                Run.bannerAnimate.stop();
+                                Run.bannerAnimate.goTo(ac)
                             })
                         } else {
                             d.click(function (ac) {
                                 ac.stopPropagation();
-                                Site.bannerAnimate.next()
+                                Run.bannerAnimate.next()
                             });
                             D.click(function (ac) {
                                 ac.stopPropagation();
-                                Site.bannerAnimate.prev()
+                                Run.bannerAnimate.prev()
                             })
                         }
                         f.mouseover(function () {
-                            Site.bannerAnimate.stop()
+                            Run.bannerAnimate.stop()
                         });
                         f.mouseout(function () {
-                            Site.bannerAnimate.autoPlay()
+                            Run.bannerAnimate.autoPlay()
                         })
                     } else {
                         if (b.btnType != 0) {
@@ -6657,7 +6657,7 @@ Site.initModuleDate = function () {
                                         break
                                 }
                                 S = ac;
-                                var ae = Fai.top.$("#bannerGetHref");
+                                var ae = Helper.top.$("#bannerGetHref");
                                 if (ae) {
                                     ae.css({
                                         width: b.data[ac].imgWidth,
@@ -6677,7 +6677,7 @@ Site.initModuleDate = function () {
                             F.eq(s).addClass("spanShowName");
                             function r(ad) {
                                 ad.stopPropagation();
-                                if (Fai.top.$(".arrowImg").is(":animated")) {
+                                if (Helper.top.$(".arrowImg").is(":animated")) {
                                     return
                                 }
                                 F.eq(s).removeClass("spanShowName");
@@ -6689,9 +6689,9 @@ Site.initModuleDate = function () {
                                 if (b.wideScreen) {
                                     ac = J
                                 }
-                                Fai.top.$("#arrowImg" + s).css({left: ac + "px"});
-                                Fai.top.$(".arrowImg").animate({left: "-=" + ac + "px"}, b.animateTime);
-                                var ae = Fai.top.$("#bannerGetHref");
+                                Helper.top.$("#arrowImg" + s).css({left: ac + "px"});
+                                Helper.top.$(".arrowImg").animate({left: "-=" + ac + "px"}, b.animateTime);
+                                var ae = Helper.top.$("#bannerGetHref");
                                 if (ae) {
                                     ae.css({
                                         width: b.data[s].imgWidth,
@@ -6712,7 +6712,7 @@ Site.initModuleDate = function () {
                             });
                             function i(ad) {
                                 ad.stopPropagation();
-                                if (Fai.top.$(".arrowImg").is(":animated")) {
+                                if (Helper.top.$(".arrowImg").is(":animated")) {
                                     return
                                 }
                                 F.eq(s).removeClass("spanShowName");
@@ -6724,9 +6724,9 @@ Site.initModuleDate = function () {
                                     ac = J
                                 }
                                 F.eq(--s).addClass("spanShowName");
-                                Fai.top.$("#arrowImg" + s).css({left: "-" + ac + "px"});
-                                Fai.top.$(".arrowImg").animate({left: "+=" + ac + "px"}, b.animateTime);
-                                var ae = Fai.top.$("#bannerGetHref");
+                                Helper.top.$("#arrowImg" + s).css({left: "-" + ac + "px"});
+                                Helper.top.$(".arrowImg").animate({left: "+=" + ac + "px"}, b.animateTime);
+                                var ae = Helper.top.$("#bannerGetHref");
                                 if (ae) {
                                     ae.css({
                                         width: b.data[s].imgWidth,
@@ -6751,9 +6751,9 @@ Site.initModuleDate = function () {
                         }
                         var Z = "imageSwitch" + Math.random();
                         if (b.btnType != 0) {
-                            Fai.addInterval(Z, t, parseInt(b.playTime + b.animateTime))
+                            Helper.addInterval(Z, t, parseInt(b.playTime + b.animateTime))
                         } else {
-                            Fai.addInterval(Z, G, parseInt(b.playTime + b.animateTime))
+                            Helper.addInterval(Z, G, parseInt(b.playTime + b.animateTime))
                         }
                         var K = setTimeout(function () {
                             if (b.btnType != 0) {
@@ -6761,25 +6761,25 @@ Site.initModuleDate = function () {
                             } else {
                                 G()
                             }
-                            Fai.startInterval(Z)
+                            Helper.startInterval(Z)
                         }, b.playTime);
                         if (typeof b.mouseoverId != "undefined") {
-                            a(Fai.top.$(f).find("." + b.mouseoverId)[0]).mouseover(function () {
+                            a(Helper.top.$(f).find("." + b.mouseoverId)[0]).mouseover(function () {
                                 K && clearTimeout(K);
-                                Fai.stopInterval(Z)
+                                Helper.stopInterval(Z)
                             });
-                            a(Fai.top.$(f).find("." + b.mouseoverId)[0]).mouseout(function () {
+                            a(Helper.top.$(f).find("." + b.mouseoverId)[0]).mouseout(function () {
                                 K && clearTimeout(K);
-                                Fai.startInterval(Z)
+                                Helper.startInterval(Z)
                             })
                         } else {
                             f.mouseover(function () {
                                 K && clearTimeout(K);
-                                Fai.stopInterval(Z)
+                                Helper.stopInterval(Z)
                             });
                             f.mouseout(function () {
                                 K && clearTimeout(K);
-                                Fai.startInterval(Z)
+                                Helper.startInterval(Z)
                             })
                         }
                     }
@@ -6788,17 +6788,17 @@ Site.initModuleDate = function () {
         }
     })
 })(jQuery);
-Site.initBanner = function (v, e, g) {
-    if (Fai.top._uiMode) {
+Run.initBanner = function (v, e, g) {
+    if (Helper.top._uiMode) {
         return
     }
     var o = false;
-    var a = Fai.top.$("#webBanner");
-    var c = Fai.top.$("#banner");
-    var x = Site.getWebBackgroundData();
+    var a = Helper.top.$("#webBanner");
+    var c = Helper.top.$("#banner");
+    var x = Run.getWebBackgroundData();
     var u = x.wbs ? true : false;
-    if (Fai.top._templateLayout == 0 || Fai.top._templateLayout == 1 || Fai.top._templateLayout == 9 || Fai.top._templateLayout == 10) {
-        var p = Fai.top._manageMode ? Site.getWebBackgroundData().wbh : Fai.top._webBannerHeight;
+    if (Helper.top._templateLayout == 0 || Helper.top._templateLayout == 1 || Helper.top._templateLayout == 9 || Helper.top._templateLayout == 10) {
+        var p = Helper.top._manageMode ? Run.getWebBackgroundData().wbh : Helper.top._webBannerHeight;
         if (p > -1) {
             v.height = p;
             if (c.siblings(".nav").length > 0) {
@@ -6820,7 +6820,7 @@ Site.initBanner = function (v, e, g) {
         }
     }
     if (v._open) {
-        if (e._open && Fai.flashChecker().f) {
+        if (e._open && Helper.flashChecker().f) {
             v.mouseoverId = "bannerGetHref"
         } else {
             v.mouseoverId = "switchGroup"
@@ -6829,19 +6829,19 @@ Site.initBanner = function (v, e, g) {
         c.bannerImageSwitch(v);
         var r = c.width();
         var b = c.height();
-        var i = Fai.top._manageMode ? Fai.getScrollWidth() : 0;
-        var n = Fai.top.$(window).width() > Fai.top.$("#web").width() ? Fai.top.$(window).width() : Fai.top.$("#web").width();
+        var i = Helper.top._manageMode ? Helper.getScrollWidth() : 0;
+        var n = Helper.top.$(window).width() > Helper.top.$("#web").width() ? Helper.top.$(window).width() : Helper.top.$("#web").width();
         if (o) {
             b = v.height
         }
         if (u) {
-            r = Fai.top.$("#webBanner").width();
+            r = Helper.top.$("#webBanner").width();
             r = (r > n) ? n - i : r;
-            b = Fai.top.$("#webBanner").height()
+            b = Helper.top.$("#webBanner").height()
         }
-        var d = (Fai.top.$("#containerFormsCenter").find("div").eq(0).attr("id"));
-        var l = Fai.top.$("#banner .switchGroup");
-        Fai.top.$("#banner .switchGroup .J_bannerItem").each(function (A) {
+        var d = (Helper.top.$("#containerFormsCenter").find("div").eq(0).attr("id"));
+        var l = Helper.top.$("#banner .switchGroup");
+        Helper.top.$("#banner .switchGroup .J_bannerItem").each(function (A) {
             if (!v.data[A]) {
                 return false
             }
@@ -6849,20 +6849,20 @@ Site.initBanner = function (v, e, g) {
             if (r >= z && !u) {
                 $(this).css("width", v.data[A].imgWidth);
                 var y = l.width() - v.data[A].imgWidth;
-                if (Fai.isIE()) {
+                if (Helper.isIE()) {
                     y = y + (y % 2)
                 }
                 $(this).siblings(".J_bannerEdge").css("width", y / 2)
             } else {
                 $(this).css("width", r);
                 var y = l.width() - r;
-                if (Fai.isIE()) {
+                if (Helper.isIE()) {
                     y = y + (y % 2)
                 }
                 $(this).siblings(".J_bannerEdge").css("width", y / 2)
             }
             if (b >= v.data[A].imgHeight && !u) {
-                if (Site.checkBrowser() && Fai.top._bannerData.at > 0) {
+                if (Run.checkBrowser() && Helper.top._bannerData.at > 0) {
                     $(this).css("height", b)
                 } else {
                     $(this).css("height", v.data[A].imgHeight);
@@ -6877,20 +6877,20 @@ Site.initBanner = function (v, e, g) {
         });
         c.css("background", "none")
     } else {
-        Site.refreshDefaultBannerEdge()
+        Run.refreshDefaultBannerEdge()
     }
-    if (e._open && Fai.flashChecker().f) {
+    if (e._open && Helper.flashChecker().f) {
         if ($.browser.mozilla && $.browser.version == "49.0") {
             return
         }
         var h = 0;
         var w = 0;
-        var f = Fai.top.$("#banner").width();
+        var f = Helper.top.$("#banner").width();
         if (f > 960) {
             f = 960;
-            h = parseInt((Fai.top.$("#webBanner").width() - 960) / 2)
+            h = parseInt((Helper.top.$("#webBanner").width() - 960) / 2)
         }
-        var j = Fai.top.$("#banner").height();
+        var j = Helper.top.$("#banner").height();
         if (e.position == 1) {
             f = f / 2
         } else {
@@ -6904,8 +6904,8 @@ Site.initBanner = function (v, e, g) {
                 }
             }
         }
-        if (typeof Fai != "undefined" && typeof Fai.top._resRoot != "undefined") {
-            resRoot = Fai.top._resRoot
+        if (typeof Helper != "undefined" && typeof Helper.top._resRoot != "undefined") {
+            resRoot = Helper.top._resRoot
         }
         if (typeof e.color1 == "undefined") {
             e.color1 = "#000"
@@ -6913,18 +6913,18 @@ Site.initBanner = function (v, e, g) {
         if (typeof e.color2 == "undefined") {
             e.color2 = "#FFFFFF"
         }
-        var t = "text1=" + Fai.encodeUrl(e.text1) + "&text2=" + Fai.encodeUrl(e.text2) + "&size1=" + e.size1 + "&size2=" + e.size2 + "&color1=0x" + e.color1.substr(1, e.color1.length - 1) + "&color2=0x" + e.color2.substr(1, e.color2.length - 1) + "&style1=" + e.style1 + "&style2=" + e.style2;
-        var m = ['<div class="effectShow" id="effectShow" style="position:absolute; top:' + w + "px; left:" + h + 'px; z-index:1;">', '<object id="effectShow_swf" type="application/x-shockwave-flash"  data="' + Fai.top._resRoot + "/image/site/effects/" + e.type + ".swf?" + $.md5(t) + '" width="' + f + '" height="' + j + '">', '<param name="movie" value="' + Fai.top._resRoot + "/image/site/effects/" + e.type + ".swf?" + $.md5(t) + '"/>', '<param name="quality" value="high" />', '<param name="wmode" value="transparent" />', '<param name="flashvars" value="' + t + '"/>', '<embed id="effectShowEmbed" name="effectShow_swf" type="application/x-shockwave-flash" classid="clsid:d27cdb6e-ae6d-11cf-96b8-4445535400000" src="', Fai.top._resRoot, "/image/site/effects/" + e.type + ".swf?" + $.md5(t) + '" wmode="transparent" quality="high" menu="false" play="true" loop="true" width="', f, '" height="', j, 'flashvars="' + t + '"', '" >', "</embed>", "</object>", "</div>"];
+        var t = "text1=" + Helper.encodeUrl(e.text1) + "&text2=" + Helper.encodeUrl(e.text2) + "&size1=" + e.size1 + "&size2=" + e.size2 + "&color1=0x" + e.color1.substr(1, e.color1.length - 1) + "&color2=0x" + e.color2.substr(1, e.color2.length - 1) + "&style1=" + e.style1 + "&style2=" + e.style2;
+        var m = ['<div class="effectShow" id="effectShow" style="position:absolute; top:' + w + "px; left:" + h + 'px; z-index:1;">', '<object id="effectShow_swf" type="application/x-shockwave-flash"  data="' + Helper.top._resRoot + "/image/site/effects/" + e.type + ".swf?" + $.md5(t) + '" width="' + f + '" height="' + j + '">', '<param name="movie" value="' + Helper.top._resRoot + "/image/site/effects/" + e.type + ".swf?" + $.md5(t) + '"/>', '<param name="quality" value="high" />', '<param name="wmode" value="transparent" />', '<param name="flashvars" value="' + t + '"/>', '<embed id="effectShowEmbed" name="effectShow_swf" type="application/x-shockwave-flash" classid="clsid:d27cdb6e-ae6d-11cf-96b8-4445535400000" src="', Helper.top._resRoot, "/image/site/effects/" + e.type + ".swf?" + $.md5(t) + '" wmode="transparent" quality="high" menu="false" play="true" loop="true" width="', f, '" height="', j, 'flashvars="' + t + '"', '" >', "</embed>", "</object>", "</div>"];
         m = m.join("");
         if (g == 4) {
-            var k = '<div id="bannerGetHref" class="bannerGetHref" style="position:absolute; top:0; left:' + h + "px; width:" + f + "px; height:100%; z-index:1; background:url('" + resRoot + '/image/site/transpace.png\');" onmouseover="Site.bannerInitHref();"  onmouseout="Site.startBannerInterval();" onclick="Site.bannerGetHref();"></div>';
+            var k = '<div id="bannerGetHref" class="bannerGetHref" style="position:absolute; top:0; left:' + h + "px; width:" + f + "px; height:100%; z-index:1; background:url('" + resRoot + '/image/site/transpace.png\');" onmouseover="Run.bannerInitHref();"  onmouseout="Run.startBannerInterval();" onclick="Run.bannerGetHref();"></div>';
             m = m + k
         }
         c.append(m);
         var b = c.height();
         var r = c.width();
         if (v.data && v.data.length > 0) {
-            Fai.top.$("#bannerGetHref").css({
+            Helper.top.$("#bannerGetHref").css({
                 width: v.data[0].imgWidth,
                 height: v.data[0].imgHeight,
                 left: (r - v.data[0].imgWidth) / 2 + "px",
@@ -6936,22 +6936,22 @@ Site.initBanner = function (v, e, g) {
         $(window).resize(function (y) {
             if (!y.target.nodeType || y.target.nodeType == 9) {
                 setTimeout(function () {
-                    Site.refreshBanner(0)
+                    Run.refreshBanner(0)
                 }, 500)
             }
         })
     }
-    Site.adjustBannerFlash()
+    Run.adjustBannerFlash()
 };
-Site.adjustBannerWidth = (function () {
+Run.adjustBannerWidth = (function () {
     function b() {
-        var i = Fai.top.$(window), f = Fai.top.$("#webBanner"), e = Fai.top.$("#web");
-        webBgData = Site.getWebBackgroundData();
+        var i = Helper.top.$(window), f = Helper.top.$("#webBanner"), e = Helper.top.$("#web");
+        webBgData = Run.getWebBackgroundData();
         if (f.length < 1) {
             return
         }
         if (webBgData.wbw != -1) {
-            var d = Fai.top._manageMode ? Fai.getScrollWidth() : 0,
+            var d = Helper.top._manageMode ? Helper.getScrollWidth() : 0,
                 h = (parseInt(f.css("borderLeftWidth").replace("px", "")) + parseInt(f.css("borderRightWidth").replace("px", ""))) || 0,
                 g = webBgData.wbw + h, c = e.width();
             if (c - d < g && c < g) {
@@ -6959,7 +6959,7 @@ Site.adjustBannerWidth = (function () {
             }
             i.off("resize.banner");
             i.on("resize.banner", function () {
-                if (Fai.top._isTemplateVersion2 && webBgData.wbws == 2) {
+                if (Helper.top._isTemplateVersion2 && webBgData.wbws == 2) {
                 } else {
                     c = e.width();
                     if (i.width() - d < g && c < g) {
@@ -6975,47 +6975,47 @@ Site.adjustBannerWidth = (function () {
     }
 
     function a(c) {
-        Fai.top.Fai.setCtrlStyleCss("styleWebSite", "", ".webBanner", "width", c + "px !important");
-        Fai.top.Fai.setCtrlStyleCss("styleWebSite", "", ".webBanner .banner", "width", "auto !important");
-        Fai.top.Fai.setCtrlStyleCss("styleWebSite", "", ".webBanner .switchGroup", "width", c + "px !important")
+        Helper.top.Helper.setCtrlStyleCss("styleWebRun", "", ".webBanner", "width", c + "px !important");
+        Helper.top.Helper.setCtrlStyleCss("styleWebRun", "", ".webBanner .banner", "width", "auto !important");
+        Helper.top.Helper.setCtrlStyleCss("styleWebRun", "", ".webBanner .switchGroup", "width", c + "px !important")
     }
 
     return b
 })();
-Site.startBannerInterval = function () {
+Run.startBannerInterval = function () {
     var a = 0;
-    if (Fai.intervalFunc != undefined) {
-        a = Fai.intervalFunc.length
+    if (Helper.intervalFunc != undefined) {
+        a = Helper.intervalFunc.length
     }
     if (a > 0) {
-        var b = Fai.intervalFunc[0].id;
+        var b = Helper.intervalFunc[0].id;
         if (typeof b != "undefined" && b.substring(0, 11) == "imageSwitch") {
-            Fai.startInterval(b)
+            Helper.startInterval(b)
         }
     }
-    if (Fai.top._bannerData.n && Fai.top._bannerData.n.length > 1 && Site.checkBrowser() && Fai.top._bannerData.at > 0) {
-        Site.bannerAnimate.autoPlay()
+    if (Helper.top._bannerData.n && Helper.top._bannerData.n.length > 1 && Run.checkBrowser() && Helper.top._bannerData.at > 0) {
+        Run.bannerAnimate.autoPlay()
     }
 };
-Site.stopBannerInterval = function () {
+Run.stopBannerInterval = function () {
     var a = 0;
-    if (Fai.intervalFunc != undefined) {
-        a = Fai.intervalFunc.length
+    if (Helper.intervalFunc != undefined) {
+        a = Helper.intervalFunc.length
     }
     if (a > 0) {
-        var b = Fai.intervalFunc[0].id;
+        var b = Helper.intervalFunc[0].id;
         if (typeof b != "undefined" && b.substring(0, 11) == "imageSwitch") {
-            Fai.stopInterval(b)
+            Helper.stopInterval(b)
         }
     }
-    if (Fai.top._bannerData.n && Fai.top._bannerData.n.length > 1 && Site.checkBrowser() && Fai.top._bannerData.at > 0) {
-        Site.bannerAnimate.stop()
+    if (Helper.top._bannerData.n && Helper.top._bannerData.n.length > 1 && Run.checkBrowser() && Helper.top._bannerData.at > 0) {
+        Run.bannerAnimate.stop()
     }
 };
-Site.bannerInitHref = function () {
-    Site.stopBannerInterval();
+Run.bannerInitHref = function () {
+    Run.stopBannerInterval();
     var c = false;
-    var a = Fai.top.$("#banner");
+    var a = Helper.top.$("#banner");
     var b = -1;
     a.find(".spanHiddenName").each(function (d, e) {
         if ($(this).hasClass("spanShowName")) {
@@ -7027,18 +7027,18 @@ Site.bannerInitHref = function () {
         return
     }
     a.find(".switchGroup").children().each(function (d, e) {
-        if (d == b && Fai.top.$(e).find("a").eq(0).attr("href") != "javascript:;") {
-            Fai.top.$("#bannerGetHref").css("cursor", "pointer");
+        if (d == b && Helper.top.$(e).find("a").eq(0).attr("href") != "javascript:;") {
+            Helper.top.$("#bannerGetHref").css("cursor", "pointer");
             c = true;
             return false
         }
     });
     if (c == false) {
-        Fai.top.$("#bannerGetHref").css("cursor", "default")
+        Helper.top.$("#bannerGetHref").css("cursor", "default")
     }
 };
-Site.bannerGetHref = function () {
-    var a = Fai.top.$("#banner");
+Run.bannerGetHref = function () {
+    var a = Helper.top.$("#banner");
     var c = -1;
     a.find(".spanHiddenName").each(function (d, e) {
         if ($(this).hasClass("spanShowName")) {
@@ -7052,7 +7052,7 @@ Site.bannerGetHref = function () {
     var b = "";
     a.find(".switchGroup").children().each(function (d, f) {
         if (d == c) {
-            var e = Fai.top.$(f).find("a").eq(0);
+            var e = Helper.top.$(f).find("a").eq(0);
             b = e.attr("href");
             if (b == "javascript:;") {
                 $(e).click()
@@ -7064,9 +7064,9 @@ Site.bannerGetHref = function () {
         window.open(b)
     }
 };
-Site.adjustBannerFlash = function () {
-    var b = Fai.top.$("#banner");
-    var c = Fai.top.$("#imgPageFlash");
+Run.adjustBannerFlash = function () {
+    var b = Helper.top.$("#banner");
+    var c = Helper.top.$("#imgPageFlash");
     if (c.length > 0) {
         var a = b.width();
         var d = c.width();
@@ -7077,36 +7077,36 @@ Site.adjustBannerFlash = function () {
         }
     }
 };
-Site.refreshBanner = function (i) {
-    if (Fai.top._uiMode) {
+Run.refreshBanner = function (i) {
+    if (Helper.top._uiMode) {
         return
     }
-    var a = Fai.top.$("#webBanner");
-    var e = Fai.top.$("#banner");
-    if (Fai.top._bannerData.h) {
-        Fai.top.$("#banner").css("display", "none");
+    var a = Helper.top.$("#webBanner");
+    var e = Helper.top.$("#banner");
+    if (Helper.top._bannerData.h) {
+        Helper.top.$("#banner").css("display", "none");
         return
     }
     if (typeof i == "undefined") {
         i = 0
     }
-    if (Fai.top._bannerData.s == 3 && !Fai.top._bannerData.f.p) {
-        Fai.top._bannerData.s = 0
+    if (Helper.top._bannerData.s == 3 && !Helper.top._bannerData.f.p) {
+        Helper.top._bannerData.s = 0
     }
-    if (Fai.top._bannerData.s == 4 && Fai.top._bannerData.n.length == 0) {
-        Fai.top._bannerData.s = 0
+    if (Helper.top._bannerData.s == 4 && Helper.top._bannerData.n.length == 0) {
+        Helper.top._bannerData.s = 0
     }
-    Fai.top.$("#banner").css("display", "block");
-    if (Fai.top._bannerData.s == 0) {
-        Fai.top.$("#banner").removeAttr("style");
-        Fai.top.$("#banner").children().remove();
+    Helper.top.$("#banner").css("display", "block");
+    if (Helper.top._bannerData.s == 0) {
+        Helper.top.$("#banner").removeAttr("style");
+        Helper.top.$("#banner").children().remove();
         var o = [];
         o.push("<div class='" + e.attr("class") + " defaultBannerMain'></div>");
         o.push("<div class='defaultBannerEdge defaultBannerEdgeLeft'></div>");
         o.push("<div class='defaultBannerEdge defaultBannerEdgeRight'></div>");
         e.append(o.join(""));
-        if (Fai.top._templateLayout == 0 || Fai.top._templateLayout == 1 || Fai.top._templateLayout == 9 || Fai.top._templateLayout == 10) {
-            var j = Fai.top._manageMode ? Site.getWebBackgroundData().wbh : Fai.top._webBannerHeight;
+        if (Helper.top._templateLayout == 0 || Helper.top._templateLayout == 1 || Helper.top._templateLayout == 9 || Helper.top._templateLayout == 10) {
+            var j = Helper.top._manageMode ? Run.getWebBackgroundData().wbh : Helper.top._webBannerHeight;
             if (j > -1) {
                 if (e.siblings(".nav").length > 0) {
                     var f = e.css("height").replace("px", "");
@@ -7118,92 +7118,92 @@ Site.refreshBanner = function (i) {
                 }
             }
         }
-        Site.refreshDefaultBannerEdge()
+        Run.refreshDefaultBannerEdge()
     } else {
-        if (Fai.top._bannerData.s == 3) {
-            Fai.top.$("#banner").css("background", "none");
-            Fai.top.$("#banner").css("height", Fai.top._bannerData.f.h + "px");
-            Fai.top.$("#banner").children().remove();
-            var g = '<embed type="application/x-shockwave-flash" classid="clsid:d27cdb6e-ae6d-11cf-96b8-4445535400000" id="imgPageFlash" src="' + Fai.top._bannerData.f.p + '" wmode="opaque" quality="high" menu="false" play="true" loop="true" width="' + Fai.top._bannerData.f.w + '" height="' + Fai.top._bannerData.f.h + '" ></embed>';
-            Fai.top.$("#banner").append(g);
-            Site.adjustBannerFlash()
+        if (Helper.top._bannerData.s == 3) {
+            Helper.top.$("#banner").css("background", "none");
+            Helper.top.$("#banner").css("height", Helper.top._bannerData.f.h + "px");
+            Helper.top.$("#banner").children().remove();
+            var g = '<embed type="application/x-shockwave-flash" classid="clsid:d27cdb6e-ae6d-11cf-96b8-4445535400000" id="imgPageFlash" src="' + Helper.top._bannerData.f.p + '" wmode="opaque" quality="high" menu="false" play="true" loop="true" width="' + Helper.top._bannerData.f.w + '" height="' + Helper.top._bannerData.f.h + '" ></embed>';
+            Helper.top.$("#banner").append(g);
+            Run.adjustBannerFlash()
         } else {
-            if (Fai.top._bannerData.s == 4) {
-                Fai.top.Site.refreshBannerImageSwitch(i)
+            if (Helper.top._bannerData.s == 4) {
+                Helper.top.Run.refreshBannerImageSwitch(i)
             }
         }
     }
-    if (Fai.top._bannerData.o) {
+    if (Helper.top._bannerData.o) {
         if ($.browser.mozilla && $.browser.version == "49.0") {
             return
         }
         var p = 0;
         var m = 0;
-        var l = Fai.top.$("#banner").width();
-        var c = Fai.top.$("#banner").height();
+        var l = Helper.top.$("#banner").width();
+        var c = Helper.top.$("#banner").height();
         if (l > 960) {
             l = 960;
-            p = parseInt((Fai.top.$("#webBanner").width() - 960) / 2)
+            p = parseInt((Helper.top.$("#webBanner").width() - 960) / 2)
         }
-        if (Fai.top._bannerData.p == 1) {
+        if (Helper.top._bannerData.p == 1) {
             l = l / 2
         } else {
-            if (Fai.top._bannerData.p == 2) {
+            if (Helper.top._bannerData.p == 2) {
                 l = l / 2;
                 p += l
             } else {
-                if (Fai.top._bannerData.p == 3) {
-                    p += Fai.top._bannerData.pl;
-                    m = Fai.top._bannerData.pt
+                if (Helper.top._bannerData.p == 3) {
+                    p += Helper.top._bannerData.pl;
+                    m = Helper.top._bannerData.pt
                 }
             }
         }
-        if (typeof Fai != "undefined" && typeof Fai.top._resRoot != "undefined") {
-            resRoot = Fai.top._resRoot
+        if (typeof Helper != "undefined" && typeof Helper.top._resRoot != "undefined") {
+            resRoot = Helper.top._resRoot
         }
-        if (typeof Fai.top._bannerData.ce.c1 == "undefined") {
-            Fai.top._bannerData.ce.c1 = "#000"
+        if (typeof Helper.top._bannerData.ce.c1 == "undefined") {
+            Helper.top._bannerData.ce.c1 = "#000"
         }
-        if (typeof Fai.top._bannerData.ce.c2 == "undefined") {
-            Fai.top._bannerData.ce.c2 = "#FFFFFF"
+        if (typeof Helper.top._bannerData.ce.c2 == "undefined") {
+            Helper.top._bannerData.ce.c2 = "#FFFFFF"
         }
-        var k = "text1=" + Fai.encodeUrl(Fai.top._bannerData.ce.t1) + "&text2=" + Fai.encodeUrl(Fai.top._bannerData.ce.t2) + "&size1=" + Fai.top._bannerData.ce.sz1 + "&size2=" + Fai.top._bannerData.ce.sz2 + "&color1=0x" + Fai.top._bannerData.ce.c1.substr(1, Fai.top._bannerData.ce.c1.length - 1) + "&color2=0x" + Fai.top._bannerData.ce.c2.substr(1, Fai.top._bannerData.ce.c2.length - 1) + "&style1=" + Fai.top._bannerData.ce.s1 + "&style2=" + Fai.top._bannerData.ce.s2;
-        var h = Fai.top._resRoot + "/image/site/effects/" + Fai.top._bannerData.t + ".swf?" + $.md5(k);
+        var k = "text1=" + Helper.encodeUrl(Helper.top._bannerData.ce.t1) + "&text2=" + Helper.encodeUrl(Helper.top._bannerData.ce.t2) + "&size1=" + Helper.top._bannerData.ce.sz1 + "&size2=" + Helper.top._bannerData.ce.sz2 + "&color1=0x" + Helper.top._bannerData.ce.c1.substr(1, Helper.top._bannerData.ce.c1.length - 1) + "&color2=0x" + Helper.top._bannerData.ce.c2.substr(1, Helper.top._bannerData.ce.c2.length - 1) + "&style1=" + Helper.top._bannerData.ce.s1 + "&style2=" + Helper.top._bannerData.ce.s2;
+        var h = Helper.top._resRoot + "/image/site/effects/" + Helper.top._bannerData.t + ".swf?" + $.md5(k);
         var b = ['<div class="effectShow" id="effectShow" style="position:absolute; top:' + m + "px; left:" + p + 'px; z-index:1;">', '<object id="effectShow_swf"  type="application/x-shockwave-flash"  data="' + h + '" width="' + l + '" height="' + c + '">', '<param name="movie" value="' + h + '" />', '<param name="quality" value="high" />', '<param name="flashvars" value="' + k + '"/>', '<param name="wmode" value="transparent" />', '<embed name="effectShow_swf"  wmode="transparent" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" classid="clsid:d27cdb6e-ae6d-11cf-96b8-4445535400000" id="effectFlash" src="' + h + '" quality="high" menu="false" play="true" loop="true" width="' + l + '" height="' + c + '" flashvars="' + k + '" >', "</embed>", "</object>", "</div>"];
         b = b.join("");
-        if (Fai.top._bannerData.s == 4) {
-            var n = '<div id="bannerGetHref" class="bannerGetHref" style="position:absolute; top:0; left:' + p + "px; width:" + l + "px; height:100%;z-index:1; background:url('" + resRoot + '/image/site/transpace.png\');"  onmouseover="Site.bannerInitHref();" onmouseout="Site.startBannerInterval();" onclick="Site.bannerGetHref();"></div>';
+        if (Helper.top._bannerData.s == 4) {
+            var n = '<div id="bannerGetHref" class="bannerGetHref" style="position:absolute; top:0; left:' + p + "px; width:" + l + "px; height:100%;z-index:1; background:url('" + resRoot + '/image/site/transpace.png\');"  onmouseover="Run.bannerInitHref();" onmouseout="Run.startBannerInterval();" onclick="Run.bannerGetHref();"></div>';
             b = b + n
         }
-        Fai.top.$("#banner").append(b);
-        if (Fai.top._bannerData.n && Fai.top._bannerData.n.length > 0) {
-            Fai.top.$("#bannerGetHref").css({
-                width: Fai.top._bannerData.n[i].w,
-                height: Fai.top._bannerData.n[i].h,
-                left: (Fai.top.$("#banner").width() - Fai.top._bannerData.n[i].w) / 2 + "px",
-                top: (Fai.top.$("#banner").height() - Fai.top._bannerData.n[i].h) / 2 + "px"
+        Helper.top.$("#banner").append(b);
+        if (Helper.top._bannerData.n && Helper.top._bannerData.n.length > 0) {
+            Helper.top.$("#bannerGetHref").css({
+                width: Helper.top._bannerData.n[i].w,
+                height: Helper.top._bannerData.n[i].h,
+                left: (Helper.top.$("#banner").width() - Helper.top._bannerData.n[i].w) / 2 + "px",
+                top: (Helper.top.$("#banner").height() - Helper.top._bannerData.n[i].h) / 2 + "px"
             })
         }
     } else {
-        Fai.top.$("#effectShow").remove()
+        Helper.top.$("#effectShow").remove()
     }
 };
-Site.getWebBackgroundData = function () {
-    return Fai.top._useTemplateBackground ? Fai.top._templateBackgroundData : Fai.top._customBackgroundData
+Run.getWebBackgroundData = function () {
+    return Helper.top._useTemplateBackground ? Helper.top._templateBackgroundData : Helper.top._customBackgroundData
 };
-Site.refreshBannerImageSwitch = function (g) {
+Run.refreshBannerImageSwitch = function (g) {
     var c = 0;
     var q = 0;
     var h = new Array();
     var i = new Array();
     var s = new Array();
-    var k = Fai.top._bannerData.bt;
+    var k = Helper.top._bannerData.bt;
     var o = false;
-    var b = Fai.top.$("#webBanner");
-    var e = Fai.top.$("#banner");
-    var u = Site.getWebBackgroundData();
+    var b = Helper.top.$("#webBanner");
+    var e = Helper.top.$("#banner");
+    var u = Run.getWebBackgroundData();
     var t = u.wbs ? true : false;
-    $.each(Fai.top._bannerData.n, function (x, B) {
+    $.each(Helper.top._bannerData.n, function (x, B) {
         var z = B.el || "";
         var A = B.er || "";
         var w = parseInt(B.h);
@@ -7216,7 +7216,7 @@ Site.refreshBannerImageSwitch = function (g) {
         }
         if (B.e != 0) {
             var v = B.jUrl || "javascript:;";
-            if (Fai.top._manageMode) {
+            if (Helper.top._manageMode) {
                 if ($(".panelLibItem[vid=" + B.i + "]").data("JURL") != undefined) {
                     v = $(".panelLibItem[vid=" + B.i + "]").data("JURL")
                 }
@@ -7244,8 +7244,8 @@ Site.refreshBannerImageSwitch = function (g) {
         i.push(y);
         s.push(w)
     });
-    if (Fai.top._templateLayout == 0 || Fai.top._templateLayout == 1 || Fai.top._templateLayout == 9 || Fai.top._templateLayout == 10) {
-        var d = Fai.top._manageMode ? Site.getWebBackgroundData().wbh : Fai.top._webBannerHeight;
+    if (Helper.top._templateLayout == 0 || Helper.top._templateLayout == 1 || Helper.top._templateLayout == 9 || Helper.top._templateLayout == 10) {
+        var d = Helper.top._manageMode ? Run.getWebBackgroundData().wbh : Helper.top._webBannerHeight;
         if (d > -1) {
             c = d;
             if (e.siblings(".nav").length > 0) {
@@ -7261,52 +7261,52 @@ Site.refreshBannerImageSwitch = function (g) {
             }
         }
     }
-    c = t ? Fai.top.$("#banner").height() : c;
-    Fai.top.$("#banner").css("background", "none");
-    Fai.top.$("#banner").children().remove();
-    Fai.top.$("#banner").css("height", c + "px");
-    Fai.top.$("#banner").bannerImageSwitch({
+    c = t ? Helper.top.$("#banner").height() : c;
+    Helper.top.$("#banner").css("background", "none");
+    Helper.top.$("#banner").children().remove();
+    Helper.top.$("#banner").css("height", c + "px");
+    Helper.top.$("#banner").bannerImageSwitch({
         data: h,
         index: g,
         width: q,
         height: c,
         from: "banner",
-        playTime: Fai.top._bannerData.i,
-        animateTime: Fai.top._bannerData.a,
+        playTime: Helper.top._bannerData.i,
+        animateTime: Helper.top._bannerData.a,
         btnType: k,
-        wideScreen: Fai.top._bannerData.ws
+        wideScreen: Helper.top._bannerData.ws
     });
-    var a = Fai.top.$("#banner").width();
-    var l = Fai.top.$("#banner").height();
-    var j = Fai.top._manageMode ? Fai.getScrollWidth() : 0;
-    var n = Fai.top.$(window).width() > Fai.top.$("#web").width() ? Fai.top.$(window).width() : Fai.top.$("#web").width();
+    var a = Helper.top.$("#banner").width();
+    var l = Helper.top.$("#banner").height();
+    var j = Helper.top._manageMode ? Helper.getScrollWidth() : 0;
+    var n = Helper.top.$(window).width() > Helper.top.$("#web").width() ? Helper.top.$(window).width() : Helper.top.$("#web").width();
     if (o) {
         l = c
     }
     if (t) {
-        a = Fai.top.$("#webBanner").width();
+        a = Helper.top.$("#webBanner").width();
         a = (a > n) ? n - j : a
     }
-    var f = (Fai.top.$("#containerFormsCenter").find("div").eq(0).attr("id"));
-    var m = Fai.top.$("#banner .switchGroup");
-    Fai.top.$("#banner .switchGroup .J_bannerItem").each(function (w) {
+    var f = (Helper.top.$("#containerFormsCenter").find("div").eq(0).attr("id"));
+    var m = Helper.top.$("#banner .switchGroup");
+    Helper.top.$("#banner .switchGroup .J_bannerItem").each(function (w) {
         if (a >= i[w] && !t) {
             $(this).css("width", i[w]);
             var v = m.width() - i[w];
-            if (Fai.isIE()) {
+            if (Helper.isIE()) {
                 v = v + (v % 2)
             }
             $(this).siblings(".J_bannerEdge").css("width", (v / 2) + "px")
         } else {
             $(this).css("width", a);
             var v = m.width() - a;
-            if (Fai.isIE()) {
+            if (Helper.isIE()) {
                 v = v + (v % 2)
             }
             $(this).siblings(".J_bannerEdge").css("width", (v / 2) + "px")
         }
         if (l >= s[w] && !t) {
-            if (Site.checkBrowser() && Fai.top._bannerData.at > 0) {
+            if (Run.checkBrowser() && Helper.top._bannerData.at > 0) {
                 $(this).css("height", l)
             } else {
                 $(this).css("height", s[w]);
@@ -7320,8 +7320,8 @@ Site.refreshBannerImageSwitch = function (g) {
         }
     })
 };
-Site.refreshDefaultBannerEdge = function () {
-    var b = Fai.top.$("#banner");
+Run.refreshDefaultBannerEdge = function () {
+    var b = Helper.top.$("#banner");
     if (b.length > 0) {
         var c = b.attr("defaultwidth") || 960;
         if (b.children(".defaultBannerEdge").length > 0) {
@@ -7331,7 +7331,7 @@ Site.refreshDefaultBannerEdge = function () {
         }
     }
 };
-Site.checkBrowser = (function () {
+Run.checkBrowser = (function () {
     var c = ["animation", "MozAnimation", "webkitAnimation", "msAnimation", "OAnimation"],
         e = ["transform", "MozTransform", "webkitTransform", "msTransform", "OTransform"],
         b = ["opacity", "MozOpacity", "webkitOpacity", "msOpacity", "OOpacity"], d = document.createElement("div"),
@@ -7363,13 +7363,13 @@ Site.checkBrowser = (function () {
         return a[g]
     }
 })();
-Site.bannerAnimate = {};
+Run.bannerAnimate = {};
 (function (h, q, i) {
     var C = false, u = 1, b = 0, g = -1, d = -1,
         c = {autoPlay: true, currentIndex: 0, speed: 1500, duration: 4000, effectIndex: 1}, E, t = false, w = true, m,
         o, y = 0, A = 0, j = 0, s;
     q.init = function (F) {
-        C = Site.checkBrowser();
+        C = Run.checkBrowser();
         if (!C) {
             return
         }
@@ -7383,14 +7383,14 @@ Site.bannerAnimate = {};
         z()
     };
     function e() {
-        if (Fai.isSafari()) {
+        if (Helper.isSafari()) {
         } else {
             if (navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i)) {
             } else {
                 return
             }
         }
-        Fai.top.$("#banner").addClass("fk-fixPerspective")
+        Helper.top.$("#banner").addClass("fk-fixPerspective")
     }
 
     function l() {
@@ -7416,7 +7416,7 @@ Site.bannerAnimate = {};
     }
 
     function v() {
-        Site.refreshBanner(b)
+        Run.refreshBanner(b)
     }
 
     q.autoPlay = function () {
@@ -7455,15 +7455,15 @@ Site.bannerAnimate = {};
         if (typeof K === "undefined") {
             var K = (d > b ? false : true)
         }
-        var M = Fai.top.$("#banner").find(".imageSwitchBtnArea"), F = Fai.top.$("#banner").find(".imageSwitchShowName"),
+        var M = Helper.top.$("#banner").find(".imageSwitchBtnArea"), F = Helper.top.$("#banner").find(".imageSwitchShowName"),
             H = F.children("span"), J = M.children("a"), Q = s.eq(b), I = s.eq(d);
-        if (Fai.top._bannerData.bt == 0) {
+        if (Helper.top._bannerData.bt == 0) {
         } else {
-            if (Fai.top._bannerData.bt == 1) {
+            if (Helper.top._bannerData.bt == 1) {
                 J.removeClass("imageSwitchBtnSel");
                 J.eq(d).addClass("imageSwitchBtnSel")
             } else {
-                if (Fai.top._bannerData.bt == 2) {
+                if (Helper.top._bannerData.bt == 2) {
                     J.removeClass("imageSwitchBtnSel_dot");
                     J.eq(d).addClass("imageSwitchBtnSel_dot")
                 }
@@ -7549,12 +7549,12 @@ Site.bannerAnimate = {};
 
     function k() {
         A = o.width() || 0;
-        j = Fai.top.$("#banner").height() || 0;
+        j = Helper.top.$("#banner").height() || 0;
         var O;
-        var M = Site.getWebBackgroundData();
+        var M = Run.getWebBackgroundData();
         var K = M.wbs ? true : false;
-        var I = Fai.top._manageMode ? Fai.getScrollWidth() : 0;
-        var F = Fai.top.$(window).width() - I;
+        var I = Helper.top._manageMode ? Helper.getScrollWidth() : 0;
+        var F = Helper.top.$(window).width() - I;
         if (K) {
             A = (A > F) ? F : A
         }
@@ -7651,14 +7651,14 @@ Site.bannerAnimate = {};
         var G = F - H + 1;
         return Math.floor(Math.random() * G + H)
     }
-})(jQuery, Site.bannerAnimate);
-Site.initModuleProductSearch = function (e) {
+})(jQuery, Run.bannerAnimate);
+Run.initModuleProductSearch = function (e) {
     var d = $("#module" + e + " .productSearch");
     d.autocomplete({
         source: function (g, f) {
             jQuery.ajax({
                 url: "ajax/product_h.php",
-                data: "cmd=getKeywordList&limit=6&term=" + Fai.encodeUrl(d.val()) + "&prgmid=" + e,
+                data: "cmd=getKeywordList&limit=6&term=" + Helper.encodeUrl(d.val()) + "&prgmid=" + e,
                 type: "GET",
                 dataType: "json",
                 success: function (h) {
@@ -7669,12 +7669,12 @@ Site.initModuleProductSearch = function (e) {
             })
         }, delay: 100, select: function (g, h) {
             var f = h.item.label;
-            Site.searchProduct(e, f)
+            Run.searchProduct(e, f)
         }
     });
     d.keypress(function (f) {
         if (f.keyCode == 13) {
-            Site.searchProduct(e)
+            Run.searchProduct(e)
         }
     });
     var c = $("#module" + e);
@@ -7686,7 +7686,7 @@ Site.initModuleProductSearch = function (e) {
         a.css("vertical-align", "11px")
     }
 };
-Site.searchProduct = function (d, a) {
+Run.searchProduct = function (d, a) {
     var e = $("#module" + d), c, f, b;
     if (e.find(".fk-newSearchBox").length) {
         c = e.find(".fk-newSearchInput")
@@ -7701,21 +7701,21 @@ Site.searchProduct = function (d, a) {
         f = a
     }
     if (f.trim() == "") {
-        Fai.ing("请输入搜索内容", true);
+        Helper.ing("请输入搜索内容", true);
         return
     }
-    Fai.top.location.href = "pr.php?keyword=" + Fai.encodeUrl($.trim(f)) + "&_pp=0_" + d
+    Helper.top.location.href = "pr.php?keyword=" + Helper.encodeUrl($.trim(f)) + "&_pp=0_" + d
 };
-Site.searchProductByKey = function (c, d, b) {
-    var a = "pr.php?keyword=" + Fai.encodeUrl($.trim(d)) + "&_pp=0_" + c;
-    if (Fai.top._manageMode) {
-        Site.redirectUrl(a, "_self", b, 1, 0)
+Run.searchProductByKey = function (c, d, b) {
+    var a = "pr.php?keyword=" + Helper.encodeUrl($.trim(d)) + "&_pp=0_" + c;
+    if (Helper.top._manageMode) {
+        Run.redirectUrl(a, "_self", b, 1, 0)
     } else {
-        Fai.top.location.href = a
+        Helper.top.location.href = a
     }
 };
-Site.changeTxtLenght = function () {
-    var b = Fai.top.$(".head_txt").length;
+Run.changeTxtLenght = function () {
+    var b = Helper.top.$(".head_txt").length;
     var a = [];
     for (var d = 0; d < b; d++) {
         var c = $(".head_txt").eq(d).width();
@@ -7724,7 +7724,7 @@ Site.changeTxtLenght = function () {
     var e = Math.max.apply(null, a);
     $(".head_txt").css("width", e)
 };
-Site.memberCenterInit = function (b, d, f, c, e, a) {
+Run.memberCenterInit = function (b, d, f, c, e, a) {
     if (c) {
         $("#module" + d).find(".formBanner").hide()
     }
@@ -7893,9 +7893,9 @@ Site.memberCenterInit = function (b, d, f, c, e, a) {
             $("#memberProfile")[0].click();
             break
     }
-    Site.initContentSplitLine(d, f)
+    Run.initContentSplitLine(d, f)
 };
-Site.memberCenterNewStyleSmallWidth = function (d, b) {
+Run.memberCenterNewStyleSmallWidth = function (d, b) {
     var a = $("#module" + d);
     var e = a.width();
     var c = true;
@@ -7907,7 +7907,7 @@ Site.memberCenterNewStyleSmallWidth = function (d, b) {
         a.find(".memberOrderNewPanel .J-mallOrder .itemList .g_title .itemOpt").css("padding-left", "60px")
     }
 };
-Site.memberCenterCompatibility = function (b) {
+Run.memberCenterCompatibility = function (b) {
     var c = !("placeholder" in document.createElement("input"));
     if (c) {
         var a = $("#module" + b).find(".itemCtrl");
@@ -7916,7 +7916,7 @@ Site.memberCenterCompatibility = function (b) {
             m.css({"white-space": "nowrap"});
             var g = $(m).width();
             var k = $(m).height();
-            var f = $(l).position().top + (Fai.isIE6() ? 2 : 0);
+            var f = $(l).position().top + (Helper.isIE6() ? 2 : 0);
             var d = $(l).position().left;
             $(m).css({
                 top: f + "px",
@@ -7932,7 +7932,7 @@ Site.memberCenterCompatibility = function (b) {
         })
     }
 };
-Site.memberHeadPicInit = function (b) {
+Run.memberHeadPicInit = function (b) {
     if (typeof(headPic) != "undefined") {
         headPic = $.parseJSON(headPic);
         var a = headPic.width / 100;
@@ -7947,8 +7947,8 @@ Site.memberHeadPicInit = function (b) {
         hover: function () {
             $(".hoverTip").toggle()
         }, click: function () {
-            var c = "memberHeadPicEdit.php?id=" + b + "&headPic=" + Fai.encodeUrl($.toJSON(headPic)) + "&mCenter=1";
-            Fai.popupWindow({
+            var c = "memberHeadPicEdit.php?id=" + b + "&headPic=" + Helper.encodeUrl($.toJSON(headPic)) + "&mCenter=1";
+            Helper.popupWindow({
                 title: "自定义头像",
                 bannerDisplay: false,
                 frameSrcUrl: c,
@@ -7959,19 +7959,19 @@ Site.memberHeadPicInit = function (b) {
                         newImg = d.newImg;
                         if (d.headPic.thumbId || newImg) {
                             headPic = d.headPic;
-                            Site.showMemberHeadPic($("#memberHeadPic"), headPic, 100);
-                            Site.showMemberHeadPic($("#topBarMemberPic"), headPic, 30);
+                            Run.showMemberHeadPic($("#memberHeadPic"), headPic, 100);
+                            Run.showMemberHeadPic($("#topBarMemberPic"), headPic, 30);
                             $(".memberProfileBtn").click()
                         }
                     }
                 }
             });
-            $(".formDialog .formX_old").removeClass("formX_old").removeClass("formX").addClass("formXSite").css("margin-top", "10px");
+            $(".formDialog .formX_old").removeClass("formX_old").removeClass("formX").addClass("formXRun").css("margin-top", "10px");
             $(".formDialog").addClass("formBox")
         }
     })
 };
-Site.img_sf = function (d) {
+Run.img_sf = function (d) {
     var A = document.body, B = document.getElementById("img_1"), z = document.getElementById("img_2"),
         x = document.getElementById("img_3"), m = document.getElementById("imgShadow3"),
         g = document.getElementById("imgShadow1"), b = document.getElementById("imgShadow4"),
@@ -8004,7 +8004,7 @@ Site.img_sf = function (d) {
             o = $(m).width();
             k = {x: E.clientX, y: E.clientY};
             q = true;
-            Site.enablePopupBtn("save", true);
+            Run.enablePopupBtn("save", true);
             var D = E.target.id;
             if (D == "dragBotCenter" || D == "dragRightCenter" || D == "dragRightBot") {
                 h(1)
@@ -8105,12 +8105,12 @@ Site.img_sf = function (d) {
         }
     }
 };
-Site.showMemberHeadPic = function (d, a, b) {
+Run.showMemberHeadPic = function (d, a, b) {
     d.attr("src", a.path);
     var c = a.width / b;
     d.css({width: a.imgW / c, height: a.imgH / c, top: -a.top / c, left: -a.left / c})
 };
-Site.memberImgFileUpload = function (a, c, e) {
+Run.memberImgFileUpload = function (a, c, e) {
     var d = e.split(",");
     var b = {
         file_post_name: "Filedata",
@@ -8131,16 +8131,16 @@ Site.memberImgFileUpload = function (a, c, e) {
         file_queue_error_handler: function (g, f, h) {
             switch (f) {
                 case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-                    Fai.ing(LS.siteFormSubmitCheckFileSizeErr, true);
+                    Helper.ing(LS.siteFormSubmitCheckFileSizeErr, true);
                     break;
                 case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-                    Site.initPopupBox(LS.mobiFormSubmitFileUploadNotAllow, "alert", "");
+                    Run.initPopupBox(LS.mobiFormSubmitFileUploadNotAllow, "alert", "");
                     break;
                 case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
-                    Site.initPopupBox(jm.format(LS.mobiFormSubmitFileUploadOneTimeNum, "1"), "alert", "");
+                    Run.initPopupBox(jm.format(LS.mobiFormSubmitFileUploadOneTimeNum, "1"), "alert", "");
                     break;
                 default:
-                    Site.initPopupBox(LS.mobiFormSubmitFileUploadReSelect, "alert", "");
+                    Run.initPopupBox(LS.mobiFormSubmitFileUploadReSelect, "alert", "");
                     break
             }
         },
@@ -8153,17 +8153,17 @@ Site.memberImgFileUpload = function (a, c, e) {
             } else {
                 $("#imgShadow3").removeClass("loading");
                 $("#imgShadow3").children().show();
-                Fai.ing("文件" + g.name + "，" + h.msg)
+                Helper.ing("文件" + g.name + "，" + h.msg)
             }
         },
         upload_error_handler: function (g, f, h) {
             if (f == -280) {
-                Fai.ing("文件取消成功", false)
+                Helper.ing("文件取消成功", false)
             } else {
                 if (f == -270) {
-                    Fai.ing("已经存在名称为" + g.name + "的文件。", true)
+                    Helper.ing("已经存在名称为" + g.name + "的文件。", true)
                 } else {
-                    Fai.ing("服务繁忙，文件" + g.name + "上传失败，请稍候重试。")
+                    Helper.ing("服务繁忙，文件" + g.name + "上传失败，请稍候重试。")
                 }
             }
             $("#imgShadow3").removeClass("loading");
@@ -8174,18 +8174,18 @@ Site.memberImgFileUpload = function (a, c, e) {
                 swfObj.startUpload()
             } else {
                 if (f.filestatus == SWFUpload.FILE_STATUS.ERROR) {
-                    Fai.ing("服务繁忙，文件" + f.name + "上传失败，请稍候重试。");
+                    Helper.ing("服务繁忙，文件" + f.name + "上传失败，请稍候重试。");
                     $("#imgShadow3").removeClass("loading");
                     $("#imgShadow3").children().show()
                 }
             }
         },
         upload_start_handler: function (f) {
-            Fai.enablePopupWindowBtn(0, "save", false);
-            Fai.ing("读取文件准备上传", false)
+            Helper.enablePopupWindowBtn(0, "save", false);
+            Helper.ing("读取文件准备上传", false)
         },
         view_progress: function (f, i, h, g) {
-            Fai.ing("正在上传" + g + "%", false);
+            Helper.ing("正在上传" + g + "%", false);
             $("#imgShadow3").addClass("loading");
             $("#imgShadow3").children().hide()
         }
@@ -8199,18 +8199,18 @@ Site.memberImgFileUpload = function (a, c, e) {
             var g = new Image();
             g.src = smallPath;
             g.onload = function () {
-                Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSucess, Fai.encodeHtml(k)), true);
+                Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSucess, Helper.encodeHtml(k)), true);
                 $("#imgShadow3").removeClass("loading");
                 $("#imgShadow3").children().show();
                 $(".formBodyContent").find(".editPicArea #memberHeadPic").attr("src", smallPath);
                 $(".formBodyContent").find(".viewPicArea img").attr("src", smallPath);
                 $("#imgShadow3").css("width", "")
             };
-            Site.enablePopupBtn("save", true)
+            Run.enablePopupBtn("save", true)
         }
     }
 };
-Site.memberImgFileUploadH5 = function (d, e, c, g, j, i, h) {
+Run.memberImgFileUploadH5 = function (d, e, c, g, j, i, h) {
     var b = c.split(",");
     var f = {
         siteFree: i,
@@ -8224,7 +8224,7 @@ Site.memberImgFileUploadH5 = function (d, e, c, g, j, i, h) {
         showUploadedPercent: false,
         showUploadedSize: false,
         removeTimeout: 9999999,
-        post_params: {app: 21, type: 0, fileUploadLimit: d, isSiteForm: true},
+        post_params: {app: 21, type: 0, fileUploadLimit: d, isRunForm: true},
         isBurst: false,
         isDefinedButton: true,
         buttonText: h,
@@ -8234,12 +8234,12 @@ Site.memberImgFileUploadH5 = function (d, e, c, g, j, i, h) {
             if (l.success) {
                 onFileUploadEvent("upload", l);
                 setTimeout(function () {
-                    Fai.ing("文件上传成功", true)
+                    Helper.ing("文件上传成功", true)
                 }, 2000)
             } else {
                 $("#imgShadow3").removeClass("loading");
                 $("#imgShadow3").children().show();
-                Fai.ing("文件:" + k.name + "，" + l.msg)
+                Helper.ing("文件:" + k.name + "，" + l.msg)
             }
         },
         onUploadError: function (k, l) {
@@ -8247,11 +8247,11 @@ Site.memberImgFileUploadH5 = function (d, e, c, g, j, i, h) {
             $("#progressWrap_" + k.id).remove();
             $("#imgShadow3").removeClass("loading");
             $("#imgShadow3").children().show();
-            Fai.ing("网络繁忙，文件:" + k.name + "上传失败，请稍后重试")
+            Helper.ing("网络繁忙，文件:" + k.name + "上传失败，请稍后重试")
         },
         onSelect: function () {
             if (g) {
-                Fai.ing("已超过资源库容量限制，请升级网站版本。");
+                Helper.ing("已超过资源库容量限制，请升级网站版本。");
                 return false
             } else {
                 return true
@@ -8273,18 +8273,18 @@ Site.memberImgFileUploadH5 = function (d, e, c, g, j, i, h) {
             var l = new Image();
             l.src = smallPath;
             l.onload = function () {
-                Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSucess, Fai.encodeHtml(p)), true);
+                Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSucess, Helper.encodeHtml(p)), true);
                 $("#imgShadow3").removeClass("loading");
                 $("#imgShadow3").children().show();
                 $(".formBodyContent").find(".editPicArea #memberHeadPic").attr("src", smallPath);
                 $(".formBodyContent").find(".viewPicArea img").attr("src", smallPath);
                 $("#imgShadow3").css("width", "")
             };
-            Site.enablePopupBtn("save", true)
+            Run.enablePopupBtn("save", true)
         }
     }
 };
-Site.initPopupBox = function (f, d, e) {
+Run.initPopupBox = function (f, d, e) {
     var b = ["<div style='text-align:center;width: 100%;font-size: 12px; color:#636363;position:absolute;top:20px;'>", f, "</div>"];
     b.push("<div class='memberHeadEdit'>");
     if (d == "confirm") {
@@ -8300,7 +8300,7 @@ Site.initPopupBox = function (f, d, e) {
     a.htmlContent = b.join("");
     a.width = 255;
     a.height = 122;
-    var c = Site.popupBox(a);
+    var c = Run.popupBox(a);
     c.find(".popupBClose").css("margin", "10px 0px auto auto");
     c.on("click", ".confirmBtn", function () {
         c.find(".popupBClose").click();
@@ -8310,7 +8310,7 @@ Site.initPopupBox = function (f, d, e) {
         c.find(".popupBClose").click()
     })
 };
-Site.enablePopupBtn = function (c, a) {
+Run.enablePopupBtn = function (c, a) {
     var b = $("#" + c);
     if (a) {
         b.removeAttr("disabled");
@@ -8321,7 +8321,7 @@ Site.enablePopupBtn = function (c, a) {
         b.faiButton("disable")
     }
 };
-Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
+Run.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
     var p = "-----------", v = [], j, A, n, t, C, k, u;
     var e = -1;
     var B = {};
@@ -8330,8 +8330,8 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
             B[E.id] = E
         }
     });
-    if (Site.addrInfoListGlobal != null && Site.addrInfoListGlobal != []) {
-        c = Site.addrInfoListGlobal
+    if (Run.addrInfoListGlobal != null && Run.addrInfoListGlobal != []) {
+        c = Run.addrInfoListGlobal
     }
     var w = {};
     w.addrInfoList = c;
@@ -8390,7 +8390,7 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
                         T += "<option value='os'>" + W + "</option>"
                     }
                     $.each(B, function (aj, ak) {
-                        T += "<option value='" + B[aj].id + "'>" + Fai.encodeHtml(B[aj].name) + "</option>"
+                        T += "<option value='" + B[aj].id + "'>" + Helper.encodeHtml(B[aj].name) + "</option>"
                     });
                     T += "</select></div>";
                     T += "<div class='propItemValue' style='display:none;'>";
@@ -8511,7 +8511,7 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
                         T += "<option value='os'>" + W + "</option>"
                     }
                     $.each(B, function (aj, ak) {
-                        T += "<option value='" + B[aj].id + "'>" + Fai.encodeHtml(B[aj].name) + "</option>"
+                        T += "<option value='" + B[aj].id + "'>" + Helper.encodeHtml(B[aj].name) + "</option>"
                     });
                     T += "</select></div>";
                     if (S) {
@@ -8617,8 +8617,8 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
             var G = parseInt(Math.random() * 10000);
             var I = {boxId: G, title: LS.editAddrMsg, htmlContent: T, width: 410, boxName: "addrInfo"}
         }
-        var R = Site.popupBox(I);
-        if (Fai.isIE6() || Fai.isIE7()) {
+        var R = Run.popupBox(I);
+        if (Helper.isIE6() || Helper.isIE7()) {
             $(".editAddrInfo").find(".addrInfoItem").attr("style", "width:100%;");
             $(".editAddrInfo").find(".addrInfoItem").find("#addrInfoStreet").attr("style", "width:100%;")
         }
@@ -8924,7 +8924,7 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
                 if (at == "addr") {
                     var ar = $("#allArea").val();
                     if (ar == null || ar == "") {
-                        Fai.ing(LS.selectArea);
+                        Helper.ing(LS.selectArea);
                         return
                     } else {
                         if (ar == "os") {
@@ -8948,15 +8948,15 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
                     var an = $("#areaBoxInput").attr("area1");
                     var au = $("#addrInfo_street");
                     if (aq && (an == null || an == "")) {
-                        Fai.ing(LS.mallStlSubmitAddrErr, 1);
+                        Helper.ing(LS.mallStlSubmitAddrErr, 1);
                         return
                     }
                     if (aq && (ap == null || ap == "") && !P.isCus) {
-                        Fai.ing(LS.mallStlSubmitAddrErr, 1);
+                        Helper.ing(LS.mallStlSubmitAddrErr, 1);
                         return
                     }
                     if (aq && au.val() == "") {
-                        Fai.ing(LS.editStreetAddr, 1);
+                        Helper.ing(LS.editStreetAddr, 1);
                         return
                     }
                     P.provinceCode = an;
@@ -8972,18 +8972,18 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
                     }
                     var al = ak.val();
                     if (aq && al.length == 0) {
-                        Fai.ing(LS.addrInfoInputError + aj, 1);
+                        Helper.ing(LS.addrInfoInputError + aj, 1);
                         return
                     }
-                    if ((at == "email" && !Fai.isEmail(al) && aq) || (at == "phone" && !Fai.isPhone(al) && aq)) {
-                        Fai.ing(LS.addrInfoInputError + aj, 1);
+                    if ((at == "email" && !Helper.isEmail(al) && aq) || (at == "phone" && !Helper.isPhone(al) && aq)) {
+                        Helper.ing(LS.addrInfoInputError + aj, 1);
                         return
                     }
                     if (at == "mobile") {
                         al = $.trim(al);
                         if (al.length > 0) {
-                            if (!Fai.isNationMobile(al)) {
-                                Fai.ing(LS.mobileNumRegular, 1);
+                            if (!Helper.isNationMobile(al)) {
+                                Helper.ing(LS.mobileNumRegular, 1);
                                 return
                             }
                             H.mobileCt = $(".editAddrInfo").find("#mobileCt").val()
@@ -8999,7 +8999,7 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
                 c.push(H)
             }
             $.ajax({
-                type: "post", url: X, data: "info=" + Fai.encodeUrl($.toJSON(w)), success: function (av) {
+                type: "post", url: X, data: "info=" + Helper.encodeUrl($.toJSON(w)), success: function (av) {
                     if (m == 1) {
                         var ay = document.location.search.search(/imme/) > -1 ? "?imme&" : "?";
                         if (ac == "add") {
@@ -9047,7 +9047,7 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
                         document.location.href = "mCenter.php?item=memberInfo"
                     }
                 }, error: function () {
-                    Fai.ing(LS.systemError)
+                    Helper.ing(LS.systemError)
                 }
             })
         })
@@ -9057,13 +9057,13 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
         var F = ["<div class='fk-cancelOrder'>", "<div style='padding:10px;'>", LS.conCancelAddrInfo, "</div>", "<div style='padding:10px 0 18px 0;'>", "<span class='J-rpt-cancel popupBClose' style='margin-right:20px;'>", LS.cancel, "</span>", "<span class='J-rpt-save con-hover'>" + LS.confirm + "</span>", "</div>", "</div>"];
         var I = parseInt(Math.random() * 10000);
         var E = {boxId: I, title: "", htmlContent: F.join(""), width: 300};
-        var G = Site.popupBox(E);
+        var G = Run.popupBox(E);
         var H = "ajax/memberAdm_h.php?cmd=set&id=" + b;
         G.find(".J-rpt-save").on("click", function () {
             c.splice(D, 1);
             $.ajax({
-                type: "post", url: H, data: "info=" + Fai.encodeUrl($.toJSON(w)), error: function () {
-                    Fai.ing(LS.systemError, false)
+                type: "post", url: H, data: "info=" + Helper.encodeUrl($.toJSON(w)), error: function () {
+                    Helper.ing(LS.systemError, false)
                 }, success: function (J) {
                     var K = $.parseJSON(J);
                     if (K.success) {
@@ -9074,7 +9074,7 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
                             document.location.href = "mCenter.php?item=memberInfo"
                         }
                     } else {
-                        Fai.ing(K.msg, true)
+                        Helper.ing(K.msg, true)
                     }
                 }
             })
@@ -9088,8 +9088,8 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
         }
         c[E].isDefault = 1;
         $.ajax({
-            type: "post", url: D, data: "info=" + Fai.encodeUrl($.toJSON(w)), error: function () {
-                Fai.ing(LS.systemError, false)
+            type: "post", url: D, data: "info=" + Helper.encodeUrl($.toJSON(w)), error: function () {
+                Helper.ing(LS.systemError, false)
             }, success: function (F) {
                 var G = $.parseJSON(F);
                 if (G.success) {
@@ -9100,12 +9100,12 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
                         document.location.href = "mCenter.php?item=memberInfo"
                     }
                 } else {
-                    Fai.ing(G.msg, true)
+                    Helper.ing(G.msg, true)
                 }
             }
         })
     });
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         $(".addrMsg , .addrMsg_default").hover(function () {
             if ($(this).hasClass("isDefault")) {
                 $(this).find(".edit").attr("style", "margin-left:85px;")
@@ -9190,7 +9190,7 @@ Site.memberAddrMsgOpera = function (b, a, c, m, q, f, h, y, r, l, z, x) {
         return E
     }
 };
-Site.memberIntegralInit = function (g, d, f, a) {
+Run.memberIntegralInit = function (g, d, f, a) {
     var e = false;
     if (d) {
         e = true
@@ -9277,7 +9277,7 @@ Site.memberIntegralInit = function (g, d, f, a) {
         })
     }
 };
-Site.FitMemberProfilePanelImgSize = function () {
+Run.FitMemberProfilePanelImgSize = function () {
     if ($(".memberProfilePanel").length <= 0) {
         return
     }
@@ -9287,15 +9287,15 @@ Site.FitMemberProfilePanelImgSize = function () {
         b = $(h).attr("width");
         a = $(h).attr("height");
         if (b > c) {
-            d = Fai.Img.calcSize(b, a, c, e, Fai.Img.MODE_SCALE_FILL);
+            d = Helper.Img.calcSize(b, a, c, e, Helper.Img.MODE_SCALE_FILL);
             $(h).css({width: d.width, height: d.height});
-            if (Fai.isIE()) {
+            if (Helper.isIE()) {
                 $(".formStyle55 .formMiddleContent").css("overflow", "hidden")
             }
         }
     })
 };
-Site.loadPdCollectionList = function (c, b, d, e, a) {
+Run.loadPdCollectionList = function (c, b, d, e, a) {
     this.pIdList = b;
     this.mid = c;
     this.isNewUser = d;
@@ -9440,10 +9440,10 @@ Site.loadPdCollectionList = function (c, b, d, e, a) {
             z.push('	<div class="pdName">' + A.name + "</div>");
             z.push('	<div class="pdPrice">');
             if (A.mallPrice != -1 && C.showPrice) {
-                z.push('		<div class="mallPrice mallPrice' + (h && (s > 0) ? q : "") + '">' + Fai.top.choiceCurrencyVal + " " + A.mallPrice + "</div>")
+                z.push('		<div class="mallPrice mallPrice' + (h && (s > 0) ? q : "") + '">' + Helper.top.choiceCurrencyVal + " " + A.mallPrice + "</div>")
             }
             if (A.mallMarketPrice != -1 && C.showMarketPrice) {
-                z.push('		<div class="mallMarketPrice">' + Fai.top.choiceCurrencyVal + " " + A.mallMarketPrice + "</div>")
+                z.push('		<div class="mallMarketPrice">' + Helper.top.choiceCurrencyVal + " " + A.mallMarketPrice + "</div>")
             }
             z.push("	</div>");
             z.push("</li>")
@@ -9472,12 +9472,12 @@ Site.loadPdCollectionList = function (c, b, d, e, a) {
             var B = ["<div class='fk-cancelOrder'>", "<div style='padding:10px;'>", LS.sureDelCollection, "</div>", "<div style='padding:10px 0 18px 0;'>", "<span class='J-rpt-cancel popupBClose' style='margin-right:20px;'>", LS.cancel, "</span>", "<span class='J-rpt-save con-hover'>" + LS.confirm + "</span>", "</div>", "</div>"];
             var D = parseInt(Math.random() * 10000);
             var z = {boxId: D, title: "", htmlContent: B.join(""), width: 300};
-            var C = Site.popupBox(z);
+            var C = Run.popupBox(z);
             C.find(".J-rpt-save").on("click", function () {
                 if (w()) {
                     y.parents("li").remove()
                 } else {
-                    Fai.ing(LS.systemError);
+                    Helper.ing(LS.systemError);
                     return
                 }
                 a();
@@ -9537,9 +9537,9 @@ Site.loadPdCollectionList = function (c, b, d, e, a) {
             k.find(".collectionList li:eq(" + y + ")").show()
         }
     }
-})(jQuery, Site.loadPdCollectionList);
-Site.memberProfileResetPwd = function (c) {
-    var a = Fai.top.$("#module" + c);
+})(jQuery, Run.loadPdCollectionList);
+Run.memberProfileResetPwd = function (c) {
+    var a = Helper.top.$("#module" + c);
     var b = a.find(".itemPwd");
     if (b.is(":visible")) {
         b.hide();
@@ -9549,7 +9549,7 @@ Site.memberProfileResetPwd = function (c) {
         a.find(".resetPwd").html(LS.memberProfileCanelPwd)
     }
 };
-Site.memberProfileSubmit = function (l, s, e) {
+Run.memberProfileSubmit = function (l, s, e) {
     var b = $("#module" + l);
     b.find(".memberProfileMsg").show();
     var d = b.find(".memberProfileMsg .msgText");
@@ -9562,7 +9562,7 @@ Site.memberProfileSubmit = function (l, s, e) {
         r[userEditItemName] = j;
         if ("mobile" == userEditItemName && j.length > 0) {
             if ($(this).attr("disabled") != "disabled") {
-                if (!Fai.isNationMobile(j)) {
+                if (!Helper.isNationMobile(j)) {
                     d.html(LS.mobileNumRegular);
                     $(this).focus();
                     q = false;
@@ -9618,15 +9618,15 @@ Site.memberProfileSubmit = function (l, s, e) {
         userEditItemName = $(this).attr("name");
         userEditItemMaxLength = $(this).attr("maxlength");
         if (userEditItemID == "email" && j.length > 0) {
-            if (!Fai.isEmail(j)) {
-                d.html(Fai.format(LS.memberProfileItemCorrect, userEditItemName));
+            if (!Helper.isEmail(j)) {
+                d.html(Helper.format(LS.memberProfileItemCorrect, userEditItemName));
                 $(this).focus();
                 t = 1;
                 return false
             }
         }
         if (j.length > userEditItemMaxLength) {
-            d.html(Fai.format(LS.memberProfileUserEditItemMaxLength, userEditItemName, userEditItemMaxLength));
+            d.html(Helper.format(LS.memberProfileUserEditItemMaxLength, userEditItemName, userEditItemMaxLength));
             $(this).focus();
             t = 1;
             return false
@@ -9652,17 +9652,17 @@ Site.memberProfileSubmit = function (l, s, e) {
         userEditItemName = $(this).attr("name");
         if (j == null || j == "") {
             if ($(this).is("input")) {
-                d.html(Fai.format(LS.memberSignupUserAddItemIsEmpty, userEditItemName))
+                d.html(Helper.format(LS.memberSignupUserAddItemIsEmpty, userEditItemName))
             } else {
-                d.html(Fai.format(LS.memberSignupUserAddItemIsEmpty2, userEditItemName))
+                d.html(Helper.format(LS.memberSignupUserAddItemIsEmpty2, userEditItemName))
             }
             $(this).focus();
             h = 1;
             return false
         }
         if (userEditItemID == "email" && j.length > 0) {
-            if (!Fai.isEmail(j)) {
-                d.html(Fai.format(LS.memberProfileItemCorrect, userEditItemName));
+            if (!Helper.isEmail(j)) {
+                d.html(Helper.format(LS.memberProfileItemCorrect, userEditItemName));
                 $(this).focus();
                 n = 1;
                 return false
@@ -9682,10 +9682,10 @@ Site.memberProfileSubmit = function (l, s, e) {
         $.ajax({
             type: "post",
             url: "../ajax/member_h.php?cmd=cimg",
-            data: "oldImgId=" + oldImgId + "&mid=" + s + "&newImg=" + Fai.encodeUrl($.toJSON(newImg)),
+            data: "oldImgId=" + oldImgId + "&mid=" + s + "&newImg=" + Helper.encodeUrl($.toJSON(newImg)),
             async: false,
             error: function () {
-                Fai.ing(LS.systemError)
+                Helper.ing(LS.systemError)
             },
             success: function (u) {
                 u = jQuery.parseJSON(u);
@@ -9700,7 +9700,7 @@ Site.memberProfileSubmit = function (l, s, e) {
         type: "post",
         async: false,
         url: "ajax/member_h.php?cmd=set",
-        data: "id=" + s + "&info=" + Fai.encodeUrl($.toJSON(r)),
+        data: "id=" + s + "&info=" + Helper.encodeUrl($.toJSON(r)),
         error: function () {
             g.removeAttr("disabled");
             d.html(LS.memberProfileError)
@@ -9732,7 +9732,7 @@ Site.memberProfileSubmit = function (l, s, e) {
                     }
                     b.find("#mobileCt").remove()
                 }
-                Site.checkMemberDataIntegrity(l)
+                Run.checkMemberDataIntegrity(l)
             } else {
                 if (v.rt == -3) {
                     d.html(LS.memberProfileOldPwdIncorrectError)
@@ -9752,8 +9752,8 @@ Site.memberProfileSubmit = function (l, s, e) {
         }
     })
 };
-Site.checkMemberDataIntegrity = function (c) {
-    var d = Fai.top.$("#module" + c);
+Run.checkMemberDataIntegrity = function (c) {
+    var d = Helper.top.$("#module" + c);
     var f = 0;
     var e = 0;
     var a = d.find(".allTooltip").width();
@@ -9769,7 +9769,7 @@ Site.checkMemberDataIntegrity = function (c) {
     d.find(".dataIntegrity").text(Math.floor(b * 100));
     d.find(".realTooltip").css("width", b * a)
 };
-Site.loadCouponList = (function (e) {
+Run.loadCouponList = (function (e) {
     function f(m) {
         this.mid = m
     }
@@ -9864,7 +9864,7 @@ Site.loadCouponList = (function (e) {
             var t = ["<div class='fk-cancelOrder'>", "<div style='padding:10px;'>", q, "</div>", "<div style='padding:10px 0 18px 0;'>", "<span class='J-rpt-cancel popupBClose' style='margin-right:20px;'>", LS.cancel, "</span>", "<span class='J-rpt-save con-hover'>" + LS.confirm + "</span>", "</div>", "</div>"];
             var x = parseInt(Math.random() * 10000);
             var y = {boxId: x, title: "", htmlContent: t.join(""), width: 300};
-            var s = Site.popupBox(y);
+            var s = Run.popupBox(y);
             s.find(".J-rpt-save").on("click", function () {
                 for (var z = 0; z < v; z++) {
                     if (parseInt(p) == r[z].cdId) {
@@ -9903,7 +9903,7 @@ Site.loadCouponList = (function (e) {
         e(".couponList").append(i(o, n));
         if (j[b].length > pageSize) {
             e(".couponList").append("<div class='pagenation' id='pagenation" + b + "'></div>");
-            new Site.Pagenation(b, {pageNo: 1, pageSize: pageSize, totalSize: j[b].length}, d)
+            new Run.Pagenation(b, {pageNo: 1, pageSize: pageSize, totalSize: j[b].length}, d)
         } else {
             e(".memberCouponPanel .pagenation").remove()
         }
@@ -9923,7 +9923,7 @@ Site.loadCouponList = (function (e) {
                 q.push("<div class='coupon-code-new'>" + LS.couponNumber + "：" + s.redeemCode + "</div>");
                 q.push("<div class='coupon coupon-new' data_id='" + s.cdId + "'>");
                 q.push("<div class='coupon-content-new " + ((b == 1 || b == 2) ? "coupon-background" : "") + " coupon-color-" + couponColorList[s.bg] + "'>");
-                q.push("<div class='couponSavePrice'><span class='priceSign'>" + Fai.top.choiceCurrencyVal + "</span><span class='couponPrice'>" + s.savePrice + "</span><span class='couponActivity'>" + LS.Event + LS.name + "：" + Fai.encodeHtml(s.couponName) + "</span></div>");
+                q.push("<div class='couponSavePrice'><span class='priceSign'>" + Helper.top.choiceCurrencyVal + "</span><span class='couponPrice'>" + s.savePrice + "</span><span class='couponActivity'>" + LS.Event + LS.name + "：" + Helper.encodeHtml(s.couponName) + "</span></div>");
                 q.push("<div class='couponCondition'>" + LS.useCondition + "：" + LS.full + s.orderMinPrice + "</div>");
                 q.push("<div class='couponTime'>" + LS.valiteTime + "：" + s.validity + "</div>");
                 q.push("</div>");
@@ -9942,8 +9942,8 @@ Site.loadCouponList = (function (e) {
                 q.push("<div class='coupon' data_id='" + s.cdId + "'>");
                 q.push("<div class='coupon-left coupon-" + couponColorList[s.bg] + "-left'></div>");
                 q.push("<div class='coupon-content coupon-color-" + couponColorList[s.bg] + "'>");
-                q.push("<div class='couponSavePrice'><span class='priceSign'>" + Fai.top.choiceCurrencyVal + "</span><span class='couponPrice'>" + s.savePrice + "</span></div>");
-                q.push("<div>" + LS.Event + LS.name + "：" + Fai.encodeHtml(s.couponName) + "</div>");
+                q.push("<div class='couponSavePrice'><span class='priceSign'>" + Helper.top.choiceCurrencyVal + "</span><span class='couponPrice'>" + s.savePrice + "</span></div>");
+                q.push("<div>" + LS.Event + LS.name + "：" + Helper.encodeHtml(s.couponName) + "</div>");
                 q.push("<div>" + LS.useCondition + "：" + LS.full + s.orderMinPrice + "</div>");
                 q.push("<div>" + LS.valiteTime + "：" + s.validity + "</div>");
                 q.push("</div>");
@@ -9968,7 +9968,7 @@ Site.loadCouponList = (function (e) {
 
     return f
 })(jQuery);
-Site.onlyShowPhoneCode = function (a) {
+Run.onlyShowPhoneCode = function (a) {
     var b = $("#" + a);
     if (typeof b == "undefined" || b == null) {
         return
@@ -9977,7 +9977,7 @@ Site.onlyShowPhoneCode = function (a) {
     c = c.substring(0, c.length - 5);
     b.val(c)
 };
-Site.newOrderList = function (moduleId) {
+Run.newOrderList = function (moduleId) {
     var $module = $("#module" + moduleId);
     $module.on("click", ".pageNo, .pagePrev, .pageNext", function () {
         var pageSize = $(this).attr("_pageSize");
@@ -9995,7 +9995,7 @@ Site.newOrderList = function (moduleId) {
         if (!$(this).hasClass("J_pageSelect") && pageno) {
             var mallOrderStatusId = $module.find(".memberOrderNewPanel .mallOrderNewList > div:visible").attr("id");
             mallOrderStatusId = $.trim(mallOrderStatusId);
-            Site.showLoading(mallOrderStatusId);
+            Run.showLoading(mallOrderStatusId);
             $.ajax({
                 url: "ajax/member_h.php?cmd=getNewOrderListHtml",
                 data: "moduleId=" + moduleId + "&status=" + status + "&pageno=" + pageno + "&pageSize=" + pageSize + "&colorStyleType=" + colorStyleType + "&colorStyle=" + colorStyle,
@@ -10040,54 +10040,54 @@ Site.newOrderList = function (moduleId) {
                         var newOrderListScript = result.scripts;
                         eval(newOrderListScript)
                     } else {
-                        Fai.ing(result.msg, true)
+                        Helper.ing(result.msg, true)
                     }
-                    Site.closeLoading(mallOrderStatusId)
+                    Run.closeLoading(mallOrderStatusId)
                 },
                 error: function () {
-                    Site.showLoadingAgain(mallOrderStatusId, pageno)
+                    Run.showLoadingAgain(mallOrderStatusId, pageno)
                 }
             })
         }
     })
 };
-Site.showLoading = function (b) {
+Run.showLoading = function (b) {
     var a = ['<div class="orderLoading" style="margin-top:50px;margin-bottom:50px;">', '<table style="width:100%;height:100%;"><tr><td align="center" valign="middle">', '<div class="ajaxLoading2"></div>', "</td></tr></table>", "</div>"];
     $("#" + b).find(".itemList").empty().append(a.join(""))
 };
-Site.showLoadingAgain = function (b, c) {
-    Site.closeLoading(b);
-    var a = ['<div class="orderLoadingAgain orderLoading" style="margin-top:50px;margin-bottom:50px;text-align:center;">', '<div style="color: #1b7ad1; text-decoration: none; text-align:center; width:100%;cursor:pointer;" onclick="Site.reloadingClick(\'' + b + "'," + c + ');">加载失败，请点击重新加载</div>', "</div>"];
+Run.showLoadingAgain = function (b, c) {
+    Run.closeLoading(b);
+    var a = ['<div class="orderLoadingAgain orderLoading" style="margin-top:50px;margin-bottom:50px;text-align:center;">', '<div style="color: #1b7ad1; text-decoration: none; text-align:center; width:100%;cursor:pointer;" onclick="Run.reloadingClick(\'' + b + "'," + c + ');">加载失败，请点击重新加载</div>', "</div>"];
     $("#" + b).find(".itemList").empty().append(a.join(""))
 };
-Site.closeLoading = function (a) {
+Run.closeLoading = function (a) {
     $("#" + a).find(".orderLoading").remove()
 };
-Site.reloadingClick = function (a, b) {
-    Site.showLoading(a);
+Run.reloadingClick = function (a, b) {
+    Run.showLoading(a);
     $("#" + a).find(".pageNo").each(function () {
         if ($.trim($(this).text()) == b) {
             $(this).click()
         }
     })
 };
-Site.initModuleMemberSignup = function (b, e, d, a) {
+Run.initModuleMemberSignup = function (b, e, d, a) {
     $("#memberSignupAcct").focus();
     if (e == 2) {
         $("#module" + b).find(".formMiddle").addClass("memberSignupMiddle");
         var c = $("#module" + b).find("#memberSignupButton");
         $(c).unbind("click").bind("click", function () {
             if (d) {
-                Fai.ing("您目前处于网站管理状态，请先点击网站右上方的“退出”后再注册会员。")
+                Helper.ing("您目前处于网站管理状态，请先点击网站右上方的“退出”后再注册会员。")
             } else {
-                Site.memberSignupSubmit(b, a, e)
+                Run.memberSignupSubmit(b, a, e)
             }
         });
-        Site.memberSignupCompatibility(b)
+        Run.memberSignupCompatibility(b)
     }
 };
-Site.memberSignupCompatibility = function (b) {
-    if (Fai.isIE6()) {
+Run.memberSignupCompatibility = function (b) {
+    if (Helper.isIE6()) {
         var e = $("#module" + b).find(".J_memberSignupPanel");
         $(e).removeAttr("style");
         var d = $(e).width();
@@ -10104,7 +10104,7 @@ Site.memberSignupCompatibility = function (b) {
             n.css({"white-space": "nowrap"});
             var h = n.width();
             var l = n.height();
-            var g = $(m).position().top + (Fai.isIE6() ? 2 : 0);
+            var g = $(m).position().top + (Helper.isIE6() ? 2 : 0);
             var f = $(m).position().left;
             $(n).css({
                 top: g + "px",
@@ -10120,8 +10120,8 @@ Site.memberSignupCompatibility = function (b) {
         })
     }
 };
-Site.getSignMobileCode = function (d, b) {
-    var c = Site.checkGetMobileCodeParam(d, b);
+Run.getSignMobileCode = function (d, b) {
+    var c = Run.checkGetMobileCodeParam(d, b);
     var a = $("#module" + d);
     if (d == "J_memberRegisterDialogPanel") {
         a = $("#J_memberRegisterDialogPanel")
@@ -10132,47 +10132,47 @@ Site.getSignMobileCode = function (d, b) {
             url: "ajax/member_h.php?cmd=getMobileCode",
             data: "mobile=" + c.info.mobile + "&mobileCt=" + c.info.mobileCt + "&validateCode=" + c.info.captcha,
             error: function () {
-                Site.showSignupMsg(b, d, "", LS.getMobileCodeErrAf, true)
+                Run.showSignupMsg(b, d, "", LS.getMobileCodeErrAf, true)
             },
             success: function (e) {
                 var f = jQuery.parseJSON(e);
                 if (f.success) {
-                    Site.showSignupMsg(b, d, "", LS.sendMobileCodeSuc, true);
-                    Site.getSignMobileCodeCountDown(d)
+                    Run.showSignupMsg(b, d, "", LS.sendMobileCodeSuc, true);
+                    Run.getSignMobileCodeCountDown(d)
                 } else {
-                    Site.changeCaptchaImg(a.find("#memberSignupCaptchaImg")[0]);
+                    Run.changeCaptchaImg(a.find("#memberSignupCaptchaImg")[0]);
                     $("#memberSignupCaptcha").val("");
                     if (f.rt == -401) {
-                        Site.showSignupMsg(b, d, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaNotMatch)
+                        Run.showSignupMsg(b, d, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaNotMatch)
                     } else {
                         if (f.rt == -2) {
-                            Site.showSignupMsg(b, d, "", LS.argsError)
+                            Run.showSignupMsg(b, d, "", LS.argsError)
                         } else {
                             if (f.rt == 2) {
-                                Site.showSignupMsg(b, d, "mobile", LS.memberDialogSendMobileCodeErr)
+                                Run.showSignupMsg(b, d, "mobile", LS.memberDialogSendMobileCodeErr)
                             } else {
                                 if (f.rt == -4 || f.rt == 8) {
-                                    Site.showSignupMsg(b, d, "", LS.getMobileOneMin, true)
+                                    Run.showSignupMsg(b, d, "", LS.getMobileOneMin, true)
                                 } else {
                                     if (f.rt == -8) {
-                                        Site.showSignupMsg(b, d, "", LS.getMobileHalfHour, true)
+                                        Run.showSignupMsg(b, d, "", LS.getMobileHalfHour, true)
                                     } else {
                                         if (f.rt == 3) {
-                                            Site.showSignupMsg(b, d, "", LS.memberDialogMobileMoneyErr, true)
+                                            Run.showSignupMsg(b, d, "", LS.memberDialogMobileMoneyErr, true)
                                         } else {
                                             if (f.rt == 9) {
-                                                Site.showSignupMsg(b, d, "", LS.memberDialogSendMobileCodeLimit, true)
+                                                Run.showSignupMsg(b, d, "", LS.memberDialogSendMobileCodeLimit, true)
                                             } else {
                                                 if (f.rt == 101) {
-                                                    Site.showSignupMsg(b, d, "", LS.mobileSetErr, true)
+                                                    Run.showSignupMsg(b, d, "", LS.mobileSetErr, true)
                                                 } else {
                                                     if (f.rt == -6) {
-                                                        Site.showSignupMsg(b, d, "mobile", LS.mobileHasSigned, true)
+                                                        Run.showSignupMsg(b, d, "mobile", LS.mobileHasSigned, true)
                                                     } else {
                                                         if (f.rt == 23) {
-                                                            Site.showSignupMsg(b, d, "", LS.mobileNationTplErr, true)
+                                                            Run.showSignupMsg(b, d, "", LS.mobileNationTplErr, true)
                                                         } else {
-                                                            Site.showSignupMsg(b, d, "", LS.getMobileRefresh, true)
+                                                            Run.showSignupMsg(b, d, "", LS.getMobileRefresh, true)
                                                         }
                                                     }
                                                 }
@@ -10188,7 +10188,7 @@ Site.getSignMobileCode = function (d, b) {
         })
     }
 };
-Site.getSignMobileCodeCountDown = function (d) {
+Run.getSignMobileCodeCountDown = function (d) {
     var b = $("#module" + d);
     if (d == "J_memberRegisterDialogPanel") {
         b = $("#J_memberRegisterDialogPanel")
@@ -10216,7 +10216,7 @@ Site.getSignMobileCodeCountDown = function (d) {
         }
     }, 1000)
 };
-Site.checkGetMobileCodeParam = function (f, c) {
+Run.checkGetMobileCodeParam = function (f, c) {
     var e = {checkResult: false, info: {}};
     var b = $("#module" + f);
     if (f == "J_memberRegisterDialogPanel") {
@@ -10224,12 +10224,12 @@ Site.checkGetMobileCodeParam = function (f, c) {
     }
     var a = b.find("#mobile").val();
     var d = b.find("#memberSignupCaptcha").val();
-    if (!Fai.isNationMobile(a)) {
-        Site.showSignupMsg(c, f, "mobile", LS.mobileNumRegular);
+    if (!Helper.isNationMobile(a)) {
+        Run.showSignupMsg(c, f, "mobile", LS.mobileNumRegular);
         return e
     }
     if (d == null || d == "") {
-        Site.showSignupMsg(c, f, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaEmpty);
+        Run.showSignupMsg(c, f, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaEmpty);
         return e
     }
     e.checkResult = true;
@@ -10242,15 +10242,15 @@ Site.checkGetMobileCodeParam = function (f, c) {
     e.info.captcha = d;
     return e
 };
-Site.memberSignupSubmit = function (b, a, i) {
+Run.memberSignupSubmit = function (b, a, i) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行注册。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行注册。");
         return
     }
     var c = $("#module" + b);
     var h = c.find("#memberSignupAcct").val();
     var f = c.find("#memberSignupPwd").val();
-    var g = Site.checkSignupValid(b, i);
+    var g = Run.checkSignupValid(b, i);
     if (!g.checkResult) {
         return
     }
@@ -10261,59 +10261,59 @@ Site.memberSignupSubmit = function (b, a, i) {
     $.ajax({
         type: "post",
         url: "ajax/member_h.php?cmd=add",
-        data: "info=" + Fai.encodeUrl($.toJSON(g.info)) + "&validateCode=" + g.captcha,
+        data: "info=" + Helper.encodeUrl($.toJSON(g.info)) + "&validateCode=" + g.captcha,
         error: function () {
             d.removeAttr("disabled");
-            Site.showSignupMsg(i, b, "", LS.memberSignupRegisterError, true)
+            Run.showSignupMsg(i, b, "", LS.memberSignupRegisterError, true)
         },
         success: function (j) {
             var k = jQuery.parseJSON(j);
             if (k.success) {
                 if (k.active) {
-                    Site.memberActiveDialog(g.info.email, Fai.encodeUrl(g.info.acct), function () {
+                    Run.memberActiveDialog(g.info.email, Helper.encodeUrl(g.info.acct), function () {
                         if (a) {
-                            Fai.top.location.href = "login.php?errno=12&url=" + Fai.encodeUrl(a)
+                            Helper.top.location.href = "login.php?errno=12&url=" + Helper.encodeUrl(a)
                         } else {
-                            Fai.top.location.href = "login.php?errno=12"
+                            Helper.top.location.href = "login.php?errno=12"
                         }
-                        Fai.top.event.returnValue = false
+                        Helper.top.event.returnValue = false
                     })
                 } else {
                     if (a) {
-                        Site.autoLogin(h, f, a)
+                        Run.autoLogin(h, f, a)
                     } else {
-                        Fai.top.location.href = "login.php?errno=12"
+                        Helper.top.location.href = "login.php?errno=12"
                     }
                 }
             } else {
                 d.removeAttr("disabled");
-                Site.changeCaptchaImg($("#memberSignupCaptchaImg")[0]);
+                Run.changeCaptchaImg($("#memberSignupCaptchaImg")[0]);
                 $("#memberSignupCaptcha").val("");
                 if (k.rt == -601) {
-                    Site.showSignupMsg(i, b, "messageAuthCode", LS.reGetMobileCode)
+                    Run.showSignupMsg(i, b, "messageAuthCode", LS.reGetMobileCode)
                 } else {
                     if (k.rt == -401) {
-                        Site.showSignupMsg(i, b, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaNotMatch);
+                        Run.showSignupMsg(i, b, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaNotMatch);
                         if (k.needCode) {
                             $(".J_memberSignupCaptcha").removeClass("memberSignupCaptchaHide")
                         }
                     } else {
                         if (k.rt == -8) {
-                            Site.showSignupMsg(i, b, "mobile", LS.mobileHasSigned)
+                            Run.showSignupMsg(i, b, "mobile", LS.mobileHasSigned)
                         } else {
                             if (k.rt == -6) {
-                                Site.showSignupMsg(i, b, "memberSignupAcct", LS.memberSignupRegisterExisted)
+                                Run.showSignupMsg(i, b, "memberSignupAcct", LS.memberSignupRegisterExisted)
                             } else {
                                 if (k.rt == -4) {
-                                    Site.showSignupMsg(i, b, "", LS.memberSignupRegisterLimit, true)
+                                    Run.showSignupMsg(i, b, "", LS.memberSignupRegisterLimit, true)
                                 } else {
                                     if (k.rt == -28) {
-                                        Site.showSignupMsg(i, b, "", LS.memberRegisterLimit, true)
+                                        Run.showSignupMsg(i, b, "", LS.memberRegisterLimit, true)
                                     } else {
                                         if (k.rt == -20) {
-                                            Site.showSignupMsg(i, b, "", k.msg, true)
+                                            Run.showSignupMsg(i, b, "", k.msg, true)
                                         } else {
-                                            Site.showSignupMsg(i, b, "", LS.memberSignupRegisterError, true)
+                                            Run.showSignupMsg(i, b, "", LS.memberSignupRegisterError, true)
                                         }
                                     }
                                 }
@@ -10325,15 +10325,15 @@ Site.memberSignupSubmit = function (b, a, i) {
         }
     })
 };
-Site.memberSignupDialogSubmit = function (b, a, n, g, l, o, k, c, h) {
+Run.memberSignupDialogSubmit = function (b, a, n, g, l, o, k, c, h) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行注册。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行注册。");
         return
     }
     var e = $("#" + b);
     var m = e.find("#memberSignupAcct").val();
     var j = e.find("#memberSignupPwd").val();
-    var i = Site.checkSignupValid(b, n);
+    var i = Run.checkSignupValid(b, n);
     if (!i.checkResult) {
         return
     }
@@ -10344,53 +10344,53 @@ Site.memberSignupDialogSubmit = function (b, a, n, g, l, o, k, c, h) {
     $.ajax({
         type: "post",
         url: "ajax/member_h.php?cmd=add",
-        data: "info=" + Fai.encodeUrl($.toJSON(i.info)) + "&validateCode=" + i.captcha,
+        data: "info=" + Helper.encodeUrl($.toJSON(i.info)) + "&validateCode=" + i.captcha,
         error: function () {
             d.removeAttr("disabled");
-            Site.showSignupMsg(n, b, "", LS.memberSignupRegisterError, true)
+            Run.showSignupMsg(n, b, "", LS.memberSignupRegisterError, true)
         },
         success: function (p) {
             var q = jQuery.parseJSON(p);
             if (q.success) {
                 if (q.active) {
-                    Site.memberActiveDialog(i.info.email, Fai.encodeUrl(i.info.acct), function () {
+                    Run.memberActiveDialog(i.info.email, Helper.encodeUrl(i.info.acct), function () {
                         if (a) {
-                            Fai.top.location.href = "login.php?errno=12&url=" + Fai.encodeUrl(a)
+                            Helper.top.location.href = "login.php?errno=12&url=" + Helper.encodeUrl(a)
                         } else {
-                            Fai.top.location.href = "login.php?errno=12"
+                            Helper.top.location.href = "login.php?errno=12"
                         }
-                        Fai.top.event.returnValue = false
+                        Helper.top.event.returnValue = false
                     })
                 } else {
                     if (a) {
-                        Site.autoLoginForDialog(m, j, a, g, b, l, o, k, c, h)
+                        Run.autoLoginForDialog(m, j, a, g, b, l, o, k, c, h)
                     } else {
-                        Fai.top.location.href = "login.php?errno=12"
+                        Helper.top.location.href = "login.php?errno=12"
                     }
                 }
             } else {
                 d.removeAttr("disabled");
-                Site.changeCaptchaImg($("#memberSignupCaptchaImg")[0]);
+                Run.changeCaptchaImg($("#memberSignupCaptchaImg")[0]);
                 $("#memberSignupCaptcha").val("");
                 if (q.rt == -601) {
-                    Site.showSignupMsg(n, b, "messageAuthCode", LS.reGetMobileCode)
+                    Run.showSignupMsg(n, b, "messageAuthCode", LS.reGetMobileCode)
                 } else {
                     if (q.rt == -401) {
-                        Site.showSignupMsg(n, b, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaNotMatch)
+                        Run.showSignupMsg(n, b, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaNotMatch)
                     } else {
                         if (q.rt == -8) {
-                            Site.showSignupMsg(n, b, "mobile", LS.mobileHasSigned)
+                            Run.showSignupMsg(n, b, "mobile", LS.mobileHasSigned)
                         } else {
                             if (q.rt == -6) {
-                                Site.showSignupMsg(n, b, "memberSignupAcct", LS.memberSignupRegisterExisted)
+                                Run.showSignupMsg(n, b, "memberSignupAcct", LS.memberSignupRegisterExisted)
                             } else {
                                 if (q.rt == -4) {
-                                    Site.showSignupMsg(n, b, "", LS.memberSignupRegisterLimit, true)
+                                    Run.showSignupMsg(n, b, "", LS.memberSignupRegisterLimit, true)
                                 } else {
                                     if (q.rt == -28) {
-                                        Site.showSignupMsg(n, b, "", LS.memberRegisterLimit, true)
+                                        Run.showSignupMsg(n, b, "", LS.memberRegisterLimit, true)
                                     } else {
-                                        Site.showSignupMsg(n, b, "", LS.memberSignupRegisterError, true)
+                                        Run.showSignupMsg(n, b, "", LS.memberSignupRegisterError, true)
                                     }
                                 }
                             }
@@ -10401,34 +10401,34 @@ Site.memberSignupDialogSubmit = function (b, a, n, g, l, o, k, c, h) {
         }
     })
 };
-Site.autoLogin = function (c, b, a) {
+Run.autoLogin = function (c, b, a) {
     b = $.md5(b);
     $.ajax({
         type: "post",
         url: "ajax/login_h.php",
-        data: "cmd=loginMember&acct=" + Fai.encodeUrl(c) + "&pwd=" + Fai.encodeUrl(b),
+        data: "cmd=loginMember&acct=" + Helper.encodeUrl(c) + "&pwd=" + Helper.encodeUrl(b),
         error: function () {
-            Fai.top.location.href = "login.php?errno=-1&url=" + Fai.encodeUrl(a) + "&acct=" + Fai.encodeUrl(c)
+            Helper.top.location.href = "login.php?errno=-1&url=" + Helper.encodeUrl(a) + "&acct=" + Helper.encodeUrl(c)
         },
         success: function (d) {
             var d = jQuery.parseJSON(d);
             if (d.success) {
-                Fai.top.location.href = a;
+                Helper.top.location.href = a;
                 return
             } else {
-                Fai.top.location.href = "login.php?returnUrl=" + Fai.encodeUrl(a)
+                Helper.top.location.href = "login.php?returnUrl=" + Helper.encodeUrl(a)
             }
         }
     })
 };
-Site.autoLoginForDialog = function (i, f, a, d, c, h, j, g, b, e) {
+Run.autoLoginForDialog = function (i, f, a, d, c, h, j, g, b, e) {
     f = $.md5(f);
     $.ajax({
         type: "post",
         url: "ajax/login_h.php",
-        data: "cmd=loginMember&acct=" + Fai.encodeUrl(i) + "&pwd=" + Fai.encodeUrl(f),
+        data: "cmd=loginMember&acct=" + Helper.encodeUrl(i) + "&pwd=" + Helper.encodeUrl(f),
         error: function () {
-            Fai.top.location.href = "login.php?errno=-1&url=" + Fai.encodeUrl(a) + "&acct=" + Fai.encodeUrl(i)
+            Helper.top.location.href = "login.php?errno=-1&url=" + Helper.encodeUrl(a) + "&acct=" + Helper.encodeUrl(i)
         },
         success: function (k) {
             var k = jQuery.parseJSON(k);
@@ -10443,7 +10443,7 @@ Site.autoLoginForDialog = function (i, f, a, d, c, h, j, g, b, e) {
                     l.count = e;
                     l.doWhat = "add";
                     $.cookie("isNeedAddCartItem", $.toJSON(l));
-                    Fai.top.location.reload()
+                    Helper.top.location.reload()
                 } else {
                     if (g == "immeBuy") {
                         var l = {};
@@ -10454,24 +10454,24 @@ Site.autoLoginForDialog = function (i, f, a, d, c, h, j, g, b, e) {
                         l.count = e;
                         l.doWhat = "buy";
                         $.cookie("isNeedAddCartItem", $.toJSON(l));
-                        Fai.top.location.reload()
+                        Helper.top.location.reload()
                     }
                 }
                 return
             } else {
-                Fai.top.location.href = "login.php?returnUrl=" + Fai.encodeUrl(a)
+                Helper.top.location.href = "login.php?returnUrl=" + Helper.encodeUrl(a)
             }
         }
     })
 };
-Site.memberSignup = function (a) {
+Run.memberSignup = function (a) {
     if (a) {
-        Fai.top.location.href = "signup.php?url=" + Fai.encodeUrl(a)
+        Helper.top.location.href = "signup.php?url=" + Helper.encodeUrl(a)
     } else {
-        Fai.top.location.href = "signup.php"
+        Helper.top.location.href = "signup.php"
     }
 };
-Site.checkSignupValid = function (s, e) {
+Run.checkSignupValid = function (s, e) {
     var b = {checkResult: true, captcha: "", info: {}};
     if (s == "J_memberRegisterDialogPanel") {
         var a = $("#" + s)
@@ -10482,24 +10482,24 @@ Site.checkSignupValid = function (s, e) {
     var d = a.find(".memberSignupMsg .msgText");
     var k = $.trim($("#memberSignupAcct").val());
     if (k == null || k == "") {
-        Site.showSignupMsg(e, s, "memberSignupAcct", LS.memberSignupRegisterAcctEmpty);
+        Run.showSignupMsg(e, s, "memberSignupAcct", LS.memberSignupRegisterAcctEmpty);
         b.checkResult = false;
         return b
     }
     var g = $("#memberSignupPwd").val();
     if (g == null || g == "") {
-        Site.showSignupMsg(e, s, "memberSignupPwd", LS.memberSignupRegisterPwdEmpty);
+        Run.showSignupMsg(e, s, "memberSignupPwd", LS.memberSignupRegisterPwdEmpty);
         b.checkResult = false;
         return b
     }
     if (g.length < 4) {
-        Site.showSignupMsg(e, s, "memberSignupPwd", LS.memberSignupRegisterPwdMinLength);
+        Run.showSignupMsg(e, s, "memberSignupPwd", LS.memberSignupRegisterPwdMinLength);
         b.checkResult = false;
         return b
     }
     var n = $("#memberSignupRepwd").val();
     if (g != n) {
-        Site.showSignupMsg(e, s, "memberSignupRepwd", LS.memberSignupRegisterPwdNotMatch);
+        Run.showSignupMsg(e, s, "memberSignupRepwd", LS.memberSignupRegisterPwdNotMatch);
         b.checkResult = false;
         return b
     }
@@ -10508,7 +10508,7 @@ Site.checkSignupValid = function (s, e) {
         o = $("#memberSignupRemark").val();
         var t = $("#memberSignupRemark").attr("maxlength");
         if (o.length > t) {
-            Site.showSignupMsg(e, s, "memberSignupRemark", Fai.format(LS.memberSignupRegisterRemarkMaxLength, t));
+            Run.showSignupMsg(e, s, "memberSignupRemark", Helper.format(LS.memberSignupRegisterRemarkMaxLength, t));
             b.checkResult = false;
             return b
         }
@@ -10516,7 +10516,7 @@ Site.checkSignupValid = function (s, e) {
     if (typeof(a.find("#messageAuthCode").attr("maxlength")) != "undefined" && a.find("#messageAuthCode").attr("maxlength") != null) {
         var m = a.find("#messageAuthCode").val();
         if (typeof(m) == "undefined" || m == null || m == "") {
-            Site.showSignupMsg(e, s, "messageAuthCode", LS.inputMobileCode);
+            Run.showSignupMsg(e, s, "messageAuthCode", LS.inputMobileCode);
             b.checkResult = false;
             return b
         }
@@ -10539,30 +10539,30 @@ Site.checkSignupValid = function (s, e) {
         l = $(this).attr("maxlength");
         b.info[userAddItemID] = h;
         if (h.length > l) {
-            Site.showSignupMsg(e, s, userAddItemID, Fai.format(LS.memberSignupUserAddItemMaxLength, c, l));
+            Run.showSignupMsg(e, s, userAddItemID, Helper.format(LS.memberSignupUserAddItemMaxLength, c, l));
             r = 1;
             b.checkResult = false;
             return b
         }
         if (userAddItemID == "phone" && h.length > 0) {
-            if (!Fai.isPhone(h)) {
-                Site.showSignupMsg(e, s, userAddItemID, Fai.format(LS.memberSignupUserAddItemCorrect, c));
+            if (!Helper.isPhone(h)) {
+                Run.showSignupMsg(e, s, userAddItemID, Helper.format(LS.memberSignupUserAddItemCorrect, c));
                 f = 1;
                 b.checkResult = false;
                 return b
             }
         }
         if (userAddItemID == "email" && h.length > 0) {
-            if (!Fai.isEmail(h)) {
-                Site.showSignupMsg(e, s, userAddItemID, Fai.format(LS.memberSignupUserAddItemCorrect, c));
+            if (!Helper.isEmail(h)) {
+                Run.showSignupMsg(e, s, userAddItemID, Helper.format(LS.memberSignupUserAddItemCorrect, c));
                 f = 1;
                 b.checkResult = false;
                 return b
             }
         }
         if (userAddItemID == "mobile" && h.length > 0) {
-            if (!Fai.isNationMobile(h)) {
-                Site.showSignupMsg(e, s, userAddItemID, LS.mobileNumRegular);
+            if (!Helper.isNationMobile(h)) {
+                Run.showSignupMsg(e, s, userAddItemID, LS.mobileNumRegular);
                 f = 1;
                 b.checkResult = false;
                 return b
@@ -10586,16 +10586,16 @@ Site.checkSignupValid = function (s, e) {
         c = $(this).attr("name");
         if (h == null || h == "") {
             if ($(this).is("input")) {
-                Site.showSignupMsg(e, s, userAddItemID, Fai.format(LS.memberSignupUserAddItemIsEmpty, c))
+                Run.showSignupMsg(e, s, userAddItemID, Helper.format(LS.memberSignupUserAddItemIsEmpty, c))
             } else {
-                Site.showSignupMsg(e, s, userAddItemID, Fai.format(LS.memberSignupUserAddItemIsEmpty2, c))
+                Run.showSignupMsg(e, s, userAddItemID, Helper.format(LS.memberSignupUserAddItemIsEmpty2, c))
             }
             i = 1;
             return false
         }
         if (userAddItemID == "email" && h.length > 0) {
-            if (!Fai.isEmail(h)) {
-                Site.showSignupMsg(e, s, userAddItemID, Fai.format(LS.memberSignupUserAddItemCorrect, c));
+            if (!Helper.isEmail(h)) {
+                Run.showSignupMsg(e, s, userAddItemID, Helper.format(LS.memberSignupUserAddItemCorrect, c));
                 i = 1;
                 return false
             }
@@ -10608,7 +10608,7 @@ Site.checkSignupValid = function (s, e) {
     if ($(".J_memberSignupCaptcha").css("display") != "none") {
         b.captcha = $("#memberSignupCaptcha").val();
         if (b.captcha == null || b.captcha == "") {
-            Site.showSignupMsg(e, s, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaEmpty);
+            Run.showSignupMsg(e, s, "memberSignupCaptcha", LS.memberSignupRegisterCaptchaEmpty);
             b.checkResult = false;
             return b
         }
@@ -10616,7 +10616,7 @@ Site.checkSignupValid = function (s, e) {
     var q = $("#memberAgreePro");
     if (q.length > 0) {
         if (!q.prop("checked")) {
-            Site.showSignupMsg(e, s, "memberAgreePro", LS.memberProtocolNotAgree, true);
+            Run.showSignupMsg(e, s, "memberAgreePro", LS.memberProtocolNotAgree, true);
             b.checkResult = false;
             return b
         }
@@ -10624,9 +10624,9 @@ Site.checkSignupValid = function (s, e) {
     b.checkResult = true;
     return b
 };
-Site.showSignupMsg = function (g, a, h, f, i) {
+Run.showSignupMsg = function (g, a, h, f, i) {
     if (a == "J_memberRegisterDialogPanel") {
-        Fai.ing(f);
+        Helper.ing(f);
         return
     }
     var b = $("#module" + a);
@@ -10648,41 +10648,41 @@ Site.showSignupMsg = function (g, a, h, f, i) {
         return
     }
     if (i) {
-        Fai.ing(f, false);
+        Helper.ing(f, false);
         return
     }
     if (g == 2) {
         var j = {moduleId: "module" + a, targetId: h, tipText: f};
-        Site.floatTip(j);
+        Run.floatTip(j);
         $(e).addClass("focusBg");
         return
     }
 };
-Site.initModuleMemberLogin = function (b, d, e, c, a) {
+Run.initModuleMemberLogin = function (b, d, e, c, a) {
     if (typeof a != "object") {
         a = new Object()
     }
     if (d == 2) {
         $("#module" + b).find(".J_loginButton").bind("click", function () {
             if (c) {
-                Fai.ing("您目前处于网站管理状态，请先点击网站右上方的“退出”后再登录会员。")
+                Helper.ing("您目前处于网站管理状态，请先点击网站右上方的“退出”后再登录会员。")
             } else {
                 if (e) {
-                    Site.memberLogin1(b, a)
+                    Run.memberLogin1(b, a)
                 } else {
-                    Site.memberLogin2(b, d, a)
+                    Run.memberLogin2(b, d, a)
                 }
             }
         })
     }
-    Site.memberLoginCompatibility(b)
+    Run.memberLoginCompatibility(b)
 };
-Site.memberLoginCompatibility = function (c) {
+Run.memberLoginCompatibility = function (c) {
     var b = $("#module" + c);
     if (c == "loginDialog") {
         b = $("#J_memberLoginDialogPanel")
     }
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         var f = b.find(".J_memberLoginPanel");
         $(f).removeAttr("style");
         var e = $(f).width();
@@ -10698,7 +10698,7 @@ Site.memberLoginCompatibility = function (c) {
             var o = $(n).find("span");
             var j = $(o).width();
             var m = $(o).height();
-            var h = $(n).position().top + (Fai.isIE6() ? 2 : 0);
+            var h = $(n).position().top + (Helper.isIE6() ? 2 : 0);
             var g = $(n).position().left;
             if ($(n).hasClass("memberCaptcha")) {
                 g += 10
@@ -10719,26 +10719,26 @@ Site.memberLoginCompatibility = function (c) {
         })
     }
 };
-Site.memberLogin = function (b) {
-    var a = Fai.top.location.href;
+Run.memberLogin = function (b) {
+    var a = Helper.top.location.href;
     if (a.indexOf("errno=") > -1) {
         return
     }
     if (a.indexOf("url=") > -1 && a.indexOf("login.php") > -1) {
         return
     }
-    var c = "login.php?url=" + Fai.encodeUrl(Fai.getUrlRoot(a));
+    var c = "login.php?url=" + Helper.encodeUrl(Helper.getUrlRoot(a));
     if (b !== undefined) {
         c += "&errno=" + b
     }
-    Fai.top.location.href = c
+    Helper.top.location.href = c
 };
-Site.memberLogin1 = function (b, i) {
-    Site.logDog(200061, 2);
+Run.memberLogin1 = function (b, i) {
+    Run.logDog(200061, 2);
     if (typeof i != "object") {
         i = new Object()
     }
-    var a = Fai.getUrlParam(Fai.top.location.href, "url");
+    var a = Helper.getUrlParam(Helper.top.location.href, "url");
     if (!a) {
         a = "./index.php"
     }
@@ -10746,11 +10746,11 @@ Site.memberLogin1 = function (b, i) {
     var h = c.find(".memberAcctInput").val();
     var g = c.find(".memberPwdInput").val();
     if (h == null || h == "") {
-        Fai.top.location.href = "login.php?errno=1&url=" + Fai.encodeUrl(a);
+        Helper.top.location.href = "login.php?errno=1&url=" + Helper.encodeUrl(a);
         return
     }
     if (g == null || g == "") {
-        Fai.top.location.href = "login.php?errno=2&url=" + Fai.encodeUrl(a) + "&acct=" + Fai.encodeUrl(h);
+        Helper.top.location.href = "login.php?errno=2&url=" + Helper.encodeUrl(a) + "&acct=" + Helper.encodeUrl(h);
         return
     }
     g = $.md5(g);
@@ -10767,9 +10767,9 @@ Site.memberLogin1 = function (b, i) {
     $.ajax({
         type: "post",
         url: "ajax/login_h.php",
-        data: "cmd=loginMember&acct=" + Fai.encodeUrl(h) + "&pwd=" + Fai.encodeUrl(g) + "&autoLogin=" + Fai.encodeUrl(e),
+        data: "cmd=loginMember&acct=" + Helper.encodeUrl(h) + "&pwd=" + Helper.encodeUrl(g) + "&autoLogin=" + Helper.encodeUrl(e),
         error: function () {
-            Fai.top.location.href = "login.php?errno=-1&url=" + Fai.encodeUrl(a) + "&acct=" + Fai.encodeUrl(h)
+            Helper.top.location.href = "login.php?errno=-1&url=" + Helper.encodeUrl(a) + "&acct=" + Helper.encodeUrl(h)
         },
         success: function (u) {
             var u = jQuery.parseJSON(u);
@@ -10786,9 +10786,9 @@ Site.memberLogin1 = function (b, i) {
                             var t = l[o].split(":"), k = t[1].indexOf("(") + 1, n = t[1].lastIndexOf(")"),
                                 r = Array.prototype.slice.call(t[1].substring(k, n).split(",")),
                                 m = t[1].substring(0, k - 1), s = [];
-                            Site.photoSlide.returnIndex = function () {
-                                delete Site.photoSlide.returnIndex;
-                                Fai.top.location.href = "/index.php"
+                            Run.photoSlide.returnIndex = function () {
+                                delete Run.photoSlide.returnIndex;
+                                Helper.top.location.href = "/index.php"
                             };
                             var p = [{name: m, base: window}];
                             s = p.concat(r);
@@ -10796,52 +10796,52 @@ Site.memberLogin1 = function (b, i) {
                         }
                     }
                 } else {
-                    Fai.top.location.href = a;
+                    Helper.top.location.href = a;
                     return
                 }
             } else {
                 if (u.active) {
-                    Site.memberInactiveDialog(u.mail, u.memName);
+                    Run.memberInactiveDialog(u.mail, u.memName);
                     f.show();
                     j.hide()
                 } else {
-                    Fai.top.location.href = "login.php?errno=" + u.rt + "&captcha=" + u.captcha + "&url=" + Fai.encodeUrl(a) + "&acct=" + Fai.encodeUrl(h)
+                    Helper.top.location.href = "login.php?errno=" + u.rt + "&captcha=" + u.captcha + "&url=" + Helper.encodeUrl(a) + "&acct=" + Helper.encodeUrl(h)
                 }
             }
         }
     })
 };
-Site.mbLogining = false;
-Site.memberLogin2 = function (b, l, n) {
-    Site.logDog(200061, 2);
+Run.mbLogining = false;
+Run.memberLogin2 = function (b, l, n) {
+    Run.logDog(200061, 2);
     if (typeof n != "object") {
         n = new Object()
     }
-    if (Site.mbLogining) {
+    if (Run.mbLogining) {
         return
     }
-    Site.mbLogining = true;
-    var a = Fai.getUrlParam(Fai.top.location.href, "url");
+    Run.mbLogining = true;
+    var a = Helper.getUrlParam(Helper.top.location.href, "url");
     if (!a) {
         a = "./index.php"
     }
-    var o = Fai.getUrlParam(Fai.top.location.href, "mid");
-    var d = Fai.getUrlParam(Fai.top.location.href, "fid");
+    var o = Helper.getUrlParam(Helper.top.location.href, "mid");
+    var d = Helper.getUrlParam(Helper.top.location.href, "fid");
     var c = $("#module" + b);
     var k = $.trim(c.find(".memberAcctInput").val());
     var h = c.find(".memberPwdInput").val();
     var g = (c.find(".memberCaptcha").css("display") != "none");
     var i = c.find(".memberCaptchaInput").val();
     if (k == null || k == "") {
-        Site.showMemberLoginMsg(b, 1, false, l);
+        Run.showMemberLoginMsg(b, 1, false, l);
         return
     }
     if (h == null || h == "") {
-        Site.showMemberLoginMsg(b, 2, false, l);
+        Run.showMemberLoginMsg(b, 2, false, l);
         return
     }
     if (g && (i == null || i == "")) {
-        Site.showMemberLoginMsg(b, 3, false, l);
+        Run.showMemberLoginMsg(b, 3, false, l);
         return
     }
     h = $.md5(h);
@@ -10858,14 +10858,14 @@ Site.memberLogin2 = function (b, l, n) {
     $.ajax({
         type: "post",
         url: "ajax/login_h.php",
-        data: "cmd=loginMember&acct=" + Fai.encodeUrl(k) + "&pwd=" + Fai.encodeUrl(h) + "&captcha=" + Fai.encodeUrl(i) + "&autoLogin=" + Fai.encodeUrl(f),
+        data: "cmd=loginMember&acct=" + Helper.encodeUrl(k) + "&pwd=" + Helper.encodeUrl(h) + "&captcha=" + Helper.encodeUrl(i) + "&autoLogin=" + Helper.encodeUrl(f),
         error: function () {
-            Site.mbLogining = false;
+            Run.mbLogining = false;
             j.removeAttr("disabled");
-            Site.showMemberLoginMsg(b, -1, l)
+            Run.showMemberLoginMsg(b, -1, l)
         },
         success: function (z) {
-            Site.mbLogining = false;
+            Run.mbLogining = false;
             j.removeAttr("disabled");
             var z = jQuery.parseJSON(z);
             if (z.success) {
@@ -10885,9 +10885,9 @@ Site.memberLogin2 = function (b, l, n) {
                             var y = q[t].split(":"), p = y[1].indexOf("(") + 1, s = y[1].lastIndexOf(")"),
                                 w = Array.prototype.slice.call(y[1].substring(p, s).split(",")), x = [],
                                 r = y[1].substring(0, p - 1);
-                            Site.photoSlide.returnIndex = function () {
-                                delete Site.photoSlide.returnIndex;
-                                Fai.top.location.href = "/index.php"
+                            Run.photoSlide.returnIndex = function () {
+                                delete Run.photoSlide.returnIndex;
+                                Helper.top.location.href = "/index.php"
                             };
                             var u = [{name: r, base: window}];
                             x = u.concat(w);
@@ -10895,24 +10895,24 @@ Site.memberLogin2 = function (b, l, n) {
                         }
                     }
                 } else {
-                    Fai.top.location.href = a;
+                    Helper.top.location.href = a;
                     return
                 }
             } else {
                 if (z.active) {
-                    Site.memberInactiveDialog(z.mail, z.memName)
+                    Run.memberInactiveDialog(z.mail, z.memName)
                 } else {
-                    Site.showMemberLoginMsg(b, z.rt, z.captcha, l)
+                    Run.showMemberLoginMsg(b, z.rt, z.captcha, l)
                 }
             }
         }
     })
 };
-Site.memberLogin3 = function (j) {
+Run.memberLogin3 = function (j) {
     if (typeof j != "object") {
         j = new Object()
     }
-    var a = Fai.getUrlParam(Fai.top.location.href, "url");
+    var a = Helper.getUrlParam(Helper.top.location.href, "url");
     if (!a) {
         a = "./index.php"
     }
@@ -10922,11 +10922,11 @@ Site.memberLogin3 = function (j) {
     var e = (b.find(".rbar-captcha").css("display") != "none");
     var g = b.find(".memberLoginCaptcha").val();
     if (i == null || i == "") {
-        Fai.top.location.href = "login.php?errno=1&url=" + Fai.encodeUrl(a);
+        Helper.top.location.href = "login.php?errno=1&url=" + Helper.encodeUrl(a);
         return
     }
     if (f == null || f == "") {
-        Fai.top.location.href = "login.php?errno=2&url=" + Fai.encodeUrl(a) + "&acct=" + Fai.encodeUrl(i);
+        Helper.top.location.href = "login.php?errno=2&url=" + Helper.encodeUrl(a) + "&acct=" + Helper.encodeUrl(i);
         return
     }
     f = $.md5(f);
@@ -10940,14 +10940,14 @@ Site.memberLogin3 = function (j) {
     $.ajax({
         type: "post",
         url: "ajax/login_h.php",
-        data: "cmd=loginMember&acct=" + Fai.encodeUrl(i) + "&pwd=" + Fai.encodeUrl(f) + "&captcha=" + Fai.encodeUrl(g) + "&autoLogin=" + Fai.encodeUrl(d),
+        data: "cmd=loginMember&acct=" + Helper.encodeUrl(i) + "&pwd=" + Helper.encodeUrl(f) + "&captcha=" + Helper.encodeUrl(g) + "&autoLogin=" + Helper.encodeUrl(d),
         error: function () {
-            Site.mbLogining = false;
+            Run.mbLogining = false;
             h.removeAttr("disabled");
-            Fai.top.location.href = "login.php?errno=-1&url=" + Fai.encodeUrl(a) + "&acct=" + Fai.encodeUrl(i)
+            Helper.top.location.href = "login.php?errno=-1&url=" + Helper.encodeUrl(a) + "&acct=" + Helper.encodeUrl(i)
         },
         success: function (k) {
-            Site.mbLogining = false;
+            Run.mbLogining = false;
             h.removeAttr("disabled");
             var k = jQuery.parseJSON(k);
             if (k.success) {
@@ -10955,48 +10955,48 @@ Site.memberLogin3 = function (j) {
                 if (!!j.skipUrl) {
                     a = j.skipUrl
                 }
-                Fai.top.location.href = a;
+                Helper.top.location.href = a;
                 return
             } else {
                 if (k.active) {
-                    Site.memberInactiveDialog(k.mail, k.memName);
+                    Run.memberInactiveDialog(k.mail, k.memName);
                     return
                 }
                 if (k.captcha) {
-                    Fai.top.location.href = "login.php?errno=" + k.rt + "&captcha=" + k.captcha + "&url=" + Fai.encodeUrl(a) + "&acct=" + Fai.encodeUrl(i);
+                    Helper.top.location.href = "login.php?errno=" + k.rt + "&captcha=" + k.captcha + "&url=" + Helper.encodeUrl(a) + "&acct=" + Helper.encodeUrl(i);
                     return
                 } else {
-                    Site.showMemberLoginMsg("webRightBar", k.rt, k.captcha, 2)
+                    Run.showMemberLoginMsg("webRightBar", k.rt, k.captcha, 2)
                 }
             }
         }
     })
 };
-Site.mbLogining = false;
-Site.memberLogin4 = function (e, c, o, l, b, i) {
-    var a = Fai.getUrlParam(Fai.top.location.href, "url");
+Run.mbLogining = false;
+Run.memberLogin4 = function (e, c, o, l, b, i) {
+    var a = Helper.getUrlParam(Helper.top.location.href, "url");
     if (!a) {
         a = "./index.php"
     }
-    if (Site.mbLogining) {
+    if (Run.mbLogining) {
         return
     }
-    Site.mbLogining = true;
+    Run.mbLogining = true;
     var d = $("#J_memberLoginDialogPanel");
     var n = $.trim(d.find("#memberAcct").val());
     var j = d.find("#memberPwd").val();
     var h = (d.find(".memberCaptcha").css("display") != "none");
     var k = d.find(".memberCaptchaInput").val();
     if (n == null || n == "") {
-        Fai.ing("帐号不能为空！");
+        Helper.ing("帐号不能为空！");
         return
     }
     if (j == null || j == "") {
-        Fai.ing("密码不能为空！");
+        Helper.ing("密码不能为空！");
         return
     }
     if (h && (k == null || k == "")) {
-        Fai.ing(LS.memberCaptchError);
+        Helper.ing(LS.memberCaptchError);
         return
     }
     j = $.md5(j);
@@ -11010,14 +11010,14 @@ Site.memberLogin4 = function (e, c, o, l, b, i) {
     $.ajax({
         type: "post",
         url: "ajax/login_h.php",
-        data: "cmd=loginMember&acct=" + Fai.encodeUrl(n) + "&pwd=" + Fai.encodeUrl(j) + "&captcha=" + Fai.encodeUrl(k) + "&autoLogin=" + Fai.encodeUrl(g),
+        data: "cmd=loginMember&acct=" + Helper.encodeUrl(n) + "&pwd=" + Helper.encodeUrl(j) + "&captcha=" + Helper.encodeUrl(k) + "&autoLogin=" + Helper.encodeUrl(g),
         error: function () {
-            Site.mbLogining = false;
+            Run.mbLogining = false;
             m.removeAttr("disabled");
-            Fai.top.location.href = "login.php?errno=-1&url=" + Fai.encodeUrl(a) + "&acct=" + Fai.encodeUrl(n)
+            Helper.top.location.href = "login.php?errno=-1&url=" + Helper.encodeUrl(a) + "&acct=" + Helper.encodeUrl(n)
         },
         success: function (p) {
-            Site.mbLogining = false;
+            Run.mbLogining = false;
             m.removeAttr("disabled");
             var p = jQuery.parseJSON(p);
             if (p.success) {
@@ -11031,7 +11031,7 @@ Site.memberLogin4 = function (e, c, o, l, b, i) {
                     q.count = i;
                     q.doWhat = "add";
                     $.cookie("isNeedAddCartItem", $.toJSON(q));
-                    Fai.top.location.reload()
+                    Helper.top.location.reload()
                 } else {
                     if (l == "immeBuy") {
                         var q = {};
@@ -11042,22 +11042,22 @@ Site.memberLogin4 = function (e, c, o, l, b, i) {
                         q.count = i;
                         q.doWhat = "buy";
                         $.cookie("isNeedAddCartItem", $.toJSON(q));
-                        Fai.top.location.reload()
+                        Helper.top.location.reload()
                     }
                 }
                 return
             } else {
                 if (p.active) {
-                    Site.memberInactiveDialog(p.mail, p.memName);
+                    Run.memberInactiveDialog(p.mail, p.memName);
                     return
                 } else {
-                    Site.showMemberLoginMsg("loginDialog", p.rt, p.captcha, 2)
+                    Run.showMemberLoginMsg("loginDialog", p.rt, p.captcha, 2)
                 }
             }
         }
     })
 };
-Site.showMemberLoginMsg = function (a, b, e, f) {
+Run.showMemberLoginMsg = function (a, b, e, f) {
     var c, d = "", h = "", i = false;
     if (a == "webRightBar") {
         c = $("#J_WebRightBar")
@@ -11135,10 +11135,10 @@ Site.showMemberLoginMsg = function (a, b, e, f) {
     if (e && a != "webRightBar") {
         c.find(".memberCaptcha").show();
         c.find(".memberCaptchaImg").attr("src", "validateCode.php?" + Math.random() * 1000);
-        Site.memberLoginCompatibility(a)
+        Run.memberLoginCompatibility(a)
     }
     if (i) {
-        Fai.ing(d, false);
+        Helper.ing(d, false);
         return
     }
     if (f == 1) {
@@ -11155,45 +11155,45 @@ Site.showMemberLoginMsg = function (a, b, e, f) {
                 j.moduleId = "module" + a
             }
             setTimeout(function () {
-                Site.floatTip(j)
+                Run.floatTip(j)
             }, 50)
         } else {
-            Fai.ing(d)
+            Helper.ing(d)
         }
     }
 };
-Site.changeCaptchaImg = function (a, b) {
+Run.changeCaptchaImg = function (a, b) {
     $(a).attr("src", "validateCode.php?" + Math.random() * 1000 + "&validateCodeRegType=" + b)
 };
-Site.wxListener = {timer: "", winOpen: "", w_uid: "", c: 0, wx_name: "", wx_avator: ""};
-Site.initWXLogin = function (d, a, e, c, f, h, b) {
+Run.wxListener = {timer: "", winOpen: "", w_uid: "", c: 0, wx_name: "", wx_avator: ""};
+Run.initWXLogin = function (d, a, e, c, f, h, b) {
     a += "/wxLogin.php";
     $("#" + h).click(function () {
-        if (Site.wxListener.c == 0) {
-            Site.wxListener.winOpen = window.open("https://open.weixin.qq.com/connect/qrconnect?appid=" + d + "&redirect_uri=" + Fai.encodeUrl(a) + "&response_type=code&scope=snsapi_login#wechat_redirect", "", "height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes");
-            Site.wxListener.timer = window.setInterval("Site.wxWinListener('" + e + "', " + c + ", " + f + ", " + b + ")", 500);
+        if (Run.wxListener.c == 0) {
+            Run.wxListener.winOpen = window.open("https://open.weixin.qq.com/connect/qrconnect?appid=" + d + "&redirect_uri=" + Helper.encodeUrl(a) + "&response_type=code&scope=snsapi_login#wechat_redirect", "", "height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes");
+            Run.wxListener.timer = window.setInterval("Run.wxWinListener('" + e + "', " + c + ", " + f + ", " + b + ")", 500);
             window.addEventListener("message", g, false);
-            ++Site.wxListener.c
+            ++Run.wxListener.c
         }
     });
     function g(i) {
         var j = $.parseJSON(i.data);
-        Site.wxListener.w_uid = j.uid;
-        Site.wxListener.wx_name = j.wx_name;
-        Site.wxListener.wx_avator = j.wx_avator;
-        Site.wxListener.winOpen.close()
+        Run.wxListener.w_uid = j.uid;
+        Run.wxListener.wx_name = j.wx_name;
+        Run.wxListener.wx_avator = j.wx_avator;
+        Run.wxListener.winOpen.close()
     }
 };
-Site.wxWinListener = function (g, c, d, j) {
-    if (Site.wxListener.winOpen.closed == true) {
-        window.clearInterval(Site.wxListener.timer);
-        Site.wxListener.c = 0;
-        if (Site.wxListener.w_uid != null && Site.wxListener.w_uid != "") {
-            var a = Fai.getUrlParam(Fai.top.location.href, "url");
+Run.wxWinListener = function (g, c, d, j) {
+    if (Run.wxListener.winOpen.closed == true) {
+        window.clearInterval(Run.wxListener.timer);
+        Run.wxListener.c = 0;
+        if (Run.wxListener.w_uid != null && Run.wxListener.w_uid != "") {
+            var a = Helper.getUrlParam(Helper.top.location.href, "url");
             if (!a) {
                 a = "./index.php"
             }
-            var b = Site.checkHasMobileOption(g);
+            var b = Run.checkHasMobileOption(g);
             g = jQuery.parseJSON(g);
             var h = false;
             if (g) {
@@ -11204,13 +11204,13 @@ Site.wxWinListener = function (g, c, d, j) {
                     }
                 }
             }
-            var e = "loginType=3&hasMobile=" + b + "&otherLoginMust=" + h + "&openId=" + encodeURIComponent(Site.wxListener.w_uid);
+            var e = "loginType=3&hasMobile=" + b + "&otherLoginMust=" + h + "&openId=" + encodeURIComponent(Run.wxListener.w_uid);
             if (!h) {
-                e += "&avator=" + encodeURIComponent(Site.wxListener.wx_avator) + "&name=" + Site.wxListener.wx_name
+                e += "&avator=" + encodeURIComponent(Run.wxListener.wx_avator) + "&name=" + Run.wxListener.wx_name
             }
             $.ajax({
                 type: "post", url: "ajax/login_h.php?cmd=otherLoginMember", data: e, error: function () {
-                    Fai.ing(LS.memberLoginError, true)
+                    Helper.ing(LS.memberLoginError, true)
                 }, success: function (x) {
                     var x = jQuery.parseJSON(x);
                     if (x.success) {
@@ -11228,7 +11228,7 @@ Site.wxWinListener = function (g, c, d, j) {
                                     r.count = v.count;
                                     r.doWhat = "add";
                                     $.cookie("isNeedAddCartItem", $.toJSON(r));
-                                    Fai.top.location.reload()
+                                    Helper.top.location.reload()
                                 } else {
                                     if (v.where == "immeBuy") {
                                         var r = {};
@@ -11239,7 +11239,7 @@ Site.wxWinListener = function (g, c, d, j) {
                                         r.count = v.count;
                                         r.doWhat = "buy";
                                         $.cookie("isNeedAddCartItem", $.toJSON(r));
-                                        Fai.top.location.reload()
+                                        Helper.top.location.reload()
                                     }
                                 }
                             }
@@ -11257,9 +11257,9 @@ Site.wxWinListener = function (g, c, d, j) {
                                     var w = m[p].split(":"), k = w[1].indexOf("(") + 1, o = w[1].lastIndexOf(")"),
                                         t = Array.prototype.slice.call(w[1].substring(k, o).split(",")),
                                         n = w[1].substring(0, k - 1), u = [];
-                                    Site.photoSlide.returnIndex = function () {
-                                        delete Site.photoSlide.returnIndex;
-                                        Fai.top.location.href = "/index.php"
+                                    Run.photoSlide.returnIndex = function () {
+                                        delete Run.photoSlide.returnIndex;
+                                        Helper.top.location.href = "/index.php"
                                     };
                                     var q = [{name: n, base: window}];
                                     u = q.concat(t);
@@ -11267,20 +11267,20 @@ Site.wxWinListener = function (g, c, d, j) {
                                 }
                             }
                         } else {
-                            Fai.top.location.href = a;
+                            Helper.top.location.href = a;
                             return
                         }
                     } else {
                         if (x.active) {
-                            Site.memberInactiveDialog(x.mail, x.memName)
+                            Run.memberInactiveDialog(x.mail, x.memName)
                         } else {
                             if (x.rt == -3) {
-                                Site.memberOtherLoginFill(g, Site.wxListener.w_uid, 3, x.mobileCtNameList, x.signNeenMobile, j)
+                                Run.memberOtherLoginFill(g, Run.wxListener.w_uid, 3, x.mobileCtNameList, x.signNeenMobile, j)
                             } else {
                                 if (x.rt == -303) {
-                                    Fai.ing(LS.memberNoAuth, true)
+                                    Helper.ing(LS.memberNoAuth, true)
                                 } else {
-                                    Fai.ing(LS.argsError, true)
+                                    Helper.ing(LS.argsError, true)
                                 }
                             }
                         }
@@ -11290,34 +11290,34 @@ Site.wxWinListener = function (g, c, d, j) {
         }
     }
 };
-Site.wbListener = {timer: "", winOpen: "", w_uid: "", c: 0, wb_name: "", wb_avator: ""};
-Site.initWBLogin = function (h, a, d, c, e, g, b) {
+Run.wbListener = {timer: "", winOpen: "", w_uid: "", c: 0, wb_name: "", wb_avator: ""};
+Run.initWBLogin = function (h, a, d, c, e, g, b) {
     $("#" + g).click(function () {
-        if (Site.wbListener.c == 0) {
-            Site.wbListener.winOpen = window.open("https://api.weibo.com/oauth2/authorize?client_id=" + h + "&redirect_uri=" + a + "/wbLogin.php&response_type=code", "", "height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes");
-            Site.wbListener.timer = window.setInterval("Site.wbWinListener('" + d + "', " + c + ", " + e + ", " + b + ")", 500);
+        if (Run.wbListener.c == 0) {
+            Run.wbListener.winOpen = window.open("https://api.weibo.com/oauth2/authorize?client_id=" + h + "&redirect_uri=" + a + "/wbLogin.php&response_type=code", "", "height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes");
+            Run.wbListener.timer = window.setInterval("Run.wbWinListener('" + d + "', " + c + ", " + e + ", " + b + ")", 500);
             window.addEventListener("message", f, false);
-            ++Site.wbListener.c
+            ++Run.wbListener.c
         }
     });
     function f(i) {
         var j = $.parseJSON(i.data);
-        Site.wbListener.w_uid = j.uid;
-        Site.wbListener.wb_name = j.name;
-        Site.wbListener.wb_avator = j.w_avator;
-        Site.wbListener.winOpen.close()
+        Run.wbListener.w_uid = j.uid;
+        Run.wbListener.wb_name = j.name;
+        Run.wbListener.wb_avator = j.w_avator;
+        Run.wbListener.winOpen.close()
     }
 };
-Site.wbWinListener = function (g, c, d, j) {
-    if (Site.wbListener.winOpen.closed == true) {
-        window.clearInterval(Site.wbListener.timer);
-        Site.wbListener.c = 0;
-        if (Site.wbListener.w_uid != null && Site.wbListener.w_uid != "") {
-            var a = Fai.getUrlParam(Fai.top.location.href, "url");
+Run.wbWinListener = function (g, c, d, j) {
+    if (Run.wbListener.winOpen.closed == true) {
+        window.clearInterval(Run.wbListener.timer);
+        Run.wbListener.c = 0;
+        if (Run.wbListener.w_uid != null && Run.wbListener.w_uid != "") {
+            var a = Helper.getUrlParam(Helper.top.location.href, "url");
             if (!a) {
                 a = "./index.php"
             }
-            var b = Site.checkHasMobileOption(g);
+            var b = Run.checkHasMobileOption(g);
             g = jQuery.parseJSON(g);
             var h = false;
             if (g) {
@@ -11328,13 +11328,13 @@ Site.wbWinListener = function (g, c, d, j) {
                     }
                 }
             }
-            var e = "loginType=2&hasMobile=" + b + "&otherLoginMust=" + h + "&openId=" + encodeURIComponent(Site.wbListener.w_uid);
+            var e = "loginType=2&hasMobile=" + b + "&otherLoginMust=" + h + "&openId=" + encodeURIComponent(Run.wbListener.w_uid);
             if (!h) {
-                e += "&avator=" + encodeURIComponent(Site.wbListener.wb_avator) + "&name=" + Site.wbListener.wb_name
+                e += "&avator=" + encodeURIComponent(Run.wbListener.wb_avator) + "&name=" + Run.wbListener.wb_name
             }
             $.ajax({
                 type: "post", url: "ajax/login_h.php?cmd=otherLoginMember", data: e, error: function () {
-                    Fai.ing(LS.memberLoginError, true)
+                    Helper.ing(LS.memberLoginError, true)
                 }, success: function (x) {
                     var x = jQuery.parseJSON(x);
                     if (x.success) {
@@ -11352,7 +11352,7 @@ Site.wbWinListener = function (g, c, d, j) {
                                     r.count = v.count;
                                     r.doWhat = "add";
                                     $.cookie("isNeedAddCartItem", $.toJSON(r));
-                                    Fai.top.location.reload()
+                                    Helper.top.location.reload()
                                 } else {
                                     if (v.where == "immeBuy") {
                                         var r = {};
@@ -11363,7 +11363,7 @@ Site.wbWinListener = function (g, c, d, j) {
                                         r.count = v.count;
                                         r.doWhat = "buy";
                                         $.cookie("isNeedAddCartItem", $.toJSON(r));
-                                        Fai.top.location.reload()
+                                        Helper.top.location.reload()
                                     }
                                 }
                             }
@@ -11381,9 +11381,9 @@ Site.wbWinListener = function (g, c, d, j) {
                                     var w = m[p].split(":"), k = w[1].indexOf("(") + 1, o = w[1].lastIndexOf(")"),
                                         t = Array.prototype.slice.call(w[1].substring(k, o).split(",")),
                                         n = w[1].substring(0, k - 1), u = [];
-                                    Site.photoSlide.returnIndex = function () {
-                                        delete Site.photoSlide.returnIndex;
-                                        Fai.top.location.href = "/index.php"
+                                    Run.photoSlide.returnIndex = function () {
+                                        delete Run.photoSlide.returnIndex;
+                                        Helper.top.location.href = "/index.php"
                                     };
                                     var q = [{name: n, base: window}];
                                     u = q.concat(t);
@@ -11391,20 +11391,20 @@ Site.wbWinListener = function (g, c, d, j) {
                                 }
                             }
                         } else {
-                            Fai.top.location.href = a;
+                            Helper.top.location.href = a;
                             return
                         }
                     } else {
                         if (x.active) {
-                            Site.memberInactiveDialog(x.mail, x.memName)
+                            Run.memberInactiveDialog(x.mail, x.memName)
                         } else {
                             if (x.rt == -3) {
-                                Site.memberOtherLoginFill(g, Site.wbListener.w_uid, 2, x.mobileCtNameList, x.signNeenMobile, j)
+                                Run.memberOtherLoginFill(g, Run.wbListener.w_uid, 2, x.mobileCtNameList, x.signNeenMobile, j)
                             } else {
                                 if (x.rt == -303) {
-                                    Fai.ing(LS.memberNoAuth, true)
+                                    Helper.ing(LS.memberNoAuth, true)
                                 } else {
-                                    Fai.ing(LS.argsError, true)
+                                    Helper.ing(LS.argsError, true)
                                 }
                             }
                         }
@@ -11414,38 +11414,38 @@ Site.wbWinListener = function (g, c, d, j) {
         }
     }
 };
-Site.qqPopupID = "";
-Site.initQQLogin = function (g, a, d, c, e, f, b) {
-    Site.qqLoginPC(g, a, d, c, e, f, b)
+Run.qqPopupID = "";
+Run.initQQLogin = function (g, a, d, c, e, f, b) {
+    Run.qqLoginPC(g, a, d, c, e, f, b)
 };
-Site.qqListener = {timer: "", winOpen: "", q_uid: "", c: 0, q_name: "", q_avator: ""};
-Site.qqLoginPC = function (h, a, d, c, e, g, b) {
+Run.qqListener = {timer: "", winOpen: "", q_uid: "", c: 0, q_name: "", q_avator: ""};
+Run.qqLoginPC = function (h, a, d, c, e, g, b) {
     $("#" + g).click(function () {
-        if (Site.qqListener.c == 0) {
-            Site.qqListener.winOpen = window.open("https://graph.qq.com/oauth2.0/authorize?client_id=" + h + "&redirect_uri=" + a + "/qqLoginPC.php&response_type=token&scope=all", "", "height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes");
-            Site.qqListener.timer = window.setInterval("Site.qqWinListenerPC('" + d + "', " + c + ", " + e + ", " + b + ")", 500);
+        if (Run.qqListener.c == 0) {
+            Run.qqListener.winOpen = window.open("https://graph.qq.com/oauth2.0/authorize?client_id=" + h + "&redirect_uri=" + a + "/qqLoginPC.php&response_type=token&scope=all", "", "height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes");
+            Run.qqListener.timer = window.setInterval("Run.qqWinListenerPC('" + d + "', " + c + ", " + e + ", " + b + ")", 500);
             window.addEventListener("message", f, false);
-            ++Site.qqListener.c
+            ++Run.qqListener.c
         }
     });
     function f(i) {
         var j = $.parseJSON(i.data);
-        Site.qqListener.q_uid = j.uid;
-        Site.qqListener.q_name = j.q_name;
-        Site.qqListener.q_avator = j.q_avator;
-        Site.qqListener.winOpen.close()
+        Run.qqListener.q_uid = j.uid;
+        Run.qqListener.q_name = j.q_name;
+        Run.qqListener.q_avator = j.q_avator;
+        Run.qqListener.winOpen.close()
     }
 };
-Site.qqWinListenerPC = function (g, c, d, j) {
-    if (Site.qqListener.winOpen.closed == true) {
-        window.clearInterval(Site.qqListener.timer);
-        Site.qqListener.c = 0;
-        if (Site.qqListener.q_uid != null && Site.qqListener.q_uid != "") {
-            var a = Fai.getUrlParam(Fai.top.location.href, "url");
+Run.qqWinListenerPC = function (g, c, d, j) {
+    if (Run.qqListener.winOpen.closed == true) {
+        window.clearInterval(Run.qqListener.timer);
+        Run.qqListener.c = 0;
+        if (Run.qqListener.q_uid != null && Run.qqListener.q_uid != "") {
+            var a = Helper.getUrlParam(Helper.top.location.href, "url");
             if (!a) {
                 a = "./index.php"
             }
-            var b = Site.checkHasMobileOption(g);
+            var b = Run.checkHasMobileOption(g);
             g = jQuery.parseJSON(g);
             var h = false;
             if (g) {
@@ -11456,13 +11456,13 @@ Site.qqWinListenerPC = function (g, c, d, j) {
                     }
                 }
             }
-            var e = "loginType=1&hasMobile=" + b + "&otherLoginMust=" + h + "&openId=" + encodeURIComponent(Site.qqListener.q_uid);
+            var e = "loginType=1&hasMobile=" + b + "&otherLoginMust=" + h + "&openId=" + encodeURIComponent(Run.qqListener.q_uid);
             if (!h) {
-                e += "&avator=" + encodeURIComponent(Site.qqListener.q_avator) + "&name=" + Site.qqListener.q_name
+                e += "&avator=" + encodeURIComponent(Run.qqListener.q_avator) + "&name=" + Run.qqListener.q_name
             }
             $.ajax({
                 type: "post", url: "ajax/login_h.php?cmd=otherLoginMember", data: e, error: function () {
-                    Fai.ing(LS.memberLoginError, true)
+                    Helper.ing(LS.memberLoginError, true)
                 }, success: function (x) {
                     var x = jQuery.parseJSON(x);
                     if (x.success) {
@@ -11480,7 +11480,7 @@ Site.qqWinListenerPC = function (g, c, d, j) {
                                     r.count = v.count;
                                     r.doWhat = "add";
                                     $.cookie("isNeedAddCartItem", $.toJSON(r));
-                                    Fai.top.location.reload()
+                                    Helper.top.location.reload()
                                 } else {
                                     if (v.where == "immeBuy") {
                                         var r = {};
@@ -11491,7 +11491,7 @@ Site.qqWinListenerPC = function (g, c, d, j) {
                                         r.count = v.count;
                                         r.doWhat = "buy";
                                         $.cookie("isNeedAddCartItem", $.toJSON(r));
-                                        Fai.top.location.reload()
+                                        Helper.top.location.reload()
                                     }
                                 }
                             }
@@ -11509,9 +11509,9 @@ Site.qqWinListenerPC = function (g, c, d, j) {
                                     var w = m[p].split(":"), k = w[1].indexOf("(") + 1, o = w[1].lastIndexOf(")"),
                                         t = Array.prototype.slice.call(w[1].substring(k, o).split(",")),
                                         n = w[1].substring(0, k - 1), u = [];
-                                    Site.photoSlide.returnIndex = function () {
-                                        delete Site.photoSlide.returnIndex;
-                                        Fai.top.location.href = "/index.php"
+                                    Run.photoSlide.returnIndex = function () {
+                                        delete Run.photoSlide.returnIndex;
+                                        Helper.top.location.href = "/index.php"
                                     };
                                     var q = [{name: n, base: window}];
                                     u = q.concat(t);
@@ -11519,20 +11519,20 @@ Site.qqWinListenerPC = function (g, c, d, j) {
                                 }
                             }
                         } else {
-                            Fai.top.location.href = a;
+                            Helper.top.location.href = a;
                             return
                         }
                     } else {
                         if (x.active) {
-                            Site.memberInactiveDialog(x.mail, x.memName)
+                            Run.memberInactiveDialog(x.mail, x.memName)
                         } else {
                             if (x.rt == -3) {
-                                Site.memberOtherLoginFill(g, Site.qqListener.q_uid, 1, x.mobileCtNameList, x.signNeenMobile, j)
+                                Run.memberOtherLoginFill(g, Run.qqListener.q_uid, 1, x.mobileCtNameList, x.signNeenMobile, j)
                             } else {
                                 if (x.rt == -303) {
-                                    Fai.ing(LS.memberNoAuth, true)
+                                    Helper.ing(LS.memberNoAuth, true)
                                 } else {
-                                    Fai.ing(LS.argsError, true)
+                                    Helper.ing(LS.argsError, true)
                                 }
                             }
                         }
@@ -11542,7 +11542,7 @@ Site.qqWinListenerPC = function (g, c, d, j) {
         }
     }
 };
-Site.checkHasMobileOption = function (b) {
+Run.checkHasMobileOption = function (b) {
     b = jQuery.parseJSON(b);
     var c = false;
     if (b) {
@@ -11555,24 +11555,24 @@ Site.checkHasMobileOption = function (b) {
     }
     return c
 };
-Site.memberOtherLoginFill = function (f, a, d, c, e, k) {
+Run.memberOtherLoginFill = function (f, a, d, c, e, k) {
     var l = parseInt(Math.random() * 10000);
     var g = "", j = "", b = 170, i = 40;
     if (d == 1) {
-        g = Site.qqListener.q_avator;
-        j = Site.qqListener.q_name
+        g = Run.qqListener.q_avator;
+        j = Run.qqListener.q_name
     } else {
         if (d == 2) {
-            g = Site.wbListener.wb_avator;
+            g = Run.wbListener.wb_avator;
             i = 50;
             b = 165;
-            j = Site.wbListener.wb_name
+            j = Run.wbListener.wb_name
         } else {
             if (d == 3) {
-                g = Site.wxListener.wx_avator;
+                g = Run.wxListener.wx_avator;
                 b = 158;
                 i = 64;
-                j = Site.wxListener.wx_name
+                j = Run.wxListener.wx_name
             }
         }
     }
@@ -11599,11 +11599,11 @@ Site.memberOtherLoginFill = function (f, a, d, c, e, k) {
     if (e) {
         m.push('<tr class="bindAcctHidn" style="display:block; margin-top:10px; width:400px;">');
         m.push('<td style="width:110px;_width:auto;text-align:right; color:rgb(99,99,99);font-size:12px;">' + LS.memberSignup_captcha + "</td>");
-        m.push('<td><input id="memberSignupCaptcha" type="text" style="width:80px;margin-left:5px;height: 25px;font-size: 12px;color: rgb(99,99,99);border: 1px solid #e3e2e8;text-indent: 6px;" maxlength="4"/><div style="width:81px;height:25px;line-height:25px;float:right;text-align:center;color:red;"><img style="width:100%;height:100%;cursor:pointer;margin-left:10px;margin-top:2px;" alt="" id="memberSignupCaptchaImg" onclick="Site.changeCaptchaImg(this)" title="' + LS.msgBoradChageValidateCode + '" src="validateCode.php?' + Math.random() * 1000 + '"/></div></td>');
+        m.push('<td><input id="memberSignupCaptcha" type="text" style="width:80px;margin-left:5px;height: 25px;font-size: 12px;color: rgb(99,99,99);border: 1px solid #e3e2e8;text-indent: 6px;" maxlength="4"/><div style="width:81px;height:25px;line-height:25px;float:right;text-align:center;color:red;"><img style="width:100%;height:100%;cursor:pointer;margin-left:10px;margin-top:2px;" alt="" id="memberSignupCaptchaImg" onclick="Run.changeCaptchaImg(this)" title="' + LS.msgBoradChageValidateCode + '" src="validateCode.php?' + Math.random() * 1000 + '"/></div></td>');
         m.push("</tr>");
         m.push('<tr class="bindAcctHidn" style="display:block; margin-top:10px; width:400px;">');
         m.push('<td style="width:110px;_width:auto;text-align:right; color:rgb(99,99,99);font-size:12px;">' + LS.mobileMsmCode + "</td>");
-        m.push('<td><input type="text" style="width:80px;margin-left:5px;height: 25px;font-size: 12px;color: rgb(99,99,99);border: 1px solid #e3e2e8;text-indent:6px;" id="messageAuthCode" maxlength="6" /><div style="width:100px;height:25px;line-height:25px;float:right;text-align:center;margin-left:10px;margin-top:1px;" class="memberOtherSignup"><div title="' + LS.getMobileMsmCode + '" class="getMobileCdBtn" onclick="Site.getOtherSignMobileCode()">' + LS.getMobileMsmCode + "</div></div></td>");
+        m.push('<td><input type="text" style="width:80px;margin-left:5px;height: 25px;font-size: 12px;color: rgb(99,99,99);border: 1px solid #e3e2e8;text-indent:6px;" id="messageAuthCode" maxlength="6" /><div style="width:100px;height:25px;line-height:25px;float:right;text-align:center;margin-left:10px;margin-top:1px;" class="memberOtherSignup"><div title="' + LS.getMobileMsmCode + '" class="getMobileCdBtn" onclick="Run.getOtherSignMobileCode()">' + LS.getMobileMsmCode + "</div></div></td>");
         m.push("</tr>")
     }
     var h = "";
@@ -11621,31 +11621,31 @@ Site.memberOtherLoginFill = function (f, a, d, c, e, k) {
     m.push("</table>");
     m.push('<div id="oLoginTip" style="text-align:center;padding-top:6px;color:red;"></div>');
     m.push('<div style="text-align:center; margin-top:32px;">');
-    m.push('<a hidefocus="true" class="formBtn" style="width:250px; height:40px; line-height:40px; background:#1779ff; font-size:14px; border-radius:30px;" href="javascript:;" onclick=\'Site.memberOtherLoginSubmit(' + l + ',"' + j + '",' + d + "," + $.toJSON(k) + ");return false;'>" + LS.confirm + "</a>");
+    m.push('<a hidefocus="true" class="formBtn" style="width:250px; height:40px; line-height:40px; background:#1779ff; font-size:14px; border-radius:30px;" href="javascript:;" onclick=\'Run.memberOtherLoginSubmit(' + l + ',"' + j + '",' + d + "," + $.toJSON(k) + ");return false;'>" + LS.confirm + "</a>");
     m.push("</div></div>");
     m = m.join("");
     var n = {boxId: l, boxName: "qqLogin", title: LS.memberOtherLgnAddTitle, htmlContent: m, width: 406};
-    Site.popupBox(n);
+    Run.popupBox(n);
     $("#openId").val(a)
 };
-Site.memberOtherLoginAdd = function (a, h, b, c, f, m, g, e) {
+Run.memberOtherLoginAdd = function (a, h, b, c, f, m, g, e) {
     var n = parseInt(Math.random() * 10000);
     var i = "", l = "", d = 170, k = 40;
     if (f == 1) {
-        i = Site.qqListener.q_avator;
-        l = Site.qqListener.q_name
+        i = Run.qqListener.q_avator;
+        l = Run.qqListener.q_name
     } else {
         if (f == 2) {
-            i = Site.wbListener.wb_avator;
+            i = Run.wbListener.wb_avator;
             k = 50;
             d = 165;
-            l = Site.wbListener.wb_name
+            l = Run.wbListener.wb_name
         } else {
             if (f == 3) {
-                i = Site.wxListener.wx_avator;
+                i = Run.wxListener.wx_avator;
                 d = 158;
                 k = 64;
-                l = Site.wxListener.wx_name
+                l = Run.wxListener.wx_name
             }
         }
     }
@@ -11676,11 +11676,11 @@ Site.memberOtherLoginAdd = function (a, h, b, c, f, m, g, e) {
     if (g) {
         o.push('<tr class="bindAcctHidn" style="display:block; margin-top:10px; width:320px;">');
         o.push('<td style="width:120px;_width:auto;text-align:right; color:rgb(99,99,99);font-size:12px;">' + LS.memberSignup_captcha + "</td>");
-        o.push('<td><input id="memberSignupCaptcha" type="text" style="width:80px;margin-left:5px;height: 25px;font-size: 12px;color: rgb(99,99,99);border: 1px solid #e3e2e8;text-indent: 6px;" maxlength="4"/><div style="width:81px;height:25px;line-height:25px;float:right;text-align:center;color:red;"><img style="width:100%;height:100%;cursor:pointer;margin-left:10px;margin-top:2px;" alt="" id="memberSignupCaptchaImg" onclick="Site.changeCaptchaImg(this)" title="' + LS.msgBoradChageValidateCode + '" src="validateCode.php?' + Math.random() * 1000 + '"/></div></td>');
+        o.push('<td><input id="memberSignupCaptcha" type="text" style="width:80px;margin-left:5px;height: 25px;font-size: 12px;color: rgb(99,99,99);border: 1px solid #e3e2e8;text-indent: 6px;" maxlength="4"/><div style="width:81px;height:25px;line-height:25px;float:right;text-align:center;color:red;"><img style="width:100%;height:100%;cursor:pointer;margin-left:10px;margin-top:2px;" alt="" id="memberSignupCaptchaImg" onclick="Run.changeCaptchaImg(this)" title="' + LS.msgBoradChageValidateCode + '" src="validateCode.php?' + Math.random() * 1000 + '"/></div></td>');
         o.push("</tr>");
         o.push('<tr class="bindAcctHidn" style="display:block; margin-top:10px; width:320px;">');
         o.push('<td style="width:120px;_width:auto;text-align:right; color:rgb(99,99,99);font-size:12px;">' + LS.mobileMsmCode + "</td>");
-        o.push('<td><input type="text" style="width:80px;margin-left:5px;height: 25px;font-size: 12px;color: rgb(99,99,99);border: 1px solid #e3e2e8;text-indent:6px;" id="messageAuthCode" maxlength="6" /><div style="width:100px;height:25px;line-height:25px;float:right;text-align:center;margin-left:10px;margin-top:1px;" class="memberOtherSignup"><div title="' + LS.getMobileMsmCode + '" class="getMobileCdBtn" onclick="Site.getOtherSignMobileCode()">' + LS.getMobileMsmCode + "</div></div></td>");
+        o.push('<td><input type="text" style="width:80px;margin-left:5px;height: 25px;font-size: 12px;color: rgb(99,99,99);border: 1px solid #e3e2e8;text-indent:6px;" id="messageAuthCode" maxlength="6" /><div style="width:100px;height:25px;line-height:25px;float:right;text-align:center;margin-left:10px;margin-top:1px;" class="memberOtherSignup"><div title="' + LS.getMobileMsmCode + '" class="getMobileCdBtn" onclick="Run.getOtherSignMobileCode()">' + LS.getMobileMsmCode + "</div></div></td>");
         o.push("</tr>")
     }
     var j = "";
@@ -11699,11 +11699,11 @@ Site.memberOtherLoginAdd = function (a, h, b, c, f, m, g, e) {
     o.push('<div id="oLoginBindMsg" style="text-align:center;display:none;padding:10px 0;font-family:MicrosoftYaHei Regular;font-size:12px;color:rgb(157,157,157);">( ' + j + ")</div>");
     o.push('<div id="oLoginTip" style="text-align:center;padding-top:6px;color:red;"></div>');
     o.push('<div style="height:30px;line-height:30px;text-align:center;padding:5px 0;">');
-    o.push('<a hidefocus="true" class="formBtn" style="width:142px; height:35px; background:#1779ff; font-size:14px; " href="javascript:;" onclick=\'Site.memberOtherLoginSubmit(' + n + "," + f + "," + $.toJSON(m) + ");return false;'>" + LS.confirm + "</a>");
+    o.push('<a hidefocus="true" class="formBtn" style="width:142px; height:35px; background:#1779ff; font-size:14px; " href="javascript:;" onclick=\'Run.memberOtherLoginSubmit(' + n + "," + f + "," + $.toJSON(m) + ");return false;'>" + LS.confirm + "</a>");
     o.push("</div></div>");
     o = o.join("");
     var p = {boxId: n, boxName: "qqLogin", title: LS.memberOtherLgnAddTitle, htmlContent: o, width: 380};
-    Site.popupBox(p);
+    Run.popupBox(p);
     $("#openId").val(a);
     $("#bindAcct,#bindAcctLabel").click(function () {
         if ($("#bindAcct").attr("class") == "checkBoxStyle_unCheck") {
@@ -11719,55 +11719,55 @@ Site.memberOtherLoginAdd = function (a, h, b, c, f, m, g, e) {
         }
     })
 };
-Site.getOtherSignMobileCode = function () {
-    var a = Site.checkOtherGetMobileCodeParam();
+Run.getOtherSignMobileCode = function () {
+    var a = Run.checkOtherGetMobileCodeParam();
     if (a.checkResult == true) {
         $.ajax({
             type: "post",
             url: "ajax/member_h.php?cmd=getMobileCode",
             data: "mobile=" + a.info.mobile + "&mobileCt=" + a.info.mobileCt + "&validateCode=" + a.info.captcha,
             error: function () {
-                Fai.ing(LS.getMobileCodeErrAf, true)
+                Helper.ing(LS.getMobileCodeErrAf, true)
             },
             success: function (b) {
                 var c = jQuery.parseJSON(b);
                 if (c.success) {
-                    Fai.ing(LS.sendMobileCodeSuc, true);
-                    Site.otherSignMobileCodeCountDown()
+                    Helper.ing(LS.sendMobileCodeSuc, true);
+                    Run.otherSignMobileCodeCountDown()
                 } else {
-                    Site.changeCaptchaImg($("#memberSignupCaptchaImg")[0]);
+                    Run.changeCaptchaImg($("#memberSignupCaptchaImg")[0]);
                     $("#memberSignupCaptcha").val("");
                     if (c.rt == -401) {
-                        Fai.ing(LS.memberSignupRegisterCaptchaNotMatch, true)
+                        Helper.ing(LS.memberSignupRegisterCaptchaNotMatch, true)
                     } else {
                         if (c.rt == -2) {
-                            Fai.ing(LS.argsError, true)
+                            Helper.ing(LS.argsError, true)
                         } else {
                             if (c.rt == 2) {
-                                Fai.ing(LS.memberDialogSendMobileCodeErr, true)
+                                Helper.ing(LS.memberDialogSendMobileCodeErr, true)
                             } else {
                                 if (c.rt == -4 || c.rt == 8) {
-                                    Fai.ing(LS.getMobileOneMin, true)
+                                    Helper.ing(LS.getMobileOneMin, true)
                                 } else {
                                     if (c.rt == -8) {
-                                        Fai.ing(LS.getMobileHalfHour, true)
+                                        Helper.ing(LS.getMobileHalfHour, true)
                                     } else {
                                         if (c.rt == 3) {
-                                            Fai.ing(LS.memberDialogMobileMoneyErr, true)
+                                            Helper.ing(LS.memberDialogMobileMoneyErr, true)
                                         } else {
                                             if (c.rt == 9) {
-                                                Fai.ing(LS.memberDialogSendMobileCodeLimit, true)
+                                                Helper.ing(LS.memberDialogSendMobileCodeLimit, true)
                                             } else {
                                                 if (c.rt == 101) {
-                                                    Fai.ing(LS.mobileSetErr, true)
+                                                    Helper.ing(LS.mobileSetErr, true)
                                                 } else {
                                                     if (c.rt == -6) {
-                                                        Fai.ing(LS.mobileHasSigned, true)
+                                                        Helper.ing(LS.mobileHasSigned, true)
                                                     } else {
                                                         if (c.rt == 23) {
-                                                            Fai.ing(LS.mobileNationTplErr, true)
+                                                            Helper.ing(LS.mobileNationTplErr, true)
                                                         } else {
-                                                            Fai.ing(LS.getMobileRefresh, true)
+                                                            Helper.ing(LS.getMobileRefresh, true)
                                                         }
                                                     }
                                                 }
@@ -11783,16 +11783,16 @@ Site.getOtherSignMobileCode = function () {
         })
     }
 };
-Site.checkOtherGetMobileCodeParam = function () {
+Run.checkOtherGetMobileCodeParam = function () {
     var c = {checkResult: false, info: {}};
     var a = $("#mobile").val();
     var b = $("#memberSignupCaptcha").val();
-    if (!Fai.isNationMobile(a)) {
-        Fai.ing(LS.mobileNumRegular, true);
+    if (!Helper.isNationMobile(a)) {
+        Helper.ing(LS.mobileNumRegular, true);
         return c
     }
     if (b == null || b == "") {
-        Fai.ing(LS.memberSignupRegisterCaptchaEmpty, true);
+        Helper.ing(LS.memberSignupRegisterCaptchaEmpty, true);
         return c
     }
     c.checkResult = true;
@@ -11805,7 +11805,7 @@ Site.checkOtherGetMobileCodeParam = function () {
     c.info.captcha = b;
     return c
 };
-Site.otherSignMobileCodeCountDown = function () {
+Run.otherSignMobileCodeCountDown = function () {
     var c = $(".getMobileCdBtn");
     var b = c.attr("cTime");
     var d = 60;
@@ -11829,20 +11829,20 @@ Site.otherSignMobileCodeCountDown = function () {
         }
     }, 1000)
 };
-Site.memberOtherLoginSubmit = function (p, c, n, o) {
+Run.memberOtherLoginSubmit = function (p, c, n, o) {
     var i = "cmd=otherAdd", e = $("#oLoginTip"), f = {};
     f.acct = c;
     if (n == 1) {
         f.qqOpenId = $("#openId").val();
-        f.headImgUrl = Site.qqListener.q_avator
+        f.headImgUrl = Run.qqListener.q_avator
     } else {
         if (n == 2) {
             f.sinaOpenId = $("#openId").val();
-            f.headImgUrl = Site.wbListener.wb_avator
+            f.headImgUrl = Run.wbListener.wb_avator
         } else {
             if (n == 3) {
                 f.wxOpenId = $("#openId").val();
-                f.headImgUrl = Site.wxListener.wx_avator
+                f.headImgUrl = Run.wxListener.wx_avator
             }
         }
     }
@@ -11854,21 +11854,21 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
         h = $(this).attr("maxlength");
         f[userAddItemID] = m;
         if (m.length > h) {
-            e.html(Fai.format(LS.memberSignupUserAddItemMaxLength, k, h));
+            e.html(Helper.format(LS.memberSignupUserAddItemMaxLength, k, h));
             $(this).focus();
             q = 1;
             return false
         }
         if (userAddItemID == "phone" && m.length > 0) {
-            if (!Fai.isPhone(m)) {
-                e.html(Fai.format(LS.memberSignupUserAddItemCorrect, k));
+            if (!Helper.isPhone(m)) {
+                e.html(Helper.format(LS.memberSignupUserAddItemCorrect, k));
                 $(this).focus();
                 l = 1;
                 return false
             }
         }
         if (userAddItemID == "mobile" && m.length > 0) {
-            if (!Fai.isNationMobile(m)) {
+            if (!Helper.isNationMobile(m)) {
                 e.html(LS.mobileNumRegular);
                 l = 1;
                 return false
@@ -11902,14 +11902,14 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
         m = $(this).val();
         k = $(this).attr("name");
         if (m == null || m == "") {
-            e.html(Fai.format(LS.memberSignupUserAddItemIsEmpty, k));
+            e.html(Helper.format(LS.memberSignupUserAddItemIsEmpty, k));
             $(this).focus();
             g = 1;
             return false
         }
         if (userAddItemID == "email" && m.length > 0) {
-            if (!Fai.isEmail(m)) {
-                e.html(Fai.format(LS.memberSignupUserAddItemCorrect, k));
+            if (!Helper.isEmail(m)) {
+                e.html(Helper.format(LS.memberSignupUserAddItemCorrect, k));
                 $(this).focus();
                 g = 1;
                 return false
@@ -11920,14 +11920,14 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
         return
     }
     e.html(LS.memberSignupRegisterIng);
-    var b = Fai.getUrlParam(Fai.top.location.href, "url");
+    var b = Helper.getUrlParam(Helper.top.location.href, "url");
     if (!b) {
         b = "./index.php"
     }
     $.ajax({
         type: "post",
         url: "ajax/member_h.php?" + i,
-        data: "info=" + Fai.encodeUrl($.toJSON(f)) + "&loginType=" + n,
+        data: "info=" + Helper.encodeUrl($.toJSON(f)) + "&loginType=" + n,
         error: function () {
             e.html(LS.memberSignupRegisterError)
         },
@@ -11948,7 +11948,7 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
                             z.count = E.count;
                             z.doWhat = "add";
                             $.cookie("isNeedAddCartItem", $.toJSON(z));
-                            Fai.top.location.reload()
+                            Helper.top.location.reload()
                         } else {
                             if (E.where == "immeBuy") {
                                 var z = {};
@@ -11959,7 +11959,7 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
                                 z.count = E.count;
                                 z.doWhat = "buy";
                                 $.cookie("isNeedAddCartItem", $.toJSON(z));
-                                Fai.top.location.reload()
+                                Helper.top.location.reload()
                             }
                         }
                     }
@@ -11967,16 +11967,16 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
                     return
                 }
                 if (w.fromBind) {
-                    Fai.top.$("#popupBg" + p).remove();
-                    Fai.top.$("#popupBox" + p).remove();
-                    Site.memberInactiveDialog(w.mail, w.memName)
+                    Helper.top.$("#popupBg" + p).remove();
+                    Helper.top.$("#popupBox" + p).remove();
+                    Run.memberInactiveDialog(w.mail, w.memName)
                 } else {
                     if (w.active) {
-                        Fai.top.$("#popupBg" + p).remove();
-                        Fai.top.$("#popupBox" + p).remove();
-                        Site.memberActiveDialog(f.email, Fai.encodeUrl(f.acct), function () {
-                            Fai.top.location.href = b;
-                            Fai.top.event.returnValue = false
+                        Helper.top.$("#popupBg" + p).remove();
+                        Helper.top.$("#popupBox" + p).remove();
+                        Run.memberActiveDialog(f.email, Helper.encodeUrl(f.acct), function () {
+                            Helper.top.location.href = b;
+                            Helper.top.event.returnValue = false
                         })
                     } else {
                         if (!!o.skipUrl) {
@@ -11990,9 +11990,9 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
                                     var D = t[x].split(":"), r = D[1].indexOf("(") + 1, v = D[1].lastIndexOf(")"),
                                         B = Array.prototype.slice.call(D[1].substring(r, v).split(",")),
                                         u = D[1].substring(0, r - 1), C = [];
-                                    Site.photoSlide.returnIndex = function () {
-                                        delete Site.photoSlide.returnIndex;
-                                        Fai.top.location.href = "/index.php"
+                                    Run.photoSlide.returnIndex = function () {
+                                        delete Run.photoSlide.returnIndex;
+                                        Helper.top.location.href = "/index.php"
                                     };
                                     var y = [{name: u, base: window}];
                                     C = y.concat(B);
@@ -12000,7 +12000,7 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
                                 }
                             }
                         } else {
-                            Fai.top.location.href = b
+                            Helper.top.location.href = b
                         }
                     }
                 }
@@ -12020,7 +12020,7 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
                                 if (w.rt == -3) {
                                     e.html(LS.memberDialogNotFound)
                                 } else {
-                                    if (w.rt == Site.otherLoginErrno.acctAlreadyBind) {
+                                    if (w.rt == Run.otherLoginErrno.acctAlreadyBind) {
                                         e.html(LS.memberOtherLgnAcctAlreadyBind)
                                     } else {
                                         e.html(LS.memberSignupRegisterError)
@@ -12034,11 +12034,11 @@ Site.memberOtherLoginSubmit = function (p, c, n, o) {
         }
     })
 };
-Site.otherLoginErrno = {acctAlreadyBind: 1};
-Site.memberFdPwdStepOne = function (c) {
+Run.otherLoginErrno = {acctAlreadyBind: 1};
+Run.memberFdPwdStepOne = function (c) {
     var d = parseInt(Math.random() * 10000);
     var a = $.trim($("#module" + c + " .memberAcct").val());
-    var e = ["<div class='memberFdPwdStepOne' style='height:100%;'>", "<div style='width:80px; height:1px; font-size:0; background-color:#44a5ff; margin-left:26px; float:left;' class='J_titleBlueLine'></div>", "<div style='width:250px; height:1px; font-size:0; background-color:#dadada; margin-left:96px;'></div>", "<div class='itemLine' style='margin-top:8px;'>", "<div class='itemTitle' style='font-family:微软雅黑; font-size:14px; color:rgb(99,99,99); width:110px;'>", LS.memberDialogFwdAcct, "</div>", "<div class='itemCtrl'><input type='text' id='macct' name='macct' style='-webkit-border-radius: 0; -moz-border-radius: 0; border:1px solid #e7e7e7; width:168px;height:30px;' class='acctInput' value='", Fai.encodeHtml(a), "'/></div>", "</div>", "<div class='itemLine'>", "<div class='itemTitle'></div>", "<div class='itemCtrl'><a hidefocus='true' class='formBtn' style='background:#1779ff; margin-left:50px;' href='javascript:;' onclick='Site.memberFdPwdStepTwo(", d, ");return false;'>", LS.memberDialogNextStep, "</a></div>", "</div>", "</div>"];
+    var e = ["<div class='memberFdPwdStepOne' style='height:100%;'>", "<div style='width:80px; height:1px; font-size:0; background-color:#44a5ff; margin-left:26px; float:left;' class='J_titleBlueLine'></div>", "<div style='width:250px; height:1px; font-size:0; background-color:#dadada; margin-left:96px;'></div>", "<div class='itemLine' style='margin-top:8px;'>", "<div class='itemTitle' style='font-family:微软雅黑; font-size:14px; color:rgb(99,99,99); width:110px;'>", LS.memberDialogFwdAcct, "</div>", "<div class='itemCtrl'><input type='text' id='macct' name='macct' style='-webkit-border-radius: 0; -moz-border-radius: 0; border:1px solid #e7e7e7; width:168px;height:30px;' class='acctInput' value='", Helper.encodeHtml(a), "'/></div>", "</div>", "<div class='itemLine'>", "<div class='itemTitle'></div>", "<div class='itemCtrl'><a hidefocus='true' class='formBtn' style='background:#1779ff; margin-left:50px;' href='javascript:;' onclick='Run.memberFdPwdStepTwo(", d, ");return false;'>", LS.memberDialogNextStep, "</a></div>", "</div>", "</div>"];
     e = e.join("");
     var b = {
         boxId: d,
@@ -12048,26 +12048,26 @@ Site.memberFdPwdStepOne = function (c) {
         height: 176,
         boxName: "memberFdPwd"
     };
-    Site.popupBox(b);
+    Run.popupBox(b);
     setTimeout(function () {
-        var g = Fai.top.$("#popupBox" + d);
+        var g = Helper.top.$("#popupBox" + d);
         var f = g.find(".J_fidnPwFirstTitle").width();
         g.find(".J_titleBlueLine").css("width", (f + 10) + "px")
     }, 200)
 };
-Site.memberFdPwdStepTwo = function (b) {
+Run.memberFdPwdStepTwo = function (b) {
     var a = $.trim($("#macct").val());
     if (a == "") {
-        Fai.ing(LS.memberDialogPleaseEnterAcct, true);
+        Helper.ing(LS.memberDialogPleaseEnterAcct, true);
         $("#macct").focus();
         return
     }
     $.ajax({
         type: "post",
         url: "ajax/member_h.php?cmd=getMAcctMail",
-        data: "mAcct=" + Fai.encodeUrl(a),
+        data: "mAcct=" + Helper.encodeUrl(a),
         error: function () {
-            Fai.ing(LS.systemError, false)
+            Helper.ing(LS.systemError, false)
         },
         success: function (q) {
             var q = jQuery.parseJSON(q);
@@ -12075,20 +12075,20 @@ Site.memberFdPwdStepTwo = function (b) {
                 if (!q.findPwByMobileOpen) {
                     if (q.noMail) {
                         var e = LS.memberDialogNoEmailMsg;
-                        Site.showModifyPwContMsg(e, b);
+                        Run.showModifyPwContMsg(e, b);
                         return
                     }
                 }
                 if (!q.findPwByMailOpen) {
                     if (q.mobile == null || q.mobile == "null" || "" == q.mobile) {
                         var e = LS.memberDialogNoMobile;
-                        Site.showModifyPwContMsg(e, b);
+                        Run.showModifyPwContMsg(e, b);
                         return
                     }
                 }
                 if (q.noMail && (q.mobile == "null" || "" == q.mobile)) {
                     var e = LS.memberDialogNoMailMobile;
-                    Site.showModifyPwContMsg(e, b);
+                    Run.showModifyPwContMsg(e, b);
                     return
                 }
                 if (q.noMail) {
@@ -12097,12 +12097,12 @@ Site.memberFdPwdStepTwo = function (b) {
                 if (q.mobile == "null" || "" == q.mobile) {
                     q.findPwByMobileOpen = false
                 }
-                Fai.top.$("#popupBg" + b).remove();
-                Fai.top.$("#popupBox" + b).remove();
+                Helper.top.$("#popupBg" + b).remove();
+                Helper.top.$("#popupBox" + b).remove();
                 var k = parseInt(Math.random() * 10000);
                 var p = "", g = "", f = "";
                 var c = "";
-                if (Fai.isIE6()) {
+                if (Helper.isIE6()) {
                     g = "position:relative;";
                     f = "top:5px;";
                     c = "height:355px"
@@ -12115,9 +12115,9 @@ Site.memberFdPwdStepTwo = function (b) {
                 var h = [];
                 if (q.findPwByMailOpen) {
                     if (q.noMail) {
-                        h = ["<div class='J_fdFwdByMailContent' style='" + c + "'>", "<div class='memberFdPwdTwoMsg' style='color:#636363;font-family:微软雅黑;font-size:14px;font-weight:bold;position:relative;top:90px;left:70px;width:360px;'>", LS.memberShowNoMail + "<br>" + LS.memberDialogConMg, "</div>", "<div class='memberDialogNoNumberTip'></div>", "<div style='margin-top:35px;'><div class='itemTitle2' style='height:34px; width:173px;'></div><a hidefocus='true' style='background: #1779ff; width:166px; height:35px;position:relative;top:170px;' class='formBtn' href='javascript:;' onclick='Site.closeFdPwdBoxById(", k, ");return false;'>", LS.confirm, " </a></div>", "</div>"]
+                        h = ["<div class='J_fdFwdByMailContent' style='" + c + "'>", "<div class='memberFdPwdTwoMsg' style='color:#636363;font-family:微软雅黑;font-size:14px;font-weight:bold;position:relative;top:90px;left:70px;width:360px;'>", LS.memberShowNoMail + "<br>" + LS.memberDialogConMg, "</div>", "<div class='memberDialogNoNumberTip'></div>", "<div style='margin-top:35px;'><div class='itemTitle2' style='height:34px; width:173px;'></div><a hidefocus='true' style='background: #1779ff; width:166px; height:35px;position:relative;top:170px;' class='formBtn' href='javascript:;' onclick='Run.closeFdPwdBoxById(", k, ");return false;'>", LS.confirm, " </a></div>", "</div>"]
                     } else {
-                        h = ["<div class='J_fdFwdByMailContent' style='", p, "'>", "<div class='memberFdPwdTwoMsg'>", "<div class='itemStepLine'>", LS.memberDialogFwdOneStep, "<a href='javascript:;' hidefocus='true' style='color:#ff6d00' id='memSendPwdCode' onclick='Site.sendMemberEmailPwdCode();return false;'>", LS.memberDialogClickHere, "</a><span id='menWaitMsg'></span>", Fai.format(LS.memberDialogFwdOneStepThirdMsg, q.mail), "</div>", "<div class='itemStepLine'>", LS.memberDialogFwdTwoStep, "</div>", "<div class='itemStepLine'>", LS.memberDialogFwdThreeStep, "</div>", "</div>", "<div style='height:26px; margin-top:30px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwdMailCode, "</div><input type='text' id='memEmailCode' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div style='display:none;'><div class='itemTitle2'></div><input type='text' id='memMailCodeSign' disabled/></div>", "<div style='display:none;'><div class='itemTitle2'></div><input type='text' id='macct2' value='", Fai.encodeHtml(a), "' disabled/></div>", "<div style='height:26px; margin-top:20px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwd, "</div><input type='password' id='memPwd' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div style='height:26px; margin-top:20px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwd2, "</div><input type='password' id='memPwd2' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div id='memPwdItemErrorWrap' style='display:none;padding:0 10px; margin-top:10px;text-align:center;'><span style='color:red;height:24px;line-height:24px;font-family:微软雅黑;font-size:14px;' id='memPwdItemError'></span></div>", "<div style='margin-top:35px;'><div class='itemTitle2' style='height:34px; width:173px;'></div><a hidefocus='true' style='background: #1779ff; width:166px; height:35px;' class='formBtn' href='javascript:;' onclick='Site.memberFdPwdStepLast(", k, ",", 1, ");return false;'>", LS.memberDialogNextStep, " </a></div>", "</div>"]
+                        h = ["<div class='J_fdFwdByMailContent' style='", p, "'>", "<div class='memberFdPwdTwoMsg'>", "<div class='itemStepLine'>", LS.memberDialogFwdOneStep, "<a href='javascript:;' hidefocus='true' style='color:#ff6d00' id='memSendPwdCode' onclick='Run.sendMemberEmailPwdCode();return false;'>", LS.memberDialogClickHere, "</a><span id='menWaitMsg'></span>", Helper.format(LS.memberDialogFwdOneStepThirdMsg, q.mail), "</div>", "<div class='itemStepLine'>", LS.memberDialogFwdTwoStep, "</div>", "<div class='itemStepLine'>", LS.memberDialogFwdThreeStep, "</div>", "</div>", "<div style='height:26px; margin-top:30px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwdMailCode, "</div><input type='text' id='memEmailCode' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div style='display:none;'><div class='itemTitle2'></div><input type='text' id='memMailCodeSign' disabled/></div>", "<div style='display:none;'><div class='itemTitle2'></div><input type='text' id='macct2' value='", Helper.encodeHtml(a), "' disabled/></div>", "<div style='height:26px; margin-top:20px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwd, "</div><input type='password' id='memPwd' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div style='height:26px; margin-top:20px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwd2, "</div><input type='password' id='memPwd2' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div id='memPwdItemErrorWrap' style='display:none;padding:0 10px; margin-top:10px;text-align:center;'><span style='color:red;height:24px;line-height:24px;font-family:微软雅黑;font-size:14px;' id='memPwdItemError'></span></div>", "<div style='margin-top:35px;'><div class='itemTitle2' style='height:34px; width:173px;'></div><a hidefocus='true' style='background: #1779ff; width:166px; height:35px;' class='formBtn' href='javascript:;' onclick='Run.memberFdPwdStepLast(", k, ",", 1, ");return false;'>", LS.memberDialogNextStep, " </a></div>", "</div>"]
                     }
                 }
                 var j = [];
@@ -12127,13 +12127,13 @@ Site.memberFdPwdStepTwo = function (b) {
                         o = "display:none;" + c
                     }
                     if (q.mobile == "null" || "" == q.mobile) {
-                        j = ["<div class='J_fdFwdByMobileContent' style='" + o + "'>", "<div class='memberFdPwdTwoMsg' style ='color:#636363;font-family:微软雅黑;font-size:14px;font-weight:bold;position:relative;top:90px;left:70px;width:360px;'>", LS.memberShowNoMobile + "<br>" + LS.memberDialogConMg, "</div>", "<div class='memberDialogNoNumberTip'></div>", "<div style='margin-top:35px;'><div class='itemTitle2' style='height:34px; width:173px;'></div><a hidefocus='true' style='background: #1779ff; width:166px; height:35px;position:relative;top:170px;' class='formBtn' href='javascript:;' onclick='Site.closeFdPwdBoxById(", k, ");return false;'>", LS.confirm, " </a></div>", "</div>"]
+                        j = ["<div class='J_fdFwdByMobileContent' style='" + o + "'>", "<div class='memberFdPwdTwoMsg' style ='color:#636363;font-family:微软雅黑;font-size:14px;font-weight:bold;position:relative;top:90px;left:70px;width:360px;'>", LS.memberShowNoMobile + "<br>" + LS.memberDialogConMg, "</div>", "<div class='memberDialogNoNumberTip'></div>", "<div style='margin-top:35px;'><div class='itemTitle2' style='height:34px; width:173px;'></div><a hidefocus='true' style='background: #1779ff; width:166px; height:35px;position:relative;top:170px;' class='formBtn' href='javascript:;' onclick='Run.closeFdPwdBoxById(", k, ");return false;'>", LS.confirm, " </a></div>", "</div>"]
                     } else {
                         var d = "";
                         if (!q.findPwByMailOpen || q.noMail) {
-                            d = "<div style='display:none;'><div class='itemTitle2'></div><input type='text' id='macct2' value='" + Fai.encodeHtml(a) + "' disabled/></div>"
+                            d = "<div style='display:none;'><div class='itemTitle2'></div><input type='text' id='macct2' value='" + Helper.encodeHtml(a) + "' disabled/></div>"
                         }
-                        j = ["<div class='J_fdFwdByMobileContent' style='", o, p, "'>", "<div class='memberFdPwdTwoMsg'>", "<div class='itemStepLine'>", LS.memberDialogFwdOneStep, "<a href='javascript:;' hidefocus='true' style='color:#ff6d00' id='memSendMobilePwdCode' onclick='Site.sendMemberMobileCode();return false;'>", LS.memberDialogClickHere, "</a><span id='menMbWaitMsg'></span>", Fai.format(LS.memberDialogFwdByMobileOneStep, q.mobile), "</div>", "<div class='itemStepLine'>", LS.memberDialogFwdByMobileSendStep, "</div>", "<div class='itemStepLine'>", LS.memberDialogFwdThreeStep, "</div>", "</div>", "<div style='height:26px; margin-top:30px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.mobileCodeTip + " : &nbsp;", "</div><input type='text' id='memMobileCode' maxlength='6' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div style='display:none;'><div class='itemTitle2'></div><input type='text' id='memMobileCodeSign' disabled/></div>", d, "<div style='height:26px; margin-top:20px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwd, "</div><input type='password' id='memPwdMb' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div style='height:26px; margin-top:20px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwd2, "</div><input type='password' id='memPwdMb2' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div id='memPwdMbItemErrorWrap' style='display:none;padding:0 10px; margin-top:10px;text-align:center;'><span style='color:red;height:24px;line-height:24px;font-family:微软雅黑;font-size:14px;' id='memPwdMbItemError'></span></div>", "<div style='margin-top:35px;'><div class='itemTitle2' style='height:34px; width:173px;'></div><a hidefocus='true' style='background: #1779ff; width:166px; height:35px;' class='formBtn' href='javascript:;' onclick='Site.memberFdPwdStepLast(", k, ",", 2, ");return false;'>", LS.memberDialogNextStep, " </a></div>", "</div>"]
+                        j = ["<div class='J_fdFwdByMobileContent' style='", o, p, "'>", "<div class='memberFdPwdTwoMsg'>", "<div class='itemStepLine'>", LS.memberDialogFwdOneStep, "<a href='javascript:;' hidefocus='true' style='color:#ff6d00' id='memSendMobilePwdCode' onclick='Run.sendMemberMobileCode();return false;'>", LS.memberDialogClickHere, "</a><span id='menMbWaitMsg'></span>", Helper.format(LS.memberDialogFwdByMobileOneStep, q.mobile), "</div>", "<div class='itemStepLine'>", LS.memberDialogFwdByMobileSendStep, "</div>", "<div class='itemStepLine'>", LS.memberDialogFwdThreeStep, "</div>", "</div>", "<div style='height:26px; margin-top:30px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.mobileCodeTip + " : &nbsp;", "</div><input type='text' id='memMobileCode' maxlength='6' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div style='display:none;'><div class='itemTitle2'></div><input type='text' id='memMobileCodeSign' disabled/></div>", d, "<div style='height:26px; margin-top:20px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwd, "</div><input type='password' id='memPwdMb' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div style='height:26px; margin-top:20px;'><div class='itemTitle2' style='padding-top:3px; width:124px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwd2, "</div><input type='password' id='memPwdMb2' style='width:284px; height:26px; border: 1px solid #e7e7e7;-webkit-border-radius: 0; -moz-border-radius: 0px;'/></div>", "<div id='memPwdMbItemErrorWrap' style='display:none;padding:0 10px; margin-top:10px;text-align:center;'><span style='color:red;height:24px;line-height:24px;font-family:微软雅黑;font-size:14px;' id='memPwdMbItemError'></span></div>", "<div style='margin-top:35px;'><div class='itemTitle2' style='height:34px; width:173px;'></div><a hidefocus='true' style='background: #1779ff; width:166px; height:35px;' class='formBtn' href='javascript:;' onclick='Run.memberFdPwdStepLast(", k, ",", 2, ");return false;'>", LS.memberDialogNextStep, " </a></div>", "</div>"]
                     }
                 }
                 Array.prototype.push.apply(m, h);
@@ -12142,53 +12142,53 @@ Site.memberFdPwdStepTwo = function (b) {
                 m = m.join("");
                 var i = "";
                 if (q.findPwByMailOpen) {
-                    i = "<span  class='f-findPwSetHoverBox J_findPwByMailBox' onclick='Site.changeFdPwdShowTab(1, " + k + "," + q.findPwByMailOpen + ")'>" + LS.memberDialogMailTitle + "</span>"
+                    i = "<span  class='f-findPwSetHoverBox J_findPwByMailBox' onclick='Run.changeFdPwdShowTab(1, " + k + "," + q.findPwByMailOpen + ")'>" + LS.memberDialogMailTitle + "</span>"
                 }
                 if (q.findPwByMobileOpen) {
                     var l = "";
                     if (q.findPwByMailOpen) {
                         l = "style='margin-left:30px;'"
                     }
-                    i = i + "<span " + l + "  class='f-findPwSetHoverBox J_findPwByMobileBox' onclick='Site.changeFdPwdShowTab(2, " + k + "," + q.findPwByMailOpen + ")'>" + LS.memberDialogMobileTitle + "</span>"
+                    i = i + "<span " + l + "  class='f-findPwSetHoverBox J_findPwByMobileBox' onclick='Run.changeFdPwdShowTab(2, " + k + "," + q.findPwByMailOpen + ")'>" + LS.memberDialogMobileTitle + "</span>"
                 }
                 var n = {boxId: k, title: i, htmlContent: m, width: 510, height: 437, boxName: "memberFdPwd"};
-                Site.popupBox(n);
+                Run.popupBox(n);
                 setTimeout(function () {
-                    Site.changeFdPwdShowTab(1, k, q.findPwByMailOpen)
+                    Run.changeFdPwdShowTab(1, k, q.findPwByMailOpen)
                 }, 200)
             } else {
                 if (q.notFound) {
-                    Fai.ing(LS.memberDialogNotFound, true)
+                    Helper.ing(LS.memberDialogNotFound, true)
                 } else {
-                    Fai.ing(LS.argsError, true)
+                    Helper.ing(LS.argsError, true)
                 }
             }
         }
     })
 };
-Site.memberFdPwdStepLast = function (b, a) {
+Run.memberFdPwdStepLast = function (b, a) {
     if (typeof(a) != "undefined" && a == 2) {
-        Site.memberFdPwdByMobileStepLast(b)
+        Run.memberFdPwdByMobileStepLast(b)
     } else {
-        Site.memberFdPwdByMailStepLast(b)
+        Run.memberFdPwdByMailStepLast(b)
     }
 };
-Site.sendMemberMobileCode = function () {
+Run.sendMemberMobileCode = function () {
     if ($("#memSendMobilePwdCode").data("_disable")) {
         return
     }
     var a = $("#macct2").val();
     if (a == "") {
-        Fai.ing(LS.memberDialogPleaseEnterAcct, true);
+        Helper.ing(LS.memberDialogPleaseEnterAcct, true);
         return
     }
     $.ajax({
         type: "post",
         url: "ajax/member_h.php?cmd=sendMemberPwdMobileCode",
-        data: "memName=" + Fai.encodeUrl(a),
+        data: "memName=" + Helper.encodeUrl(a),
         error: function () {
             $("#memSendMobilePwdCode").data("_disable", false);
-            Fai.ing(LS.systemError, false)
+            Helper.ing(LS.systemError, false)
         },
         success: function (b) {
             $("#memSendMobilePwdCode").data("_disable", false);
@@ -12199,9 +12199,9 @@ Site.sendMemberMobileCode = function () {
                 $("#memPwdMbItemError").html(LS.memberDialogSendMobileCode);
                 $("#memSendMobilePwdCode").hide();
                 $("#menMbWaitMsg").show();
-                $("#menMbWaitMsg").text(Fai.format(LS.memberDialogCountDown, 60));
+                $("#menMbWaitMsg").text(Helper.format(LS.memberDialogCountDown, 60));
                 $("#menMbWaitMsg").data("_time", 60);
-                Site.memberMbDisableTimeout("memSendMobilePwdCode")
+                Run.memberMbDisableTimeout("memSendMobilePwdCode")
             } else {
                 if (b.argErr) {
                     $("#memPwdMbItemErrorWrap").show();
@@ -12216,33 +12216,33 @@ Site.sendMemberMobileCode = function () {
                             $("#memPwdMbItemError").html(LS.memberDialogMobileTplErr)
                         } else {
                             if (b.notFound) {
-                                Fai.ing(LS.memberDialogNotFound, true)
+                                Helper.ing(LS.memberDialogNotFound, true)
                             } else {
                                 if (b.limitOne) {
-                                    Fai.ing(LS.getMobileOneMin, true)
+                                    Helper.ing(LS.getMobileOneMin, true)
                                 } else {
                                     if (b.limitTwo) {
-                                        Fai.ing(LS.getMobileHalfHour, true)
+                                        Helper.ing(LS.getMobileHalfHour, true)
                                     } else {
                                         if (b.noMoney) {
-                                            Fai.ing(LS.memberDialogMobileMoneyErr, true)
+                                            Helper.ing(LS.memberDialogMobileMoneyErr, true)
                                         } else {
                                             if (b.mobileErr) {
-                                                Fai.ing(LS.memberDialogSendMobileCodeErr, true)
+                                                Helper.ing(LS.memberDialogSendMobileCodeErr, true)
                                             } else {
                                                 if (b.sendLimit) {
-                                                    Fai.ing(LS.memberDialogSendMobileCodeLimit, true)
+                                                    Helper.ing(LS.memberDialogSendMobileCodeLimit, true)
                                                 } else {
                                                     if (b.mobileSysErr) {
-                                                        Fai.ing(LS.memberDialogSendMobileSysErr, true)
+                                                        Helper.ing(LS.memberDialogSendMobileSysErr, true)
                                                     } else {
                                                         if (b.tplNationErr) {
-                                                            Fai.ing(LS.mobileNationTplErr, true)
+                                                            Helper.ing(LS.mobileNationTplErr, true)
                                                         } else {
                                                             if (b.systemErr) {
-                                                                Fai.ing(LS.systemError, true)
+                                                                Helper.ing(LS.systemError, true)
                                                             } else {
-                                                                Fai.ing(LS.argsError, true)
+                                                                Helper.ing(LS.argsError, true)
                                                             }
                                                         }
                                                     }
@@ -12260,10 +12260,10 @@ Site.sendMemberMobileCode = function () {
     });
     $("#memSendMobilePwdCode").data("_disable", true)
 };
-Site.memberFdPwdByMobileStepLast = function (f) {
+Run.memberFdPwdByMobileStepLast = function (f) {
     var b = $("#macct2").val();
     if (b == "") {
-        Fai.ing(LS.memberDialogPleaseEnterAcct, true);
+        Helper.ing(LS.memberDialogPleaseEnterAcct, true);
         return
     }
     var g;
@@ -12290,7 +12290,7 @@ Site.memberFdPwdByMobileStepLast = function (f) {
                             g = LS.memberDialogPwdDifToPwd2
                         } else {
                             if (a.length < 4 || a.length > 20) {
-                                g = Fai.format(LS.memberDialogPwdLimit, 4, 20)
+                                g = Helper.format(LS.memberDialogPwdLimit, 4, 20)
                             }
                         }
                     }
@@ -12305,19 +12305,19 @@ Site.memberFdPwdByMobileStepLast = function (f) {
     }
     $("#memPwdMbItemErrorWrap").show();
     $("#memPwdMbItemError").html(LS.memberDialogResetting);
-    var e = "memMobileCode=" + Fai.encodeUrl(d) + "&memMobileCodeSign=" + Fai.encodeUrl(c) + "&memPwd=" + $.md5(a) + "&memName=" + Fai.encodeUrl(b);
+    var e = "memMobileCode=" + Helper.encodeUrl(d) + "&memMobileCodeSign=" + Helper.encodeUrl(c) + "&memPwd=" + $.md5(a) + "&memName=" + Helper.encodeUrl(b);
     $.ajax({
         type: "post", url: "ajax/member_h.php?cmd=setMemberPwdByMobileCode", data: e, error: function () {
-            Fai.ing(LS.systemError, false)
+            Helper.ing(LS.systemError, false)
         }, success: function (i) {
             var i = jQuery.parseJSON(i);
             if (i.success) {
-                Fai.top.$("#popupBg" + f).remove();
-                Fai.top.$("#popupBox" + f).remove();
+                Helper.top.$("#popupBg" + f).remove();
+                Helper.top.$("#popupBox" + f).remove();
                 var k = ["<div style='padding-left:60px;'>", "<div class='alertWarn memberFdPwdLastMsg' style='margin-top:17px;'>", LS.memberDialogReSetPwdSucess, "</div>", "<div style='padding:10px 0 10px 30px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwdAcct, i.macct, "</div>", "<a href='javascript:void(0);' class='formBtn popupBClose' style='margin-left:45px; margin-top:16px; background:#1779ff; width:166px; height:35px;'>", LS.login, "</a>", "</div>"];
                 k = k.join("");
                 var j = {htmlContent: k, width: 372, height: 176};
-                Site.popupBox(j)
+                Run.popupBox(j)
             } else {
                 if (i.rt == 1) {
                     $("#memMobileCodeSign").val("");
@@ -12325,31 +12325,31 @@ Site.memberFdPwdByMobileStepLast = function (f) {
                     $("#memPwdMbItemError").html(LS.reGetMobileCode)
                 } else {
                     if (i.notFound) {
-                        Fai.ing(LS.memberDialogNotFound, true)
+                        Helper.ing(LS.memberDialogNotFound, true)
                     } else {
-                        Fai.ing(LS.argsError, true)
+                        Helper.ing(LS.argsError, true)
                     }
                 }
             }
         }
     })
 };
-Site.sendMemberEmailPwdCode = function () {
+Run.sendMemberEmailPwdCode = function () {
     if ($("#memSendMobilePwdCode").data("_disable")) {
         return
     }
     var a = $("#macct2").val();
     if (a == "") {
-        Fai.ing(LS.memberDialogPleaseEnterAcct, true);
+        Helper.ing(LS.memberDialogPleaseEnterAcct, true);
         return
     }
     $.ajax({
         type: "post",
         url: "ajax/mail_h.php?cmd=sendMemberPwdEmail",
-        data: "memName=" + Fai.encodeUrl(a),
+        data: "memName=" + Helper.encodeUrl(a),
         error: function () {
             $("#memSendPwdCode").data("_disable", false);
-            Fai.ing(LS.systemError, false)
+            Helper.ing(LS.systemError, false)
         },
         success: function (b) {
             $("#memSendPwdCode").data("_disable", false);
@@ -12360,18 +12360,18 @@ Site.sendMemberEmailPwdCode = function () {
                 $("#memPwdItemError").html(LS.memberDialogSendMailSucess);
                 $("#memSendPwdCode").hide();
                 $("#menWaitMsg").show();
-                $("#menWaitMsg").text(Fai.format(LS.memberDialogCountDown, 60));
+                $("#menWaitMsg").text(Helper.format(LS.memberDialogCountDown, 60));
                 $("#menWaitMsg").data("_time", 60);
-                Site.memberDisableTimeout("memSendPwdCode", 1)
+                Run.memberDisableTimeout("memSendPwdCode", 1)
             } else {
                 if (b.aliasNotF) {
                     $("#memPwdItemErrorWrap").show();
                     $("#memPwdItemError").html(LS.memberDialogAliasNotFound)
                 } else {
                     if (b.notFound) {
-                        Fai.ing(LS.memberDialogNotFound, true)
+                        Helper.ing(LS.memberDialogNotFound, true)
                     } else {
-                        Fai.ing(LS.argsError, true)
+                        Helper.ing(LS.argsError, true)
                     }
                 }
             }
@@ -12379,10 +12379,10 @@ Site.sendMemberEmailPwdCode = function () {
     });
     $("#memSendPwdCode").data("_disable", true)
 };
-Site.memberFdPwdByMailStepLast = function (f) {
+Run.memberFdPwdByMailStepLast = function (f) {
     var d = $("#macct2").val();
     if (d == "") {
-        Fai.ing(LS.memberDialogPleaseEnterAcct, true);
+        Helper.ing(LS.memberDialogPleaseEnterAcct, true);
         return
     }
     var g;
@@ -12406,7 +12406,7 @@ Site.memberFdPwdByMailStepLast = function (f) {
                         g = LS.memberDialogPwdDifToPwd2
                     } else {
                         if (a.length < 4 || a.length > 20) {
-                            g = Fai.format(LS.memberDialogPwdLimit, 4, 20)
+                            g = Helper.format(LS.memberDialogPwdLimit, 4, 20)
                         }
                     }
                 }
@@ -12420,84 +12420,84 @@ Site.memberFdPwdByMailStepLast = function (f) {
     }
     $("#memPwdItemErrorWrap").show();
     $("#memPwdItemError").html(LS.memberDialogResetting);
-    var e = "memEmailCode=" + Fai.encodeUrl(b) + "&memMailCodeSign=" + Fai.encodeUrl(c) + "&memPwd=" + $.md5(a) + "&memName=" + Fai.encodeUrl(d);
+    var e = "memEmailCode=" + Helper.encodeUrl(b) + "&memMailCodeSign=" + Helper.encodeUrl(c) + "&memPwd=" + $.md5(a) + "&memName=" + Helper.encodeUrl(d);
     $.ajax({
         type: "post", url: "ajax/member_h.php?cmd=setMemberPwdByCode", data: e, error: function () {
-            Fai.ing(LS.systemError, false)
+            Helper.ing(LS.systemError, false)
         }, success: function (i) {
             var i = jQuery.parseJSON(i);
             if (i.success) {
-                Fai.top.$("#popupBg" + f).remove();
-                Fai.top.$("#popupBox" + f).remove();
+                Helper.top.$("#popupBg" + f).remove();
+                Helper.top.$("#popupBox" + f).remove();
                 var k = ["<div style='padding-left:60px;'>", "<div class='alertWarn memberFdPwdLastMsg' style='margin-top:17px;'>", LS.memberDialogReSetPwdSucess, "</div>", "<div style='padding:10px 0 10px 30px; font-family:微软雅黑; font-size:14px; color:rgb(99,99,99);'>", LS.memberDialogFwdAcct, i.macct, "</div>", "<a href='javascript:void(0);' class='formBtn popupBClose' style='margin-left:45px; margin-top:16px; background:#1779ff; width:166px; height:35px;'>", LS.login, "</a>", "</div>"];
                 k = k.join("");
                 var j = {htmlContent: k, width: 372, height: 176};
-                Site.popupBox(j)
+                Run.popupBox(j)
             } else {
                 if (i.rt == 1) {
                     $("#memMailCodeSign").val("");
                     $("#memPwdItemErrorWrap").show();
-                    $("#memPwdItemError").html(LS.memberDialogCodeMailFailure)
+                    $("#memPwdItemError").html(LS.memberDialogCodeMailHelperlure)
                 } else {
                     if (i.notFound) {
-                        Fai.ing(LS.memberDialogNotFound, true)
+                        Helper.ing(LS.memberDialogNotFound, true)
                     } else {
-                        Fai.ing(LS.argsError, true)
+                        Helper.ing(LS.argsError, true)
                     }
                 }
             }
         }
     })
 };
-Site.memberInactiveDialog = function (a, c) {
-    var d = ["<div class='formPanel'>", "<div class='itemLine2 reActWarn'>", LS.memberDialogAcctInactive, "</div>", "<div class='itemLine2'>", Fai.format(LS.memberDialogShowLoginMail, a), "</div>", "<div class='itemLine2 reActWarn'>", LS.memberDialogNoRevSureEmail, "</div>", "<div class='itemLine2' style='padding-top:0;padding-bottom:0;'>", LS.memberDialogPleaseConfirmYourMail, "<input type='text' id='memEmail' class='memEmailAlterInput' value='", a, "'/><a id='memSendMail' hidefocus='true' onclick='Site.memberSendActiveMail(\"", Fai.encodeHtml(c), "\");' href='javascript:void(0);'>", LS.memberDialogClickReSendMsg, "</a><span id='menWaitMsg'></span></div>", "<div class='itemLine2' id='showOKorErrorMsg' style='color:red;'></div>", "</div>"];
+Run.memberInactiveDialog = function (a, c) {
+    var d = ["<div class='formPanel'>", "<div class='itemLine2 reActWarn'>", LS.memberDialogAcctInactive, "</div>", "<div class='itemLine2'>", Helper.format(LS.memberDialogShowLoginMail, a), "</div>", "<div class='itemLine2 reActWarn'>", LS.memberDialogNoRevSureEmail, "</div>", "<div class='itemLine2' style='padding-top:0;padding-bottom:0;'>", LS.memberDialogPleaseConfirmYourMail, "<input type='text' id='memEmail' class='memEmailAlterInput' value='", a, "'/><a id='memSendMail' hidefocus='true' onclick='Run.memberSendActiveMail(\"", Helper.encodeHtml(c), "\");' href='javascript:void(0);'>", LS.memberDialogClickReSendMsg, "</a><span id='menWaitMsg'></span></div>", "<div class='itemLine2' id='showOKorErrorMsg' style='color:red;'></div>", "</div>"];
     d = d.join("");
     var b = {title: LS.memberDialogTips, htmlContent: d, width: 465, height: 226};
-    Site.popupBox(b)
+    Run.popupBox(b)
 };
-Site.memberActiveDialog = function (a, c, e) {
-    var d = ["<div class='formPanel'>", "<div class='itemLine2 reActWarn'>", LS.memberDialogRegSuccess, "</div>", "<div class='itemLine2'>", Fai.format(LS.memberDialogShowLoginMail, a), "</div>", "<div class='itemLine2 reActWarn'>", LS.memberDialogNoRevSureEmail, "</div>", "<div class='itemLine2' style='padding-top:0;padding-bottom:0;'>", LS.memberDialogPleaseConfirmYourMail, "<input type='text' id='memEmail' class='memEmailAlterInput' value='", a, "'/><a id='memSendMail' hidefocus='true' onclick='Site.memberSendActiveMail(\"", Fai.encodeHtml(c), "\");' href='javascript:void(0);'>", LS.memberDialogClickReSendMsg, "</a><span id='menWaitMsg'></span></div>", "<div class='itemLine2' id='showOKorErrorMsg' style='color:red;'></div>", "</div>"];
+Run.memberActiveDialog = function (a, c, e) {
+    var d = ["<div class='formPanel'>", "<div class='itemLine2 reActWarn'>", LS.memberDialogRegSuccess, "</div>", "<div class='itemLine2'>", Helper.format(LS.memberDialogShowLoginMail, a), "</div>", "<div class='itemLine2 reActWarn'>", LS.memberDialogNoRevSureEmail, "</div>", "<div class='itemLine2' style='padding-top:0;padding-bottom:0;'>", LS.memberDialogPleaseConfirmYourMail, "<input type='text' id='memEmail' class='memEmailAlterInput' value='", a, "'/><a id='memSendMail' hidefocus='true' onclick='Run.memberSendActiveMail(\"", Helper.encodeHtml(c), "\");' href='javascript:void(0);'>", LS.memberDialogClickReSendMsg, "</a><span id='menWaitMsg'></span></div>", "<div class='itemLine2' id='showOKorErrorMsg' style='color:red;'></div>", "</div>"];
     d = d.join("");
     var b = {title: LS.memberDialogActiveAcctTitle, htmlContent: d, width: 465, height: 226, closeFunc: e};
-    Site.popupBox(b);
+    Run.popupBox(b);
     $.ajax({
         type: "post",
         url: "ajax/mail_h.php?cmd=sendMemberActiveMail",
-        data: "memName=" + Fai.encodeUrl(c) + "&memEmail=" + a,
+        data: "memName=" + Helper.encodeUrl(c) + "&memEmail=" + a,
         error: function () {
-            Fai.ing(LS.systemError, false)
+            Helper.ing(LS.systemError, false)
         },
         success: function (f) {
         }
     })
 };
-Site.memberSendActiveMail = function (b) {
+Run.memberSendActiveMail = function (b) {
     if ($("#memSendMail").data("_disable")) {
         return
     }
     var a = $.trim($("#memEmail").val());
-    if (!Fai.isEmail(a)) {
-        Fai.ing(LS.memberDialogPleaseSureMail, true);
+    if (!Helper.isEmail(a)) {
+        Helper.ing(LS.memberDialogPleaseSureMail, true);
         return
     }
     $.ajax({
         type: "post",
         url: "ajax/mail_h.php?cmd=sendMemberActiveMail",
-        data: "memName=" + Fai.encodeUrl(b) + "&memEmail=" + a,
+        data: "memName=" + Helper.encodeUrl(b) + "&memEmail=" + a,
         error: function () {
             $("#memSendMail").data("_disable", false);
-            Fai.ing(LS.systemError, false)
+            Helper.ing(LS.systemError, false)
         },
         success: function (c) {
             $("#memSendMail").data("_disable", false);
             var c = jQuery.parseJSON(c);
             if (c.success) {
-                Fai.top.$("#showOKorErrorMsg").html(LS.memberDialogOKorErrorMsg);
-                Fai.top.$("#memSendMail").hide();
-                Fai.top.$("#menWaitMsg").show();
-                Fai.top.$("#menWaitMsg").text(Fai.format(LS.memberDialogAfterTimeToResend, 60));
-                Fai.top.$("#menWaitMsg").data("_time", 60);
-                Site.memberDisableTimeout("memSendMail", 0)
+                Helper.top.$("#showOKorErrorMsg").html(LS.memberDialogOKorErrorMsg);
+                Helper.top.$("#memSendMail").hide();
+                Helper.top.$("#menWaitMsg").show();
+                Helper.top.$("#menWaitMsg").text(Helper.format(LS.memberDialogAfterTimeToResend, 60));
+                Helper.top.$("#menWaitMsg").data("_time", 60);
+                Run.memberDisableTimeout("memSendMail", 0)
             } else {
                 if (c.AliaNotF) {
                     $("#showOKorErrorMsg").html(LS.memberDialogAliasNotFound);
@@ -12508,8 +12508,8 @@ Site.memberSendActiveMail = function (b) {
     });
     $("#memSendMail").data("_disable", true)
 };
-Site.memberDisableTimeout = function (d, b) {
-    var c = Fai.top.$("#menWaitMsg");
+Run.memberDisableTimeout = function (d, b) {
+    var c = Helper.top.$("#menWaitMsg");
     var a = parseInt(c.data("_time"));
     if (a > 0) {
         a--;
@@ -12518,49 +12518,49 @@ Site.memberDisableTimeout = function (d, b) {
             if (b == 1) {
                 e = LS.memberDialogCountDown
             }
-            c.text(Fai.format(e, a));
-            Site.memberDisableTimeout(d, b)
+            c.text(Helper.format(e, a));
+            Run.memberDisableTimeout(d, b)
         }, 1000);
         $("#menWaitMsg").data("_time", a)
     } else {
-        Fai.top.$("#" + d).show();
+        Helper.top.$("#" + d).show();
         c.text("").hide()
     }
 };
-Site.memberMbDisableTimeout = function (c) {
-    var b = Fai.top.$("#menMbWaitMsg");
+Run.memberMbDisableTimeout = function (c) {
+    var b = Helper.top.$("#menMbWaitMsg");
     var a = parseInt(b.data("_time"));
     if (a > 0) {
         a--;
         setTimeout(function () {
             var d = LS.memberDialogCountDown;
-            b.text(Fai.format(d, a));
-            Site.memberMbDisableTimeout(c)
+            b.text(Helper.format(d, a));
+            Run.memberMbDisableTimeout(c)
         }, 1000);
         $("#menMbWaitMsg").data("_time", a)
     } else {
-        Fai.top.$("#" + c).show();
+        Helper.top.$("#" + c).show();
         b.text("").hide()
     }
 };
-Site.closeFdPwdBoxById = function (a) {
-    Fai.top.$("#popupBg" + a).remove();
-    Fai.top.$("#popupBox" + a).remove()
+Run.closeFdPwdBoxById = function (a) {
+    Helper.top.$("#popupBg" + a).remove();
+    Helper.top.$("#popupBox" + a).remove()
 };
-Site.showModifyPwContMsg = function (d, b) {
+Run.showModifyPwContMsg = function (d, b) {
     var c = ["<div>", "<div style='padding:8px 26px;text-align:center;height:60px;'>", d, "</div>", "<a href='javascript:void(0);' class='formBtn popupBClose' style='margin-left:128px;'>", LS.confirm, "</a>", "</div>"];
     c = c.join("");
     var a = {htmlContent: c, width: 378, height: 120};
-    Site.popupBox(a);
-    Fai.top.$("#popupBg" + b).remove();
-    Fai.top.$("#popupBox" + b).remove()
+    Run.popupBox(a);
+    Helper.top.$("#popupBg" + b).remove();
+    Helper.top.$("#popupBox" + b).remove()
 };
-Site.changeFdPwdShowTab = function (b, c, e) {
+Run.changeFdPwdShowTab = function (b, c, e) {
     if (!e) {
         b = 2
     }
     if (b == 1) {
-        var d = Fai.top.$("#popupBox" + c);
+        var d = Helper.top.$("#popupBox" + c);
         var a = d.find(".J_findPwByMailBox").width();
         d.find(".J_findPwByMailBox").css("color", "#44A5FF");
         d.find(".J_findPwByMobileBox").css("color", "");
@@ -12571,7 +12571,7 @@ Site.changeFdPwdShowTab = function (b, c, e) {
         d.find(".J_fdFwdByMailContent").css({display: "block"})
     } else {
         if (b == 2) {
-            var d = Fai.top.$("#popupBox" + c);
+            var d = Helper.top.$("#popupBox" + c);
             d.find(".J_findPwByMobileBox").css("color", "#44A5FF");
             d.find(".J_findPwByMailBox").css("color", "");
             var a = d.find(".J_findPwByMobileBox").width();
@@ -12589,22 +12589,22 @@ Site.changeFdPwdShowTab = function (b, c, e) {
         }
     }
 };
-Site.initModuleBdMap = function (b, e, a, d) {
-    var k = Fai.top.$("#mapframe" + e);
+Run.initModuleBdMap = function (b, e, a, d) {
+    var k = Helper.top.$("#mapframe" + e);
     var j = k.attr("width");
     var i = k.attr("height");
     var l = "<iframe id='mapframe" + e + "' class='J_mapframe' name='mapframe' frameborder='0' scrolling='no' height='" + i + "' width='" + j + "' src='about:blank'></iframe>";
     k.replaceWith(l);
-    var c = Fai.top.$("#mapframe" + e).parent().width();
+    var c = Helper.top.$("#mapframe" + e).parent().width();
     var m = a + c + "&ran=" + Math.random();
-    Site.initIframeLoading(b, e, m, d);
+    Run.initIframeLoading(b, e, m, d);
     $("#refreshChlid" + e).css("padding-top", "40%");
-    var g = Fai.top.$("#module" + e);
+    var g = Helper.top.$("#module" + e);
     var h = g.width() / 2 - 30;
     var f = '<div class="coverDiv" style="position:absolute;width:66px;height:38px;left:' + h + 'px;top:0;z-index:9028;"></div>';
     g.append(f)
 };
-Site.initModuleSiteSearch = function (f) {
+Run.initModuleRunSearch = function (f) {
     var g = $("#module" + f), c = $(g.find("input.g_itext")[0]), e = $(g.find(".g_btn")[0]);
     c.keypress(function (h) {
         if (h.keyCode == 13 && e.length > 0) {
@@ -12620,7 +12620,7 @@ Site.initModuleSiteSearch = function (f) {
         a.css("vertical-align", "11px")
     }
 };
-Site.searchInSite = function (d) {
+Run.searchInRun = function (d) {
     var e = $("#module" + d), c, b, a;
     if (e.find(".fk-newSearchBox").length) {
         c = e.find(".fk-newSearchInput")
@@ -12633,13 +12633,13 @@ Site.searchInSite = function (d) {
         return
     }
     if (b.trim() == "") {
-        Fai.ing("请输入搜索内容", true);
+        Helper.ing("请输入搜索内容", true);
         return
     }
     c.attr("_searching", true);
-    Fai.top.location.href = "sr.php?skeyword=" + Fai.encodeUrl($.trim(b)) + "&nSL=" + a
+    Helper.top.location.href = "sr.php?skeyword=" + Helper.encodeUrl($.trim(b)) + "&nSL=" + a
 };
-Site.searchInSiteByKey = function (e, g, d) {
+Run.searchInRunByKey = function (e, g, d) {
     var f = $("#module" + e), c, b, a;
     if (f.find(".fk-newSearchBox").length) {
         c = f.find(".fk-newSearchInput")
@@ -12647,25 +12647,25 @@ Site.searchInSiteByKey = function (e, g, d) {
         c = f.find("input.g_itext")
     }
     a = c.attr("_nSL");
-    href = "sr.php?skeyword=" + Fai.encodeUrl($.trim(g)) + "&nSL=" + a;
+    href = "sr.php?skeyword=" + Helper.encodeUrl($.trim(g)) + "&nSL=" + a;
     if (c.attr("_searching")) {
         return
     }
     c.attr("_searching", true);
-    if (Fai.top._manageMode) {
-        Site.redirectUrl(href, "_self", d, 1, 0)
+    if (Helper.top._manageMode) {
+        Run.redirectUrl(href, "_self", d, 1, 0)
     } else {
-        Fai.top.location.href = href
+        Helper.top.location.href = href
     }
 };
-Site.searchMenu = {};
-Site.initSearchDropMenu = function (h, g) {
+Run.searchMenu = {};
+Run.initSearchDropMenu = function (h, g) {
     g = $.parseJSON(g);
     if (g.length >= 9) {
         return
     }
     var c = $("#module" + h), b = c.find(".fk-openSearchMenu"), a = [0, 1, 2, 3, 4, 5, 6, 7, 8], f = a,
-        e = [{id: 4, name: "site", value: LS.searchMenuSite, enable: true, nSL: []}, {
+        e = [{id: 4, name: "site", value: LS.searchMenuRun, enable: true, nSL: []}, {
             id: 1,
             name: "product",
             value: LS.searchMenuProduct,
@@ -12708,8 +12708,8 @@ Site.initSearchDropMenu = function (h, g) {
             return false
         }
     });
-    Site.searchMenu["module" + h] = new NewSearchMenu(h, e, g);
-    Site.searchMenu["module" + h].bindMenuDropEvent()
+    Run.searchMenu["module" + h] = new NewSearchMenu(h, e, g);
+    Run.searchMenu["module" + h].bindMenuDropEvent()
 };
 function uniqueNslArray(b) {
     var d = [], c = 0, a = b.length;
@@ -12764,7 +12764,7 @@ NewSearchMenu.prototype.getMenuPanelPosition = function () {
     } else {
         f = h.find(".fk-newSearchSelectMenu").width()
     }
-    if (!Fai.top._manageMode) {
+    if (!Helper.top._manageMode) {
         i -= $(window).scrollTop();
         e -= $(window).scrollLeft()
     }
@@ -12930,12 +12930,12 @@ NewSearchMenu.prototype.bindMenuDropEvent = function () {
         setTimeout(g.unfoldSelectMenuPanel.bind(g), 200);
         n.data("inMenu", false)
     });
-    if (Fai.top._manageMode) {
-        Fai.top.$("#g_main").unbind("scroll.srcollSc").bind("scroll.srcollSc", function (o) {
+    if (Helper.top._manageMode) {
+        Helper.top.$("#g_main").unbind("scroll.srcollSc").bind("scroll.srcollSc", function (o) {
             $(".J_newSearchSelectMenu").hide()
         })
     } else {
-        Fai.top.$(window).unbind("scroll.srcollSc").bind("scroll.srcollSc", function (o) {
+        Helper.top.$(window).unbind("scroll.srcollSc").bind("scroll.srcollSc", function (o) {
             $(".J_newSearchSelectMenu").hide()
         })
     }
@@ -12977,16 +12977,16 @@ NewSearchMenu.prototype.bindMenuPanelSpanEvent = function () {
         setTimeout(n.unfoldSelectMenuPanel.bind(n), 200)
     })
 };
-Site.dynamicSearchBox = {};
-Site.initDynamicSearchBox = function (b, a) {
-    Site.fixDynamicSearchMenu(b);
-    Site.dynamicSearchBox["module" + b] = new NewDynamicSearchBox(b, a);
-    Site.dynamicSearchBox["module" + b].bindSearchBoxEvent()
+Run.dynamicSearchBox = {};
+Run.initDynamicSearchBox = function (b, a) {
+    Run.fixDynamicSearchMenu(b);
+    Run.dynamicSearchBox["module" + b] = new NewDynamicSearchBox(b, a);
+    Run.dynamicSearchBox["module" + b].bindSearchBoxEvent()
 };
-Site.fixDynamicSearchMenu = function (h) {
+Run.fixDynamicSearchMenu = function (h) {
     var f = $("#module" + h), e = f.find(".fk-dynamicSearch"), a = e.find(".fk-newSearchSelect"),
         d = e.find(".fk-newSearchSelectMenu"), b = e.find(".fk-newSearchBoxContainer"), c, g;
-    e.width(Site.fixCusWidthSearchBox(h, true));
+    e.width(Run.fixCusWidthSearchBox(h, true));
     g = a.width();
     a.data("width", g).css({position: "relative", left: g + "px"})
 };
@@ -13020,14 +13020,14 @@ NewDynamicSearchBox.prototype.bindSearchBoxEvent = function () {
             if (r == "") {
                 c()
             } else {
-                f == 62 ? Site.searchInSite(l) : Site.searchProduct(l)
+                f == 62 ? Run.searchInRun(l) : Run.searchProduct(l)
             }
         }
     });
-    if (Fai.top != window) {
+    if (Helper.top != window) {
         return
     }
-    $(Fai.top.document.body).bind("click.hideSearchBox", function (v) {
+    $(Helper.top.document.body).bind("click.hideSearchBox", function (v) {
         if ($(v.target).parents("#module" + l).length || $(v.target).parents("#J_newSearchSelectMenu" + l).length) {
             return
         }
@@ -13090,7 +13090,7 @@ NewDynamicSearchBox.prototype.bindSearchBoxEvent = function () {
         e.find(".J_dynamicShowTip").css("visibility", "hidden")
     }
 };
-Site.fixCusWidthSearchBox = function (b, k) {
+Run.fixCusWidthSearchBox = function (b, k) {
     var l = $("#module" + b), c = l.find(".formMiddleContent"), m = l.find(".J_newSearchBox"),
         d = m.find(".fk-newSearchSelectWrap"), q = m.find(".fk-newSearchSelect"), n = m.find(".fk-newSearchSelectMenu"),
         a = m.find(".fk-newSearchBoxContainer"), g = m.find(".fk-searchBoxBtn"), f = m.attr("_type"),
@@ -13125,16 +13125,16 @@ Site.fixCusWidthSearchBox = function (b, k) {
         l.width(h + o)
     }
 };
-Site.bindSearchBtnEvent = function (f) {
+Run.bindSearchBtnEvent = function (f) {
     var d = $("#module" + f), c = d.find(".fk-newSearchBox"), b = c.find(".fk-newSearchBoxContainer"),
         a = b.find("input"), e = d.attr("_modulestyle");
     a.unbind("keyup.searchip").bind("keyup.searchip", function (g) {
         if (g.keyCode === 13) {
             inputVal = a.val().trim();
             if (inputVal != "") {
-                e == 62 ? Site.searchInSite(f) : Site.searchProduct(f)
+                e == 62 ? Run.searchInRun(f) : Run.searchProduct(f)
             } else {
-                Fai.ing("请输入搜索内容", true)
+                Helper.ing("请输入搜索内容", true)
             }
         }
     })
@@ -13150,7 +13150,7 @@ function RgbatoRgb(d) {
     var f = c[0], e = c[1], a = c[2];
     return "rgb(" + f + "," + e + "," + a + ")"
 }
-Site.fixWidthChangeBtn = function (c, e, b) {
+Run.fixWidthChangeBtn = function (c, e, b) {
     var g = $("#module" + c), a = g.find(".fk-newSearchBox"), i = g.find(".fk-newSearchSelectWrap"),
         h = a.find(".fk-searchBoxBtn"), f, d;
     if (e == 1) {
@@ -13168,13 +13168,13 @@ Site.fixWidthChangeBtn = function (c, e, b) {
                 a.height(f)
             } else {
                 if (e == 6) {
-                    d = Site.fixCusWidthSearchBox(c, true);
+                    d = Run.fixCusWidthSearchBox(c, true);
                     a.width(d)
                 } else {
                     if (e == 7) {
                         f = i.outerHeight();
                         a.height(f);
-                        d = Site.fixCusWidthSearchBox(c, true);
+                        d = Run.fixCusWidthSearchBox(c, true);
                         a.width(d)
                     }
                 }
@@ -13182,13 +13182,13 @@ Site.fixWidthChangeBtn = function (c, e, b) {
         }
     }
 };
-Site.msgBoardShowMsg = function (a) {
+Run.msgBoardShowMsg = function (a) {
     $("#msgAdd .msgTips").show();
     $("#msgAdd .msgTips").html(a)
 };
-Site.msgBoardAddMsg = function (n, b, l) {
+Run.msgBoardAddMsg = function (n, b, l) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行留言。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行留言。");
         return
     }
     $msgBoard = $("#msgBoard" + b);
@@ -13205,19 +13205,19 @@ Site.msgBoardAddMsg = function (n, b, l) {
         var q = $(this).attr("name");
         var o = $(this).val();
         if (o == "" || o == null) {
-            c.html(Fai.format(LS.msgBoardInputIsEmpty, Fai.encodeHtml(q)));
+            c.html(Helper.format(LS.msgBoardInputIsEmpty, Helper.encodeHtml(q)));
             $msgBoard.find("#" + p).focus();
             f = 1;
             return false
         }
-        if (p == "reqPhone" && !Fai.isPhone(o)) {
-            c.html(Fai.format(LS.msgBoardInputCorrect, Fai.encodeHtml(q)));
+        if (p == "reqPhone" && !Helper.isPhone(o)) {
+            c.html(Helper.format(LS.msgBoardInputCorrect, Helper.encodeHtml(q)));
             $msgBoard.find("#" + p).focus();
             f = 1;
             return false
         }
-        if (p == "reqEmail" && !Fai.isEmail(o)) {
-            c.html(Fai.format(LS.msgBoardInputCorrect, Fai.encodeHtml(q)));
+        if (p == "reqEmail" && !Helper.isEmail(o)) {
+            c.html(Helper.format(LS.msgBoardInputCorrect, Helper.encodeHtml(q)));
             $msgBoard.find("#" + p).focus();
             f = 1;
             return false
@@ -13233,19 +13233,19 @@ Site.msgBoardAddMsg = function (n, b, l) {
         var o = $(this).val();
         var q = $(this).attr("maxlength");
         if (o.length > q) {
-            c.html(Fai.format(LS.msgBoardInputMaxLength, Fai.encodeHtml(r), q));
+            c.html(Helper.format(LS.msgBoardInputMaxLength, Helper.encodeHtml(r), q));
             $msgBoard.find("#" + p).focus();
             e = 1;
             return false
         }
-        if (p == "reqPhone" && o.length && !Fai.isPhone(o)) {
-            c.html(Fai.format(LS.msgBoardInputCorrect, Fai.encodeHtml(r)));
+        if (p == "reqPhone" && o.length && !Helper.isPhone(o)) {
+            c.html(Helper.format(LS.msgBoardInputCorrect, Helper.encodeHtml(r)));
             $msgBoard.find("#" + p).focus();
             e = 1;
             return false
         }
-        if (p == "reqEmail" && o.length && !Fai.isEmail(o)) {
-            c.html(Fai.format(LS.msgBoardInputCorrect, Fai.encodeHtml(r)));
+        if (p == "reqEmail" && o.length && !Helper.isEmail(o)) {
+            c.html(Helper.format(LS.msgBoardInputCorrect, Helper.encodeHtml(r)));
             $msgBoard.find("#" + p).focus();
             e = 1;
             return false
@@ -13255,24 +13255,24 @@ Site.msgBoardAddMsg = function (n, b, l) {
         return false
     }
     if (g == null || g == "") {
-        Site.msgBoardShowMsg(LS.msgBoardInputContent);
+        Run.msgBoardShowMsg(LS.msgBoardInputContent);
         $msgBoard.find("#reqContent").focus();
         return
     }
     var d = 10000;
     if (g.length > d) {
-        Site.msgBoardShowMsg(Fai.format(LS.msgBoardInputContent2, d));
+        Run.msgBoardShowMsg(Helper.format(LS.msgBoardInputContent2, d));
         $msgBoard.find("#reqContent").focus();
         return
     }
     if (!j.hasClass("msgBoardCaptchaHide")) {
         if (m == null || m == "") {
-            Site.msgBoardShowMsg(LS.msgBoardInputValidateCode);
+            Run.msgBoardShowMsg(LS.msgBoardInputValidateCode);
             $msgBoard.find("#msgBoardCaptcha").focus();
             return
         }
     }
-    Site.msgBoardShowMsg(LS.msgBoardDoing);
+    Run.msgBoardShowMsg(LS.msgBoardDoing);
     var k = {};
     $msgBoard.find("input.msg_ipt").each(function () {
         var p = $(this).attr("id");
@@ -13284,53 +13284,53 @@ Site.msgBoardAddMsg = function (n, b, l) {
     $.ajax({
         type: "post",
         url: "ajax/msgBoard_h.php",
-        data: "cmd=add&msgBdData=" + Fai.encodeUrl($.toJSON(k)) + "&validateCode=" + Fai.encodeUrl(m) + "&moduleId=" + Fai.encodeUrl(b),
+        data: "cmd=add&msgBdData=" + Helper.encodeUrl($.toJSON(k)) + "&validateCode=" + Helper.encodeUrl(m) + "&moduleId=" + Helper.encodeUrl(b),
         error: function () {
-            var p = Site.getDialogContent(true, Fai.format(LS.systemError));
+            var p = Run.getDialogContent(true, Helper.format(LS.systemError));
             var o = {htmlContent: p, width: 205, height: 78};
-            Site.popupBox(o);
+            Run.popupBox(o);
             setTimeout(function () {
-                Fai.top.location.reload()
+                Helper.top.location.reload()
             }, 3000)
         },
         success: function (o) {
             o = jQuery.parseJSON(o);
             if (o.success) {
-                var q = Site.getDialogContent(true, Fai.format(LS.msgBoardSendOkAutoOpen));
+                var q = Run.getDialogContent(true, Helper.format(LS.msgBoardSendOkAutoOpen));
                 var p = {htmlContent: q, width: 205, height: 78};
-                Site.popupBox(p);
+                Run.popupBox(p);
                 setTimeout(function () {
-                    Fai.top.location.reload()
+                    Helper.top.location.reload()
                 }, 3000);
                 $msgBoard.find('#msgAdd input[type="text"]').val("");
                 $msgBoard.find("#reqContent").val("")
             } else {
                 if (o.errno == 1) {
-                    Site.msgBoardShowMsg(LS.captchaError)
+                    Run.msgBoardShowMsg(LS.captchaError)
                 } else {
                     if (o.errno == 2) {
-                        Site.msgBoardShowMsg(LS.argsError)
+                        Run.msgBoardShowMsg(LS.argsError)
                     } else {
                         if (o.errno == -4) {
-                            Site.msgBoardShowMsg(LS.msgBoardAddCountLimit)
+                            Run.msgBoardShowMsg(LS.msgBoardAddCountLimit)
                         } else {
-                            Site.msgBoardShowMsg(LS.systemError)
+                            Run.msgBoardShowMsg(LS.systemError)
                         }
                     }
                 }
                 if (o.needCode) {
-                    Site.msgBoardShowMsg(o.msg, b);
+                    Run.msgBoardShowMsg(o.msg, b);
                     j.removeClass("msgBoardCaptchaHide")
                 }
             }
-            Site.changeMsgBoardValidateCode()
+            Run.changeMsgBoardValidateCode()
         }
     })
 };
-Site.changeMsgBoardValidateCode = function () {
+Run.changeMsgBoardValidateCode = function () {
     $("#msgBoardCaptchaImg").attr("src", "validateCode.php?" + Math.random() * 1000)
 };
-Site.setStarSelect = function (a) {
+Run.setStarSelect = function (a) {
     _getBackgroundColor = function (c) {
         var d = "";
         while (c[0].tagName.toLowerCase() != "html") {
@@ -13424,11 +13424,11 @@ Site.setStarSelect = function (a) {
         g.find("li:last span").css({"border-color": "transparent " + b + " transparent transparent"})
     }
 };
-Site.msgSubmitShowMsg = function (b, a) {
+Run.msgSubmitShowMsg = function (b, a) {
     $("#msgSubmit" + a).find("#msgSAdd .msgSTips").show();
     $("#msgSubmit" + a).find("#msgSAdd .msgSTips").html(b)
 };
-Site.msgSubmitAddMsg = function (n, b, l) {
+Run.msgSubmitAddMsg = function (n, b, l) {
     $msgSubmit = $("#msgSubmit" + b);
     var a = $.trim($msgSubmit.find("#reqName").val());
     var h = $msgSubmit.find("#reqPhone").val();
@@ -13443,19 +13443,19 @@ Site.msgSubmitAddMsg = function (n, b, l) {
         var q = $(this).attr("name");
         var o = $(this).val();
         if (o == "" || o == null) {
-            c.html(Fai.format(LS.msgBoardInputIsEmpty, Fai.encodeHtml(q)));
+            c.html(Helper.format(LS.msgBoardInputIsEmpty, Helper.encodeHtml(q)));
             $msgSubmit.find("#" + p).focus();
             f = 1;
             return false
         }
-        if (p == "reqPhone" && !Fai.isPhone(o)) {
-            c.html(Fai.format(LS.msgBoardInputCorrect, Fai.encodeHtml(q)));
+        if (p == "reqPhone" && !Helper.isPhone(o)) {
+            c.html(Helper.format(LS.msgBoardInputCorrect, Helper.encodeHtml(q)));
             $msgSubmit.find("#" + p).focus();
             f = 1;
             return false
         }
-        if (p == "reqEmail" && !Fai.isEmail(o)) {
-            c.html(Fai.format(LS.msgBoardInputCorrect, Fai.encodeHtml(q)));
+        if (p == "reqEmail" && !Helper.isEmail(o)) {
+            c.html(Helper.format(LS.msgBoardInputCorrect, Helper.encodeHtml(q)));
             $msgSubmit.find("#" + p).focus();
             f = 1;
             return false
@@ -13471,19 +13471,19 @@ Site.msgSubmitAddMsg = function (n, b, l) {
         var o = $(this).val();
         var q = $(this).attr("maxlength");
         if (o.length > q) {
-            c.html(Fai.format(LS.msgBoardInputMaxLength, Fai.encodeHtml(r), q));
+            c.html(Helper.format(LS.msgBoardInputMaxLength, Helper.encodeHtml(r), q));
             $msgSubmit.find("#" + p).focus();
             e = 1;
             return false
         }
-        if (p == "reqPhone" && o.length && !Fai.isPhone(o)) {
-            c.html(Fai.format(LS.msgBoardInputCorrect, Fai.encodeHtml(r)));
+        if (p == "reqPhone" && o.length && !Helper.isPhone(o)) {
+            c.html(Helper.format(LS.msgBoardInputCorrect, Helper.encodeHtml(r)));
             $msgSubmit.find("#" + p).focus();
             e = 1;
             return false
         }
-        if (p == "reqEmail" && o.length && !Fai.isEmail(o)) {
-            c.html(Fai.format(LS.msgBoardInputCorrect, Fai.encodeHtml(r)));
+        if (p == "reqEmail" && o.length && !Helper.isEmail(o)) {
+            c.html(Helper.format(LS.msgBoardInputCorrect, Helper.encodeHtml(r)));
             $msgSubmit.find("#" + p).focus();
             e = 1;
             return false
@@ -13493,24 +13493,24 @@ Site.msgSubmitAddMsg = function (n, b, l) {
         return false
     }
     if (g == null || g == "") {
-        Site.msgSubmitShowMsg(LS.msgBoardInputContent, b);
+        Run.msgSubmitShowMsg(LS.msgBoardInputContent, b);
         $msgSubmit.find("#reqContent").focus();
         return
     }
     var d = 10000;
     if (g.length > d) {
-        Site.msgSubmitShowMsg(Fai.format(LS.msgBoardInputContent2, d), b);
+        Run.msgSubmitShowMsg(Helper.format(LS.msgBoardInputContent2, d), b);
         $msgSubmit.find("#reqContent").focus();
         return
     }
     if (!j.hasClass("msgBoardCaptchaHide")) {
         if (m == null || m == "") {
-            Site.msgSubmitShowMsg(LS.msgBoardInputValidateCode, b);
+            Run.msgSubmitShowMsg(LS.msgBoardInputValidateCode, b);
             $msgSubmit.find("#msgSubmitCaptcha").focus();
             return
         }
     }
-    Site.msgSubmitShowMsg(LS.msgBoardDoing, b);
+    Run.msgSubmitShowMsg(LS.msgBoardDoing, b);
     var k = {};
     $msgSubmit.find("input.msgSubmit_ipt").each(function () {
         var p = $(this).attr("id");
@@ -13522,108 +13522,108 @@ Site.msgSubmitAddMsg = function (n, b, l) {
     $.ajax({
         type: "post",
         url: "ajax/msgBoard_h.php",
-        data: "cmd=add&msgBdData=" + Fai.encodeUrl($.toJSON(k)) + "&validateCode=" + Fai.encodeUrl(m) + "&vCodeId=" + Fai.encodeUrl(b) + "&moduleId=" + Fai.encodeUrl(b),
+        data: "cmd=add&msgBdData=" + Helper.encodeUrl($.toJSON(k)) + "&validateCode=" + Helper.encodeUrl(m) + "&vCodeId=" + Helper.encodeUrl(b) + "&moduleId=" + Helper.encodeUrl(b),
         error: function () {
-            var p = Site.getDialogContent(true, Fai.format(LS.systemError));
+            var p = Run.getDialogContent(true, Helper.format(LS.systemError));
             var o = {htmlContent: p, width: 205, height: 78};
-            Site.popupBox(o);
+            Run.popupBox(o);
             setTimeout(function () {
-                Fai.top.location.reload()
+                Helper.top.location.reload()
             }, 3000)
         },
         success: function (o) {
             o = jQuery.parseJSON(o);
             if (o.success) {
-                var q = Site.getDialogContent(true, Fai.format(LS.msgBoardSendOkAutoOpen));
+                var q = Run.getDialogContent(true, Helper.format(LS.msgBoardSendOkAutoOpen));
                 var p = {htmlContent: q, width: 205, height: 78};
-                Site.popupBox(p);
+                Run.popupBox(p);
                 setTimeout(function () {
-                    Fai.top.location.reload()
+                    Helper.top.location.reload()
                 }, 3000);
                 $msgSubmit.find('#msgSAdd input[type="text"]').val("");
                 $msgSubmit.find("#reqContent").val("")
             } else {
                 if (o.errno == 1) {
-                    Site.msgSubmitShowMsg(LS.captchaError, b)
+                    Run.msgSubmitShowMsg(LS.captchaError, b)
                 } else {
                     if (o.errno == 2) {
-                        Site.msgSubmitShowMsg(LS.argsError, b)
+                        Run.msgSubmitShowMsg(LS.argsError, b)
                     } else {
                         if (o.errno == -4) {
-                            Site.msgSubmitShowMsg(LS.msgBoardAddCountLimit, b)
+                            Run.msgSubmitShowMsg(LS.msgBoardAddCountLimit, b)
                         } else {
-                            Site.msgSubmitShowMsg(LS.systemError, b)
+                            Run.msgSubmitShowMsg(LS.systemError, b)
                         }
                     }
                 }
                 if (o.needCode) {
-                    Site.msgSubmitShowMsg(o.msg, b);
+                    Run.msgSubmitShowMsg(o.msg, b);
                     j.removeClass("msgBoardCaptchaHide")
                 }
             }
-            Site.changeMsgSubmitValidateCode(b)
+            Run.changeMsgSubmitValidateCode(b)
         }
     })
 };
-Site.changeMsgSubmitValidateCode = function (a) {
+Run.changeMsgSubmitValidateCode = function (a) {
     $("#msgSubmit" + a).find("#msgSubmitCaptchaImg").attr("src", "validateCode.php?" + Math.random() * 1000 + "&vCodeId=" + a)
 };
-Site.fixMsgSubmitStyle = function (f) {
-    var g = parseInt(Fai.top.$("#module" + f + "").find("#msgSubmit" + f + "").find(".msgSAdd_N").width());
-    var b = parseInt(Fai.top.$("#module" + f + "").find("#msgSubmit" + f + "").find(".msgSAdd_N").find(".msgPanel_N").css("margin-right"));
-    var a = parseInt(Fai.top.$("#module" + f + "").find("#msgSubmit" + f + "").find(".msgSAdd_N").find(".msgPanel_N").width());
+Run.fixMsgSubmitStyle = function (f) {
+    var g = parseInt(Helper.top.$("#module" + f + "").find("#msgSubmit" + f + "").find(".msgSAdd_N").width());
+    var b = parseInt(Helper.top.$("#module" + f + "").find("#msgSubmit" + f + "").find(".msgSAdd_N").find(".msgPanel_N").css("margin-right"));
+    var a = parseInt(Helper.top.$("#module" + f + "").find("#msgSubmit" + f + "").find(".msgSAdd_N").find(".msgPanel_N").width());
     var d = a + b;
-    if (Fai.top.$("#module" + f + "").width() <= 400) {
-        if (Fai.top.$("#module" + f + "").width() < 150) {
-            Fai.top.$("#module" + f + "").find(".msgSubmit_overToPoint").css("width", "60px");
-            Fai.top.$("#module" + f + "").find(".msgSubmit_PropBoard").css("width", "56px");
-            Fai.top.$("#module" + f + "").find(".paramResizeHandleRight").css("left", "56px")
+    if (Helper.top.$("#module" + f + "").width() <= 400) {
+        if (Helper.top.$("#module" + f + "").width() < 150) {
+            Helper.top.$("#module" + f + "").find(".msgSubmit_overToPoint").css("width", "60px");
+            Helper.top.$("#module" + f + "").find(".msgSubmit_PropBoard").css("width", "56px");
+            Helper.top.$("#module" + f + "").find(".paramResizeHandleRight").css("left", "56px")
         }
-        Fai.top.$("#module" + f + "").find("#msgSubmit" + f + "").css({"margin-left": "6px"});
-        Fai.top.$("#module" + f + "").find(".msgSAdd").find(".g_itext").css({width: "106px"});
-        Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").css({
+        Helper.top.$("#module" + f + "").find("#msgSubmit" + f + "").css({"margin-left": "6px"});
+        Helper.top.$("#module" + f + "").find(".msgSAdd").find(".g_itext").css({width: "106px"});
+        Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").css({
             "line-height": "70px",
             height: "70px"
         });
-        Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({
+        Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({
             width: "104px",
             height: "64px"
         });
-        Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddButton_N").find(".msgSubmit_overToPoint").css({width: "5px"});
-        Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgCaptcha_N").find(".validateCode_N").css({
+        Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddButton_N").find(".msgSubmit_overToPoint").css({width: "5px"});
+        Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgCaptcha_N").find(".validateCode_N").css({
             "float": "none",
             "margin-left": "50px"
         });
-        Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgCaptcha_N").find("#msgSubmitCaptchaImg").css({
+        Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgCaptcha_N").find("#msgSubmitCaptchaImg").css({
             "margin-bottom": "15px",
             "margin-top": "10px"
         });
-        if (Fai.top.$("#module" + f + "").width() > 300) {
-            Fai.top.$("#module" + f + "").find(".msgSAdd").find(".m_ibutton").css({"float": "left"})
+        if (Helper.top.$("#module" + f + "").width() > 300) {
+            Helper.top.$("#module" + f + "").find(".msgSAdd").find(".m_ibutton").css({"float": "left"})
         }
     }
     var c;
-    var e = Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").length;
-    if (Fai.top.$("#module" + f + "").width() > 400) {
+    var e = Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").length;
+    if (Helper.top.$("#module" + f + "").width() > 400) {
         if (d <= g && g < 2 * d) {
-            Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: "194px"});
-            Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"})
+            Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: "194px"});
+            Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"})
         } else {
             if (2 * d <= g && g < 3 * d) {
                 if (e > 2) {
                     c = a + b + 194;
-                    Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
-                    Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
+                    Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
+                    Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
                 } else {
                     if (e == 2) {
                         c = a + b + 194;
-                        Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
-                        Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
+                        Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
+                        Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
                     } else {
                         if (e == 1) {
                             c = 194;
-                            Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
-                            Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
+                            Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
+                            Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
                         }
                     }
                 }
@@ -13632,18 +13632,18 @@ Site.fixMsgSubmitStyle = function (f) {
                     if (g >= 3 * (b + a)) {
                         if (e > 2) {
                             c = 2 * (a + b) + 194;
-                            Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
-                            Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
+                            Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
+                            Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
                         } else {
                             if (e == 2) {
                                 c = a + b + 194;
-                                Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
-                                Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
+                                Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
+                                Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
                             } else {
                                 if (e == 1) {
                                     c = 194;
-                                    Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
-                                    Fai.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
+                                    Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
+                                    Helper.top.$("#module" + f + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: c + "px"})
                                 }
                             }
                         }
@@ -13651,47 +13651,47 @@ Site.fixMsgSubmitStyle = function (f) {
                 }
             }
         }
-        if (Fai.top.$("#module" + f + "").width() > 300 && Fai.top.$("#module" + f + "").width() < 650) {
-            Fai.top.$("#module" + f + "").find(".msgSAdd").find(".m_ibutton").css({"float": "left"})
+        if (Helper.top.$("#module" + f + "").width() > 300 && Helper.top.$("#module" + f + "").width() < 650) {
+            Helper.top.$("#module" + f + "").find(".msgSAdd").find(".m_ibutton").css({"float": "left"})
         }
     }
 };
-Site.fixMsgBoardStyle = function (g) {
-    var h = parseInt(Fai.top.$("#module" + g + "").find("#msgBoard" + g + "").find(".msgSAdd_N").width());
-    var b = parseInt(Fai.top.$("#module" + g + "").find("#msgBoard" + g + "").find(".msgSAdd_N").find(".msgPanel_N").css("margin-right"));
-    var a = parseInt(Fai.top.$("#module" + g + "").find("#msgBoard" + g + "").find(".msgSAdd_N").find(".msgPanel_N").width());
+Run.fixMsgBoardStyle = function (g) {
+    var h = parseInt(Helper.top.$("#module" + g + "").find("#msgBoard" + g + "").find(".msgSAdd_N").width());
+    var b = parseInt(Helper.top.$("#module" + g + "").find("#msgBoard" + g + "").find(".msgSAdd_N").find(".msgPanel_N").css("margin-right"));
+    var a = parseInt(Helper.top.$("#module" + g + "").find("#msgBoard" + g + "").find(".msgSAdd_N").find(".msgPanel_N").width());
     var e = a + b;
     var c = 280 + b;
-    if (Fai.top.$("#module" + g + "").width() <= 400) {
-        Fai.top.$("#module" + g + "").find("#msgBoard" + g + "").css({"margin-left": "6px"});
-        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".g_itext").css({width: "106px"});
-        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({
+    if (Helper.top.$("#module" + g + "").width() <= 400) {
+        Helper.top.$("#module" + g + "").find("#msgBoard" + g + "").css({"margin-left": "6px"});
+        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".g_itext").css({width: "106px"});
+        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({
             width: "104px",
             height: "64px"
         });
-        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").css({
+        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").css({
             "line-height": "70px",
             height: "70px"
         });
-        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgBoardPanel").find(".msgTitle_N").find(".msgUser").css({
+        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgBoardPanel").find(".msgTitle_N").find(".msgUser").css({
             "margin-left": "35px",
             "text-align": "center"
         });
-        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgBoardPanel").find(".msgContent").find(".userMsg").css({
+        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgBoardPanel").find(".msgContent").find(".userMsg").css({
             "margin-left": "16px",
             "margin-top": "16px"
         });
-        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgBoardPanel").find(".user_level_name").css({position: "relative"});
-        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddButton_N").find(".msgSubmit_overToPoint").css({width: "5px"});
-        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgCaptcha_N").find(".validateCode_N").css({
+        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgBoardPanel").find(".user_level_name").css({position: "relative"});
+        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddButton_N").find(".msgSubmit_overToPoint").css({width: "5px"});
+        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgCaptcha_N").find(".validateCode_N").css({
             "float": "none",
             "margin-left": "50px"
         });
-        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgCaptcha_N").find("#msgBoardCaptchaImg").css({
+        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgCaptcha_N").find("#msgBoardCaptchaImg").css({
             "margin-bottom": "15px",
             "margin-top": "10px"
         });
-        Fai.top.$("#module" + g + "").find("#pagenation" + g + "").find("div").each(function (i, j) {
+        Helper.top.$("#module" + g + "").find("#pagenation" + g + "").find("div").each(function (i, j) {
             if ($(this).hasClass("pagePrev_N") || $(this).hasClass("pageNext_N") || $(this).hasClass("J_pageArrow_N")) {
                 $(this).show()
             } else {
@@ -13699,32 +13699,32 @@ Site.fixMsgBoardStyle = function (g) {
             }
         })
     } else {
-        Fai.top.$("#module" + g + "").find("#pagenation" + g + "").find("div").each(function (i, j) {
+        Helper.top.$("#module" + g + "").find("#pagenation" + g + "").find("div").each(function (i, j) {
             $(this).show()
         })
     }
     var d;
-    var f = Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").length;
-    if (Fai.top.$("#module" + g + "").width() > 400) {
+    var f = Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").length;
+    if (Helper.top.$("#module" + g + "").width() > 400) {
         if (e <= h && h < 2 * e) {
-            Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
-            Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: "244px"})
+            Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
+            Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: "244px"})
         } else {
             if (2 * e <= h && h < 3 * c) {
                 if (f > 2) {
                     d = a + b + 246;
-                    Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
-                    Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
+                    Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
+                    Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
                 } else {
                     if (f == 2) {
                         d = a + b + 246;
-                        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
-                        Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
+                        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
+                        Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
                     } else {
                         if (f == 1) {
                             d = 246;
-                            Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
-                            Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
+                            Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
+                            Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
                         }
                     }
                 }
@@ -13733,31 +13733,31 @@ Site.fixMsgBoardStyle = function (g) {
                     if (h >= 3 * (b + a)) {
                         if (f > 2) {
                             d = 2 * (a + b) + 194;
-                            Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
-                            Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
+                            Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
+                            Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
                         } else {
                             if (f == 2) {
                                 d = a + b + 194;
-                                Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
-                                Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
+                                Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
+                                Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
                             } else {
                                 if (f == 1) {
                                     d = 246;
-                                    Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
-                                    Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
+                                    Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
+                                    Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
                                 }
                             }
                         }
                     } else {
                         if (f >= 2) {
                             d = a + b + 194;
-                            Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
-                            Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
+                            Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "194px"});
+                            Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
                         } else {
                             if (f == 1) {
                                 d = 246;
-                                Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
-                                Fai.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
+                                Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgPanel_N").find(".g_itext").css({width: "246px"});
+                                Helper.top.$("#module" + g + "").find(".msgSAdd").find(".msgAddText_N").find(".g_textarea").css({width: d + "px"})
                             }
                         }
                     }
@@ -13766,8 +13766,8 @@ Site.fixMsgBoardStyle = function (g) {
         }
     }
 };
-Site.jumpToPage = function (d, b, a) {
-    var c = parseInt($(Fai.top.$("#module" + d + "").find(".pagenation_N").find(".jumpPageDiv").find("#jumpPage")).val());
+Run.jumpToPage = function (d, b, a) {
+    var c = parseInt($(Helper.top.$("#module" + d + "").find(".pagenation_N").find(".jumpPageDiv").find("#jumpPage")).val());
     if (isNaN(c)) {
         c = 1
     }
@@ -13779,15 +13779,15 @@ Site.jumpToPage = function (d, b, a) {
     }
     window.location.href = "" + a + "?m" + d + "pageno=" + c + "#module" + d + ""
 };
-Site.msgSubmitCusResize = function (b) {
+Run.msgSubmitCusResize = function (b) {
     var a = "#msgSubmit" + b;
-    Site.msgComCusResize(b, a)
+    Run.msgComCusResize(b, a)
 };
-Site.msgBoardCusResize = function (b) {
+Run.msgBoardCusResize = function (b) {
     var a = "#msgBoard" + b;
-    Site.msgComCusResize(b, a)
+    Run.msgComCusResize(b, a)
 };
-Site.msgComCusResize = function (g, d) {
+Run.msgComCusResize = function (g, d) {
     var c = $(d).find(".msgSAdd");
     var f = c.find(".msgSubmit_PropBoard");
     var b = f.width();
@@ -13814,7 +13814,7 @@ Site.msgComCusResize = function (g, d) {
             return
         }
         a.each(function () {
-            var o = $(this), i = Fai.isIE8() ? $(document) : $(window), q, n, k = $(this).parent(), m, l = {};
+            var o = $(this), i = Helper.isIE8() ? $(document) : $(window), q, n, k = $(this).parent(), m, l = {};
             if (o.hasClass("paramResize")) {
                 o.before("<div class='u-paramResize-w' style='float:left' title='可拖动调节宽度'><div style='position:absolute;width:5px;height:" + $(o).height() + "px;z-index:999'></div></div>");
                 o.after("<div class='u-paramResize-e' style='float:left' title='可拖动调节宽度'><div class='paramResizeHandleRight' style='position:absolute;top:0px;left:" + b + "px;width:5px;height:" + $(o).height() + "px;z-index:999'></div></div>");
@@ -13878,7 +13878,7 @@ Site.msgComCusResize = function (g, d) {
                     f.css({width: (z - 4) + "px"});
                     c.find(".paramResizeHandleRight").css("left", (z - 4) + "px");
                     c.find(".msgPanel_N").css({width: x + "px"});
-                    Site.fixMsgSubmitStyle(g)
+                    Run.fixMsgSubmitStyle(g)
                 } else {
                     if (d.indexOf("msgBoard") > -1) {
                         x = 330 - 60 + z;
@@ -13886,7 +13886,7 @@ Site.msgComCusResize = function (g, d) {
                         f.css({width: (z - 4) + "px"});
                         c.find(".paramResizeHandleRight").css("left", (z - 4) + "px");
                         c.find(".msgPanel_N").css({width: x + "px"});
-                        Site.fixMsgBoardStyle(g)
+                        Run.fixMsgBoardStyle(g)
                     }
                 }
                 m.html(y + z).css({left: v.pageX - 28, top: v.pageY - 40});
@@ -13901,19 +13901,19 @@ Site.msgComCusResize = function (g, d) {
                 i.off("mousemove.fi");
                 i.off("mouseup.fi");
                 m.hide();
-                var s = Site.getModuleAttr(g);
+                var s = Run.getModuleAttr(g);
                 s.data.changed = true;
-                Site.styleChanged();
+                Run.styleChanged();
                 l = {};
                 t.preventDefault()
             }
         })
     }
 };
-Site.desMallBuyCount = function (c) {
+Run.desMallBuyCount = function (c) {
     var a = $("#cartbuyCount" + c).val();
     var b = 1;
-    if (Fai.isInteger(a)) {
+    if (Helper.isInteger(a)) {
         b = parseInt(a)
     }
     b--;
@@ -13935,10 +13935,10 @@ Site.desMallBuyCount = function (c) {
     }
     $("#cartbuyCount" + c).val(b)
 };
-Site.incMallBuyCount = function (c) {
+Run.incMallBuyCount = function (c) {
     var a = $("#cartbuyCount" + c).val();
     var b = 0;
-    if (Fai.isInteger(a)) {
+    if (Helper.isInteger(a)) {
         b = parseInt(a)
     }
     b++;
@@ -13960,11 +13960,11 @@ Site.incMallBuyCount = function (c) {
     }
     $("#cartbuyCount" + c).val(b)
 };
-Site.mallBuyCountChange = function (c) {
+Run.mallBuyCountChange = function (c) {
     if ($("#limitAmountDiv").text() == "") {
         var a = $("#cartbuyCount" + c).val();
         var b = 1;
-        if (Fai.isInteger(a)) {
+        if (Helper.isInteger(a)) {
             b = parseInt(a)
         }
         if (b < 2) {
@@ -13984,12 +13984,12 @@ Site.mallBuyCountChange = function (c) {
         $("#cartbuyCount" + c).val(b)
     }
 };
-Site.mallBuy = function (e, b, g) {
+Run.mallBuy = function (e, b, g) {
     var d = "mbuy.php?id=" + e;
     if (b && b != "undefined") {
         var c = $("#module" + b);
         var h = c.find(".optionMsg");
-        if (Fai.isNull(c)) {
+        if (Helper.isNull(c)) {
             return
         }
         var i = true;
@@ -14015,7 +14015,7 @@ Site.mallBuy = function (e, b, g) {
                     var n = $(".fk-slideForProduct .f-propListContent");
                     n.scrollTop(o.top)
                 }
-                h.html(Fai.format(LS.mallCartChoiceItemError, Fai.encodeHtml(k)));
+                h.html(Helper.format(LS.mallCartChoiceItemError, Helper.encodeHtml(k)));
                 i = false;
                 return false
             }
@@ -14024,7 +14024,7 @@ Site.mallBuy = function (e, b, g) {
             return false
         }
         if (f.length > 0) {
-            d += "&optionList=" + Fai.encodeUrl($.toJSON(f))
+            d += "&optionList=" + Helper.encodeUrl($.toJSON(f))
         }
     }
     if (g && g.length > 0) {
@@ -14032,7 +14032,7 @@ Site.mallBuy = function (e, b, g) {
     }
     var a = window.open(d + "&ram=" + Math.random(), "mallcart");
     a.focus();
-    if (Fai.isIE()) {
+    if (Helper.isIE()) {
         window.event.cancelBubble = true;
         window.event.returnValue = false
     } else {
@@ -14040,7 +14040,7 @@ Site.mallBuy = function (e, b, g) {
         event.preventDefault()
     }
 };
-Site.MallAjaxErrno = {
+Run.MallAjaxErrno = {
     ok: 0,
     error: 1,
     manager: 2,
@@ -14062,12 +14062,12 @@ Site.MallAjaxErrno = {
     couponOverTime: 18,
     authMemberNotAllow: 19
 };
-Site.getDialogHtml = function (r, g) {
-    if (!Fai.isInteger(r.rt)) {
+Run.getDialogHtml = function (r, g) {
+    if (!Helper.isInteger(r.rt)) {
         r.rt = 1
     }
     var h = parseInt(r.rt), d = 0, m = 0, k = "", e = "about:blant;", p = LS.goToMallCartStr, a = LS.continueShopping,
-        b = LS.resultFailMsg, n = "resultFailIcon";
+        b = LS.resultHelperlMsg, n = "resultHelperlIcon";
     if (!g) {
         g = "javascript:;"
     }
@@ -14075,7 +14075,7 @@ Site.getDialogHtml = function (r, g) {
     var q = "target='_blank'";
     var f;
     switch (h) {
-        case Site.MallAjaxErrno.ok:
+        case Run.MallAjaxErrno.ok:
             n = "suc-ico";
             b = LS.resultSuccessMsg;
             if (typeof(r.totalPrice) != "undefined") {
@@ -14088,66 +14088,66 @@ Site.getDialogHtml = function (r, g) {
                 k = r.choiceCurrencyVal
             }
             var j = k + d;
-            f = Fai.format(LS.cartDetailInfo, m, j);
+            f = Helper.format(LS.cartDetailInfo, m, j);
             break;
-        case Site.MallAjaxErrno.error:
-            Site.getTopWindow().location.href = "mcart.php?msg=2";
+        case Run.MallAjaxErrno.error:
+            Run.getTopWindow().location.href = "mcart.php?msg=2";
             return false;
             break;
-        case Site.MallAjaxErrno.manager:
-            n = "resultFailIcon";
+        case Run.MallAjaxErrno.manager:
+            n = "resultHelperlIcon";
             b = "购买失败。";
             var p = "去购物车结算";
             var a = "继续购物";
             f = "当前为管理状态，购买失败。";
             r.success = true;
             break;
-        case Site.MallAjaxErrno.login:
+        case Run.MallAjaxErrno.login:
             return false;
             break;
-        case Site.MallAjaxErrno.idNotExist:
-            Site.getTopWindow().location.href = "mcart.php?msg=1";
+        case Run.MallAjaxErrno.idNotExist:
+            Run.getTopWindow().location.href = "mcart.php?msg=1";
             return false;
             break;
-        case Site.MallAjaxErrno.orderSettle:
-            Site.getTopWindow().location.href = "mcart.php";
+        case Run.MallAjaxErrno.orderSettle:
+            Run.getTopWindow().location.href = "mcart.php";
             return false;
             break;
-        case Site.MallAjaxErrno.noMall:
-            Site.getTopWindow().location.href = "mcart.php";
+        case Run.MallAjaxErrno.noMall:
+            Run.getTopWindow().location.href = "mcart.php";
             return false;
             break;
-        case Site.MallAjaxErrno.toProductDetail:
-            Site.getTopWindow().location.href = "pd.php?id=" + productId + "&ram=" + Math.random();
+        case Run.MallAjaxErrno.toProductDetail:
+            Run.getTopWindow().location.href = "pd.php?id=" + productId + "&ram=" + Math.random();
             return false;
             break;
-        case Site.MallAjaxErrno.orderNotExist:
-            Site.getTopWindow().location.href = "mcart.php?msg=1";
+        case Run.MallAjaxErrno.orderNotExist:
+            Run.getTopWindow().location.href = "mcart.php?msg=1";
             return false;
             break;
-        case Site.MallAjaxErrno.networkError:
+        case Run.MallAjaxErrno.networkError:
             f = LS.networkError;
             break;
-        case Site.MallAjaxErrno.outOfMallAmount:
+        case Run.MallAjaxErrno.outOfMallAmount:
             f = LS.mallAmountOverFlow;
             break;
-        case Site.MallAjaxErrno.mallAmountZero:
+        case Run.MallAjaxErrno.mallAmountZero:
             f = LS.mallAmountZero;
             break;
-        case Site.MallAjaxErrno.mallOptionStop:
+        case Run.MallAjaxErrno.mallOptionStop:
             f = LS.mallOptionStop;
             break;
-        case Site.MallAjaxErrno.OutOfAllowAmount:
+        case Run.MallAjaxErrno.OutOfAllowAmount:
             f = LS.allowAmountOverFlow;
             break;
-        case Site.MallAjaxErrno.notAdded:
+        case Run.MallAjaxErrno.notAdded:
             f = LS.mallProductNotAdded;
             break;
-        case Site.MallAjaxErrno.authMemberNotAllow:
+        case Run.MallAjaxErrno.authMemberNotAllow:
             f = r.data + LS.authLevelBuy;
             break;
         default:
-            Site.getTopWindow().location.href.reload();
+            Run.getTopWindow().location.href.reload();
             return false
     }
     var l = [];
@@ -14155,11 +14155,11 @@ Site.getDialogHtml = function (r, g) {
         l = ["<div class='mallCartOperate'>", "<a id='settleAccountsBtn' class='formBtn' " + q + " href='" + i + "' style='width:108px; height:35px; background:#ff6d00;font-size:14px;'>" + p + "</a>", "<a id='dialogContinueShopping' href='javascript:;' class='shopping popupBClose' style='font-size:14px; color:#636363 !important;'>", a, "</a>", "</div>"]
     }
     var c = "";
-    if (Site.getTopWindow()._lcid === 1033) {
+    if (Run.getTopWindow()._lcid === 1033) {
         c = "letter-spacing:0px;"
     }
     var o = ["<table style='width:100%;height:100%;'>", "<tr>", "<td style='width:50px;'></td>", "<td style='width:280px;'>", "<div class='" + n + " addItemTextTips' style='font-size:14px; color:#636363' >" + b + "</div>", "<div class='cartInfoContent' style='" + c + "' >" + f + "</div>", l.join(""), "</td>", "<td style='width:50px;'></td>", "</tr>", "</table>"];
-    if (h == Site.MallAjaxErrno.mallAmountZero || h == Site.MallAjaxErrno.OutOfAllowAmount || h == Site.MallAjaxErrno.outOfMallAmount) {
+    if (h == Run.MallAjaxErrno.mallAmountZero || h == Run.MallAjaxErrno.OutOfAllowAmount || h == Run.MallAjaxErrno.outOfMallAmount) {
         o[0] = "<table style='width:100%;height:100%;margin-top:10px;'>"
     }
     return o.join("")
@@ -14180,7 +14180,7 @@ loginDialogCache.noRemark;
 loginDialogCache.REMARK_MAXLEN;
 loginDialogCache.extendParam;
 var loginDialogLock = false;
-Site.createLoginDialog = function (C, e, q, E, g, A) {
+Run.createLoginDialog = function (C, e, q, E, g, A) {
     var m, v, w, B, F, z, n, b;
     var l, H, s;
     var o = "";
@@ -14202,7 +14202,7 @@ Site.createLoginDialog = function (C, e, q, E, g, A) {
     if (loginDialogCache != null && loginDialogCache.html != null && loginDialogCache.html != "") {
         var J = parseInt(Math.random() * 10000);
         var p = {boxId: J, boxName: "loginDialog", title: "", htmlContent: loginDialogCache.html, width: 380};
-        r = Site.popupBox(p);
+        r = Run.popupBox(p);
         if (loginDialogCache.qqOpen || loginDialogCache.sinaOpen || loginDialogCache.wxOpen) {
             var a = {};
             a.pid = C;
@@ -14214,20 +14214,20 @@ Site.createLoginDialog = function (C, e, q, E, g, A) {
             $.cookie("forThirtLoginBuy", $.toJSON(a))
         }
         if (loginDialogCache.qqOpen) {
-            Site.initQQLogin(loginDialogCache.qqAppId, loginDialogCache.qqReUri, loginDialogCache.displayList, loginDialogCache.noRemark, loginDialogCache.REMARK_MAXLEN, "ld_qqLogin", loginDialogCache.extendParam)
+            Run.initQQLogin(loginDialogCache.qqAppId, loginDialogCache.qqReUri, loginDialogCache.displayList, loginDialogCache.noRemark, loginDialogCache.REMARK_MAXLEN, "ld_qqLogin", loginDialogCache.extendParam)
         }
         if (loginDialogCache.sinaOpen) {
-            Site.initWBLogin(loginDialogCache.sinaAppKey, loginDialogCache.sinaReUri, loginDialogCache.displayList, loginDialogCache.noRemark, loginDialogCache.REMARK_MAXLEN, "ld_wbLogin", loginDialogCache.extendParam)
+            Run.initWBLogin(loginDialogCache.sinaAppKey, loginDialogCache.sinaReUri, loginDialogCache.displayList, loginDialogCache.noRemark, loginDialogCache.REMARK_MAXLEN, "ld_wbLogin", loginDialogCache.extendParam)
         }
         if (loginDialogCache.wxOpen) {
-            Site.initWXLogin(loginDialogCache.wxAppKey, loginDialogCache.wxReUri, loginDialogCache.displayList, loginDialogCache.noRemark, loginDialogCache.REMARK_MAXLEN, "ld_wxLogin", loginDialogCache.extendParam)
+            Run.initWXLogin(loginDialogCache.wxAppKey, loginDialogCache.wxReUri, loginDialogCache.displayList, loginDialogCache.noRemark, loginDialogCache.REMARK_MAXLEN, "ld_wxLogin", loginDialogCache.extendParam)
         }
         c();
         loginDialogLock = false
     } else {
         $.ajax({
             type: "post", url: "ajax/site_h.php?cmd=getMemberLoginMsg", error: function () {
-                Fai.ing("获取登录信息错误,请稍后再试.")
+                Helper.ing("获取登录信息错误,请稍后再试.")
             }, success: function (K) {
                 var K = jQuery.parseJSON(K);
                 if (K.success) {
@@ -14275,7 +14275,7 @@ Site.createLoginDialog = function (C, e, q, E, g, A) {
                     loginDialogCache.html = N;
                     var O = parseInt(Math.random() * 10000);
                     var L = {boxId: O, boxName: "loginDialog", title: "", htmlContent: N, width: 380};
-                    r = Site.popupBox(L);
+                    r = Run.popupBox(L);
                     if (w || B || F) {
                         var M = {};
                         M.pid = C;
@@ -14287,13 +14287,13 @@ Site.createLoginDialog = function (C, e, q, E, g, A) {
                         $.cookie("forThirtLoginBuy", $.toJSON(M))
                     }
                     if (w) {
-                        Site.initQQLogin(G, o, x, z, y, "ld_qqLogin", f)
+                        Run.initQQLogin(G, o, x, z, y, "ld_qqLogin", f)
                     }
                     if (B) {
-                        Site.initWBLogin(j, k, x, z, y, "ld_wbLogin", f)
+                        Run.initWBLogin(j, k, x, z, y, "ld_wbLogin", f)
                     }
                     if (F) {
-                        Site.initWXLogin(t, d, x, z, y, "ld_wxLogin", f)
+                        Run.initWXLogin(t, d, x, z, y, "ld_wxLogin", f)
                     }
                     c();
                     loginDialogLock = false
@@ -14313,11 +14313,11 @@ Site.createLoginDialog = function (C, e, q, E, g, A) {
         N.push("<input id='memberAcct' class='generateInput memberAcctInput' type='text' value='" + ($.cookie("loginMemberAcct") == null ? "" : $.cookie("loginMemberAcct")) + "' placeholder='" + LS.loginDialogAcct + "' />\n");
         N.push("</div>\n");
         N.push("<div id='memberLoginPwd' class='J_memberLoginItem memberLoginDialogItem itemSpace'>\n");
-        N.push("<input id='memberPwd' class='generateInput memberPwdInput' type='password' placeholder='" + LS.loginDialogPsw + "' onkeydown='if (Fai.isEnterKey(event)){$(\"#J_memberLoginDialogPanel .J_loginButton\").click();}'/>\n");
+        N.push("<input id='memberPwd' class='generateInput memberPwdInput' type='password' placeholder='" + LS.loginDialogPsw + "' onkeydown='if (Helper.isEnterKey(event)){$(\"#J_memberLoginDialogPanel .J_loginButton\").click();}'/>\n");
         N.push("</div>\n");
         N.push("<div class='J_memberLoginItem memberCaptcha memberLoginDialogItem'>\n");
         N.push("<input id='memberLoginCaptcha' class='memberCaptchaInput' type='text' placeholder='" + LS.loginDialogCaptcha + "' />\n");
-        N.push("<img alt='' id='memberCaptchaImg' class='memberCaptchaImg' onclick='Site.changeCaptchaImg(this)' title='" + LS.msgBoradChageValidateCode + "'/>\n");
+        N.push("<img alt='' id='memberCaptchaImg' class='memberCaptchaImg' onclick='Run.changeCaptchaImg(this)' title='" + LS.msgBoradChageValidateCode + "'/>\n");
         N.push("</div>\n");
         if (L || M) {
             N.push("<div class='memberLoginDialogItem'>\n");
@@ -14333,7 +14333,7 @@ Site.createLoginDialog = function (C, e, q, E, g, A) {
             }
             N.push("<div class='signup'>\n");
             if (M) {
-                N.push("<a hidefocus='true' href='javascript:;' onclick='Site.memberFdPwdStepOne(0);return false;'>" + LS.loginDialogFindPsw + "?</a>\n")
+                N.push("<a hidefocus='true' href='javascript:;' onclick='Run.memberFdPwdStepOne(0);return false;'>" + LS.loginDialogFindPsw + "?</a>\n")
             }
             N.push("</div>\n");
             N.push("</div>\n")
@@ -14407,16 +14407,16 @@ Site.createLoginDialog = function (C, e, q, E, g, A) {
         }
         M.push("<div class='memberSignupItem_captcha'>\n");
         M.push("<div class='itemMiddle' style='float:left;width: 150px;'>\n");
-        M.push("<input id='memberSignupCaptcha' type='text' maxlength='4' placeholder='" + LS.loginDialogCaptcha + "' onkeydown='if (Fai.isEnterKey(event)){$(\"#J_memberRegisterButton\").click();}'/>\n");
+        M.push("<input id='memberSignupCaptcha' type='text' maxlength='4' placeholder='" + LS.loginDialogCaptcha + "' onkeydown='if (Helper.isEnterKey(event)){$(\"#J_memberRegisterButton\").click();}'/>\n");
         M.push("</div>\n");
-        M.push("<div class='itemRight'><img alt='' id='memberSignupCaptchaImg' class='memberSignupCaptchaImg' onclick='Site.changeCaptchaImg(this)' title='" + LS.msgBoradChageValidateCode + "' src='validateCode.php?" + parseInt(Math.random() * 1000) + "'/></div>\n");
+        M.push("<div class='itemRight'><img alt='' id='memberSignupCaptchaImg' class='memberSignupCaptchaImg' onclick='Run.changeCaptchaImg(this)' title='" + LS.msgBoradChageValidateCode + "' src='validateCode.php?" + parseInt(Math.random() * 1000) + "'/></div>\n");
         M.push("</div>\n");
         if (L) {
             M.push("<div class='mobileItem itemSpace'>\n");
             M.push("<div class='itemMiddle'>\n");
             M.push("<input type='text' id='messageAuthCode' maxlength='6' placeholder='" + LS.loginDialogMsgCode + "' />\n");
             M.push("</div>\n");
-            M.push("<div class='itemRight'><div title='" + LS.getMobileMsmCode + "' class='getMobileCdBtn' onclick='Site.getSignMobileCode(\"J_memberRegisterDialogPanel\",2)'>" + LS.getMobileMsmCode + "</div></div>\n");
+            M.push("<div class='itemRight'><div title='" + LS.getMobileMsmCode + "' class='getMobileCdBtn' onclick='Run.getSignMobileCode(\"J_memberRegisterDialogPanel\",2)'>" + LS.getMobileMsmCode + "</div></div>\n");
             M.push("</div>\n")
         }
         M.push("</div>\n");
@@ -14440,16 +14440,16 @@ Site.createLoginDialog = function (C, e, q, E, g, A) {
     function c() {
         $("#J_memberLoginDialogPanel .J_loginButton").off("click").on("click", function () {
             if (!_manageMode) {
-                Site.memberLogin4(C, e, q, E, g, A)
+                Run.memberLogin4(C, e, q, E, g, A)
             } else {
-                Fai.ing("您目前处于网站管理状态，请先点击网站右上方的“退出”后再登录会员。")
+                Helper.ing("您目前处于网站管理状态，请先点击网站右上方的“退出”后再登录会员。")
             }
         });
         $("#J_memberRegisterButton").off("click").on("click", function () {
             if (!_manageMode) {
-                Site.memberSignupDialogSubmit("J_memberRegisterDialogPanel", Fai.top.location.href, 2, C, e, q, E, g, A)
+                Run.memberSignupDialogSubmit("J_memberRegisterDialogPanel", Helper.top.location.href, 2, C, e, q, E, g, A)
             } else {
-                Fai.ing("您目前处于网站管理状态，请先点击网站右上方的“退出”后再注册会员。")
+                Helper.ing("您目前处于网站管理状态，请先点击网站右上方的“退出”后再注册会员。")
             }
         });
         $(".loginAndRegister").find(".login").off("click").on("click", function () {
@@ -14469,17 +14469,17 @@ Site.createLoginDialog = function (C, e, q, E, g, A) {
         })
     }
 };
-Site.mallBuying = {};
-Site.mallBuy2 = function (e, a, p) {
+Run.mallBuying = {};
+Run.mallBuy2 = function (e, a, p) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行购买。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行购买。");
         return
     }
-    if (typeof(Site.mallBuying[e]) == "undefined") {
-        Site.mallBuying[e] = false
+    if (typeof(Run.mallBuying[e]) == "undefined") {
+        Run.mallBuying[e] = false
     }
     var f = false;
-    $.each(Site.mallBuying, function (j, i) {
+    $.each(Run.mallBuying, function (j, i) {
         if (i) {
             f = true;
             return false
@@ -14488,7 +14488,7 @@ Site.mallBuy2 = function (e, a, p) {
     if (f) {
         return
     }
-    Site.mallBuying[e] = true;
+    Run.mallBuying[e] = true;
     var n = "id=" + e;
     if (a && a != "undefined") {
         var c;
@@ -14498,8 +14498,8 @@ Site.mallBuy2 = function (e, a, p) {
             c = $("#module" + a)
         }
         var q = c.find(".optionMsg");
-        if (Fai.isNull(c)) {
-            Site.mallBuying[e] = false;
+        if (Helper.isNull(c)) {
+            Run.mallBuying[e] = false;
             return
         }
         var r = true;
@@ -14524,7 +14524,7 @@ Site.mallBuy2 = function (e, a, p) {
                         j = j.substring(0, j.length - 1)
                     }
                     q.show();
-                    q.html(Fai.format(LS.mallCartChoiceItemError, Fai.encodeHtml(j)));
+                    q.html(Helper.format(LS.mallCartChoiceItemError, Helper.encodeHtml(j)));
                     if (a === "PdSlide") {
                         var y = $(this).parent().parent().position();
                         var x = $(".fk-slideForProduct .f-propListContent");
@@ -14534,8 +14534,8 @@ Site.mallBuy2 = function (e, a, p) {
                     return false
                 }
             });
-            if (Site.optionsStr.oldOptionsStr != "null" && Site.optionsStr.oldOptionsStr) {
-                var o = Site.optionsStr.oldOptionsStr.split("_"), d = [];
+            if (Run.optionsStr.oldOptionsStr != "null" && Run.optionsStr.oldOptionsStr) {
+                var o = Run.optionsStr.oldOptionsStr.split("_"), d = [];
                 for (var h = 0; h < o.length; h++) {
                     for (var g = 0; g < k.length; g++) {
                         if (k[g].name == o[h]) {
@@ -14546,15 +14546,15 @@ Site.mallBuy2 = function (e, a, p) {
                 k = d
             }
             if (!r) {
-                Site.mallBuying[e] = false;
+                Run.mallBuying[e] = false;
                 return false
             }
             if (k.length > 0) {
-                n += "&optionList=" + Fai.encodeUrl($.toJSON(k))
+                n += "&optionList=" + Helper.encodeUrl($.toJSON(k))
             }
             var b = $("#cartbuyCount" + a).val();
             var l = 1;
-            if (Fai.isInteger(b)) {
+            if (Helper.isInteger(b)) {
                 l = parseInt(b)
             }
             if (l < 1) {
@@ -14568,9 +14568,9 @@ Site.mallBuy2 = function (e, a, p) {
             n += "&amount=" + l
         } else {
             var s = $.parseJSON(m);
-            k = Fai.decodeUrl(s.opList);
+            k = Helper.decodeUrl(s.opList);
             if (typeof k != "undefined" && k != "[]" && k != "") {
-                n += "&optionList=" + Fai.encodeUrl(k)
+                n += "&optionList=" + Helper.encodeUrl(k)
             }
             n += "&amount=" + s.count;
             $.cookie("isNeedAddCartItem", null)
@@ -14578,35 +14578,35 @@ Site.mallBuy2 = function (e, a, p) {
     }
     $.ajax({
         type: "post", url: "ajax/order_h.php?cmd=addCartItem", data: n, error: function () {
-            var j = Site.getDialogHtml({rt: Site.MallAjaxErrno.networkError}, p);
+            var j = Run.getDialogHtml({rt: Run.MallAjaxErrno.networkError}, p);
             var i = {htmlContent: j, width: 382, height: 115};
-            Site.popupBox(i);
-            Site.mallBuying[e] = false
+            Run.popupBox(i);
+            Run.mallBuying[e] = false
         }, success: function (i) {
             var v = $.parseJSON(i);
-            Site.refreshTopAndRightBarMallCartNum();
-            if (v.rt == Site.MallAjaxErrno.login) {
-                Site.createLoginDialog(e, a, p, "addCartItem", Fai.encodeUrl($.toJSON(k)), l);
-                Site.mallBuying[e] = false;
+            Run.refreshTopAndRightBarMallCartNum();
+            if (v.rt == Run.MallAjaxErrno.login) {
+                Run.createLoginDialog(e, a, p, "addCartItem", Helper.encodeUrl($.toJSON(k)), l);
+                Run.mallBuying[e] = false;
                 return
             }
-            var w = Site.getDialogHtml(v);
-            Site.mallBuying[e] = false;
+            var w = Run.getDialogHtml(v);
+            Run.mallBuying[e] = false;
             if (!w) {
                 return
             }
             var u = {};
             var t = parseInt(v.rt);
-            if (t == Site.MallAjaxErrno.mallAmountZero || t == Site.MallAjaxErrno.outOfMallAmount) {
+            if (t == Run.MallAjaxErrno.mallAmountZero || t == Run.MallAjaxErrno.outOfMallAmount) {
                 u = {htmlContent: w, width: 240, height: 116, boxName: "mallAmountZero"}
             } else {
-                if (t == Site.MallAjaxErrno.OutOfAllowAmount) {
+                if (t == Run.MallAjaxErrno.OutOfAllowAmount) {
                     u = {htmlContent: w, width: 240, height: 116, boxName: "allowAmountFlow"}
                 } else {
-                    if (t == Site.MallAjaxErrno.notAdded) {
+                    if (t == Run.MallAjaxErrno.notAdded) {
                         u = {htmlContent: w, width: 240, height: 116, boxName: "notAdded"}
                     } else {
-                        if (t == Site.MallAjaxErrno.authMemberNotAllow) {
+                        if (t == Run.MallAjaxErrno.authMemberNotAllow) {
                             u = {htmlContent: w, width: 240, height: 100, boxName: "authMemberNotAllow"}
                         } else {
                             u = {htmlContent: w, width: 372, height: 150, boxName: "mallBuy"}
@@ -14614,33 +14614,33 @@ Site.mallBuy2 = function (e, a, p) {
                     }
                 }
             }
-            var j = Site.popupBox(u)
+            var j = Run.popupBox(u)
         }
     });
-    if (Fai.isIE()) {
+    if (Helper.isIE()) {
         window.event.cancelBubble = true;
         window.event.returnValue = false
     } else {
-        if (!Fai.isMozilla()) {
+        if (!Helper.isMozilla()) {
             event.stopPropagation();
             event.preventDefault()
         }
     }
 };
-Site.initOptionsStr = function (a) {
-    Site.optionsStr.oldOptionsStr = a
+Run.initOptionsStr = function (a) {
+    Run.optionsStr.oldOptionsStr = a
 };
-Site.optionsStr = {};
-Site.mallImmeBuying = false;
-Site.mallImmeBuy = function (f, b) {
+Run.optionsStr = {};
+Run.mallImmeBuying = false;
+Run.mallImmeBuy = function (f, b) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行立刻购买。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行立刻购买。");
         return
     }
-    if (Site.mallImmeBuying) {
+    if (Run.mallImmeBuying) {
         return
     }
-    Site.mallImmeBuying = true;
+    Run.mallImmeBuying = true;
     var n = "id=" + f;
     var d;
     if (b === "PdSlide") {
@@ -14652,7 +14652,7 @@ Site.mallImmeBuy = function (f, b) {
     if (typeof m == "undefined" || m == null || m == "") {
         if (b && b != "undefined") {
             var p = d.find(".optionMsg");
-            if (Fai.isNull(d)) {
+            if (Helper.isNull(d)) {
                 return
             }
             var r = true;
@@ -14675,7 +14675,7 @@ Site.mallImmeBuy = function (f, b) {
                         j = j.substring(0, j.length - 1)
                     }
                     p.show();
-                    p.html(Fai.format(LS.mallCartChoiceItemError, Fai.encodeHtml(j)));
+                    p.html(Helper.format(LS.mallCartChoiceItemError, Helper.encodeHtml(j)));
                     if (b === "PdSlide") {
                         var y = $(this).parent().parent().position();
                         var x = $(".fk-slideForProduct .f-propListContent");
@@ -14685,8 +14685,8 @@ Site.mallImmeBuy = function (f, b) {
                     return false
                 }
             });
-            if (Site.optionsStr.oldOptionsStr != "null" && Site.optionsStr.oldOptionsStr) {
-                var o = Site.optionsStr.oldOptionsStr.split("_"), e = [];
+            if (Run.optionsStr.oldOptionsStr != "null" && Run.optionsStr.oldOptionsStr) {
+                var o = Run.optionsStr.oldOptionsStr.split("_"), e = [];
                 for (var h = 0; h < o.length; h++) {
                     for (var g = 0; g < k.length; g++) {
                         if (k[g].name == o[h]) {
@@ -14697,15 +14697,15 @@ Site.mallImmeBuy = function (f, b) {
                 k = e
             }
             if (!r) {
-                Site.mallImmeBuying = false;
+                Run.mallImmeBuying = false;
                 return false
             }
             if (k.length > 0) {
-                n += "&optionList=" + Fai.encodeUrl($.toJSON(k))
+                n += "&optionList=" + Helper.encodeUrl($.toJSON(k))
             }
         }
         var q = $("#cartbuyCount" + b), c = q.val(), l = 1;
-        if (Fai.isInteger(c)) {
+        if (Helper.isInteger(c)) {
             l = parseInt(c)
         }
         if (l < 1) {
@@ -14721,11 +14721,11 @@ Site.mallImmeBuy = function (f, b) {
     } else {
         var k = [];
         var s = $.parseJSON(m);
-        k = Fai.decodeUrl(s.opList);
+        k = Helper.decodeUrl(s.opList);
         if (b && b != "undefined") {
             n += "&fromDetail=true";
             if (typeof k != "undefined" && k != "[]" && k != "") {
-                n += "&optionList=" + Fai.encodeUrl(k)
+                n += "&optionList=" + Helper.encodeUrl(k)
             }
         }
         var a = {pid: s.pid, amount: s.count, optList: $.toJSON(k)};
@@ -14734,33 +14734,33 @@ Site.mallImmeBuy = function (f, b) {
     }
     $.ajax({
         type: "post", url: "ajax/order_h.php?cmd=addIme", data: n, error: function () {
-            Site.mallImmeBuying = false;
-            Fai.ing(LS.networkError, true)
+            Run.mallImmeBuying = false;
+            Helper.ing(LS.networkError, true)
         }, success: function (i) {
-            Site.mallImmeBuying = false;
+            Run.mallImmeBuying = false;
             var j = $.parseJSON(i);
-            if (j.rt == Site.MallAjaxErrno.login) {
-                Site.createLoginDialog(f, b, "", "immeBuy", Fai.encodeUrl($.toJSON(k)), l)
+            if (j.rt == Run.MallAjaxErrno.login) {
+                Run.createLoginDialog(f, b, "", "immeBuy", Helper.encodeUrl($.toJSON(k)), l)
             } else {
-                if (j.rt == Site.MallAjaxErrno.mallAmountZero) {
-                    Fai.ing(LS.mallAmountZero, true)
+                if (j.rt == Run.MallAjaxErrno.mallAmountZero) {
+                    Helper.ing(LS.mallAmountZero, true)
                 } else {
-                    if (j.rt == Site.MallAjaxErrno.mallOptionStop) {
-                        Fai.ing(LS.mallOptionStop, true)
+                    if (j.rt == Run.MallAjaxErrno.mallOptionStop) {
+                        Helper.ing(LS.mallOptionStop, true)
                     } else {
-                        if (j.rt == Site.MallAjaxErrno.outOfMallAmount) {
-                            Fai.ing(LS.mallAmountOverFlow, true)
+                        if (j.rt == Run.MallAjaxErrno.outOfMallAmount) {
+                            Helper.ing(LS.mallAmountOverFlow, true)
                         } else {
-                            if (j.rt == Site.MallAjaxErrno.OutOfAllowAmount) {
-                                Fai.ing(LS.allowAmountOverFlow, true)
+                            if (j.rt == Run.MallAjaxErrno.OutOfAllowAmount) {
+                                Helper.ing(LS.allowAmountOverFlow, true)
                             } else {
-                                if (j.rt == Site.MallAjaxErrno.notAdded) {
-                                    Fai.ing(LS.mallProductNotAdded, true)
+                                if (j.rt == Run.MallAjaxErrno.notAdded) {
+                                    Helper.ing(LS.mallProductNotAdded, true)
                                 } else {
-                                    if (j.rt == Site.MallAjaxErrno.authMemberNotAllow) {
-                                        Fai.ing(j.data + LS.authLevelBuy, true)
+                                    if (j.rt == Run.MallAjaxErrno.authMemberNotAllow) {
+                                        Helper.ing(j.data + LS.authLevelBuy, true)
                                     } else {
-                                        Fai.top.location.href = "mstl.php?imme"
+                                        Helper.top.location.href = "mstl.php?imme"
                                     }
                                 }
                             }
@@ -14770,18 +14770,18 @@ Site.mallImmeBuy = function (f, b) {
             }
         }
     });
-    if (Fai.isIE()) {
+    if (Helper.isIE()) {
         window.event.cancelBubble = true;
         window.event.returnValue = false
     } else {
-        if (!Fai.isMozilla()) {
+        if (!Helper.isMozilla()) {
             event.stopPropagation();
             event.preventDefault()
         }
     }
 };
-Site.desMallCartAmount = function (c, d, g, m, h, r, f) {
-    var e = Fai.top.$("#module" + c);
+Run.desMallCartAmount = function (c, d, g, m, h, r, f) {
+    var e = Helper.top.$("#module" + c);
     var q = e.find(".itemLine" + d);
     var o = q.find(".amountEdit");
     var l = parseInt(o.val());
@@ -14804,21 +14804,21 @@ Site.desMallCartAmount = function (c, d, g, m, h, r, f) {
     }
     o.val(l);
     if (j != l && k) {
-        Site.mallCartAmountChange(c, d, g, m, h, r, f)
+        Run.mallCartAmountChange(c, d, g, m, h, r, f)
     } else {
         var b = parseFloat(q.find(".amountEdit").attr("_itemprice"), 2);
         var n = parseInt(q.find(".amountEdit").val());
         var i = (b * n);
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-            i = Fai.formatPriceEn(i)
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+            i = Helper.formatPriceEn(i)
         } else {
             i = i.toFixed(2)
         }
         q.find(".itemTotalText").text(i)
     }
 };
-Site.incMallCartAmount = function (c, d, g, m, h, r, f) {
-    var e = Fai.top.$("#module" + c);
+Run.incMallCartAmount = function (c, d, g, m, h, r, f) {
+    var e = Helper.top.$("#module" + c);
     var q = e.find(".itemLine" + d);
     var o = q.find(".amountEdit");
     var l = parseInt(o.val());
@@ -14847,27 +14847,27 @@ Site.incMallCartAmount = function (c, d, g, m, h, r, f) {
     }
     o.val(l);
     if (j != l && k) {
-        Site.mallCartAmountChange(c, d, g, m, h, r, f)
+        Run.mallCartAmountChange(c, d, g, m, h, r, f)
     } else {
         var b = parseFloat(q.find(".amountEdit").attr("_itemprice"), 2);
         var n = parseInt(q.find(".amountEdit").val());
         var i = (b * n);
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-            i = Fai.formatPriceEn(i)
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+            i = Helper.formatPriceEn(i)
         } else {
             i = i.toFixed(2)
         }
         q.find(".itemTotalText").text(i)
     }
 };
-Site.mallCartAmountChange = function (a, b, e, l, i, n, d) {
-    var c = Fai.top.$("#module" + a);
+Run.mallCartAmountChange = function (a, b, e, l, i, n, d) {
+    var c = Helper.top.$("#module" + a);
     var m = c.find(".itemLine" + b);
     var f = m.find(".amountEdit");
     var h = f.val();
     var g = 1;
     var j = m.find(".J_mcart-pdSelect").prop("checked");
-    if (Fai.isInteger(h)) {
+    if (Helper.isInteger(h)) {
         g = parseInt(h)
     }
     if (g < i) {
@@ -14882,7 +14882,7 @@ Site.mallCartAmountChange = function (a, b, e, l, i, n, d) {
         } else {
             if (g > d) {
                 g = d;
-                Fai.ing(LS.mallAmountOverFlow, true);
+                Helper.ing(LS.mallAmountOverFlow, true);
                 $("#buyCountDes" + a + "_" + b).removeClass("disableMallJian");
                 $("#buyCountInc" + a + "_" + b).addClass("disableMallJia")
             } else {
@@ -14922,7 +14922,7 @@ Site.mallCartAmountChange = function (a, b, e, l, i, n, d) {
             var o = jQuery.parseJSON(o);
             if (o.success) {
                 k.html(LS.mallCartUpdateOk);
-                Site.reCountCartMoney(c)
+                Run.reCountCartMoney(c)
             } else {
                 if (o.rt == -3) {
                     k.html(LS.mallCartUpdateNotFound)
@@ -14937,7 +14937,7 @@ Site.mallCartAmountChange = function (a, b, e, l, i, n, d) {
         }
     })
 };
-Site.reCountCartMoney = function (d) {
+Run.reCountCartMoney = function (d) {
     var b = d.find(".cartTotalValue");
     var g = b.attr("choiceCurrencyVal");
     var c = b.attr("levelDiscount");
@@ -14952,17 +14952,17 @@ Site.reCountCartMoney = function (d) {
         }
         if (typeof(n) != "undefined" && n != null && n.length > 0) {
             var u = 0;
-            if (typeof(p) != "undefined" && p != null && Site.checkSaleProVal(p)) {
+            if (typeof(p) != "undefined" && p != null && Run.checkSaleProVal(p)) {
                 var j = $(this).attr("lineno");
                 var q = p.other.ruleData.d;
                 if (p.other.ruleData.s == "1" || p.other.ruleData.s == "2") {
                     var h = 0;
                     var l = 0;
                     n.each(function () {
-                        var i = Site.getEachItemPrice(this);
+                        var i = Run.getEachItemPrice(this);
                         var v = $(this).find(".J_mcart-pdSelect").prop("checked");
-                        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                            $(this).find(".itemTotalText").text(Fai.formatPriceEn(i))
+                        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                            $(this).find(".itemTotalText").text(Helper.formatPriceEn(i))
                         } else {
                             $(this).find(".itemTotalText").text(i.toFixed(2))
                         }
@@ -15016,13 +15016,13 @@ Site.reCountCartMoney = function (d) {
                 n.each(function () {
                     p = $.parseJSON($(this).attr("saleInfo"));
                     var v = $(this).find(".J_mcart-pdSelect").prop("checked");
-                    var i = Site.getEachItemPrice(this);
+                    var i = Run.getEachItemPrice(this);
                     if (v) {
                         u += i;
                         f += i
                     }
-                    if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                        $(this).find(".itemTotalText").text(Fai.formatPriceEn(i))
+                    if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                        $(this).find(".itemTotalText").text(Helper.formatPriceEn(i))
                     } else {
                         $(this).find(".itemTotalText").text(i.toFixed(2))
                     }
@@ -15031,16 +15031,16 @@ Site.reCountCartMoney = function (d) {
             e += u
         }
     });
-    Site.refreshTopAndRightBarMallCartNum();
-    if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
+    Run.refreshTopAndRightBarMallCartNum();
+    if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
         if (d.has("mallCartNew")) {
-            $(".J_countTotal").html(LS.goodsTotalMoney + "<span class='countTotalText'>" + g + Fai.formatPriceEn(f) + "</span>");
-            $(".J_countSave").html("&nbsp;&nbsp;&nbsp;" + LS.offsetMoney + "<span class='countSaveText'>" + g + Fai.formatPriceEn(f - e) + "</span>");
-            d.find(".cartTotalValue").html("<span class='currencyValText'>" + g + "</span>" + Fai.formatPriceEn(e))
+            $(".J_countTotal").html(LS.goodsTotalMoney + "<span class='countTotalText'>" + g + Helper.formatPriceEn(f) + "</span>");
+            $(".J_countSave").html("&nbsp;&nbsp;&nbsp;" + LS.offsetMoney + "<span class='countSaveText'>" + g + Helper.formatPriceEn(f - e) + "</span>");
+            d.find(".cartTotalValue").html("<span class='currencyValText'>" + g + "</span>" + Helper.formatPriceEn(e))
         } else {
-            $(".J_countTotal").html(LS.shoppingCartCountMoney + g + Fai.formatPriceEn(f));
-            $(".J_countSave").html("&nbsp;&nbsp;&nbsp;" + LS.shoppingCartCountReduce + g + Fai.formatPriceEn(f - e));
-            d.find(".cartTotalValue").html(g + Fai.formatPriceEn(e))
+            $(".J_countTotal").html(LS.shoppingCartCountMoney + g + Helper.formatPriceEn(f));
+            $(".J_countSave").html("&nbsp;&nbsp;&nbsp;" + LS.shoppingCartCountReduce + g + Helper.formatPriceEn(f - e));
+            d.find(".cartTotalValue").html(g + Helper.formatPriceEn(e))
         }
     } else {
         if (d.has("mallCartNew")) {
@@ -15054,7 +15054,7 @@ Site.reCountCartMoney = function (d) {
         }
     }
 };
-Site.getEachItemPrice = function (d) {
+Run.getEachItemPrice = function (d) {
     var c = parseFloat($(d).find(".amountEdit").attr("_itemprice"), 2);
     var b = parseInt($(d).find(".amountEdit").val());
     if (isNaN(b)) {
@@ -15063,7 +15063,7 @@ Site.getEachItemPrice = function (d) {
         return (c * b)
     }
 };
-Site.showSaleRedPromotion = function (e, c, a, m, k) {
+Run.showSaleRedPromotion = function (e, c, a, m, k) {
     if (typeof(e) == "undefined" || typeof(c) == "undefined" || e == null || c == null) {
         return
     }
@@ -15072,7 +15072,7 @@ Site.showSaleRedPromotion = function (e, c, a, m, k) {
     }
     var h = $(".showRedsalePro").eq(0).width();
     var l = $(".J_fullReduceCalss_" + c).eq(0).width();
-    if (Site.checkSaleProVal(e)) {
+    if (Run.checkSaleProVal(e)) {
         var f = e.other.ruleData.d;
         if (f.length > 0) {
             var g = "";
@@ -15082,18 +15082,18 @@ Site.showSaleRedPromotion = function (e, c, a, m, k) {
                     if (d != 0) {
                         b.push(LS.comma)
                     }
-                    if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                        b.push(Fai.format(LS.salePromotionFullReduce, Fai.formatPriceEn(f[d].m, null, true), Fai.formatPriceEn(f[d].n, null, true)))
+                    if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                        b.push(Helper.format(LS.salePromotionFullReduce, Helper.formatPriceEn(f[d].m, null, true), Helper.formatPriceEn(f[d].n, null, true)))
                     } else {
-                        b.push(Fai.format(LS.salePromotionFullReduce, f[d].m, f[d].n))
+                        b.push(Helper.format(LS.salePromotionFullReduce, f[d].m, f[d].n))
                     }
                 }
             }
             if (e.other.ruleData.s == "1") {
-                g = Fai.format(LS.salePromotionSigle, b.join(""))
+                g = Helper.format(LS.salePromotionSigle, b.join(""))
             } else {
                 if (e.other.ruleData.s == "2") {
-                    g = Fai.format(LS.salePromotionGroup, b.join(""))
+                    g = Helper.format(LS.salePromotionGroup, b.join(""))
                 }
             }
             $(".J_saleWord_" + c).css({left: (45 + l) + "px", width: (h - 235 - l) + "px"});
@@ -15105,19 +15105,19 @@ Site.showSaleRedPromotion = function (e, c, a, m, k) {
         return
     }
     if (a == m) {
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-            $(".J_salePrice_" + c).html(k + Fai.formatPriceEn(a))
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+            $(".J_salePrice_" + c).html(k + Helper.formatPriceEn(a))
         } else {
             $(".J_salePrice_" + c).html(k + a.toFixed(2))
         }
     } else {
         var j = [];
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
             j.push("<div class='needPay'>");
-            j.push(k + Fai.formatPriceEn(a));
+            j.push(k + Helper.formatPriceEn(a));
             j.push("</div>");
             j.push("<div class='itemTotalPay'>");
-            j.push(k + Fai.formatPriceEn(m));
+            j.push(k + Helper.formatPriceEn(m));
             j.push("</div>")
         } else {
             j.push("<div class='needPay'>");
@@ -15135,15 +15135,15 @@ Site.showSaleRedPromotion = function (e, c, a, m, k) {
         $(".J_salePrice_" + c).parent(".showRedsalePro").find(".fullReduceCalssRect").removeClass("fullReduceRectGray")
     }
 };
-Site.showCountPrice = function (e, b, g, c, a, d) {
+Run.showCountPrice = function (e, b, g, c, a, d) {
     if (typeof(e) == "undefined" || typeof(b) == "undefined" || typeof(g) == "undefined" || e == null || b == null || g == null) {
         return
     }
     var h = b - e;
-    if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-        h = Fai.formatPriceEn(h);
-        b = Fai.formatPriceEn(b);
-        e = Fai.formatPriceEn(e)
+    if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+        h = Helper.formatPriceEn(h);
+        b = Helper.formatPriceEn(b);
+        e = Helper.formatPriceEn(e)
     } else {
         h = h.toFixed(2);
         b = b.toFixed(2);
@@ -15173,25 +15173,25 @@ Site.showCountPrice = function (e, b, g, c, a, d) {
         $(".J_countNeedPay").html(f.join(""))
     }
 };
-Site.showSaleMemOrRedPrice = function (d, a, i, h, b) {
+Run.showSaleMemOrRedPrice = function (d, a, i, h, b) {
     if (typeof(d) != "undefined" && d != null) {
-        if (Site.checkSaleProVal(d)) {
+        if (Run.checkSaleProVal(d)) {
             var e = d.other.ruleData.d;
             if (e.length > 0) {
                 var f = "";
                 var c = e[0].m;
                 if (d.other.ruleData.s == "1") {
                     if (_lcid == 2052 || _lcid == 1028) {
-                        f = Fai.format(LS.salePromotionPdDisCount, c.toFixed(1))
+                        f = Helper.format(LS.salePromotionPdDisCount, c.toFixed(1))
                     } else {
-                        f = Fai.format(LS.salePromotionPdDisCount, Fai.formatPriceEn(10 * (10 - c), 1))
+                        f = Helper.format(LS.salePromotionPdDisCount, Helper.formatPriceEn(10 * (10 - c), 1))
                     }
                 } else {
                     if (d.other.ruleData.s == "2") {
                         if (_lcid == 2052 || _lcid == 1028) {
-                            f = Fai.format(LS.salePromotionPdLapse, h + c.toFixed(2))
+                            f = Helper.format(LS.salePromotionPdLapse, h + c.toFixed(2))
                         } else {
-                            f = Fai.format(LS.salePromotionPdLapse, h + Fai.formatPriceEn(c))
+                            f = Helper.format(LS.salePromotionPdLapse, h + Helper.formatPriceEn(c))
                         }
                     }
                 }
@@ -15208,7 +15208,7 @@ Site.showSaleMemOrRedPrice = function (d, a, i, h, b) {
                 g.push("</tr></table>");
                 g.push("</div>");
                 g.push("<div class='saleMemOrRedVal'>");
-                g.push(LS.salePromotionActivity + Fai.encodeHtml(d.name));
+                g.push(LS.salePromotionActivity + Helper.encodeHtml(d.name));
                 g.push("<div style='height:3px;'></div>");
                 g.push(f);
                 g.push("</div>");
@@ -15233,14 +15233,14 @@ Site.showSaleMemOrRedPrice = function (d, a, i, h, b) {
             g.push("</div>");
             g.push("<div class='saleMemOrRedVal'>");
             a = Math.round(a * 100);
-            g.push(i + Fai.format(LS.salePromotionRedVal, "*" + a + "%"));
+            g.push(i + Helper.format(LS.salePromotionRedVal, "*" + a + "%"));
             g.push("</div>");
             $(".J_itemPrice_" + b).filter(":not('.mallCartNew .J_itemPrice_" + b + "')").css("margin-top", "-18px");
             $(".J_saleMemOrRedPrice_" + b).html(g.join(""))
         }
     }
 };
-Site.checkSaleProVal = function (a) {
+Run.checkSaleProVal = function (a) {
     if (typeof(a.other) != "undefined") {
         if (typeof(a.other.ruleData) != "undefined") {
             if (typeof(a.other.ruleData.s) != "undefined" && typeof(a.other.ruleData.d) != "undefined") {
@@ -15252,7 +15252,7 @@ Site.checkSaleProVal = function (a) {
     }
     return false
 };
-Site.showSaleMemOrRedValInIE = function () {
+Run.showSaleMemOrRedValInIE = function () {
     $(".saleProSignHover").hover(function () {
         $(this).find(".saleMemOrRedName").css("border-bottom-width", "0px");
         $(this).find(".saleMemOrRedVal").css({"background-color": "#ffefe9", display: "block"});
@@ -15263,8 +15263,8 @@ Site.showSaleMemOrRedValInIE = function () {
         $(this).find(".saleMemOrJt").removeClass("saleMemOrJtUp")
     })
 };
-Site.mallCartItemDel = function (h, e, a, g, d, c) {
-    var b = Fai.top.$("#module" + h);
+Run.mallCartItemDel = function (h, e, a, g, d, c) {
+    var b = Helper.top.$("#module" + h);
     var f = b.find(".cartMsg");
     f.show();
     if (b.find(".mallCartNew").length > 0) {
@@ -15311,9 +15311,9 @@ Site.mallCartItemDel = function (h, e, a, g, d, c) {
                 }, 100);
                 var r = b.find(".itemLine");
                 if (r.length == 0) {
-                    Fai.top.location.reload()
+                    Helper.top.location.reload()
                 } else {
-                    Site.reCountCartMoney(b)
+                    Run.reCountCartMoney(b)
                 }
             } else {
                 if (s.rt == -3) {
@@ -15332,7 +15332,7 @@ Site.mallCartItemDel = function (h, e, a, g, d, c) {
         }
     })
 };
-Site.mallSettle = function (b) {
+Run.mallSettle = function (b) {
     var c = $(".J_mcart-pdSelect").not("input:checked");
     var a = $(".J_mcart-pdSelect").filter("input:checked");
     var d = new Array();
@@ -15345,20 +15345,20 @@ Site.mallSettle = function (b) {
         d.push(e)
     });
     if (a.length > 500) {
-        Fai.ing(LS.mcartTooLong)
+        Helper.ing(LS.mcartTooLong)
     } else {
         if (a.length) {
             if (b > 0) {
-                Fai.top.location.href = "mstl.php?id=" + b + "&unCheckedItemIds=" + d
+                Helper.top.location.href = "mstl.php?id=" + b + "&unCheckedItemIds=" + d
             } else {
-                Fai.top.location.href = "mstl.php"
+                Helper.top.location.href = "mstl.php"
             }
         } else {
-            Fai.ing(LS.mallSelectSettleItem)
+            Helper.ing(LS.mallSelectSettleItem)
         }
     }
 };
-Site.mallSelectAllShop = function (g, e) {
+Run.mallSelectAllShop = function (g, e) {
     var d = $("#module" + g), f = d.find("#selectAll"), h = d.find(".J_mcart-pdSelect"),
         b = d.find(".J_mcart-pdSelect:checked"), a = h.not("input:checked");
     var c = f.prop("checked");
@@ -15373,9 +15373,9 @@ Site.mallSelectAllShop = function (g, e) {
     } else {
         h.prop("checked", c)
     }
-    Site.setCheckBoxToFalgDiv(d)
+    Run.setCheckBoxToFalgDiv(d)
 };
-Site.mallSelectShop = function (a, b, e, h, f, d) {
+Run.mallSelectShop = function (a, b, e, h, f, d) {
     var c = $("#module" + a), i = c.find(".J_mcart-pdSelect"), g = c.find("#selectAll");
     g.prop("checked", true);
     $.each(i, function (j, k) {
@@ -15385,12 +15385,12 @@ Site.mallSelectShop = function (a, b, e, h, f, d) {
         }
     });
     if (!f) {
-        Site.mallCartAmountChange(a, b, e, h, d)
+        Run.mallCartAmountChange(a, b, e, h, d)
     }
-    Site.setCheckBoxToFalgDiv(c)
+    Run.setCheckBoxToFalgDiv(c)
 };
-Site.mallStlPayMode = function (b, c) {
-    var a = Fai.top.$("#module" + b);
+Run.mallStlPayMode = function (b, c) {
+    var a = Helper.top.$("#module" + b);
     a.find("input[name=mallPay]").val(c);
     if (c == 2) {
         a.find(".bankList").show()
@@ -15407,8 +15407,8 @@ Site.mallStlPayMode = function (b, c) {
         a.find(".payOnlinePanel").hide()
     }
 };
-Site.mallStlCalcTotal = function (a) {
-    var b = Fai.top.$("#module" + a);
+Run.mallStlCalcTotal = function (a) {
+    var b = Helper.top.$("#module" + a);
     var e = parseFloat(b.find(".cartTotal").attr("pay_price"));
     if (isNaN(e)) {
         return
@@ -15430,10 +15430,10 @@ Site.mallStlCalcTotal = function (a) {
         if (!isNaN(h)) {
             f = parseFloat(h);
             if ((e + c) < f) {
-                Fai.ing(Fai.format(LS.integral_maxUse, $("#useItg").attr("_maxuse"), Fai.encodeHtml($("#useItg").attr("__itegName"))), true);
+                Helper.ing(Helper.format(LS.integral_maxUse, $("#useItg").attr("_maxuse"), Helper.encodeHtml($("#useItg").attr("__itegName"))), true);
                 $("#useItg").focus();
-                if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                    b.find(".mallStlTotal .totalValue").text(Fai.formatPriceEn(e + c))
+                if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                    b.find(".mallStlTotal .totalValue").text(Helper.formatPriceEn(e + c))
                 } else {
                     b.find(".mallStlTotal .totalValue").text((e + c).toFixed(2))
                 }
@@ -15455,21 +15455,21 @@ Site.mallStlCalcTotal = function (a) {
     if (d > 0) {
         b.find("#presentItg").text(parseInt((e - f - g).toFixed(2) * d))
     }
-    if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-        b.find("#shippingMoneyVal").text(Fai.formatPriceEn(c)).attr("_shipmoney", c);
-        b.find(".mallStlTotal .totalValue").text(Fai.formatPriceEn(e + c - f - g))
+    if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+        b.find("#shippingMoneyVal").text(Helper.formatPriceEn(c)).attr("_shipmoney", c);
+        b.find(".mallStlTotal .totalValue").text(Helper.formatPriceEn(e + c - f - g))
     } else {
         b.find("#shippingMoneyVal").text(c.toFixed(2)).attr("_shipmoney", c);
         b.find(".mallStlTotal .totalValue").text((e + c - f - g).toFixed(2))
     }
 };
-Site.mallStlChangeBank = function (a) {
+Run.mallStlChangeBank = function (a) {
     $("#" + a).attr("checked", true)
 };
-Site.mallNumeric = function (a) {
+Run.mallNumeric = function (a) {
     $("#module" + a + " .numeric").numeric({decimal: " ", negative: false})
 };
-Site.getBackgroundColor = function (a) {
+Run.getBackgroundColor = function (a) {
     var b = "";
     while (a[0].tagName.toLowerCase() != "html") {
         b = a.css("background-color");
@@ -15480,7 +15480,7 @@ Site.getBackgroundColor = function (a) {
     }
     return b
 };
-Site.getMallSubmitData = function (f, u, s, e, p) {
+Run.getMallSubmitData = function (f, u, s, e, p) {
     var j = "";
     f.find(".propItemValue").each(function () {
         var z = $(this), C = z.attr("_required") == 1;
@@ -15521,7 +15521,7 @@ Site.getMallSubmitData = function (f, u, s, e, p) {
             if (F == "mobile") {
                 w = z.find("input").val();
                 if (w.length > 0) {
-                    if (!Fai.isNationMobile(w)) {
+                    if (!Helper.isNationMobile(w)) {
                         j = LS.mallStlSubmitInput2 + z.attr("_prop");
                         return false
                     } else {
@@ -15538,11 +15538,11 @@ Site.getMallSubmitData = function (f, u, s, e, p) {
                 return false
             }
             if (w && w.length > 0) {
-                if (F === "email" && !Fai.isEmail(w)) {
+                if (F === "email" && !Helper.isEmail(w)) {
                     j = LS.mallStlSubmitInput2 + z.attr("_prop");
                     return false
                 }
-                if (F === "phone" && !Fai.isPhone(w)) {
+                if (F === "phone" && !Helper.isPhone(w)) {
                     j = LS.mallStlSubmitInput2 + z.attr("_prop");
                     return false
                 }
@@ -15564,12 +15564,12 @@ Site.getMallSubmitData = function (f, u, s, e, p) {
     if (j != "") {
         return j
     }
-    if (Site.orderMessageOpen) {
-        var o = Fai.decodeHtml($("#orderLeveaMsgIn").val());
-        if (o.length > Site.orderMessageMaxNum) {
-            o = o.substring(0, Site.orderMessageMaxNum)
+    if (Run.orderMessageOpen) {
+        var o = Helper.decodeHtml($("#orderLeveaMsgIn").val());
+        if (o.length > Run.orderMessageMaxNum) {
+            o = o.substring(0, Run.orderMessageMaxNum)
         }
-        if (o !== Site.orderLeveaMsgTip) {
+        if (o !== Run.orderLeveaMsgTip) {
             u.msg = o
         } else {
             u.msg = ""
@@ -15624,14 +15624,14 @@ Site.getMallSubmitData = function (f, u, s, e, p) {
     var t = $("#useItg");
     if (t.length > 0) {
         var d = t.val();
-        if (Fai.isInteger(d)) {
+        if (Helper.isInteger(d)) {
             var g = parseInt(t.attr("_maxUse")), a = parseInt(t.attr("_currentitg")), r = t.attr("_itgname");
             if (d > a) {
-                j = Fai.format(LS.integral_notOverCurrent, Fai.encodeHtml(r), Fai.encodeHtml(r));
+                j = Helper.format(LS.integral_notOverCurrent, Helper.encodeHtml(r), Helper.encodeHtml(r));
                 return j
             }
             if (d > g) {
-                j = Fai.format(LS.integral_notOver, Fai.encodeHtml(r), g);
+                j = Helper.format(LS.integral_notOver, Helper.encodeHtml(r), g);
                 return j
             }
             if (d < 0) {
@@ -15655,20 +15655,20 @@ Site.getMallSubmitData = function (f, u, s, e, p) {
     }
     return j
 };
-Site.mallImmeSubmit = function (c, l, n, j) {
-    var i = {}, e = {}, c = Fai.top.$("#module" + c), f = c.find(".stlMsg");
-    var d = Site.getMallSubmitData(c, i, e, l, n);
+Run.mallImmeSubmit = function (c, l, n, j) {
+    var i = {}, e = {}, c = Helper.top.$("#module" + c), f = c.find(".stlMsg");
+    var d = Run.getMallSubmitData(c, i, e, l, n);
     if (d != "") {
         f.show();
         f.html(d);
-        Site.scrollToDiv(c);
+        Run.scrollToDiv(c);
         return
     }
     var b = c.find(".mallStlOpt input");
     b.attr("disabled", true);
     f.show();
     f.html(LS.mallStlSubmitting);
-    Site.scrollToDiv(c);
+    Run.scrollToDiv(c);
     if (l != 0 && n) {
         var k = {}, g = [];
         g.push(e);
@@ -15676,7 +15676,7 @@ Site.mallImmeSubmit = function (c, l, n, j) {
         $.ajax({
             type: "post",
             url: action = "ajax/memberAdm_h.php?cmd=set&opera=addAddr&id=" + l,
-            data: "info=" + Fai.encodeUrl($.toJSON(k)),
+            data: "info=" + Helper.encodeUrl($.toJSON(k)),
             success: function (o) {
             },
             error: function () {
@@ -15690,8 +15690,8 @@ Site.mallImmeSubmit = function (c, l, n, j) {
             if (m.length < 2) {
                 if (!a.test(m)) {
                     f.hide();
-                    Site.scrollToDiv(c);
-                    Fai.ing(LS.orderValidRecvName);
+                    Run.scrollToDiv(c);
+                    Helper.ing(LS.orderValidRecvName);
                     b.attr("disabled", false);
                     return
                 }
@@ -15713,7 +15713,7 @@ Site.mallImmeSubmit = function (c, l, n, j) {
     $.ajax({
         type: "post",
         url: "ajax/order_h.php?cmd=settle&imme",
-        data: "data=" + Fai.encodeUrl($.toJSON(i)),
+        data: "data=" + Helper.encodeUrl($.toJSON(i)),
         error: function () {
             b.removeAttr("disabled");
             f.html(LS.mallStlSubmitError)
@@ -15722,7 +15722,7 @@ Site.mallImmeSubmit = function (c, l, n, j) {
             b.removeAttr("disabled");
             var o = jQuery.parseJSON(o);
             if (o.success) {
-                Fai.top.location.href = "mdetail.php?id=" + o.oid + "&suc=1"
+                Helper.top.location.href = "mdetail.php?id=" + o.oid + "&suc=1"
             } else {
                 if (o.rt == -3) {
                     f.html(LS.mallStlSubmitNotFound)
@@ -15730,8 +15730,8 @@ Site.mallImmeSubmit = function (c, l, n, j) {
                     if (o.rt == -9) {
                         f.html(LS.mallStlSubmitStatusError)
                     } else {
-                        if (o.rt == Site.MallAjaxErrno.outOfMallAmount) {
-                            f.html(Fai.format(LS.mallAmountOverNameList, o.productsName))
+                        if (o.rt == Run.MallAjaxErrno.outOfMallAmount) {
+                            f.html(Helper.format(LS.mallAmountOverNameList, o.productsName))
                         } else {
                             f.html(LS.mallStlSubmitError)
                         }
@@ -15741,24 +15741,24 @@ Site.mallImmeSubmit = function (c, l, n, j) {
         }
     })
 };
-Site.mallSubmit = function (e, a, b, q, n, p, l) {
+Run.mallSubmit = function (e, a, b, q, n, p, l) {
     if (a == 0) {
-        Fai.top.location.href = "mdetail.php";
+        Helper.top.location.href = "mdetail.php";
         return
     }
-    var k = {}, g = {}, e = Fai.top.$("#module" + e), h = e.find(".stlMsg");
-    var f = Site.getMallSubmitData(e, k, g, n, p);
+    var k = {}, g = {}, e = Helper.top.$("#module" + e), h = e.find(".stlMsg");
+    var f = Run.getMallSubmitData(e, k, g, n, p);
     if (f != "") {
         h.show();
         h.html(f);
-        Site.scrollToDiv(e);
+        Run.scrollToDiv(e);
         return
     }
     var d = e.find(".mallStlOpt input");
     d.attr("disabled", true);
     h.show();
     h.html(LS.mallStlSubmitting);
-    Site.scrollToDiv(e);
+    Run.scrollToDiv(e);
     if (n != 0 && p) {
         var m = {}, i = [];
         i.push(g);
@@ -15766,7 +15766,7 @@ Site.mallSubmit = function (e, a, b, q, n, p, l) {
         $.ajax({
             type: "post",
             url: action = "ajax/memberAdm_h.php?cmd=set&opera=addAddr&id=" + n,
-            data: "info=" + Fai.encodeUrl($.toJSON(m)),
+            data: "info=" + Helper.encodeUrl($.toJSON(m)),
             success: function (r) {
             },
             error: function () {
@@ -15780,8 +15780,8 @@ Site.mallSubmit = function (e, a, b, q, n, p, l) {
             if (o.length < 2) {
                 if (!c.test(o)) {
                     h.hide();
-                    Site.scrollToDiv(e);
-                    Fai.ing(LS.orderValidRecvName);
+                    Run.scrollToDiv(e);
+                    Helper.ing(LS.orderValidRecvName);
                     d.attr("disabled", false);
                     return
                 }
@@ -15803,7 +15803,7 @@ Site.mallSubmit = function (e, a, b, q, n, p, l) {
     $.ajax({
         type: "post",
         url: "ajax/order_h.php?cmd=delItem&orderId=" + a,
-        data: "itemIds=" + Fai.encodeUrl($.toJSON(b)),
+        data: "itemIds=" + Helper.encodeUrl($.toJSON(b)),
         error: function () {
             d.removeAttr("disabled");
             h.html(LS.mallStlSubmitError)
@@ -15812,7 +15812,7 @@ Site.mallSubmit = function (e, a, b, q, n, p, l) {
             $.ajax({
                 type: "post",
                 url: "ajax/order_h.php?cmd=settle&orderId=" + a,
-                data: "data=" + Fai.encodeUrl($.toJSON(k)),
+                data: "data=" + Helper.encodeUrl($.toJSON(k)),
                 error: function () {
                     d.removeAttr("disabled");
                     h.html(LS.mallStlSubmitError)
@@ -15824,13 +15824,13 @@ Site.mallSubmit = function (e, a, b, q, n, p, l) {
                         $.ajax({
                             type: "post",
                             url: "ajax/order_h.php?cmd=addAfterShop",
-                            data: "data=" + Fai.encodeUrl($.toJSON(q)),
+                            data: "data=" + Helper.encodeUrl($.toJSON(q)),
                             error: function () {
                                 d.removeAttr("disabled");
                                 h.html(LS.mallStlSubmitError)
                             },
                             success: function (s) {
-                                Fai.top.location.href = "mdetail.php?id=" + a + "&suc=1"
+                                Helper.top.location.href = "mdetail.php?id=" + a + "&suc=1"
                             }
                         })
                     } else {
@@ -15840,19 +15840,19 @@ Site.mallSubmit = function (e, a, b, q, n, p, l) {
                             if (r.rt == -9) {
                                 h.html(LS.mallStlSubmitStatusError)
                             } else {
-                                if (r.rt == Site.MallAjaxErrno.outOfMallAmount) {
-                                    h.html(Fai.format(LS.mallAmountOverNameList, r.productsName))
+                                if (r.rt == Run.MallAjaxErrno.outOfMallAmount) {
+                                    h.html(Helper.format(LS.mallAmountOverNameList, r.productsName))
                                 } else {
-                                    if (r.rt == Site.MallAjaxErrno.OutOfAllowAmount) {
-                                        h.html(Fai.format(LS.allowAmountOverNameList, r.productsName))
+                                    if (r.rt == Run.MallAjaxErrno.OutOfAllowAmount) {
+                                        h.html(Helper.format(LS.allowAmountOverNameList, r.productsName))
                                     } else {
-                                        if (r.rt == Site.MallAjaxErrno.couponOverTime) {
+                                        if (r.rt == Run.MallAjaxErrno.couponOverTime) {
                                             h.html(LS.couponOverTime)
                                         } else {
-                                            if (r.rt == Site.MallAjaxErrno.couponUnavail) {
+                                            if (r.rt == Run.MallAjaxErrno.couponUnavail) {
                                                 h.html(LS.couponUnavail)
                                             } else {
-                                                if (r.rt == Site.MallAjaxErrno.couponNotFound) {
+                                                if (r.rt == Run.MallAjaxErrno.couponNotFound) {
                                                     h.html(LS.couponNotFound)
                                                 } else {
                                                     h.html(LS.mallStlSubmitError)
@@ -15869,10 +15869,10 @@ Site.mallSubmit = function (e, a, b, q, n, p, l) {
         }
     })
 };
-Site.initModuleMallAddrInfo = function (c, b, f, u, q) {
+Run.initModuleMallAddrInfo = function (c, b, f, u, q) {
     var t = "-----------", z = [], m, B, r, y, C, o, A;
-    if (Site.addrInfoListGlobal != null && Site.addrInfoListGlobal != []) {
-        c = Site.addrInfoListGlobal
+    if (Run.addrInfoListGlobal != null && Run.addrInfoListGlobal != []) {
+        c = Run.addrInfoListGlobal
     }
     if (c.length == 0) {
         var n = "";
@@ -16249,7 +16249,7 @@ Site.initModuleMallAddrInfo = function (c, b, f, u, q) {
             })
         }
     }
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         if (c.length > 2) {
             $(".addrMsgList").attr("style", "cursor:pointer;height:300px;width:690px;")
         } else {
@@ -16321,7 +16321,7 @@ Site.initModuleMallAddrInfo = function (c, b, f, u, q) {
         return j
     }
 };
-Site.changePayModePopup = function (a, c) {
+Run.changePayModePopup = function (a, c) {
     var e = "g_stress";
     if ($("#changePayMode").hasClass("mDetailStyleFlag")) {
         e = "mDetail_hover_color"
@@ -16366,7 +16366,7 @@ Site.changePayModePopup = function (a, c) {
         }
         g.width = 500;
         g.htmlContent = h.join("");
-        var f = Site.popupBox(g);
+        var f = Run.popupBox(g);
         f.find(".J_payMode").on("click", function () {
             $(".J_payModepop").find(".J_payMode").removeClass("selected");
             $(".J_payModepop").find(".selected1").remove();
@@ -16376,7 +16376,7 @@ Site.changePayModePopup = function (a, c) {
         $("#payModeBtn").on("click", function () {
             var i = $(".J_payModepop").find(".selected").attr("_data");
             if (!i) {
-                Fai.ing(LS.selectPaymentFirst, true);
+                Helper.ing(LS.selectPaymentFirst, true);
                 return
             }
             var j = {};
@@ -16387,7 +16387,7 @@ Site.changePayModePopup = function (a, c) {
                 data: "id=" + a + "&info=" + $.toJSON(j),
                 dataType: "json",
                 error: function () {
-                    Fai.ing(LS.mallStlSubmitError)
+                    Helper.ing(LS.mallStlSubmitError)
                 },
                 success: function (k) {
                     if (k.success) {
@@ -16407,21 +16407,21 @@ Site.changePayModePopup = function (a, c) {
                                             m = "cbpay.php?orderId=" + a
                                         } else {
                                             if (i == 10) {
-                                                Site.getWxpayUrl(a);
+                                                Run.getWxpayUrl(a);
                                                 f.find(".popupBClose").click();
                                                 return
                                             } else {
-                                                Site.getTopWindow().location.reload();
+                                                Run.getTopWindow().location.reload();
                                                 return
                                             }
                                         }
                                     }
                                 }
                             }
-                            Site.getTopWindow().location.href = m
+                            Run.getTopWindow().location.href = m
                         }
                     } else {
-                        Fai.ing(k.msg)
+                        Helper.ing(k.msg)
                     }
                 }
             })
@@ -16462,27 +16462,27 @@ Site.changePayModePopup = function (a, c) {
             async: false,
             dataType: "json",
             error: function () {
-                Fai.ing(LS.mallStlSubmitError)
+                Helper.ing(LS.mallStlSubmitError)
             },
             success: function (g) {
                 if (!g.success) {
                     f = false;
                     if (g.rt == -3) {
-                        Fai.ing(LS.mallStlSubmitNotFound)
+                        Helper.ing(LS.mallStlSubmitNotFound)
                     } else {
                         if (g.rt == -9) {
-                            Fai.ing(LS.mallStlSubmitStatusError)
+                            Helper.ing(LS.mallStlSubmitStatusError)
                         } else {
-                            if (g.rt == Site.MallAjaxErrno.outOfMallAmount) {
-                                Fai.ing(Fai.format(LS.mallAmountOverNameList, g.productsName))
+                            if (g.rt == Run.MallAjaxErrno.outOfMallAmount) {
+                                Helper.ing(Helper.format(LS.mallAmountOverNameList, g.productsName))
                             } else {
-                                if (g.rt == Site.MallAjaxErrno.OutOfAllowAmount) {
-                                    Fai.ing(Fai.format(LS.allowAmountOverNameList, g.productsName))
+                                if (g.rt == Run.MallAjaxErrno.OutOfAllowAmount) {
+                                    Helper.ing(Helper.format(LS.allowAmountOverNameList, g.productsName))
                                 } else {
-                                    if (g.rt == Site.MallAjaxErrno.payDomainError) {
-                                        Fai.ing(LS.mallPayDomainError)
+                                    if (g.rt == Run.MallAjaxErrno.payDomainError) {
+                                        Helper.ing(LS.mallPayDomainError)
                                     } else {
-                                        Fai.ing(LS.mallStlSubmitError)
+                                        Helper.ing(LS.mallStlSubmitError)
                                     }
                                 }
                             }
@@ -16494,11 +16494,11 @@ Site.changePayModePopup = function (a, c) {
         return f
     }
 };
-Site.initPayOrder = function (a) {
-    var b = new Site.payOrder(a);
+Run.initPayOrder = function (a) {
+    var b = new Run.payOrder(a);
     b.init()
 };
-Site.payOrder = function (a) {
+Run.payOrder = function (a) {
     this.orderId = a
 };
 (function (f, a, c) {
@@ -16514,9 +16514,9 @@ Site.payOrder = function (a) {
             if (j) {
                 var k = f(this).attr("_href");
                 if (k != "WXPAY") {
-                    Site.getTopWindow().location.href = k
+                    Run.getTopWindow().location.href = k
                 } else {
-                    Site.getWxpayUrl(b)
+                    Run.getWxpayUrl(b)
                 }
             }
         })
@@ -16531,7 +16531,7 @@ Site.payOrder = function (a) {
             async: false,
             dataType: "json",
             error: function () {
-                Fai.ing(LS.mallStlSubmitError)
+                Helper.ing(LS.mallStlSubmitError)
             },
             success: function (k) {
                 if (!k.success) {
@@ -16542,13 +16542,13 @@ Site.payOrder = function (a) {
                         if (k.rt == -9) {
                             d.html(LS.mallStlSubmitStatusError)
                         } else {
-                            if (k.rt == Site.MallAjaxErrno.outOfMallAmount) {
-                                d.html(Fai.format(LS.mallAmountOverNameList, k.productsName))
+                            if (k.rt == Run.MallAjaxErrno.outOfMallAmount) {
+                                d.html(Helper.format(LS.mallAmountOverNameList, k.productsName))
                             } else {
-                                if (k.rt == Site.MallAjaxErrno.OutOfAllowAmount) {
-                                    d.html(Fai.format(LS.allowAmountOverNameList, k.productsName))
+                                if (k.rt == Run.MallAjaxErrno.OutOfAllowAmount) {
+                                    d.html(Helper.format(LS.allowAmountOverNameList, k.productsName))
                                 } else {
-                                    if (k.rt == Site.MallAjaxErrno.payDomainError) {
+                                    if (k.rt == Run.MallAjaxErrno.payDomainError) {
                                         d.html(LS.mallPayDomainError)
                                     } else {
                                         d.html(LS.mallStlSubmitError)
@@ -16563,8 +16563,8 @@ Site.payOrder = function (a) {
         });
         return j
     }
-})(jQuery, Site.payOrder);
-Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
+})(jQuery, Run.payOrder);
+Run.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
     var j = C.vType || 1, u = C.sco || 0, g = C.openItemList;
     var s = "-----------", y = [], l, B, q, w, D, o, x;
     var i = true;
@@ -16634,7 +16634,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
                 $("#mallShipTemplate_areaBoxInput").attr("area1", 990000);
                 $("#mallShipTemplate_areaBoxInput").attr("area2", 990100);
                 $("#mallShipTemplate_areaBoxInput").val($("#mallShipTemplate_areaBox1").find(".group_item[pid='990000']").text());
-                Site.mallStlCalcTotal(z)
+                Run.mallStlCalcTotal(z)
             } else {
                 $("#mallShipTemplate_areaBoxInput").attr("isCus", 1);
                 $("#mallShipTemplate_areaBoxInput").attr("area1", $("#mallShipTemplate_allArea").val());
@@ -16652,7 +16652,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
         var F = $("#mallShipTemplate_allArea").val();
         i = false;
         if (A === 0) {
-            Site.mallStlCalcTotal(z);
+            Run.mallStlCalcTotal(z);
             return
         }
         $.each(g, function (H, J) {
@@ -16754,7 +16754,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
                 return false
             })
         });
-        Site.mallStlCalcTotal(z)
+        Run.mallStlCalcTotal(z)
     });
     $("#mallShipTemplate_areaBoxInput").unbind("click").bind("click", function (E) {
         if ($("#mallShipTemplate_allArea").val() == "cn") {
@@ -16816,7 +16816,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
         $.each(g, function (H, I) {
             $("#template_item_" + I.type).attr("price", I.defaultPrice.toFixed(1))
         });
-        Site.mallStlCalcTotal(z)
+        Run.mallStlCalcTotal(z)
     });
     $("#mallShipTemplate_city_box").delegate(".group_item", "click", function () {
         if ($("#mallShipTemplate_allArea").val() == "" || $("#mallShipTemplate_allArea").val() == "cn" || $("#mallShipTemplate_allArea").val() == "os") {
@@ -16842,7 +16842,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
         var H = k(site_cityUtil.getCounty(G));
         $("#mallShipTemplate_county_box").append(H);
         if (A === 0) {
-            Site.mallStlCalcTotal(z);
+            Run.mallStlCalcTotal(z);
             return
         }
         $.each(g, function (K, M) {
@@ -16944,7 +16944,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
                 return false
             })
         });
-        Site.mallStlCalcTotal(z)
+        Run.mallStlCalcTotal(z)
     });
     $("#mallShipTemplate_county_box").delegate(".group_item", "click", function () {
         var E = $(this).attr("cname");
@@ -16959,7 +16959,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
         $("#mallShipTemplate_areaBoxInput").attr("lastAreaType", "county");
         $("#mallShipTemplate_areaBoxInput").attr("area3", G);
         $("#mallShipTemplate_areaBox1").hide();
-        Site.mallStlCalcTotal(z)
+        Run.mallStlCalcTotal(z)
     });
     $("#mallShipTemplate_sec_box").delegate(".group_item", "click", function () {
         if ($("#mallShipTemplate_allArea").val() == "" || $("#mallShipTemplate_allArea").val() == "cn" || $("#mallShipTemplate_allArea").val() == "os") {
@@ -16984,7 +16984,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
         var H = c(G);
         $("#mallShipTemplate_thd_box .thd_content").append(H);
         if (A === 0) {
-            Site.mallStlCalcTotal(z);
+            Run.mallStlCalcTotal(z);
             return
         }
         $.each(g, function (K, M) {
@@ -17086,7 +17086,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
                 return false
             })
         });
-        Site.mallStlCalcTotal(z)
+        Run.mallStlCalcTotal(z)
     });
     $("#mallShipTemplate_thd_box").delegate(".group_item", "click", function () {
         if ($("#mallShipTemplate_allArea").val() == "" || $("#mallShipTemplate_allArea").val() == "cn" || $("#mallShipTemplate_allArea").val() == "os") {
@@ -17107,7 +17107,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
         $("#mallShipTemplate_areaBoxInput").attr("area3", G);
         $("#mallShipTemplate_areaBox2").hide();
         if (A === 0) {
-            Site.mallStlCalcTotal(z);
+            Run.mallStlCalcTotal(z);
             return
         }
         $.each(g, function (J, L) {
@@ -17209,7 +17209,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
                 return false
             })
         });
-        Site.mallStlCalcTotal(z)
+        Run.mallStlCalcTotal(z)
     });
     $("#template_item_" + e.type).click();
     function r(F) {
@@ -17277,7 +17277,7 @@ Site.initModuleMallShipTemplate = function (z, A, d, C, n, e, b, t, p) {
         return F
     }
 };
-Site.initPresentIpt = function () {
+Run.initPresentIpt = function () {
     var a = $("#useItg");
     if (a.length > 0) {
         a.bind("blur", function () {
@@ -17290,7 +17290,7 @@ Site.initPresentIpt = function () {
                 f = 0
             }
             var c = $(this).attr("moduleId");
-            var d = Fai.top.$("#module" + c);
+            var d = Helper.top.$("#module" + c);
             var g = parseFloat(d.find(".cartTotal").attr("pay_price"));
             if (isNaN(g)) {
                 return
@@ -17309,24 +17309,24 @@ Site.initPresentIpt = function () {
                 }
             }
             if (f > j) {
-                Fai.ing(Fai.format(LS.integral_maxUse, j, Fai.encodeHtml(k)), true);
+                Helper.ing(Helper.format(LS.integral_maxUse, j, Helper.encodeHtml(k)), true);
                 a.val(j);
                 var e = (j / h).toFixed(2);
-                if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                    $("#offsetMoney").text(Fai.formatPriceEn(e)).attr("_offsetmoney", e)
+                if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                    $("#offsetMoney").text(Helper.formatPriceEn(e)).attr("_offsetmoney", e)
                 } else {
                     $("#offsetMoney").text(e).attr("_offsetmoney", e)
                 }
-                Site.mallStlCalcTotal(c);
+                Run.mallStlCalcTotal(c);
                 return
             }
             if (f > parseInt(a.attr("_currentItg"))) {
-                Fai.ing(Fai.format(LS.integral_notOverCurrent, Fai.encodeHtml(k), Fai.encodeHtml(k)));
+                Helper.ing(Helper.format(LS.integral_notOverCurrent, Helper.encodeHtml(k), Helper.encodeHtml(k)));
                 a.focus();
                 return
             }
             if (f < 0) {
-                Fai.ing(LS.integral_inputInteger);
+                Helper.ing(LS.integral_inputInteger);
                 a.focus();
                 return
             } else {
@@ -17337,8 +17337,8 @@ Site.initPresentIpt = function () {
                 }
             }
             var e = (f / h).toFixed(2);
-            if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                $("#offsetMoney").text(Fai.formatPriceEn(e)).attr("_offsetmoney", e)
+            if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                $("#offsetMoney").text(Helper.formatPriceEn(e)).attr("_offsetmoney", e)
             } else {
                 $("#offsetMoney").text(e).attr("_offsetmoney", e)
             }
@@ -17364,13 +17364,13 @@ Site.initPresentIpt = function () {
                     $("#couponListTip").show()
                 }
             }
-            Site.mallStlCalcTotal(c)
+            Run.mallStlCalcTotal(c)
         })
     }
 };
-Site.deductionItem = function (a) {
+Run.deductionItem = function (a) {
     $("#itgTitle,#couponTitle").click(function () {
-        if (Fai.isIE6() || Fai.isIE7()) {
+        if (Helper.isIE6() || Helper.isIE7()) {
             $(this).next().show()
         } else {
             $(this).next().slideToggle()
@@ -17381,7 +17381,7 @@ Site.deductionItem = function (a) {
             $(this).find(".switch-sign").text("+")
         }
     });
-    var b = Site.getBackgroundColor($(".J-fk-triangle"));
+    var b = Run.getBackgroundColor($(".J-fk-triangle"));
     $(".J-fk-triangle").css("border-color", "transparent transparent " + b + " transparent");
     $(".couponMsg input:checkbox").click(function () {
         if ($(this).is(":checked")) {
@@ -17403,7 +17403,7 @@ Site.deductionItem = function (a) {
         }
         if ($(".integralMsg").length > 0) {
             var d = $("#useItg"), f = parseInt(d.attr("_needitg")), h = parseInt(d.attr("_maxuse"));
-            var c = Fai.top.$("#module" + a);
+            var c = Helper.top.$("#module" + a);
             var e = parseFloat(c.find(".cartTotal").attr("pay_price"));
             if (isNaN(e)) {
                 return
@@ -17420,78 +17420,78 @@ Site.deductionItem = function (a) {
         } else {
             $("#couponInfo").hide()
         }
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-            $("#couponOffsetMoney").text(Fai.formatPriceEn(g))
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+            $("#couponOffsetMoney").text(Helper.formatPriceEn(g))
         } else {
             $("#couponOffsetMoney").text(g.toFixed(2))
         }
         $("#couponOffsetMoney").attr("_offsetmoney", g);
-        Site.mallStlCalcTotal(a)
+        Run.mallStlCalcTotal(a)
     });
     $("#clickShowInput").click(function () {
         $(this).next().show();
         $(this).remove()
     })
 };
-Site.showBankList = function (b) {
+Run.showBankList = function (b) {
     var a = $("#" + b).attr("value");
     $("#mallPay").attr("value", a)
 };
-Site.initOnlineBankList = function () {
+Run.initOnlineBankList = function () {
     $("#payOnlinePanel").insertAfter($("#onlineItem")[0])
 };
-Site.getWxpayUrl = function (b) {
+Run.getWxpayUrl = function (b) {
     var a = $("#wxpayBtn");
     if (a.attr("_sending") === "true") {
-        Fai.ing("您的操作太频繁，请稍后再试。", true);
+        Helper.ing("您的操作太频繁，请稍后再试。", true);
         return
     }
     a.attr("_sending", "true");
     $.ajax({
         type: "post", url: "ajax/mall_h.php?cmd=getWxpayUrl", data: "orderId=" + b, error: function () {
-            Fai.ing("系统错误。")
+            Helper.ing("系统错误。")
         }, success: function (c) {
             var d = $.parseJSON(c);
             if (d.success) {
-                Site.showWxQRCode(d.url, b)
+                Run.showWxQRCode(d.url, b)
             } else {
-                Fai.ing(d.errMsg + "(请联系网站管理员)")
+                Helper.ing(d.errMsg + "(请联系网站管理员)")
             }
         }
     })
 };
-Site.showWxQRCode = function (a, b) {
+Run.showWxQRCode = function (a, b) {
     var h = parseInt(Math.random() * 10000);
     var i = 480;
     var d = 800;
-    var f = ["<div  id='wxpayQrCodeBox" + h + "' class='popupBg'  style='filter: alpha(opacity=50); opacity:0.5;'></div>", "<div id='wxPayQRCodeDisplay" + h + "' class='webSiteQRCodeDisplay' style='z-index:9032;display:block;width: " + d + "px;height:" + i + "px;left:" + (Fai.top.document.documentElement.clientWidth - d) / 2 + "px;'>", "<div class='wxqrCodeTitileBox'>", "<div class='wxqrCodeTitile'>微信支付</div>", "<a hidefocus='true' href='javascript:;' class='cancelBtn' onclick='Site.closeWxQrcodeDiv(" + h + ");return false;'></a>", "<div style='clear:both;'></div>", "</div>", "<div class='wxpayQrCodeBox'>", "<div class='wxpayQrCodeImgBox'>", "<img title='' src='/qrCode.php?cmd=wxPayQrCode&&url=" + a + "' >", "</div>", "<div class='wxpayQrCodeTips'></div>", "</div>", "<div  class='wxGuardImg'></div>", "<div style='clear:both;'></div>", "<div class='paidTips'>完成支付5秒后没跳转，请刷新页面。</div>", "</div>"];
-    Fai.top.$(f.join("")).appendTo("body");
-    var e = Fai.top.document.documentElement.clientHeight;
+    var f = ["<div  id='wxpayQrCodeBox" + h + "' class='popupBg'  style='filter: alpha(opacity=50); opacity:0.5;'></div>", "<div id='wxPayQRCodeDisplay" + h + "' class='webRunQRCodeDisplay' style='z-index:9032;display:block;width: " + d + "px;height:" + i + "px;left:" + (Helper.top.document.documentElement.clientWidth - d) / 2 + "px;'>", "<div class='wxqrCodeTitileBox'>", "<div class='wxqrCodeTitile'>微信支付</div>", "<a hidefocus='true' href='javascript:;' class='cancelBtn' onclick='Run.closeWxQrcodeDiv(" + h + ");return false;'></a>", "<div style='clear:both;'></div>", "</div>", "<div class='wxpayQrCodeBox'>", "<div class='wxpayQrCodeImgBox'>", "<img title='' src='/qrCode.php?cmd=wxPayQrCode&&url=" + a + "' >", "</div>", "<div class='wxpayQrCodeTips'></div>", "</div>", "<div  class='wxGuardImg'></div>", "<div style='clear:both;'></div>", "<div class='paidTips'>完成支付5秒后没跳转，请刷新页面。</div>", "</div>"];
+    Helper.top.$(f.join("")).appendTo("body");
+    var e = Helper.top.document.documentElement.clientHeight;
     var g = (e - i) / 2;
     var c = $(window).scrollTop();
     $("#wxPayQRCodeDisplay" + h).css("top", g + c);
     $("#wxpayBtn").attr("_sending", "false");
-    setInterval("Site.checkOrderStatue(" + b + ")", 2000)
+    setInterval("Run.checkOrderStatue(" + b + ")", 2000)
 };
-Site.closeWxQrcodeDiv = function (a) {
-    Fai.top.$("#wxpayQrCodeBox" + a).remove();
-    Fai.top.$("#wxPayQRCodeDisplay" + a).remove();
+Run.closeWxQrcodeDiv = function (a) {
+    Helper.top.$("#wxpayQrCodeBox" + a).remove();
+    Helper.top.$("#wxPayQRCodeDisplay" + a).remove();
     top.location.reload()
 };
-Site.checkOrderStatue = function (a) {
+Run.checkOrderStatue = function (a) {
     $.ajax({
         type: "post", url: "ajax/mall_h.php?cmd=checkOrderStatue", data: "orderId=" + a, error: function () {
-            Fai.ing("系统错误。")
+            Helper.ing("系统错误。")
         }, success: function (b) {
             var c = $.parseJSON(b);
             if (c.success) {
-                Fai.top.location.href = "mdetail.php?id=" + a + "&suc=2"
+                Helper.top.location.href = "mdetail.php?id=" + a + "&suc=2"
             }
         }
     })
 };
-Site.mallCartInit = function (c) {
-    var b = Fai.top.$("#memberBar");
+Run.mallCartInit = function (c) {
+    var b = Helper.top.$("#memberBar");
     if (b.length < 1) {
         return
     }
@@ -17503,14 +17503,14 @@ Site.mallCartInit = function (c) {
     $(d).find(".checkMallCartBtn").bind("click", function () {
         window.open("mcart.php", "_blank")
     });
-    Site.refreshTopAndRightBarMallCartNum();
+    Run.refreshTopAndRightBarMallCartNum();
     if (c != 13 && c != 14) {
         $(a).bind("mouseenter", function (e) {
             var f = b.find(".mallCartPanel");
             $(this).attr("_mouseIn", 1);
             $(this).find(".mallCartItem").addClass("mallCartItem_hover");
             if (!$(f).is(":visible")) {
-                Site.refreshTopBarMallCart(this)
+                Run.refreshTopBarMallCart(this)
             }
         }).bind("mouseleave", function () {
             $(this).attr("_mouseIn", 0);
@@ -17528,7 +17528,7 @@ Site.mallCartInit = function (c) {
         }).bind("mouseleave", function () {
             $(this).attr("_mouseIn", 0);
             setTimeout(function () {
-                var f = Fai.top.$("#memberBar");
+                var f = Helper.top.$("#memberBar");
                 var e = f.find("#mallCart_js");
                 var g = $(e).attr("_mouseIn");
                 if (g != 1) {
@@ -17539,10 +17539,10 @@ Site.mallCartInit = function (c) {
         })
     }
 };
-Site.mobiWebInit = function () {
-    var c = Fai.top.$("#memberBar").find("#mobiWeb_js");
-    var b = Fai.top.$("#memberBar").find(".mobiWebPanel");
-    var a = Fai.top.$("#memberBar").find("#mobiWebQRCode_js");
+Run.mobiWebInit = function () {
+    var c = Helper.top.$("#memberBar").find("#mobiWeb_js");
+    var b = Helper.top.$("#memberBar").find(".mobiWebPanel");
+    var a = Helper.top.$("#memberBar").find("#mobiWebQRCode_js");
     $(c).bind("mouseenter", function (f) {
         $(this).attr("_mouseIn", 1);
         $(this).find(".mobiWebItem").addClass("mobiWebItem_hover");
@@ -17554,11 +17554,11 @@ Site.mobiWebInit = function () {
     }).bind("mouseleave", function () {
         $(this).attr("_mouseIn", 0);
         setTimeout(function () {
-            var d = Fai.top.$("#memberBar").find(".mobiWebPanel");
+            var d = Helper.top.$("#memberBar").find(".mobiWebPanel");
             var e = $(d).attr("_mouseIn");
             if (e != 1) {
                 $(d).hide();
-                Fai.top.$("#memberBar").find(".mobiWebItem").removeClass("mobiWebItem_hover")
+                Helper.top.$("#memberBar").find(".mobiWebItem").removeClass("mobiWebItem_hover")
             }
         }, 50)
     });
@@ -17567,24 +17567,24 @@ Site.mobiWebInit = function () {
     }).bind("mouseleave", function () {
         $(this).attr("_mouseIn", 0);
         setTimeout(function () {
-            var d = Fai.top.$("#memberBar").find("#mobiWeb_js");
+            var d = Helper.top.$("#memberBar").find("#mobiWeb_js");
             var e = $(d).attr("_mouseIn");
             if (e != 1) {
-                Fai.top.$("#memberBar").find(".mobiWebPanel").hide();
-                Fai.top.$("#memberBar").find(".mobiWebItem").removeClass("mobiWebItem_hover")
+                Helper.top.$("#memberBar").find(".mobiWebPanel").hide();
+                Helper.top.$("#memberBar").find(".mobiWebItem").removeClass("mobiWebItem_hover")
             }
         }, 50)
     })
 };
-Site.refreshTopBarMallCart = function (a) {
-    var d = Fai.top.$("#memberBar").find("#mallCartList_js");
+Run.refreshTopBarMallCart = function (a) {
+    var d = Helper.top.$("#memberBar").find("#mallCartList_js");
     var b = $(a).position().top + $(a).height();
     var c = parseInt($(a).css("margin-left"));
     var e = $(a).position().left + c - parseInt($(d).css("width")) - 2 + $(a).width();
-    var f = Fai.top.$("#memberBar").find(".mallCartPanel");
+    var f = Helper.top.$("#memberBar").find(".mallCartPanel");
     $(f).css("top", b + "px").css("left", e + "px");
     $(f).show().children().before("<div class='mallCartLoad'></div>");
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         var g = $(f).height();
         $(f).find(".mallCartLoad").css("height", g + "px")
     }
@@ -17593,21 +17593,21 @@ Site.refreshTopBarMallCart = function (a) {
             var i = $.parseJSON(h);
             var k = i.topBarProductList;
             if (i.success && k.length > 0) {
-                Site.refreshTopAndRightBarMallCartNum();
-                Site.createTopBarMallCartList(k, i.orderId, i.choiceCurrencyVal)
+                Run.refreshTopAndRightBarMallCartNum();
+                Run.createTopBarMallCartList(k, i.orderId, i.choiceCurrencyVal)
             } else {
-                var j = Fai.top.$("#memberBar").find(".mallCartPanel");
-                Site.refreshTopAndRightBarMallCartNum();
+                var j = Helper.top.$("#memberBar").find(".mallCartPanel");
+                Run.refreshTopAndRightBarMallCartNum();
                 $(j).find(".mcProductList").html(LS.memberMallCartNoProduct);
                 $(j).find(".checkMallCartBtn").removeClass("checkMallCartBtn_hasPro");
                 $(j).find(".mall_cart_total").remove()
             }
-            Fai.top.$("#memberBar").find(".mallCartPanel").find(".mallCartLoad").remove()
+            Helper.top.$("#memberBar").find(".mallCartPanel").find(".mallCartLoad").remove()
         }
     })
 };
-Site.createTopBarMallCartList = function (c, a, k) {
-    Fai.top.$("#memberBar").find(".mcProductList").attr("data-orderId", a).html("");
+Run.createTopBarMallCartList = function (c, a, k) {
+    Helper.top.$("#memberBar").find(".mcProductList").attr("data-orderId", a).html("");
     var i = [];
     var b = 0, m = 0;
     var g = 0;
@@ -17623,11 +17623,11 @@ Site.createTopBarMallCartList = function (c, a, k) {
     var j = [];
     j.push("<div class='mall_cart_total'>");
     j.push("<div>");
-    j.push(Fai.format(LS.shoppingCartCalculatePro, b));
+    j.push(Helper.format(LS.shoppingCartCalculatePro, b));
     j.push("</div>");
     j.push("<div>");
-    if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-        j.push("<span class='sC-priceTotal'>" + LS.shoppingCartCountMoney + "<b>" + k.toString() + Fai.formatPriceEn(m.toFixed(2)) + "</b></span>")
+    if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+        j.push("<span class='sC-priceTotal'>" + LS.shoppingCartCountMoney + "<b>" + k.toString() + Helper.formatPriceEn(m.toFixed(2)) + "</b></span>")
     } else {
         j.push("<span class='sC-priceTotal'>" + LS.shoppingCartCountMoney + "<b>" + k.toString() + m.toFixed(2) + "</b></span>")
     }
@@ -17646,25 +17646,25 @@ Site.createTopBarMallCartList = function (c, a, k) {
         g++
     }
     i.push("<li class='mcProductListTip'></li>");
-    Fai.top.$("#memberBar").find(".checkMallCartBtn").css("margin-top", "12px");
+    Helper.top.$("#memberBar").find(".checkMallCartBtn").css("margin-top", "12px");
     i.push("</ul>");
-    Fai.top.$("#memberBar").find(".mcProductList").append(i.join(""));
-    Fai.top.$("#memberBar").find(".mall_cart_total").remove();
-    Fai.top.$("#memberBar").find(".mcProductList").after(j.join(""));
+    Helper.top.$("#memberBar").find(".mcProductList").append(i.join(""));
+    Helper.top.$("#memberBar").find(".mall_cart_total").remove();
+    Helper.top.$("#memberBar").find(".mcProductList").after(j.join(""));
     var l = [];
-    Fai.top.$("#memberBar").find(".mcProductList .mcPdInvalid").each(function () {
+    Helper.top.$("#memberBar").find(".mcProductList .mcPdInvalid").each(function () {
         l.push($(this).prop("outerHTML"));
         $(this).remove()
     });
-    Fai.top.$("#memberBar").find(".mcProductListTip").before(l.join(""));
-    Fai.top.$("#memberBar").find(".checkMallCartBtn").addClass("checkMallCartBtn_hasPro");
+    Helper.top.$("#memberBar").find(".mcProductListTip").before(l.join(""));
+    Helper.top.$("#memberBar").find(".checkMallCartBtn").addClass("checkMallCartBtn_hasPro");
     function f(s) {
         var t = d.isValid ? "" : " mcPdInvalid ";
         var p = d.inValidType;
         var q = [];
         if (d.picId != "") {
             q.push("<div class='mcProductList_proPic'>");
-            q.push("<img alt=" + Fai.encodeHtml(d.name) + " src=" + d.picPath + ">");
+            q.push("<img alt=" + Helper.encodeHtml(d.name) + " src=" + d.picPath + ">");
             q.push("</div>")
         } else {
             q.push("<div class='mcProductList_proNoPic'></div>")
@@ -17684,17 +17684,17 @@ Site.createTopBarMallCartList = function (c, a, k) {
         i.push("<li class='mcProductList_pro " + t + "' data-itemId='" + d.id + "'" + o + ">");
         i.push(q.join(""));
         i.push("<div class='mcProductList_proName' style='width: 85px;'>");
-        i.push("<span title='" + Fai.encodeHtml(d.name) + "' style='width:95px;'>" + Fai.encodeHtml(d.name) + "</span>");
+        i.push("<span title='" + Helper.encodeHtml(d.name) + "' style='width:95px;'>" + Helper.encodeHtml(d.name) + "</span>");
         if (!t) {
-            i.push("<span title='" + Fai.encodeHtml(d.optionType) + "'>" + Fai.encodeHtml(d.optionType) + "</span>")
+            i.push("<span title='" + Helper.encodeHtml(d.optionType) + "'>" + Helper.encodeHtml(d.optionType) + "</span>")
         } else {
             i.push("<span " + o + "> [" + LS.invalid + "]</span>")
         }
         i.push("</div>");
         i.push("<div class='mcProductList_proPrice' style='width: 95px;'>");
         var r = d.price.toFixed(2);
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-            r = Fai.formatPriceEn(d.price)
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+            r = Helper.formatPriceEn(d.price)
         }
         if (t) {
             i.push("<span>" + k.toString() + "</span><span class='s_invalid_price'>" + r + "</span>")
@@ -17704,12 +17704,12 @@ Site.createTopBarMallCartList = function (c, a, k) {
         i.push("<span style='margin-left: 10px;float:right;margin-top:-18px;'>×" + n + "</span>");
         i.push("</div>");
         i.push("<div class='mcProductList_proDel' style=''><a hidefocus='true' href='javascript:;' ");
-        i.push("onclick='Site.delTopBarMallCartItem(" + a + ", " + d.id + ");return false;'>" + LS.memberMallCartDel + "</a>");
+        i.push("onclick='Run.delTopBarMallCartItem(" + a + ", " + d.id + ");return false;'>" + LS.memberMallCartDel + "</a>");
         i.push("</div>");
         i.push("</li>")
     }
 };
-Site.delTopBarMallCartItem = function (a, b) {
+Run.delTopBarMallCartItem = function (a, b) {
     $.ajax({
         type: "post",
         url: "ajax/order_h.php?cmd=delItem",
@@ -17717,37 +17717,37 @@ Site.delTopBarMallCartItem = function (a, b) {
         error: function (c) {
             var d = $.parseJSON(c);
             if (!d.success) {
-                Fai.ing("系统繁忙，请稍后重试。", true)
+                Helper.ing("系统繁忙，请稍后重试。", true)
             }
         },
         success: function (c) {
             var e = $.parseJSON(c);
             if (e.success) {
-                var d = Fai.top.$("#memberBar").find("#mallCart_js");
+                var d = Helper.top.$("#memberBar").find("#mallCart_js");
                 $(d).find("[data-itemId=" + b + "]").first().remove();
-                Site.refreshTopBarMallCart(d)
+                Run.refreshTopBarMallCart(d)
             } else {
                 if (e.rt == -2) {
-                    Fai.ing("参数错误，请稍后重试。", true)
+                    Helper.ing("参数错误，请稍后重试。", true)
                 }
             }
         }
     })
 };
-Site.refreshTopAndRightBarMallCartNum = function () {
+Run.refreshTopAndRightBarMallCartNum = function () {
     $.ajax({
         type: "post", url: "ajax/order_h.php?cmd=getMallCartProductNum", data: "", success: function (a) {
             var f = $.parseJSON(a);
             if (f.success) {
                 if (f.rt == 1) {
                     var e = $.trim(f.productAmount);
-                    var c = Fai.top.$("#memberBar").find("#mallCart_js");
+                    var c = Helper.top.$("#memberBar").find("#mallCart_js");
                     if (c.length > 0) {
                         e = (e > 99) ? "99+" : e;
                         $(c).find(".mallCart_proNum").text("(" + e + ")")
                     }
-                    var g = Fai.top.$(".shoppingAmount");
-                    var b = Fai.top.$(".shoppingAmountContent");
+                    var g = Helper.top.$(".shoppingAmount");
+                    var b = Helper.top.$(".shoppingAmountContent");
                     if (e > 0 || e == "99+") {
                         g.css("display", "block").text(e);
                         b.css("display", "block")
@@ -17755,7 +17755,7 @@ Site.refreshTopAndRightBarMallCartNum = function () {
                         g.css("display", "none").text(e);
                         b.css("display", "none")
                     }
-                    var d = Fai.top.$("#J_WebRightBar").find("#rbar_cart");
+                    var d = Helper.top.$("#J_WebRightBar").find("#rbar_cart");
                     if (d.length > 0) {
                         if (e == "99+") {
                             $(d).find(".fk-rbar-cartItem-cirNum").text("...")
@@ -17768,7 +17768,7 @@ Site.refreshTopAndRightBarMallCartNum = function () {
         }
     })
 };
-Site.showContacterExtMsg = function (f) {
+Run.showContacterExtMsg = function (f) {
     var e = $("#module" + f), g = e.find(".J-head-more"), b = e.find(".J-cont-msg-ext"),
         a = e.find(".fk-order-dt").width(), c = b.width(), d = a - g.position().left;
     g.hover(function () {
@@ -17784,7 +17784,7 @@ Site.showContacterExtMsg = function (f) {
         b.hide()
     })
 };
-Site.showOrderNewMoreBox = function (d) {
+Run.showOrderNewMoreBox = function (d) {
     var c = $("#module" + d), e = c.find(".J_orderRecvMore"), b = c.find(".J_orderNewMoreBox"),
         a = c.find(".J_orderRecvMoreIcon");
     if (b.find("table tr").length == 0) {
@@ -17801,7 +17801,7 @@ Site.showOrderNewMoreBox = function (d) {
         b.slideToggle()
     })
 };
-Site.initFlowMsg = function (c, a) {
+Run.initFlowMsg = function (c, a) {
     var b = $("#module" + c);
     $.ajax({
         type: "post", url: "ajax/order_h.php?cmd=flowMsg", data: "id=" + a, success: function (e) {
@@ -17811,7 +17811,7 @@ Site.initFlowMsg = function (c, a) {
                 if (g.success) {
                     b.find(".J-no-msg").show()
                 } else {
-                    Fai.ing(g.msg, true);
+                    Helper.ing(g.msg, true);
                     b.find(".J-err-msg").show()
                 }
                 var j = b.find(".mDetail_color").css("color");
@@ -17846,14 +17846,14 @@ Site.initFlowMsg = function (c, a) {
         }
     })
 };
-Site.initmCenterFlowQuery = function (b) {
+Run.initmCenterFlowQuery = function (b) {
     var a = $("#module" + b), c = a.find(".J-mallOrder");
     c.find(".J-flow").hover(function () {
         var l = $(this), g = l.attr("_oi"), h = l.offset().top + l.outerHeight() + 8, m = l.offset().left - 100,
             j = $("#m" + b + "-f-" + g);
         if (j.length > 0) {
             j.show();
-            if (Fai.isIE6() || Fai.isIE7()) {
+            if (Helper.isIE6() || Helper.isIE7()) {
                 h += 10
             }
             j.css({top: h, left: m});
@@ -17895,7 +17895,7 @@ Site.initmCenterFlowQuery = function (b) {
                 }
                 if (q.success) {
                 } else {
-                    Fai.ing(q.msg, true)
+                    Helper.ing(q.msg, true)
                 }
             }
         })
@@ -17904,7 +17904,7 @@ Site.initmCenterFlowQuery = function (b) {
         $("#m" + b + "-f-" + d).hide()
     })
 };
-Site.initOrderSuc = function (e, d) {
+Run.initOrderSuc = function (e, d) {
     var c = $("#module" + e);
     var b = "";
     if (d == 1) {
@@ -17914,7 +17914,7 @@ Site.initOrderSuc = function (e, d) {
             b = LS.orderDetailPaySuc
         }
     }
-    var a = ["<div class='fk-order-tip formBox' style='width:235px; height:78px; padding:0 0;background-color:#FFF;'>", "<div class='J-close formXSite' style='margin-top:3px; width:30px;'></div>", "<div class='ico suc-ico' style='margin-top:27px; float:left;'>&nbsp;</div>", "<div class='t-txt' style='margin-top:30px; text-align:center;'>" + b + "</div>", "<div>"];
+    var a = ["<div class='fk-order-tip formBox' style='width:235px; height:78px; padding:0 0;background-color:#FFF;'>", "<div class='J-close formXRun' style='margin-top:3px; width:30px;'></div>", "<div class='ico suc-ico' style='margin-top:27px; float:left;'>&nbsp;</div>", "<div class='t-txt' style='margin-top:30px; text-align:center;'>" + b + "</div>", "<div>"];
     tip = $(a.join(""));
     c.prepend(tip);
     tip.find(".J-close").click(function () {
@@ -17922,11 +17922,11 @@ Site.initOrderSuc = function (e, d) {
     });
     tip.css({top: 20, left: (c.width() - tip.width()) / 2});
     tip.fadeOut(5000);
-    Fai.top.window.setTimeout(function () {
+    Helper.top.window.setTimeout(function () {
         tip.remove()
     }, 5000)
 };
-Site.initConfirmReceipt = function (c, d) {
+Run.initConfirmReceipt = function (c, d) {
     var b = $("#module" + c);
     var a = b.find(".memberOrderNewPanel").length > 0;
     b.find(".J-con-rpt").click(function () {
@@ -17935,12 +17935,12 @@ Site.initConfirmReceipt = function (c, d) {
         var g = ["<div class='fk-conRpt' style='margin-top:16px;'>", "<div style='padding:10px; font-family:微软雅黑; font-size:12px; color:rgb(99,99,99);'>", LS.orderConfirmMsg, "</div>", "<div style='padding:10px 0 18px 0;'>", "<span class='J-rpt-cancel popupBClose' title='", LS.cancel, "' style='margin-right:20px;width:60px; height:26px; line-height:25px;'>", LS.cancel, "</span>", "<span class='J-rpt-save con-hover' title='", LS.orderSure, "' style='width:77px; height:26px; background:#1779ff; line-height:25px; border:0;'>" + LS.orderSure + "</span>", "</div>", "</div>"];
         var k = parseInt(Math.random() * 10000);
         var e = {boxId: k, title: "", htmlContent: g.join(""), width: 372, height: 150, boxName: "confirmReceipt"};
-        var h = Site.popupBox(e);
+        var h = Run.popupBox(e);
         var j = "cmd=setStatus&id=" + orderId + "&status=20";
         h.find(".J-rpt-save").on("click", function () {
             $.ajax({
                 type: "post", url: "ajax/order_h.php", data: j, error: function () {
-                    Fai.ing(LS.systemError, false)
+                    Helper.ing(LS.systemError, false)
                 }, success: function (l) {
                     var m = $.parseJSON(l);
                     if (m.success) {
@@ -17949,24 +17949,24 @@ Site.initConfirmReceipt = function (c, d) {
                                 f.find(".oOptTd").append("<a  hidefocus='true' title='" + LS.comment + "' href='oc.php?id=" + orderId + "' target='_blank'><span class='optIcon opComent'></span></a>")
                             } else {
                                 f.find(".itemOpt").append("<span title='" + LS.comment + "' class='pd-ct J-pd-ct' _oid='" + orderId + "'></span>");
-                                Site.initPdComment(c)
+                                Run.initPdComment(c)
                             }
                         }
-                        Fai.ing(LS.orderSureMsg, true);
+                        Helper.ing(LS.orderSureMsg, true);
                         f.find(".J-status").text(m.msg);
                         f.find(".J-flow").remove();
-                        Fai.top.$("#popupBg" + k).remove();
+                        Helper.top.$("#popupBg" + k).remove();
                         h.remove();
                         i.remove()
                     } else {
-                        Fai.ing(m.msg, true)
+                        Helper.ing(m.msg, true)
                     }
                 }
             })
         })
     })
 };
-Site.initConOrderCancel = function (b, c) {
+Run.initConOrderCancel = function (b, c) {
     var a = $("#module" + b);
     if (!c) {
         a.find(".J-order-cancel").hover(function () {
@@ -17983,39 +17983,39 @@ Site.initConOrderCancel = function (b, c) {
         var f = ["<div class='fk-cancelOrder'>", "<div style='padding:10px;'>", LS.orderCancelMsg, "</div>", "<div style='padding:10px 0 18px 0;'>", "<span class='J-rpt-cancel popupBClose' style='margin-right:20px;'>", LS.cancel, "</span>", "<span class='J-rpt-save con-hover'>" + LS.confirm + "</span>", "</div>", "</div>"];
         var j = parseInt(Math.random() * 10000);
         var d = {boxId: j, title: "", htmlContent: f.join(""), width: 360};
-        var g = Site.popupBox(d);
+        var g = Run.popupBox(d);
         var i = "cmd=setStatus&id=" + orderId + "&status=25";
         g.find(".J-rpt-save").on("click", function () {
             $.ajax({
                 type: "post", url: "ajax/order_h.php", data: i, error: function () {
-                    Fai.ing(LS.systemError, false)
+                    Helper.ing(LS.systemError, false)
                 }, success: function (k) {
                     var l = $.parseJSON(k);
                     if (l.success) {
-                        Fai.ing(LS.orderCanceled, true);
+                        Helper.ing(LS.orderCanceled, true);
                         setTimeout(function () {
                             document.location.reload()
                         }, 200)
                     } else {
-                        Fai.ing(l.msg, true)
+                        Helper.ing(l.msg, true)
                     }
                 }
             })
         })
     })
 };
-Site.initPdComment = function (b) {
+Run.initPdComment = function (b) {
     var a = $("#module" + b);
     a.find(".J-pd-ct").unbind("click").bind("click", function () {
         var e = $(this), c = e.attr("_oid"), d = a.find(".J-pd-panel" + c), f = d.find(".msgImgList");
-        if (Fai.isIE6()) {
+        if (Helper.isIE6()) {
             f.css("display", "none")
         }
         if (d.is(":visible")) {
             d.hide()
         } else {
             d.show();
-            if (Fai.isIE6()) {
+            if (Helper.isIE6()) {
                 setTimeout(function () {
                     f.css({display: "block"});
                     var g = f.find("td");
@@ -18027,16 +18027,16 @@ Site.initPdComment = function (b) {
         }
     })
 };
-Site.commMenUpAllImgList = null;
-Site.setMenCommUpAllImgList = function (a) {
-    Site.commMenUpAllImgList = Fai.fkEval("(" + a + ")");
-    if (Fai.isIE6() || Fai.isIE7()) {
+Run.commMenUpAllImgList = null;
+Run.setMenCommUpAllImgList = function (a) {
+    Run.commMenUpAllImgList = Helper.fkEval("(" + a + ")");
+    if (Helper.isIE6() || Helper.isIE7()) {
         $(".msgBoard_upImg_border").css({width: "50px", height: "50px"})
     }
 };
-Site.siteMenCommImgFileUpload2 = function (b, e, g, a, d) {
-    if (!Fai.isIE()) {
-        Site.siteMenCommImgFileUpload2H5(b, e, g, a, d);
+Run.siteMenCommImgFileUpload2 = function (b, e, g, a, d) {
+    if (!Helper.isIE()) {
+        Run.siteMenCommImgFileUpload2H5(b, e, g, a, d);
         return
     }
     var f = g.split(",");
@@ -18052,7 +18052,7 @@ Site.siteMenCommImgFileUpload2 = function (b, e, g, a, d) {
         button_cursor: SWFUpload.CURSOR.HAND,
         button_image_url: _resRoot + "/image/site/msgUpImg/upload1.jpg",
         requeue_on_error: false,
-        post_params: {ctrl: "Filedata", app: 21, type: 0, fileUploadLimit: 5, isSiteForm: true},
+        post_params: {ctrl: "Filedata", app: 21, type: 0, fileUploadLimit: 5, isRunForm: true},
         file_types: f.join(";"),
         file_dialog_complete_handler: function (h) {
             this._allSuccess = false;
@@ -18061,16 +18061,16 @@ Site.siteMenCommImgFileUpload2 = function (b, e, g, a, d) {
         file_queue_error_handler: function (i, h, j) {
             switch (h) {
                 case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-                    Fai.ing(LS.siteFormSubmitCheckFileSizeErr, true);
+                    Helper.ing(LS.siteFormSubmitCheckFileSizeErr, true);
                     break;
                 case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-                    Fai.ing(LS.siteFormSubmitFileUploadNotAllow, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadNotAllow, true);
                     break;
                 case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadOneTimeNum, a), true);
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadOneTimeNum, a), true);
                     break;
                 default:
-                    Fai.ing(LS.siteFormSubmitFileUploadReSelect, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadReSelect, true);
                     break
             }
         },
@@ -18079,21 +18079,21 @@ Site.siteMenCommImgFileUpload2 = function (b, e, g, a, d) {
             this._allSuccess = j.success;
             this._sysResult = j.msg;
             if (j.success) {
-                Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSucess, Fai.encodeHtml(i.name)), true);
+                Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSucess, Helper.encodeHtml(i.name)), true);
                 j.tbNum = d;
                 onFileUploadEvent("upload", j)
             } else {
-                Fai.ing(LS.siteFormSubmitFileUploadFile + i.name + "   " + j.msg)
+                Helper.ing(LS.siteFormSubmitFileUploadFile + i.name + "   " + j.msg)
             }
         },
         upload_error_handler: function (i, h, j) {
             if (h == -280) {
-                Fai.ing(LS.siteFormSubmitFileUploadFileCancle, false)
+                Helper.ing(LS.siteFormSubmitFileUploadFileCancle, false)
             } else {
                 if (h == -270) {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadFileExist, Fai.encodeHtml(i.name)), true)
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadFileExist, Helper.encodeHtml(i.name)), true)
                 } else {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSvrBusy, Fai.encodeHtml(i.name)))
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSvrBusy, Helper.encodeHtml(i.name)))
                 }
             }
         },
@@ -18105,7 +18105,7 @@ Site.siteMenCommImgFileUpload2 = function (b, e, g, a, d) {
                 var j = $("#msgBoardAddImgTb" + d).eq(0);
                 var h = j.find("td").length;
                 if (h >= (a + 1)) {
-                    Fai.ing(LS.siteFormSubmitFileUploadOfMax, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadOfMax, true);
                     var k = j.find("td").eq(j.find("td").length - 1);
                     k.css("display", "none");
                     return
@@ -18119,16 +18119,16 @@ Site.siteMenCommImgFileUpload2 = function (b, e, g, a, d) {
                 }, swfObj.upload_delay)
             } else {
                 if (i.filestatus == SWFUpload.FILE_STATUS.ERROR) {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSvrBusy, Fai.encodeHtml(i.name)))
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSvrBusy, Helper.encodeHtml(i.name)))
                 }
             }
         },
         upload_start_handler: function (h) {
-            Fai.enablePopupWindowBtn(0, "save", false);
-            Fai.ing(LS.siteFormSubmitFileUploadPrepare, false)
+            Helper.enablePopupWindowBtn(0, "save", false);
+            Helper.ing(LS.siteFormSubmitFileUploadPrepare, false)
         },
         view_progress: function (h, k, j, i) {
-            Fai.ing(LS.siteFormSubmitFileUploadIng + i + "%", false)
+            Helper.ing(LS.siteFormSubmitFileUploadIng + i + "%", false)
         }
     };
     if (typeof(swfObjList) == "undefined") {
@@ -18145,11 +18145,11 @@ Site.siteMenCommImgFileUpload2 = function (b, e, g, a, d) {
             var i = m.fileId;
             var h = m.width;
             var n = m.height;
-            Site.productMenCommImgTableCtrl2(k, o, j, l, a, i, m.tbNum, q)
+            Run.productMenCommImgTableCtrl2(k, o, j, l, a, i, m.tbNum, q)
         }
     }
 };
-Site.siteMenCommImgFileUpload2H5 = function (b, e, h, a, d) {
+Run.siteMenCommImgFileUpload2H5 = function (b, e, h, a, d) {
     $("#" + e).parent(".uploadImgDiv").css("background-image", "url(" + _resRoot + "/image/site/msgUpImg/upload1.jpg)");
     var f = h.split(",");
     var c = {
@@ -18164,7 +18164,7 @@ Site.siteMenCommImgFileUpload2H5 = function (b, e, h, a, d) {
         showUploadedPercent: false,
         showUploadedSize: false,
         removeTimeout: 9999999,
-        post_params: {app: 21, type: 0, fileUploadLimit: b, isSiteForm: true},
+        post_params: {app: 21, type: 0, fileUploadLimit: b, isRunForm: true},
         isBurst: false,
         isDefinedButton: true,
         buttonText: "",
@@ -18172,15 +18172,15 @@ Site.siteMenCommImgFileUpload2H5 = function (b, e, h, a, d) {
         onUploadSuccess: function (i, k) {
             var j = jQuery.parseJSON(k);
             if (j.success) {
-                Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSucess, Fai.encodeHtml(i.name)), true);
+                Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSucess, Helper.encodeHtml(i.name)), true);
                 j.tbNum = d;
                 onFileUploadEvent("upload", j)
             } else {
-                Fai.ing(LS.siteFormSubmitFileUploadFile + i.name + "   " + j.msg)
+                Helper.ing(LS.siteFormSubmitFileUploadFile + i.name + "   " + j.msg)
             }
         },
         onUploadError: function (i, j) {
-            Fai.ing("网络繁忙，文件:" + i.name + "上传失败，请稍后重试")
+            Helper.ing("网络繁忙，文件:" + i.name + "上传失败，请稍后重试")
         },
         onSelect: function () {
             if (a == null || typeof(a) == "undefined") {
@@ -18189,7 +18189,7 @@ Site.siteMenCommImgFileUpload2H5 = function (b, e, h, a, d) {
             var j = $("#msgBoardAddImgTb" + d).eq(0);
             var i = j.find("td").length;
             if (i >= (a + 1)) {
-                Fai.ing(LS.siteFormSubmitFileUploadOfMax, true);
+                Helper.ing(LS.siteFormSubmitFileUploadOfMax, true);
                 var k = j.find("td").eq(j.find("td").length - 1);
                 k.css("display", "none");
                 return false
@@ -18216,11 +18216,11 @@ Site.siteMenCommImgFileUpload2H5 = function (b, e, h, a, d) {
             var j = n.fileId;
             var i = n.width;
             var o = n.height;
-            Site.productMenCommImgTableCtrl2(l, p, k, m, a, j, n.tbNum, r)
+            Run.productMenCommImgTableCtrl2(l, p, k, m, a, j, n.tbNum, r)
         }
     }
 };
-Site.productMenCommImgTableCtrl2 = function (l, a, b, g, c, d, j, k) {
+Run.productMenCommImgTableCtrl2 = function (l, a, b, g, c, d, j, k) {
     var h = $("#pdCommTb" + j).eq(0);
     var i = h.find(".J_td").length - 1;
     var e = h.find(".J_td").eq(i);
@@ -18234,14 +18234,14 @@ Site.productMenCommImgTableCtrl2 = function (l, a, b, g, c, d, j, k) {
     f.push("</td>");
     f.push("</tr>");
     f.push("</table>");
-    f.push("<span onclick='Site.productMenCommImgDelete2(this," + j + ")' class='delPicIcon'/>");
+    f.push("<span onclick='Run.productMenCommImgDelete2(this," + j + ")' class='delPicIcon'/>");
     f.push("</td>");
     e.before(f.join(""));
     if (i >= c) {
         h.find(".J_td").eq(0).hide()
     }
 };
-Site.productMenCommImgDelete2 = function (a, d) {
+Run.productMenCommImgDelete2 = function (a, d) {
     var e = $("#pdCommTb" + d).eq(0);
     var b = e.find(".J_td").length;
     for (var c = 0; c < b; c++) {
@@ -18255,24 +18255,24 @@ Site.productMenCommImgDelete2 = function (a, d) {
     f.html((b - 1) + "/" + f.attr("maxNum"));
     e.find(".J_td").eq(0).show()
 };
-Site.orderPdCommentAddCom2 = function (o, q, k, m) {
+Run.orderPdCommentAddCom2 = function (o, q, k, m) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行评论。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行评论。");
         return
     }
     var u = $("#oCommentItem" + q), s = $("#ocArea" + q), d = $.trim(s.val()), j = parseInt(s.attr("minlength")),
         e = parseInt(s.attr("maxlength"));
     if (typeof(d) != "string" || "" == d) {
         s.focus();
-        Fai.ing(LS.commentNotEmpty, true);
+        Helper.ing(LS.commentNotEmpty, true);
         return
     }
     if (d.length < j) {
-        Fai.ing(Fai.format(LS.commentLenTips, Fai.encodeHtml(j)), true);
+        Helper.ing(Helper.format(LS.commentLenTips, Helper.encodeHtml(j)), true);
         return
     }
     if (d.length > e) {
-        Fai.ing(Fai.format(LS.commentLenTips, Fai.encodeHtml(e)), true);
+        Helper.ing(Helper.format(LS.commentLenTips, Helper.encodeHtml(e)), true);
         return
     }
     var r = $("#pdCommTb" + k);
@@ -18312,11 +18312,11 @@ Site.orderPdCommentAddCom2 = function (o, q, k, m) {
     var n = {oid: o, iid: q, commImgList: $.toJSON(h), comment: d, star: z};
     $.ajax({
         type: "post", url: "ajax/order_h.php?cmd=addPC", data: n, error: function () {
-            Fai.ing(LS.systemError)
+            Helper.ing(LS.systemError)
         }, success: function (L) {
             var G = jQuery.parseJSON(L);
             if (G.success) {
-                Fai.ing(LS.submitSuccess, true);
+                Helper.ing(LS.submitSuccess, true);
                 var K = G.imgsPathStr;
                 s.remove();
                 var H = u.find(".commentStarLine");
@@ -18326,10 +18326,10 @@ Site.orderPdCommentAddCom2 = function (o, q, k, m) {
                 E.remove();
                 C.css({visibility: "hidden", position: "absolute", "z-index": "-1"});
                 var B = 0;
-                if (typeof(Site.commMenUpAllImgList) != "undefined" && Site.commMenUpAllImgList != null) {
-                    B = Site.commMenUpAllImgList.length
+                if (typeof(Run.commMenUpAllImgList) != "undefined" && Run.commMenUpAllImgList != null) {
+                    B = Run.commMenUpAllImgList.length
                 } else {
-                    Site.commMenUpAllImgList = []
+                    Run.commMenUpAllImgList = []
                 }
                 var i = [];
                 var I = '<div class="commentLine">';
@@ -18337,7 +18337,7 @@ Site.orderPdCommentAddCom2 = function (o, q, k, m) {
                 I += '<td class="ctTitleTd"></td>';
                 I += '<td class="ctCommentArea">';
                 I += '<div class="ctContent">';
-                I += Fai.encodeHtml(d);
+                I += Helper.encodeHtml(d);
                 I += "</div>";
                 I += "</td>";
                 I += "</tr></tbody></table>";
@@ -18349,7 +18349,7 @@ Site.orderPdCommentAddCom2 = function (o, q, k, m) {
                 I += '<table class="pdCtIconList J_imageTable" border="0" cellspacing="0" cellpadding="0"><tbody><tr>';
                 $.each(h, function (N, O) {
                     I += '<td class="J_td">';
-                    I += '<table class="pdCtIconDiv" cellpadding="0" cellspacing="0" onclick="Site.showMenCommImgList(\'' + O.imgId + "_" + k + "_" + N + "','" + K[N]["path"] + "','picGroupId_" + k + "','" + k + "','" + N + "', true)\"><tr><td>";
+                    I += '<table class="pdCtIconDiv" cellpadding="0" cellspacing="0" onclick="Run.showMenCommImgList(\'' + O.imgId + "_" + k + "_" + N + "','" + K[N]["path"] + "','picGroupId_" + k + "','" + k + "','" + N + "', true)\"><tr><td>";
                     I += '<img id="' + O.imgId + "_" + k + "_" + N + '" class="pdCtIcon" src="' + l[N]["smallPath"] + '"/>';
                     I += "</td></tr></table>";
                     I += "</td>";
@@ -18380,7 +18380,7 @@ Site.orderPdCommentAddCom2 = function (o, q, k, m) {
                 I += "</tr></table></div>";
                 var F = new Object();
                 F.data = i;
-                Site.commMenUpAllImgList.push(F);
+                Run.commMenUpAllImgList.push(F);
                 u.append(I)
             } else {
                 var J = "";
@@ -18398,7 +18398,7 @@ Site.orderPdCommentAddCom2 = function (o, q, k, m) {
                         J = LS.paramError;
                         break;
                     case 6:
-                        Fai.top.location.href = "login.php?url=" + Fai.encodeUrl(Fai.getUrlRoot(top.location.href)) + "&errno=11";
+                        Helper.top.location.href = "login.php?url=" + Helper.encodeUrl(Helper.getUrlRoot(top.location.href)) + "&errno=11";
                         return false;
                         break;
                     case 7:
@@ -18414,12 +18414,12 @@ Site.orderPdCommentAddCom2 = function (o, q, k, m) {
                         J = LS.systemError;
                         break
                 }
-                Fai.ing(J)
+                Helper.ing(J)
             }
         }
     })
 };
-Site.siteMenCommImgFileUpload = function (b, e, g, a, d) {
+Run.siteMenCommImgFileUpload = function (b, e, g, a, d) {
     var f = g.split(",");
     var c = {
         file_post_name: "Filedata",
@@ -18433,7 +18433,7 @@ Site.siteMenCommImgFileUpload = function (b, e, g, a, d) {
         button_cursor: SWFUpload.CURSOR.HAND,
         button_image_url: _resRoot + "/image/site/msgUpImg/upload1.jpg",
         requeue_on_error: false,
-        post_params: {ctrl: "Filedata", app: 21, type: 0, fileUploadLimit: 5, isSiteForm: true},
+        post_params: {ctrl: "Filedata", app: 21, type: 0, fileUploadLimit: 5, isRunForm: true},
         file_types: f.join(";"),
         file_dialog_complete_handler: function (h) {
             this._allSuccess = false;
@@ -18442,16 +18442,16 @@ Site.siteMenCommImgFileUpload = function (b, e, g, a, d) {
         file_queue_error_handler: function (i, h, j) {
             switch (h) {
                 case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-                    Fai.ing(LS.siteFormSubmitCheckFileSizeErr, true);
+                    Helper.ing(LS.siteFormSubmitCheckFileSizeErr, true);
                     break;
                 case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-                    Fai.ing(LS.siteFormSubmitFileUploadNotAllow, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadNotAllow, true);
                     break;
                 case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadOneTimeNum, a), true);
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadOneTimeNum, a), true);
                     break;
                 default:
-                    Fai.ing(LS.siteFormSubmitFileUploadReSelect, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadReSelect, true);
                     break
             }
         },
@@ -18460,21 +18460,21 @@ Site.siteMenCommImgFileUpload = function (b, e, g, a, d) {
             this._allSuccess = j.success;
             this._sysResult = j.msg;
             if (j.success) {
-                Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSucess, Fai.encodeHtml(i.name)), true);
+                Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSucess, Helper.encodeHtml(i.name)), true);
                 j.tbNum = d;
                 onFileUploadEvent("upload", j)
             } else {
-                Fai.ing(LS.siteFormSubmitFileUploadFile + i.name + "   " + j.msg)
+                Helper.ing(LS.siteFormSubmitFileUploadFile + i.name + "   " + j.msg)
             }
         },
         upload_error_handler: function (i, h, j) {
             if (h == -280) {
-                Fai.ing(LS.siteFormSubmitFileUploadFileCancle, false)
+                Helper.ing(LS.siteFormSubmitFileUploadFileCancle, false)
             } else {
                 if (h == -270) {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadFileExist, Fai.encodeHtml(i.name)), true)
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadFileExist, Helper.encodeHtml(i.name)), true)
                 } else {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSvrBusy, Fai.encodeHtml(i.name)))
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSvrBusy, Helper.encodeHtml(i.name)))
                 }
             }
         },
@@ -18486,7 +18486,7 @@ Site.siteMenCommImgFileUpload = function (b, e, g, a, d) {
                 var j = $("#msgBoardAddImgTb" + d).eq(0);
                 var h = j.find("td").length;
                 if (h >= (a + 1)) {
-                    Fai.ing(LS.siteFormSubmitFileUploadOfMax, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadOfMax, true);
                     var k = j.find("td").eq(j.find("td").length - 1);
                     k.css("display", "none");
                     return
@@ -18500,15 +18500,15 @@ Site.siteMenCommImgFileUpload = function (b, e, g, a, d) {
                 }, swfObj.upload_delay)
             } else {
                 if (i.filestatus == SWFUpload.FILE_STATUS.ERROR) {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSvrBusy, Fai.encodeHtml(i.name)))
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSvrBusy, Helper.encodeHtml(i.name)))
                 }
             }
         },
         upload_start_handler: function (h) {
-            Fai.ing(LS.siteFormSubmitFileUploadPrepare, false)
+            Helper.ing(LS.siteFormSubmitFileUploadPrepare, false)
         },
         view_progress: function (h, k, j, i) {
-            Fai.ing(LS.siteFormSubmitFileUploadIng + i + "%", false)
+            Helper.ing(LS.siteFormSubmitFileUploadIng + i + "%", false)
         }
     };
     if (typeof(swfObjList) == "undefined") {
@@ -18525,25 +18525,25 @@ Site.siteMenCommImgFileUpload = function (b, e, g, a, d) {
             var i = m.fileId;
             var h = m.width;
             var n = m.height;
-            Site.productMenCommImgTableCtrl(k, o, j, l, a, i, m.tbNum, q)
+            Run.productMenCommImgTableCtrl(k, o, j, l, a, i, m.tbNum, q)
         }
     }
 };
-Site.productMenCommImgTableCtrl = function (l, a, b, g, c, d, j, k) {
+Run.productMenCommImgTableCtrl = function (l, a, b, g, c, d, j, k) {
     var h = $("#msgBoardAddImgTb" + j).eq(0);
     var i = h.find("td").length;
     var e = h.find("td").eq(i - 1);
     e.find(".msgBoard_showImgCount").html((i) + "/" + c);
     var f = [];
-    if (Fai.isIE6() || Fai.isIE7()) {
+    if (Helper.isIE6() || Helper.isIE7()) {
         f.push("<td class='msgBoard_upImg_tb_td2' style='border:0px !important;padding-right:3px;'>");
         f.push("<div class='msgBoard_upImg_border' style='width:50px !important;height:50px !important;margin-left:3px;'>")
     } else {
         f.push("<td class='msgBoard_upImg_tb_td2' style='border:0px !important;'>");
         f.push("<div class='msgBoard_upImg_border'>")
     }
-    f.push("<span onclick='Site.productMenCommImgDelete(this," + j + ")' class='msgBoard_upImgTop_set'/>");
-    if (Fai.isIE6() || Fai.isIE7()) {
+    f.push("<span onclick='Run.productMenCommImgDelete(this," + j + ")' class='msgBoard_upImgTop_set'/>");
+    if (Helper.isIE6() || Helper.isIE7()) {
         f.push("<div><p><img alt='' class='msgBoard_upImg_set' src='" + k + "' _name='" + a + "'  _id='" + b + "' _file_size='" + g + "' _file_id='" + d + "' _path='" + l + "'  _smallPath='" + k + "'></p></div>")
     } else {
         f.push("<div><p><img alt='' class='msgBoard_upImg_set' src='" + k + "' _name='" + a + "'   _id='" + b + "' _file_size='" + g + "' _file_id='" + d + "'  _path='" + l + "' _smallPath='" + k + "' style='margin-left:-1px;'></p></div>")
@@ -18552,7 +18552,7 @@ Site.productMenCommImgTableCtrl = function (l, a, b, g, c, d, j, k) {
     f.push("</td>");
     e.before(f.join(""))
 };
-Site.productMenCommImgDelete = function (a, d) {
+Run.productMenCommImgDelete = function (a, d) {
     var e = $("#msgBoardAddImgTb" + d).eq(0);
     var b = e.find("td").length;
     for (var c = 0; c < b; c++) {
@@ -18565,10 +18565,10 @@ Site.productMenCommImgDelete = function (a, d) {
     var f = e.find("td").eq(b - 1);
     f.find(".msgBoard_showImgCount").html((b - 1) + "/" + f.attr("maxNum"));
     if (b <= f.attr("maxNum")) {
-        if (Fai.isIE6() || Fai.isIE7()) {
+        if (Helper.isIE6() || Helper.isIE7()) {
             f.css({display: "block", "padding-top": "7px"})
         } else {
-            if (Fai.isIE()) {
+            if (Helper.isIE()) {
                 f.css({display: "block", "padding-top": "8px"})
             } else {
                 f.css({display: "block", "padding-top": "12px"})
@@ -18576,7 +18576,7 @@ Site.productMenCommImgDelete = function (a, d) {
         }
     }
 };
-Site.showMenCommImgList = function (i, l, d, h, c, b) {
+Run.showMenCommImgList = function (i, l, d, h, c, b) {
     var f = $("#" + d);
     if (f != null && typeof(f) != "undefined") {
         f.remove()
@@ -18597,12 +18597,12 @@ Site.showMenCommImgList = function (i, l, d, h, c, b) {
     e.eq(c).prepend(j);
     var a = [];
     a.push("<div id='" + d + "' class='show_msg_outer_div'>");
-    if (Fai.isIE6() || Fai.isIE7()) {
-        a.push("<span onclick=Site.commShowPicClose('" + d + "','" + i + "') class='msg_close_show_img_icon' style='margin-top:-8px;'/>");
+    if (Helper.isIE6() || Helper.isIE7()) {
+        a.push("<span onclick=Run.commShowPicClose('" + d + "','" + i + "') class='msg_close_show_img_icon' style='margin-top:-8px;'/>");
         a.push("<div class='show_msg_bordered_div' style='width:298px !important; margin-top:-8px;'></div>");
         a.push("<div class='show_msg_border_div' style='width:299px !important;margin-top:-8px;'>")
     } else {
-        a.push("<span onclick=Site.commShowPicClose('" + d + "','" + i + "') class='msg_close_show_img_icon'/>");
+        a.push("<span onclick=Run.commShowPicClose('" + d + "','" + i + "') class='msg_close_show_img_icon'/>");
         a.push("<div class='show_msg_bordered_div'  style='width:299px;'></div>");
         a.push("<div class='show_msg_border_div' style='margin-top:-8px;margin-left:1px;'>")
     }
@@ -18616,16 +18616,16 @@ Site.showMenCommImgList = function (i, l, d, h, c, b) {
             if (m.find("#J_showCommPicMoveSign").attr("class") == null || typeof(m.find("#J_showCommPicMoveSign").attr("class")) == "undefined") {
                 var n = [];
                 n.push("<div id='J_showCommPicMoveSign'>");
-                n.push("<img alt='' class='showCommPicMoveLeftClickArea' onclick=Site.showMenCommImgMove('" + i + "','" + d + "','left'," + b + ")>");
-                n.push("<img alt='' src='" + _resRoot + "/image/site/msgUpImg/mLeft.png' onclick=Site.showMenCommImgMove('" + i + "','" + d + "','left'," + b + ") class='showCommPicMoveLeft'>");
-                n.push("<img alt='' class='showCommPicMoveRightClickArea' onclick=Site.showMenCommImgMove('" + i + "','" + d + "','right'," + b + ")>");
-                n.push("<img alt='' src='" + _resRoot + "/image/site/msgUpImg/mRight.png' onclick=Site.showMenCommImgMove('" + i + "','" + d + "','right'," + b + ") class='showCommPicMoveRight'>");
+                n.push("<img alt='' class='showCommPicMoveLeftClickArea' onclick=Run.showMenCommImgMove('" + i + "','" + d + "','left'," + b + ")>");
+                n.push("<img alt='' src='" + _resRoot + "/image/site/msgUpImg/mLeft.png' onclick=Run.showMenCommImgMove('" + i + "','" + d + "','left'," + b + ") class='showCommPicMoveLeft'>");
+                n.push("<img alt='' class='showCommPicMoveRightClickArea' onclick=Run.showMenCommImgMove('" + i + "','" + d + "','right'," + b + ")>");
+                n.push("<img alt='' src='" + _resRoot + "/image/site/msgUpImg/mRight.png' onclick=Run.showMenCommImgMove('" + i + "','" + d + "','right'," + b + ") class='showCommPicMoveRight'>");
                 n.push("</div>");
                 m.prepend(n.join(""))
             }
         }, function () {
             var m = $("#" + d);
-            if (Fai.isIE7()) {
+            if (Helper.isIE7()) {
                 setTimeout(function () {
                     m.find("#J_showCommPicMoveSign").remove()
                 }, 500)
@@ -18635,7 +18635,7 @@ Site.showMenCommImgList = function (i, l, d, h, c, b) {
         })
     }, 10)
 };
-Site.showMenCommImgMove = function (h, b, g, a) {
+Run.showMenCommImgMove = function (h, b, g, a) {
     if (h == null || g == null) {
         return
     }
@@ -18646,7 +18646,7 @@ Site.showMenCommImgMove = function (h, b, g, a) {
     if (currentChooseTr == null || currentChooseTd == null) {
         return
     }
-    if (Site.commMenUpAllImgList == null) {
+    if (Run.commMenUpAllImgList == null) {
         return
     }
     var k = 0;
@@ -18670,7 +18670,7 @@ Site.showMenCommImgMove = function (h, b, g, a) {
     } else {
         if (g == "right") {
             k = parseInt(currentChooseTd) + 1;
-            if (k >= Site.commMenUpAllImgList[currentChooseTr].data.length) {
+            if (k >= Run.commMenUpAllImgList[currentChooseTr].data.length) {
                 k = 0
             }
         }
@@ -18681,21 +18681,21 @@ Site.showMenCommImgMove = function (h, b, g, a) {
     d.attr("chooseTd", k);
     var e = $("#" + b).find(".msg_up_show_img_set").parent();
     $("#" + b).find(".msg_up_show_img_set").remove();
-    e.append("<img alt='' class='msg_up_show_img_set' src='" + Site.commMenUpAllImgList[currentChooseTr].data[k].data + "'>")
+    e.append("<img alt='' class='msg_up_show_img_set' src='" + Run.commMenUpAllImgList[currentChooseTr].data[k].data + "'>")
 };
-Site.orderPdCommentAddCom = function (n, p, j, l) {
+Run.orderPdCommentAddCom = function (n, p, j, l) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行评论。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行评论。");
         return
     }
     var s = $(".J-ct-panel-" + n + "-" + p), z = $("#pc_" + n + "_" + p), d = $.trim(z.val()), h = z.attr("minlength");
     if (typeof(d) != "string" || "" == d) {
         z.focus();
-        Fai.ing(LS.commentNotEmpty, true);
+        Helper.ing(LS.commentNotEmpty, true);
         return
     }
     if (d.length < h) {
-        Fai.ing(Fai.format(LS.commentLenTips, Fai.encodeHtml(h)), true);
+        Helper.ing(Helper.format(LS.commentLenTips, Helper.encodeHtml(h)), true);
         return
     }
     var q = $("#msgBoardAddImgTb" + j);
@@ -18735,11 +18735,11 @@ Site.orderPdCommentAddCom = function (n, p, j, l) {
     var m = {oid: n, iid: p, commImgList: $.toJSON(g), comment: d, star: x};
     $.ajax({
         type: "post", url: "ajax/order_h.php?cmd=addPC", data: m, error: function () {
-            Fai.ing(LS.systemError)
+            Helper.ing(LS.systemError)
         }, success: function (E) {
             var P = jQuery.parseJSON(E);
             if (P.success) {
-                Fai.ing(LS.submitSuccess, true);
+                Helper.ing(LS.submitSuccess, true);
                 var O = s.find(".g_textarea").parent();
                 var M = s.find(".ct-area3");
                 var K = s.find(".g_ibutton").parent();
@@ -18752,10 +18752,10 @@ Site.orderPdCommentAddCom = function (n, p, j, l) {
                 C.remove();
                 Q.remove();
                 var N = 0;
-                if (typeof(Site.commMenUpAllImgList) != "undefined" && Site.commMenUpAllImgList != null) {
-                    N = Site.commMenUpAllImgList.length
+                if (typeof(Run.commMenUpAllImgList) != "undefined" && Run.commMenUpAllImgList != null) {
+                    N = Run.commMenUpAllImgList.length
                 } else {
-                    Site.commMenUpAllImgList = []
+                    Run.commMenUpAllImgList = []
                 }
                 var F = [];
                 F.push("<div class='ct-area2'>" + d + "</div>");
@@ -18769,7 +18769,7 @@ Site.orderPdCommentAddCom = function (n, p, j, l) {
                         var I = P.imgsPathStr[L].path;
                         var A = k[L].smallPath;
                         F.push("<td class='msgBoard_showImg_tb_td' style='border:0px !important;'>");
-                        F.push("<div onclick=Site.showMenCommImgList('" + J + "','" + I + "','picGroupId_" + N + "','" + N + "','" + L + "') class='msgBoard_upImg_border'>");
+                        F.push("<div onclick=Run.showMenCommImgList('" + J + "','" + I + "','picGroupId_" + N + "','" + N + "','" + L + "') class='msgBoard_upImg_border'>");
                         F.push("<div><p><img alt='' class='msgBoard_upImg_set' id='" + J + "' src='" + A + "'></p></div>");
                         F.push("</div>");
                         F.push("</td>");
@@ -18798,9 +18798,9 @@ Site.orderPdCommentAddCom = function (n, p, j, l) {
                 }
                 var H = new Object();
                 H.data = i;
-                Site.commMenUpAllImgList.push(H);
+                Run.commMenUpAllImgList.push(H);
                 s.append(F.join(""));
-                if (Fai.isIE6() || Fai.isIE7()) {
+                if (Helper.isIE6() || Helper.isIE7()) {
                     setTimeout(function () {
                         $(".msgBoard_upImg_border").css({width: "50px", height: "50px"})
                     }, 50)
@@ -18821,7 +18821,7 @@ Site.orderPdCommentAddCom = function (n, p, j, l) {
                         B = LS.paramError;
                         break;
                     case 6:
-                        Fai.top.location.href = "login.php?url=" + Fai.encodeUrl(Fai.getUrlRoot(top.location.href)) + "&errno=11";
+                        Helper.top.location.href = "login.php?url=" + Helper.encodeUrl(Helper.getUrlRoot(top.location.href)) + "&errno=11";
                         return false;
                         break;
                     case 7:
@@ -18837,26 +18837,26 @@ Site.orderPdCommentAddCom = function (n, p, j, l) {
                         B = LS.systemError;
                         break
                 }
-                Fai.ing(B)
+                Helper.ing(B)
             }
         }
     })
 };
-Site.changeIEMsgInputWidth = function () {
+Run.changeIEMsgInputWidth = function () {
     if (isIE = navigator.userAgent.indexOf("MSIE") != -1) {
         $("#orderLeveaMsgIn").css({height: "17px", "line-height": "17px", width: "98%"})
     }
 };
-Site.orderLeveaMsgTip = "";
-Site.orderMessageOpen = false;
-Site.orderMessageMaxNum = 0;
-Site.setLisMsgInput = function (c, a, b) {
-    Site.orderMessageOpen = a;
-    Site.orderLeveaMsgTip = c;
-    Site.orderMessageMaxNum = b;
+Run.orderLeveaMsgTip = "";
+Run.orderMessageOpen = false;
+Run.orderMessageMaxNum = 0;
+Run.setLisMsgInput = function (c, a, b) {
+    Run.orderMessageOpen = a;
+    Run.orderLeveaMsgTip = c;
+    Run.orderMessageMaxNum = b;
     $(function () {
         $("#orderLeveaMsgIn").focusin(function () {
-            if ($(this).val() === Site.orderLeveaMsgTip) {
+            if ($(this).val() === Run.orderLeveaMsgTip) {
                 $(this).val("")
             }
             $(this).css("color", "#333")
@@ -18864,13 +18864,13 @@ Site.setLisMsgInput = function (c, a, b) {
         $("#orderLeveaMsgIn").focusout(function () {
             $(this).css("color", "black");
             if ($(this).val() == "") {
-                $(this).val(Site.orderLeveaMsgTip);
+                $(this).val(Run.orderLeveaMsgTip);
                 $(this).css("color", "#b8b8b8")
             }
         })
     })
 };
-Site.setLisMsgInputInit = function (a) {
+Run.setLisMsgInputInit = function (a) {
     $(function () {
         $("#orderLeveaMsgIn").val(a);
         $("#orderLeveaMsgIn").css("color", "#b8b8b8")
@@ -18917,15 +18917,15 @@ Site.setLisMsgInputInit = function (a) {
             M.find(".J-rpt-save").on("click", function () {
                 u.splice(J, 1);
                 $.ajax({
-                    type: "post", url: N, data: "info=" + Fai.encodeUrl($.toJSON(E)), error: function () {
-                        Fai.ing(LS.systemError, false)
+                    type: "post", url: N, data: "info=" + Helper.encodeUrl($.toJSON(E)), error: function () {
+                        Helper.ing(LS.systemError, false)
                     }, success: function (Q) {
                         var R = $.parseJSON(Q);
                         if (R.success) {
                             var S = document.location.search.search(/imme/) > -1 ? "?imme" : "";
                             document.location.href = "mstl.php" + S
                         } else {
-                            Fai.ing(R.msg, true)
+                            Helper.ing(R.msg, true)
                         }
                     }
                 })
@@ -18940,15 +18940,15 @@ Site.setLisMsgInputInit = function (a) {
             }
             u[K].isDefault = 1;
             $.ajax({
-                type: "post", url: J, data: "info=" + Fai.encodeUrl($.toJSON(E)), error: function () {
-                    Fai.ing(LS.systemError, false)
+                type: "post", url: J, data: "info=" + Helper.encodeUrl($.toJSON(E)), error: function () {
+                    Helper.ing(LS.systemError, false)
                 }, success: function (M) {
                     var N = $.parseJSON(M);
                     if (N.success) {
                         var O = document.location.search.search(/imme/) > -1 ? "?imme" : "";
                         document.location.href = "mstl.php" + O
                     } else {
-                        Fai.ing(N.msg, true)
+                        Helper.ing(N.msg, true)
                     }
                 }
             });
@@ -18957,9 +18957,9 @@ Site.setLisMsgInputInit = function (a) {
         $(".mallShipSelect").off("change.mstl").on("change.mstl", function (M) {
             var K = $(this).find("option:selected"), L = $(".shippingPay"), N = $("#shippingMoneyVal"),
                 J = parseFloat(K.attr("price")).toFixed(2);
-            if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                L.text(Fai.formatPriceEn(J)).attr("_shipmoney", J);
-                N.text(Fai.formatPriceEn(J)).attr("_shipmoney", J)
+            if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                L.text(Helper.formatPriceEn(J)).attr("_shipmoney", J);
+                N.text(Helper.formatPriceEn(J)).attr("_shipmoney", J)
             } else {
                 L.text(J).attr("_shipmoney", J);
                 N.text(J).attr("_shipmoney", J)
@@ -19016,7 +19016,7 @@ Site.setLisMsgInputInit = function (a) {
                         continue
                     }
                     if (u[N][R] == null || u[N][R] == "") {
-                        Fai.ing(LS.addrInfoInputError + K, 1);
+                        Helper.ing(LS.addrInfoInputError + K, 1);
                         return
                     }
                 }
@@ -19027,25 +19027,25 @@ Site.setLisMsgInputInit = function (a) {
                     var M = u[N]["addr_info"].countyCode || "";
                     if (S != "" && L) {
                         if (q(S) == "") {
-                            Fai.ing(LS.enterCorrectAddress, 1);
+                            Helper.ing(LS.enterCorrectAddress, 1);
                             return
                         }
                     }
                     if (P != "" && L) {
                         if (q(P) == "") {
-                            Fai.ing(LS.enterCorrectAddress, 1);
+                            Helper.ing(LS.enterCorrectAddress, 1);
                             return
                         }
                     }
                     if (M != "" && L) {
                         if (q(M) == "") {
-                            Fai.ing(LS.enterCorrectAddress, 1);
+                            Helper.ing(LS.enterCorrectAddress, 1);
                             return
                         }
                     }
                 }
             } else {
-                Fai.ing(LS.enterConsignee, 1);
+                Helper.ing(LS.enterConsignee, 1);
                 return
             }
             b(G, C, w, v, s, D, z, u, H, r)
@@ -19071,7 +19071,7 @@ Site.setLisMsgInputInit = function (a) {
         i.placeholder($(".msgforSeller, .integralValInput"))
     };
     function g(y, s, r) {
-        var L = s[y], E = $(".addAddrPopPanel"), x = $("#addrDetail"), H = Fai.top._lcid, G, v, C, D, t = false, F;
+        var L = s[y], E = $(".addAddrPopPanel"), x = $("#addrDetail"), H = Helper.top._lcid, G, v, C, D, t = false, F;
         for (var J = 0; J < r.length; J++) {
             F = r[J];
             if (F.fieldKey == "addr") {
@@ -19154,7 +19154,7 @@ Site.setLisMsgInputInit = function (a) {
     }
 
     function e(z, u, w, t, s, A) {
-        var M = [], D, P, G, L, S, F, N, y, C = "", I = Fai.top._lcid;
+        var M = [], D, P, G, L, S, F, N, y, C = "", I = Helper.top._lcid;
         var O = {};
         O.addrInfoList = w;
         var R = {};
@@ -19191,7 +19191,7 @@ Site.setLisMsgInputInit = function (a) {
                     C += "<option value='os'>" + H + "</option>"
                 }
                 $.each(R, function (U, V) {
-                    C += "<option value='" + R[U].id + "'>" + Fai.encodeHtml(R[U].name) + "</option>"
+                    C += "<option value='" + R[U].id + "'>" + Helper.encodeHtml(R[U].name) + "</option>"
                 });
                 C += "</select>";
                 C += "<input type='text' id='areaBoxInput' class='areaBoxInput' class='itemValInput' style='width:295px;' placeholder='------' readOnly='true' isCn isOs isCus area1 area2 area3/>";
@@ -19289,7 +19289,7 @@ Site.setLisMsgInputInit = function (a) {
                 C += "<option value='os'>" + H + "</option>"
             }
             $.each(R, function (U, V) {
-                C += "<option value='" + R[U].id + "'>" + Fai.encodeHtml(R[U].name) + "</option>"
+                C += "<option value='" + R[U].id + "'>" + Helper.encodeHtml(R[U].name) + "</option>"
             });
             C += "</select>";
             C += "<input type='text' id='areaBoxInput' class='itemValInput areaBoxInput' style='width:295px;' placeholder='------' readOnly='true' isCn isOs isCus area1 area2 area3/>";
@@ -19574,7 +19574,7 @@ Site.setLisMsgInputInit = function (a) {
         var r = "";
         r += "<div class='city_content'>";
         $.each(s, function (t, u) {
-            if (Fai.top._lcid == 2052 || Fai.top._lcid == 1028) {
+            if (Helper.top._lcid == 2052 || Helper.top._lcid == 1028) {
                 r += "<div class='group_item' cid='" + u.id + "' cname='" + site_cityUtil.getInfo(u.id).name + "'>" + site_cityUtil.simpleCityNameStr(site_cityUtil.getInfo(u.id).name) + "</div>"
             } else {
                 r += "<div class='group_item' cid='" + u.id + "' cname='" + site_cityUtil.getInfoEn(u.id).name + "'>" + site_cityUtil.simpleCityNameStrEn(site_cityUtil.getInfoEn(u.id).name) + "</div>"
@@ -19588,7 +19588,7 @@ Site.setLisMsgInputInit = function (a) {
         var r = "";
         r += "<div class='county_content'>";
         $.each(s, function (t, u) {
-            if (Fai.top._lcid == 2052 || Fai.top._lcid == 1028) {
+            if (Helper.top._lcid == 2052 || Helper.top._lcid == 1028) {
                 r += "<div class='group_item' cid='" + u.id + "' cname='" + site_cityUtil.getInfo(u.id).name + "'>" + site_cityUtil.getInfo(u.id).name + "</div>"
             } else {
                 r += "<div class='group_item' cid='" + u.id + "' cname='" + site_cityUtil.getInfoEn(u.id).name + "'>" + site_cityUtil.getInfoEn(u.id).name + "</div>"
@@ -19639,7 +19639,7 @@ Site.setLisMsgInputInit = function (a) {
         var v = N.addrInfoList;
         var C = {};
         var x = B == -1 ? {} : v[B];
-        var G = $(".addAddrPopPanel"), J = Fai.top._lcid, I, z, E, F, H, D = false, y = false, L, w = false, P = "";
+        var G = $(".addAddrPopPanel"), J = Helper.top._lcid, I, z, E, F, H, D = false, y = false, L, w = false, P = "";
         for (var M = 0; M < r.length; M++) {
             H = r[M];
             D = H.required;
@@ -19647,7 +19647,7 @@ Site.setLisMsgInputInit = function (a) {
                 w = D;
                 var O = $("#allArea").val();
                 if (O == null || O == "") {
-                    Fai.ing(LS.selectArea);
+                    Helper.ing(LS.selectArea);
                     return
                 } else {
                     if (O == "cn" || O == "os") {
@@ -19666,11 +19666,11 @@ Site.setLisMsgInputInit = function (a) {
                     I = -1
                 }
                 if (E == "" && w) {
-                    Fai.ing(LS.mallStlSubmitAddrErr, 1);
+                    Helper.ing(LS.mallStlSubmitAddrErr, 1);
                     return
                 }
                 if (z == "" && w && !C.isCus) {
-                    Fai.ing(LS.mallStlSubmitAddrErr, 1);
+                    Helper.ing(LS.mallStlSubmitAddrErr, 1);
                     return
                 }
                 C.provinceCode = parseInt(E);
@@ -19679,14 +19679,14 @@ Site.setLisMsgInputInit = function (a) {
                 L = $("#areaBoxInput").val().replace(/-/g, "");
                 var A = $("#addrDetail");
                 if (A.val() == "" && w) {
-                    Fai.ing(LS.editStreetAddr, 1);
+                    Helper.ing(LS.editStreetAddr, 1);
                     return
                 }
                 C.streetAddr = A.val();
                 x.addr_info = C;
                 x.addr = (L || "") + A.val();
                 if (D && !x.addr) {
-                    return Fai.ing(LS.addrInfoInputError + H.name, 1)
+                    return Helper.ing(LS.addrInfoInputError + H.name, 1)
                 }
                 y = true;
                 continue
@@ -19695,20 +19695,20 @@ Site.setLisMsgInputInit = function (a) {
             if (F.length > 0) {
                 P = F.val();
                 if (D && P == "") {
-                    return Fai.ing(LS.addrInfoInputError + H.name, 1)
+                    return Helper.ing(LS.addrInfoInputError + H.name, 1)
                 }
-                if (H.fieldKey == "email" && !Fai.isEmail(P) && D) {
-                    Fai.ing(LS.addrInfoInputError + H.name, 1);
+                if (H.fieldKey == "email" && !Helper.isEmail(P) && D) {
+                    Helper.ing(LS.addrInfoInputError + H.name, 1);
                     return
                 }
-                if (H.fieldKey == "phone" && !Fai.isPhone(P) && D) {
-                    Fai.ing(LS.addrInfoInputError + H.name, 1);
+                if (H.fieldKey == "phone" && !Helper.isPhone(P) && D) {
+                    Helper.ing(LS.addrInfoInputError + H.name, 1);
                     return
                 }
                 if (H.fieldKey == "mobile") {
                     x.mobileCt = $("#mobileCt").val();
-                    if (!Fai.isNationMobile(P)) {
-                        return Fai.ing(LS.mobileNumRegular)
+                    if (!Helper.isNationMobile(P)) {
+                        return Helper.ing(LS.mobileNumRegular)
                     }
                 }
                 x[H.fieldKey] = F.val()
@@ -19717,7 +19717,7 @@ Site.setLisMsgInputInit = function (a) {
         if (!y && $("#mallShipTemplate_province").length === 1) {
             var s = $("#allArea").val();
             if (s == null || s == "") {
-                Fai.ing(LS.selectArea);
+                Helper.ing(LS.selectArea);
                 return
             } else {
                 if (s == "cn" || s == "os") {
@@ -19730,11 +19730,11 @@ Site.setLisMsgInputInit = function (a) {
             z = $("#areaBoxInput").attr("area2");
             E = $("#areaBoxInput").attr("area1");
             if (E == null || E == "") {
-                Fai.ing(LS.mallStlSubmitAddrErr, 1);
+                Helper.ing(LS.mallStlSubmitAddrErr, 1);
                 return
             }
             if ((z == null || z == "") && !C.isCus) {
-                Fai.ing(LS.mallStlSubmitAddrErr, 1);
+                Helper.ing(LS.mallStlSubmitAddrErr, 1);
                 return
             }
             C.provinceCode = parseInt(E);
@@ -19743,14 +19743,14 @@ Site.setLisMsgInputInit = function (a) {
             L = $("#areaBoxInput").val().replace(/-/g, "");
             var A = $("#addrDetail");
             if (A.val() == "" && w) {
-                Fai.ing(LS.editStreetAddr, 1);
+                Helper.ing(LS.editStreetAddr, 1);
                 return
             }
             C.streetAddr = A.val();
             x.addr_info = C;
             x.addr = (L || "") + A.val();
             if (!x.addr) {
-                return Fai.ing(LS.addrInfoInputError + H.name, 1)
+                return Helper.ing(LS.addrInfoInputError + H.name, 1)
             }
         }
         if (B == -1) {
@@ -19766,7 +19766,7 @@ Site.setLisMsgInputInit = function (a) {
         if (!!t) {
             $(".sublimeNewAddr").off("click.mstl");
             $.ajax({
-                type: "post", url: K, data: "info=" + Fai.encodeUrl($.toJSON(N)), success: function (Y) {
+                type: "post", url: K, data: "info=" + Helper.encodeUrl($.toJSON(N)), success: function (Y) {
                     var S = $.parseJSON(Y);
                     if (S.success) {
                         var T = document.location.search.search(/imme/) > -1 ? "?imme&" : "?";
@@ -19837,10 +19837,10 @@ Site.setLisMsgInputInit = function (a) {
                             $(".addAddrPanelContent").parents(".formMSG").next(".popupBClose").click()
                         }
                     } else {
-                        Fai.ing(S.msg)
+                        Helper.ing(S.msg)
                     }
                 }, error: function () {
-                    Fai.ing(LS.systemError)
+                    Helper.ing(LS.systemError)
                 }
             })
         } else {
@@ -19896,7 +19896,7 @@ Site.setLisMsgInputInit = function (a) {
                 w = 0
             }
             var t = $(this).attr("moduleId");
-            var u = Fai.top.$("#module" + t);
+            var u = Helper.top.$("#module" + t);
             var x = parseFloat(u.find(".calTotalItem").attr("pay_price"));
             if (isNaN(x)) {
                 return
@@ -19915,11 +19915,11 @@ Site.setLisMsgInputInit = function (a) {
                 }
             }
             if (w > A) {
-                Fai.ing(Fai.format(LS.integral_maxUse, A, Fai.encodeHtml(B)), true);
+                Helper.ing(Helper.format(LS.integral_maxUse, A, Helper.encodeHtml(B)), true);
                 r.val(A);
                 var v = (A / y).toFixed(2);
-                if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                    $("#offsetMoney").text(Fai.formatPriceEn(v))
+                if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                    $("#offsetMoney").text(Helper.formatPriceEn(v))
                 } else {
                     $("#offsetMoney").text(v)
                 }
@@ -19928,18 +19928,18 @@ Site.setLisMsgInputInit = function (a) {
                 return
             }
             if (w > parseInt(r.attr("_currentItg"))) {
-                Fai.ing(Fai.format(LS.integral_notOverCurrent, Fai.encodeHtml(B), Fai.encodeHtml(B)));
+                Helper.ing(Helper.format(LS.integral_notOverCurrent, Helper.encodeHtml(B), Helper.encodeHtml(B)));
                 r.focus();
                 return
             }
             if (w < 0) {
-                Fai.ing(LS.integral_inputInteger);
+                Helper.ing(LS.integral_inputInteger);
                 r.focus();
                 return
             }
             var v = (w / y).toFixed(2);
-            if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                $("#offsetMoney").text(Fai.formatPriceEn(v))
+            if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                $("#offsetMoney").text(Helper.formatPriceEn(v))
             } else {
                 $("#offsetMoney").text(v)
             }
@@ -19998,8 +19998,8 @@ Site.setLisMsgInputInit = function (a) {
             } else {
                 $("#couponInfo").hide()
             }
-            if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                $("#couponOffsetMoney").text(Fai.formatPriceEn(t)).attr("_offsetmoney", t)
+            if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                $("#couponOffsetMoney").text(Helper.formatPriceEn(t)).attr("_offsetmoney", t)
             } else {
                 $("#couponOffsetMoney").text(t.toFixed(2)).attr("_offsetmoney", t)
             }
@@ -20013,8 +20013,8 @@ Site.setLisMsgInputInit = function (a) {
             r = parseFloat($("#couponOffsetMoney").attr("_offsetmoney")).toFixed(2) * 100 || 0,
             w = parseFloat($("#shippingMoneyVal").attr("_shipmoney")).toFixed(2) * 100 || 0, u = $("#finalPay"),
             t = ((v + w - s - r) / 100).toFixed(2);
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-            u.text(Fai.formatPriceEn(t))
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+            u.text(Helper.formatPriceEn(t))
         } else {
             u.text(t)
         }
@@ -20023,9 +20023,9 @@ Site.setLisMsgInputInit = function (a) {
     function k() {
         var s = $(".mallShipSelect").find("option:selected");
         shippingMoneytext = $(".shippingPay"), culshippingMoneyVal = $("#shippingMoneyVal"), price = parseFloat(s.attr("price")).toFixed(2);
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-            shippingMoneytext.text(Fai.formatPriceEn(price)).attr("_shipmoney", price);
-            culshippingMoneyVal.text(Fai.formatPriceEn(price)).attr("_shipmoney", price)
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+            shippingMoneytext.text(Helper.formatPriceEn(price)).attr("_shipmoney", price);
+            culshippingMoneyVal.text(Helper.formatPriceEn(price)).attr("_shipmoney", price)
         } else {
             shippingMoneytext.text(price).attr("_shipmoney", price);
             culshippingMoneyVal.text(price).attr("_shipmoney", price)
@@ -20677,7 +20677,7 @@ Site.setLisMsgInputInit = function (a) {
         $("#template_item_" + t.type).click()
     };
     function p(x, y) {
-        var r = y[x] || (y[0] = {}), t = Fai.top._lcid;
+        var r = y[x] || (y[0] = {}), t = Helper.top._lcid;
         if ($("#mallShipTemplate_province").length < 1) {
             return
         }
@@ -20737,7 +20737,7 @@ Site.setLisMsgInputInit = function (a) {
     }
 
     function o(aa, Y, V, D, z) {
-        var M = $(".selectedMsg"), N = parseInt(M.attr("_item")), C = V[N] || {}, v = C.addr_info, F = Fai.top._lcid,
+        var M = $(".selectedMsg"), N = parseInt(M.attr("_item")), C = V[N] || {}, v = C.addr_info, F = Helper.top._lcid,
             H = {}, E = {}, U = "";
         var A, ab, u = false;
         for (var X = 0; X < z.length; X++) {
@@ -20906,7 +20906,7 @@ Site.setLisMsgInputInit = function (a) {
         }
         var P = $(".msgforSeller");
         if (P.length > 0) {
-            var Z = Fai.decodeHtml(P.val());
+            var Z = Helper.decodeHtml(P.val());
             var R = parseInt(P.attr("maxlength"));
             if (Z.length > R) {
                 Z = Z.substring(0, R)
@@ -20923,14 +20923,14 @@ Site.setLisMsgInputInit = function (a) {
         var r = $("#useItg"), L = $("#integralCheckBox");
         if (L.length > 0 && L.prop("checked")) {
             var ad = r.val();
-            if (Fai.isInteger(ad)) {
+            if (Helper.isInteger(ad)) {
                 var K = parseInt(r.attr("_maxUse")), W = parseInt(r.attr("_currentitg")), s = r.attr("_itgname");
                 if (ad > W) {
-                    U = Fai.format(LS.integral_notOverCurrent, Fai.encodeHtml(s), Fai.encodeHtml(s));
+                    U = Helper.format(LS.integral_notOverCurrent, Helper.encodeHtml(s), Helper.encodeHtml(s));
                     return U
                 }
                 if (ad > K) {
-                    U = Fai.format(LS.integral_notOver, Fai.encodeHtml(s), K);
+                    U = Helper.format(LS.integral_notOver, Helper.encodeHtml(s), K);
                     return U
                 }
                 if (ad < 0) {
@@ -20959,10 +20959,10 @@ Site.setLisMsgInputInit = function (a) {
 
     function b(v, F, y, x, u, G, z, w, I, s) {
         if (!I && F == 0) {
-            Fai.top.location.href = "mdetail.php";
+            Helper.top.location.href = "mdetail.php";
             return
         }
-        var J = {}, H = {}, v = Fai.top.$("#module" + v), C = v.find(".stlMsg");
+        var J = {}, H = {}, v = Helper.top.$("#module" + v), C = v.find(".stlMsg");
         var B = o(J, H, w, G, s);
         if (B != "") {
             C.show();
@@ -20982,7 +20982,7 @@ Site.setLisMsgInputInit = function (a) {
             $.ajax({
                 type: "post",
                 url: action = "ajax/memberAdm_h.php?cmd=set&opera=addAddr&id=" + u,
-                data: "info=" + Fai.encodeUrl($.toJSON(r)),
+                data: "info=" + Helper.encodeUrl($.toJSON(r)),
                 success: function (K) {
                 },
                 error: function () {
@@ -20997,7 +20997,7 @@ Site.setLisMsgInputInit = function (a) {
                     if (!A.test(E)) {
                         C.hide();
                         i.scrollToDiv(v);
-                        Fai.ing(LS.orderValidRecvName);
+                        Helper.ing(LS.orderValidRecvName);
                         D.attr("disabled", false);
                         return
                     }
@@ -21020,7 +21020,7 @@ Site.setLisMsgInputInit = function (a) {
             $.ajax({
                 type: "post",
                 url: "ajax/order_h.php?cmd=settle&imme",
-                data: "data=" + Fai.encodeUrl($.toJSON(J)),
+                data: "data=" + Helper.encodeUrl($.toJSON(J)),
                 error: function () {
                     D.removeAttr("disabled");
                     C.html(LS.mallStlSubmitError)
@@ -21029,7 +21029,7 @@ Site.setLisMsgInputInit = function (a) {
                     D.removeAttr("disabled");
                     var K = jQuery.parseJSON(K);
                     if (K.success) {
-                        Fai.top.location.href = "mdetail.php?id=" + K.oid + "&suc=1"
+                        Helper.top.location.href = "mdetail.php?id=" + K.oid + "&suc=1"
                     } else {
                         if (K.rt == -3) {
                             C.html(LS.mallStlSubmitNotFound)
@@ -21038,7 +21038,7 @@ Site.setLisMsgInputInit = function (a) {
                                 C.html(LS.mallStlSubmitStatusError)
                             } else {
                                 if (K.rt == i.MallAjaxErrno.outOfMallAmount) {
-                                    C.html(Fai.format(LS.mallAmountOverNameList, K.productsName))
+                                    C.html(Helper.format(LS.mallAmountOverNameList, K.productsName))
                                 } else {
                                     C.html(LS.mallStlSubmitError)
                                 }
@@ -21051,7 +21051,7 @@ Site.setLisMsgInputInit = function (a) {
             $.ajax({
                 type: "post",
                 url: "ajax/order_h.php?cmd=delItem&orderId=" + F,
-                data: "itemIds=" + Fai.encodeUrl($.toJSON(y)),
+                data: "itemIds=" + Helper.encodeUrl($.toJSON(y)),
                 error: function () {
                     D.removeAttr("disabled");
                     C.html(LS.mallStlSubmitError)
@@ -21060,7 +21060,7 @@ Site.setLisMsgInputInit = function (a) {
                     $.ajax({
                         type: "post",
                         url: "ajax/order_h.php?cmd=settle&orderId=" + F,
-                        data: "data=" + Fai.encodeUrl($.toJSON(J)),
+                        data: "data=" + Helper.encodeUrl($.toJSON(J)),
                         error: function () {
                             D.removeAttr("disabled");
                             C.html(LS.mallStlSubmitError)
@@ -21072,13 +21072,13 @@ Site.setLisMsgInputInit = function (a) {
                                 $.ajax({
                                     type: "post",
                                     url: "ajax/order_h.php?cmd=addAfterShop",
-                                    data: "data=" + Fai.encodeUrl($.toJSON(x)),
+                                    data: "data=" + Helper.encodeUrl($.toJSON(x)),
                                     error: function () {
                                         D.removeAttr("disabled");
                                         C.html(LS.mallStlSubmitError)
                                     },
                                     success: function (L) {
-                                        Fai.top.location.href = "mdetail.php?id=" + F + "&suc=1"
+                                        Helper.top.location.href = "mdetail.php?id=" + F + "&suc=1"
                                     }
                                 })
                             } else {
@@ -21089,10 +21089,10 @@ Site.setLisMsgInputInit = function (a) {
                                         C.html(LS.mallStlSubmitStatusError)
                                     } else {
                                         if (K.rt == i.MallAjaxErrno.outOfMallAmount) {
-                                            C.html(Fai.format(LS.mallAmountOverNameList, K.productsName))
+                                            C.html(Helper.format(LS.mallAmountOverNameList, K.productsName))
                                         } else {
                                             if (K.rt == i.MallAjaxErrno.OutOfAllowAmount) {
-                                                C.html(Fai.format(LS.allowAmountOverNameList, K.productsName))
+                                                C.html(Helper.format(LS.allowAmountOverNameList, K.productsName))
                                             } else {
                                                 if (K.rt == i.MallAjaxErrno.couponOverTime) {
                                                     C.html(LS.couponOverTime)
@@ -21118,8 +21118,8 @@ Site.setLisMsgInputInit = function (a) {
             })
         }
     }
-})(Site);
-Site.placeholder = function (b) {
+})(Run);
+Run.placeholder = function (b) {
     var a = "placeholder" in document.createElement("input");
     if (!a) {
         b.each(function (g, c) {
@@ -21147,7 +21147,7 @@ Site.placeholder = function (b) {
         })
     }
 };
-Site.mCartsaleItemCk = function (e) {
+Run.mCartsaleItemCk = function (e) {
     var input = $(e).prev();
     if (input.prop("checked")) {
         input.prop("checked", false)
@@ -21156,7 +21156,7 @@ Site.mCartsaleItemCk = function (e) {
     }
     eval($(e).prev().attr("onclick"))
 };
-Site.setCheckBoxToFalgDiv = function (b) {
+Run.setCheckBoxToFalgDiv = function (b) {
     if (b.find(".J_mallCart").hasClass("mallCartNew")) {
         var a = b.find(".mCartCheckDiv");
         a.each(function () {
@@ -21169,7 +21169,7 @@ Site.setCheckBoxToFalgDiv = function (b) {
         })
     }
 };
-Site.initOrderList = function (d) {
+Run.initOrderList = function (d) {
     var b = $("#module" + d);
     var a = b.find(".J_showMorePd");
     a.unbind("click").on("click.showOrderItem", function () {
@@ -21191,7 +21191,7 @@ Site.initOrderList = function (d) {
         $(this).removeClass("g_selected")
     })
 };
-Site.refundImgUpload = function (c, e) {
+Run.refundImgUpload = function (c, e) {
     var d = "*.jpg,*.jpeg,*.bmp,*.gif,*.png,*.ico".split(",");
     var a = 5;
     var b = {
@@ -21206,7 +21206,7 @@ Site.refundImgUpload = function (c, e) {
         button_cursor: SWFUpload.CURSOR.HAND,
         button_image_url: _resRoot + "/image/site/msgUpImg/add.png",
         requeue_on_error: false,
-        post_params: {ctrl: "Filedata", app: 21, type: 0, fileUploadLimit: 5, isSiteForm: true},
+        post_params: {ctrl: "Filedata", app: 21, type: 0, fileUploadLimit: 5, isRunForm: true},
         file_types: d.join(";"),
         file_dialog_complete_handler: function (f) {
             this._allSuccess = false;
@@ -21215,16 +21215,16 @@ Site.refundImgUpload = function (c, e) {
         file_queue_error_handler: function (g, f, h) {
             switch (f) {
                 case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-                    Fai.ing(LS.siteFormSubmitCheckFileSizeErr, true);
+                    Helper.ing(LS.siteFormSubmitCheckFileSizeErr, true);
                     break;
                 case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-                    Fai.ing(LS.siteFormSubmitFileUploadNotAllow, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadNotAllow, true);
                     break;
                 case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadOneTimeNum, a), true);
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadOneTimeNum, a), true);
                     break;
                 default:
-                    Fai.ing(LS.siteFormSubmitFileUploadReSelect, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadReSelect, true);
                     break
             }
         },
@@ -21233,20 +21233,20 @@ Site.refundImgUpload = function (c, e) {
             this._allSuccess = h.success;
             this._sysResult = h.msg;
             if (h.success) {
-                Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSucess, Fai.encodeHtml(g.name)), true);
+                Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSucess, Helper.encodeHtml(g.name)), true);
                 onFileUploadEvent("upload", h)
             } else {
-                Fai.ing(LS.siteFormSubmitFileUploadFile + g.name + "   " + h.msg)
+                Helper.ing(LS.siteFormSubmitFileUploadFile + g.name + "   " + h.msg)
             }
         },
         upload_error_handler: function (g, f, h) {
             if (f == -280) {
-                Fai.ing(LS.siteFormSubmitFileUploadFileCancle, false)
+                Helper.ing(LS.siteFormSubmitFileUploadFileCancle, false)
             } else {
                 if (f == -270) {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadFileExist, Fai.encodeHtml(g.name)), true)
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadFileExist, Helper.encodeHtml(g.name)), true)
                 } else {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSvrBusy, Fai.encodeHtml(g.name)))
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSvrBusy, Helper.encodeHtml(g.name)))
                 }
             }
         },
@@ -21258,7 +21258,7 @@ Site.refundImgUpload = function (c, e) {
                 var h = $("#msgBoardAddImgTb").eq(0);
                 var f = h.find("td").length;
                 if (f >= (a + 1)) {
-                    Fai.ing(LS.siteFormSubmitFileUploadOfMax, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadOfMax, true);
                     var i = h.find("td").eq(h.find("td").length - 1);
                     i.css("display", "none");
                     return
@@ -21268,16 +21268,16 @@ Site.refundImgUpload = function (c, e) {
                 }, swfObj.upload_delay)
             } else {
                 if (g.filestatus == SWFUpload.FILE_STATUS.ERROR) {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSvrBusy, Fai.encodeHtml(g.name)))
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSvrBusy, Helper.encodeHtml(g.name)))
                 }
             }
         },
         upload_start_handler: function (f) {
-            Fai.enablePopupWindowBtn(0, "save", false);
-            Fai.ing(LS.siteFormSubmitFileUploadPrepare, false)
+            Helper.enablePopupWindowBtn(0, "save", false);
+            Helper.ing(LS.siteFormSubmitFileUploadPrepare, false)
         },
         view_progress: function (f, i, h, g) {
-            Fai.ing(LS.siteFormSubmitFileUploadIng + g + "%", false)
+            Helper.ing(LS.siteFormSubmitFileUploadIng + g + "%", false)
         }
     };
     swfObj = SWFUploadCreator.create(b);
@@ -21297,7 +21297,7 @@ Site.refundImgUpload = function (c, e) {
         }
     }
 };
-Site.refundinit = function (a, e, d) {
+Run.refundinit = function (a, e, d) {
     $(".J_refundType").click(function () {
         $(".J_refundType").removeClass("refundSelected");
         $(this).addClass("refundSelected");
@@ -21337,7 +21337,7 @@ Site.refundinit = function (a, e, d) {
             $("#refundPrice").val(g.toFixed(2))
         }
     });
-    Site.refundImgUpload("refundImgSWFUpload", b);
+    Run.refundImgUpload("refundImgSWFUpload", b);
     function b(i, o, l, m, g, p, f, h) {
         var j = "", n = "";
         if (f > h) {
@@ -21345,7 +21345,7 @@ Site.refundinit = function (a, e, d) {
         } else {
             n = "height: 50px;"
         }
-        j += "<div class='J_uploadIconDiv uploadIconDiv' _tmpFileId='" + i + "' _fileSize='" + m + "' _fileName='" + Fai.encodeHtmlJs(o) + "' _fileId='" + g + "'>";
+        j += "<div class='J_uploadIconDiv uploadIconDiv' _tmpFileId='" + i + "' _fileSize='" + m + "' _fileName='" + Helper.encodeHtmlJs(o) + "' _fileId='" + g + "'>";
         j += "<img src='" + p + "' class='uploadImg' style='" + n + " vertical-align: middle;'/>";
         j += "<div class='closeIcon J_closeIcon'></div>";
         j += "</div>";
@@ -21370,26 +21370,26 @@ Site.refundinit = function (a, e, d) {
         var l = $("#refundPrice");
         var m = parseFloat(l.val());
         if (!m) {
-            Fai.ing(LS.refundPriceErr, true);
+            Helper.ing(LS.refundPriceErr, true);
             return
         }
         var g = parseFloat(l.attr("_max"));
         if (!g || m > g) {
-            Fai.ing(LS.refundPriceTooMuchErr, true);
+            Helper.ing(LS.refundPriceTooMuchErr, true);
             return
         }
         var n = $.trim($("#refundPhone").val());
         if (!n) {
-            Fai.ing(LS.refundNeedPhone, true);
+            Helper.ing(LS.refundNeedPhone, true);
             return
         }
         var h = $.trim($("#refundArea").val());
         if (!h) {
-            Fai.ing(LS.refundEnterReason, true);
+            Helper.ing(LS.refundEnterReason, true);
             return
         }
         if (h.length > 200) {
-            Fai.ing(LS.refundReasonTooLong, true);
+            Helper.ing(LS.refundReasonTooLong, true);
             return
         }
         c = true;
@@ -21432,17 +21432,17 @@ Site.refundinit = function (a, e, d) {
         $.ajax({
             type: "post",
             url: "ajax/order_h.php?cmd=setOrderNoRefund&orderId=" + a + "&itemId=" + e + "&nowStatus=" + d,
-            data: "refundInfo=" + Fai.encodeUrl($.toJSON(k)),
+            data: "refundInfo=" + Helper.encodeUrl($.toJSON(k)),
             error: function () {
                 c = false;
-                Fai.ing("系统繁忙，请稍后重试。")
+                Helper.ing("系统繁忙，请稍后重试。")
             },
             success: function (q) {
                 var q = $.parseJSON(q);
                 if (q.success) {
                     window.location.reload()
                 } else {
-                    Fai.ing(q.msg, true);
+                    Helper.ing(q.msg, true);
                     c = false
                 }
             }
@@ -21454,34 +21454,34 @@ Site.refundinit = function (a, e, d) {
         }
         var g = $.trim($("#refundFlowCom").val());
         if (!g) {
-            Fai.ing(LS.refundEnterFlowName, true);
+            Helper.ing(LS.refundEnterFlowName, true);
             return
         }
         if (g.length > 30) {
-            Fai.ing(LS.refundFlowNameTooLong, true);
+            Helper.ing(LS.refundFlowNameTooLong, true);
             return
         }
         var i = $.trim($("#refundFlowID").val());
         if (!i) {
-            Fai.ing(LS.refundEnterFlowCode, true);
+            Helper.ing(LS.refundEnterFlowCode, true);
             return
         }
         if (i.length > 30) {
-            Fai.ing(LS.refundFlowCodeTooLong, true);
+            Helper.ing(LS.refundFlowCodeTooLong, true);
             return
         }
         var f = $.trim($("#refundPhone").val());
         if (!f) {
-            Fai.ing(LS.refundNeedPhone, true);
+            Helper.ing(LS.refundNeedPhone, true);
             return
         }
         if (f.length > 30) {
-            Fai.ing(LS.refundPhoneTooLong, true);
+            Helper.ing(LS.refundPhoneTooLong, true);
             return
         }
         var l = $.trim($("#refundArea").val());
         if (l.length > 200) {
-            Fai.ing(LS.refundFlowDetailTooLong, true);
+            Helper.ing(LS.refundFlowDetailTooLong, true);
             return
         }
         c = true;
@@ -21512,24 +21512,24 @@ Site.refundinit = function (a, e, d) {
         $.ajax({
             type: "post",
             url: "ajax/order_h.php?cmd=setRefundFlow&orderId=" + a + "&itemId=" + e + "&nowStatus=" + d,
-            data: "flowInfo=" + Fai.encodeUrl($.toJSON(k)),
+            data: "flowInfo=" + Helper.encodeUrl($.toJSON(k)),
             error: function () {
                 c = false;
-                Fai.ing("系统繁忙，请稍后重试。")
+                Helper.ing("系统繁忙，请稍后重试。")
             },
             success: function (m) {
                 var m = $.parseJSON(m);
                 if (m.success) {
                     window.location.reload()
                 } else {
-                    Fai.ing(m.msg, true);
+                    Helper.ing(m.msg, true);
                     c = false
                 }
             }
         })
     })
 };
-Site.printRemarkRefund = function (a, d, b) {
+Run.printRemarkRefund = function (a, d, b) {
     $("#createRefundRemark").click(function () {
         var f = "";
         f += "<div class='remarkContent'>";
@@ -21539,7 +21539,7 @@ Site.printRemarkRefund = function (a, d, b) {
         var i = "<div class='refundRemarkTitle'>" + LS.refundWantReamrk + "</div>";
         var h = parseInt(Math.random() * 10000);
         var e = {boxId: h, title: i, htmlContent: f, width: 580, boxName: "remarkInfo", extClass: "refundRemarkPopup"};
-        var g = Site.popupBox(e);
+        var g = Run.popupBox(e);
         $("#remarkInputArea").focus()
     });
     var c = false;
@@ -21549,27 +21549,27 @@ Site.printRemarkRefund = function (a, d, b) {
         }
         var e = $("#remarkInputArea").val();
         if ($.trim(e).length == 0) {
-            Fai.ing(LS.refundRemarkNotEmpty);
+            Helper.ing(LS.refundRemarkNotEmpty);
             return
         }
         if (e.length > 200) {
-            Fai.ing(LS.refundRemarkTooLong);
+            Helper.ing(LS.refundRemarkTooLong);
             return
         }
         c = true;
-        Fai.ing(LS.refundRemarkSubmiting);
+        Helper.ing(LS.refundRemarkSubmiting);
         $.ajax({
             type: "post",
             url: "ajax/order_h.php?cmd=setRefundRemark",
-            data: "orderId=" + a + "&speaker=1&itemId=" + d + "&remark=" + Fai.encodeUrl(e),
+            data: "orderId=" + a + "&speaker=1&itemId=" + d + "&remark=" + Helper.encodeUrl(e),
             error: function () {
                 c = false;
-                Fai.ing("系统繁忙，请稍后重试。")
+                Helper.ing("系统繁忙，请稍后重试。")
             },
             success: function (g) {
                 var g = $.parseJSON(g);
                 if (g.success) {
-                    Fai.ing(LS.refundRemarkSuccess, true);
+                    Helper.ing(LS.refundRemarkSuccess, true);
                     $(".refundRemarkPopup").find(".popupBClose").click();
                     var f = $.format.date(new Date(g.remarkTime), "yyyy-MM-dd HH:mm:ss");
                     var h = "";
@@ -21583,7 +21583,7 @@ Site.printRemarkRefund = function (a, d, b) {
                     h += "<table class='recordDetailTable'>";
                     h += "<tr class='recordDetailLine'>";
                     h += "<td class='recordDetailCusTd' colspan='2'>";
-                    h += Fai.encodeHtml(e);
+                    h += Helper.encodeHtml(e);
                     h += "</td>";
                     h += "</tr>";
                     h += "</table>";
@@ -21592,14 +21592,14 @@ Site.printRemarkRefund = function (a, d, b) {
                     h += "</div>";
                     $("#refundRemarkTitle").after(h)
                 } else {
-                    Fai.ing(g.msg, true)
+                    Helper.ing(g.msg, true)
                 }
                 c = false
             }
         })
     })
 };
-Site.refundPanelEvent = function (a, c, b) {
+Run.refundPanelEvent = function (a, c, b) {
     $("#closeRefund").click(function () {
         var e = "";
         e += "<div class='refundCloseTips'>" + LS.refundCancelTip + "</div>";
@@ -21613,7 +21613,7 @@ Site.refundPanelEvent = function (a, c, b) {
             boxName: "closeRefundInfo",
             extClass: "closeRefundPopup"
         };
-        var f = Site.popupBox(d)
+        var f = Run.popupBox(d)
     });
     $("#closeRefundBtn").live("click.closeRefund", function () {
         $.ajax({
@@ -21622,14 +21622,14 @@ Site.refundPanelEvent = function (a, c, b) {
             data: "orderId=" + a + "&itemId=" + c,
             error: function () {
                 isSave = false;
-                Fai.ing("系统繁忙，请稍后重试。")
+                Helper.ing("系统繁忙，请稍后重试。")
             },
             success: function (d) {
                 var d = $.parseJSON(d);
                 if (d.success) {
                     window.location.reload()
                 } else {
-                    Fai.ing(d.msg, true);
+                    Helper.ing(d.msg, true);
                     isSave = false
                 }
             }
@@ -21642,14 +21642,14 @@ Site.refundPanelEvent = function (a, c, b) {
             data: "orderId=" + a + "&itemId=" + c,
             error: function () {
                 isSave = false;
-                Fai.ing("系统繁忙，请稍后重试。")
+                Helper.ing("系统繁忙，请稍后重试。")
             },
             success: function (d) {
                 var d = $.parseJSON(d);
                 if (d.success) {
                     window.location.reload()
                 } else {
-                    Fai.ing(d.msg, true);
+                    Helper.ing(d.msg, true);
                     isSave = false
                 }
             }
@@ -21662,21 +21662,21 @@ Site.refundPanelEvent = function (a, c, b) {
             data: "orderId=" + a + "&itemId=" + c,
             error: function () {
                 isSave = false;
-                Fai.ing("系统繁忙，请稍后重试。")
+                Helper.ing("系统繁忙，请稍后重试。")
             },
             success: function (d) {
                 var d = $.parseJSON(d);
                 if (d.success) {
                     window.location.reload()
                 } else {
-                    Fai.ing(d.msg, true);
+                    Helper.ing(d.msg, true);
                     isSave = false
                 }
             }
         })
     })
 };
-Site.remarkImgEvent = function () {
+Run.remarkImgEvent = function () {
     $(".J_refundPic").click(function () {
         var c = $(this), f = c.parent();
         var b = f.find(".J_refundPic");
@@ -21737,31 +21737,31 @@ Site.remarkImgEvent = function () {
         a.find(".J_img").attr("src", c[d])
     })
 };
-Site.showTopBar = function () {
-    if (Fai.top.$("#arrow").hasClass("g_arrow_up")) {
-        Fai.top.$("#arrow").removeClass("g_arrow_up");
-        Fai.top.$("#topBar").hide()
+Run.showTopBar = function () {
+    if (Helper.top.$("#arrow").hasClass("g_arrow_up")) {
+        Helper.top.$("#arrow").removeClass("g_arrow_up");
+        Helper.top.$("#topBar").hide()
     } else {
-        Fai.top.$("#arrow").addClass("g_arrow_up");
-        Fai.top.$("#topBar").show()
+        Helper.top.$("#arrow").addClass("g_arrow_up");
+        Helper.top.$("#topBar").show()
     }
-    Site.resetGmainPos()
+    Run.resetGmainPos()
 };
-Site.showOrHideMailBox = function () {
+Run.showOrHideMailBox = function () {
     $.ajax({
         url: "../ajax/mail_h.php?cmd=showOrHideMailBox", data: "", success: function (a) {
             var b = $.parseJSON(a);
             if (b.success) {
-                var c = ['<div id="mailInfo" title="进入企业邮箱" class="mailInfo" >', '<a href="' + b.linkAdd + '" target="_blank" onclick="Site.logDog(100038, 14);">', '<div class="mailIco"></div>', "</a>", "</div>"];
+                var c = ['<div id="mailInfo" title="进入企业邮箱" class="mailInfo" >', '<a href="' + b.linkAdd + '" target="_blank" onclick="Run.logDog(100038, 14);">', '<div class="mailIco"></div>', "</a>", "</div>"];
                 $(".J_beforeMailBox.line").after(c.join(""));
                 $(".J_beforeMailBox.line").css("display", "block")
             }
         }, error: function () {
-            Fai.ing("系统异常，请稍后重试", true)
+            Helper.ing("系统异常，请稍后重试", true)
         }
     })
 };
-Site.copyWebSite = function (b) {
+Run.copyWebRun = function (b) {
     var a = $.browser.msie;
     if (a) {
         clipboardData.setData("Text", b)
@@ -21769,15 +21769,15 @@ Site.copyWebSite = function (b) {
         prompt(LS.shareTips, b)
     }
 };
-Site.initModuleFileList = function (a, b) {
+Run.initModuleFileList = function (a, b) {
     $("#module" + a + " .line table").mouseover(function () {
         $(this).addClass("g_hover")
     }).mouseleave(function () {
         $(this).removeClass("g_hover")
     });
-    Site.initContentSplitLine(a, b)
+    Run.initContentSplitLine(a, b)
 };
-Site.richMarquee = function (c) {
+Run.richMarquee = function (c) {
     var t = {direction: "up", speed: "normal", loop: "infinite", moveout: false, isScrolling: false};
     $.extend(t, c);
     if (t.speed == "normal") {
@@ -21794,15 +21794,15 @@ Site.richMarquee = function (c) {
     }
     if ($("#module" + t.id).data("restart")) {
         var j = t.id;
-        Fai.top.$("#richmarqueeNewParent" + j).after($("#module" + t.id).data("content"));
-        Fai.top.$("#richmarqueeNewParent" + j).remove()
+        Helper.top.$("#richmarqueeNewParent" + j).after($("#module" + t.id).data("content"));
+        Helper.top.$("#richmarqueeNewParent" + j).remove()
     }
     if (!$("#module" + t.id).data("content")) {
-        var n = Fai.top.$(".formMiddleContent" + t.id).html();
+        var n = Helper.top.$(".formMiddleContent" + t.id).html();
         $("#module" + t.id).data("content", n)
     }
     if ($("#module" + t.id).data("_intab") !== 0) {
-        Fai.top["richMarqueeInTab" + t.id] = t
+        Helper.top["richMarqueeInTab" + t.id] = t
     }
     var j = t.id, r = $("#richMarquee" + j), f = r.outerHeight(true), d = r.outerWidth(true), i = (d > a()) ? d : a(),
         e = g(), i = e > i ? e : i, x = t.direction, u = 0, h = "top", p = t.speed,
@@ -21811,7 +21811,7 @@ Site.richMarquee = function (c) {
         m = $("<div id='richmarqueeNewParent" + j + "' style='overflow:hidden;width:" + i * 2 + "'></div>");
 
     function o() {
-        Fai.stopInterval("rm" + j);
+        Helper.stopInterval("rm" + j);
         if ($("#richmarqueeNewParent" + j).length < 1) {
             m.appendTo(r.parent());
             r.appendTo(m);
@@ -21863,10 +21863,10 @@ Site.richMarquee = function (c) {
             r.css("top", 0)
         }
         $("#richmarqueeNewParent" + j).mouseover(function () {
-            Fai.stopInterval("rm" + j)
+            Helper.stopInterval("rm" + j)
         }).mouseout(function () {
             if (v == "infinite" || v > 0) {
-                Fai.startInterval("rm" + j)
+                Helper.startInterval("rm" + j)
             }
         });
         b();
@@ -22143,16 +22143,16 @@ Site.richMarquee = function (c) {
     }
 
     o();
-    Fai.stopInterval("rm" + j);
-    Fai.addInterval("rm" + j, q, p);
-    Fai.startInterval("rm" + j);
+    Helper.stopInterval("rm" + j);
+    Helper.addInterval("rm" + j, q, p);
+    Helper.startInterval("rm" + j);
     if (!$("#module" + t.id).data("first1")) {
         $("#module" + t.id).data("first1", true);
         $("#module" + t.id).data("options", t)
     }
-    Site.restartRichMarquee(t)
+    Run.restartRichMarquee(t)
 };
-Site.restartRichMarquee = function (a) {
+Run.restartRichMarquee = function (a) {
     if (!a) {
         return
     }
@@ -22168,19 +22168,19 @@ Site.restartRichMarquee = function (a) {
                 a.speed = "fast"
             }
         }
-        b.on("Fai_onModuleSizeChange", function () {
-            Fai.stopInterval("rm" + a.id);
+        b.on("Helper_onModuleSizeChange", function () {
+            Helper.stopInterval("rm" + a.id);
             b.data("restart", true);
-            Site.richMarquee(a)
+            Run.richMarquee(a)
         });
-        b.on("Fai_onModuleLayoutChange", function () {
-            Fai.stopInterval("rm" + a.id);
+        b.on("Helper_onModuleLayoutChange", function () {
+            Helper.stopInterval("rm" + a.id);
             b.data("restart", true);
-            Site.richMarquee(a)
+            Run.richMarquee(a)
         })
     }
 };
-Site.productScroll = function (k) {
+Run.productScroll = function (k) {
     var f = {pauseDuration: 3000, showDuration: 600, scrollMode: "up"};
     var c = $.extend({}, f, k);
     var d = $("#module" + c.moduleId), b = d.find(".J_productTextList"), g = b.parent(),
@@ -22191,9 +22191,9 @@ Site.productScroll = function (k) {
     b.css({position: "relative", height: b.height() + "px"});
     g.css({overflow: "hidden"});
     b.mouseover(function () {
-        Fai.stopInterval(a)
+        Helper.stopInterval(a)
     }).mouseout(function () {
-        Fai.startInterval(a)
+        Helper.startInterval(a)
     });
     function i() {
         function l() {
@@ -22214,8 +22214,8 @@ Site.productScroll = function (k) {
             }
         }
 
-        Fai.addTimeout(a, l, c.pauseDuration);
-        Fai.startInterval(a)
+        Helper.addTimeout(a, l, c.pauseDuration);
+        Helper.startInterval(a)
     }
 
     function e() {
@@ -22224,11 +22224,11 @@ Site.productScroll = function (k) {
 
     i()
 };
-Site.loadProductMarquee = function (w, I, D, u) {
-    var f = Fai.top["Product" + w].ieOpt, h = Fai.top["Product" + w].tgOpt, m = Fai.top["Product" + w].paramLayoutType,
-        p = Fai.top["Product" + w].callbackArgs;
-    var c = Fai.top.$("#module" + w);
-    if (Fai.isNull(c)) {
+Run.loadProductMarquee = function (w, I, D, u) {
+    var f = Helper.top["Product" + w].ieOpt, h = Helper.top["Product" + w].tgOpt, m = Helper.top["Product" + w].paramLayoutType,
+        p = Helper.top["Product" + w].callbackArgs;
+    var c = Helper.top.$("#module" + w);
+    if (Helper.isNull(c)) {
         return
     }
     c.find(".demo0>div").each(function () {
@@ -22238,7 +22238,7 @@ Site.loadProductMarquee = function (w, I, D, u) {
     });
     var t = c.find(".productMarqueeForm");
     var x = 0;
-    if (Fai.isIE6() || Fai.isIE7()) {
+    if (Helper.isIE6() || Helper.isIE7()) {
         t.each(function () {
             var J = $(this).find(".imgDiv").width();
             $(this).css({width: +J + "px"})
@@ -22252,10 +22252,10 @@ Site.loadProductMarquee = function (w, I, D, u) {
             t.each(function () {
                 var K = $(this).attr("faiWidth");
                 var J = $(this).attr("faiHeight");
-                if (Fai.isNull(J)) {
+                if (Helper.isNull(J)) {
                     return
                 }
-                var L = Fai.Img.calcSize(K, J, F, y, Fai.Img.MODE_SCALE_FILL);
+                var L = Helper.Img.calcSize(K, J, F, y, Helper.Img.MODE_SCALE_FILL);
                 if (L.height > x) {
                     x = L.height
                 }
@@ -22264,26 +22264,26 @@ Site.loadProductMarquee = function (w, I, D, u) {
     }
     if (f.effType >= 4 && f.effType < 6) {
         if (m == 6) {
-            Site.clearImageEffectContent_product(w, "sixth_ProductPanel")
+            Run.clearImageEffectContent_product(w, "sixth_ProductPanel")
         }
         if (m == 8) {
-            Site.clearImageEffectContent_product(w, "eighth_ProductPanel")
+            Run.clearImageEffectContent_product(w, "eighth_ProductPanel")
         }
-        Site.clearImageEffectContent_product(w, "propDiv")
+        Run.clearImageEffectContent_product(w, "propDiv")
     }
     var e = 0;
     var g = 0;
     var C = 0;
     var E = 0;
     var o = 0;
-    var H = Site.getFormMiddleContentHeight(c, w);
+    var H = Run.getFormMiddleContentHeight(c, w);
     t.each(function () {
         var L = $(this);
         var N = c.find(".productMarqueeForms").attr("_bordertype");
         var M = parseInt(c.find(".productMarqueeForms").attr("_borderwidth"));
         var O = c.find(".productMarqueeForms").attr("_bgtype");
         var Z = L.attr("faiHeight");
-        if (Fai.isNull(Z)) {
+        if (Helper.isNull(Z)) {
             return
         }
         var U = L.attr("faiWidth");
@@ -22295,9 +22295,9 @@ Site.loadProductMarquee = function (w, I, D, u) {
         var K = {width: Y, height: x};
         if (I) {
             if (D) {
-                K = Fai.Img.calcSize(U, Z, Y, x, Fai.Img.MODE_SCALE_FILL)
+                K = Helper.Img.calcSize(U, Z, Y, x, Helper.Img.MODE_SCALE_FILL)
             } else {
-                K = Fai.Img.calcSize(U, Z, Y, x, Fai.Img.MODE_SCALE_DEFLATE_HEIGHT)
+                K = Helper.Img.calcSize(U, Z, Y, x, Helper.Img.MODE_SCALE_DEFLATE_HEIGHT)
             }
         }
         var J = P.width();
@@ -22307,7 +22307,7 @@ Site.loadProductMarquee = function (w, I, D, u) {
         var aa = P.find("img");
         aa.css("width", K.width + "px");
         aa.css("height", K.height + "px");
-        if (Fai.top._manageMode) {
+        if (Helper.top._manageMode) {
             aa.data("realWidth", K.width);
             aa.data("realHeight", K.height)
         }
@@ -22355,7 +22355,7 @@ Site.loadProductMarquee = function (w, I, D, u) {
             }
         }
         if ($(".propWordWrapDiv").length > 0) {
-            Site.unifiedAttrVal(c, ".propWordWrapDiv", "height")
+            Run.unifiedAttrVal(c, ".propWordWrapDiv", "height")
         }
         if (m == 6) {
             L.find(".sixth_ProductPanel").css({
@@ -22421,7 +22421,7 @@ Site.loadProductMarquee = function (w, I, D, u) {
                 moduleId: w,
                 imgEffOption: f,
                 tagetOption: h,
-                callback: Site.createImageEffectContent_product,
+                callback: Run.createImageEffectContent_product,
                 callbackArgs: p
             });
             return
@@ -22434,7 +22434,7 @@ Site.loadProductMarquee = function (w, I, D, u) {
                 moduleId: w,
                 imgEffOption: f,
                 tagetOption: h,
-                callback: Site.createImageEffectContent_product,
+                callback: Run.createImageEffectContent_product,
                 callbackArgs: p
             });
             return
@@ -22444,7 +22444,7 @@ Site.loadProductMarquee = function (w, I, D, u) {
     if (l == 0) {
         return
     }
-    var G = Fai.top.productMarqueelist;
+    var G = Helper.top.productMarqueelist;
     var s = 0, d = t.length - 1;
     t.each(function (K, M) {
         if (s > a) {
@@ -22458,7 +22458,7 @@ Site.loadProductMarquee = function (w, I, D, u) {
             $(M).css("clear", "both");
             J.css("clear", "both")
         }
-        if (Fai.isIE6() || Fai.isIE7()) {
+        if (Helper.isIE6() || Helper.isIE7()) {
             if (K === d) {
                 $(t[K]).after('<div style="clear:both;"></div>');
                 J.after('<div style="clear:both;"></div>')
@@ -22469,17 +22469,17 @@ Site.loadProductMarquee = function (w, I, D, u) {
                 var L = G[K];
                 if (L.cloneflag && L.cloneflag == N) {
                     $("#" + L.cloneflag + "_clone").mouseover(function () {
-                        var O = Site.addEditLayer(this, L, 6);
+                        var O = Run.addEditLayer(this, L, 6);
                         if (!O) {
                             return
                         }
                         O.mouseover(function () {
-                            Fai.stopInterval("marquee" + w)
+                            Helper.stopInterval("marquee" + w)
                         }).mouseout(function () {
-                            Fai.startInterval("marquee" + w)
+                            Helper.startInterval("marquee" + w)
                         })
                     }).mouseleave(function () {
-                        Site.removeEditLayer(this)
+                        Run.removeEditLayer(this)
                     });
                     break
                 }
@@ -22528,28 +22528,28 @@ Site.loadProductMarquee = function (w, I, D, u) {
 
     if (u == 0) {
         n.scrollLeft(2 * e);
-        Fai.addInterval("marquee" + w, b, 35)
+        Helper.addInterval("marquee" + w, b, 35)
     } else {
         if (u == 1) {
-            Fai.addInterval("marquee" + w, q, 35)
+            Helper.addInterval("marquee" + w, q, 35)
         } else {
             if (u == 2) {
                 n.scrollTop(2 * E);
-                Fai.addInterval("marquee" + w, z, 35)
+                Helper.addInterval("marquee" + w, z, 35)
             } else {
                 if (u == 3) {
-                    Fai.addInterval("marquee" + w, v, 35)
+                    Helper.addInterval("marquee" + w, v, 35)
                 }
             }
         }
     }
     n.mouseover(function () {
-        Fai.stopInterval("marquee" + w)
+        Helper.stopInterval("marquee" + w)
     }).mouseleave(function () {
-        Fai.startInterval("marquee" + w)
+        Helper.startInterval("marquee" + w)
     });
     setTimeout(function () {
-        Fai.startInterval("marquee" + w)
+        Helper.startInterval("marquee" + w)
     }, 100);
     if (!c.data("first1")) {
         c.data("first1", true);
@@ -22560,39 +22560,39 @@ Site.loadProductMarquee = function (w, I, D, u) {
             proMarqueeDirection: u,
             ieOpt: f,
             tgOpt: h,
-            callback: Site.createImageEffectContent_product,
+            callback: Run.createImageEffectContent_product,
             callbackArgs: p
         })
     }
-    if (c.data("first2") && Fai.top._manageMode) {
+    if (c.data("first2") && Helper.top._manageMode) {
         var k = c.data("productOptions");
-        Site.initModuleProductListItemManage(k)
+        Run.initModuleProductListItemManage(k)
     }
     jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, {
         moduleId: w,
         imgEffOption: f,
         tagetOption: h,
-        callback: Site.createImageEffectContent_product,
+        callback: Run.createImageEffectContent_product,
         callbackArgs: p
     });
-    Site.restartProductMarquee(c)
+    Run.restartProductMarquee(c)
 };
-Site.restartProductMarquee = function (a) {
+Run.restartProductMarquee = function (a) {
     if (!a.data("first2")) {
         a.data("first2", true);
-        a.on("Fai_onModuleSizeChange", function () {
+        a.on("Helper_onModuleSizeChange", function () {
             var b = a.data("options");
-            Fai.stopInterval("marquee" + b.id);
-            Site.loadProductMarquee(b.id, b.scale, b.fixHeight, b.proMarqueeDirection, b.ieOpt, b.tgOpt, b.callback, b.callbackArgs)
+            Helper.stopInterval("marquee" + b.id);
+            Run.loadProductMarquee(b.id, b.scale, b.fixHeight, b.proMarqueeDirection, b.ieOpt, b.tgOpt, b.callback, b.callbackArgs)
         });
-        a.on("Fai_onModuleLayoutChange", function () {
+        a.on("Helper_onModuleLayoutChange", function () {
             var b = a.data("options");
-            Fai.stopInterval("marquee" + b.id);
-            Site.loadProductMarquee(b.id, b.scale, b.fixHeight, b.proMarqueeDirection, b.ieOpt, b.tgOpt, b.callback, b.callbackArgs)
+            Helper.stopInterval("marquee" + b.id);
+            Run.loadProductMarquee(b.id, b.scale, b.fixHeight, b.proMarqueeDirection, b.ieOpt, b.tgOpt, b.callback, b.callbackArgs)
         })
     }
 };
-Site.initModuleProductFilter = function (c, b) {
+Run.initModuleProductFilter = function (c, b) {
     $("#module" + c + " .productFilterValue").mouseover(function () {
         $(this).addClass("g_hover")
     }).mouseleave(function () {
@@ -22617,7 +22617,7 @@ Site.initModuleProductFilter = function (c, b) {
         })
     }
 };
-Site.initModuleProductCatalog = function (c, a) {
+Run.initModuleProductCatalog = function (c, a) {
     $("#module" + c + " .productFilterValue").mouseover(function () {
         $(this).addClass("g_tableHover");
         $(this).find(".productFilterValueCenter").addClass("g_hover")
@@ -22662,9 +22662,9 @@ Site.initModuleProductCatalog = function (c, a) {
         })
     }
 };
-Site.loadProductTextList = function (b) {
+Run.loadProductTextList = function (b) {
     var a = $("#module" + b);
-    if (Fai.isNull(a)) {
+    if (Helper.isNull(a)) {
         return
     }
     if (!_manageMode) {
@@ -22675,9 +22675,9 @@ Site.loadProductTextList = function (b) {
         })
     }
 };
-Site.loadProductTile = function (b, h, i, k, j, g) {
+Run.loadProductTile = function (b, h, i, k, j, g) {
     var f = $("#module" + b);
-    if (Fai.isNull(f)) {
+    if (Helper.isNull(f)) {
         return
     }
     var m = 0;
@@ -22688,7 +22688,7 @@ Site.loadProductTile = function (b, h, i, k, j, g) {
         f.find(".productTileForm").each(function () {
             var p = $(this).attr("faiWidth");
             var n = $(this).attr("faiHeight");
-            if (Fai.isNull(n)) {
+            if (Helper.isNull(n)) {
                 return
             }
             var u = $(this).find(".imgDiv");
@@ -22696,7 +22696,7 @@ Site.loadProductTile = function (b, h, i, k, j, g) {
             var q = u.height();
             var r = $(this).attr("faiWidthOr");
             var o = $(this).attr("faiHeightOr");
-            var s = Fai.Img.calcSize(r, o, t, q, Fai.Img.MODE_SCALE_FILL);
+            var s = Helper.Img.calcSize(r, o, t, q, Helper.Img.MODE_SCALE_FILL);
             if (s.height > m) {
                 m = s.height
             }
@@ -22704,7 +22704,7 @@ Site.loadProductTile = function (b, h, i, k, j, g) {
     }
     f.find(".productTileForm").each(function () {
         var x = $(this).attr("faiHeight");
-        if (Fai.isNull(x)) {
+        if (Helper.isNull(x)) {
             return
         }
         var u = $(this).attr("faiWidth");
@@ -22720,13 +22720,13 @@ Site.loadProductTile = function (b, h, i, k, j, g) {
         }
         var t = {width: y, height: m};
         if (h) {
-            t = Fai.Img.calcSize(p, v, y, m, Fai.Img.MODE_SCALE_FILL)
+            t = Helper.Img.calcSize(p, v, y, m, Helper.Img.MODE_SCALE_FILL)
         }
         var q = z.find("img");
         q.css("width", t.width + "px");
         q.css("height", t.height + "px");
         z.css("height", m + "px");
-        if (Fai.top._manageMode) {
+        if (Helper.top._manageMode) {
             q.data("realWidth", t.width);
             q.data("realHeight", t.height)
         }
@@ -22773,11 +22773,11 @@ Site.loadProductTile = function (b, h, i, k, j, g) {
         }
     });
     if (j >= 4 && j < 6) {
-        Site.clearImageEffectContent_product(b, "propList");
+        Run.clearImageEffectContent_product(b, "propList");
         return
     }
     if (k == -1 && f.find(".productNameWordWrap").length == 0) {
-        Site.unifiedAttrVal(f, ".productTileForm", "height")
+        Run.unifiedAttrVal(f, ".productTileForm", "height")
     }
     if (f.find(".productNameWordWrap").length > 0) {
         f.find(".productNameWordWrap").attr("paramLayoutType", g);
@@ -22795,12 +22795,12 @@ Site.loadProductTile = function (b, h, i, k, j, g) {
                 $(this).css("height", c + "px")
             })
         } else {
-            Site.unifiedAttrVal(f, ".productNameWordWrap", "height")
+            Run.unifiedAttrVal(f, ".productNameWordWrap", "height")
         }
-        Site.unifiedAttrVal(f, ".productTileForm", "height")
+        Run.unifiedAttrVal(f, ".productTileForm", "height")
     }
 };
-Site.initProductRestrict = function (a, h, f, e, c) {
+Run.initProductRestrict = function (a, h, f, e, c) {
     if (h) {
         var g = 0;
         if (c.count != null) {
@@ -22808,7 +22808,7 @@ Site.initProductRestrict = function (a, h, f, e, c) {
         }
         var i = 0;
         i = e - g;
-        if (Fai.fkEval(i) < 0) {
+        if (Helper.fkEval(i) < 0) {
             i = -1
         }
         var b = 1, d = -1;
@@ -22832,7 +22832,7 @@ Site.initProductRestrict = function (a, h, f, e, c) {
         $("#cartbuyCount" + a).change(function () {
             var j = $("#cartbuyCount" + a).val();
             var k = 1;
-            if (Fai.isInteger(j)) {
+            if (Helper.isInteger(j)) {
                 k = parseInt(j)
             }
             if (k < b || k == b) {
@@ -22864,7 +22864,7 @@ Site.initProductRestrict = function (a, h, f, e, c) {
         $("#buyCountDes" + a).click(function () {
             var j = $("#cartbuyCount" + a).val();
             var k = 1;
-            if (Fai.isInteger(j)) {
+            if (Helper.isInteger(j)) {
                 k = parseInt(j)
             }
             if (k < b + 1) {
@@ -22877,7 +22877,7 @@ Site.initProductRestrict = function (a, h, f, e, c) {
         $("#buyCountInc" + a).click(function () {
             var j = $("#cartbuyCount" + a).val();
             var k = 1;
-            if (Fai.isInteger(j)) {
+            if (Helper.isInteger(j)) {
                 k = parseInt(j)
             }
             if (k > d - 1 && d != -1) {
@@ -22894,15 +22894,15 @@ Site.initProductRestrict = function (a, h, f, e, c) {
         })
     }
 };
-Site.wipeOffRunOne = true;
-Site.initProductOptions = function (n, g, r, b, p, k, t, j) {
+Run.wipeOffRunOne = true;
+Run.initProductOptions = function (n, g, r, b, p, k, t, j) {
     var a;
     if (n === "PdSlide") {
         a = $("#fk-productSlideContent")
     } else {
         a = $("#module" + n)
     }
-    if (Fai.isNull(a)) {
+    if (Helper.isNull(a)) {
         return
     }
     var q = a.find(".optionItemWrap");
@@ -23061,7 +23061,7 @@ Site.initProductOptions = function (n, g, r, b, p, k, t, j) {
                 }
                 var C = 0;
                 C = D - w;
-                if (Fai.fkEval(C) < 0) {
+                if (Helper.fkEval(C) < 0) {
                     C = -1
                 }
                 var P = 1;
@@ -23087,7 +23087,7 @@ Site.initProductOptions = function (n, g, r, b, p, k, t, j) {
                 $("#cartbuyCount" + n).change(function () {
                     var ad = $("#cartbuyCount" + n).val();
                     var ae = 1;
-                    if (Fai.isInteger(ad)) {
+                    if (Helper.isInteger(ad)) {
                         ae = parseInt(ad)
                     }
                     if (ae < P || ae == P) {
@@ -23121,7 +23121,7 @@ Site.initProductOptions = function (n, g, r, b, p, k, t, j) {
                 $("#buyCountDes" + n).click(function () {
                     var ad = $("#cartbuyCount" + n).val();
                     var ae = 1;
-                    if (Fai.isInteger(ad)) {
+                    if (Helper.isInteger(ad)) {
                         ae = parseInt(ad)
                     }
                     if (ae < P + 1) {
@@ -23134,7 +23134,7 @@ Site.initProductOptions = function (n, g, r, b, p, k, t, j) {
                 $("#buyCountInc" + n).click(function () {
                     var ad = $("#cartbuyCount" + n).val();
                     var ae = 1;
-                    if (Fai.isInteger(ad)) {
+                    if (Helper.isInteger(ad)) {
                         ae = parseInt(ad)
                     }
                     if (ae > T - 1 && T != -1) {
@@ -23154,21 +23154,21 @@ Site.initProductOptions = function (n, g, r, b, p, k, t, j) {
                 $("#mallAmount").text(B)
             }
             if (Q == null || j) {
-                if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                    $("#realMallAmount").text(Fai.formatPriceEn(b))
+                if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                    $("#realMallAmount").text(Helper.formatPriceEn(b))
                 } else {
                     $("#realMallAmount").text(b)
                 }
-                Site.onlyChangeSalePrice(b)
+                Run.onlyChangeSalePrice(b)
             } else {
-                if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                    $("#realMallAmount").text(Fai.formatPriceEn(Q))
+                if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                    $("#realMallAmount").text(Helper.formatPriceEn(Q))
                 } else {
                     $("#realMallAmount").text(Q)
                 }
-                Site.onlyChangeSalePrice(Q);
-                if (Fai.isIE10()) {
-                    if (Site.wipeOffRunOne) {
+                Run.onlyChangeSalePrice(Q);
+                if (Helper.isIE10()) {
+                    if (Run.wipeOffRunOne) {
                         $(".pd_J .pd_propTable .propName").each(function (ad, ae) {
                             $(ae).removeClass("propName");
                             setTimeout(function () {
@@ -23176,7 +23176,7 @@ Site.initProductOptions = function (n, g, r, b, p, k, t, j) {
                             }, 0)
                         })
                     }
-                    Site.wipeOffRunOne = false
+                    Run.wipeOffRunOne = false
                 }
             }
             if (H != null) {
@@ -23347,7 +23347,7 @@ function arrHasSameBegin(b, d) {
     }
     return a
 }
-Site.initMbPdCollection = {};
+Run.initMbPdCollection = {};
 (function (e, g, f) {
     g.init = function (l, j, h, i, k) {
         g.sessionMid = l;
@@ -23356,10 +23356,10 @@ Site.initMbPdCollection = {};
         g._manageMode = i;
         a(k);
         c();
-        if (e("#_TOKEN").length != 0 && !i && Fai.Cookie.get("collectId") == h && !e("#pdCollection .pdCollectIcon").hasClass("collectionSelect")) {
+        if (e("#_TOKEN").length != 0 && !i && Helper.Cookie.get("collectId") == h && !e("#pdCollection .pdCollectIcon").hasClass("collectionSelect")) {
             e("#pdCollection").click()
         }
-        Fai.Cookie.clear("collectId")
+        Helper.Cookie.clear("collectId")
     };
     function b(h) {
         var i = {};
@@ -23384,12 +23384,12 @@ Site.initMbPdCollection = {};
                 if (i == "err") {
                     j.height = 90;
                     j.width = 280;
-                    j.htmlContent = '<div class="resultFailIcon addItemTextTips" style="font-size:14px; color:#636363 ;margin-left: 39px; padding-left: 35px;">';
+                    j.htmlContent = '<div class="resultHelperlIcon addItemTextTips" style="font-size:14px; color:#636363 ;margin-left: 39px; padding-left: 35px;">';
                     j.htmlContent += LS.isManagefailCollection + "</div>"
                 }
             }
         }
-        var h = Site.popupBox(j);
+        var h = Run.popupBox(j);
         h.find(".popupBClose").css({
             "margin-top": "9px",
             right: "9px",
@@ -23410,8 +23410,8 @@ Site.initMbPdCollection = {};
                 if (g._manageMode) {
                     d("err")
                 } else {
-                    window.location.href = "login.php?url=" + Fai.encodeUrl(window.location.href);
-                    Fai.Cookie.set("collectId", g.pid)
+                    window.location.href = "login.php?url=" + Helper.encodeUrl(window.location.href);
+                    Helper.Cookie.set("collectId", g.pid)
                 }
             } else {
                 if (e.inArray(g.pid, g.collectionList) == -1) {
@@ -23445,8 +23445,8 @@ Site.initMbPdCollection = {};
             return
         }
     }
-})(jQuery, Site.initMbPdCollection);
-Site.loadCollection = function () {
+})(jQuery, Run.initMbPdCollection);
+Run.loadCollection = function () {
     $("#pdCollection").hover(function () {
         $("#pdCollection .collection").removeClass("text").addClass("productOperaTextColor").addClass("operaTextHover");
         $("#pdCollection .pdCollectIcon").removeClass("text").addClass("productOperaTextColor").addClass("operaTextHover")
@@ -23459,7 +23459,7 @@ Site.loadCollection = function () {
         $("#pdCollection .pdCollectIcon").removeClass("text").addClass("productOperaTextColor").addClass("operaTextHover")
     })
 };
-Site.getQueryString = function (a) {
+Run.getQueryString = function (a) {
     var b = new RegExp("(^|&)" + a + "=([^&]*)(&|$)");
     var c = window.location.search.substr(1).match(b);
     if (c != null) {
@@ -23467,20 +23467,20 @@ Site.getQueryString = function (a) {
     }
     return null
 };
-Site.loadProductDetail = function (n, q, k, i) {
+Run.loadProductDetail = function (n, q, k, i) {
     var c = $("#module" + n), u = i == 5 ? "vertical" : "horizontal", v = "leftIcon" + n, f = "rightIcon" + n, h, d;
     if (i == 5) {
         u = "vertical";
         v = "prePdIcon" + n;
         f = "nextPdIcon" + n
     }
-    if (Fai.isNull(c)) {
+    if (Helper.isNull(c)) {
         return
     }
     var j = c.find(".imgDiv");
     var l = j.attr("faiWidth");
     var s = j.attr("faiHeight");
-    if (Fai.isNull(s)) {
+    if (Helper.isNull(s)) {
         return
     }
     if (q == null && k == null) {
@@ -23490,7 +23490,7 @@ Site.loadProductDetail = function (n, q, k, i) {
         var w = q;
         var p = k
     }
-    var b = Fai.Img.calcSize(l, s, w, p, Fai.Img.MODE_SCALE_DEFLATE_FILL);
+    var b = Helper.Img.calcSize(l, s, w, p, Helper.Img.MODE_SCALE_DEFLATE_FILL);
     var o = b.height;
     var r = b.width;
     d = $("#imgGroup" + n);
@@ -23511,10 +23511,10 @@ Site.loadProductDetail = function (n, q, k, i) {
     x.each(function () {
         var C = $(this).attr("faiWidth");
         var D = $(this).attr("faiHeight");
-        if (Fai.isNull(D)) {
+        if (Helper.isNull(D)) {
             return
         }
-        var B = Fai.Img.calcSize(C, D, w, p, Fai.Img.MODE_SCALE_DEFLATE_FILL);
+        var B = Helper.Img.calcSize(C, D, w, p, Helper.Img.MODE_SCALE_DEFLATE_FILL);
         if (B.height > o) {
             o = B.height
         }
@@ -23527,14 +23527,14 @@ Site.loadProductDetail = function (n, q, k, i) {
             var H = A.height();
             C = A.attr("faiWidth");
             D = A.attr("faiHeight");
-            var F = Fai.Img.MODE_SCALE_FILL;
+            var F = Helper.Img.MODE_SCALE_FILL;
             if (G == 1 && H == 1) {
                 var E = new Image();
                 E.src = A.data("original");
                 $(E).on("load", function () {
                     G = E.width;
                     H = E.height;
-                    B = Fai.Img.calcSize(G, H, C, D, F);
+                    B = Helper.Img.calcSize(G, H, C, D, F);
                     A.css("width", B.width + "px");
                     A.css("height", B.height + "px");
                     if (A.attr("src") != A.data("original")) {
@@ -23543,7 +23543,7 @@ Site.loadProductDetail = function (n, q, k, i) {
                     A.css("display", "block")
                 })
             } else {
-                B = Fai.Img.calcSize(G, H, C, D, F);
+                B = Helper.Img.calcSize(G, H, C, D, F);
                 if (B.width == 1) {
                     B.width = C
                 }
@@ -23584,7 +23584,7 @@ Site.loadProductDetail = function (n, q, k, i) {
         }
         $("#imgDivs" + n).width(h);
         var y = (a.length == 1) ? "true" : "false";
-        Site.multiPhoto($("#imgDivs" + n), $("#imgDiv" + n), {leftIconID: v, rightIconID: f, zoom: y, direction: u})
+        Run.multiPhoto($("#imgDivs" + n), $("#imgDiv" + n), {leftIconID: v, rightIconID: f, zoom: y, direction: u})
     }
     var e = c.find(".pd_J").width(), g = c.find(".imgContainer_J").width(), t = c.find(".pdLayoutR_J"),
         m = c.find(".pdAppendLayout_J");
@@ -23592,7 +23592,7 @@ Site.loadProductDetail = function (n, q, k, i) {
         t.appendTo(m)
     }
 };
-Site.productBigPicResponsive = function (a, c, d, f, g) {
+Run.productBigPicResponsive = function (a, c, d, f, g) {
     var b = $("#module" + a), l, i, k, j, e, h;
     if (d || b.length < 1) {
         return
@@ -23603,7 +23603,7 @@ Site.productBigPicResponsive = function (a, c, d, f, g) {
     } else {
         j = (i + 300) / 3
     }
-    k = Fai.Img.calcSize(f, g, j, j, Fai.Img.MODE_SCALE_FILL);
+    k = Helper.Img.calcSize(f, g, j, j, Helper.Img.MODE_SCALE_FILL);
     l = b.find("#imgDiv" + a);
     l.css({width: j + "px", height: j + "px"});
     l.find("img").css({width: k.width + "px", height: k.height + "px"});
@@ -23615,7 +23615,7 @@ Site.productBigPicResponsive = function (a, c, d, f, g) {
     e = b.find("#imgGroup" + a);
     e.height(k.height)
 };
-Site.initPdCommentSwitch = function () {
+Run.initPdCommentSwitch = function () {
     var a = 0;
     if (document.cookie.length > 0) {
         cStart = document.cookie.indexOf("tabSwitch=");
@@ -23630,10 +23630,10 @@ Site.initPdCommentSwitch = function () {
     }
     $(".tabSwitch").eq(a).click()
 };
-Site.pdSaleRecordPagenation = function (b, a) {
+Run.pdSaleRecordPagenation = function (b, a) {
     $("#saleRecordSwitch").on("click", function () {
         if ($("#saleRecordPanel .tableBody").children().length == 0) {
-            Site.loadSaleRecord(b, a, 1)
+            Run.loadSaleRecord(b, a, 1)
         }
     });
     $("body").on({
@@ -23653,11 +23653,11 @@ Site.pdSaleRecordPagenation = function (b, a) {
                     c = Number($(this).text())
                 }
             }
-            Site.loadSaleRecord(b, a, c)
+            Run.loadSaleRecord(b, a, c)
         }
     }, "#saleRecordPanel .pagenation .g_border")
 };
-Site.loadSaleRecord = function (c, a, b) {
+Run.loadSaleRecord = function (c, a, b) {
     $.ajax({
         url: "ajax/product_h.php?cmd=getSaleRecordList",
         data: "pid=" + c + "&pno=" + b,
@@ -23734,18 +23734,18 @@ Site.loadSaleRecord = function (c, a, b) {
             }
         },
         error: function () {
-            Fai.ing(LS.systemError)
+            Helper.ing(LS.systemError)
         }
     })
 };
-Site.loadPdShareMore = function () {
-    if (Fai.isIE6() || Fai.isIE7()) {
-        if (Fai.isIE6()) {
+Run.loadPdShareMore = function () {
+    if (Helper.isIE6() || Helper.isIE7()) {
+        if (Helper.isIE6()) {
             $(".productOpera .shareInfo").css({top: "20px", left: "0"});
             $(".productOpera .pdShareDiv").css({position: "relative"});
             $(".pdShare").css({"padding-top": "0"})
         }
-        if (Fai.isIE7()) {
+        if (Helper.isIE7()) {
             $(".productOpera .shareInfo").css({top: "26px", left: "0"});
             $(".productOpera .pdShareDiv").css({position: "relative"})
         }
@@ -23781,7 +23781,7 @@ Site.loadPdShareMore = function () {
             $(".productOpera .shareInfo").show();
             $(".shareDown").addClass("shareUp");
             $(".share").addClass("operaTextHover");
-            if (Fai.isIE6() || Fai.isIE7()) {
+            if (Helper.isIE6() || Helper.isIE7()) {
                 $(".productOpera").css("z-index", "1000")
             }
         }, mouseleave: function () {
@@ -23791,14 +23791,14 @@ Site.loadPdShareMore = function () {
             $(".productOpera .shareInfo").hide();
             $(".shareDown").removeClass("shareUp");
             $(".share").removeClass("operaTextHover");
-            if (Fai.isIE6() || Fai.isIE7()) {
+            if (Helper.isIE6() || Helper.isIE7()) {
                 $(".productOpera").css("z-index", "")
             }
         }
     }, ".productOpera .pdShare,.productOpera .shareInfo");
     var d = $(".pd_J .pd_t_l_left_J"), b = d.find(".imgContainer_J"), a = d.find(".shareContainer_J"),
         e = a.find(".shareInfo_J");
-    if (Fai.isIE6() || Fai.isIE7()) {
+    if (Helper.isIE6() || Helper.isIE7()) {
         d.width(b.width())
     }
     setTimeout(function () {
@@ -23818,14 +23818,14 @@ Site.loadPdShareMore = function () {
         }
     }, 0)
 };
-Site.loadPdSerOnLineMore = function () {
-    if (Fai.isIE6() || Fai.isIE7()) {
-        if (Fai.isIE6()) {
+Run.loadPdSerOnLineMore = function () {
+    if (Helper.isIE6() || Helper.isIE7()) {
+        if (Helper.isIE6()) {
             $(".productOpera .serOnlineInfo").css({top: "22px", left: "0"});
             $(".productOpera .pdSerOnlineDiv").css({position: "relative"});
             $(".pdSerOnline").css({"padding-top": "0"})
         }
-        if (Fai.isIE7()) {
+        if (Helper.isIE7()) {
             $(".productOpera .serOnlineInfo").css({top: "28px", left: "0"});
             $(".productOpera .pdSerOnlineDiv").css({position: "relative"})
         }
@@ -23849,7 +23849,7 @@ Site.loadPdSerOnLineMore = function () {
             $(".productOpera .serOnlineInfo").show();
             $(".serOnlineDown").addClass("serOnlineUp");
             $(".pdSerOnline").addClass("operaTextHover");
-            if (Fai.isIE6() || Fai.isIE7()) {
+            if (Helper.isIE6() || Helper.isIE7()) {
                 $(".productOpera").css("z-index", "1000")
             }
             var d = 0;
@@ -23885,13 +23885,13 @@ Site.loadPdSerOnLineMore = function () {
             $(".productOpera .serOnlineInfo").hide();
             $(".serOnlineDown").removeClass("serOnlineUp");
             $(".pdSerOnline").removeClass("operaTextHover");
-            if (Fai.isIE6() || Fai.isIE7()) {
+            if (Helper.isIE6() || Helper.isIE7()) {
                 $(".productOpera").css("z-index", "")
             }
         }
     }, ".productOpera .pdSerOnline,.productOpera .serOnlineInfo")
 };
-Site.onlineServiceNameHoverShow = function () {
+Run.onlineServiceNameHoverShow = function () {
     var a = $("<div id='fk-seronlineDockTip' class='resizableToShowWidth dockTip' style='border:solid 1px #999999;background:#f9fafb;slineHeight:20px;fontSize:20px;padding:2px 5px;color:black;border-radius:2px;'></div>");
     $(".J_onlineServiceNameHoverShow").mouseover(function (c) {
         var d = this;
@@ -23906,7 +23906,7 @@ Site.onlineServiceNameHoverShow = function () {
         a.remove()
     })
 };
-Site.onlineServiceWaWaIsOnline = function () {
+Run.onlineServiceWaWaIsOnline = function () {
     $(".J_aliWaWa").each(function () {
         var b = this;
         var a = $(b).attr("account");
@@ -23915,7 +23915,7 @@ Site.onlineServiceWaWaIsOnline = function () {
             $.ajax({
                 type: "post",
                 dataType: "jsonp",
-                url: "http://amos.alicdn.com/muliuserstatus.aw?beginnum=0&site=cnalichn&charset=utf-8&uids=" + Fai.encodeUrl(a),
+                url: "http://amos.alicdn.com/muliuserstatus.aw?beginnum=0&site=cnalichn&charset=utf-8&uids=" + Helper.encodeUrl(a),
                 success: function (c) {
                     if (c.data != null) {
                         if (c.data[0] == 0) {
@@ -23938,7 +23938,7 @@ Site.onlineServiceWaWaIsOnline = function () {
             $.ajax({
                 type: "post",
                 dataType: "jsonp",
-                url: "http://amos.alicdn.com/muliuserstatus.aw?beginnum=0&site=cntaobao&charset=utf-8&uids=" + Fai.encodeUrl(a),
+                url: "http://amos.alicdn.com/muliuserstatus.aw?beginnum=0&site=cntaobao&charset=utf-8&uids=" + Helper.encodeUrl(a),
                 success: function (c) {
                     if (c.data != null) {
                         if (c.data[0] == 0) {
@@ -23954,9 +23954,9 @@ Site.onlineServiceWaWaIsOnline = function () {
         }
     })
 };
-Site.loadProductSlide = function (a) {
+Run.loadProductSlide = function (a) {
     var b = $(".slide");
-    if (Fai.isNull(b)) {
+    if (Helper.isNull(b)) {
         return
     }
     var l = b.find(".imgDiv");
@@ -23971,12 +23971,12 @@ Site.loadProductSlide = function (a) {
         var m = $(this).find("img");
         var o = m.attr("faiWidth");
         var q = m.attr("faiHeight");
-        var n = Fai.Img.calcSize(o, q, p, r, Fai.Img.MODE_SCALE_FILL);
+        var n = Helper.Img.calcSize(o, q, p, r, Helper.Img.MODE_SCALE_FILL);
         m.css("width", n.width + "px");
         m.css("height", n.height + "px");
         m.css("display", "block")
     });
-    var h = Fai.Img.calcSize(i, j, g, d, Fai.Img.MODE_SCALE_DEFLATE_FILL);
+    var h = Helper.Img.calcSize(i, j, g, d, Helper.Img.MODE_SCALE_DEFLATE_FILL);
     var e = l.find("img");
     e.css("width", h.width + "px");
     e.css("height", h.height + "px");
@@ -23988,21 +23988,21 @@ Site.loadProductSlide = function (a) {
     }
     if (c.length > 1) {
         var f = (k.length == 1) ? "true" : "false";
-        Site.multiPhoto($("#imgDivs" + a), $("#imgDiv" + a), {
+        Run.multiPhoto($("#imgDivs" + a), $("#imgDiv" + a), {
             leftIconID: "leftIcon" + a,
             rightIconID: "rightIcon" + a,
             zoom: f
         })
     }
 };
-Site.loadProductPicList = function (f, d, c, e, a) {
+Run.loadProductPicList = function (f, d, c, e, a) {
     var b = $("#module" + f);
-    if (Fai.isNull(b)) {
+    if (Helper.isNull(b)) {
         return
     }
     b.find(".productPicListForm").each(function () {
         var n = $(this).attr("faiHeight");
-        if (Fai.isNull(n)) {
+        if (Helper.isNull(n)) {
             return
         }
         var m = $(this).attr("faiWidth"), i = $(this).attr("faiWidthOr"), h = $(this).attr("faiHeightOr"),
@@ -24013,7 +24013,7 @@ Site.loadProductPicList = function (f, d, c, e, a) {
         }
         var l = {width: o, height: p};
         if (d) {
-            l = Fai.Img.calcSize(i, h, o, p, Fai.Img.MODE_SCALE_FILL)
+            l = Helper.Img.calcSize(i, h, o, p, Helper.Img.MODE_SCALE_FILL)
         }
         var g = q.find("img");
         g.css("width", l.width + "px");
@@ -24027,11 +24027,11 @@ Site.loadProductPicList = function (f, d, c, e, a) {
             }
         }
     });
-    Site.initContentSplitLine(f, e)
+    Run.initContentSplitLine(f, e)
 };
-Site.loadProductDoublePicList = function (g, f, d, a) {
+Run.loadProductDoublePicList = function (g, f, d, a) {
     var c = $("#module" + g);
-    if (Fai.isNull(c)) {
+    if (Helper.isNull(c)) {
         return
     }
     var e = 0;
@@ -24039,7 +24039,7 @@ Site.loadProductDoublePicList = function (g, f, d, a) {
     c.find(".doubleProduct").each(function () {
         $(this).find(".productDoublePicListForm").each(function () {
             var o = $(this).attr("faiHeight");
-            if (Fai.isNull(o)) {
+            if (Helper.isNull(o)) {
                 return
             }
             var n = $(this).attr("faiWidth"), r = $(this).find(".imgDiv"), j = r.find("img"),
@@ -24060,7 +24060,7 @@ Site.loadProductDoublePicList = function (g, f, d, a) {
             }
             var m = {width: p, height: q};
             if (f) {
-                m = Fai.Img.calcSize($(this).attr("faiWidthOr"), $(this).attr("faiHeightOr"), p, q, Fai.Img.MODE_SCALE_FILL)
+                m = Helper.Img.calcSize($(this).attr("faiWidthOr"), $(this).attr("faiHeightOr"), p, q, Helper.Img.MODE_SCALE_FILL)
             }
             j.css("width", m.width + "px");
             j.css("height", m.height + "px");
@@ -24086,14 +24086,14 @@ Site.loadProductDoublePicList = function (g, f, d, a) {
         b = 0
     })
 };
-Site.loadProductHotTextList = function (e, d, c, a) {
+Run.loadProductHotTextList = function (e, d, c, a) {
     var b = $("#module" + e);
-    if (Fai.isNull(b)) {
+    if (Helper.isNull(b)) {
         return
     }
     b.find(".productHotTextListHot").each(function () {
         var k = $(this).attr("faiHeight");
-        if (Fai.isNull(k)) {
+        if (Helper.isNull(k)) {
             return
         }
         var j = $(this).attr("faiWidth");
@@ -24106,7 +24106,7 @@ Site.loadProductHotTextList = function (e, d, c, a) {
         }
         var h = {width: l, height: m};
         if (d) {
-            h = Fai.Img.calcSize($(this).attr("faiWidthOr"), $(this).attr("faiHeightOr"), l, m, Fai.Img.MODE_SCALE_FILL)
+            h = Helper.Img.calcSize($(this).attr("faiWidthOr"), $(this).attr("faiHeightOr"), l, m, Helper.Img.MODE_SCALE_FILL)
         }
         var f = n.find("img");
         f.css("width", h.width + "px");
@@ -24172,7 +24172,7 @@ Site.loadProductHotTextList = function (e, d, c, a) {
         }
     })
 };
-Site.unifiedAttrVal = function (b, d, a) {
+Run.unifiedAttrVal = function (b, d, a) {
     var c = b.find(d);
     var e = 0;
     c.each(function () {
@@ -24186,7 +24186,7 @@ Site.unifiedAttrVal = function (b, d, a) {
         $(this).css(a, e + "px")
     })
 };
-Site.loadProductGallery = function (E) {
+Run.loadProductGallery = function (E) {
     var F = new Date().getMilliseconds();
     var W = E.id, T = E.scale, g = E.cus, y = E.paramLayoutType || "";
     var c = $("#module" + W), C = c.find("div.product-container");
@@ -24196,12 +24196,12 @@ Site.loadProductGallery = function (E) {
     var o, d;
     if (E.effType >= 4 && E.effType < 6) {
         if (y == 6) {
-            Site.clearImageEffectContent_product(W, "sixth_ProductPanel")
+            Run.clearImageEffectContent_product(W, "sixth_ProductPanel")
         }
         if (y == 8) {
-            Site.clearImageEffectContent_product(W, "eighth_ProductPanel")
+            Run.clearImageEffectContent_product(W, "eighth_ProductPanel")
         }
-        Site.clearImageEffectContent_product(E.id, "prop-container")
+        Run.clearImageEffectContent_product(E.id, "prop-container")
     }
     if (C.length != 0) {
         var ah = $(C[0]).children("div.img-container"), p = ah.width(), R = ah.height();
@@ -24209,7 +24209,7 @@ Site.loadProductGallery = function (E) {
             ah = $(C[aj]).children("div.img-container");
             var n = ah.find("img"), M = n.attr("fHeight"), J = n.attr("fWidth");
             if (T) {
-                var m = Fai.Img.calcSize(J, M, p, R, Fai.Img.MODE_SCALE_FILL);
+                var m = Helper.Img.calcSize(J, M, p, R, Helper.Img.MODE_SCALE_FILL);
                 n.width(m.width);
                 n.height(m.height);
                 o = m.width;
@@ -24220,7 +24220,7 @@ Site.loadProductGallery = function (E) {
                 o = p;
                 d = R
             }
-            if (Fai.top._manageMode) {
+            if (Helper.top._manageMode) {
                 n.data("realWidth", o);
                 n.data("realHeight", d)
             }
@@ -24406,10 +24406,10 @@ Site.loadProductGallery = function (E) {
         }
     }
     if (c.find(".prop-wordwrap-container").length > 0) {
-        Site.unifiedAttrVal(c, ".prop-wordwrap-container", "height")
+        Run.unifiedAttrVal(c, ".prop-wordwrap-container", "height")
     }
 };
-Site.loadProductSmallPic = function (z) {
+Run.loadProductSmallPic = function (z) {
     var N = z.id, F = z.scale, f = z.cus, J = z.dataObjs, O = z.bigPicObjs, o = z.tmp_allow_marketprice,
         D = z.tmp_allow_price, m = z.tmp_allow_price_menberLevel,
         H = parseInt($(".productSmallPicForms").attr("_mallbuybtntype")),
@@ -24419,11 +24419,11 @@ Site.loadProductSmallPic = function (z) {
     }
     var c = $("#" + N);
     var u = z.paramLayoutType;
-    c.on("Fai_onModuleSizeChange", function () {
-        Site.smallPicModuleFix(N)
+    c.on("Helper_onModuleSizeChange", function () {
+        Run.smallPicModuleFix(N)
     });
-    c.on("Fai_onModuleLayoutChange", function () {
-        Site.smallPicModuleFix(N)
+    c.on("Helper_onModuleLayoutChange", function () {
+        Run.smallPicModuleFix(N)
     });
     var y = c.find("div.productSmallPicBox");
     var Z = c.find(".smallPicUpForms").height();
@@ -24443,7 +24443,7 @@ Site.loadProductSmallPic = function (z) {
     var Y = c.find(".smallPrePicContainer");
     var S = c.find(".smallPrePicOuter").outerWidth(true);
     var P = 0;
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         P = 2
     }
     Y.width(S * y.length + P);
@@ -24460,7 +24460,7 @@ Site.loadProductSmallPic = function (z) {
     var n = y.length < q ? y.length : q;
     for (var V = 0; V < n; V++) {
         var k = $(y[V]).find("img");
-        Site.loadProductSmallPicItem(k)
+        Run.loadProductSmallPicItem(k)
     }
     var x = "default";
     var E = true;
@@ -24472,7 +24472,7 @@ Site.loadProductSmallPic = function (z) {
     var T = "";
     var p = "";
     var i = 0;
-    if (Fai.isIE6() || Fai._isIE7) {
+    if (Helper.isIE6() || Helper._isIE7) {
         H = 0
     }
     switch (H) {
@@ -24664,7 +24664,7 @@ Site.loadProductSmallPic = function (z) {
         }
         for (var ag = ab; ag <= ah; ag++) {
             var ai = $(y[ag]).find("img");
-            Site.loadProductSmallPicItem(ai)
+            Run.loadProductSmallPicItem(ai)
         }
         if (!ac) {
             j.animate({left: "-=" + an + "px"})
@@ -24679,16 +24679,16 @@ Site.loadProductSmallPic = function (z) {
     c.find(".smallPicUpFormsMid").mouseenter(function () {
         var j = $(this).parents(".form").attr("id");
         if (_manageMode == true) {
-            Site.initModuleProductSmallPicItemManage(j, z.productSelect, z.isOpenImgEff)
+            Run.initModuleProductSmallPicItemManage(j, z.productSelect, z.isOpenImgEff)
         }
     }).mouseleave(function () {
         var j = $(this).parents(".form");
         var ab = j.find("div.containerLeft");
         if (_manageMode == true) {
             if (z.isOpenImgEff) {
-                Site.removeEditLayer(ab)
+                Run.removeEditLayer(ab)
             } else {
-                Site.removeEditLayer(ab, null, 106)
+                Run.removeEditLayer(ab, null, 106)
             }
         }
     });
@@ -24760,8 +24760,8 @@ Site.loadProductSmallPic = function (z) {
     });
     y.click(function () {
         var aq = $(this).find("img");
-        Site.loadProductSmallPicItem($(this).parent().next().find("img"));
-        Site.loadProductSmallPicItem(aq);
+        Run.loadProductSmallPicItem($(this).parent().next().find("img"));
+        Run.loadProductSmallPicItem(aq);
         var aj = $("#" + N);
         var ae = aj.find(".smallPicUpFormsMid .containerLeft img");
         aj.find(".containerRight").children().remove();
@@ -24780,7 +24780,7 @@ Site.loadProductSmallPic = function (z) {
         var at = O[aT]["bHeight"];
         var j = aj.find(".containerLeft").width(), ag = aj.find(".containerLeft").height();
         if (aI) {
-            var ap = Fai.Img.calcSize(ao, at, j, ag, Fai.Img.MODE_SCALE_FILL);
+            var ap = Helper.Img.calcSize(ao, at, j, ag, Helper.Img.MODE_SCALE_FILL);
             ae.width(ap.width);
             ae.height(ap.height)
         } else {
@@ -24848,19 +24848,19 @@ Site.loadProductSmallPic = function (z) {
         aA.push("<div class='productParamContainer' style='width:" + az + "px;" + ah + "" + (u == 4 || u == 9 ? "position:absolute;bottom:10px;" : "") + "'>");
         if (a2 == "true") {
             if (u == 2) {
-                aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='second_ProductName fk-productName' style='width:" + (az - 20) + "px;" + aU + ";'>" + Fai.encodeHtml($(this).find("img").attr("productname")) + "</div></a>");
+                aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='second_ProductName fk-productName' style='width:" + (az - 20) + "px;" + aU + ";'>" + Helper.encodeHtml($(this).find("img").attr("productname")) + "</div></a>");
                 aA.push("<div class='dotted'></div>")
             } else {
                 if (u == 3) {
-                    aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='third_ProductName fk-productName' style='width:" + (az - 20) + "px;" + aU + ";'>" + Fai.encodeHtml($(this).find("img").attr("productname")) + "</div></a>")
+                    aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='third_ProductName fk-productName' style='width:" + (az - 20) + "px;" + aU + ";'>" + Helper.encodeHtml($(this).find("img").attr("productname")) + "</div></a>")
                 } else {
                     if (u == 4 || u == 9) {
-                        aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='fourth_ProductName fk-productName' style='width:" + (az - 20) + "px;" + aU + ";'>" + Fai.encodeHtml($(this).find("img").attr("productname")) + "</div></a>")
+                        aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='fourth_ProductName fk-productName' style='width:" + (az - 20) + "px;" + aU + ";'>" + Helper.encodeHtml($(this).find("img").attr("productname")) + "</div></a>")
                     } else {
                         if (u == 5) {
-                            aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='fifth_ProductName fk_paramNewStyle5 fk-productName' style='width:" + (az - 20) + "px;" + aU + ";'>" + Fai.encodeHtml($(this).find("img").attr("productname")) + "</div></a>")
+                            aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='fifth_ProductName fk_paramNewStyle5 fk-productName' style='width:" + (az - 20) + "px;" + aU + ";'>" + Helper.encodeHtml($(this).find("img").attr("productname")) + "</div></a>")
                         } else {
-                            aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='fk-productName' style='width:" + (az - 20) + "px;margin:auto;" + al + ";margin-top:20px;margin-bottom:8px;" + aU + ";'>" + Fai.encodeHtml($(this).find("img").attr("productname")) + "</div></a>")
+                            aA.push("<a " + aX + " title='" + $(this).find("img").attr("productname") + "' style='text-decoration:none;'><div class='fk-productName' style='width:" + (az - 20) + "px;margin:auto;" + al + ";margin-top:20px;margin-bottom:8px;" + aU + ";'>" + Helper.encodeHtml($(this).find("img").attr("productname")) + "</div></a>")
                         }
                     }
                 }
@@ -25112,7 +25112,7 @@ Site.loadProductSmallPic = function (z) {
     });
     y.eq(0).click()
 };
-Site.fixProductMallPosition = function (g, e, d) {
+Run.fixProductMallPosition = function (g, e, d) {
     var e = e || "";
     var d = d || "";
     var f = $("#module" + g).find("." + e);
@@ -25151,10 +25151,10 @@ Site.fixProductMallPosition = function (g, e, d) {
         }
     })
 };
-Site.removeProductSmallPicMask = function (a) {
+Run.removeProductSmallPicMask = function (a) {
     $("#module" + a).find(".loadingImg").remove()
 };
-Site.loadProductSmallPicItem = function (d) {
+Run.loadProductSmallPicItem = function (d) {
     if (!d.attr("src")) {
         d.attr("src", d.attr("lzurl"))
     }
@@ -25168,7 +25168,7 @@ Site.loadProductSmallPicItem = function (d) {
     }
     d.show()
 };
-Site.smallPicModuleFix = function (w) {
+Run.smallPicModuleFix = function (w) {
     var e = $("#" + w), g = e.find("div.productSmallPicBox");
     var n = e.find(".productSmallPicForms").width();
     var f = e.find(".smallPic_control").outerWidth(true);
@@ -25184,7 +25184,7 @@ Site.smallPicModuleFix = function (w) {
     var l = e.find(".smallPrePicContainer");
     var a = $(".smallPrePicOuter").outerWidth(true);
     var x = 0;
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         x = 2
     }
     l.width(a * g.length + x);
@@ -25206,12 +25206,12 @@ Site.smallPicModuleFix = function (w) {
     for (var s = 0; s < o; s++) {
         var y = $(g[s]).find("img");
         if (!y.attr("src")) {
-            Site.loadProductSmallPicItem(y)
+            Run.loadProductSmallPicItem(y)
         }
     }
     e.find(".smallPrePicSelected").click()
 };
-Site.productInfoSwitchClick = function (a, g) {
+Run.productInfoSwitchClick = function (a, g) {
     var f = 1, e = 1, c, d;
     d = $("#pdInfoSwitchTable");
     d.find(".tabSwitch").removeClass("selected fk-mainBorderColor fk-mainFontColor");
@@ -25314,18 +25314,18 @@ Site.productInfoSwitchClick = function (a, g) {
         }
     }
     document.cookie = "tabSwitch=" + b;
-    Fai.refreshClass($("body"))
+    Helper.refreshClass($("body"))
 };
-Site.initModuleProductCommentItemManage = function (b, a) {
-    Fai.top.$("#" + b).mouseover(function () {
-        Site.addEditLayer(b, a, 1)
+Run.initModuleProductCommentItemManage = function (b, a) {
+    Helper.top.$("#" + b).mouseover(function () {
+        Run.addEditLayer(b, a, 1)
     }).mouseleave(function () {
-        Site.removeEditLayer(b)
+        Run.removeEditLayer(b)
     })
 };
-Site.siteCommImgFileUpload = function (b, d, f, a, g) {
-    if (!Fai.isIE()) {
-        Site.siteCommImgFileUploadH5(b, d, f, a, g);
+Run.siteCommImgFileUpload = function (b, d, f, a, g) {
+    if (!Helper.isIE()) {
+        Run.siteCommImgFileUploadH5(b, d, f, a, g);
         return
     }
     var e = f.split(",");
@@ -25341,7 +25341,7 @@ Site.siteCommImgFileUpload = function (b, d, f, a, g) {
         button_cursor: SWFUpload.CURSOR.HAND,
         button_image_url: _resRoot + "/image/site/msgUpImg/upload1.jpg",
         requeue_on_error: false,
-        post_params: {ctrl: "Filedata", app: 21, type: 0, fileUploadLimit: 5, isSiteForm: true},
+        post_params: {ctrl: "Filedata", app: 21, type: 0, fileUploadLimit: 5, isRunForm: true},
         file_types: e.join(";"),
         file_dialog_complete_handler: function (h) {
             this._allSuccess = false;
@@ -25350,16 +25350,16 @@ Site.siteCommImgFileUpload = function (b, d, f, a, g) {
         file_queue_error_handler: function (i, h, j) {
             switch (h) {
                 case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-                    Fai.ing(LS.siteFormSubmitCheckFileSizeErr, true);
+                    Helper.ing(LS.siteFormSubmitCheckFileSizeErr, true);
                     break;
                 case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-                    Fai.ing(LS.siteFormSubmitFileUploadNotAllow, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadNotAllow, true);
                     break;
                 case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadOneTimeNum, a), true);
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadOneTimeNum, a), true);
                     break;
                 default:
-                    Fai.ing(LS.siteFormSubmitFileUploadReSelect, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadReSelect, true);
                     break
             }
         },
@@ -25368,20 +25368,20 @@ Site.siteCommImgFileUpload = function (b, d, f, a, g) {
             this._allSuccess = j.success;
             this._sysResult = j.msg;
             if (j.success) {
-                Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSucess, Fai.encodeHtml(i.name)), true);
+                Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSucess, Helper.encodeHtml(i.name)), true);
                 onFileUploadEvent("upload", j)
             } else {
-                Fai.ing(LS.siteFormSubmitFileUploadFile + i.name + "   " + j.msg)
+                Helper.ing(LS.siteFormSubmitFileUploadFile + i.name + "   " + j.msg)
             }
         },
         upload_error_handler: function (i, h, j) {
             if (h == -280) {
-                Fai.ing(LS.siteFormSubmitFileUploadFileCancle, false)
+                Helper.ing(LS.siteFormSubmitFileUploadFileCancle, false)
             } else {
                 if (h == -270) {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadFileExist, Fai.encodeHtml(i.name)), true)
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadFileExist, Helper.encodeHtml(i.name)), true)
                 } else {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSvrBusy, Fai.encodeHtml(i.name)))
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSvrBusy, Helper.encodeHtml(i.name)))
                 }
             }
         },
@@ -25393,7 +25393,7 @@ Site.siteCommImgFileUpload = function (b, d, f, a, g) {
                 var j = $("#msgBoardAddImgTb").eq(0);
                 var h = j.find("td").length;
                 if (h >= (a + 1)) {
-                    Fai.ing(LS.siteFormSubmitFileUploadOfMax, true);
+                    Helper.ing(LS.siteFormSubmitFileUploadOfMax, true);
                     var k = j.find("td").eq(j.find("td").length - 1);
                     k.css("display", "none");
                     return
@@ -25403,16 +25403,16 @@ Site.siteCommImgFileUpload = function (b, d, f, a, g) {
                 }, swfObj.upload_delay)
             } else {
                 if (i.filestatus == SWFUpload.FILE_STATUS.ERROR) {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSvrBusy, Fai.encodeHtml(i.name)))
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSvrBusy, Helper.encodeHtml(i.name)))
                 }
             }
         },
         upload_start_handler: function (h) {
-            Fai.enablePopupWindowBtn(0, "save", false);
-            Fai.ing(LS.siteFormSubmitFileUploadPrepare, false)
+            Helper.enablePopupWindowBtn(0, "save", false);
+            Helper.ing(LS.siteFormSubmitFileUploadPrepare, false)
         },
         view_progress: function (h, k, j, i) {
-            Fai.ing(LS.siteFormSubmitFileUploadIng + i + "%", false)
+            Helper.ing(LS.siteFormSubmitFileUploadIng + i + "%", false)
         }
     };
     if (g) {
@@ -25429,11 +25429,11 @@ Site.siteCommImgFileUpload = function (b, d, f, a, g) {
             var i = m.fileId;
             var h = m.width;
             var n = m.height;
-            Site.productCommImgTableCtrl(q, o, j, l, a, i, g)
+            Run.productCommImgTableCtrl(q, o, j, l, a, i, g)
         }
     }
 };
-Site.siteCommImgFileUploadH5 = function (b, d, g, a, h) {
+Run.siteCommImgFileUploadH5 = function (b, d, g, a, h) {
     var e = g.split(",");
     var c = {
         siteFree: false,
@@ -25447,7 +25447,7 @@ Site.siteCommImgFileUploadH5 = function (b, d, g, a, h) {
         showUploadedPercent: false,
         showUploadedSize: false,
         removeTimeout: 9999999,
-        post_params: {app: 21, type: 0, fileUploadLimit: b, isSiteForm: true},
+        post_params: {app: 21, type: 0, fileUploadLimit: b, isRunForm: true},
         isBurst: false,
         isDefinedButton: true,
         buttonText: "",
@@ -25457,16 +25457,16 @@ Site.siteCommImgFileUploadH5 = function (b, d, g, a, h) {
             if (j.success) {
                 onFileUploadEvent("upload", j);
                 setTimeout(function () {
-                    Fai.ing("文件上传成功", true)
+                    Helper.ing("文件上传成功", true)
                 }, 2000)
             } else {
-                Fai.ing("文件:" + i.name + "，" + j.msg)
+                Helper.ing("文件:" + i.name + "，" + j.msg)
             }
         },
         onUploadError: function (i, j) {
             $("#progressBody_ " + i.id).remove();
             $("#progressWrap_" + i.id).remove();
-            Fai.ing("网络繁忙，文件:" + i.name + "上传失败，请稍后重试")
+            Helper.ing("网络繁忙，文件:" + i.name + "上传失败，请稍后重试")
         },
         onSelect: function () {
             if (a == null || typeof(a) == "undefined") {
@@ -25475,7 +25475,7 @@ Site.siteCommImgFileUploadH5 = function (b, d, g, a, h) {
             var j = $("#msgBoardAddImgTb").eq(0);
             var i = j.find("td").length;
             if (i >= (a + 1)) {
-                Fai.ing(LS.siteFormSubmitFileUploadOfMax, true);
+                Helper.ing(LS.siteFormSubmitFileUploadOfMax, true);
                 var k = j.find("td").eq(j.find("td").length - 1);
                 k.css("display", "none");
                 return false
@@ -25501,14 +25501,14 @@ Site.siteCommImgFileUploadH5 = function (b, d, g, a, h) {
             var j = n.fileId;
             var i = n.width;
             var o = n.height;
-            Site.productCommImgTableCtrl(r, p, k, m, a, j, h)
+            Run.productCommImgTableCtrl(r, p, k, m, a, j, h)
         }
     }
 };
-Site.commUpAllImgList = null;
-Site.setCommUpAllImgList = function (a) {
-    Site.commUpAllImgList = Fai.fkEval("(" + a + ")");
-    if (Fai.isIE6() || Fai.isIE7()) {
+Run.commUpAllImgList = null;
+Run.setCommUpAllImgList = function (a) {
+    Run.commUpAllImgList = Helper.fkEval("(" + a + ")");
+    if (Helper.isIE6() || Helper.isIE7()) {
         $(".msgBoard_upImg_border").css({width: "50px", height: "50px"})
     }
     $(function () {
@@ -25529,7 +25529,7 @@ Site.setCommUpAllImgList = function (a) {
         }, 200)
     })
 };
-Site.productCommImgTableCtrl = function (l, a, b, i, c, d, e) {
+Run.productCommImgTableCtrl = function (l, a, b, i, c, d, e) {
     var j = $("#msgBoardAddImgTb").eq(0);
     var k = j.find("td").length;
     var g = j.find("td").eq(k - 1), f = (k) + "/" + c;
@@ -25539,13 +25539,13 @@ Site.productCommImgTableCtrl = function (l, a, b, i, c, d, e) {
     g.find(".msgBoard_showImgCount").html(f);
     var h = [];
     h.push("<td class='msgBoard_upImg_tb_td2'>");
-    if (Fai.isIE6() || Fai.isIE7()) {
+    if (Helper.isIE6() || Helper.isIE7()) {
         h.push("<div class='msgBoard_upImg_border' style='width:50px !important;height:50px !important;'>")
     } else {
         h.push("<div class='msgBoard_upImg_border'>")
     }
-    h.push("<span onclick='Site.productCommImgDelete(this)' class='msgBoard_upImgTop_set'/>");
-    if (Fai.isIE6() || Fai.isIE7()) {
+    h.push("<span onclick='Run.productCommImgDelete(this)' class='msgBoard_upImgTop_set'/>");
+    if (Helper.isIE6() || Helper.isIE7()) {
         h.push("<div><p><img alt='' class='msgBoard_upImg_set' src='" + l + "' _name='" + a + "' _id='" + b + "' _file_size='" + i + "' _file_id='" + d + "'></p></div>")
     } else {
         h.push("<div><p><img alt='' class='msgBoard_upImg_set' src='" + l + "' _name='" + a + "' _id='" + b + "' _file_size='" + i + "' _file_id='" + d + "' style='margin-left:-1px;'></p></div>")
@@ -25554,7 +25554,7 @@ Site.productCommImgTableCtrl = function (l, a, b, i, c, d, e) {
     h.push("</td>");
     g.before(h.join(""))
 };
-Site.productCommImgDelete = function (a) {
+Run.productCommImgDelete = function (a) {
     var d = $("#msgBoardAddImgTb").eq(0);
     var b = d.find("td").length;
     for (var c = 0; c < b; c++) {
@@ -25567,10 +25567,10 @@ Site.productCommImgDelete = function (a) {
     var e = d.find("td").eq(b - 1);
     e.find(".msgBoard_showImgCount").html((b - 1) + "/" + e.attr("maxNum"));
     if (b <= e.attr("maxNum")) {
-        if (Fai.isIE6() || Fai.isIE7()) {
+        if (Helper.isIE6() || Helper.isIE7()) {
             e.css({display: "block", "padding-top": "7px"})
         } else {
-            if (Fai.isIE()) {
+            if (Helper.isIE()) {
                 e.css({display: "block", "padding-top": "8px"})
             } else {
                 e.css({display: "block", "padding-top": "10px"})
@@ -25578,7 +25578,7 @@ Site.productCommImgDelete = function (a) {
         }
     }
 };
-Site.showCommImgList = function (k, o, c, h, b, j) {
+Run.showCommImgList = function (k, o, c, h, b, j) {
     var e = $("#" + c), g = (typeof j == "number" && j == 5);
     if (e != null && typeof(e) != "undefined") {
         e.remove()
@@ -25593,8 +25593,8 @@ Site.showCommImgList = function (k, o, c, h, b, j) {
     d.eq(b).prepend(m);
     var a = [];
     a.push("<div id='" + c + "' class='show_msg_outer_div'>");
-    a.push("<span onclick=Site.commShowPicClose('" + c + "','" + k + "'," + g + ") class='msg_close_show_img_icon'/>");
-    if (Fai.isIE6() || Fai.isIE7()) {
+    a.push("<span onclick=Run.commShowPicClose('" + c + "','" + k + "'," + g + ") class='msg_close_show_img_icon'/>");
+    if (Helper.isIE6() || Helper.isIE7()) {
         a.push("<div class='show_msg_bordered_div' style='width:298px !important;'></div>");
         a.push("<div class='show_msg_border_div' style='width:299px !important;'>")
     } else {
@@ -25611,7 +25611,7 @@ Site.showCommImgList = function (k, o, c, h, b, j) {
                 l()
             }, function () {
                 var p = $("#" + c);
-                if (Fai.isIE7()) {
+                if (Helper.isIE7()) {
                     setTimeout(function () {
                         p.find("#J_showCommPicMoveSign").remove()
                     }, 500)
@@ -25629,10 +25629,10 @@ Site.showCommImgList = function (k, o, c, h, b, j) {
         if (p.find("#J_showCommPicMoveSign").attr("class") == null || typeof(p.find("#J_showCommPicMoveSign").attr("class")) == "undefined") {
             var q = [];
             q.push("<div id='J_showCommPicMoveSign'>");
-            q.push("<img alt='' class='showCommPicMoveLeftClickArea' onclick=Site.showCommImgMove('" + k + "','" + c + "','left')>");
-            q.push("<img alt='' src='" + _resRoot + "/image/site/msgUpImg/mLeft.png' onclick=Site.showCommImgMove('" + k + "','" + c + "','left') class='showCommPicMoveLeft'>");
-            q.push("<img alt='' class='showCommPicMoveRightClickArea' onclick=Site.showCommImgMove('" + k + "','" + c + "','right')>");
-            q.push("<img alt='' src='" + _resRoot + "/image/site/msgUpImg/mRight.png' onclick=Site.showCommImgMove('" + k + "','" + c + "','right') class='showCommPicMoveRight'>");
+            q.push("<img alt='' class='showCommPicMoveLeftClickArea' onclick=Run.showCommImgMove('" + k + "','" + c + "','left')>");
+            q.push("<img alt='' src='" + _resRoot + "/image/site/msgUpImg/mLeft.png' onclick=Run.showCommImgMove('" + k + "','" + c + "','left') class='showCommPicMoveLeft'>");
+            q.push("<img alt='' class='showCommPicMoveRightClickArea' onclick=Run.showCommImgMove('" + k + "','" + c + "','right')>");
+            q.push("<img alt='' src='" + _resRoot + "/image/site/msgUpImg/mRight.png' onclick=Run.showCommImgMove('" + k + "','" + c + "','right') class='showCommPicMoveRight'>");
             q.push("</div>");
             p.prepend(q.join(""))
         }
@@ -25643,14 +25643,14 @@ Site.showCommImgList = function (k, o, c, h, b, j) {
         if (p.find("#J_showCommPicMoveSign").attr("class") == null || typeof(p.find("#J_showCommPicMoveSign").attr("class")) == "undefined") {
             var q = [];
             q.push("<div id='J_showCommPicMoveSign' class='fk-commPicAreaPage'>");
-            q.push("<div class='f-pageLeft' onclick=\"Site.showCommImgMove('" + k + "','" + c + "','left');\"></div>");
-            q.push("<div class='f-pageRight' onclick=\"Site.showCommImgMove('" + k + "','" + c + "','right')\";></div>");
+            q.push("<div class='f-pageLeft' onclick=\"Run.showCommImgMove('" + k + "','" + c + "','left');\"></div>");
+            q.push("<div class='f-pageRight' onclick=\"Run.showCommImgMove('" + k + "','" + c + "','right')\";></div>");
             q.push("</div>");
             p.prepend(q.join(""))
         }
     }
 };
-Site.showCommImgMove = function (g, a, f) {
+Run.showCommImgMove = function (g, a, f) {
     if (g == null || f == null) {
         return
     }
@@ -25661,7 +25661,7 @@ Site.showCommImgMove = function (g, a, f) {
     if (currentChooseTr == null || currentChooseTd == null) {
         return
     }
-    if (Site.commUpAllImgList == null) {
+    if (Run.commUpAllImgList == null) {
         return
     }
     var b = c.find("td");
@@ -25679,7 +25679,7 @@ Site.showCommImgMove = function (g, a, f) {
     } else {
         if (f == "right") {
             j = parseInt(currentChooseTd) + 1;
-            if (j >= Site.commUpAllImgList[currentChooseTr].data.length) {
+            if (j >= Run.commUpAllImgList[currentChooseTr].data.length) {
                 j = 0
             }
         }
@@ -25690,9 +25690,9 @@ Site.showCommImgMove = function (g, a, f) {
     c.attr("chooseTd", j);
     var d = $("#" + a).find(".msg_up_show_img_set").parent();
     $("#" + a).find(".msg_up_show_img_set").remove();
-    d.append("<img alt='' class='msg_up_show_img_set' src='" + Site.commUpAllImgList[currentChooseTr].data[j].data + "'>")
+    d.append("<img alt='' class='msg_up_show_img_set' src='" + Run.commUpAllImgList[currentChooseTr].data[j].data + "'>")
 };
-Site.commShowPicClose = function (c, b, f) {
+Run.commShowPicClose = function (c, b, f) {
     var a = $("#" + c), e;
     if (a != null && typeof(a) != "undefined") {
         a.remove()
@@ -25706,13 +25706,13 @@ Site.commShowPicClose = function (c, b, f) {
     }
     e.find("td").find(".show_msg_border_rect").remove()
 };
-Site.productCommentAddCom = function (l) {
+Run.productCommentAddCom = function (l) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行评论。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行评论。");
         return
     }
     if (_manageMode && typeof l == "string" && l == "5") {
-        Fai.ing("当前为管理状态，您不能提交评论。");
+        Helper.ing("当前为管理状态，您不能提交评论。");
         return
     }
     var k = $.trim($("#productCommentCreator").val());
@@ -25735,7 +25735,7 @@ Site.productCommentAddCom = function (l) {
         return
     }
     if (b.length < h) {
-        $("#submitTips").text(Fai.format(LS.commentLenTips, Fai.encodeHtml(h))).show();
+        $("#submitTips").text(Helper.format(LS.commentLenTips, Helper.encodeHtml(h))).show();
         return
     }
     if (typeof(f) != "string" || "" == f) {
@@ -25774,14 +25774,14 @@ Site.productCommentAddCom = function (l) {
     $("#submitTips").text(LS.siteFormSubmitIng).show();
     $.ajax({
         type: "POST", url: t, data: j, error: function () {
-            Fai.ing(LS.systemError);
+            Helper.ing(LS.systemError);
             $("#msgBoardCaptchaImg").click()
         }, success: function (i) {
             var x = jQuery.parseJSON(i);
             if (!x || !x.success) {
                 $("#msgBoardCaptchaImg").click()
             }
-            Fai.removeBg();
+            Helper.removeBg();
             switch (x.msg) {
                 case 1:
                     $("#submitTips").text(LS.captchaError).show();
@@ -25793,14 +25793,14 @@ Site.productCommentAddCom = function (l) {
                     $("#submitTips").text(LS.commentError).show();
                     break;
                 case 4:
-                    Fai.top.location.reload();
+                    Helper.top.location.reload();
                     $("#submitTips").text(LS.submitSuccess).show();
                     break;
                 case 5:
                     $("#submitTips").text(LS.paramError).show();
                     break;
                 case 6:
-                    $("#submitTips").html(Fai.format(LS.commentOnlyMember, '<a href="login.php?url=' + Fai.encodeUrl(window.location.href) + '">' + Fai.encodeHtml(LS.login) + "</a>")).show();
+                    $("#submitTips").html(Helper.format(LS.commentOnlyMember, '<a href="login.php?url=' + Helper.encodeUrl(window.location.href) + '">' + Helper.encodeHtml(LS.login) + "</a>")).show();
                     break;
                 case 7:
                     $("#submitTips").text(LS.commentClosed).show();
@@ -25816,9 +25816,9 @@ Site.productCommentAddCom = function (l) {
         }
     })
 };
-Site.showProductQRCode = function (c, a) {
-    var b = ["<div id='productQRCodeDisplay' class='webSiteQRCodeDisplay'>", "<img title='' src='/qrCode.php?cmd=mobiDetailQR&&id=", c, "&lcid=", a, "&t=2' >", "<span>", LS.productORCodeMsg, "</span>", "</div>"];
-    Fai.top.$(b.join("")).appendTo("body");
+Run.showProductQRCode = function (c, a) {
+    var b = ["<div id='productQRCodeDisplay' class='webRunQRCodeDisplay'>", "<img title='' src='/qrCode.php?cmd=mobiDetailQR&&id=", c, "&lcid=", a, "&t=2' >", "<span>", LS.productORCodeMsg, "</span>", "</div>"];
+    Helper.top.$(b.join("")).appendTo("body");
     $("#productQrCode").mouseenter(function (d) {
         $("#productQRCodeDisplay").css("top", $(this).offset().top + "px");
         $("#productQRCodeDisplay").css("left", ($(this).offset().left + 24) + "px");
@@ -25827,26 +25827,26 @@ Site.showProductQRCode = function (c, a) {
         $("#productQRCodeDisplay").hide()
     })
 };
-Site.initRepPropValueOfURL = function () {
+Run.initRepPropValueOfURL = function () {
     var a = new RegExp("https?|ftp|file://");
     $(".pd_J .propValue").each(function (b, d) {
         var c = $(this).text();
         if (a.test(c)) {
-            $(this).html(Fai.replaceContentOfURL(c))
+            $(this).html(Helper.replaceContentOfURL(c))
         }
     })
 };
-Site.salePromotionDetail = {salePromotionParam: "", showType: "2", styleType: "1", saleCountTimeInterval: {}};
-Site.initSalePromotion = function (b, a) {
-    Site.salePromotionDetail.salePromotionParam = b;
-    Site.salePromotionDetail.styleType = a
+Run.salePromotionDetail = {salePromotionParam: "", showType: "2", styleType: "1", saleCountTimeInterval: {}};
+Run.initSalePromotion = function (b, a) {
+    Run.salePromotionDetail.salePromotionParam = b;
+    Run.salePromotionDetail.styleType = a
 };
-Site.onlyChangeSalePrice = function (b) {
+Run.onlyChangeSalePrice = function (b) {
     b = parseFloat(b);
     if (isNaN(b)) {
         return
     }
-    var c = Site.salePromotionDetail.salePromotionParam;
+    var c = Run.salePromotionDetail.salePromotionParam;
     if (typeof(c) == "undefined" || c == null || c == "") {
         return
     }
@@ -25860,15 +25860,15 @@ Site.onlyChangeSalePrice = function (b) {
         if (b < 0) {
             b = 0
         }
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-            $(".J_realMallAmount").html(Fai.formatPriceEn(b))
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+            $(".J_realMallAmount").html(Helper.formatPriceEn(b))
         } else {
             $(".J_realMallAmount").html(b.toFixed(2))
         }
     }
 };
-Site.showSalePromotionDl = function (q, o) {
-    if (Site.salePromotionDetail.showType != "2") {
+Run.showSalePromotionDl = function (q, o) {
+    if (Run.salePromotionDetail.showType != "2") {
         return
     }
     if (typeof(q) == "undefined" || q == null || q == "") {
@@ -25890,14 +25890,14 @@ Site.showSalePromotionDl = function (q, o) {
         var j = m.indexOf("~");
         if (j > 0) {
             priceNumber = parseFloat(m.substring(0, j));
-            if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                m = Fai.formatPriceEn(m.split("~")[0]) + "~" + Fai.formatPriceEn(m.split("~")[1])
+            if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                m = Helper.formatPriceEn(m.split("~")[0]) + "~" + Helper.formatPriceEn(m.split("~")[1])
             }
         } else {
             priceNumber = parseFloat(m);
             m = parseFloat(m).toFixed(2);
-            if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                m = Fai.formatPriceEn(m)
+            if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                m = Helper.formatPriceEn(m)
             }
         }
         if (isNaN(priceNumber)) {
@@ -25907,24 +25907,24 @@ Site.showSalePromotionDl = function (q, o) {
         var l = $("#realMallAmount").attr("curval");
         if (q.other.ruleData.s == "1") {
             if (_lcid == 2052 || _lcid == 1028) {
-                n = Fai.format(LS.salePromotionDisCount, f)
+                n = Helper.format(LS.salePromotionDisCount, f)
             } else {
-                n = Fai.format(LS.salePromotionDisCount, Fai.formatPriceEn(10 * (10 - f), null, true))
+                n = Helper.format(LS.salePromotionDisCount, Helper.formatPriceEn(10 * (10 - f), null, true))
             }
             a = priceNumber * (f / 10)
         } else {
             if (_lcid == 2052 || _lcid == 1028) {
-                n = Fai.format(LS.salePromotionLapse, f)
+                n = Helper.format(LS.salePromotionLapse, f)
             } else {
-                n = Fai.format(LS.salePromotionLapse, Fai.formatPriceEn(f, null, true))
+                n = Helper.format(LS.salePromotionLapse, Helper.formatPriceEn(f, null, true))
             }
             a = priceNumber - f
         }
         if (isNaN(a) || a < 0) {
             a = 0
         }
-        if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-            $("#realMallAmount").html(Fai.formatPriceEn(a))
+        if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+            $("#realMallAmount").html(Helper.formatPriceEn(a))
         } else {
             $("#realMallAmount").html(a.toFixed(2))
         }
@@ -25965,7 +25965,7 @@ Site.showSalePromotionDl = function (q, o) {
         }
         $(".J_saleFullReduce").before(e.join(""));
         var d = "";
-        if ((o == 1 || o == 2 || o == 3) && Fai.isIE6()) {
+        if ((o == 1 || o == 2 || o == 3) && Helper.isIE6()) {
             d = "padding-bottom:10px; margin:0px; line-height:25px;"
         }
         k.push("<td class='saleHoverDefault showSaleReducePrice J_salePromotionRemove' style='" + d + "'>");
@@ -26005,13 +26005,13 @@ Site.showSalePromotionDl = function (q, o) {
                     k.push("<div>")
                 }
                 k.push("<span class='saleFullReBg J_changeSaleCrBd' style='margin:0;background-color:" + g + ";'>");
-                k.push(Fai.format(LS.salePromotionOnlyFullReduce));
+                k.push(Helper.format(LS.salePromotionOnlyFullReduce));
                 k.push("</span>");
                 k.push("<span style='margin:0; margin-left:8px;'>");
-                if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                    k.push(Fai.format(LS.salePromotionFullReduce, Fai.formatPriceEn(q.other.ruleData.d[h].m, null, true), Fai.formatPriceEn(q.other.ruleData.d[h].n, null, true)))
+                if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                    k.push(Helper.format(LS.salePromotionFullReduce, Helper.formatPriceEn(q.other.ruleData.d[h].m, null, true), Helper.formatPriceEn(q.other.ruleData.d[h].n, null, true)))
                 } else {
-                    k.push(Fai.format(LS.salePromotionFullReduce, q.other.ruleData.d[h].m, q.other.ruleData.d[h].n))
+                    k.push(Helper.format(LS.salePromotionFullReduce, q.other.ruleData.d[h].m, q.other.ruleData.d[h].n))
                 }
                 k.push("</span>");
                 k.push("</div>")
@@ -26021,13 +26021,13 @@ Site.showSalePromotionDl = function (q, o) {
             for (var h = 0; h < q.other.ruleData.d.length; h++) {
                 p = (h == 0) ? "" : "f-saleValue";
                 k.push("<span class='saleFullReBg J_changeSaleCrBd fk-mainBgColor " + p + "'>");
-                k.push(Fai.format(LS.salePromotionOnlyFull));
+                k.push(Helper.format(LS.salePromotionOnlyFull));
                 k.push("</span>");
                 k.push("<span class='f-saleDiscount'>");
-                if (Fai.top._lcid != 2052 && Fai.top._lcid != 1028) {
-                    k.push(Fai.format(LS.salePromotionFullReduce, Fai.formatPriceEn(q.other.ruleData.d[h].m, null, true), Fai.formatPriceEn(q.other.ruleData.d[h].n, null, true)))
+                if (Helper.top._lcid != 2052 && Helper.top._lcid != 1028) {
+                    k.push(Helper.format(LS.salePromotionFullReduce, Helper.formatPriceEn(q.other.ruleData.d[h].m, null, true), Helper.formatPriceEn(q.other.ruleData.d[h].n, null, true)))
                 } else {
-                    k.push(Fai.format(LS.salePromotionFullReduce, q.other.ruleData.d[h].m, q.other.ruleData.d[h].n))
+                    k.push(Helper.format(LS.salePromotionFullReduce, q.other.ruleData.d[h].m, q.other.ruleData.d[h].n))
                 }
                 k.push("</span>")
             }
@@ -26038,25 +26038,25 @@ Site.showSalePromotionDl = function (q, o) {
         $(".J_saleFullReduce").after(k.join(""))
     }
 };
-Site.changeSaleColor = function () {
-    var a = Site.getTopWindow().$(".J_realMallAmount").css("color");
+Run.changeSaleColor = function () {
+    var a = Run.getTopWindow().$(".J_realMallAmount").css("color");
     if (typeof(a) == "undefined" || a == null || a == "") {
-        a = Site.getTopWindow().$("#realMallAmount").css("color");
+        a = Run.getTopWindow().$("#realMallAmount").css("color");
         if (typeof(a) == "undefined" || a == null || a == "") {
             a = "#FC4643"
         }
     }
-    Site.getTopWindow().$(".J_changeSaleCrBb").css("border-bottom-color", a);
-    Site.getTopWindow().$(".J_changeSaleCrW").css("color", a);
-    Site.getTopWindow().$(".J_changeSaleCrBd").css("background-color", a)
+    Run.getTopWindow().$(".J_changeSaleCrBb").css("border-bottom-color", a);
+    Run.getTopWindow().$(".J_changeSaleCrW").css("color", a);
+    Run.getTopWindow().$(".J_changeSaleCrBd").css("background-color", a)
 };
-Site.saleCountTimeInterval = {};
-Site.showSaleTimeCountDown = function (b, f, d, e) {
+Run.saleCountTimeInterval = {};
+Run.showSaleTimeCountDown = function (b, f, d, e) {
     var h = "";
     var c = LS.salePromotionBegin;
     var g = LS.salePromotionEnd;
     var a = 0;
-    Site.salePromotionDetail.showType = d;
+    Run.salePromotionDetail.showType = d;
     if (d == 1) {
         h = c;
         a = b
@@ -26064,8 +26064,8 @@ Site.showSaleTimeCountDown = function (b, f, d, e) {
         h = g;
         a = f
     }
-    clearInterval(Site.salePromotionDetail.saleCountTimeInterval);
-    Site.salePromotionDetail.saleCountTimeInterval = setInterval(function () {
+    clearInterval(Run.salePromotionDetail.saleCountTimeInterval);
+    Run.salePromotionDetail.saleCountTimeInterval = setInterval(function () {
         var q = parseInt(a / (3600 * 24));
         var o = parseInt(a / 3600) - (q * 24);
         var m = parseInt(a / 60) - (q * 24 * 60) - (o * 60);
@@ -26082,7 +26082,7 @@ Site.showSaleTimeCountDown = function (b, f, d, e) {
             }
         }
         a--;
-        var j = Fai.format(h, q, o, m, p);
+        var j = Helper.format(h, q, o, m, p);
         if (e == 2 || e == 3) {
             var l = j.indexOf(":");
             if (l < 0) {
@@ -26094,7 +26094,7 @@ Site.showSaleTimeCountDown = function (b, f, d, e) {
                 $(".showSaleTimeNameClass").html(n);
                 $(".showSaleTimeClass").html(k)
             } else {
-                $(".showSaleTimeClass").html(Fai.format(h, q, o, m, p))
+                $(".showSaleTimeClass").html(Helper.format(h, q, o, m, p))
             }
         } else {
             $(".showSaleTimeClass").text(j)
@@ -26104,11 +26104,11 @@ Site.showSaleTimeCountDown = function (b, f, d, e) {
                 a = f;
                 h = g;
                 d = 2;
-                Site.salePromotionDetail.showType = 2;
-                Site.showSalePromotionDl(Site.salePromotionDetail.salePromotionParam, Site.salePromotionDetail.styleType)
+                Run.salePromotionDetail.showType = 2;
+                Run.showSalePromotionDl(Run.salePromotionDetail.salePromotionParam, Run.salePromotionDetail.styleType)
             } else {
-                clearInterval(Site.salePromotionDetail.saleCountTimeInterval);
-                Site.salePromotionDetail.showType = 1;
+                clearInterval(Run.salePromotionDetail.saleCountTimeInterval);
+                Run.salePromotionDetail.showType = 1;
                 var i = $(".J_realMallAmount").attr("style");
                 $(".realMallAmount").removeClass("g_minor mallMarketPrice");
                 $(".realMallAmount").addClass("g_stress mallPriceBig");
@@ -26118,7 +26118,7 @@ Site.showSaleTimeCountDown = function (b, f, d, e) {
         }
     }, 1000)
 };
-Site.initModuleProductMallGroups = function (a, d, g, e) {
+Run.initModuleProductMallGroups = function (a, d, g, e) {
     var b = $("#module" + a), h = b.find(".pd_mall_G_J .p_m_cotainer_J");
     var c = false;
     if (typeof b.find(".pd_mall_G_J").menuAim == "function") {
@@ -26152,19 +26152,19 @@ Site.initModuleProductMallGroups = function (a, d, g, e) {
             idStr: "group" + C + "Panel",
             contentStr: H.join("")
         };
-        panel = Site.moduleSubPanel(r);
+        panel = Run.moduleSubPanel(r);
         var m = b.find(".formBanner"), N = 0;
         if (m.length > 0 && m.is(":visible")) {
             N = m.outerHeight()
         }
         var z = b.find(".formMiddleRight").outerWidth();
-        if (Fai.isIE8()) {
+        if (Helper.isIE8()) {
             z = 0
         }
         var o = b.find(".formMiddleCenter").width(), s = b.find(".pd_mall_G_J").width(), M = b.offset().top + N,
             q = b.offset().left + b.outerWidth() - ((o - s) / 2) - 2 - z;
         panel.css({top: M, left: q}).show();
-        if (Fai.isIE6()) {
+        if (Helper.isIE6()) {
             var O = panel.find(".p_m_body_J").outerWidth();
             panel.width(O)
         }
@@ -26203,7 +26203,7 @@ Site.initModuleProductMallGroups = function (a, d, g, e) {
 
     function i(m) {
         var l = $(m);
-        Fai.top.$(".g_m_s_J").each(function () {
+        Helper.top.$(".g_m_s_J").each(function () {
             var n = $(this);
             if (n.length != 1) {
                 return
@@ -26229,16 +26229,16 @@ Site.initModuleProductMallGroups = function (a, d, g, e) {
             if (g === 1 || g === 2) {
                 $.each(l.list, function (o, p) {
                     if (e !== 1 && _manageMode) {
-                        m = "onclick=\"Site.redirectUrl('" + p._href + "', '_self', event, 1, 0);return false;\""
+                        m = "onclick=\"Run.redirectUrl('" + p._href + "', '_self', event, 1, 0);return false;\""
                     }
                     n.push("<dl>");
-                    n.push("<dt><a class='g_stress' href='" + p._href + "' " + m + ">" + Fai.encodeHtml(p.name) + "</a></dt>");
+                    n.push("<dt><a class='g_stress' href='" + p._href + "' " + m + ">" + Helper.encodeHtml(p.name) + "</a></dt>");
                     n.push("<dd>");
                     $.each(p.children, function (q, r) {
                         if (e !== 1 && _manageMode) {
-                            m = "onclick=\"Site.redirectUrl('" + r._href + "', '_self', event, 1, 0);return false;\""
+                            m = "onclick=\"Run.redirectUrl('" + r._href + "', '_self', event, 1, 0);return false;\""
                         }
-                        n.push("<a href='" + r._href + "' " + m + " title='" + Fai.encodeHtml(r.name) + "'>" + Fai.encodeHtml(r.name) + "</a>")
+                        n.push("<a href='" + r._href + "' " + m + " title='" + Helper.encodeHtml(r.name) + "'>" + Helper.encodeHtml(r.name) + "</a>")
                     });
                     n.push("</dd>");
                     n.push("</dl>");
@@ -26247,15 +26247,15 @@ Site.initModuleProductMallGroups = function (a, d, g, e) {
             } else {
                 $.each(l.list, function (o, p) {
                     if (e !== 1 && _manageMode) {
-                        m = "onclick=\"Site.redirectUrl('" + p._href + "', '_self', event, 1, 0);return false;\""
+                        m = "onclick=\"Run.redirectUrl('" + p._href + "', '_self', event, 1, 0);return false;\""
                     }
                     n.push("<dl>");
-                    n.push("<dt><a class='g_stress' href='" + p._href + "' " + m + ">" + Fai.encodeHtml(p.name) + "</a></dt>");
+                    n.push("<dt><a class='g_stress' href='" + p._href + "' " + m + ">" + Helper.encodeHtml(p.name) + "</a></dt>");
                     $.each(p.children, function (q, r) {
                         if (e !== 1 && _manageMode) {
-                            m = "onclick=\"Site.redirectUrl('" + r._href + "', '_self', event, 1, 0);return false;\""
+                            m = "onclick=\"Run.redirectUrl('" + r._href + "', '_self', event, 1, 0);return false;\""
                         }
-                        n.push("<dd><a href='" + r._href + "' " + m + " title='" + Fai.encodeHtml(r.name) + "'>" + Fai.encodeHtml(r.name) + "</a></dd>")
+                        n.push("<dd><a href='" + r._href + "' " + m + " title='" + Helper.encodeHtml(r.name) + "'>" + Helper.encodeHtml(r.name) + "</a></dd>")
                     });
                     n.push("</dl>");
                     if ((o + 1) % 3 == 0 || (o + 1) == l.list.length) {
@@ -26266,16 +26266,16 @@ Site.initModuleProductMallGroups = function (a, d, g, e) {
         } else {
             $.each(l.list, function (o, p) {
                 if (e !== 1 && _manageMode) {
-                    m = "onclick=\"Site.redirectUrl('" + p._href + "', '_self', event, 1, 0);return false;\""
+                    m = "onclick=\"Run.redirectUrl('" + p._href + "', '_self', event, 1, 0);return false;\""
                 }
-                n.push("<a class='p_m_line g_stress' href='" + p._href + "' " + m + ">" + Fai.encodeHtml(p.name) + "</a>")
+                n.push("<a class='p_m_line g_stress' href='" + p._href + "' " + m + ">" + Helper.encodeHtml(p.name) + "</a>")
             })
         }
         n.push("</div>");
         return n
     }
 };
-Site.createImageEffectContent_product = function (h, n, i, c) {
+Run.createImageEffectContent_product = function (h, n, i, c) {
     if (!c) {
         return
     }
@@ -26349,10 +26349,10 @@ Site.createImageEffectContent_product = function (h, n, i, c) {
                 if ($(A).height() < b) {
                     if ((s == 11 || s == 12) && t) {
                         if (s == 12) {
-                            x = "<span class='effect_second_Marketprice fk-prop-marketprice'>" + Fai.top._choiceCurrencyVal + x + "</span>";
+                            x = "<span class='effect_second_Marketprice fk-prop-marketprice'>" + Helper.top._choiceCurrencyVal + x + "</span>";
                             tempStr = B + x
                         } else {
-                            x = "<span class='propValue  g_stress mallPrice fk-prop-price'>" + Fai.top._choiceCurrencyVal + x + "</span>";
+                            x = "<span class='propValue  g_stress mallPrice fk-prop-price'>" + Helper.top._choiceCurrencyVal + x + "</span>";
                             tempStr = B + x
                         }
                     } else {
@@ -26390,35 +26390,35 @@ Site.createImageEffectContent_product = function (h, n, i, c) {
         }).bind("mouseleave", function () {
             $(this).removeClass("propBuy_hover")
         });
-        if (Fai.isIE6() || Fai.isIE7()) {
+        if (Helper.isIE6() || Helper.isIE7()) {
             $(f).find(".propBuy").bind("click", function () {
                 var o = $(this).attr("data-click");
                 if (o.length > 0) {
-                    Fai.fkEval(o)
+                    Helper.fkEval(o)
                 }
             })
         }
     }
 };
-Site.clearImageEffectContent_product = function (b, a) {
+Run.clearImageEffectContent_product = function (b, a) {
     $("#module" + b).find("." + a).remove();
     if ($("#module" + b).find(".mallPanel").length > 0) {
         $("#module" + b).find(".mallPanel").remove()
     }
 };
-Site.bindImageEffectCusEvent_product = function (c, a) {
+Run.bindImageEffectCusEvent_product = function (c, a) {
     var b = $(c).find(".imageEffects");
     $(b).css("cursor", "pointer");
     $(b).bind("click", function () {
         var g = $(this).parents("." + a.targetParent).find("a");
-        if (Fai.isNull(g)) {
+        if (Helper.isNull(g)) {
             return
         }
         var e = $(g).attr("href");
         var d = $(g).attr("onclick");
         var f = $(g).attr("target");
         if (typeof d != "undefined") {
-            Fai.fkEval(d)
+            Helper.fkEval(d)
         } else {
             if (e.length > 0) {
                 window.open(e, f)
@@ -26426,9 +26426,9 @@ Site.bindImageEffectCusEvent_product = function (c, a) {
         }
     })
 };
-Site.initModuleProductResultPropFilter = function (d) {
+Run.initModuleProductResultPropFilter = function (d) {
     var c = $("#module" + d), e = c.find(".fp_list_J"), f = e.find(".fp_block_J");
-    if (Fai.isIE6() || Fai.isIE7() || Fai.isIE8()) {
+    if (Helper.isIE6() || Helper.isIE7() || Helper.isIE8()) {
         var a = e.find(".block_head_J").outerWidth();
         e.find(".block_body_J").width(e.width() - a)
     }
@@ -26459,11 +26459,11 @@ Site.initModuleProductResultPropFilter = function (d) {
     $("#conds_body_sel").change(function () {
         window.location.href = $(this).val()
     });
-    if (Fai.top._manageMode) {
+    if (Helper.top._manageMode) {
         $("#pf_tips").hover(function () {
             var g = $(this);
             tipImgW = g.width(), tipTop = g.offset().top, tipLeft = g.offset().left, str = "<div id='pf_tips_Msg' class='pf_tips_Msg g_tip'>" + g.attr("_tipVal") + "</div>";
-            Fai.top.$(str).appendTo("body");
+            Helper.top.$(str).appendTo("body");
             var h = $("#pf_tips_Msg");
             h.offset({top: tipTop - h.outerHeight() - 10, left: tipLeft})
         }, function () {
@@ -26471,35 +26471,35 @@ Site.initModuleProductResultPropFilter = function (d) {
         })
     }
 };
-Site.productResultPropFilterSearch = function (a) {
+Run.productResultPropFilterSearch = function (a) {
     $("#searchButton").click(function () {
         var b = $("#searchCondInput").val();
-        b = Fai.encodeUrl($.trim(b));
+        b = Helper.encodeUrl($.trim(b));
         if (!b) {
-            Fai.top.location.href = "pr.php?pfc=" + Fai.encodeUrl($.toJSON(a))
+            Helper.top.location.href = "pr.php?pfc=" + Helper.encodeUrl($.toJSON(a))
         }
         if (a) {
-            Fai.top.location.href = "pr.php?keywordCond=" + b + "&pfc=" + Fai.encodeUrl($.toJSON(a))
+            Helper.top.location.href = "pr.php?keywordCond=" + b + "&pfc=" + Helper.encodeUrl($.toJSON(a))
         } else {
-            Fai.top.location.href = "pr.php?keywordCond=" + b
+            Helper.top.location.href = "pr.php?keywordCond=" + b
         }
     });
     $("#searchCondInput").keydown(function (b) {
         if (b.keyCode == 13) {
             var c = $("#searchCondInput").val();
-            c = Fai.encodeUrl($.trim(c));
+            c = Helper.encodeUrl($.trim(c));
             if (!c) {
-                Fai.top.location.href = "pr.php?pfc=" + Fai.encodeUrl($.toJSON(a))
+                Helper.top.location.href = "pr.php?pfc=" + Helper.encodeUrl($.toJSON(a))
             }
             if (a) {
-                Fai.top.location.href = "pr.php?keywordCond=" + c + "&pfc=" + Fai.encodeUrl($.toJSON(a))
+                Helper.top.location.href = "pr.php?keywordCond=" + c + "&pfc=" + Helper.encodeUrl($.toJSON(a))
             } else {
-                Fai.top.location.href = "pr.php?keywordCond=" + c
+                Helper.top.location.href = "pr.php?keywordCond=" + c
             }
         }
     })
 };
-Site.productResultPriceCondFilter = function (b) {
+Run.productResultPriceCondFilter = function (b) {
     var a = false;
     $("#sort_priceMin").bind("focus", function () {
         $("#sort_priceMin").removeClass("sort_priceArea");
@@ -26572,7 +26572,7 @@ Site.productResultPriceCondFilter = function (b) {
             c.v = f;
             i.push(c)
         }
-        Fai.top.location.href = "pr.php?pfc=" + Fai.encodeUrl($.toJSON(b))
+        Helper.top.location.href = "pr.php?pfc=" + Helper.encodeUrl($.toJSON(b))
     });
     $("#sort_priceMin").bind("blur", function () {
         a = false;
@@ -26613,18 +26613,18 @@ Site.productResultPriceCondFilter = function (b) {
         }, 250)
     })
 };
-Site.initPdPagenation = function (a) {
+Run.initPdPagenation = function (a) {
     $("#pagenation" + a).on("click.product", ".pageNo", function () {
         var b = $(this);
         b.addClass("fk-select")
     })
 };
-Site.setProductStatify = function (a, b, k) {
+Run.setProductStatify = function (a, b, k) {
     var j = $("#module" + a), h = j.find(".J_proSatifySum"), l, f, n, e;
     if (h.length < 1) {
         return
     }
-    var m = Fai.isIE6() || Fai.isIE7(), d = "J_select", g = "J_noSelect fk-noSelect";
+    var m = Helper.isIE6() || Helper.isIE7(), d = "J_select", g = "J_noSelect fk-noSelect";
     if (m) {
         d = "lt_select_more";
         g = "lt_no_select"
@@ -26646,7 +26646,7 @@ Site.setProductStatify = function (a, b, k) {
         e.text(k)
     }
 };
-Site.initProDetailStyle = function (p, v, h, d) {
+Run.initProDetailStyle = function (p, v, h, d) {
     var f = $("#module" + p), j = f.find(".formBanner" + p), a = f.find(".J_productDetail").width(),
         n = f.find(".pdTableLayout").width(), e = false, u, b, g, o, s, l, c, i, k, t, q, m, r;
     f.removeClass("fk-proDetaliModuleStyle");
@@ -26690,7 +26690,7 @@ Site.initProDetailStyle = function (p, v, h, d) {
         }
     }
 };
-Site.initProDetailPage = function (b, d, a) {
+Run.initProDetailPage = function (b, d, a) {
     $("#singleProductpagenation" + b).find("a").hover(function () {
         $(this).addClass("g_hover")
     }, function () {
@@ -27377,12 +27377,12 @@ Site.initProDetailPage = function (b, d, a) {
             return m
         }
     }
-})(Fai, Site, undefined);
-Site.newsScroll = function (l) {
+})(Helper, Run, undefined);
+Run.newsScroll = function (l) {
     var g = {pauseDuration: 2400, showDuration: 600, scrollMode: "up"}, c = $.extend({}, g, l),
         a = "scroll" + c.moduleId, d = $("#module" + c.moduleId), b = d.find(".newsList");
     b.stop(true, true);
-    Fai.stopInterval(a);
+    Helper.stopInterval(a);
     if (l.noScroll) {
         return
     }
@@ -27390,25 +27390,25 @@ Site.newsScroll = function (l) {
     var f = c.leader || 0;
     d.on("mouseover.newsScroll", function () {
         b.stop();
-        Fai.stopInterval(a);
+        Helper.stopInterval(a);
         $(this).attr("scrollInterval", 0)
     }).on("mouseout.newsScroll", function () {
         if ($(this).attr("scrollInterval") == 0) {
             b.stop();
-            Fai.stopInterval(a);
-            Fai.startInterval(a);
+            Helper.stopInterval(a);
+            Helper.startInterval(a);
             $(this).attr("scrollInterval", 1)
         }
     });
     (k, d).on("mouseover.newsScroll", function () {
         b.stop();
-        Fai.stopInterval(a);
+        Helper.stopInterval(a);
         $(this).attr("scrollInterval", 0)
     }).on("mouseout.newsScroll", function () {
         if ($(this).attr("scrollInterval") == 0) {
             b.stop();
-            Fai.stopInterval(a);
-            Fai.startInterval(a);
+            Helper.stopInterval(a);
+            Helper.startInterval(a);
             $(this).attr("scrollInterval", 1)
         }
     });
@@ -27476,8 +27476,8 @@ Site.newsScroll = function (l) {
             }
         }
 
-        Fai.addTimeout(a, m, c.pauseDuration);
-        Fai.startInterval(a)
+        Helper.addTimeout(a, m, c.pauseDuration);
+        Helper.startInterval(a)
     }
 
     function e() {
@@ -27486,7 +27486,7 @@ Site.newsScroll = function (l) {
 
     i()
 };
-Site.loadNewsList = function (h, g, c) {
+Run.loadNewsList = function (h, g, c) {
     var d = $("#module" + h).find(".newsList");
     if (d.length == 0) {
         return
@@ -27499,9 +27499,9 @@ Site.loadNewsList = function (h, g, c) {
             var t = r.find(">a");
             var u = 0;
             $.each(t, function (w, v) {
-                u += $(v).outerWidth() + Fai.getCssInt($(v), "margin-right")
+                u += $(v).outerWidth() + Helper.getCssInt($(v), "margin-right")
             });
-            var k = u + Fai.getCssInt(r, "padding-left") + Fai.getCssInt(r, "padding-right") + 5;
+            var k = u + Helper.getCssInt(r, "padding-left") + Helper.getCssInt(r, "padding-right") + 5;
             if (typeof a.nt == "undefined" || a.nt < k) {
                 if (k > 300) {
                     k = 300
@@ -27527,7 +27527,7 @@ Site.loadNewsList = function (h, g, c) {
         var m = p.find(".newsCalendar");
         if (m.length != 0) {
             var o = m.find(">a").first().outerWidth();
-            var s = o + Fai.getCssInt(m, "padding-left") + Fai.getCssInt(m, "padding-right") + 5;
+            var s = o + Helper.getCssInt(m, "padding-left") + Helper.getCssInt(m, "padding-right") + 5;
             if (typeof a.nc == "undefined" || a.nc < s) {
                 a.nc = s
             }
@@ -27578,7 +27578,7 @@ Site.loadNewsList = function (h, g, c) {
         }
     });
     d.find(".word").css({display: "block", width: "100%"});
-    if (Fai.isIE6() && (d.find(".wWLine").length > 0)) {
+    if (Helper.isIE6() && (d.find(".wWLine").length > 0)) {
         d.find(".line").each(function () {
             $(this).height($(this).height())
         });
@@ -27618,7 +27618,7 @@ Site.loadNewsList = function (h, g, c) {
         })
     }
     d.find(".lineHeader").first().addClass("firstHeader");
-    Site.initContentSplitLine(h, g)
+    Run.initContentSplitLine(h, g)
 };
 function fixHoverNewsListPicTitleWidth(a, g) {
     var e = $("#module" + a), c = e.find(".newsList");
@@ -27628,17 +27628,17 @@ function fixHoverNewsListPicTitleWidth(a, g) {
         var i = c.find(".articlePhotoBox img").width() || 0;
         var f = g.find(".mixNewsStyleDate").width() || 0;
         var h = parseInt(b) - parseInt(f) - parseInt(i) - 40;
-        if (Fai.isIE6()) {
+        if (Helper.isIE6()) {
             h -= 20
         }
         d.css({width: h + "px"})
     }
 }
-Site.loadNewsNewStyle = function (n, b, q, m, f, h, i, p, r, s) {
+Run.loadNewsNewStyle = function (n, b, q, m, f, h, i, p, r, s) {
     var c = $("#module" + n);
     var v = c.find(".newsList");
     var g = c.width();
-    var j = Fai.top._isTemplateVersion2 ? "newsCircle_hover" : "g_block";
+    var j = Helper.top._isTemplateVersion2 ? "newsCircle_hover" : "g_block";
     if (v.length == 0) {
         return
     }
@@ -27716,7 +27716,7 @@ Site.loadNewsNewStyle = function (n, b, q, m, f, h, i, p, r, s) {
             v.find(".newsCalendar").css({display: "block", "text-align": "left"})
         } else {
             v.find(".newsTitle").css({width: "75%"});
-            if (Fai.isIE6() || Fai.isIE7()) {
+            if (Helper.isIE6() || Helper.isIE7()) {
                 v.find(".newsTitle").css({"float": "left"});
                 v.find(".newsCalendar").css({"float": "right"})
             }
@@ -27729,7 +27729,7 @@ Site.loadNewsNewStyle = function (n, b, q, m, f, h, i, p, r, s) {
                 v.find(".lineBody").css({width: "100%"})
             } else {
                 t = v.find(".J_newsListLine .J_newsCalendar").outerWidth(true);
-                if (Fai.top._manageMode) {
+                if (Helper.top._manageMode) {
                     v.find(".lineBody").css({
                         width: "-moz-calc(100% - " + t + "px)",
                         width: "-webkit-calc(100% - " + t + "px)",
@@ -27766,7 +27766,7 @@ Site.loadNewsNewStyle = function (n, b, q, m, f, h, i, p, r, s) {
             return
         }
         var k = d.position().left + parseInt(d.css("margin-left").replace("px", "")) + d.width() / 2;
-        if (Fai.isIE6() || Fai.isIE7()) {
+        if (Helper.isIE6() || Helper.isIE7()) {
             v.find(".J_timeLine").css({
                 height: e - 20 + "px",
                 left: d.position().left + d.width() / 2 + parseInt(d.css("margin-left").replace("px", "")) + a + "px"
@@ -27807,18 +27807,18 @@ Site.loadNewsNewStyle = function (n, b, q, m, f, h, i, p, r, s) {
         }
     }
 };
-Site.getNewsListStyleData = function (c) {
-    var b = Fai.top.newsListStyleData, a;
+Run.getNewsListStyleData = function (c) {
+    var b = Helper.top.newsListStyleData, a;
     if (!b) {
         return
     }
     a = b["newsListStyle" + c] || {};
     return a
 };
-Site.setNewsListImgSize = function (l, p) {
-    var e = $("#module" + l), t = Site.getModuleAttrPattern(l).newsList, u = e.find("#newsList" + l),
+Run.setNewsListImgSize = function (l, p) {
+    var e = $("#module" + l), t = Run.getModuleAttrPattern(l).newsList, u = e.find("#newsList" + l),
         f = e.find(".J_newsListLine"), o = f.find(".J_articlePicHref"), r = e.find(".J_articlePhotoBox"),
-        n = o.find(".J_newsListPic"), c = Site.getNewsListStyleData(l), d = t.tw || false, m = t.ps.t || false,
+        n = o.find(".J_newsListPic"), c = Run.getNewsListStyleData(l), d = t.tw || false, m = t.ps.t || false,
         g = c.isNewModuleStyleFour || false, i = parseFloat(c.picPaddingRight), q = parseFloat(c.picPaddingBottom),
         j = c.pictureDefaultHeight || 107, k = c.pictureDefaultWidth || 152, b = e.width(), h, s, a;
     if (p) {
@@ -27843,19 +27843,19 @@ Site.setNewsListImgSize = function (l, p) {
         if (b <= 400) {
             f.css({"margin-left": "", width: "198px", height: "auto"});
             if (!m) {
-                Site.setNewsListDefaultPicSize(e)
+                Run.setNewsListDefaultPicSize(e)
             }
         } else {
             f.css({"margin-left": "30px", width: h});
-            Site.setNewsListLineMaxHeight(f)
+            Run.setNewsListLineMaxHeight(f)
         }
     }
-    Site.resetNewScroll(l, parseInt(t.ls.t))
+    Run.resetNewScroll(l, parseInt(t.ls.t))
 };
-Site.setNewsClassifyStyle = function (d, f) {
+Run.setNewsClassifyStyle = function (d, f) {
     var a, n, k, e, q, g, b, l, i, p, c, j, m, o, h;
-    m = Site.getModuleAttrPattern(d);
-    o = Fai.top.$("#module" + d);
+    m = Run.getModuleAttrPattern(d);
+    o = Helper.top.$("#module" + d);
     $newsModule = o.find("#newsList" + d);
     a = $newsModule.find(".J_lineBody");
     i = a.find(".J_articlePhotoBox");
@@ -27883,17 +27883,17 @@ Site.setNewsClassifyStyle = function (d, f) {
         }
     })
 };
-Site.refreshNewsListStyle = function (c, b) {
+Run.refreshNewsListStyle = function (c, b) {
     var a;
     if (b) {
-        a = Site.getModuleAttrPattern(c).newsList;
-        Site.setNewsListImgSize(c, parseInt(a.ps.t));
-        Site.refreshNewsTimeLine(c)
+        a = Run.getModuleAttrPattern(c).newsList;
+        Run.setNewsListImgSize(c, parseInt(a.ps.t));
+        Run.refreshNewsTimeLine(c)
     }
-    Site.setNewsClassifyStyle(c, b)
+    Run.setNewsClassifyStyle(c, b)
 };
-Site.refreshNewsTimeLine = function (l) {
-    var e = Site.getNewsListStyleData(l), q = Site.getModuleAttrPattern(l).newsList, r, d, f, n, h, c, a, j, i, s, m, g,
+Run.refreshNewsTimeLine = function (l) {
+    var e = Run.getNewsListStyleData(l), q = Run.getModuleAttrPattern(l).newsList, r, d, f, n, h, c, a, j, i, s, m, g,
         b, o, k, p;
     g = e.isNewModuleStyleOne;
     s = e.isNewModuleStyleTwo;
@@ -27952,7 +27952,7 @@ Site.refreshNewsTimeLine = function (l) {
         }
     }
 };
-Site.setNewsListDefaultPicSize = function (a) {
+Run.setNewsListDefaultPicSize = function (a) {
     $articlePhotoBox = a.find(".J_articlePhotoBox");
     $articlePhotoBox.find(".cutImgPanel").each(function (c, e) {
         var d = $(this).find("img").width() / $(this).find("img").height();
@@ -27968,26 +27968,26 @@ Site.setNewsListDefaultPicSize = function (a) {
         $(c).parent().css({width: "198px", height: "124px"})
     })
 };
-Site.resetNewScroll = function (a, h) {
-    var i = $("#module" + a), k = Site.getModuleAttrPattern(a).newsList, b = "scroll" + a, c = i.find("#newsList" + a),
+Run.resetNewScroll = function (a, h) {
+    var i = $("#module" + a), k = Run.getModuleAttrPattern(a).newsList, b = "scroll" + a, c = i.find("#newsList" + a),
         d = "down", j = c.find(".J_newsListLine"), g, f, e;
     c.stop(true, true);
-    Fai.top.Fai.stopInterval("scroll" + a);
+    Helper.top.Helper.stopInterval("scroll" + a);
     j.off("mouseover.newsScroll mouseout.newsScroll");
     i.off("mouseover.newsScroll mouseout.newsScroll");
     c.css({height: "", top: "", position: ""});
     c.parent().css({height: "", overflow: "", position: ""});
     if (h) {
         d = (parseInt(k.ls.d)) ? "up" : "down";
-        g = Site.getNewsListStyleData(a);
+        g = Run.getNewsListStyleData(a);
         f = g.isPictureStyle;
         e = f ? 1 : 0;
         c.height("auto");
         c.parent().height("auto");
-        Fai.top.Site.newsScroll({moduleId: a, scrollMode: d, leader: e, noScroll: false})
+        Helper.top.Run.newsScroll({moduleId: a, scrollMode: d, leader: e, noScroll: false})
     }
 };
-Site.setNewsListLineMaxHeight = function (b) {
+Run.setNewsListLineMaxHeight = function (b) {
     var a = 0;
     if (b.length < 1) {
         return
@@ -28004,14 +28004,14 @@ Site.setNewsListLineMaxHeight = function (b) {
     });
     b.css({height: a + "px"})
 };
-Site.afterAddNews = function (a) {
+Run.afterAddNews = function (a) {
     if (typeof(a) != "undefined") {
         document.location.reload()
     }
 };
-Site.newsAddComment = function () {
+Run.newsAddComment = function () {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行评论。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行评论。");
         return
     }
     var b = $.trim($("#commentCreator").val());
@@ -28034,7 +28034,7 @@ Site.newsAddComment = function () {
         return
     }
     if (f.length < h) {
-        $("#submitTips").text(Fai.format(LS.commentLenTips, Fai.encodeHtml(h))).show();
+        $("#submitTips").text(Helper.format(LS.commentLenTips, Helper.encodeHtml(h))).show();
         return
     }
     if (!$(".J_newsCommentCaptcha").hasClass("captchaHide")) {
@@ -28048,14 +28048,14 @@ Site.newsAddComment = function () {
     $("#submitTips").text(LS.siteFormSubmitIng).show();
     $.ajax({
         type: "POST", url: e, data: d, error: function () {
-            Fai.ing(LS.systemError, false);
+            Helper.ing(LS.systemError, false);
             $("#msgBoardCaptchaImg").click()
         }, success: function (j) {
             var k = jQuery.parseJSON(j);
             if (!k || !k.success) {
                 $("#msgBoardCaptchaImg").click()
             }
-            Fai.removeBg();
+            Helper.removeBg();
             switch (k.msg) {
                 case 1:
                     $("#submitTips").text(LS.captchaError).show();
@@ -28067,14 +28067,14 @@ Site.newsAddComment = function () {
                     $("#submitTips").text(LS.commentError).show();
                     break;
                 case 4:
-                    Fai.top.location.reload();
+                    Helper.top.location.reload();
                     $("#submitTips").text(LS.submitSuccess).show();
                     break;
                 case 5:
                     $("#submitTips").text(LS.paramError).show();
                     break;
                 case 6:
-                    $("#submitTips").html(Fai.format(LS.commentOnlyMember, '<a href="login.php?url=' + Fai.encodeUrl(window.location.href) + '">' + Fai.encodeHtml(LS.login) + "</a>")).show();
+                    $("#submitTips").html(Helper.format(LS.commentOnlyMember, '<a href="login.php?url=' + Helper.encodeUrl(window.location.href) + '">' + Helper.encodeHtml(LS.login) + "</a>")).show();
                     break;
                 case 7:
                     $("#submitTips").text(LS.commentClosed).show();
@@ -28096,9 +28096,9 @@ Site.newsAddComment = function () {
         }
     })
 };
-Site.showNewsQRCode = function (c, a) {
-    var b = ["<div id='newsQRCodeDisplay' class='webSiteQRCodeDisplay'>", "<img title='' src='/qrCode.php?cmd=mobiDetailQR&id=", c, "&lcid=", a, "&t=1' >", "<span>", LS.newsQRCodeMsg, "</span>", "</div>"];
-    Fai.top.$(b.join("")).appendTo("body");
+Run.showNewsQRCode = function (c, a) {
+    var b = ["<div id='newsQRCodeDisplay' class='webRunQRCodeDisplay'>", "<img title='' src='/qrCode.php?cmd=mobiDetailQR&id=", c, "&lcid=", a, "&t=1' >", "<span>", LS.newsQRCodeMsg, "</span>", "</div>"];
+    Helper.top.$(b.join("")).appendTo("body");
     $("#newsQrCode").mouseenter(function (d) {
         $("#newsQRCodeDisplay").css("top", $(this).offset().top + "px");
         $("#newsQRCodeDisplay").css("left", ($(this).offset().left + 24) + "px");
@@ -28107,7 +28107,7 @@ Site.showNewsQRCode = function (c, a) {
         $("#newsQRCodeDisplay").hide()
     })
 };
-Site.initMixNews = function (l) {
+Run.initMixNews = function (l) {
     var g = l.leader || 0;
     var e = $("#module" + l.moduleId), b = e.find(".newsList"), i = b.parent();
     var d = b.find(".mixNewsStyleTitle");
@@ -28116,7 +28116,7 @@ Site.initMixNews = function (l) {
         var f = b.find(".mixNewsStyleDate").width() || 0;
         var k = b.find(".articlePhotoBox img").width() || 0;
         var h = parseInt(a) - parseInt(f) - parseInt(k) - 40;
-        if (Fai.isIE6()) {
+        if (Helper.isIE6()) {
             h -= 20
         }
         d.css({width: h + "px"});
@@ -28126,18 +28126,18 @@ Site.initMixNews = function (l) {
             d.removeClass("mixNewsStyleTitle-hide")
         }
     }
-    if (Fai.isIE6() && g != 0) {
+    if (Helper.isIE6() && g != 0) {
         var j = b.find("td.newsTitle").height();
         b.find(".line").eq(0).css({height: j + "px"})
     }
-    var c = Fai.top.$("#module" + l.moduleId);
-    c.on("Fai_onModuleLayoutChange", function () {
+    var c = Helper.top.$("#module" + l.moduleId);
+    c.on("Helper_onModuleLayoutChange", function () {
         var p = $(this).find(".newsList");
         var t = p.parent();
         var s = p.find(".mixNewsStyleTitle");
         p.css({height: "auto"});
         t.css({height: "auto"});
-        if (Fai.isIE6() && g != 0) {
+        if (Helper.isIE6() && g != 0) {
             var m = p.find("td.newsTitle").height();
             p.find(".line").eq(0).css({height: m + "px"})
         }
@@ -28146,7 +28146,7 @@ Site.initMixNews = function (l) {
             var o = p.find(".mixNewsStyleDate").width() || 0;
             var n = p.find(".articlePhotoBox img").width() || 0;
             var q = parseInt(r) - parseInt(o) - parseInt(n) - 40;
-            if (Fai.isIE6()) {
+            if (Helper.isIE6()) {
                 q -= 20
             }
             p.find(".mixNewsStyleTitle").css({width: q + "px"});
@@ -28156,28 +28156,28 @@ Site.initMixNews = function (l) {
                 s.removeClass("mixNewsStyleTitle-hide")
             }
         }
-        if (Fai.isIE6() && g != 0) {
+        if (Helper.isIE6() && g != 0) {
             var m = p.find("td.newsTitle").height();
             p.find(".line").eq(0).css({height: m + "px"})
         }
     })
 };
-Site.setNewsListStylePattern = function (c, b) {
-    var a = Fai.top.newsListStyleData;
+Run.setNewsListStylePattern = function (c, b) {
+    var a = Helper.top.newsListStyleData;
     if (!a) {
-        Fai.top.newsListStyleData = {}
+        Helper.top.newsListStyleData = {}
     }
-    Fai.top.newsListStyleData["newsListStyle" + c] = b
+    Helper.top.newsListStyleData["newsListStyle" + c] = b
 };
-Site.setNewsModuleAttrPattern = function (d, a, c) {
-    var b = Site.getModuleAttrPattern(d);
+Run.setNewsModuleAttrPattern = function (d, a, c) {
+    var b = Run.getModuleAttrPattern(d);
     if (!!b[a]) {
         b[a] = c
     }
 };
-Site.siteFormAdd = function (b, q, o, g, a, e, d) {
+Run.siteFormAdd = function (b, q, o, g, a, e, d) {
     if (_siteDemo) {
-        Fai.ing("当前为“模板网站”，请先“复制网站”再进行提交。");
+        Helper.ing("当前为“模板网站”，请先“复制网站”再进行提交。");
         return
     }
     var i = [];
@@ -28205,12 +28205,12 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
             if (w == 0) {
                 var J = $.trim($("#M" + b + "F" + q + "siteFormInput" + A).val());
                 if (B && J == "") {
-                    Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitInputIsEmpty, Fai.encodeHtml(L)), q, b);
+                    Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitInputIsEmpty, Helper.encodeHtml(L)), q, b);
                     c = false;
                     return false
                 }
                 if (J.length > l) {
-                    Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitInputMaxLength, Fai.encodeHtml(L), l), q, b);
+                    Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitInputMaxLength, Helper.encodeHtml(L), l), q, b);
                     c = false;
                     return false
                 }
@@ -28219,12 +28219,12 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                 if (w == 1) {
                     var t = $.trim($("#M" + b + "F" + q + "siteFormTextArea" + A).val());
                     if (B && t == "") {
-                        Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitInputIsEmpty, Fai.encodeHtml(L)), q, b);
+                        Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitInputIsEmpty, Helper.encodeHtml(L)), q, b);
                         c = false;
                         return false
                     }
                     if (t.length > f) {
-                        Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitInputMaxLength, Fai.encodeHtml(L), f), q, b);
+                        Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitInputMaxLength, Helper.encodeHtml(L), f), q, b);
                         c = false;
                         return false
                     }
@@ -28232,7 +28232,7 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                 } else {
                     if (w == 2) {
                         if (B && $("input[name=M" + b + "F" + q + "siteFormRadioR" + A + "]:checked").length == 0) {
-                            Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitCheckIsEmpty, Fai.encodeHtml(L)), q, b);
+                            Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitCheckIsEmpty, Helper.encodeHtml(L)), q, b);
                             c = false;
                             return false
                         }
@@ -28244,7 +28244,7 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                     } else {
                         if (w == 3) {
                             if (B && $("input[name=M" + b + "F" + q + "siteFormCheckboxR" + A + "]:checked").length == 0) {
-                                Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitCheckIsEmpty, Fai.encodeHtml(L)), q, b);
+                                Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitCheckIsEmpty, Helper.encodeHtml(L)), q, b);
                                 c = false;
                                 return false
                             }
@@ -28256,7 +28256,7 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                         } else {
                             if (w == 4) {
                                 if (B && ($("#M" + b + "F" + q + "siteFormSelect" + A + " option:selected").length == 0 || $("#M" + b + "F" + q + "siteFormSelect" + A + " option:selected").val() == "none")) {
-                                    Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitCheckIsEmpty, Fai.encodeHtml(L)), q, b);
+                                    Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitCheckIsEmpty, Helper.encodeHtml(L)), q, b);
                                     c = false;
                                     return false
                                 }
@@ -28272,7 +28272,7 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                                     if (w == 6) {
                                         var J = $("#M" + b + "F" + q + "siteFormInput" + A).val();
                                         if (B && J == "") {
-                                            Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitCheckIsEmpty, Fai.encodeHtml(L)), q, b);
+                                            Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitCheckIsEmpty, Helper.encodeHtml(L)), q, b);
                                             c = false;
                                             return false
                                         }
@@ -28282,7 +28282,7 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                                             var v = $("#module" + b).find("#siteForm" + b + "fileName" + A);
                                             var I = {};
                                             if (B && v.attr("_tmpFileId") == "") {
-                                                Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitCheckHasFileUpload, Fai.encodeHtml(L)), q, b);
+                                                Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitCheckHasFileUpload, Helper.encodeHtml(L)), q, b);
                                                 c = false;
                                                 return false
                                             }
@@ -28300,12 +28300,12 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                                                 var u = $("#M" + b + "F" + q + "siteFormSelectPhoneCT" + A).val();
                                                 var K = $("#M" + b + "F" + q + "siteFormPhoneInput" + A).val();
                                                 if (B && K == "") {
-                                                    Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitInputIsEmpty, Fai.encodeHtml(L)), q, b);
+                                                    Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitInputIsEmpty, Helper.encodeHtml(L)), q, b);
                                                     c = false;
                                                     return false
                                                 }
-                                                if (!Fai.isNationMobile(K)) {
-                                                    Site.siteFormShowMsg(Fai.format(LS.mobileNumRegular, Fai.encodeHtml(L)), q, b);
+                                                if (!Helper.isNationMobile(K)) {
+                                                    Run.siteFormShowMsg(Helper.format(LS.mobileNumRegular, Helper.encodeHtml(L)), q, b);
                                                     c = false;
                                                     return false
                                                 }
@@ -28314,12 +28314,12 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                                                 if (w == 9) {
                                                     var G = $("#M" + b + "F" + q + "siteFormMailInput" + A).val();
                                                     if (B && G == "") {
-                                                        Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitInputIsEmpty, Fai.encodeHtml(L)), q, b);
+                                                        Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitInputIsEmpty, Helper.encodeHtml(L)), q, b);
                                                         c = false;
                                                         return false
                                                     }
-                                                    if (!Fai.isEmail(G)) {
-                                                        Site.siteFormShowMsg(Fai.format(LS.memberSignupUserAddItemCorrect, Fai.encodeHtml(L)), q, b);
+                                                    if (!Helper.isEmail(G)) {
+                                                        Run.siteFormShowMsg(Helper.format(LS.memberSignupUserAddItemCorrect, Helper.encodeHtml(L)), q, b);
                                                         c = false;
                                                         return false
                                                     }
@@ -28328,12 +28328,12 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                                                     if (w == 10) {
                                                         var y = $("#M" + b + "F" + q + "siteFormIdentityInput" + A).val();
                                                         if (B && y == "") {
-                                                            Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitInputIsEmpty, Fai.encodeHtml(L)), q, b);
+                                                            Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitInputIsEmpty, Helper.encodeHtml(L)), q, b);
                                                             c = false;
                                                             return false
                                                         }
-                                                        if (!Fai.isCardNo(y)) {
-                                                            Site.siteFormShowMsg(Fai.format(LS.memberSignupUserAddItemCorrect, Fai.encodeHtml(L)), q, b);
+                                                        if (!Helper.isCardNo(y)) {
+                                                            Run.siteFormShowMsg(Helper.format(LS.memberSignupUserAddItemCorrect, Helper.encodeHtml(L)), q, b);
                                                             c = false;
                                                             return false
                                                         }
@@ -28344,7 +28344,7 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
                                                             var E = $("#M" + b + "F" + q + "siteFormSelectCity" + A).find("option:selected").attr("_val");
                                                             var r = $("#M" + b + "F" + q + "siteFormSelectCounty" + A).find("option:selected").attr("_val");
                                                             if (B && (x == "-1" || E == "-1")) {
-                                                                Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitInputIsEmpty, Fai.encodeHtml(L)), q, b);
+                                                                Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitInputIsEmpty, Helper.encodeHtml(L)), q, b);
                                                                 c = false;
                                                                 return false
                                                             }
@@ -28368,77 +28368,77 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
         return false
     }
     if (n && j == "") {
-        Site.siteFormShowMsg(Fai.format(LS.siteFormSubmitInputIsEmpty, m.attr("msg")), q, b);
+        Run.siteFormShowMsg(Helper.format(LS.siteFormSubmitInputIsEmpty, m.attr("msg")), q, b);
         c = false;
         return false
     }
     if (!e) {
         e = ""
     }
-    var h = "&submitContentList=" + Fai.encodeUrl($.toJSON(i));
-    Site.siteFormShowMsg(LS.siteFormSubmitIng, q, b);
+    var h = "&submitContentList=" + Helper.encodeUrl($.toJSON(i));
+    Run.siteFormShowMsg(LS.siteFormSubmitIng, q, b);
     if ((typeof($("#module" + b).data("siteFormAdd_is_reCommit")) == "undefined") || $("#module" + b).data("siteFormAdd_is_reCommit") == false) {
         $("#module" + b).data("siteFormAdd_is_reCommit", true);
         $.ajax({
             type: "post",
             url: "ajax/siteForm_h.php",
-            data: "cmd=addSubmit&formId=" + q + "&submitContentList=" + Fai.encodeUrl($.toJSON(i)) + "&vCodeId=" + b + q + "&validateCode=" + j + "&tmpFileList=" + Fai.encodeUrl($.toJSON(k)),
+            data: "cmd=addSubmit&formId=" + q + "&submitContentList=" + Helper.encodeUrl($.toJSON(i)) + "&vCodeId=" + b + q + "&validateCode=" + j + "&tmpFileList=" + Helper.encodeUrl($.toJSON(k)),
             error: function () {
                 $("#module" + b).data("siteFormAdd_is_reCommit", false);
-                var s = Site.getDialogContent(false, Fai.format(LS.siteFormSubmitError));
+                var s = Run.getDialogContent(false, Helper.format(LS.siteFormSubmitError));
                 var r = {htmlContent: s, width: 205, height: 78};
-                Site.popupBox(r)
+                Run.popupBox(r)
             },
             success: function (r) {
                 $("#module" + b).data("siteFormAdd_is_reCommit", false);
                 r = $.parseJSON(r);
                 if (r.success) {
-                    Fai.top.$("#siteFormMsgM" + b + "F" + q).hide();
-                    var t = Site.getDialogContent(true, Fai.format(LS.siteFormSubmitOk));
+                    Helper.top.$("#siteFormMsgM" + b + "F" + q).hide();
+                    var t = Run.getDialogContent(true, Helper.format(LS.siteFormSubmitOk));
                     var s = {htmlContent: t, width: 205, height: 78, autoClose: 3000};
-                    Site.popupBox(s);
+                    Run.popupBox(s);
                     setTimeout(function () {
                         location.href = e
                     }, 300);
-                    Site.siteFormValidation(q, b);
-                    Fai.top.$("#module" + b + " .siteForm input[type=text]").val("");
-                    Fai.top.$("#module" + b + " .siteForm textarea").val("");
-                    Fai.top.$("#module" + b + " .siteForm input[type=radio]").each(function () {
+                    Run.siteFormValidation(q, b);
+                    Helper.top.$("#module" + b + " .siteForm input[type=text]").val("");
+                    Helper.top.$("#module" + b + " .siteForm textarea").val("");
+                    Helper.top.$("#module" + b + " .siteForm input[type=radio]").each(function () {
                         $(this)[0].checked = false
                     });
-                    Fai.top.$("#module" + b + " .siteForm input[type=checkbox]").each(function () {
+                    Helper.top.$("#module" + b + " .siteForm input[type=checkbox]").each(function () {
                         $(this)[0].checked = false
                     });
-                    if (Fai.top.$("#module" + b + " .siteForm select")[0] != undefined) {
-                        Fai.top.$("#module" + b + " .siteForm select")[0].selectedIndex = 0
+                    if (Helper.top.$("#module" + b + " .siteForm select")[0] != undefined) {
+                        Helper.top.$("#module" + b + " .siteForm select")[0].selectedIndex = 0
                     }
-                    Fai.top.$("#module" + b).find(".siteFormFileName").html(LS.siteFormSubmitNotSeletcFile);
-                    Fai.top.$("#module" + b).find(".siteFormFileName").removeAttr("_tmpFileId").removeAttr("_tmpFileName").removeAttr("title").removeAttr("_fileId")
+                    Helper.top.$("#module" + b).find(".siteFormFileName").html(LS.siteFormSubmitNotSeletcFile);
+                    Helper.top.$("#module" + b).find(".siteFormFileName").removeAttr("_tmpFileId").removeAttr("_tmpFileName").removeAttr("title").removeAttr("_fileId")
                 } else {
                     if (r.rt == -4) {
-                        Site.siteFormShowMsg(LS.siteFormSubmitCountLimit, q, b)
+                        Run.siteFormShowMsg(LS.siteFormSubmitCountLimit, q, b)
                     } else {
                         if (r.rt == -7) {
-                            Site.siteFormShowMsg(LS.siteImgFull, q, b)
+                            Run.siteFormShowMsg(LS.siteImgFull, q, b)
                         } else {
                             if (r.rt == -20) {
-                                Site.siteFormShowMsg(r.msg, q, b)
+                                Run.siteFormShowMsg(r.msg, q, b)
                             } else {
                                 if (r.rt == -401) {
-                                    Site.siteFormShowMsg(LS.siteFormSubmitValidateCodeErr, q, b);
+                                    Run.siteFormShowMsg(LS.siteFormSubmitValidateCodeErr, q, b);
                                     $("#M" + b + "F" + q + "siteFormValidateCode").val("");
-                                    Site.siteFormValidation(q, b)
+                                    Run.siteFormValidation(q, b)
                                 } else {
-                                    Fai.top.$("#siteFormMsgM" + b + "F" + q).hide();
-                                    var t = Site.getDialogContent(false, Fai.format(LS.siteFormSubmitError));
+                                    Helper.top.$("#siteFormMsgM" + b + "F" + q).hide();
+                                    var t = Run.getDialogContent(false, Helper.format(LS.siteFormSubmitError));
                                     var s = {htmlContent: t, width: 205, height: 78};
-                                    Site.popupBox(s)
+                                    Run.popupBox(s)
                                 }
                             }
                         }
                     }
                     if (r.needCode) {
-                        Site.siteFormShowMsg(r.msg, q, b);
+                        Run.siteFormShowMsg(r.msg, q, b);
                         $("#module" + b + " .J_formValidation").removeClass("siteFormValidationHide")
                     }
                 }
@@ -28446,15 +28446,15 @@ Site.siteFormAdd = function (b, q, o, g, a, e, d) {
         })
     }
 };
-Site.fixLowIePlaceholder = function (c, b) {
+Run.fixLowIePlaceholder = function (c, b) {
     var a = false;
-    if (Fai.isIE) {
-        if (Fai.isIE6() || Fai.isIE7() || Fai.isIE8() || Fai.isIE9()) {
+    if (Helper.isIE) {
+        if (Helper.isIE6() || Helper.isIE7() || Helper.isIE8() || Helper.isIE9()) {
             a = true
         }
     }
     if (!a) {
-        $(Fai.top.$("#module" + b + "").find(".resize:not(select)")).each(function () {
+        $(Helper.top.$("#module" + b + "").find(".resize:not(select)")).each(function () {
             var d = $(this).attr("_placeHolder");
             $(this).attr("placeHolder", d)
         })
@@ -28478,22 +28478,22 @@ Site.fixLowIePlaceholder = function (c, b) {
                 $(this).removeClass("phcolor")
             })
         };
-        $(Fai.top.$("#module" + b + "").find(".resize:not(select)")).each(function () {
+        $(Helper.top.$("#module" + b + "").find(".resize:not(select)")).each(function () {
             var d = $(this).attr("_placeHolder");
             remind($(this), d)
         })
     }
 };
-Site.siteFormNotLogin = function (d, c) {
-    var b = Fai.encodeUrl(Fai.top.location.href);
+Run.siteFormNotLogin = function (d, c) {
+    var b = Helper.encodeUrl(Helper.top.location.href);
     var a = LS.siteFormSubmitNotLogin + "<a href='login.php?url=" + b + "'>" + LS.login + "</a>" + LS.period;
-    Site.siteFormShowMsg(a, d, c)
+    Run.siteFormShowMsg(a, d, c)
 };
-Site.siteFormShowMsg = function (c, b, a) {
-    Fai.top.$("#siteFormMsgM" + a + "F" + b).show();
-    Fai.top.$("#siteFormMsgM" + a + "F" + b).html(c)
+Run.siteFormShowMsg = function (c, b, a) {
+    Helper.top.$("#siteFormMsgM" + a + "F" + b).show();
+    Helper.top.$("#siteFormMsgM" + a + "F" + b).html(c)
 };
-Site.siteFormTimeBtn = function () {
+Run.siteFormTimeBtn = function () {
     $(".siteFormTimer6").each(function (b, c) {
         var a = parseInt($.format.date(new Date(), "yyyy")) + 10;
         a = "1900:" + a;
@@ -28511,93 +28511,93 @@ Site.siteFormTimeBtn = function () {
         })
     })
 };
-Site.siteFormValidation = function (b, a) {
+Run.siteFormValidation = function (b, a) {
     $("#M" + a + "F" + b + "validateCodeImg").attr("src", "validateCode.php?" + parseInt(Math.random() * 1000) + "&vCodeId=" + a + b)
 };
-Site.fixSiteFormStyle = function (f, a, b, d, i) {
-    Fai.top.$(".siteFormItem_N_U").find(".F" + f + "siteFormItemShowVal").find("textarea").parent().css({height: "102px"});
-    if (Fai.top.$("#module" + a + "").width() <= 400) {
-        if (Fai.top.$("#module" + a + "").find(".siteFormItemTable_N_U").is("table")) {
-            $(Fai.top.$("#module" + a + "").find(".siteFormItemTable_N_U")).css({padding: "0"});
-            $(Fai.top.$("#module" + a + "").find(".siteForm")).css({padding: "0 25px"})
+Run.fixRunFormStyle = function (f, a, b, d, i) {
+    Helper.top.$(".siteFormItem_N_U").find(".F" + f + "siteFormItemShowVal").find("textarea").parent().css({height: "102px"});
+    if (Helper.top.$("#module" + a + "").width() <= 400) {
+        if (Helper.top.$("#module" + a + "").find(".siteFormItemTable_N_U").is("table")) {
+            $(Helper.top.$("#module" + a + "").find(".siteFormItemTable_N_U")).css({padding: "0"});
+            $(Helper.top.$("#module" + a + "").find(".siteForm")).css({padding: "0 25px"})
         }
-        if ($(Fai.top.$("#module" + a + "").find(".siteFormItem_N_U").find(".siteFormItemCheckItem_N_U_A")).length > 0) {
-            $(Fai.top.$("#module" + a + "").find(".siteFormItemCheckItem_N_U_A")).css({"margin-right": "12px"});
-            $(Fai.top.$("#module" + a + "").find(".siteFormItemCheckItem_N_U_A").find("input")).css({"float": "left"});
-            $(Fai.top.$("#module" + a + "").find(".siteFormItemCheckItem_N_U_A").find("label")).each(function () {
+        if ($(Helper.top.$("#module" + a + "").find(".siteFormItem_N_U").find(".siteFormItemCheckItem_N_U_A")).length > 0) {
+            $(Helper.top.$("#module" + a + "").find(".siteFormItemCheckItem_N_U_A")).css({"margin-right": "12px"});
+            $(Helper.top.$("#module" + a + "").find(".siteFormItemCheckItem_N_U_A").find("input")).css({"float": "left"});
+            $(Helper.top.$("#module" + a + "").find(".siteFormItemCheckItem_N_U_A").find("label")).each(function () {
                 $(this).wrapAll("<div style='float:left;width:100px;'></div>")
             })
         }
-        if ($(Fai.top.$("#module" + a + "").find(".siteFormValidate_N_U")).length > 0) {
+        if ($(Helper.top.$("#module" + a + "").find(".siteFormValidate_N_U")).length > 0) {
             if (!d) {
-                $(Fai.top.$("#module" + a + "").find(".siteFormValidate_N_U").find(".siteFormValidate")).css({margin: "4px 0 0 0"});
-                $(Fai.top.$("#module" + a + "").find(".siteFormValidate_N_U").find(".star")).css({"margin-top": "4px"})
+                $(Helper.top.$("#module" + a + "").find(".siteFormValidate_N_U").find(".siteFormValidate")).css({margin: "4px 0 0 0"});
+                $(Helper.top.$("#module" + a + "").find(".siteFormValidate_N_U").find(".star")).css({"margin-top": "4px"})
             }
         }
-        if ($(Fai.top.$("#module" + a + "").find(".siteFormValidate_N_U")).length > 0) {
-            $(Fai.top.$("#module" + a + "").find(".siteFormValidate_N_U").find("input")).css({
+        if ($(Helper.top.$("#module" + a + "").find(".siteFormValidate_N_U")).length > 0) {
+            $(Helper.top.$("#module" + a + "").find(".siteFormValidate_N_U").find("input")).css({
                 width: "92%",
                 "max-width": "400px"
             })
         }
-        if ($(Fai.top.$("#module" + a + "").find(".faiButton")).length > 0) {
-            $(Fai.top.$("#module" + a + "").find(".faiButton")).css({width: "95%"})
+        if ($(Helper.top.$("#module" + a + "").find(".faiButton")).length > 0) {
+            $(Helper.top.$("#module" + a + "").find(".faiButton")).css({width: "95%"})
         }
-        if ($(Fai.top.$("#module" + a + "").find("#buttonStyle")).length > 0) {
+        if ($(Helper.top.$("#module" + a + "").find("#buttonStyle")).length > 0) {
             if (d) {
-                if (Fai.top.$("#module" + a + "").width() <= 220) {
-                    $(Fai.top.$("#module" + a + "").find("#buttonStyle").find(".s_ibutton")).css({width: "100%"})
+                if (Helper.top.$("#module" + a + "").width() <= 220) {
+                    $(Helper.top.$("#module" + a + "").find("#buttonStyle").find(".s_ibutton")).css({width: "100%"})
                 }
-                $(Fai.top.$("#module" + a + "").find("#buttonStyle")).css({width: "100%"})
+                $(Helper.top.$("#module" + a + "").find("#buttonStyle")).css({width: "100%"})
             } else {
-                $(Fai.top.$("#module" + a + "").find("#buttonStyle")).css({width: "77%"})
+                $(Helper.top.$("#module" + a + "").find("#buttonStyle")).css({width: "77%"})
             }
         }
-        if ($(Fai.top.$("#module" + a + "").find(".address-resize")).length > 0) {
-            $(Fai.top.$("#module" + a + "").find(".address-resize")).find(".three-resize").css({
+        if ($(Helper.top.$("#module" + a + "").find(".address-resize")).length > 0) {
+            $(Helper.top.$("#module" + a + "").find(".address-resize")).find(".three-resize").css({
                 width: "94%",
                 "margin-bottom": "10px"
             });
-            $(Fai.top.$("#module" + a + "").find(".address-resize")).find(".three-resize").last().css({"margin-bottom": ""});
-            var c = $(Fai.top.$("#module" + a + "").find(".address-resize").find("select").first()).width();
-            $(Fai.top.$("#module" + a + "").find(".address-resize").parent().find(".star")).css({
+            $(Helper.top.$("#module" + a + "").find(".address-resize")).find(".three-resize").last().css({"margin-bottom": ""});
+            var c = $(Helper.top.$("#module" + a + "").find(".address-resize").find("select").first()).width();
+            $(Helper.top.$("#module" + a + "").find(".address-resize").parent().find(".star")).css({
                 position: "absolute",
                 left: c + 25 + "px"
             })
         }
-        if ($(Fai.top.$("#module" + a + "").find(".phone-resize")).length > 0) {
-            $(Fai.top.$("#module" + a + "").find(".phone-resize")).find(".two-resize").first().css({
+        if ($(Helper.top.$("#module" + a + "").find(".phone-resize")).length > 0) {
+            $(Helper.top.$("#module" + a + "").find(".phone-resize")).find(".two-resize").first().css({
                 width: "94%",
                 "margin-bottom": "10px"
             });
-            $(Fai.top.$("#module" + a + "").find(".phone-resize")).find(".two-resize").last().css({
+            $(Helper.top.$("#module" + a + "").find(".phone-resize")).find(".two-resize").last().css({
                 width: "93%",
                 "margin-bottom": ""
             });
-            var c = $(Fai.top.$("#module" + a + "").find(".phone-resize").find("select")).width();
-            $(Fai.top.$("#module" + a + "").find(".phone-resize").parent().find(".star")).css({
+            var c = $(Helper.top.$("#module" + a + "").find(".phone-resize").find("select")).width();
+            $(Helper.top.$("#module" + a + "").find(".phone-resize").parent().find(".star")).css({
                 position: "absolute",
                 left: c + 25 + "px"
             })
         }
     }
-    if (Fai.top.$("#module" + a + "").find(".siteFormAddButton").find("#buttonStyle").find(".middle").width() > 241) {
-        Fai.top.$("#module" + a + "").find(".siteFormAddButton").find("#buttonStyle").find(".middle").css({width: "240px"})
+    if (Helper.top.$("#module" + a + "").find(".siteFormAddButton").find("#buttonStyle").find(".middle").width() > 241) {
+        Helper.top.$("#module" + a + "").find(".siteFormAddButton").find("#buttonStyle").find(".middle").css({width: "240px"})
     }
-    $(Fai.top.$(".siteFormItem_N_U").find("select")).each(function () {
+    $(Helper.top.$(".siteFormItem_N_U").find("select")).each(function () {
         if ($(this).attr("id").indexOf("siteFormSelectPhoneCT") == -1) {
             $($(this).find("option")[0]).hide()
         }
     });
-    if ($(Fai.top.$("#module" + a + "").find(".siteFormItem_N_U").find(".siteFormItemCheckItem_N_U_F")).length > 0) {
-        var h = Fai.top.$("#module" + a + "").find(".siteFormItemCheckItem_N_U_F").width();
+    if ($(Helper.top.$("#module" + a + "").find(".siteFormItem_N_U").find(".siteFormItemCheckItem_N_U_F")).length > 0) {
+        var h = Helper.top.$("#module" + a + "").find(".siteFormItemCheckItem_N_U_F").width();
         var g = (h / b - 10) + "px";
         var e = ((h / b - 54) <= 36) ? 36 : (h / b - 54) + "px";
-        Fai.top.$("#module" + a + "").find(".siteFormRadioFix").css({width: g});
-        Fai.top.$("#module" + a + "").find(".siteFormRadioCententFix").css({width: e})
+        Helper.top.$("#module" + a + "").find(".siteFormRadioFix").css({width: g});
+        Helper.top.$("#module" + a + "").find(".siteFormRadioCententFix").css({width: e})
     }
     if (i && i.length > 0) {
-        $(Fai.top.$("#module" + a + "").find(".siteFormItem_N_U").find(".resize")).each(function () {
+        $(Helper.top.$("#module" + a + "").find(".siteFormItem_N_U").find(".resize")).each(function () {
             var k = $(this).attr("_id");
             var l = $(this).attr("_show");
             for (var j = 0; j < i.length; j++) {
@@ -28612,7 +28612,7 @@ Site.fixSiteFormStyle = function (f, a, b, d, i) {
         })
     }
 };
-Site.siteFormFileUpload = function (h) {
+Run.siteFormFileUpload = function (h) {
     var j = h.fileSize;
     var i = h.siteFormItemId;
     var f = h.siteFormId;
@@ -28627,7 +28627,7 @@ Site.siteFormFileUpload = function (h) {
     var g = document.documentElement || document.body;
     var k = $("#siteForm" + t + "fileUpload" + i);
     var b = k.parent().width();
-    var c = Fai.top.$("#module" + t + "").width();
+    var c = Helper.top.$("#module" + t + "").width();
     var a = b * 0.31;
     var u;
     if (d) {
@@ -28650,7 +28650,7 @@ Site.siteFormFileUpload = function (h) {
             }
         }
     }
-    if (!Fai.isIE()) {
+    if (!Helper.isIE()) {
         var p = {
             auto: true,
             fileTypeExts: e.join(""),
@@ -28669,17 +28669,17 @@ Site.siteFormFileUpload = function (h) {
                 var y = $.parseJSON(z);
                 if (y.success) {
                     var w = {status: "end", id: x.id, title: "上传成功。"};
-                    Fai.ing("文件: " + x.name + " 上传成功", true);
+                    Helper.ing("文件: " + x.name + " 上传成功", true);
                     n("upload", y, t, i)
                 } else {
                     var w = {status: "end", id: x.id, title: y.msg};
-                    Fai.ing("文件:" + x.name + "，" + y.msg)
+                    Helper.ing("文件:" + x.name + "，" + y.msg)
                 }
             },
             onUploadError: function (w, x) {
                 $("#progressBody_" + w.id).remove();
                 $("#progressWrap_" + w.id).remove();
-                Fai.ing("网络繁忙，文件:" + w.name + "上传失败，请稍后重试")
+                Helper.ing("网络繁忙，文件:" + w.name + "上传失败，请稍后重试")
             }
         };
 
@@ -28724,7 +28724,7 @@ Site.siteFormFileUpload = function (h) {
             button_text: d ? "<span class='fk_btText'>" + q + "</span>" : "",
             button_text_style: d ? ".fk_btText{text-align:center; font-family: 微软雅黑; color: #666666;}" : "",
             button_text_top_padding: d ? 8 : "",
-            post_params: {ctrl: "Filedata", app: 21, type: 0, isSiteForm: true},
+            post_params: {ctrl: "Filedata", app: 21, type: 0, isRunForm: true},
             file_types: e.join(""),
             file_dialog_complete_handler: function (w) {
                 this._allSuccess = false;
@@ -28733,16 +28733,16 @@ Site.siteFormFileUpload = function (h) {
             file_queue_error_handler: function (x, w, y) {
                 switch (w) {
                     case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-                        Fai.ing(LS.siteFormSubmitCheckFileSizeErr, true);
+                        Helper.ing(LS.siteFormSubmitCheckFileSizeErr, true);
                         break;
                     case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-                        Fai.ing("不允许的文件类型", true);
+                        Helper.ing("不允许的文件类型", true);
                         break;
                     case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
-                        Fai.ing("一次只能上传一个文件", true);
+                        Helper.ing("一次只能上传一个文件", true);
                         break;
                     default:
-                        Fai.ing("请重新选择文件上传。", true);
+                        Helper.ing("请重新选择文件上传。", true);
                         break
                 }
             },
@@ -28751,20 +28751,20 @@ Site.siteFormFileUpload = function (h) {
                 this._allSuccess = y.success;
                 this._sysResult = y.msg;
                 if (y.success) {
-                    Fai.ing(Fai.format(LS.siteFormSubmitFileUploadSucess, Fai.encodeHtml(x.name)), true);
+                    Helper.ing(Helper.format(LS.siteFormSubmitFileUploadSucess, Helper.encodeHtml(x.name)), true);
                     n("upload", y, t, i)
                 } else {
-                    Fai.ing("文件" + x.name + "，" + y.msg)
+                    Helper.ing("文件" + x.name + "，" + y.msg)
                 }
             },
             upload_error_handler: function (x, w, y) {
                 if (w == -280) {
-                    Fai.ing("文件取消成功", false)
+                    Helper.ing("文件取消成功", false)
                 } else {
                     if (w == -270) {
-                        Fai.ing("已经存在名称为" + x.name + "的文件。", true)
+                        Helper.ing("已经存在名称为" + x.name + "的文件。", true)
                     } else {
-                        Fai.ing("服务繁忙，文件" + x.name + "上传失败，请稍候重试。")
+                        Helper.ing("服务繁忙，文件" + x.name + "上传失败，请稍候重试。")
                     }
                 }
             },
@@ -28775,16 +28775,16 @@ Site.siteFormFileUpload = function (h) {
                     }, s.upload_delay)
                 } else {
                     if (w.filestatus == SWFUpload.FILE_STATUS.ERROR) {
-                        Fai.ing("服务繁忙，文件" + w.name + "上传失败，请稍候重试。")
+                        Helper.ing("服务繁忙，文件" + w.name + "上传失败，请稍候重试。")
                     }
                 }
             },
             upload_start_handler: function (w) {
-                Fai.enablePopupWindowBtn(0, "save", false);
-                Fai.ing("读取文件准备上传", false)
+                Helper.enablePopupWindowBtn(0, "save", false);
+                Helper.ing("读取文件准备上传", false)
             },
             view_progress: function (w, z, y, x) {
-                Fai.ing("正在上传" + x + "%", false)
+                Helper.ing("正在上传" + x + "%", false)
             }
         };
         s = SWFUploadCreator.create(m)
@@ -28811,17 +28811,17 @@ Site.siteFormFileUpload = function (h) {
         }
     }
 };
-Site.siteFormInputResize = function (d, c) {
-    var a = Fai.top.$("#module" + c + "").find(".siteFormItem_N_U").find(".resize");
+Run.siteFormInputResize = function (d, c) {
+    var a = Helper.top.$("#module" + c + "").find(".siteFormItem_N_U").find(".resize");
     var b = false;
     if (a.length < 1) {
         return
     }
-    if (Fai.top.$("#module" + c + "").width() <= 400) {
+    if (Helper.top.$("#module" + c + "").width() <= 400) {
         b = true
     }
     a.each(function () {
-        var n = $(this), g = Fai.isIE8() ? $(document) : $(window), o = $("#g_main"), l, h, m, f = $(this), j, i = {};
+        var n = $(this), g = Helper.isIE8() ? $(document) : $(window), o = $("#g_main"), l, h, m, f = $(this), j, i = {};
         if (n.hasClass("resize")) {
             if (n.is("textarea")) {
                 n.before("<div class='u-inputResize-w' style='height:100px;' title='可拖动调节宽度'><div style='position:absolute;width:3px;height:100px;border-left:1px dashed #2b73ba;'></div></div>");
@@ -28885,7 +28885,7 @@ Site.siteFormInputResize = function (d, c) {
             }
             n.css({width: w + "px"});
             j.html(v + w).css({left: t.pageX - 28, top: t.pageY - 40});
-            Site.siteFormInputResizeLine(n, d, c);
+            Run.siteFormInputResizeLine(n, d, c);
             t.preventDefault()
         }
 
@@ -28897,23 +28897,23 @@ Site.siteFormInputResize = function (d, c) {
             g.off("mouseup.fi");
             j.hide();
             i.elem.removeClass("u-inputResize-show");
-            Fai.top.$("body").find(".inputResizeLine").hide();
+            Helper.top.$("body").find(".inputResizeLine").hide();
             var r = n.width() / (n.parent().width() - 2);
             n.attr("_width", Math.round(r * 1000) / 1000);
-            var q = Site.getModuleAttr(c);
+            var q = Run.getModuleAttr(c);
             q.data.changed = true;
-            Site.styleChanged();
+            Run.styleChanged();
             i = {};
             s.preventDefault()
         }
     })
 };
-Site.siteFormInputResizeLine = function (d, h, b) {
-    var j = Fai.top.$("#module" + b + "").find(".siteFormItem_N_U").find(".resize"), m = j.length,
+Run.siteFormInputResizeLine = function (d, h, b) {
+    var j = Helper.top.$("#module" + b + "").find(".siteFormItem_N_U").find(".resize"), m = j.length,
         k = $(j[0]).offset().top - 15 + "px", c = d.offset().left + d.width() + "px",
         l = ($(j[m - 1]).offset().top - $(j[0]).offset().top + 60) + "px", a = false;
-    if (Fai.isIE) {
-        if (Fai.isIE6() || Fai.isIE7() || Fai.isIE8()) {
+    if (Helper.isIE) {
+        if (Helper.isIE6() || Helper.isIE7() || Helper.isIE8()) {
             a = true
         }
     }
@@ -28935,15 +28935,15 @@ Site.siteFormInputResizeLine = function (d, h, b) {
             }
             var n = $(this).offset().left + o + "px";
             if (Math.abs(i - o) < 3) {
-                if (!Fai.top.$("body").find(".inputResizeLine").is("div")) {
-                    Fai.top.$("body").append("<div class='inputResizeLine' style='display:none;height:" + l + ";width:1px;position:absolute;left:" + n + ";top:" + k + ";border-right:1px solid #2b73ba;'></div>")
+                if (!Helper.top.$("body").find(".inputResizeLine").is("div")) {
+                    Helper.top.$("body").append("<div class='inputResizeLine' style='display:none;height:" + l + ";width:1px;position:absolute;left:" + n + ";top:" + k + ";border-right:1px solid #2b73ba;'></div>")
                 } else {
-                    Fai.top.$("body").find(".inputResizeLine").css({left: n, top: k, height: l})
+                    Helper.top.$("body").find(".inputResizeLine").css({left: n, top: k, height: l})
                 }
-                Fai.top.$("body").find(".inputResizeLine").show();
+                Helper.top.$("body").find(".inputResizeLine").show();
                 return false
             } else {
-                Fai.top.$("body").find(".inputResizeLine").hide()
+                Helper.top.$("body").find(".inputResizeLine").hide()
             }
         })
     } else {
@@ -28962,20 +28962,20 @@ Site.siteFormInputResizeLine = function (d, h, b) {
             }
             var n = $(this).offset().left + o + "px";
             if (Math.abs(i - o) < 3) {
-                if (!Fai.top.$("body").find(".inputResizeLine").is("div")) {
-                    Fai.top.$("body").append("<div class='inputResizeLine' style='display:none;height:" + l + ";width:1px;position:absolute;left:" + n + ";top:" + k + ";border-right:1px solid #2b73ba;'></div>")
+                if (!Helper.top.$("body").find(".inputResizeLine").is("div")) {
+                    Helper.top.$("body").append("<div class='inputResizeLine' style='display:none;height:" + l + ";width:1px;position:absolute;left:" + n + ";top:" + k + ";border-right:1px solid #2b73ba;'></div>")
                 } else {
-                    Fai.top.$("body").find(".inputResizeLine").css({left: n, top: k, height: l})
+                    Helper.top.$("body").find(".inputResizeLine").css({left: n, top: k, height: l})
                 }
-                Fai.top.$("body").find(".inputResizeLine").show();
+                Helper.top.$("body").find(".inputResizeLine").show();
                 return false
             } else {
-                Fai.top.$("body").find(".inputResizeLine").hide()
+                Helper.top.$("body").find(".inputResizeLine").hide()
             }
         })
     }
 };
-Site.siteFormAddressInit = function (i, c, b, f, j) {
+Run.siteFormAddressInit = function (i, c, b, f, j) {
     var g = [];
     var h;
     var d;
@@ -29034,7 +29034,7 @@ Site.siteFormAddressInit = function (i, c, b, f, j) {
         })
     })
 };
-Site.addFlashModuleFlash = function (a) {
+Run.addFlashModuleFlash = function (a) {
     var c = "Opaque";
     if (a.transparent != 1) {
         c = "transparent"
@@ -29042,7 +29042,7 @@ Site.addFlashModuleFlash = function (a) {
     var b = ['<embed id="' + a.moduleId + '" width="' + a.width + '" height="' + a.height + '" allowscriptaccess="' + a.allowScriptAccess + '" style="visibility: visible;" pluginspage="http://get.adobe.com/cn/flashplayer/" flashvars="playMovie=true&amp;auto=1" allowfullscreen="true" quality="hight" src="' + a.path + '" type="application/x-shockwave-flash" wmode="' + c + '"></embed>'];
     $("#flashModuleFlash" + a.moduleId).append(b.join(""))
 };
-Site.noticeMarquee = function (f, x) {
+Run.noticeMarquee = function (f, x) {
     var w = {direction: "up", speed: "normal", loop: "infinite", moveout: false, isScrolling: false};
     $.extend(w, f);
     if (w.speed == "normal") {
@@ -29062,7 +29062,7 @@ Site.noticeMarquee = function (f, x) {
         k = k ? k : 0;
         g = k;
         l = (g > d) ? g : d;
-        Fai.stopInterval("rm" + x);
+        Helper.stopInterval("rm" + x);
         $("#noticeMarqueeCopy" + x).remove();
         $(u).appendTo($("#noticeContainer" + x));
         $("#noticeMarqueeNewParent" + x).remove()
@@ -29108,10 +29108,10 @@ Site.noticeMarquee = function (f, x) {
             u.css("top", 0)
         }
         $("#module" + m + " .noticeContainer").mouseover(function () {
-            Fai.stopInterval("rm" + m)
+            Helper.stopInterval("rm" + m)
         }).mouseout(function () {
             if (A == "infinite" || A > 0) {
-                Fai.startInterval("rm" + m)
+                Helper.startInterval("rm" + m)
             }
         });
         e();
@@ -29261,22 +29261,22 @@ Site.noticeMarquee = function (f, x) {
 
     if (f != null) {
         q();
-        Fai.addInterval("rm" + m, s, r);
-        Fai.startInterval("rm" + m)
+        Helper.addInterval("rm" + m, s, r);
+        Helper.startInterval("rm" + m)
     }
 };
-Site.saveNoticeMarqueeProps = function (a) {
+Run.saveNoticeMarqueeProps = function (a) {
     if (a != null) {
         $("#noticeMarquee" + a.id).data("options", a)
     }
-    $("#module" + a.id).on("Fai_onModuleSizeChange", function () {
-        Site.noticeMarquee($("#noticeMarquee" + a.id).data("options"), a.id)
+    $("#module" + a.id).on("Helper_onModuleSizeChange", function () {
+        Run.noticeMarquee($("#noticeMarquee" + a.id).data("options"), a.id)
     });
-    $("#module" + a.id).on("Fai_onModulePositionChange", function () {
-        Site.noticeMarquee($("#noticeMarquee" + a.id).data("options"), a.id)
+    $("#module" + a.id).on("Helper_onModulePositionChange", function () {
+        Run.noticeMarquee($("#noticeMarquee" + a.id).data("options"), a.id)
     })
 };
-Site.revertIcon = function (d) {
+Run.revertIcon = function (d) {
     var c = $("#module" + d);
     var b = false;
     var a = c.find(".noticeContainer").height();
@@ -29289,7 +29289,7 @@ Site.revertIcon = function (d) {
         c.find(".noticeImg").css("margin-top", (a - 21) / 2 + "px")
     }
 };
-Site.noticeMarqueeUpDown = function (c) {
+Run.noticeMarqueeUpDown = function (c) {
     var b = {direction: "top", speed: "normal", stopTime: 1000};
     $.extend(b, c);
     if ("fast" === b.speed) {
@@ -29319,22 +29319,22 @@ Site.noticeMarqueeUpDown = function (c) {
     var d = $("#module" + b.id + " .formMiddleCenter");
     d.css("overflow", "hidden")
 };
-Site.noticeUpDownSizeChange = function (d) {
+Run.noticeUpDownSizeChange = function (d) {
     var b = $("#noticeMarquee" + d), a = b.height(), c = b.children().children();
     $.each(c, function (e, f) {
         $(f).css("top", -(a + 2) + "px")
     });
     $("#noticeScrollbar" + d).removeData("_innerHeight")
 };
-Site.setSerTextOverflow = function (d) {
+Run.setSerTextOverflow = function (d) {
     var c = $("#serOnline-container" + d);
     var e = c.find(".serOnline-service").children(".serOnline-list-h");
     var a = c.find(".serOnline-contact").children(".serOnline-list-h");
     var b = c.outerWidth(), f = c.outerHeight();
-    Site.setSerListCSS(e, b);
-    Site.setSerListCSS(a, b)
+    Run.setSerListCSS(e, b);
+    Run.setSerListCSS(a, b)
 };
-Site.setSerListCSS = function (a, d) {
+Run.setSerListCSS = function (a, d) {
     var c, f, e, b;
     $.each(a, function (h, g) {
         c = $(g).outerWidth();
@@ -29351,8 +29351,8 @@ Site.setSerListCSS = function (a, d) {
         e = false
     })
 };
-Site.initCustomIframe = function (d) {
-    var g = Fai.top.$("#iframe" + d);
+Run.initCustomIframe = function (d) {
+    var g = Helper.top.$("#iframe" + d);
     var b = g.attr("width");
     var c = g.attr("height");
     var a = g.attr("src");
@@ -29361,30 +29361,30 @@ Site.initCustomIframe = function (d) {
     g.replaceWith(f);
     f.attr("src", g.attr("src"))
 };
-Site.initModuleWeiboShow = function (b, e, a, d) {
-    var h = Fai.top.$("#wbShowFrame" + e);
+Run.initModuleWeiboShow = function (b, e, a, d) {
+    var h = Helper.top.$("#wbShowFrame" + e);
     var g = h.attr("width");
     var f = h.attr("height");
     var i = "<iframe id='wbShowFrame" + e + "' name='wbShowFrame' frameborder='0' scrolling='no' height='" + f + "' width='" + g + "' src='about:blank'></iframe>";
     h.replaceWith(i);
-    var c = Fai.top.$("#wbShowFrame" + e).parent().width();
+    var c = Helper.top.$("#wbShowFrame" + e).parent().width();
     var j = a + c + "&ran=" + Math.random();
-    Site.initIframeLoading(b, e, j, d);
+    Run.initIframeLoading(b, e, j, d);
     $("#refreshChlid" + e).css("padding-top", "40%")
 };
-Site.initLocaler = function (b, a) {
-    if (typeof Fai.top._localerJsonTmp == "undefined") {
-        Fai.top._localerJsonTmp = b
+Run.initLocaler = function (b, a) {
+    if (typeof Helper.top._localerJsonTmp == "undefined") {
+        Helper.top._localerJsonTmp = b
     }
     if (a) {
-        Site.initLocalerManage(b)
+        Run.initLocalerManage(b)
     } else {
-        Site.initLocalerSite()
+        Run.initLocalerRun()
     }
-    Site.checkLocalerItemWidthForIE();
-    Site.bindLocalerItemEvent()
+    Run.checkLocalerItemWidthForIE();
+    Run.bindLocalerItemEvent()
 };
-Site.initLocaleStyle = function (b) {
+Run.initLocaleStyle = function (b) {
     var a = $("#webTop").width();
     if (b > a) {
         $("#localer").css("left", "auto");
@@ -29394,40 +29394,40 @@ Site.initLocaleStyle = function (b) {
         $("#localer").css("right", "auto")
     }
 };
-Site.initLocalerSite = function () {
+Run.initLocalerRun = function () {
     $("#localer").bind("mouseenter", function () {
-        Site.openLocalerList()
+        Run.openLocalerList()
     }).bind("mouseleave", function () {
-        Site.closeLocalerList(this)
+        Run.closeLocalerList(this)
     })
 };
-Site.openLocalerList = function () {
+Run.openLocalerList = function () {
     var b = parseInt($("#localer").attr("_moduleStyle"));
     if (b >= 1 && b <= 3) {
         return
     }
     var a = $("#localer").find(".J_localerList").height();
-    if (Fai.isIE()) {
+    if (Helper.isIE()) {
         $("#localer").find(".J_localerPanel").stop().animate({height: a}, {duration: 200})
     } else {
         $("#localer").find(".J_localerPanel").css("height", a + "px")
     }
     $("#localer").find(".J_localerPanel .J_localerList .first .arrow").addClass("arrow_hover")
 };
-Site.closeLocalerList = function (c) {
+Run.closeLocalerList = function (c) {
     var b = parseInt($("#localer").attr("_moduleStyle"));
     if (b >= 1 && b <= 3) {
         return
     }
     var a = $("#localer").find(".J_localerPanel .J_localerList .first").height();
-    if (Fai.isIE()) {
+    if (Helper.isIE()) {
         $("#localer").find(".J_localerPanel").stop().animate({height: a}, {duration: 200})
     } else {
         $("#localer").find(".J_localerPanel").css("height", a + "px")
     }
     $("#localer").find(".J_localerPanel .J_localerList .first .arrow").removeClass("arrow_hover")
 };
-Site.bindLocalerItemEvent = function () {
+Run.bindLocalerItemEvent = function () {
     $("#localer").find(".J_localerPanel .J_localerList .localerItemContent").bind("mouseenter", function () {
         if ($(this).hasClass("first")) {
             return
@@ -29440,27 +29440,27 @@ Site.bindLocalerItemEvent = function () {
         $(this).removeClass("localerItemContent_hover")
     })
 };
-Site.checkLocalerItemWidthForIE = function () {
-    Fai.top.$("#localer").find(".localerItemContent").removeAttr("style");
-    var b = parseInt(Fai.top.$("#localer").attr("_moduleStyle"));
-    if ((Fai.isIE6() || Fai.isIE7()) && (b >= 4 && b <= 9)) {
-        var c = Fai.top.$("#localer").find(".J_localerPanel").width();
-        Fai.top.$("#localer").find(".localerItemContent").css("width", c + "px")
+Run.checkLocalerItemWidthForIE = function () {
+    Helper.top.$("#localer").find(".localerItemContent").removeAttr("style");
+    var b = parseInt(Helper.top.$("#localer").attr("_moduleStyle"));
+    if ((Helper.isIE6() || Helper.isIE7()) && (b >= 4 && b <= 9)) {
+        var c = Helper.top.$("#localer").find(".J_localerPanel").width();
+        Helper.top.$("#localer").find(".localerItemContent").css("width", c + "px")
     }
-    if ((Fai.isIE6()) && (b >= 1 && b <= 3)) {
-        var a = Fai.top.$("#localer").find(".J_localerPanel").height();
-        Fai.top.$("#localer").find(".J_localerPanel").css("line-height", a + "px")
+    if ((Helper.isIE6()) && (b >= 1 && b <= 3)) {
+        var a = Helper.top.$("#localer").find(".J_localerPanel").height();
+        Helper.top.$("#localer").find(".J_localerPanel").css("line-height", a + "px")
     }
 };
-Site.initFloatImg = function (a) {
-    Site.hoverChangeImage()
+Run.initFloatImg = function (a) {
+    Run.hoverChangeImage()
 };
-Site.floatImgInContainerForms = function (a) {
+Run.floatImgInContainerForms = function (a) {
     if (!$("#webContainerTable").length) {
         return false
     }
     if ($("#webContainerTable").find("#module" + a).length) {
-        if (!(Site.checkNestModule($("#module" + a)).parentId > 0)) {
+        if (!(Run.checkNestModule($("#module" + a)).parentId > 0)) {
             return true
         } else {
             return false
@@ -29469,8 +29469,8 @@ Site.floatImgInContainerForms = function (a) {
         return false
     }
 };
-Site.bindImageEffectCusEvent_floatImg = function (g, c) {
-    var f = Fai.top.$(g).find(".imageEffects"), a = true, e = Fai.top.$(g).find("a"), d = $(e).attr("href"),
+Run.bindImageEffectCusEvent_floatImg = function (g, c) {
+    var f = Helper.top.$(g).find(".imageEffects"), a = true, e = Helper.top.$(g).find("a"), d = $(e).attr("href"),
         b = (typeof d == "undefined" || d.length == 0 || d.indexOf("javascirpt") > 0 || d.indexOf("return") > 0 || e.length == 0) ? false : true;
     if (!b) {
         a = false
@@ -29482,7 +29482,7 @@ Site.bindImageEffectCusEvent_floatImg = function (g, c) {
     }
     $(f).off("click.imgEft").on("click.imgEft", function () {
         var l = $(this).parents("." + c.targetParent).find("a");
-        if (Fai.isNull(l)) {
+        if (Helper.isNull(l)) {
             return
         }
         var i = $(l).attr("href"), h = $(l).attr("onclick"), j = $(l).attr("target");
@@ -29499,9 +29499,9 @@ Site.bindImageEffectCusEvent_floatImg = function (g, c) {
         }
     })
 };
-Site.mallCoupon = function (a) {
+Run.mallCoupon = function (a) {
     this.moduleId = a;
-    this.module = Fai.top.$("#module" + a);
+    this.module = Helper.top.$("#module" + a);
     this.couponList = this.module.find("#couponList" + a)
 };
 (function (c, a, b) {
@@ -29511,7 +29511,7 @@ Site.mallCoupon = function (a) {
         i(k);
         if (window.localStorage) {
             var l = window.localStorage.getItem("receTime");
-            if (l && Fai.top._TOKEN) {
+            if (l && Helper.top._TOKEN) {
                 if (new Date().getTime() - Number(l) > 120000) {
                     localStorage.removeItem("receTime");
                     return
@@ -29526,16 +29526,16 @@ Site.mallCoupon = function (a) {
     function i(j) {
         h["moduleId" + j].module.on("click", ".receiveCoupon", function () {
             if (_manageMode) {
-                if (!Fai.top._couponOpen) {
+                if (!Helper.top._couponOpen) {
                     return
                 }
                 var l = {};
                 l.height = 75;
                 l.width = 280;
-                l.htmlContent = '<div class="resultFailIcon addItemTextTips" style="font-size:14px; color:#636363 ;margin-left: 39px; padding-left: 35px;">';
+                l.htmlContent = '<div class="resultHelperlIcon addItemTextTips" style="font-size:14px; color:#636363 ;margin-left: 39px; padding-left: 35px;">';
                 l.htmlContent += "当前为管理状态，领取失败</div>";
                 l.autoClose = 2000;
-                var k = Site.popupBox(l)
+                var k = Run.popupBox(l)
             } else {
                 var m = c(this).attr("coupon_id");
                 var n = c(this).attr("bg_id");
@@ -29567,7 +29567,7 @@ Site.mallCoupon = function (a) {
                     q.push(LS.denomination + '：<span class="savePrice">' + o.savePrice + "</span>");
                     q.push("</div>");
                     q.push('<div class="coupon-line">');
-                    q.push(LS.useConditionOrderOver + Fai.top.choiceCurrencyVal + o.orderMinPrice);
+                    q.push(LS.useConditionOrderOver + Helper.top.choiceCurrencyVal + o.orderMinPrice);
                     q.push("</div>");
                     q.push('<div class="coupon-line">');
                     q.push(LS.vilidaty + "：" + o.validity);
@@ -29582,7 +29582,7 @@ Site.mallCoupon = function (a) {
                     q.push("</div>");
                     q.push("</div>");
                     p.htmlContent = q.join("");
-                    var l = Site.popupBox(p);
+                    var l = Run.popupBox(p);
                     g(l, m.success);
                     e(l)
                 } else {
@@ -29605,7 +29605,7 @@ Site.mallCoupon = function (a) {
                             var q = [];
                             q.push('<div class="coupon-popup-box">');
                             q.push('<div class="coupon-receive-fail">');
-                            q.push(LS.receiveFail);
+                            q.push(LS.receiveHelperl);
                             q.push("</div>");
                             q.push('<div class="coupon-msg">');
                             q.push(LS.receiveOverLimit);
@@ -29620,7 +29620,7 @@ Site.mallCoupon = function (a) {
                             q.push("</div>");
                             q.push("</div>");
                             p.htmlContent = q.join("");
-                            var l = Site.popupBox(p);
+                            var l = Run.popupBox(p);
                             l.css("width", "");
                             l.find(".popupCnBg").css("width", "");
                             g(l);
@@ -29631,7 +29631,7 @@ Site.mallCoupon = function (a) {
                             var q = [];
                             q.push('<div class="coupon-popup-box">');
                             q.push('<div class="coupon-receive-fail">');
-                            q.push(LS.receiveFail);
+                            q.push(LS.receiveHelperl);
                             q.push("</div>");
                             q.push('<div class="coupon-msg">');
                             if (m.msg == "receiveOverLimit") {
@@ -29650,7 +29650,7 @@ Site.mallCoupon = function (a) {
                             q.push("</div>");
                             q.push("</div>");
                             p.htmlContent = q.join("");
-                            var l = Site.popupBox(p);
+                            var l = Run.popupBox(p);
                             l.css("width", "");
                             l.find(".popupCnBg").css("width", "")
                         }
@@ -29658,7 +29658,7 @@ Site.mallCoupon = function (a) {
                 }
             },
             error: function () {
-                Fai.ing(LS.systemError, true)
+                Helper.ing(LS.systemError, true)
             }
         })
     }
@@ -29700,7 +29700,7 @@ Site.mallCoupon = function (a) {
                                 m.push("<div class='coupon-left coupon-invalid-left'></div>");
                                 m.push("<div class='coupon-content coupon-color-invalid'>")
                             }
-                            m.push("<div class='couponSavePrice'><span class='priceSign'>" + Fai.top.choiceCurrencyVal + "</span><span class='couponPrice'>" + n.savePrice + "</span></div>");
+                            m.push("<div class='couponSavePrice'><span class='priceSign'>" + Helper.top.choiceCurrencyVal + "</span><span class='couponPrice'>" + n.savePrice + "</span></div>");
                             if (n.state) {
                                 m.push("<div class='couponUseCondition'><span>" + LS.full + n.orderMinPrice + LS.money + "</span><br><span>" + LS.canUse + "</span><br><span class='coupon-name coupon-name-" + l.bg + "'>" + n.couponName + "</span></div>")
                             } else {
@@ -29733,9 +29733,9 @@ Site.mallCoupon = function (a) {
                             m.push("</div>")
                         });
                         h["moduleId" + k].couponList.html(m.join(""));
-                        Fai.Cookie.set("pageNo" + k, j);
-                        if (_manageMode && Fai.top._couponOpen) {
-                            Site.initModuleCouponListItemManage({
+                        Helper.Cookie.set("pageNo" + k, j);
+                        if (_manageMode && Helper.top._couponOpen) {
+                            Run.initModuleCouponListItemManage({
                                 couponParent: "couponList" + k,
                                 coupon: "coupon",
                                 moduleId: k
@@ -29744,22 +29744,22 @@ Site.mallCoupon = function (a) {
                     }
                 },
                 error: function () {
-                    Fai.ing(LS.systemError, true)
+                    Helper.ing(LS.systemError, true)
                 }
             });
             if (_manageMode) {
-                Site.initModuleCouponListItemManage({couponParent: "couponList" + k, coupon: "coupon", moduleId: k})
+                Run.initModuleCouponListItemManage({couponParent: "couponList" + k, coupon: "coupon", moduleId: k})
             }
         }
     }
-})(jQuery, Site.mallCoupon);
-Site.initMallCoupon = function (a) {
-    Fai.top.mallCoupon = Fai.top.mallCoupon || {};
-    Fai.top.mallCoupon["couponList" + a] = new Site.mallCoupon(a);
-    Fai.top.mallCoupon["couponList" + a].init(a)
+})(jQuery, Run.mallCoupon);
+Run.initMallCoupon = function (a) {
+    Helper.top.mallCoupon = Helper.top.mallCoupon || {};
+    Helper.top.mallCoupon["couponList" + a] = new Run.mallCoupon(a);
+    Helper.top.mallCoupon["couponList" + a].init(a)
 };
-Site.videoCompatible = function (p) {
-    var a = Fai.top.navigator.userAgent, j = /^https?.+\.(mp4)$/i, i = p.flvPagePath, d = false;
+Run.videoCompatible = function (p) {
+    var a = Helper.top.navigator.userAgent, j = /^https?.+\.(mp4)$/i, i = p.flvPagePath, d = false;
     if (j.test(i)) {
         d = true
     }
@@ -29769,7 +29769,7 @@ Site.videoCompatible = function (p) {
     var b = !!(document.createElement("video").canPlayType), k = "mediaplayerObj" + p.moduleId,
         m = "mediaplayer" + p.moduleId, h = [], g = [], l, f, c, o;
     if (!b && p.mediaJsUrl.length > 0) {
-        if (Fai.top.$("#jz-Html5VideoJs").length < 1) {
+        if (Helper.top.$("#jz-Html5VideoJs").length < 1) {
             var n = document.createElement("script"), e = document.head || document.body;
             n.id = "jz-Html5VideoJs";
             n.type = "text/javascript";
@@ -29781,8 +29781,8 @@ Site.videoCompatible = function (p) {
         k = p.moduleId;
         m = "onLineFlv" + p.moduleId
     }
-    c = Fai.top.$("#" + m);
-    o = Fai.top.$("#" + k);
+    c = Helper.top.$("#" + m);
+    o = Helper.top.$("#" + k);
     h.push('id="' + k + '"');
     if (p.flvImgUrl.length > 0) {
         h.push('poster="' + p.flvImgUrl + '"')
@@ -29801,7 +29801,7 @@ Site.videoCompatible = function (p) {
         c.append(f)
     }
 };
-Site.videoNetUrlDeal = function (i) {
+Run.videoNetUrlDeal = function (i) {
     var b = "";
     if (i) {
         var h = $("#onLineFlv" + i);
@@ -29809,7 +29809,7 @@ Site.videoNetUrlDeal = function (i) {
         b = $onLineVideo.attr("src");
         try {
             if (b) {
-                b = Fai.decodeHtml(b);
+                b = Helper.decodeHtml(b);
                 b = b.replace(/&nbsp;/gi, " ").replace(/&lt;/gi, "<").replace(/&gt;/g, ">").replace(/&#92;/gi, "\\").replace(/&#39;/gi, "'").replace(/&quot;/gi, '"').replace(/\<br\/\>/gi, "\n").replace(/&amp;/gi, "&");
                 var a = $(b);
                 var d = a.get(0).tagName.toLowerCase();
@@ -29825,7 +29825,7 @@ Site.videoNetUrlDeal = function (i) {
                     h.append(g)
                 } else {
                     if (k) {
-                        k = Fai.decodeHtml(k);
+                        k = Helper.decodeHtml(k);
                         if (d == "embed") {
                             $onLineVideo.attr("src", k);
                             var g = $onLineVideo.prop("outerHTML");
@@ -29846,7 +29846,7 @@ Site.videoNetUrlDeal = function (i) {
         }
     }
 };
-Site.optimizeFooterAlign = function () {
+Run.optimizeFooterAlign = function () {
     var d = $("#footerNav"), b = true, g;
     if (d.length < 1) {
         return
@@ -29857,8 +29857,8 @@ Site.optimizeFooterAlign = function () {
     }
     var f = a.children(".J_footerItemSpacing_end"), k = h.first(), i = h.last(), j = i.find(".J_footerItemContainer"),
         c, e;
-    if (Fai.top._designAuth) {
-        g = Site.getFooterStyleData();
+    if (Helper.top._designAuth) {
+        g = Run.getFooterStyleData();
         if (g.fa != 2) {
             b = false
         }
@@ -29873,27 +29873,27 @@ Site.optimizeFooterAlign = function () {
         i.removeClass("fixWidth");
         return
     }
-    if (Fai.top._designAuth) {
+    if (Helper.top._designAuth) {
         i.removeClass("fixWidth")
     }
     e = i.width();
     c = j.width();
-    Fai.top.Fai.setCtrlStyleCss("stylefooter", "webFooterTable", ".footerItemSpacing_end", "display", "none");
+    Helper.top.Helper.setCtrlStyleCss("stylefooter", "webFooterTable", ".footerItemSpacing_end", "display", "none");
     if (e < c) {
         i.removeClass("fixWidth")
     } else {
         i.addClass("fixWidth");
-        Fai.top.Fai.setCtrlStyleCss("stylefooter", "webFooterTable", ".footerItemListContainer .fixWidth", "width", c + "px")
+        Helper.top.Helper.setCtrlStyleCss("stylefooter", "webFooterTable", ".footerItemListContainer .fixWidth", "width", c + "px")
     }
 };
-Site.changeTheLogoSize = function () {
+Run.changeTheLogoSize = function () {
     if ($("#footerSupport")) {
         var b = $("#footerSupport").css("font-size");
         var a = parseInt(b.substring(0, b.length - 2)) + 3;
         $("#faisco-icons-logo").css("font-size", a + "px")
     }
 };
-Site.initCorpTitleContent = function (c, j, a) {
+Run.initCorpTitleContent = function (c, j, a) {
     var e = $("#" + c), i = $("#corpTitle"), k, l, m, f, d, h, g, b;
     if (i.length <= 0) {
         return
@@ -29924,22 +29924,22 @@ Site.initCorpTitleContent = function (c, j, a) {
         }
     }
 };
-Site.initForms = function () {
+Run.initForms = function () {
     $(".form").each(function () {
         var a = $(this), b = a.attr("_moduleid") || 0;
         if (b > 0) {
             if (a.attr("_autoHeight") != "1") {
-                Site.setModuleHeight2(b, a.height())
+                Run.setModuleHeight2(b, a.height())
             } else {
                 if (a.hasClass("formStyle29")) {
-                    Site.setModuleHeight2(b, a.height())
+                    Run.setModuleHeight2(b, a.height())
                 }
             }
         }
     })
 };
-Site.setModuleHeight2 = function (m, l) {
-    var b = Fai.top.$("#module" + m);
+Run.setModuleHeight2 = function (m, l) {
+    var b = Helper.top.$("#module" + m);
     b.css("height", l + "px");
     if (b.hasClass("formStyle80") || b.hasClass("formStyle87")) {
         return
@@ -29953,10 +29953,10 @@ Site.setModuleHeight2 = function (m, l) {
     var s = r.is(":visible") ? r.outerHeight(true) : 0;
     var n = j.find(".formMiddleCenter" + m);
     var o = j.find(".formMiddleContent" + m);
-    var t = l - a - f - s - Fai.getFrameHeight(j);
+    var t = l - a - f - s - Helper.getFrameHeight(j);
     j.css("height", t + "px");
-    t = t - Fai.getFrameHeight(n);
-    t = t - Fai.getFrameHeight(o);
+    t = t - Helper.getFrameHeight(n);
+    t = t - Helper.getFrameHeight(o);
     if (!b.hasClass("formStyle81") && !b.hasClass("formStyle82") && !b.hasClass("formStyle85") && !b.hasClass("formStyle98")) {
         if (t > 0) {
             o.css("height", t + "px");
@@ -29971,8 +29971,8 @@ Site.setModuleHeight2 = function (m, l) {
                 h = i.outerHeight(true)
             }
             var c = b.find(".formTabContent" + m);
-            var e = t - h - Fai.getCssInt(c, "border-top-width") - Fai.getCssInt(c, "border-bottom-width");
-            if (Fai.isIE6()) {
+            var e = t - h - Helper.getCssInt(c, "border-top-width") - Helper.getCssInt(c, "border-bottom-width");
+            if (Helper.isIE6()) {
                 e += 1
             }
             c.css("height", e + "px");
@@ -29982,82 +29982,82 @@ Site.setModuleHeight2 = function (m, l) {
     } else {
         if (b.hasClass("formStyle79")) {
             var q = b.attr("id").replace("module", "");
-            if (!Site.floatImgInContainerForms(q)) {
+            if (!Run.floatImgInContainerForms(q)) {
                 b.find("#float_img_" + m).css("height", t + "px")
             }
         }
     }
 };
-Site.refreshForms = function () {
-    Site.refreshFormIndexClass();
-    Site.displayAddModule();
-    Fai.top.Fai.delayLoadImg(20)
+Run.refreshForms = function () {
+    Run.refreshFormIndexClass();
+    Run.displayAddModule();
+    Helper.top.Helper.delayLoadImg(20)
 };
-Site.displayAddModule = function () {
-    if (!Fai.top._designAuth) {
+Run.displayAddModule = function () {
+    if (!Helper.top._designAuth) {
         return
     }
-    Site.addAddModuleButton(1);
-    Site.addAddModuleButton(2);
-    Site.addAddModuleButton(3);
-    Site.addAddModuleButton(4);
-    Site.addAddModuleButton(5);
-    Site.addAddModuleButton(6);
-    Site.addAddModuleButton(7);
-    Site.addAddModuleButton(8);
-    Site.addAddModuleButton(10);
-    Site.addAddModuleButton(11);
-    Site.addAddModuleButton(12);
-    Site.addAddModuleButton(13);
-    Site.addAddModuleButton(20);
-    Site.addAddModuleButton(22);
-    Site.addAddModuleButton(23);
-    Site.addAddModuleButton(24);
-    Site.addAddModuleButton(25);
-    Site.addAddModuleButton(26);
-    Site.addAddModuleButton(27);
-    Site.addAddModuleButton(28)
+    Run.addAddModuleButton(1);
+    Run.addAddModuleButton(2);
+    Run.addAddModuleButton(3);
+    Run.addAddModuleButton(4);
+    Run.addAddModuleButton(5);
+    Run.addAddModuleButton(6);
+    Run.addAddModuleButton(7);
+    Run.addAddModuleButton(8);
+    Run.addAddModuleButton(10);
+    Run.addAddModuleButton(11);
+    Run.addAddModuleButton(12);
+    Run.addAddModuleButton(13);
+    Run.addAddModuleButton(20);
+    Run.addAddModuleButton(22);
+    Run.addAddModuleButton(23);
+    Run.addAddModuleButton(24);
+    Run.addAddModuleButton(25);
+    Run.addAddModuleButton(26);
+    Run.addAddModuleButton(27);
+    Run.addAddModuleButton(28)
 };
-Site.checkModuleInZone = function (a) {
+Run.checkModuleInZone = function (a) {
     return a.parent().hasClass("J_moduleZone")
 };
-Site.checkFloatModulePosition = function (b) {
+Run.checkFloatModulePosition = function (b) {
     if (!b.length) {
         return
     }
     var g = b.parent().attr("id");
     var d = b.offset().top, l = b[0].getBoundingClientRect().top;
-    moduleTop = d - Fai.top.$("body").scrollTop();
+    moduleTop = d - Helper.top.$("body").scrollTop();
     var c = b.offset().left;
     var h = b.height();
     var k = moduleTop + h;
     var j = 0;
-    var e = Fai.top.Fai.getBrowserHeight() - j;
-    var a = Site.getModuleStatus(b.attr("id").replace("module", ""));
+    var e = Helper.top.Helper.getBrowserHeight() - j;
+    var a = Run.getModuleStatus(b.attr("id").replace("module", ""));
     if (g == "floatLeftBottomForms" || g == "floatRightBottomForms") {
-        var i = Fai.top.$("#web").offset().top;
+        var i = Helper.top.$("#web").offset().top;
         if (k > e) {
             var f = e - h;
             if (a != 3) {
-                b.offset({left: c, top: i + Fai.top.Fai.getBrowserHeight() / 2})
+                b.offset({left: c, top: i + Helper.top.Helper.getBrowserHeight() / 2})
             }
         }
         if (k < i) {
-            b.offset({top: i + Fai.top.Fai.getBrowserHeight() / 2})
+            b.offset({top: i + Helper.top.Helper.getBrowserHeight() / 2})
         }
         if (moduleTop < i) {
             if (a != 3) {
-                b.offset({top: i + Fai.top.Fai.getBrowserHeight() / 2})
+                b.offset({top: i + Helper.top.Helper.getBrowserHeight() / 2})
             }
         }
     } else {
         if (g == "floatLeftTopForms" || g == "floatRightTopForms") {
-            var i = Fai.top.$("#web").offset().top;
+            var i = Helper.top.$("#web").offset().top;
             if (i < 0) {
                 i = 0
             }
-            if (moduleTop > (i + Fai.top.Fai.getBrowserHeight())) {
-                b.offset({top: i + Fai.top.Fai.getBrowserHeight() / 2 - h})
+            if (moduleTop > (i + Helper.top.Helper.getBrowserHeight())) {
+                b.offset({top: i + Helper.top.Helper.getBrowserHeight() / 2 - h})
             }
             if (k < i) {
                 b.offset({top: i})
@@ -30068,27 +30068,27 @@ Site.checkFloatModulePosition = function (b) {
         }
     }
 };
-Site.closeAd = function (a) {
+Run.closeAd = function (a) {
     $("#" + a).data("top", $("#" + a).position().top);
     $("#" + a).data("left", $("#" + a).position().left);
     $("#" + a).hide()
 };
-Site.checkSideModule = function (a) {
-    Site.reSetSidePosition(a)
+Run.checkSideModule = function (a) {
+    Run.reSetSidePosition(a)
 };
-Site.reSetSidePosition = function (b, r) {
+Run.reSetSidePosition = function (b, r) {
     var k = b.attr("id");
     var v = b.offset().top;
-    var o = Fai.top.Fai.getBrowserWidth();
-    var a = Fai.top.Fai.getBrowserHeight();
+    var o = Helper.top.Helper.getBrowserWidth();
+    var a = Helper.top.Helper.getBrowserHeight();
     var n = b.outerWidth();
     var x = b.height();
-    var z = Fai.getCssInt(b, "border-left-width");
+    var z = Helper.getCssInt(b, "border-left-width");
     var s = b.parent().attr("id");
     var c = b.attr("_side");
     var h = 0;
     var j = [];
-    var t = Fai.top.$("#" + k + "SideBtn");
+    var t = Helper.top.$("#" + k + "SideBtn");
     t.remove();
     var w = k.replace("module", "");
     var m = b.find(".mainTitle" + w).first().text();
@@ -30106,12 +30106,12 @@ Site.reSetSidePosition = function (b, r) {
             h = 1;
             j = ["<div id='" + k + "SideBtn' class='g_sideBtn fk-sideLeft'><div class='g_sideBtn_t g_sB_lt'></div><div class='g_sideBtn_c g_sB_lc'><span class='g_sideBtn_tl'>" + m + "</span></div><div class='g_sideBtn_b g_sB_lb'></div><div class='g_sideBtn_extend g_sB_le'></div></div>"];
             b.animate({left: -n}, {queue: false, duration: 0});
-            b.off("mouseenter.sideModule").on("mouseenter.sideModule", Site.bindSideIn1);
-            b.off("mouseleave.sideModule").on("mouseleave.sideModule", Site.bindSideOut1)
+            b.off("mouseenter.sideModule").on("mouseenter.sideModule", Run.bindSideIn1);
+            b.off("mouseleave.sideModule").on("mouseleave.sideModule", Run.bindSideOut1)
         } else {
             if (s == "floatRightTopForms" || s == "floatRightBottomForms") {
-                if (Fai.top._webRightBar) {
-                    g = Fai.getScrollWidth() + $(".fk-rbar").width();
+                if (Helper.top._webRightBar) {
+                    g = Helper.getScrollWidth() + $(".fk-rbar").width();
                     if (b.width() > 10) {
                         b.data("_selfWidth", b.width())
                     }
@@ -30128,15 +30128,15 @@ Site.reSetSidePosition = function (b, r) {
                 b.offset({top: v, left: o - n - g});
                 h = 0;
                 j = ["<div id='" + k + "SideBtn' class='g_sideBtn fk-sideRight'><div class='g_sideBtn_t g_sB_rt'></div><div class='g_sideBtn_c g_sB_rc'><span class='g_sideBtn_tl'>" + m + "</span></div><div class='g_sideBtn_b g_sB_rb'></div><div class='g_sideBtn_extend g_sB_re'></div></div>"];
-                if (Fai.top._webRightBar) {
+                if (Helper.top._webRightBar) {
                     if (!d) {
                         b.animate({left: 0}, {queue: false, duration: 0})
                     }
-                    if (Fai.top._manageMode && !r) {
+                    if (Helper.top._manageMode && !r) {
                         b.css("overflow", "visible");
                         b.animate({left: -g + "px", width: 0}, {queue: false, duration: 300})
                     } else {
-                        if (Fai.top._manageMode && r) {
+                        if (Helper.top._manageMode && r) {
                             b.animate({left: -g + "px"}, {queue: false, duration: 0})
                         } else {
                             b.animate({left: -$(".fk-rbar").width() + "px"}, {queue: false, duration: 500})
@@ -30145,8 +30145,8 @@ Site.reSetSidePosition = function (b, r) {
                 } else {
                     b.animate({left: 0}, {queue: false, duration: 0})
                 }
-                b.off("mouseenter.sideModule").on("mouseenter.sideModule", Site.bindSideIn2);
-                b.off("mouseleave.sideModule").on("mouseleave.sideModule", Site.bindSideOut2)
+                b.off("mouseenter.sideModule").on("mouseenter.sideModule", Run.bindSideIn2);
+                b.off("mouseleave.sideModule").on("mouseleave.sideModule", Run.bindSideOut2)
             } else {
                 b.attr("_side", 0)
             }
@@ -30158,7 +30158,7 @@ Site.reSetSidePosition = function (b, r) {
     if (!!b.find(".formMiddle").length) {
         b.find(".formMiddle").addClass("jz-moduleSide-content")
     }
-    var l = Fai.top.$("#" + k + "SideBtn");
+    var l = Helper.top.$("#" + k + "SideBtn");
     if (l.length > 0) {
         var u = l.width();
         var e = l.height();
@@ -30189,29 +30189,29 @@ Site.reSetSidePosition = function (b, r) {
         }
     }
 };
-Site.checkFlutterModule = function (b) {
+Run.checkFlutterModule = function (b) {
     var a = b.attr("_side");
     if (a == 2) {
-        Site.flutterStart(b)
+        Run.flutterStart(b)
     }
 };
 var flutterCount = 1000;
-Site.flutterInternel = function (d) {
+Run.flutterInternel = function (d) {
     var i = d.attr("_flutterSwitch");
     if (i == "true") {
-        Site.stopFlutterInterval(d)
+        Run.stopFlutterInterval(d)
     }
     var m = 1;
     var b = document.body.scrollTop;
     var g = document.body.scrollLeft;
-    if (Fai.isIE8() || Fai.isIE7() || Fai.isIE10() || Fai.isIE9() || Fai.isIE11()) {
+    if (Helper.isIE8() || Helper.isIE7() || Helper.isIE10() || Helper.isIE9() || Helper.isIE11()) {
         b = document.documentElement.scrollTop
     }
     var a = $("#g_main").offset().top + b;
     var e = 0 + g;
     var c = document.documentElement.clientWidth - d.width() + g;
     var h = document.documentElement.clientHeight - d.height() + b;
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         c = document.body.clientWidth - d.width()
     }
     var l = d.data("flutterXPos");
@@ -30238,10 +30238,10 @@ Site.flutterInternel = function (d) {
         d.data("flutterYPos", h)
     }
 };
-Site.stopFlutterInterval = function (a) {
-    Fai.stopInterval("flutter" + a.attr("id"))
+Run.stopFlutterInterval = function (a) {
+    Helper.stopInterval("flutter" + a.attr("id"))
 };
-Site.startFlutterInterval = function (b) {
+Run.startFlutterInterval = function (b) {
     var a = b.attr("_side");
     if (a != 2) {
         return
@@ -30249,26 +30249,26 @@ Site.startFlutterInterval = function (b) {
     if (b.attr("_edit") == "true") {
         return
     }
-    Site.stopFlutterInterval(b);
+    Run.stopFlutterInterval(b);
     var d = function () {
         var f = b.attr("_side");
         var g = b.attr("_flutterSwitch");
         if (f == 2) {
-            Site.flutterInternel(b)
+            Run.flutterInternel(b)
         } else {
-            Site.stopFlutterInterval(b)
+            Run.stopFlutterInterval(b)
         }
     };
     var e = 10;
     var c = "flutter" + b.attr("id");
-    Fai.addInterval(c, d, e);
-    Fai.startInterval(c)
+    Helper.addInterval(c, d, e);
+    Helper.startInterval(c)
 };
-Site.flutterStart = function (b, a) {
+Run.flutterStart = function (b, a) {
     b.addClass("fk-flutterForm");
     var g = 0;
     var f = document.body.scrollLeft;
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         rightBoundary = document.body.clientWidth - b.width()
     } else {
         rightBoundary = document.documentElement.clientWidth - b.width() + f
@@ -30305,68 +30305,68 @@ Site.flutterStart = function (b, a) {
     }
     var k = b.attr("_flutterSwitch");
     if (k == "false" || !k) {
-        Site.startFlutterInterval(b)
+        Run.startFlutterInterval(b)
     }
     b.on("mouseenter", function () {
-        Site.stopFlutterInterval($(this))
+        Run.stopFlutterInterval($(this))
     });
     b.on("mouseleave", function () {
         var m = $(this).attr("_flutterSwitch");
         if (m == "false" || !m) {
-            Site.startFlutterInterval($(this))
+            Run.startFlutterInterval($(this))
         }
     })
 };
-Site.bindSideIn1 = function (b) {
+Run.bindSideIn1 = function (b) {
     var b = $(this);
     var c = b.attr("_side");
     var a = b.outerWidth();
     var d = b.parent().attr("id");
-    if (Fai.top._manageMode) {
-        Site.disableEditLayer();
+    if (Helper.top._manageMode) {
+        Run.disableEditLayer();
         if (-a == b.offset().left) {
-            jzUtils.run({name: "moduleAnimation.canRunAgain", base: Site})
+            jzUtils.run({name: "moduleAnimation.canRunAgain", base: Run})
         }
         b.animate({left: 0}, {
             queue: false, duration: 500, complete: function () {
-                Site.enableEditLayer();
+                Run.enableEditLayer();
                 if (c == 1) {
-                    b.unbind("mouseenter.sideModule", Site.bindSideIn1).unbind("mouseleave.sideModule", Site.bindSideOut1).unbind("mouseenter.sideModule", Site.bindSideIn2).unbind("mouseleave.sideModule", Site.bindSideOut2)
+                    b.unbind("mouseenter.sideModule", Run.bindSideIn1).unbind("mouseleave.sideModule", Run.bindSideOut1).unbind("mouseenter.sideModule", Run.bindSideIn2).unbind("mouseleave.sideModule", Run.bindSideOut2)
                 }
-                jzUtils.run({name: "moduleAnimation.publish", base: Site});
-                jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Site})
+                jzUtils.run({name: "moduleAnimation.publish", base: Run});
+                jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Run})
             }
         })
     } else {
         if (-a == b.offset().left) {
-            jzUtils.run({name: "moduleAnimation.canRunAgain", base: Site})
+            jzUtils.run({name: "moduleAnimation.canRunAgain", base: Run})
         }
         b.animate({left: 0}, {
             queue: false, duration: 500, complete: function () {
-                jzUtils.run({name: "moduleAnimation.publish", base: Site});
-                jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Site})
+                jzUtils.run({name: "moduleAnimation.publish", base: Run});
+                jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Run})
             }
         })
     }
     $(b).find("img").trigger("appear")
 };
-Site.bindSideIn2 = function (e) {
+Run.bindSideIn2 = function (e) {
     var e = $(this);
     var d = e.attr("_side");
     var g = e.outerWidth();
     var i = e.parent().attr("id");
-    var m = Fai.top.Fai.getBrowserWidth();
+    var m = Helper.top.Helper.getBrowserWidth();
     var j = 0;
-    var l = Fai.top.$("#" + e.attr("id") + "SideBtn");
+    var l = Helper.top.$("#" + e.attr("id") + "SideBtn");
     var k = l.width();
-    var b = Fai.getCssInt(e, "border-left-width");
+    var b = Helper.getCssInt(e, "border-left-width");
     var f = 0;
     var c = {left: -g};
     var h = 0;
     var a = 500;
-    if (Fai.top._webRightBar) {
+    if (Helper.top._webRightBar) {
         f = $(".fk-rbar").width();
-        j = Fai.getScrollWidth() + f;
+        j = Helper.getScrollWidth() + f;
         g = e.data("_selfWidth");
         if (e.attr("_moduleStyle") == 7) {
             e.find(".formWrap").css({
@@ -30378,71 +30378,71 @@ Site.bindSideIn2 = function (e) {
         }
         e.data("notInitState", true);
         c = {left: -g - j, width: g};
-        h = Fai.getScrollWidth();
-        if (Fai.top._isTemplateVersion2 && Fai.top._manageMode) {
+        h = Helper.getScrollWidth();
+        if (Helper.top._isTemplateVersion2 && Helper.top._manageMode) {
             a = 0
         }
     }
     e.find("img").trigger("appear");
-    if (Fai.top._manageMode) {
-        Site.disableEditLayer();
+    if (Helper.top._manageMode) {
+        Run.disableEditLayer();
         if (m == (e.offset().left + f + h)) {
-            jzUtils.run({name: "moduleAnimation.canRunAgain", base: Site})
+            jzUtils.run({name: "moduleAnimation.canRunAgain", base: Run})
         }
         e.animate(c, {
             queue: false, duration: a, complete: function () {
-                Site.enableEditLayer();
+                Run.enableEditLayer();
                 if (d == 1) {
-                    e.unbind("mouseenter.sideModule", Site.bindSideIn1).unbind("mouseleave.sideModule", Site.bindSideOut1).unbind("mouseenter.sideModule", Site.bindSideIn2).unbind("mouseleave.sideModule", Site.bindSideOut2)
+                    e.unbind("mouseenter.sideModule", Run.bindSideIn1).unbind("mouseleave.sideModule", Run.bindSideOut1).unbind("mouseenter.sideModule", Run.bindSideIn2).unbind("mouseleave.sideModule", Run.bindSideOut2)
                 }
-                jzUtils.run({name: "moduleAnimation.publish", base: Site});
-                jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Site})
+                jzUtils.run({name: "moduleAnimation.publish", base: Run});
+                jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Run})
             }
         })
     } else {
         if (m == e.offset().left) {
-            jzUtils.run({name: "moduleAnimation.canRunAgain", base: Site})
+            jzUtils.run({name: "moduleAnimation.canRunAgain", base: Run})
         }
         e.animate({left: -g - f}, {
             queue: false, duration: 500, complete: function () {
-                jzUtils.run({name: "moduleAnimation.publish", base: Site});
-                jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Site})
+                jzUtils.run({name: "moduleAnimation.publish", base: Run});
+                jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Run})
             }
         })
     }
 };
-Site.bindSideOut1 = function (b) {
+Run.bindSideOut1 = function (b) {
     var b = $(this);
     var c = b.attr("_side");
     var a = b.outerWidth();
     var d = b.parent().attr("id");
     b.animate({left: -a}, {queue: false, duration: 500})
 };
-Site.bindSideOut2 = function (d) {
+Run.bindSideOut2 = function (d) {
     var d = $(this);
     var e = d.attr("_side");
     var b = d.outerWidth();
     var f = d.parent().attr("id");
     var a = 0;
     var c = 0;
-    if (Fai.top._webRightBar) {
-        a = Fai.getScrollWidth() + $(".fk-rbar").width();
+    if (Helper.top._webRightBar) {
+        a = Helper.getScrollWidth() + $(".fk-rbar").width();
         if (d.attr("_moduleStyle") == 7) {
             d.find(".formWrap").css({"word-break": "keep-all", "white-space": "nowrap"})
         }
         c = $(".fk-rbar").width()
     }
-    if (Fai.top._manageMode) {
+    if (Helper.top._manageMode) {
         d.animate({left: 0 - a}, {queue: false, duration: 500})
     } else {
         d.animate({left: -c}, {queue: false, duration: 500})
     }
 };
-Site.setAbsFormsHolder2 = function (h) {
-    var a = 0, f = 0, j = 0, g = Fai.top.$("#containerPlaceholder"), b = Fai.top.$("#g_main"), d = Fai.isIE6(),
-        c = Fai.isIE7(), i = false, k, e;
+Run.setAbsFormsHolder2 = function (h) {
+    var a = 0, f = 0, j = 0, g = Helper.top.$("#containerPlaceholder"), b = Helper.top.$("#g_main"), d = Helper.isIE6(),
+        c = Helper.isIE7(), i = false, k, e;
     k = function (l) {
-        if (!Fai.top._manageMode && !d && !c) {
+        if (!Helper.top._manageMode && !d && !c) {
             return l
         }
         var m = b.scrollTop();
@@ -30451,21 +30451,21 @@ Site.setAbsFormsHolder2 = function (h) {
         }
         return l + m
     };
-    Fai.top.$("#absForms >.form").each(function () {
+    Helper.top.$("#absForms >.form").each(function () {
         var l = $(this).offset().top + $(this).outerHeight();
         l = k(l);
         if (l > a) {
             a = l
         }
     });
-    Fai.top.$("#absTopForms >.form").each(function () {
+    Helper.top.$("#absTopForms >.form").each(function () {
         var l = $(this).offset().top + $(this).outerHeight();
         l = k(l);
         if (l > a) {
             a = l
         }
     });
-    f = Fai.top.$("#fullmeasureBottomForms").outerHeight();
+    f = Helper.top.$("#fullmeasureBottomForms").outerHeight();
     if (f > 0) {
         a = a - f;
         if (a < 0) {
@@ -30478,11 +30478,11 @@ Site.setAbsFormsHolder2 = function (h) {
         if (a > j) {
             e = a - j;
             if (e !== parseInt(g.height())) {
-                if (!Fai.top._manageMode && Fai.top._colOtherStyleData.y > e) {
+                if (!Helper.top._manageMode && Helper.top._colOtherStyleData.y > e) {
                 } else {
                     g.css("height", e + "px");
                     if (!h) {
-                        Fai.top._colOtherStyleData.y = parseInt(e)
+                        Helper.top._colOtherStyleData.y = parseInt(e)
                     }
                 }
             }
@@ -30490,12 +30490,12 @@ Site.setAbsFormsHolder2 = function (h) {
             if (a != 0 && (a - j) !== 0) {
                 g.css("height", "0");
                 if (!h) {
-                    Fai.top._colOtherStyleData.y = 0
+                    Helper.top._colOtherStyleData.y = 0
                 }
             } else {
-                if (Fai.top._colOtherStyleData.y > 0 && a < j) {
+                if (Helper.top._colOtherStyleData.y > 0 && a < j) {
                     g.css("height", "0");
-                    Fai.top._colOtherStyleData.y = 0
+                    Helper.top._colOtherStyleData.y = 0
                 }
             }
         }
@@ -30504,43 +30504,43 @@ Site.setAbsFormsHolder2 = function (h) {
             var e = a - j;
             if (e !== parseInt(g.height())) {
                 g.css("height", e + "px");
-                Fai.top._colOtherStyleData.y = parseInt(e)
+                Helper.top._colOtherStyleData.y = parseInt(e)
             }
         } else {
             if (a != 0 && (a - j) !== 0) {
                 g.css("height", "0px");
-                Fai.top._colOtherStyleData.y = 0
+                Helper.top._colOtherStyleData.y = 0
             }
         }
     }
 };
-Site.checkAbsModulePosition = function (c, a) {
+Run.checkAbsModulePosition = function (c, a) {
     var h = c.parent().attr("id");
     var f = c.offset().left;
     var d = c.offset().top;
     var e = c.height();
     var g = c.offset().top + e;
     if (h == "absTopForms") {
-        var b = Fai.top.$("#web").offset().top;
+        var b = Helper.top.$("#web").offset().top;
         if (d < b) {
             d = b;
             c.offset({top: d, left: f})
         }
-        Site.setAbsFormsHolder2(a)
+        Run.setAbsFormsHolder2(a)
     } else {
         if (h == "absBottomForms") {
-            var b = Fai.top.$("#webFooter").offset().top;
+            var b = Helper.top.$("#webFooter").offset().top;
             if (d < b) {
                 d = b
             }
-            if (Fai.top._siteVer < 30) {
-                var b = Site.getFooterBottom();
+            if (Helper.top._siteVer < 30) {
+                var b = Run.getFooterBottom();
                 if (d + e > b) {
                     d = b - e;
                     c.offset({top: d, left: f})
                 }
             } else {
-                var b = Site.getFooterBottom(true);
+                var b = Run.getFooterBottom(true);
                 if (d + e > b) {
                     d = b - e;
                     c.offset({top: d, left: f})
@@ -30549,19 +30549,19 @@ Site.checkAbsModulePosition = function (c, a) {
             c.offset({top: d, left: f})
         } else {
             if (h == "absForms") {
-                Site.setAbsFormsHolder2(a)
+                Run.setAbsFormsHolder2(a)
             }
         }
     }
 };
-Site.demoStyleDesignLoading = function (a, c) {
+Run.demoStyleDesignLoading = function (a, c) {
     var b = $('<div class="forWaiting ajaxLoading2" style="position:absolute;background-color:#d6d9e0;width:100%;height:205px;top:0;left:0;"></div>');
     b.appendTo("#" + a);
     $("#" + c).load(function () {
         $(".forWaiting").remove()
     })
 };
-Site._webToggleClass = function (a) {
+Run._webToggleClass = function (a) {
     if (a == "show") {
         $("html").removeClass("g_html").addClass("g_htmlManage");
         $("body").removeClass("g_body").addClass("g_bodyManage");
@@ -30569,55 +30569,55 @@ Site._webToggleClass = function (a) {
         $("#web").addClass("g_webManage")
     }
 };
-Site._demoTemplate = function () {
+Run._demoTemplate = function () {
     var a = $("#siteTipsDemoTemplate");
     if (a.is(":visible")) {
         document.location.reload()
     } else {
         a.show();
-        Site._webToggleClass("show");
+        Run._webToggleClass("show");
         if ($("#topBarArea").length > 0) {
             $("#topBarArea").hide();
             $("#topBar").hide()
         }
-        Site.demoStyleDesignLoading("siteTipsDemoTemplate", "siteTipsDemoTemplateFrame");
+        Run.demoStyleDesignLoading("siteTipsDemoTemplate", "siteTipsDemoTemplateFrame");
         $("#siteTipsDemoTemplateFrame").attr("src", "manage/styleTemplate.php?demoTemplate=true&ram" + Math.random());
-        Site.resetGmainPos()
+        Run.resetGmainPos()
     }
 };
-Site.adjustFlBtnPos = function (b) {
-    var a = Fai.top.$("#module" + b);
+Run.adjustFlBtnPos = function (b) {
+    var a = Helper.top.$("#module" + b);
     a.css({border: "10px solid transparent", "margin-top": "-10px", "margin-left": "-10px"});
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         var c = a.attr("style");
         a.attr("style", c + "; _border-color:tomato; _filter:chroma(color=tomato)")
     }
 };
-Site.initFlBtnStyle = function (i) {
-    var b = i.moduleId, f = i.btnNumSystem, g = i.btnStyle, a = "module" + b, c = Fai.top.$("#" + a);
-    if (Fai.top._designAuth) {
-        Site.initManageFlBtnStyle(b, f, g)
+Run.initFlBtnStyle = function (i) {
+    var b = i.moduleId, f = i.btnNumSystem, g = i.btnStyle, a = "module" + b, c = Helper.top.$("#" + a);
+    if (Helper.top._designAuth) {
+        Run.initManageFlBtnStyle(b, f, g)
     } else {
         var h = g.sh;
-        var d = Fai.top.$(".mulMColContent");
+        var d = Helper.top.$(".mulMColContent");
         var e = c.find(".floatBtn");
         if (c.css("position") != "absolute") {
-            Site.setFlBtnBoxPadding(a, h, true)
+            Run.setFlBtnBoxPadding(a, h, true)
         }
     }
 };
-Site.setFlBtnParentColHide = function () {
-    var a = Fai.top.$(".mulMColContent");
+Run.setFlBtnParentColHide = function () {
+    var a = Helper.top.$(".mulMColContent");
     if (a.length > 0) {
         a.each(function () {
             if ($(this).find(".formStyle81").length > 0) {
                 var b = $(this).attr("id");
-                Fai.top.Fai.setCtrlStyleCss("stylemodule", b, ".mulMColList", "overflow", "hidden")
+                Helper.top.Helper.setCtrlStyleCss("stylemodule", b, ".mulMColList", "overflow", "hidden")
             }
         })
     }
 };
-Site.setFlBtnBoxPadding = function (a, g, d) {
+Run.setFlBtnBoxPadding = function (a, g, d) {
     if (g.t == 0) {
         return
     }
@@ -30644,19 +30644,19 @@ Site.setFlBtnBoxPadding = function (a, g, d) {
         b.push({cls: ".floatBtnBox", key: "padding-left"})
     }
     if (d) {
-        Fai.top.Fai.setCtrlStyleCssList("stylemodule", a, i)
+        Helper.top.Helper.setCtrlStyleCssList("stylemodule", a, i)
     } else {
-        Fai.top.Fai.removeCtrlStyleCssList("stylemodule", a, b)
+        Helper.top.Helper.removeCtrlStyleCssList("stylemodule", a, b)
     }
 };
-Site.initPhotoCard = function (b) {
-    var a = Fai.top.$("#module" + b);
-    Site.resizePhotoCardHeight(a);
-    Site.setPhotoCardHeight(a);
-    Site.adjustPhotoCardImgSize(a);
-    jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Fai.top["photoCard" + b])
+Run.initPhotoCard = function (b) {
+    var a = Helper.top.$("#module" + b);
+    Run.resizePhotoCardHeight(a);
+    Run.setPhotoCardHeight(a);
+    Run.adjustPhotoCardImgSize(a);
+    jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Helper.top["photoCard" + b])
 };
-Site.setPhotoCardHeight = function (a) {
+Run.setPhotoCardHeight = function (a) {
     var b = a.find(".cardTd");
     b.each(function () {
         var e = $(this).height(), d = $(this).find(".photoCard"), c = d.height();
@@ -30665,9 +30665,9 @@ Site.setPhotoCardHeight = function (a) {
         }
     })
 };
-Site.adjustPhotoCardImgSize = function (b) {
+Run.adjustPhotoCardImgSize = function (b) {
     var c = b.attr("id").replace("module", ""), a = b.find(".photoCard"), d = b.find(".cardDivEffect .cardImg");
-    Site.setPhotoCardHeight(b);
+    Run.setPhotoCardHeight(b);
     a.each(function () {
         var o = $(this).find(".cardImgView"), l = $(this).find(".cardDivEffect"), m = $(this).height();
         if (o.length < 1) {
@@ -30712,10 +30712,10 @@ Site.adjustPhotoCardImgSize = function (b) {
             m.css("marginLeft", "");
             m.css("marginTop", i + "px")
         }
-        jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Fai.top["photoCard" + c])
+        jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Helper.top["photoCard" + c])
     })
 };
-Site.resizePhotoCardHeight = function (c) {
+Run.resizePhotoCardHeight = function (c) {
     var k = c.find(".photoCardTable"), l = c.find(".formMiddleContent"), a = c.find(".photoCardOuter"),
         b = c.find(".photoCardInner"), h = k.find("tr"), e = c.find(".cardTd"), d = a.attr("cusHeight"), f = h.length,
         i = c.height(), j = parseInt(l.css("marginTop").replace("px", ""));
@@ -30744,11 +30744,11 @@ Site.resizePhotoCardHeight = function (c) {
         }
     })
 };
-Site.adjustPhotoCard = function (b) {
-    if (Fai.isNumber(b)) {
-        var a = Fai.top.$("#module" + b);
+Run.adjustPhotoCard = function (b) {
+    if (Helper.isNumber(b)) {
+        var a = Helper.top.$("#module" + b);
         if (a.hasClass("formStyle83") && !a.find(".photoCardOuter").attr("cusHeight")) {
-            Site.initPhotoCard(b);
+            Run.initPhotoCard(b);
             a.attr("_autoheight", 0)
         }
     } else {
@@ -30760,7 +30760,7 @@ Site.adjustPhotoCard = function (b) {
             }
         } else {
             if (b == undefined) {
-                var c = Fai.top.$(".formStyle83");
+                var c = Helper.top.$(".formStyle83");
                 if (c.length > 0) {
                     e(c)
                 }
@@ -30774,31 +30774,31 @@ Site.adjustPhotoCard = function (b) {
             if (i) {
                 return true
             }
-            Site.initPhotoCard(h);
+            Run.initPhotoCard(h);
             $(this).attr("_autoheight", 0)
         })
     }
 };
-Site.addPhotoCardModuleHeight = function (b) {
-    var g = Fai.top.$("#module" + b), a = g.find(".photoCardOuter"), f = g.find(".photoCard"), c = g.width(),
+Run.addPhotoCardModuleHeight = function (b) {
+    var g = Helper.top.$("#module" + b), a = g.find(".photoCardOuter"), f = g.find(".photoCard"), c = g.width(),
         i = g.height(), h = c / 960, j = a.attr("cusHeight"), e = a.height(), d = i * h;
     if (j) {
         d = e
     }
     g.css("height", d + "px");
-    Site.initPhotoCard(b);
-    Site.scrollToModuleDiv(g);
-    Site.getModuleAttrPattern(b).changed = true;
+    Run.initPhotoCard(b);
+    Run.scrollToModuleDiv(g);
+    Run.getModuleAttrPattern(b).changed = true;
     g.attr("_autoheight", 0)
 };
-Site.initPhotoNewCard = function (b) {
-    var a = Fai.top.$("#module" + b);
-    Site.resizePhotoNewCardHeight(a);
-    Site.setPhotoNewCardHeight(a);
-    Site.adjustPhotoNewCardImgSize(a);
-    jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Fai.top["photoNewCard" + b])
+Run.initPhotoNewCard = function (b) {
+    var a = Helper.top.$("#module" + b);
+    Run.resizePhotoNewCardHeight(a);
+    Run.setPhotoNewCardHeight(a);
+    Run.adjustPhotoNewCardImgSize(a);
+    jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Helper.top["photoNewCard" + b])
 };
-Site.setPhotoNewCardHeight = function (a) {
+Run.setPhotoNewCardHeight = function (a) {
     var b = a.find(".cardTd");
     b.each(function () {
         var c = $(this).height(), e = $(this).find(".photoNewCard"), d = e.height();
@@ -30807,9 +30807,9 @@ Site.setPhotoNewCardHeight = function (a) {
         }
     })
 };
-Site.adjustPhotoNewCardImgSize = function (a) {
+Run.adjustPhotoNewCardImgSize = function (a) {
     var c = a.attr("id").replace("module", ""), b = a.find(".photoNewCard"), d = a.find(".cardDivEffect .cardImg");
-    Site.setPhotoNewCardHeight(a);
+    Run.setPhotoNewCardHeight(a);
     b.each(function () {
         var o = $(this).find(".cardImgView"), l = $(this).find(".cardDivEffect"), m = $(this).height();
         if (o.length < 1) {
@@ -30854,10 +30854,10 @@ Site.adjustPhotoNewCardImgSize = function (a) {
             m.css("marginLeft", "");
             m.css("marginTop", j + "px")
         }
-        jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Fai.top["photoNewCard" + c])
+        jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Helper.top["photoNewCard" + c])
     })
 };
-Site.resizePhotoNewCardHeight = function (a) {
+Run.resizePhotoNewCardHeight = function (a) {
     var k = a.find(".photoNewCardTable"), l = a.find(".formMiddleContent"), e = a.find(".photoNewCardOuter"),
         f = a.find(".photoNewCardInner"), h = k.find(".newCardDrag"), c = a.find(".cardTd"), b = e.attr("cusHeight"),
         d = h.length, i = a.height(), j = parseInt(l.css("marginTop").replace("px", ""));
@@ -30886,11 +30886,11 @@ Site.resizePhotoNewCardHeight = function (a) {
         }
     })
 };
-Site.adjustPhotoNewCard = function (b) {
-    if (Fai.isNumber(b)) {
-        var a = Fai.top.$("#module" + b);
+Run.adjustPhotoNewCard = function (b) {
+    if (Helper.isNumber(b)) {
+        var a = Helper.top.$("#module" + b);
         if (a.hasClass("formStyle85") && !a.find(".photoNewCardOuter").attr("cusHeight")) {
-            Site.initPhotoNewCard(b);
+            Run.initPhotoNewCard(b);
             a.attr("_autoheight", 0)
         }
     } else {
@@ -30902,7 +30902,7 @@ Site.adjustPhotoNewCard = function (b) {
             }
         } else {
             if (b == undefined) {
-                var e = Fai.top.$(".formStyle85");
+                var e = Helper.top.$(".formStyle85");
                 if (e.length > 0) {
                     c(e)
                 }
@@ -30916,13 +30916,13 @@ Site.adjustPhotoNewCard = function (b) {
             if (i) {
                 return true
             }
-            Site.initPhotoNewCard(h);
+            Run.initPhotoNewCard(h);
             $(this).attr("_autoheight", 1)
         })
     }
 };
-Site.addPhotoNewCardModuleHeight = function (a) {
-    var d = Fai.top.$("#module" + a), h = d.find(".formBanner").height(), e = d.find(".photoNewCardOuter"),
+Run.addPhotoNewCardModuleHeight = function (a) {
+    var d = Helper.top.$("#module" + a), h = d.find(".formBanner").height(), e = d.find(".photoNewCardOuter"),
         c = d.find(".photoNewCard"), l = d.width(), g = d.height(), j = l / 960, k = e.attr("cusHeight"),
         i = e.height(), b = g * j;
     if (k) {
@@ -30930,24 +30930,24 @@ Site.addPhotoNewCardModuleHeight = function (a) {
     }
     var f = (d.find(".newCardDrag").length) / 2;
     d.css("height", b * f + "px");
-    Site.initPhotoNewCard(a);
-    Site.scrollToModuleDiv(d);
-    Site.getModuleAttrPattern(a).changed = true;
+    Run.initPhotoNewCard(a);
+    Run.scrollToModuleDiv(d);
+    Run.getModuleAttrPattern(a).changed = true;
     d.attr("_autoheight", 0)
 };
-Site.hideDrag = function (a) {
+Run.hideDrag = function (a) {
     $("#module" + a).find(".photoNewCardTable").find(".drag").each(function () {
         $(this).css("display", "none")
     })
 };
-Site.initPhotoMoreCard = function (b, c) {
-    var a = Fai.top.$("#module" + b);
-    Site.resizePhotoMoreCardHeight(a, c);
-    Site.setPhotoMoreCardHeight(a);
-    Site.adjustPhotoMoreCardImgSize(a);
-    jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Fai.top["photoMoreCard" + b])
+Run.initPhotoMoreCard = function (b, c) {
+    var a = Helper.top.$("#module" + b);
+    Run.resizePhotoMoreCardHeight(a, c);
+    Run.setPhotoMoreCardHeight(a);
+    Run.adjustPhotoMoreCardImgSize(a);
+    jzUtils.run({name: "ImageEffect.FUNC.BASIC.Init", callMethod: true}, Helper.top["photoMoreCard" + b])
 };
-Site.setPhotoMoreCardHeight = function (d) {
+Run.setPhotoMoreCardHeight = function (d) {
     var f = d.find(".moreCardTd");
     var b = d.find(".formBanner");
     var e = d.find(".moreCardDrag:last").attr("tr");
@@ -30965,7 +30965,7 @@ Site.setPhotoMoreCardHeight = function (d) {
         }
     })
 };
-Site.adjustPhotoMoreCardImgSize = function (a) {
+Run.adjustPhotoMoreCardImgSize = function (a) {
     var c = a.attr("id").replace("module", ""), b = a.find(".photoMoreCard"), d = a.find(".cardDivEffect .cardImg");
     b.each(function () {
         var o = $(this).find(".cardImgView"), l = $(this).find(".cardDivEffect"), m = $(this).height();
@@ -31013,7 +31013,7 @@ Site.adjustPhotoMoreCardImgSize = function (a) {
         }
     })
 };
-Site.resizePhotoMoreCardHeight = function (b, d) {
+Run.resizePhotoMoreCardHeight = function (b, d) {
     var p = b.find(".photoMoreCardTable"), q = b.find(".formMiddleContent"), c = b.find(".photoMoreCardOuter"),
         e = b.find(".photoMoreCardInner"), m = p.find(".moreCardDrag"), i = b.find(".moreCardTd"), k = 1, h = 1,
         j = false, f = c.attr("cusHeight"), g = m.length, a = b.width(), n = b.height(),
@@ -31056,9 +31056,9 @@ Site.resizePhotoMoreCardHeight = function (b, d) {
             }
         }
     });
-    Site.resizePhotoMoreCartShape(b)
+    Run.resizePhotoMoreCartShape(b)
 };
-Site.resizePhotoMoreCartShape = function (c) {
+Run.resizePhotoMoreCartShape = function (c) {
     var q = c.find(".photoMoreCardTable"), i = c.find(".photoMoreCardOuter"), n = c.find(".moreCardDrag"),
         l = c.find(".moreCardTd"), b = parseInt(q.attr("cellspacing")),
         t = parseInt(c.find(".photoMoreCardInner").attr("cardstyle")) || 0;
@@ -31121,11 +31121,11 @@ Site.resizePhotoMoreCartShape = function (c) {
         })
     }
 };
-Site.adjustPhotoMoreCard = function (d) {
-    if (Fai.isNumber(d)) {
-        var b = Fai.top.$("#module" + d);
+Run.adjustPhotoMoreCard = function (d) {
+    if (Helper.isNumber(d)) {
+        var b = Helper.top.$("#module" + d);
         if (b.hasClass("formStyle98") && !b.find(".photoMoreCardOuter").attr("cusHeight")) {
-            Site.initPhotoMoreCard(d);
+            Run.initPhotoMoreCard(d);
             b.attr("_autoheight", 0)
         }
     } else {
@@ -31137,7 +31137,7 @@ Site.adjustPhotoMoreCard = function (d) {
             }
         } else {
             if (d == undefined) {
-                var c = Fai.top.$(".formStyle98");
+                var c = Helper.top.$(".formStyle98");
                 if (c.length > 0) {
                     a(c)
                 }
@@ -31151,17 +31151,17 @@ Site.adjustPhotoMoreCard = function (d) {
             if (j) {
                 return true
             }
-            Site.initPhotoMoreCard(h, i);
+            Run.initPhotoMoreCard(h, i);
             $(this).attr("_autoheight", 1)
         })
     }
 };
-Site.photoMoreCardHideDrag = function (a) {
+Run.photoMoreCardHideDrag = function (a) {
     $("#module" + a).find(".photoMoreCardTable").find(".drag").each(function () {
         $(this).css("display", "none")
     })
 };
-Site.initPhotoMoreCardTdLength = function (d, b) {
+Run.initPhotoMoreCardTdLength = function (d, b) {
     var a = $("#module" + d), c = a.find(".photoMoreCardTable"), e = parseInt(c.attr("cellspacing"));
     a.data("photoStyleId", b);
     if (b == 0) {
@@ -31307,7 +31307,7 @@ Site.initPhotoMoreCardTdLength = function (d, b) {
         }
     }
 };
-Site.firstPhotoMoreCardInit = function (b, o) {
+Run.firstPhotoMoreCardInit = function (b, o) {
     var c = $("#module" + b), p = c.find(".photoMoreCardTable"), g = parseInt(p.attr("cellspacing")), n = c.width(),
         j = c.height(), f;
     c.data("photoStyleId", o);
@@ -31708,9 +31708,9 @@ Site.firstPhotoMoreCardInit = function (b, o) {
             }
         }
     }
-    Site.adjustPhotoMoreCardImgSize(c)
+    Run.adjustPhotoMoreCardImgSize(c)
 };
-Site.nophotoMoreCardInit = function (a, l) {
+Run.nophotoMoreCardInit = function (a, l) {
     var b = $("#module" + a), m = b.find(".photoMoreCardTable"), e = parseInt(m.attr("cellspacing")), k = b.width(),
         f = b.height(), c;
     if (l == 0) {
@@ -32098,7 +32098,7 @@ Site.nophotoMoreCardInit = function (a, l) {
             }
         }
     }
-    Site.adjustPhotoMoreCardImgSize(b)
+    Run.adjustPhotoMoreCardImgSize(b)
 };
 (function (h, e, f) {
     var b = {}, l = "fullmeasureOuterContentPage", g = false, k = false, c = false, j = false, a = 0, i = 0;
@@ -32107,9 +32107,9 @@ Site.nophotoMoreCardInit = function (a, l) {
         var o = h(".formStyle80");
         setTimeout(function () {
             k = true;
-            if (d.length > 0 || Fai.top._manageMode) {
+            if (d.length > 0 || Helper.top._manageMode) {
                 h("body").off("mousemove.fmGmainMousemove").on("mousemove.fmGmainMousemove", function (p) {
-                    if (Fai.top._manageMode) {
+                    if (Helper.top._manageMode) {
                         if (h(".popupBg").length > 0) {
                             if (!j) {
                                 j = true;
@@ -32154,7 +32154,7 @@ Site.nophotoMoreCardInit = function (a, l) {
                     }
                 })
             }
-            if (Fai.top._manageMode) {
+            if (Helper.top._manageMode) {
                 h("body").off("click.fmGmainClick").on("click.fmGmainClick", function () {
                     if (i == 0) {
                         return
@@ -32167,14 +32167,14 @@ Site.nophotoMoreCardInit = function (a, l) {
                 })
             }
         }, 1500);
-        if (o.length > 0 || Fai.top._manageMode) {
+        if (o.length > 0 || Helper.top._manageMode) {
             o.each(function (p, q) {
                 var r = h(q).attr("id");
                 if (typeof(r) != f) {
                     e.refFillRelativeDivHeight(r.replace("module", ""), true)
                 }
             });
-            if (Fai.top._colId == 8) {
+            if (Helper.top._colId == 8) {
                 setTimeout(function () {
                     o.each(function (p, q) {
                         var r = h(q).attr("id");
@@ -32212,10 +32212,10 @@ Site.nophotoMoreCardInit = function (a, l) {
         if (typeof(q) == f) {
             return
         }
-        if (Fai.top._manageMode) {
+        if (Helper.top._manageMode) {
             var o = h("#module" + q);
             if (!o.hasClass("formStyle80")) {
-                var p = Site.checkNestModule(o);
+                var p = Run.checkNestModule(o);
                 if (p.inFullmeasure) {
                     q = p.parentId
                 }
@@ -32327,7 +32327,7 @@ Site.nophotoMoreCardInit = function (a, l) {
             }
             r = null;
             if (x <= 0) {
-                if (Fai.top._manageMode || s == true) {
+                if (Helper.top._manageMode || s == true) {
                     x = 165
                 }
             }
@@ -32360,7 +32360,7 @@ Site.nophotoMoreCardInit = function (a, l) {
         var A = b[q];
         var p = h("#module" + q);
         if (s != 0) {
-            if (Fai.top._manageMode) {
+            if (Helper.top._manageMode) {
                 if (h("body").children(".popupBg").length || h(".moduleMaskContainer").length > 0) {
                     return
                 }
@@ -32468,8 +32468,8 @@ Site.nophotoMoreCardInit = function (a, l) {
                 if (y.css("left").replace("px", "") <= 0) {
                     if ("animateSlide" in A) {
                         clearInterval(A.animateSlide);
-                        jzUtils.run({name: "moduleAnimation.publish", base: Fai.top.Site});
-                        jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Fai.top.Site})
+                        jzUtils.run({name: "moduleAnimation.publish", base: Helper.top.Run});
+                        jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Helper.top.Run})
                     }
                     y.css({display: "block", left: "0"});
                     D.css({display: "none", left: "0"});
@@ -32481,8 +32481,8 @@ Site.nophotoMoreCardInit = function (a, l) {
                     D.css({display: "none", left: "0"});
                     if ("animateSlide" in A) {
                         clearInterval(A.animateSlide);
-                        jzUtils.run({name: "moduleAnimation.publish", base: Fai.top.Site});
-                        jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Fai.top.Site})
+                        jzUtils.run({name: "moduleAnimation.publish", base: Helper.top.Run});
+                        jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Helper.top.Run})
                     }
                     p.data("animateSlide", false);
                     return
@@ -32494,8 +32494,8 @@ Site.nophotoMoreCardInit = function (a, l) {
                 if (y.css("left").replace("px", "") >= 0) {
                     if ("animateSlide" in A) {
                         clearInterval(A.animateSlide);
-                        jzUtils.run({name: "moduleAnimation.publish", base: Fai.top.Site});
-                        jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Fai.top.Site})
+                        jzUtils.run({name: "moduleAnimation.publish", base: Helper.top.Run});
+                        jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Helper.top.Run})
                     }
                     y.css({display: "block", left: "0"});
                     D.css({display: "none", left: "0"});
@@ -32507,8 +32507,8 @@ Site.nophotoMoreCardInit = function (a, l) {
                     D.css({display: "none", left: "0"});
                     if ("animateSlide" in A) {
                         clearInterval(A.animateSlide);
-                        jzUtils.run({name: "moduleAnimation.publish", base: Fai.top.Site});
-                        jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Fai.top.Site})
+                        jzUtils.run({name: "moduleAnimation.publish", base: Helper.top.Run});
+                        jzUtils.run({name: "moduleAnimation.contentAnimationPublish", base: Helper.top.Run})
                     }
                     p.data("animateSlide", false);
                     return
@@ -32536,7 +32536,7 @@ Site.nophotoMoreCardInit = function (a, l) {
             v.css({position: "absolute"})
         }
         if (v.length <= 1) {
-            if (!Fai.top._manageMode && v.length == 1) {
+            if (!Helper.top._manageMode && v.length == 1) {
                 v.css({position: "static"})
             }
             return
@@ -32563,7 +32563,7 @@ Site.nophotoMoreCardInit = function (a, l) {
                 r = 1
             }
             var w = (r + x) * 1000;
-            p.animateCt = setInterval("Site.inFullmeasueAnimation.slide('" + o + "');", w)
+            p.animateCt = setInterval("Run.inFullmeasueAnimation.slide('" + o + "');", w)
         }
     }
 
@@ -32668,7 +32668,7 @@ Site.nophotoMoreCardInit = function (a, l) {
             var p = 0;
             if ((z - y) > 184) {
                 p = parseInt(((parseInt(z) - parseInt(y)) / 2 - 92));
-                if (Fai.top._manageMode) {
+                if (Helper.top._manageMode) {
                     p = p - 10
                 }
             } else {
@@ -32679,11 +32679,11 @@ Site.nophotoMoreCardInit = function (a, l) {
             var w = "", u = "", D = "";
             w = "J_fmSlideStyle fmSlideStyleArrowBase fmSlideStyleArrowLast fmSlideStyle" + C;
             u = "J_fmSlideStyle fmSlideStyleArrowBaseBg fmSlideStyleArrowBase fmSlideStyleArrowLast";
-            x.push("<div " + o + " class='" + u + "'></div><div " + o + " class='" + w + "' onclick='Site.inFullmeasueAnimation.slideArrow(" + r + ", 1)'></div>");
+            x.push("<div " + o + " class='" + u + "'></div><div " + o + " class='" + w + "' onclick='Run.inFullmeasueAnimation.slideArrow(" + r + ", 1)'></div>");
             w = "J_fmSlideStyle fmSlideStyleArrowBase fmSlideStyleArrowNext fmSlideStyle" + C;
             u = "J_fmSlideStyle fmSlideStyleArrowBaseBg  fmSlideStyleArrowBase fmSlideStyleArrowNext";
-            D = "Site.inFullmeasueAnimation.slideArrow(" + r + ", 'next')";
-            x.push("<div " + E + "  class='" + u + "'></div><div " + E + " class='" + w + "' onclick='Site.inFullmeasueAnimation.slideArrow(" + r + ", 2)'></div>")
+            D = "Run.inFullmeasueAnimation.slideArrow(" + r + ", 'next')";
+            x.push("<div " + E + "  class='" + u + "'></div><div " + E + " class='" + w + "' onclick='Run.inFullmeasueAnimation.slideArrow(" + r + ", 2)'></div>")
         } else {
             var t = "";
             if (!g) {
@@ -32693,7 +32693,7 @@ Site.nophotoMoreCardInit = function (a, l) {
             var w = "", D = "";
             for (var v = 0; v < A; v++) {
                 w = "fmSlideStyle fmSlideStyle" + C;
-                D = "Site.inFullmeasueAnimation.slide(" + r + "," + v + ", false, 0)";
+                D = "Run.inFullmeasueAnimation.slide(" + r + "," + v + ", false, 0)";
                 if (v == q) {
                     w = w + " fmSlideStyleShow"
                 }
@@ -32704,7 +32704,7 @@ Site.nophotoMoreCardInit = function (a, l) {
         s.append(x.join(""));
         e.dynamicSetArrowDom(r)
     }
-})(jQuery, Site.inFullmeasueAnimation || (Site.inFullmeasueAnimation = {}), "undefined");
+})(jQuery, Run.inFullmeasueAnimation || (Run.inFullmeasueAnimation = {}), "undefined");
 (function (f, b, c) {
     var d = !!window.localStorage;
     var e = {bit: {}, tens: {}, array: {}};
@@ -32807,21 +32807,21 @@ Site.nophotoMoreCardInit = function (a, l) {
             return f.cookie(h, {path: "/"})
         }
     }
-})(jQuery, Site);
+})(jQuery, Run);
 $.ajaxSettings.errorCall.push(function (c, a, d) {
-    var b = Site.getTopWindow()._faiAjax;
+    var b = Run.getTopWindow()._faiAjax;
     if (b) {
         b.ajax({
             type: "post",
             url: "ajax/logAjaxErr_h.php?cmd=ajaxErr&error=" + d + "&status=" + a,
-            data: "msg=" + Fai.encodeHtml("ajaxUrl=" + Fai.encodeUrl(c.url) + ";refer=" + Fai.encodeUrl(top.location.href))
+            data: "msg=" + Helper.encodeHtml("ajaxUrl=" + Helper.encodeUrl(c.url) + ";refer=" + Helper.encodeUrl(top.location.href))
         })
     }
 });
-Site.initPage = function () {
+Run.initPage = function () {
     var d = 0, h = 0;
     var c = setInterval(function () {
-        $.each(Fai.top.$("body>iframe"), function (k, l) {
+        $.each(Helper.top.$("body>iframe"), function (k, l) {
             var j = $.trim($(l).attr("src"));
             var n = j;
             var m = j.indexOf("http://");
@@ -32838,9 +32838,9 @@ Site.initPage = function () {
             if (m > 0) {
                 n = n.substring(0, m)
             }
-            if (Fai.isIp(n)) {
+            if (Helper.isIp(n)) {
                 $(l).remove();
-                Site.logMsg("body be iframe. iframeSrc=" + j + "; ")
+                Run.logMsg("body be iframe. iframeSrc=" + j + "; ")
             }
         });
         d++;
@@ -32848,60 +32848,60 @@ Site.initPage = function () {
             clearInterval(c)
         }
     }, 300);
-    if (Fai.isIE6()) {
+    if (Helper.isIE6()) {
         try {
             document.execCommand("BackgroundImageCache", false, true)
         } catch (g) {
         }
     }
-    Site.resetGmainPos();
-    if (Fai.isIE7() || Fai.isIE6()) {
+    Run.resetGmainPos();
+    if (Helper.isIE7() || Helper.isIE6()) {
         $(window).resize(function () {
-            Site.resetGmainPos()
+            Run.resetGmainPos()
         })
     }
-    Site.initForms();
-    Site.refreshForms();
+    Run.initForms();
+    Run.refreshForms();
     $("#footer").show();
-    Site.initPageBindAmousedown();
-    Site.setAbsFormsHolder2(true);
-    Fai.top.setAbsFormsHolder2_interval = setInterval(function () {
-        Site.setAbsFormsHolder2(true)
+    Run.initPageBindAmousedown();
+    Run.setAbsFormsHolder2(true);
+    Helper.top.setAbsFormsHolder2_interval = setInterval(function () {
+        Run.setAbsFormsHolder2(true)
     }, 1000);
-    Site.fixSiteWidth(Fai.top._manageMode);
+    Run.fixRunWidth(Helper.top._manageMode);
     var f = $("#web").find("iframe");
     if (f.size() > 0) {
         for (var b = 0; b < f.length - 1; b++) {
             $(f[b]).bind("load", function () {
-                Site.fixWebFooterHeight()
+                Run.fixWebFooterHeight()
             })
         }
     } else {
-        Site.fixWebFooterHeight()
+        Run.fixWebFooterHeight()
     }
-    Site.refreshDefaultBannerEdge();
-    if (Fai.top._manageMode && Fai.top.toolBoxShowView && !(Fai.top._uiMode && Fai.top._isTemplateVersion2)) {
-        Site.showFaierTool()
+    Run.refreshDefaultBannerEdge();
+    if (Helper.top._manageMode && Helper.top.toolBoxShowView && !(Helper.top._uiMode && Helper.top._isTemplateVersion2)) {
+        Run.showHelpererTool()
     }
-    if (Fai.top._uiMode) {
-        Fai.top.$("#nav .navCenter .item").eq(0).mouseover()
+    if (Helper.top._uiMode) {
+        Helper.top.$("#nav .navCenter .item").eq(0).mouseover()
     }
-    Site.initPagenationEvent();
+    Run.initPagenationEvent();
     function a(k) {
-        var e = k.width(), j = $(window).width() - Fai.getScrollWidth(), i = (e - j) / 2;
+        var e = k.width(), j = $(window).width() - Helper.getScrollWidth(), i = (e - j) / 2;
         return i
     }
 
-    if (!Fai.top._manageMode) {
+    if (!Helper.top._manageMode) {
         h = a($("#g_main"));
         $(window).scrollLeft(h)
     } else {
         h = a($("#web"));
         $("#g_main").scrollLeft(h)
     }
-    Site.checkVisitEnv()
+    Run.checkVisitEnv()
 };
-Site.initPagenationEvent = function () {
+Run.initPagenationEvent = function () {
     var b = $(".pagenation a");
     b.live("mouseover", function () {
         $(this).addClass("g_hover")
@@ -32925,7 +32925,7 @@ Site.initPagenationEvent = function () {
         var g = false;
         $elem = $("#module" + f);
         while (!g) {
-            var h = Site.checkNestModule($elem).parentId;
+            var h = Run.checkNestModule($elem).parentId;
             if (h > 0 && $("#module" + h).attr("_modulestyle") != 80) {
                 i = h;
                 $elem = $("#module" + i);
@@ -32948,8 +32948,8 @@ Site.initPagenationEvent = function () {
         })
     }
 };
-Site.showFaierTool = function () {
-    var k = Site.getTopWindow().location.href;
+Run.showHelpererTool = function () {
+    var k = Run.getTopWindow().location.href;
     var a = /\?/;
     k += (a.test(k) ? "&" : "?") + "_safeMode=true";
     var g = ["dear", "boss", "theone", "cyb", "max", "mgz", "qnt", "kiki", "emma"];
@@ -32978,23 +32978,23 @@ Site.showFaierTool = function () {
     var m = "http://hs.aaadns.com/image/faisco_onepice/" + g[d] + ".jpg";
     var i = "<div id='_faiMenuBtn' style='width:50px;height:50px;position:absolute;bottom:100px;left:0px;background:#a90;z-index:9032;'><div style='width:50px;height:50px;background:url(" + m + ") center no-repeat;'><span id='_faiMenuClose' style='display:none;width:15px;height:14px;line-height:14px;text-align:center;position:absolute;top:0px;right:0px;background:url(http://0.ss.faidns.com/image/bg02.png) -1503px -123px no-repeat;cursor:pointer;color:#fff;'></div></div></div>";
     var f = "<div id='fai_spinach' style='padding:5px 0px 5px 5px;line-height:20px;position:absolute;bottom:100px;left:50px;background:#ff8400;z-index:9032;display:none;border:1px solid #000'><table>";
-    if (Fai.top.toolBoxShowView) {
-        var b = Site.getABVersion();
-        f = f + "<tr><td><a href='" + k + "' style='color:#fff;font-size:12px;'>安全模式</a></td></tr><tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.checkManageEnv();return false;'>检测横向滚动条</a></td></tr><tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.getCloneAid();return false;'>自动克隆当前网站</a></td></tr><tr id='J_cloneWebVersion'><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.cloneWebVersion()'>克隆企业网站</a></td></tr><tr id='J_changeABVersion'><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.changeABVersion(" + b + ")'>切换到" + (b ? "A" : "B") + "类网站</a></td></tr>"
+    if (Helper.top.toolBoxShowView) {
+        var b = Run.getABVersion();
+        f = f + "<tr><td><a href='" + k + "' style='color:#fff;font-size:12px;'>安全模式</a></td></tr><tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.checkManageEnv();return false;'>检测横向滚动条</a></td></tr><tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.getCloneAid();return false;'>自动克隆当前网站</a></td></tr><tr id='J_cloneWebVersion'><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.cloneWebVersion()'>克隆企业网站</a></td></tr><tr id='J_changeABVersion'><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.changeABVersion(" + b + ")'>切换到" + (b ? "A" : "B") + "类网站</a></td></tr>"
     }
-    if (Fai.top.toolBoxShowSet) {
+    if (Helper.top.toolBoxShowSet) {
         f = f + "<tr id='J_changeTrialMallTime'><td><a href='javascript:;' style='color:#fff;font-size:12px;padding-right:5px;'>设置商城试用时间</a></td></tr><tr id='J_changeWebVersion'><td><a href='javascript:;' style='color:#fff;font-size:12px;'>切换网站版本</a></td></tr>"
     }
-    if (Fai.top._debug || Fai.top._isPre) {
-        f = f + "<tr id='J_cloneWebVersion'><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.updateVersionTwoStyle()'>更新样式2.0版本号</a></td></tr>"
+    if (Helper.top._debug || Helper.top._isPre) {
+        f = f + "<tr id='J_cloneWebVersion'><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.updateVersionTwoStyle()'>更新样式2.0版本号</a></td></tr>"
     }
     f = f + "</table></div>";
     $("body").append(i).append(f);
     var c = "<div id='fai_trialEndTime' style='padding:5px;line-height:20px;position:absolute;bottom:100px;left:160px;background:#ff8400;z-index:9032;display:none;border:1px solid #000;'>";
     c += "<table>";
-    c += "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.setMallTrialTime(0)'>已过期</a></td></tr>";
-    c += "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.setMallTrialTime(1)'>未过期</a></td></tr>";
-    c += "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.setMallTrialTime(2)'>自定义时间</a></td></tr>";
+    c += "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.setMallTrialTime(0)'>已过期</a></td></tr>";
+    c += "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.setMallTrialTime(1)'>未过期</a></td></tr>";
+    c += "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.setMallTrialTime(2)'>自定义时间</a></td></tr>";
     c += "</table>";
     c += "</div>";
     $("body").append(c);
@@ -33010,11 +33010,11 @@ Site.showFaierTool = function () {
         $("#fai_trialEndTime").hide();
         $("#_faiMenuClose").hide()
     });
-    if (Fai.top.toolBoxShowView) {
-        if (!Fai.top._oem) {
-            var l = ["<div id='fai_webVersionList' style='padding:5px;line-height:20px;position:absolute;bottom:100px;left:160px;background:#ff8400;z-index:9032;display:none;border:1px solid #000;'>", "<table>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(10)'>免费版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(30)'>标准版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(40)'>专业版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(50)'>商城版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(51)'>旗舰版</a></td></tr>", "</table>", "</div>"]
+    if (Helper.top.toolBoxShowView) {
+        if (!Helper.top._oem) {
+            var l = ["<div id='fai_webVersionList' style='padding:5px;line-height:20px;position:absolute;bottom:100px;left:160px;background:#ff8400;z-index:9032;display:none;border:1px solid #000;'>", "<table>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(10)'>免费版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(30)'>标准版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(40)'>专业版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(50)'>商城版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(51)'>旗舰版</a></td></tr>", "</table>", "</div>"]
         } else {
-            var l = ["<div id='fai_webVersionList' style='padding:5px;line-height:20px;position:absolute;bottom:100px;left:160px;background:#ff8400;z-index:9032;display:none;border:1px solid #000;'>", "<table>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(120)'>初级版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(110)'>试用版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(130)'>中级版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(140)'>高级版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(150)'>尊贵版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Site.chageTheWebVersion(160)'>至尊版</a></td></tr>", "</table>", "</div>"]
+            var l = ["<div id='fai_webVersionList' style='padding:5px;line-height:20px;position:absolute;bottom:100px;left:160px;background:#ff8400;z-index:9032;display:none;border:1px solid #000;'>", "<table>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(120)'>初级版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(110)'>试用版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(130)'>中级版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(140)'>高级版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(150)'>尊贵版</a></td></tr>", "<tr><td><a href='javascript:;' style='color:#fff;font-size:12px;' onclick='Run.chageTheWebVersion(160)'>至尊版</a></td></tr>", "</table>", "</div>"]
         }
         $("body").append(l.join(""));
         $("#J_changeWebVersion").mouseenter(function () {
@@ -33053,12 +33053,12 @@ Site.showFaierTool = function () {
         $("#fai_spinach").hide()
     })
 };
-Site.colLayout45Width = function () {
-    var a = Fai.top._colOtherStyleData.layout4Width;
-    var e = Fai.top._colOtherStyleData.layout5Width;
+Run.colLayout45Width = function () {
+    var a = Helper.top._colOtherStyleData.layout4Width;
+    var e = Helper.top._colOtherStyleData.layout5Width;
     var b = $(".containerFormsCenterMiddle").width();
     var d = Math.floor(b * 0.02);
-    if (Fai.top._manageMode) {
+    if (Helper.top._manageMode) {
         $("#middleLeftForms").css("padding-right", d + "px");
         if ((a + e + d) > b) {
             $("#middleLeftForms").css("width", (b - (e + d)) + "px")
@@ -33068,22 +33068,22 @@ Site.colLayout45Width = function () {
         var c = $("#middleLeftForms").css("padding-right").replace("px", "");
         $("#middleLeftForms").css("width", a);
         $("#middleRightForms").css("width", b - c - a);
-        Fai.top._colOtherStyleData.layout5Width = $("#middleRightForms").width()
+        Helper.top._colOtherStyleData.layout5Width = $("#middleRightForms").width()
     }
 };
-Site.initPage2 = function () {
-    Site.manageFaiscoAd();
-    Fai.top.$(".absForms >.form").each(function () {
-        Site.checkAbsModulePosition($(this), true)
+Run.initPage2 = function () {
+    Run.manageHelperscoAd();
+    Helper.top.$(".absForms >.form").each(function () {
+        Run.checkAbsModulePosition($(this), true)
     });
-    Fai.top.$(".floatForms >.form").each(function () {
-        Site.checkFloatModulePosition($(this));
-        Site.checkSideModule($(this));
-        Site.checkFlutterModule($(this))
+    Helper.top.$(".floatForms >.form").each(function () {
+        Run.checkFloatModulePosition($(this));
+        Run.checkSideModule($(this));
+        Run.checkFlutterModule($(this))
     });
-    if (Fai.top.$("#faiBgMusicPlayer").length > 0) {
-        Site.callMusicPlayButton("bgplayerButton", "faiBgMusicPlayer", "bgplayerTime", "bgplayerPause");
-        var a = Fai.top.$("#faiBgMusicPlayer").attr("bgpause");
+    if (Helper.top.$("#faiBgMusicPlayer").length > 0) {
+        Run.callMusicPlayButton("bgplayerButton", "faiBgMusicPlayer", "bgplayerTime", "bgplayerPause");
+        var a = Helper.top.$("#faiBgMusicPlayer").attr("bgpause");
         if (a === "false") {
             $.cookie("bgplayerPause", "false");
             $("#bgplayerButton").attr("bgMusicStatus", "false")
@@ -33095,21 +33095,21 @@ Site.initPage2 = function () {
             $.cookie("bgplayerPause", "true")
         }
     }
-    if (Fai.top.$(".footerSupport").find(":visible").length == 0) {
-        Fai.top.$(".footerSupport").hide()
+    if (Helper.top.$(".footerSupport").find(":visible").length == 0) {
+        Helper.top.$(".footerSupport").hide()
     }
-    Site.setAbsFormsHolder2(true);
+    Run.setAbsFormsHolder2(true);
     $.each($("img"), function (c, b) {
         if ($.trim($(b).attr("data-original")).length > 0) {
             $(b).addClass("loadingPlaceholderBackground")
         }
     });
-    if (Fai.isIE6() || Fai.isIE7()) {
+    if (Helper.isIE6() || Helper.isIE7()) {
         $("img").lazyload({threshold: 400, lazyRemoveclass: "loadingPlaceholderBackground", container: $("#g_main")})
     } else {
         $("img").lazyload({threshold: 400, lazyRemoveclass: "loadingPlaceholderBackground"})
     }
-    Site.bindGobalEvent("site_moduleTabSwitch", function (b, d) {
+    Run.bindGobalEvent("site_moduleTabSwitch", function (b, d) {
         var c = $("#formTabCntId" + d).find("img");
         $.each(c, function (f, e) {
             var g = $.trim($(e).attr("data-original"));
@@ -33122,30 +33122,30 @@ Site.initPage2 = function () {
         $(this).faiButton()
     })
 };
-Site.initModuleItemHover = function (a) {
+Run.initModuleItemHover = function (a) {
     $(a).mouseover(function () {
         $(this).addClass("g_hover")
     }).mouseleave(function () {
         $(this).removeClass("g_hover")
     })
 };
-Site.initModuleItemCover = function (a, c, d) {
+Run.initModuleItemCover = function (a, c, d) {
     $(a).mouseover(function () {
         $(this).addClass("g_hover")
     }).mouseleave(function () {
         $(this).removeClass("g_hover")
     });
     var b = a.replace("#module", "");
-    Site.initContentSplitLine(b, d)
+    Run.initContentSplitLine(b, d)
 };
-Site.initBackToTopTool = function (k, j, f, h, a) {
+Run.initBackToTopTool = function (k, j, f, h, a) {
     var d = '<div id="BackToTopborder" style="display:none;"><div id="BackToTopborder-left" style="position:fixed;border-left:1px dashed #2b73ba;z-index:9030;"></div><div id="BackToTopborder-top" style="position:fixed;border-top:1px dashed #2b73ba;z-index:9030;"></div><div id="BackToTopborder-bottom" style="position:fixed;border-bottom:1px dashed #2b73ba;z-index:9030;"></div><div id="BackToTopborder-right" style="position:fixed;border-right:1px dashed #2b73ba;z-index:9030;"></div></div>';
     var g = '<div id="borderLayer" class="borderLayer" style="position:absolute;width:70px;display:none;"><div id="item"><a class="tool backToTopEdit" href="javascript:;" style="cursor:pointer;" title="设置样式">编辑</a></div><div class="itemHr"></div><div id="item"><a class="tool backToTopClose" style="cursor:pointer;" title="您可以在网站设计-网站设置-高级设置中重新开启" title="设置样式">隐藏</a></div></div>';
     var l = "";
     if (a == "small_box" || a == "null") {
         a = "";
         l = $('<div id="siteBackToTop_small_box" class="fk_siteBackToTop" title="' + h + '" _style="' + a + '"></div>');
-        Fai.top.Fai.setCtrlStyleCssList("stylebacktotop", "", [{
+        Helper.top.Helper.setCtrlStyleCssList("stylebacktotop", "", [{
             cls: ".fk_siteBackToTop",
             key: "display",
             value: "none"
@@ -33168,7 +33168,7 @@ Site.initBackToTopTool = function (k, j, f, h, a) {
         }])
     } else {
         l = $('<div id="siteBackToTop_small_box" class="fk_siteBackToTop" title="' + h + '" _style="' + a + '"></div>');
-        Fai.top.Fai.setCtrlStyleCssList("stylebacktotop", "", [{
+        Helper.top.Helper.setCtrlStyleCssList("stylebacktotop", "", [{
             cls: ".fk_siteBackToTop",
             key: "display",
             value: "none"
@@ -33189,25 +33189,25 @@ Site.initBackToTopTool = function (k, j, f, h, a) {
         $("#g_main").before(g)
     }
     $(".backToTopEdit").bind("click", function () {
-        Site.popupWindow({
+        Run.popupWindow({
             title: "编辑返回顶部图标",
             frameSrcUrl: "manage/backToTopEdit.php?ram=" + Math.random(),
             width: "600",
             height: "350",
             frameScrolling: "no",
             saveBeforePopup: false,
-            closeFunc: Site.closeCss
+            closeFunc: Run.closeCss
         })
     });
     $(".backToTopClose").bind("click", function () {
         e.hide();
         $("#BackToTopborder").hide();
         $("#borderLayer").hide();
-        Fai.top._advanceSettingData.backToTopOpen = false;
-        Fai.top._backToTop = false;
-        Site.styleChanged();
-        Site.styleSetting("open", "webSettingTab", false, "advanceFuncShow");
-        Fai.ing("您可以在网站设计-网站设置-高级设置中重新开启。", true);
+        Helper.top._advanceSettingData.backToTopOpen = false;
+        Helper.top._backToTop = false;
+        Run.styleChanged();
+        Run.styleSetting("open", "webSettingTab", false, "advanceFuncShow");
+        Helper.ing("您可以在网站设计-网站设置-高级设置中重新开启。", true);
         c.scrollTop(0)
     });
     function b() {
@@ -33238,17 +33238,17 @@ Site.initBackToTopTool = function (k, j, f, h, a) {
     }
 
     var e = $("#siteBackToTop_small_box");
-    var c = Fai.top.$("#g_main");
-    if (!k && !Fai.isIE6()) {
+    var c = Helper.top.$("#g_main");
+    if (!k && !Helper.isIE6()) {
         c = $(window);
         e.css("right", 40 + "px");
         e.css("bottom", 50 + "px")
     }
-    if (Fai.top._manageMode) {
-        e.css("right", 40 + Fai.getScrollWidth() + "px");
+    if (Helper.top._manageMode) {
+        e.css("right", 40 + Helper.getScrollWidth() + "px");
         e.css("bottom", 50 + "px")
     }
-    if (!k && Fai.isIE6()) {
+    if (!k && Helper.isIE6()) {
         e.css("bottom", 50 + "px")
     }
     i();
@@ -33259,23 +33259,23 @@ Site.initBackToTopTool = function (k, j, f, h, a) {
         c.scrollTop(0)
     });
     function i() {
-        if (!Fai.top._backToTop) {
+        if (!Helper.top._backToTop) {
             e.hide();
             return
         }
         if (c.scrollTop() > 0) {
             if (e.css("display") == "none") {
-                if (Fai.isIE6()) {
+                if (Helper.isIE6()) {
                     e.css("position", "absolute")
                 }
-                if (Fai.isIE8() && Fai.top._manageMode) {
+                if (Helper.isIE8() && Helper.top._manageMode) {
                     e.show()
                 } else {
                     e.slideDown("slow")
                 }
             }
         } else {
-            if (Fai.isIE8() && Fai.top._manageMode) {
+            if (Helper.isIE8() && Helper.top._manageMode) {
                 e.hide()
             } else {
                 e.slideUp("slow")
@@ -33434,7 +33434,7 @@ function getBackToTopStyleCss(a, e) {
             }
         }
     } else {
-        Fai.top.Fai.setCtrlStyleCssList("stylebacktotop", "", [{
+        Helper.top.Helper.setCtrlStyleCssList("stylebacktotop", "", [{
             cls: ".fk_siteBackToTop",
             key: "display",
             value: "none"
@@ -33456,22 +33456,22 @@ function getBackToTopStyleCss(a, e) {
             value: "url(" + _resRoot + "/image/site/backtotop.png?v=201411241810) no-repeat"
         },]);
         if (e) {
-            Fai.top.Fai.removeCtrlStyleCssList("stylebacktotop", "", [{
+            Helper.top.Helper.removeCtrlStyleCssList("stylebacktotop", "", [{
                 cls: ".fk_siteBackToTop:hover",
                 key: "background"
             },])
         }
     }
     if (!!d.length) {
-        Fai.top.Fai.setCtrlStyleCssList("stylebacktotop", "", d)
+        Helper.top.Helper.setCtrlStyleCssList("stylebacktotop", "", d)
     }
 }
-Site.closeCss = function () {
-    if (Fai.top._advanceSettingData.btts == "small_box") {
-        Fai.top.$("#siteBackToTop_small_box").attr("style", "display:block");
-        Fai.top.Fai.removeCtrlStyleCssList("stylebacktotop", "", [{cls: ".fk_siteBackToTop:hover", key: "background"},])
+Run.closeCss = function () {
+    if (Helper.top._advanceSettingData.btts == "small_box") {
+        Helper.top.$("#siteBackToTop_small_box").attr("style", "display:block");
+        Helper.top.Helper.removeCtrlStyleCssList("stylebacktotop", "", [{cls: ".fk_siteBackToTop:hover", key: "background"},])
     } else {
-        Fai.top.Fai.setCtrlStyleCssList("stylebacktotop", "", [{
+        Helper.top.Helper.setCtrlStyleCssList("stylebacktotop", "", [{
             cls: ".fk_siteBackToTop",
             key: "cursor",
             value: "pointer"
@@ -33485,35 +33485,35 @@ Site.closeCss = function () {
             value: "50px"
         },])
     }
-    Fai.top.$("#siteBackToTop_small_box").attr("_style", Fai.top._advanceSettingData.btts);
-    getBackToTopStyleCss(Fai.top._advanceSettingData.btts, false)
+    Helper.top.$("#siteBackToTop_small_box").attr("_style", Helper.top._advanceSettingData.btts);
+    getBackToTopStyleCss(Helper.top._advanceSettingData.btts, false)
 };
-Site.fixSiteWidth = function (c) {
+Run.fixRunWidth = function (c) {
     b(c);
     var a;
-    Fai.top.$(window).off("resize.fixSiteWidth");
-    Fai.top.$(window).on("resize.fixSiteWidth", function () {
+    Helper.top.$(window).off("resize.fixRunWidth");
+    Helper.top.$(window).on("resize.fixRunWidth", function () {
         if (typeof a == "number") {
             return
         }
         a = setTimeout(function () {
             b(c);
-            Site.fixWebFooterHeight();
-            Site.refreshDefaultBannerEdge();
+            Run.fixWebFooterHeight();
+            Run.refreshDefaultBannerEdge();
             a = null
         }, 300)
     });
     function b(f) {
-        var s = Fai.top.$("#webContainer").outerWidth(true), o = s, q = s,
+        var s = Helper.top.$("#webContainer").outerWidth(true), o = s, q = s,
             n = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth,
             j = document.documentElement ? document.documentElement.scrollWidth : document.body.scrollWidth,
-            k = Fai.top.$("#web"), m = Fai.top.$("#g_main"), l = 0, i = 960,
-            h = (f || (Fai.isIE6() || Fai.isIE7())) ? m.scrollLeft() : $(document).scrollLeft(),
+            k = Helper.top.$("#web"), m = Helper.top.$("#g_main"), l = 0, i = 960,
+            h = (f || (Helper.isIE6() || Helper.isIE7())) ? m.scrollLeft() : $(document).scrollLeft(),
             e = k[0].getBoundingClientRect().right + h, r = 0, p, g;
-        if (f || Fai.isIE6()) {
-            n = n - Fai.getScrollWidth()
+        if (f || Helper.isIE6()) {
+            n = n - Helper.getScrollWidth()
         }
-        Fai.top.$(".fullmeasureForms").find(".fullmeasureContent").each(function (t, u) {
+        Helper.top.$(".fullmeasureForms").find(".fullmeasureContent").each(function (t, u) {
             if ($(u).is(":visible") && o < $(u).width()) {
                 o = $(u).width()
             }
@@ -33521,10 +33521,10 @@ Site.fixSiteWidth = function (c) {
         q = o;
         n = n > q ? n : q;
         i = n > i ? n : i;
-        p = Fai.top.$("#nav");
+        p = Helper.top.$("#nav");
         p = p.add(k.find("div.absForms").children(".form"));
-        p = p.add(Fai.top.$("#corpTitle"));
-        p = p.add(Fai.top.$("#logo"));
+        p = p.add(Helper.top.$("#corpTitle"));
+        p = p.add(Helper.top.$("#logo"));
         r = d(p) + h;
         g = (r - e) * 2 + e;
         if (g > i) {
@@ -33532,22 +33532,22 @@ Site.fixSiteWidth = function (c) {
             l = (i - m[0].scrollWidth) + h
         }
         if (f) {
-            if (!Fai.top._cusResponsive) {
+            if (!Helper.top._cusResponsive) {
                 k.css({width: i + "px"})
             }
             if (l > 0) {
                 m.scrollLeft(l)
             }
         } else {
-            if (Fai.isIE6() || Fai.isIE7()) {
-                if (!Fai.top._cusResponsive) {
+            if (Helper.isIE6() || Helper.isIE7()) {
+                if (!Helper.top._cusResponsive) {
                     k.css({width: i + "px"})
                 }
                 if (l > 0) {
                     m.scrollLeft(l)
                 }
             } else {
-                if (!Fai.top._cusResponsive) {
+                if (!Helper.top._cusResponsive) {
                     m.css({width: i + "px"})
                 }
                 if (l > 0) {
@@ -33573,10 +33573,10 @@ Site.fixSiteWidth = function (c) {
         return e
     }
 };
-Site.fixWebFooterHeight = function () {
-    var h = Fai.top.$("#web"), a = Fai.top.$("body").height(), c = Fai.top.$("#webFooterTable"),
+Run.fixWebFooterHeight = function () {
+    var h = Helper.top.$("#web"), a = Helper.top.$("body").height(), c = Helper.top.$("#webFooterTable"),
         b = c.css({height: ""}) && c.height(), f = h.offset().top, d = h.height();
-    if (Fai.top._manageMode || Fai.isIE6()) {
+    if (Helper.top._manageMode || Helper.isIE6()) {
         var g = 0;
         h.children().each(function () {
             g += $(this).height()
@@ -33593,15 +33593,15 @@ Site.fixWebFooterHeight = function () {
         }
     }
 };
-Site.initPageBindAmousedown = function () {
+Run.initPageBindAmousedown = function () {
     function a(f) {
-        if (Fai.isIE8() && f.button == 1) {
+        if (Helper.isIE8() && f.button == 1) {
             return true
         } else {
-            if (Fai.isIE6() && f.button == 1) {
+            if (Helper.isIE6() && f.button == 1) {
                 return true
             } else {
-                if (Fai.isIE7() && f.button == 1) {
+                if (Helper.isIE7() && f.button == 1) {
                     return true
                 } else {
                     if (f.button == 0) {
@@ -33613,11 +33613,11 @@ Site.initPageBindAmousedown = function () {
         return false
     }
 
-    if (!Fai.top._designAuth) {
+    if (!Helper.top._designAuth) {
         return
     }
-    var d = Site.getTopWindow().$(Site.getTopWindow().document).find("#g_main");
-    var c = Site.getTopWindow().$(Site.getTopWindow().document).find("#memberBarArea");
+    var d = Run.getTopWindow().$(Run.getTopWindow().document).find("#g_main");
+    var c = Run.getTopWindow().$(Run.getTopWindow().document).find("#memberBarArea");
     var b = /^javascript/g;
     d.delegate("a", "click.initSaveChange", function (f) {
         if (!a(f)) {
@@ -33626,7 +33626,7 @@ Site.initPageBindAmousedown = function () {
         var e = $(this).attr("href");
         if (e && e.match(b) == null && !$(this).hasClass("stopPropagation")) {
             var g = $(this).attr("target") || "_self";
-            if (!Site.redirectUrl(e, g, f, 0, 0)) {
+            if (!Run.redirectUrl(e, g, f, 0, 0)) {
                 return false
             }
         }
@@ -33638,31 +33638,31 @@ Site.initPageBindAmousedown = function () {
         var e = $(this).attr("href");
         if (e && e.match(b) == null && !$(this).hasClass("stopPropagation")) {
             var g = $(this).attr("target") || "_self";
-            Site.redirectUrl(e, g, f, 0, 0)
+            Run.redirectUrl(e, g, f, 0, 0)
         }
         return false
     });
-    Site.getTopWindow().$(Site.getTopWindow().document).find("#tabs a.cancelBtn").mousedown(function (e) {
+    Run.getTopWindow().$(Run.getTopWindow().document).find("#tabs a.cancelBtn").mousedown(function (e) {
         if (!a(e)) {
             return
         }
-        Site.redirectUrl("javascript:;", "cancelBtn", e, 0, 1);
+        Run.redirectUrl("javascript:;", "cancelBtn", e, 0, 1);
         return false
     });
-    Site.getTopWindow().$(Site.getTopWindow().document).delegate("div.navSubMenu a", "mousedown", function (f) {
+    Run.getTopWindow().$(Run.getTopWindow().document).delegate("div.navSubMenu a", "mousedown", function (f) {
         if (!a(f)) {
             return
         }
         var e = $(this).attr("href");
         if (e && e.match(b) == null && !$(this).hasClass("stopPropagation")) {
             var g = $(this).attr("target") || "_self";
-            Site.redirectUrl(e, g, f, 1, 0)
+            Run.redirectUrl(e, g, f, 1, 0)
         }
         return false
     })
 };
-Site.refreshFooterItemSpacing = function () {
-    var b = Fai.top.$("#footerNav");
+Run.refreshFooterItemSpacing = function () {
+    var b = Helper.top.$("#footerNav");
     if (b.length < 1) {
         return
     }
@@ -33674,14 +33674,14 @@ Site.refreshFooterItemSpacing = function () {
     var a = 9;
     var f = 5;
     if (b.attr("cusHeight") == "1") {
-        if (Fai.top._manageMode) {
-            var e = Site.getFooterStyleData() || {};
-            Fai.top.Fai.removeCtrlStyleCssList("stylefooter", "webFooterTable", [{
+        if (Helper.top._manageMode) {
+            var e = Run.getFooterStyleData() || {};
+            Helper.top.Helper.removeCtrlStyleCssList("stylefooter", "webFooterTable", [{
                 cls: "li.footerItemSpacing",
                 key: "padding-top"
             }]);
             if (b.hasClass("footerPattern1")) {
-                Fai.top.Fai.setCtrlStyleCssList("stylefooter", "webFooterTable", [{
+                Helper.top.Helper.setCtrlStyleCssList("stylefooter", "webFooterTable", [{
                     cls: "li.footerItemSection",
                     key: "height",
                     value: e.fih + "px"
@@ -33691,7 +33691,7 @@ Site.refreshFooterItemSpacing = function () {
                     value: (e.fih - a) + "px"
                 }, {cls: "li.footerItemSpacing", key: "padding-top", value: f + "px"}])
             } else {
-                Fai.top.Fai.setCtrlStyleCssList("stylefooter", "webFooterTable", [{
+                Helper.top.Helper.setCtrlStyleCssList("stylefooter", "webFooterTable", [{
                     cls: "li.footerItemSection",
                     key: "height",
                     value: e.fih + "px"
@@ -33700,11 +33700,11 @@ Site.refreshFooterItemSpacing = function () {
         }
         return
     }
-    Fai.top.Fai.removeCtrlStyleCssList("stylefooter", "webFooterTable", [{
+    Helper.top.Helper.removeCtrlStyleCssList("stylefooter", "webFooterTable", [{
         cls: "li.footerItemSpacing",
         key: "padding-top"
     }]);
-    Fai.top.Fai.setCtrlStyleCssList("tmpStylefooter", "webFooterTable", [{
+    Helper.top.Helper.setCtrlStyleCssList("tmpStylefooter", "webFooterTable", [{
         cls: "li.footerItemSection",
         key: "height",
         value: "auto !important"
@@ -33718,7 +33718,7 @@ Site.refreshFooterItemSpacing = function () {
         }
     }
     if (b.hasClass("footerPattern1")) {
-        Fai.top.Fai.setCtrlStyleCssList("stylefooter", "webFooterTable", [{
+        Helper.top.Helper.setCtrlStyleCssList("stylefooter", "webFooterTable", [{
             cls: "li.footerItemSection",
             key: "height",
             value: g + "px"
@@ -33728,37 +33728,37 @@ Site.refreshFooterItemSpacing = function () {
             value: f + "px"
         }])
     } else {
-        Fai.top.Fai.setCtrlStyleCssList("stylefooter", "webFooterTable", [{
+        Helper.top.Helper.setCtrlStyleCssList("stylefooter", "webFooterTable", [{
             cls: "li.footerItemSection",
             key: "height",
             value: g + "px"
         }, {cls: "li.footerItemSpacing", key: "height", value: g + "px"}])
     }
-    Fai.top.Fai.removeCtrlStyleCssList("tmpStylefooter", "webFooterTable", [{
+    Helper.top.Helper.removeCtrlStyleCssList("tmpStylefooter", "webFooterTable", [{
         cls: "li.footerItemSection",
         key: "height"
     }, {cls: "li.footerItemSpacing", key: "height"}]);
-    Fai.top.$("#tmpStylefooter").remove()
+    Helper.top.$("#tmpStylefooter").remove()
 };
-Site.pageOnload = function () {
-    Site.userReadyOperateSite();
-    Site.mobiPlatform();
-    Site.fixWebFooterHeight();
-    if (Fai.top.$("#banner").length > 0) {
-        Site.refreshBanner(0)
+Run.pageOnload = function () {
+    Run.userReadyOperateRun();
+    Run.mobiPlatform();
+    Run.fixWebFooterHeight();
+    if (Helper.top.$("#banner").length > 0) {
+        Run.refreshBanner(0)
     }
-    Site.adjustBannerWidth();
-    Site.addStellarEvent();
-    Site.excuteMallBuy2();
-    Site.checkFaiAnchor()
+    Run.adjustBannerWidth();
+    Run.addStellarEvent();
+    Run.excuteMallBuy2();
+    Run.checkHelperAnchor()
 };
-Site.onTitlePositionFixTop = function (a) {
-    if (Fai.top._manageMode && a) {
-        Site.onTitlePositionFixTop()
+Run.onTitlePositionFixTop = function (a) {
+    if (Helper.top._manageMode && a) {
+        Run.onTitlePositionFixTop()
     } else {
     }
 };
-Site.excuteMallBuy2 = function () {
+Run.excuteMallBuy2 = function () {
     var f = $.cookie("isNeedAddCartItem");
     if (typeof f == "undefined" || f == null || f == "") {
         return
@@ -33769,33 +33769,33 @@ Site.excuteMallBuy2 = function () {
     var c = e.url;
     var a = e.doWhat;
     if (a == "add") {
-        Site.mallBuy2(b, d, c)
+        Run.mallBuy2(b, d, c)
     } else {
         if (a == "buy") {
-            Site.mallImmeBuy(b, d)
+            Run.mallImmeBuy(b, d)
         }
     }
     setTimeout(function () {
         $.cookie("isNeedAddCartItem", null)
     }, 1000)
 };
-Site.beforeUnloadFunc = function () {
-    var a = Fai.top.onbeforeunload;
-    Fai.top.onbeforeunload = function () {
+Run.beforeUnloadFunc = function () {
+    var a = Helper.top.onbeforeunload;
+    Helper.top.onbeforeunload = function () {
         if (typeof a == "function") {
             a.apply(this, arguments)
         }
-        Site.siteStatVisitTime()
+        Run.siteStatVisitTime()
     }
 };
-Site.bindBeforeUnloadEvent = function (b, c, a) {
-    Fai.top.$(document).ready(function () {
-        Fai.top.$(window).bind("beforeunload", function (d) {
+Run.bindBeforeUnloadEvent = function (b, c, a) {
+    Helper.top.$(document).ready(function () {
+        Helper.top.$(window).bind("beforeunload", function (d) {
             if (c) {
-                Site.bgmFlushContinue()
+                Run.bgmFlushContinue()
             } else {
-                if (Fai.top.bgmCloseToOpen) {
-                    Site.bgmFlushContinue()
+                if (Helper.top.bgmCloseToOpen) {
+                    Run.bgmFlushContinue()
                 }
             }
             if (b) {
@@ -33804,12 +33804,12 @@ Site.bindBeforeUnloadEvent = function (b, c, a) {
                 }
             }
             if (a) {
-                Site.jumpToMobiDesign(1)
+                Run.jumpToMobiDesign(1)
             }
         })
     })
 };
-Site.closeRightClickTool = function () {
+Run.closeRightClickTool = function () {
     $(document).bind("contextmenu copy cut", function (a) {
         if ($(a.target).is("input, textarea")) {
             return;
@@ -33818,7 +33818,7 @@ Site.closeRightClickTool = function () {
             return false
         }
     });
-    if (Fai.isIE6() || Fai.isIE7() || Fai.isIE8()) {
+    if (Helper.isIE6() || Helper.isIE7() || Helper.isIE8()) {
         $(document).bind("selectstart", function (a) {
             if ($(a.target).is("input, textarea")) {
                 return
@@ -33828,80 +33828,80 @@ Site.closeRightClickTool = function () {
         })
     }
 };
-Site.triggerGobalEvent = function (a, b) {
-    Fai.top.$(Fai.top.document).trigger(a, b)
+Run.triggerGobalEvent = function (a, b) {
+    Helper.top.$(Helper.top.document).trigger(a, b)
 };
-Site.bindGobalEvent = function (a, b) {
-    if (a == "site_articlePictureChange" && Fai.isIE()) {
-        Fai.top.$(Fai.top.document).off(a)
+Run.bindGobalEvent = function (a, b) {
+    if (a == "site_articlePictureChange" && Helper.isIE()) {
+        Helper.top.$(Helper.top.document).off(a)
     }
-    Fai.top.$(Fai.top.document).on(a, b)
+    Helper.top.$(Helper.top.document).on(a, b)
 };
-Site.refreshFormIndexClass = function () {
-    Site.refreshFormIndexClass2({id: "topForms"});
-    Site.refreshFormIndexClass2({id: "leftForms"});
-    Site.refreshFormIndexClass2({id: "centerTopForms"});
-    Site.refreshFormIndexClass2({id: "middleLeftForms"});
-    Site.refreshFormIndexClass2({id: "middleRightForms"});
-    Site.refreshFormIndexClass2({id: "centerBottomForms"});
-    Site.refreshFormIndexClass2({id: "rightForms"});
-    Site.refreshFormIndexClass2({id: "bottomForms"});
-    Site.refreshFormIndexClass2({id: "fullmeasureTopForms"});
-    Site.refreshFormIndexClass2({id: "fullmeasureBottomForms"});
-    Site.refreshFormIndexClass2({id: "absTopForms"});
-    Site.refreshFormIndexClass2({id: "absForms"});
-    Site.refreshFormIndexClass2({id: "absBottomForms"});
-    Site.refreshFormIndexClass2({id: "floatLeftTopForms"});
-    Site.refreshFormIndexClass2({id: "floatRightTopForms"});
-    Site.refreshFormIndexClass2({id: "floatLeftBottomForms"});
-    Site.refreshFormIndexClass2({id: "floatRightBottomForms"});
-    Site.refreshFormIndexClass2({id: "fk-webHeaderZone"});
-    Site.refreshFormIndexClass2({id: "fk-webBannerZone"});
-    Site.refreshFormIndexClass2({id: "fk-webFooterZone"})
+Run.refreshFormIndexClass = function () {
+    Run.refreshFormIndexClass2({id: "topForms"});
+    Run.refreshFormIndexClass2({id: "leftForms"});
+    Run.refreshFormIndexClass2({id: "centerTopForms"});
+    Run.refreshFormIndexClass2({id: "middleLeftForms"});
+    Run.refreshFormIndexClass2({id: "middleRightForms"});
+    Run.refreshFormIndexClass2({id: "centerBottomForms"});
+    Run.refreshFormIndexClass2({id: "rightForms"});
+    Run.refreshFormIndexClass2({id: "bottomForms"});
+    Run.refreshFormIndexClass2({id: "fullmeasureTopForms"});
+    Run.refreshFormIndexClass2({id: "fullmeasureBottomForms"});
+    Run.refreshFormIndexClass2({id: "absTopForms"});
+    Run.refreshFormIndexClass2({id: "absForms"});
+    Run.refreshFormIndexClass2({id: "absBottomForms"});
+    Run.refreshFormIndexClass2({id: "floatLeftTopForms"});
+    Run.refreshFormIndexClass2({id: "floatRightTopForms"});
+    Run.refreshFormIndexClass2({id: "floatLeftBottomForms"});
+    Run.refreshFormIndexClass2({id: "floatRightBottomForms"});
+    Run.refreshFormIndexClass2({id: "fk-webHeaderZone"});
+    Run.refreshFormIndexClass2({id: "fk-webBannerZone"});
+    Run.refreshFormIndexClass2({id: "fk-webFooterZone"})
 };
-Site.refreshFormIndexClass2 = function (c) {
+Run.refreshFormIndexClass2 = function (c) {
     var g = c.id;
     var d = c.inFullmeasure || 0;
     var a, f, b, e;
-    Fai.top.$("#" + g).children(".form").each(function (h, j) {
+    Helper.top.$("#" + g).children(".form").each(function (h, j) {
         b = $(j);
-        e = Site.checkNestModule(b);
+        e = Run.checkNestModule(b);
         b.attr("_inmulmcol", 0);
         b.attr("_intab", 0);
         b.attr("_infullmeasure", 0);
         b.attr("_inpack", 0);
         if (e.isCol) {
-            Site.refreshFormIndexClassInCol(b)
+            Run.refreshFormIndexClassInCol(b)
         } else {
             if (e.isTab) {
-                Site.refreshFormIndexClassInTab(b)
+                Run.refreshFormIndexClassInTab(b)
             } else {
                 if (e.isPack) {
-                    Site.refreshFormIndexClassInPack(b)
+                    Run.refreshFormIndexClassInPack(b)
                 } else {
                     if (e.isFullmeasure) {
-                        Site.refreshFormIndexClassInFullmeasure(b)
+                        Run.refreshFormIndexClassInFullmeasure(b)
                     }
                 }
             }
         }
         a = b.attr("_indexClass");
         f = "formIndex" + (h + 1);
-        if (Fai.isNull(a)) {
+        if (Helper.isNull(a)) {
             b.addClass(f);
             b.attr("_indexClass", f);
-            Fai.refreshClass(b)
+            Helper.refreshClass(b)
         } else {
             if (a != f) {
                 b.removeClass(a);
                 b.addClass(f);
                 b.attr("_indexClass", f);
-                Fai.refreshClass(b)
+                Helper.refreshClass(b)
             }
         }
     })
 };
-Site.refreshFormIndexClassInCol = function (b) {
+Run.refreshFormIndexClassInCol = function (b) {
     var d = b.attr("id").replace("module", "") || 0, a, c;
     b.find(".mulMColList").children(".form").each(function (e, f) {
         a = $(f);
@@ -33910,17 +33910,17 @@ Site.refreshFormIndexClassInCol = function (b) {
         a.attr("_infullmeasure", 0);
         a.attr("_inpack", 0);
         a.removeAttr("_indexclass ");
-        c = Site.checkNestModule(a);
+        c = Run.checkNestModule(a);
         if (c.isTab) {
-            Site.refreshFormIndexClassInTab(a)
+            Run.refreshFormIndexClassInTab(a)
         } else {
             if (c.isPack) {
-                Site.refreshFormIndexClassInPack(a)
+                Run.refreshFormIndexClassInPack(a)
             }
         }
     })
 };
-Site.refreshFormIndexClassInTab = function (b) {
+Run.refreshFormIndexClassInTab = function (b) {
     var c = b.attr("id").replace("module", "") || 0, a;
     b.find(".formTabCntId").children(".form").each(function (d, e) {
         a = $(e);
@@ -33929,12 +33929,12 @@ Site.refreshFormIndexClassInTab = function (b) {
         a.attr("_infullmeasure", 0);
         a.attr("_inpack", 0);
         a.removeAttr("_indexclass ");
-        if (Site.checkNestModule(a).isPack) {
-            Site.refreshFormIndexClassInPack(a)
+        if (Run.checkNestModule(a).isPack) {
+            Run.refreshFormIndexClassInPack(a)
         }
     })
 };
-Site.refreshFormIndexClassInFullmeasure = function (c) {
+Run.refreshFormIndexClassInFullmeasure = function (c) {
     var f = c.attr("id").replace("module", "") || 0, a, e, b, d;
     c.find(".fullmeasureContent").children(".form").each(function (g, h) {
         b = $(h);
@@ -33942,35 +33942,35 @@ Site.refreshFormIndexClassInFullmeasure = function (c) {
         b.attr("_intab", 0);
         b.attr("_infullmeasure", f);
         b.attr("_inpack", 0);
-        d = Site.checkNestModule(b);
+        d = Run.checkNestModule(b);
         if (d.isTab) {
-            Site.refreshFormIndexClassInTab(b)
+            Run.refreshFormIndexClassInTab(b)
         } else {
             if (d.isCol) {
-                Site.refreshFormIndexClassInCol(b)
+                Run.refreshFormIndexClassInCol(b)
             } else {
                 if (d.isPack) {
-                    Site.refreshFormIndexClassInPack(b)
+                    Run.refreshFormIndexClassInPack(b)
                 }
             }
         }
         a = b.attr("_indexClass");
         e = "formIndex" + (g + 1);
-        if (Fai.isNull(a)) {
+        if (Helper.isNull(a)) {
             b.addClass(e);
             b.attr("_indexClass", e);
-            Fai.refreshClass(b)
+            Helper.refreshClass(b)
         } else {
             if (a != e) {
                 b.removeClass(a);
                 b.addClass(e);
                 b.attr("_indexClass", e);
-                Fai.refreshClass(b)
+                Helper.refreshClass(b)
             }
         }
     })
 };
-Site.refreshFormIndexClassInPack = function (b) {
+Run.refreshFormIndexClassInPack = function (b) {
     var d = b.attr("id").replace("module", "") || 0, a, c;
     b.find(".J_packContent").children(".form").each(function (e, f) {
         a = $(f);
@@ -33979,17 +33979,17 @@ Site.refreshFormIndexClassInPack = function (b) {
         a.attr("_infullmeasure", 0);
         a.attr("_inpack", d);
         a.removeAttr("_indexclass ");
-        c = Site.checkNestModule(a);
+        c = Run.checkNestModule(a);
         if (c.isTab) {
-            Site.refreshFormIndexClassInTab(a)
+            Run.refreshFormIndexClassInTab(a)
         } else {
             if (c.isCol) {
-                Site.refreshFormIndexClassInCol(a)
+                Run.refreshFormIndexClassInCol(a)
             }
         }
     })
 };
-Site.checkNestModule = function (e) {
+Run.checkNestModule = function (e) {
     var a = {
             nest: false,
             isTab: false,
@@ -34043,8 +34043,8 @@ Site.checkNestModule = function (e) {
     }
     return a
 };
-Site.createMemberBar = function (e, c, g, d, a) {
-    if (Fai.top.$("#memberBarArea").length > 0) {
+Run.createMemberBar = function (e, c, g, d, a) {
+    if (Helper.top.$("#memberBarArea").length > 0) {
         return
     }
     var b = new Array();
@@ -34076,9 +34076,9 @@ Site.createMemberBar = function (e, c, g, d, a) {
     b.push("		</div>");
     b.push('		<div class="left">');
     if (!d) {
-        Fai.top._memberTopBar_myOrder = false
+        Helper.top._memberTopBar_myOrder = false
     }
-    if (Fai.top._memberTopBar_addBookMark) {
+    if (Helper.top._memberTopBar_addBookMark) {
         b.push('				<div style="float:left;margin-left: 8px;">');
         b.push('					<a id="topBarMember_addBookMark" hidefocus="true" href="javascript:;"" style="text-decoration:none;display:;" onclick="">' + LS.favorite + "</a>");
         b.push("				</div>")
@@ -34087,12 +34087,12 @@ Site.createMemberBar = function (e, c, g, d, a) {
         b.push('					<a id="topBarMember_addBookMark" hidefocus="true" href="javascript:;"" style="text-decoration:none;display:none;" onclick="">' + LS.favorite + "</a>");
         b.push("				</div>	")
     }
-    if (Fai.top._memberTopBar_addBookMark && (Fai.top._memberTopBar_myOrder || Fai.top._memberTopBar_myProfile)) {
+    if (Helper.top._memberTopBar_addBookMark && (Helper.top._memberTopBar_myOrder || Helper.top._memberTopBar_myProfile)) {
         b.push('				<div id="line1" class="line" style="float:left;display:;"></div>')
     } else {
         b.push('				<div id="line1" class="line" style="float:left;display:none;"></div>')
     }
-    if (Fai.top._memberTopBar_myProfile) {
+    if (Helper.top._memberTopBar_myProfile) {
         b.push('				<div style="float:left;">');
         b.push('					<a  id="topBarMember_myProfile" hidefocus="true" style="text-decoration:none;display:;"  href="mCenter.php">' + LS.member_center_profile + "</a>");
         b.push("				</div>	")
@@ -34101,12 +34101,12 @@ Site.createMemberBar = function (e, c, g, d, a) {
         b.push('					<a  id="topBarMember_myProfile" hidefocus="true" style="text-decoration:none;display:none;"  href="mCenter.php">' + LS.member_center_profile + "</a>");
         b.push("				</div>")
     }
-    if (Fai.top._memberTopBar_myProfile && Fai.top._memberTopBar_myOrder) {
+    if (Helper.top._memberTopBar_myProfile && Helper.top._memberTopBar_myOrder) {
         b.push('				<div id="line2" class="line" style="float:left;display:;"></div>')
     } else {
         b.push('				<div id="line2" class="line" style="float:left;display:none;"></div>')
     }
-    if (Fai.top._memberTopBar_myOrder) {
+    if (Helper.top._memberTopBar_myOrder) {
         b.push('				<div style="float:left;">');
         b.push('					<a id="topBarMember_myOrder" hidefocus="true" style="text-decoration:none;display:;" href="mCenter.php?item=memberOrder">' + LS.member_center_order + "</a>");
         b.push("				</div>")
@@ -34117,10 +34117,10 @@ Site.createMemberBar = function (e, c, g, d, a) {
     }
     if (d) {
         var f = "";
-        if (Fai.top._memberTopBar_mallCart) {
+        if (Helper.top._memberTopBar_mallCart) {
             f = "display:none;"
         }
-        if (Fai.top._memberTopBar_addBookMark || Fai.top._memberTopBar_myOrder || Fai.top._memberTopBar_myProfile) {
+        if (Helper.top._memberTopBar_addBookMark || Helper.top._memberTopBar_myOrder || Helper.top._memberTopBar_myProfile) {
             b.push('		<div id="mallCartLine" class="line" style="' + f + 'margin-right: 0px;"></div>')
         } else {
             b.push('		<div id="mallCartLine" class="line" style="display:none;margin-right: 0px;"></div>')
@@ -34142,8 +34142,8 @@ Site.createMemberBar = function (e, c, g, d, a) {
         b.push("			</div>");
         b.push("		</div>")
     }
-    if (Fai.top._memberTopBar_mobiWeb && Fai.top.openMSite) {
-        if (Fai.top._memberTopBar_myOrder || Fai.top._memberTopBar_myProfile || d) {
+    if (Helper.top._memberTopBar_mobiWeb && Helper.top.openMRun) {
+        if (Helper.top._memberTopBar_myOrder || Helper.top._memberTopBar_myProfile || d) {
             b.push('				<div id="mobiWeb_line" class="line" style="margin-right: 0px; display:;"></div>')
         }
         b.push('				<div style="float:left;  margin-left: 15px;">');
@@ -34161,7 +34161,7 @@ Site.createMemberBar = function (e, c, g, d, a) {
         b.push("					</div>");
         b.push("				</div>")
     } else {
-        if (Fai.top._memberTopBar_myOrder || Fai.top._memberTopBar_myProfile || d) {
+        if (Helper.top._memberTopBar_myOrder || Helper.top._memberTopBar_myProfile || d) {
             b.push('				<div id="mobiWeb_line" class="line" style="margin-right: 0px; display:none;"></div>')
         }
         b.push('				<div style="float:left;  margin-left: 15px;">');
@@ -34182,25 +34182,25 @@ Site.createMemberBar = function (e, c, g, d, a) {
     b.push("		</div>");
     b.push("	</div>");
     b.push("</div>");
-    Fai.top.$("body").prepend(b.join(""));
-    Site.resetMemberBarPos();
+    Helper.top.$("body").prepend(b.join(""));
+    Run.resetMemberBarPos();
     if (d) {
-        Site.mallCartInit(Fai.top._colId)
+        Run.mallCartInit(Helper.top._colId)
     }
-    if (Fai.top._memberTopBar_mobiWeb) {
-        Site.mobiWebInit()
+    if (Helper.top._memberTopBar_mobiWeb) {
+        Run.mobiWebInit()
     }
 };
-Site.resetGmainPos = function () {
+Run.resetGmainPos = function () {
     var d = 0;
-    d = Site.getTopHeight();
-    var b = Fai.top.$("#g_main");
-    if (Fai.isIE6() || Fai.isIE7()) {
-        var a = Fai.top.document.documentElement.clientHeight - d;
+    d = Run.getTopHeight();
+    var b = Helper.top.$("#g_main");
+    if (Helper.isIE6() || Helper.isIE7()) {
+        var a = Helper.top.document.documentElement.clientHeight - d;
         if (b.height() != a) {
             b.css("height", a + "px")
         }
-        var c = Fai.top.document.documentElement.clientWidth;
+        var c = Helper.top.document.documentElement.clientWidth;
         if (b.width() != c) {
             b.css("width", c + "px")
         }
@@ -34214,21 +34214,21 @@ Site.resetGmainPos = function () {
     if (b.css("top") != (d + "px")) {
         b.css("top", d + "px")
     }
-    Site.resetMemberBarPos();
-    Fai.top.$(".floatLeftTop").css("top", d + "px");
-    Fai.top.$(".floatRightTop").css("top", d + "px")
+    Run.resetMemberBarPos();
+    Helper.top.$(".floatLeftTop").css("top", d + "px");
+    Helper.top.$(".floatRightTop").css("top", d + "px")
 };
-Site.resetMemberBarPos = function () {
-    var b = Site.getTopHeight() - 37;
+Run.resetMemberBarPos = function () {
+    var b = Run.getTopHeight() - 37;
     if ($("#topBar").css("display") === "block") {
         b = b - 6
     }
-    var a = Fai.top.$("#memberBarArea");
+    var a = Helper.top.$("#memberBarArea");
     if (a.css("top") != (b + "px")) {
         a.css("top", b + "px")
     }
 };
-Site.getTopHeight = function () {
+Run.getTopHeight = function () {
     var f = 0;
     var e = 0;
     var a = 0;
@@ -34236,23 +34236,23 @@ Site.getTopHeight = function () {
     var g = 0;
     var c = 0;
     var b = 0;
-    if ((Fai.top.$("#sitetips").length > 0) && (Fai.top.$("#sitetips").css("display") != "none")) {
-        g = Fai.top.$("#sitetips").outerHeight(true)
+    if ((Helper.top.$("#sitetips").length > 0) && (Helper.top.$("#sitetips").css("display") != "none")) {
+        g = Helper.top.$("#sitetips").outerHeight(true)
     }
-    if ((Fai.top.$("#arrears").length > 0) && (Fai.top.$("#arrears").css("display") != "none")) {
-        e = Fai.top.$("#arrears").outerHeight(true)
+    if ((Helper.top.$("#arrears").length > 0) && (Helper.top.$("#arrears").css("display") != "none")) {
+        e = Helper.top.$("#arrears").outerHeight(true)
     }
-    if ((Fai.top.$("#topBar").length > 0) && (Fai.top.$("#topBar").css("display") != "none")) {
-        a = Fai.top.$("#topBarArea").outerHeight(true)
+    if ((Helper.top.$("#topBar").length > 0) && (Helper.top.$("#topBar").css("display") != "none")) {
+        a = Helper.top.$("#topBarArea").outerHeight(true)
     }
-    if ((Fai.top.$("#styleDesign").length > 0) && (Fai.top.$("#styleDesign").css("display") != "none")) {
-        d = Fai.top.$("#styleDesign").outerHeight(true)
+    if ((Helper.top.$("#styleDesign").length > 0) && (Helper.top.$("#styleDesign").css("display") != "none")) {
+        d = Helper.top.$("#styleDesign").outerHeight(true)
     }
-    if ((Fai.top.$("#siteTipsDemoTemplate").length > 0) && (Fai.top.$("#siteTipsDemoTemplate").css("display") != "none")) {
-        c = Fai.top.$("#siteTipsDemoTemplate").outerHeight(true)
+    if ((Helper.top.$("#siteTipsDemoTemplate").length > 0) && (Helper.top.$("#siteTipsDemoTemplate").css("display") != "none")) {
+        c = Helper.top.$("#siteTipsDemoTemplate").outerHeight(true)
     }
-    if ((Fai.top.$("#memberBar").length > 0) && (Fai.top.$("#memberBar").css("display") != "none")) {
-        b = Fai.top.$("#memberBar").outerHeight(true)
+    if ((Helper.top.$("#memberBar").length > 0) && (Helper.top.$("#memberBar").css("display") != "none")) {
+        b = Helper.top.$("#memberBar").outerHeight(true)
     }
     if (d > 0) {
         g = 0
@@ -34260,18 +34260,18 @@ Site.getTopHeight = function () {
     f = e + a + d + g + c + b;
     return f
 };
-Site.scrollToDiv = function (a) {
-    if (Fai.top.$("#g_main").hasClass("g_mainManage")) {
-        Fai.top.$("#g_main").scrollTop(0);
-        Fai.top.$("#g_main").scrollTop(a.offset().top - Fai.top.$(".g_main").offset().top - 10)
+Run.scrollToDiv = function (a) {
+    if (Helper.top.$("#g_main").hasClass("g_mainManage")) {
+        Helper.top.$("#g_main").scrollTop(0);
+        Helper.top.$("#g_main").scrollTop(a.offset().top - Helper.top.$(".g_main").offset().top - 10)
     } else {
-        Fai.top.$("body").scrollTop(0);
-        Fai.top.$("body").scrollTop(a.offset().top - 10)
+        Helper.top.$("body").scrollTop(0);
+        Helper.top.$("body").scrollTop(a.offset().top - 10)
     }
 };
-Site.checkSaveBar = function (a) {
-    if (Fai.top._changeStyleNum > 0) {
-        Site.popupStyleChangeBodyWindow({
+Run.checkSaveBar = function (a) {
+    if (Helper.top._changeStyleNum > 0) {
+        Run.popupStyleChangeBodyWindow({
             msg: "您的网站设计已经更改，是否立即保存？",
             isCancelBtn: false,
             runCallback: false,
@@ -34283,21 +34283,21 @@ Site.checkSaveBar = function (a) {
     }
     return false
 };
-Site.logClick = function (c, b) {
+Run.logClick = function (c, b) {
     return;
     var a = "cmd=click&app=" + c;
     if (typeof b != "undefined") {
         a += "&value=" + b
     }
     $.ajax({
-        type: "post", url: Site.genAjaxUrl("log_h.php"), data: a, error: function () {
+        type: "post", url: Run.genAjaxUrl("log_h.php"), data: a, error: function () {
         }, success: function () {
         }
     })
 };
-Site.popupLogin = function (a, c) {
+Run.popupLogin = function (a, c) {
     try {
-        if (!Site.getTopWindow().location.href) {
+        if (!Run.getTopWindow().location.href) {
             alert('您好，目前无法打开登录框，可能是以下原因：\n1、当前网页未完全加载，请稍后重试或刷新再试。\n2、不支持"域名转发"时登录。\n3、不支持"被其他网站嵌入"时登录。');
             return
         }
@@ -34305,8 +34305,8 @@ Site.popupLogin = function (a, c) {
         alert('您好，目前无法打开登录框，可能是以下原因：\n1、当前网页未完全加载，请稍后重试或刷新再试。\n2、不支持"域名转发"时登录。\n3、不支持"被其他网站嵌入"时登录。');
         return
     }
-    a = a + "/loginForm.php?cid=" + c + "&f=" + Fai.encodeUrl(window.location.href) + "&rqDomain=" + Fai.encodeUrl(Fai.top.document.domain);
-    Fai.popupWindow({
+    a = a + "/loginForm.php?cid=" + c + "&f=" + Helper.encodeUrl(window.location.href) + "&rqDomain=" + Helper.encodeUrl(Helper.top.document.domain);
+    Helper.popupWindow({
         title: "登录",
         frameSrcUrl: a + "&track=2&ram=" + Math.random(),
         width: "380",
@@ -34314,54 +34314,54 @@ Site.popupLogin = function (a, c) {
         frameScrolling: "no"
     })
 };
-Site.getFooterBottom = function (a) {
+Run.getFooterBottom = function (a) {
     if (!a) {
-        if (Fai.top.$(".footerSupport").css("display") != "none") {
-            return Fai.top.$(".footerSupport").offset().top
+        if (Helper.top.$(".footerSupport").css("display") != "none") {
+            return Helper.top.$(".footerSupport").offset().top
         } else {
-            return Fai.top.$("#webFooter").offset().top + Fai.top.$("#webFooter").height()
+            return Helper.top.$("#webFooter").offset().top + Helper.top.$("#webFooter").height()
         }
     } else {
-        return Fai.top.$("#webFooter").offset().top + Fai.top.$("#webFooter").height()
+        return Helper.top.$("#webFooter").offset().top + Helper.top.$("#webFooter").height()
     }
 };
-Site.navAppendToParent = function (a, b) {
+Run.navAppendToParent = function (a, b) {
     if (!b) {
         if (a == 0) {
-            Site.getTopWindow().$("#banner").appendTo(Site.getTopWindow().$("#webBanner .bannerCenter"));
-            Site.getTopWindow().$("#nav").appendTo(Site.getTopWindow().$("#webBanner .bannerCenter"))
+            Run.getTopWindow().$("#banner").appendTo(Run.getTopWindow().$("#webBanner .bannerCenter"));
+            Run.getTopWindow().$("#nav").appendTo(Run.getTopWindow().$("#webBanner .bannerCenter"))
         } else {
             if (a == 1) {
-                Site.getTopWindow().$("#banner").appendTo(Site.getTopWindow().$("#webBanner .bannerCenter"));
-                Site.getTopWindow().$("#nav").appendTo(Site.getTopWindow().$("#webHeader .headerNav"))
+                Run.getTopWindow().$("#banner").appendTo(Run.getTopWindow().$("#webBanner .bannerCenter"));
+                Run.getTopWindow().$("#nav").appendTo(Run.getTopWindow().$("#webHeader .headerNav"))
             } else {
                 if (a == 2) {
-                    Site.getTopWindow().$("#banner").appendTo(Site.getTopWindow().$("#containerMiddleLeft"));
-                    Site.getTopWindow().$("#nav").appendTo(Site.getTopWindow().$("#webHeader .headerNav"))
+                    Run.getTopWindow().$("#banner").appendTo(Run.getTopWindow().$("#containerMiddleLeft"));
+                    Run.getTopWindow().$("#nav").appendTo(Run.getTopWindow().$("#webHeader .headerNav"))
                 } else {
                     if (a == 3 || a == 5) {
-                        Site.getTopWindow().$("#nav").appendTo(Site.getTopWindow().$("#containerMiddleLeft"));
-                        Site.getTopWindow().$("#banner").appendTo(Site.getTopWindow().$("#containerMiddleLeft"))
+                        Run.getTopWindow().$("#nav").appendTo(Run.getTopWindow().$("#containerMiddleLeft"));
+                        Run.getTopWindow().$("#banner").appendTo(Run.getTopWindow().$("#containerMiddleLeft"))
                     } else {
                         if (a == 4 || a == 6) {
-                            Site.getTopWindow().$("#banner").appendTo(Site.getTopWindow().$("#containerMiddleCenterTop"));
-                            Site.getTopWindow().$("#nav").appendTo(Site.getTopWindow().$("#containerMiddleLeft"))
+                            Run.getTopWindow().$("#banner").appendTo(Run.getTopWindow().$("#containerMiddleCenterTop"));
+                            Run.getTopWindow().$("#nav").appendTo(Run.getTopWindow().$("#containerMiddleLeft"))
                         } else {
                             if (a == 7) {
-                                Site.getTopWindow().$("#banner").prependTo(Site.getTopWindow().$("#containerFormsCenter"));
-                                Site.getTopWindow().$("#nav").appendTo(Site.getTopWindow().$("#webHeader .headerNav"))
+                                Run.getTopWindow().$("#banner").prependTo(Run.getTopWindow().$("#containerFormsCenter"));
+                                Run.getTopWindow().$("#nav").appendTo(Run.getTopWindow().$("#webHeader .headerNav"))
                             } else {
                                 if (a == 8) {
-                                    Site.getTopWindow().$("#banner").prependTo(Site.getTopWindow().$("#centerTopForms"));
-                                    Site.getTopWindow().$("#nav").appendTo(Site.getTopWindow().$("#webHeader .headerNav"))
+                                    Run.getTopWindow().$("#banner").prependTo(Run.getTopWindow().$("#centerTopForms"));
+                                    Run.getTopWindow().$("#nav").appendTo(Run.getTopWindow().$("#webHeader .headerNav"))
                                 } else {
                                     if (a == 9) {
-                                        Site.getTopWindow().$("#banner").appendTo(Site.getTopWindow().$("#webBanner .bannerCenter"));
-                                        Site.getTopWindow().$("#nav").appendTo(Site.getTopWindow().$("#webBanner .bannerCenter"))
+                                        Run.getTopWindow().$("#banner").appendTo(Run.getTopWindow().$("#webBanner .bannerCenter"));
+                                        Run.getTopWindow().$("#nav").appendTo(Run.getTopWindow().$("#webBanner .bannerCenter"))
                                     } else {
                                         if (a == 10) {
-                                            Site.getTopWindow().$("#nav").appendTo(Site.getTopWindow().$("#webBanner .bannerCenter"));
-                                            Site.getTopWindow().$("#banner").appendTo(Site.getTopWindow().$("#webBanner .bannerCenter"))
+                                            Run.getTopWindow().$("#nav").appendTo(Run.getTopWindow().$("#webBanner .bannerCenter"));
+                                            Run.getTopWindow().$("#banner").appendTo(Run.getTopWindow().$("#webBanner .bannerCenter"))
                                         }
                                     }
                                 }
@@ -34373,81 +34373,81 @@ Site.navAppendToParent = function (a, b) {
         }
     }
 };
-Site.initTemplateLayout = function (c, d, b) {
-    var a = Fai.top.$("#webBanner");
-    Site.navAppendToParent(c, d);
+Run.initTemplateLayout = function (c, d, b) {
+    var a = Helper.top.$("#webBanner");
+    Run.navAppendToParent(c, d);
     if (c == 0) {
         a.show();
-        Site.showNavSubMenu(0);
+        Run.showNavSubMenu(0);
         setTimeout(function () {
-            Site.showNavItemContainer()
+            Run.showNavItemContainer()
         }, 200)
     } else {
         if (c == 1) {
             a.show();
-            Site.showNavSubMenu(0);
+            Run.showNavSubMenu(0);
             setTimeout(function () {
-                Site.showNavItemContainer()
+                Run.showNavItemContainer()
             }, 200)
         } else {
             if (c == 2) {
                 a.hide();
-                Site.showNavSubMenu(0);
+                Run.showNavSubMenu(0);
                 setTimeout(function () {
-                    Site.showNavItemContainer()
+                    Run.showNavItemContainer()
                 }, 200)
             } else {
                 if (c == 3) {
                     a.hide();
-                    Site.showNavSubMenu(1);
+                    Run.showNavSubMenu(1);
                     setTimeout(function () {
-                        Site.showNavItemContainer()
+                        Run.showNavItemContainer()
                     }, 200);
-                    Site.hideNavItemContainer()
+                    Run.hideNavItemContainer()
                 } else {
                     if (c == 4) {
                         a.hide();
-                        Site.showNavSubMenu(1);
+                        Run.showNavSubMenu(1);
                         setTimeout(function () {
-                            Site.showNavItemContainer()
+                            Run.showNavItemContainer()
                         }, 200);
-                        Site.hideNavItemContainer()
+                        Run.hideNavItemContainer()
                     } else {
                         if (c == 5) {
                             a.hide();
-                            Site.showNavSubMenu(1);
+                            Run.showNavSubMenu(1);
                             setTimeout(function () {
-                                Site.showNavItemContainer()
+                                Run.showNavItemContainer()
                             }, 200);
-                            Site.hideNavItemContainer()
+                            Run.hideNavItemContainer()
                         } else {
                             if (c == 6) {
                                 a.hide();
-                                Site.showNavSubMenu(100);
+                                Run.showNavSubMenu(100);
                                 setTimeout(function () {
-                                    Site.showNavItemContainer()
+                                    Run.showNavItemContainer()
                                 }, 200);
-                                Site.hideNavItemContainer()
+                                Run.hideNavItemContainer()
                             } else {
                                 if (c == 7) {
                                     a.hide();
-                                    Site.showNavSubMenu(0);
+                                    Run.showNavSubMenu(0);
                                     setTimeout(function () {
-                                        Site.showNavItemContainer()
+                                        Run.showNavItemContainer()
                                     }, 200)
                                 } else {
                                     if (c == 8) {
                                         a.hide();
-                                        Site.showNavSubMenu(0);
+                                        Run.showNavSubMenu(0);
                                         setTimeout(function () {
-                                            Site.showNavItemContainer()
+                                            Run.showNavItemContainer()
                                         }, 200)
                                     } else {
                                         if (c == 9 || c == 10) {
                                             a.show();
-                                            Site.showNavSubMenu(0);
+                                            Run.showNavSubMenu(0);
                                             setTimeout(function () {
-                                                Site.showNavItemContainer()
+                                                Run.showNavItemContainer()
                                             }, 200)
                                         }
                                     }
@@ -34459,13 +34459,13 @@ Site.initTemplateLayout = function (c, d, b) {
             }
         }
     }
-    if (Fai.top._manageMode) {
+    if (Helper.top._manageMode) {
         setTimeout(function () {
-            Site.absoluteNavDraggableAndResize(c, b)
+            Run.absoluteNavDraggableAndResize(c, b)
         }, 300)
     }
 };
-Site.checkFaiAnchor = function () {
+Run.checkHelperAnchor = function () {
     var c = window.location.hash;
     var b = c.substring(1).split("_");
     if (b[0] != "fai") {
@@ -34476,21 +34476,21 @@ Site.checkFaiAnchor = function () {
         if (typeof a == "undefined") {
             a = "top"
         }
-        Site.jumpToModulePosition(d, a)
+        Run.jumpToModulePosition(d, a)
     }
     return
 };
-Site.logout = function (a) {
-    Fai.ing("正在退出系统...", false);
+Run.logout = function (a) {
+    Helper.ing("正在退出系统...", false);
     $.ajax({
         type: "post", url: "ajax/login_h.php?cmd=logout", error: function () {
-            Fai.ing("系统繁忙，请稍后重试。", false)
+            Helper.ing("系统繁忙，请稍后重试。", false)
         }, success: function (b) {
-            Fai.successHandle(b, "", "系统繁忙，请稍后重试。", a, 1, 1)
+            Helper.successHandle(b, "", "系统繁忙，请稍后重试。", a, 1, 1)
         }
     })
 };
-Site.manageFaiscoAd = function () {
+Run.manageHelperscoAd = function () {
     if (_manageMode) {
         $(".siteAdvertisement_box").mouseover(function () {
             $(".siteAdvertisement_boxTip").css("display", "block")
@@ -34505,23 +34505,23 @@ Site.manageFaiscoAd = function () {
     });
     $(".closeImg").click(function () {
         if (_manageMode) {
-            if (Fai.isDbg()) {
+            if (Helper.isDbg()) {
                 $.cookie("faiscoAd", false, {expires: 1, path: "/", domain: "aaa.cn"})
             } else {
                 $.cookie("faiscoAd", false, {expires: 1, path: "/", domain: "faisco.cn"})
             }
             var a = $.cookie("faiscoAdLoopCount");
             if (a == "1") {
-                Site.logDog(200004, 22)
+                Run.logDog(200004, 22)
             } else {
                 if (a == "2") {
-                    Site.logDog(200004, 23)
+                    Run.logDog(200004, 23)
                 } else {
                     if (a == "3") {
-                        Site.logDog(200004, 24)
+                        Run.logDog(200004, 24)
                     } else {
                         if (a == "4") {
-                            Site.logDog(200004, 21)
+                            Run.logDog(200004, 21)
                         }
                     }
                 }
@@ -34530,12 +34530,12 @@ Site.manageFaiscoAd = function () {
         $(".siteAdvertisement_box").css("display", "none")
     })
 };
-Site.initMulColModuleInIE = function (a) {
-    if (Fai.isIE10()) {
+Run.initMulColModuleInIE = function (a) {
+    if (Helper.isIE10()) {
         $(a).find(".mulModuleColStyleLine").css("height", $(a).height() - 25 + "px")
     }
 };
-Site.initCorpTitleJump = function () {
+Run.initCorpTitleJump = function () {
     $("#corpTitle").click(function () {
         var b = $(this).attr("_href");
         if (b == "" || b == null) {
@@ -34545,27 +34545,27 @@ Site.initCorpTitleJump = function () {
             return false
         }
         var a = parseInt($(this).attr("_linktype"));
-        if (Fai.top._titleData != null && Fai.top._titleData != "") {
-            if (Fai.top._titleData.jm.ot === 1) {
+        if (Helper.top._titleData != null && Helper.top._titleData != "") {
+            if (Helper.top._titleData.jm.ot === 1) {
                 window.open(b)
             } else {
-                Fai.top.location.href = b
+                Helper.top.location.href = b
             }
         } else {
             if (a === 1) {
                 window.open(b)
             } else {
-                Fai.top.location.href = b
+                Helper.top.location.href = b
             }
         }
     })
 };
-Site.onTitleSiteFixTop = function () {
-    var f, h = false, a = false, r = Fai.isIE6(), q = Fai.isIE7(), z = Fai.top.$("#corpTitle"), u = Fai.top.$(window),
-        n = Fai.top.$("#g_main"), d = Fai.top.$("#web"), k = Fai.top.$("body"), w = Fai.top.$(".webTopTable"),
-        g = Fai.top.$(".floatLeftTop"), e = z.parent(), m = Fai.top.$("#sitetips"), l,
+Run.onTitleRunFixTop = function () {
+    var f, h = false, a = false, r = Helper.isIE6(), q = Helper.isIE7(), z = Helper.top.$("#corpTitle"), u = Helper.top.$(window),
+        n = Helper.top.$("#g_main"), d = Helper.top.$("#web"), k = Helper.top.$("body"), w = Helper.top.$(".webTopTable"),
+        g = Helper.top.$(".floatLeftTop"), e = z.parent(), m = Helper.top.$("#sitetips"), l,
         v = parseInt(z.css("top").replace("px", "")), s = z.offset().top - n.offset().top, j = z.position().left,
-        p = m.height() || 0, c = s, b = g.css("top").replace("px", "") || 0, o = Fai.top.$(window), y = o;
+        p = m.height() || 0, c = s, b = g.css("top").replace("px", "") || 0, o = Helper.top.$(window), y = o;
     if (r || q) {
         a = true;
         y = n
@@ -34576,7 +34576,7 @@ Site.onTitleSiteFixTop = function () {
     y.on("scroll.title", function () {
         var B = y.scrollTop(), A = parseInt(g.css("top").replace("px", "")) - 1;
         b = A || 0;
-        f = Site.getNavInClientPosition(z).left;
+        f = Run.getNavInClientPosition(z).left;
         if (w.find("#corpTitle").length > 0) {
             l = w;
             l.css({zIndex: "60", position: "relative"})
@@ -34604,7 +34604,7 @@ Site.onTitleSiteFixTop = function () {
             h = false
         }
     });
-    Fai.top.$(window).on("resize.title", function () {
+    Helper.top.$(window).on("resize.title", function () {
         if (r && z.offset().top == 0) {
             z.css("left", t.offset().left + i)
         } else {
@@ -34616,12 +34616,12 @@ Site.onTitleSiteFixTop = function () {
         }
     })
 };
-Site.onLogoSiteFixTop = function () {
-    var f, j = false, a = false, s = Fai.isIE6(), q = Fai.isIE7(), g = Fai.top.$("#logo"), w = Fai.top.$(window),
-        n = Fai.top.$("#g_main"), e = Fai.top.$("#web"), k = Fai.top.$("body"), x = Fai.top.$(".webTopTable"),
-        i = Fai.top.$(".floatLeftTop"), h = g.parent(), m = Fai.top.$("#sitetips"), l,
+Run.onLogoRunFixTop = function () {
+    var f, j = false, a = false, s = Helper.isIE6(), q = Helper.isIE7(), g = Helper.top.$("#logo"), w = Helper.top.$(window),
+        n = Helper.top.$("#g_main"), e = Helper.top.$("#web"), k = Helper.top.$("body"), x = Helper.top.$(".webTopTable"),
+        i = Helper.top.$(".floatLeftTop"), h = g.parent(), m = Helper.top.$("#sitetips"), l,
         v = parseInt(g.css("top").replace("px", "")), y = g.offset().top - n.offset().top, r = g.position().left,
-        p = m.height() || 0, d = y, c = i.css("top").replace("px", "") || 0, o = Fai.top.$(window), z = o;
+        p = m.height() || 0, d = y, c = i.css("top").replace("px", "") || 0, o = Helper.top.$(window), z = o;
     if (s || q) {
         a = true;
         z = n
@@ -34632,7 +34632,7 @@ Site.onLogoSiteFixTop = function () {
     z.on("scroll.logo", function () {
         var B = z.scrollTop(), A = parseInt(i.css("top").replace("px", "")) - 1;
         c = A || 0;
-        f = Site.getNavInClientPosition(g).left;
+        f = Run.getNavInClientPosition(g).left;
         if (x.find("#logo").length > 0) {
             l = x;
             l.css({zIndex: "60", position: "relative"})
@@ -34660,7 +34660,7 @@ Site.onLogoSiteFixTop = function () {
             j = false
         }
     });
-    Fai.top.$(window).on("resize.logo", function () {
+    Helper.top.$(window).on("resize.logo", function () {
         if (s && g.offset().top == 0) {
             g.css("left", t.offset().left + b)
         } else {
@@ -34672,11 +34672,11 @@ Site.onLogoSiteFixTop = function () {
         }
     })
 };
-Site.voidFun = function () {
+Run.voidFun = function () {
 };
-Site.codeInsertButtom = function (d) {
+Run.codeInsertButtom = function (d) {
     var b = /document.write/g;
-    d = d.replace(b, "Site.voidFun");
+    d = d.replace(b, "Run.voidFun");
     var a = document.createElement("script");
     a.type = "text/javascript";
     try {
@@ -34686,8 +34686,8 @@ Site.codeInsertButtom = function (d) {
     }
     document.body.appendChild(a)
 };
-Site.computeTabsWidthHideMore = function (e) {
-    var d = Fai.top.$("#module" + e).find(".formTabButtonTopCenter");
+Run.computeTabsWidthHideMore = function (e) {
+    var d = Helper.top.$("#module" + e).find(".formTabButtonTopCenter");
     var c = parseInt(d.css("width")) + 4;
     var b = 0;
     var a = d.find(".formTabButton");
@@ -34702,7 +34702,7 @@ Site.computeTabsWidthHideMore = function (e) {
         d.find(".formTabButtonMore").show()
     }
 };
-Site.wxShareAlter = function (a) {
+Run.wxShareAlter = function (a) {
     var c = new Array();
     c.push("<div class='wxShare'>");
     c.push("<div class='wxShareContent'>");
@@ -34712,7 +34712,7 @@ Site.wxShareAlter = function (a) {
     c.push("<div class='wxShareQrcode'><img alt='' src='" + a + "' /></div>");
     c.push("</div>");
     c.push("</div>");
-    var b = Site.getTopWindow().Fai.popupWindow({
+    var b = Run.getTopWindow().Helper.popupWindow({
         width: 480,
         height: 420,
         frameScrolling: "no",
@@ -34721,11 +34721,11 @@ Site.wxShareAlter = function (a) {
         closeBtnClass: "wxSharehideCloseBtn",
         divContent: c.join("")
     });
-    if (Fai.isIE6() && Fai.top.$("#fixSelectIframe" + b).length > 0) {
-        Fai.top.$("#fixSelectIframe" + b).remove()
+    if (Helper.isIE6() && Helper.top.$("#fixSelectIframe" + b).length > 0) {
+        Helper.top.$("#fixSelectIframe" + b).remove()
     }
 };
-Site.hoverChangeImage = function () {
+Run.hoverChangeImage = function () {
     var m = $("img[_defImg][_hovImg], img[_defFont][_hovFont], div[_defFont][_hovFont], div[_defImg][_hovImg]");
     var f = $(".J_hoverImage");
     var q = false;
@@ -34787,7 +34787,7 @@ Site.hoverChangeImage = function () {
             return
         }
         var w = $(y).parents(".form");
-        if (Fai.isChrome() && !$(w).hasClass("formStyle31")) {
+        if (Helper.isChrome() && !$(w).hasClass("formStyle31")) {
             $(y).css("position", "relative")
         }
         $(y).off(".hoverImage");
@@ -34826,7 +34826,7 @@ Site.hoverChangeImage = function () {
         $(C).css({top: y + "px", left: i + "px", width: x + "px", height: w + "px"})
     }
 };
-Site.hoverStyle = function () {
+Run.hoverStyle = function () {
     var k = $("a[aStyle_h]");
     var l = this.body ? this.body : (this.editor ? this.editor.body : false);
     var g;
@@ -34954,15 +34954,15 @@ Site.hoverStyle = function () {
         }
     }
 };
-Site.setFullMeasureBgHightInIe6 = function (b) {
-    if (Fai.isIE6()) {
-        var a = Fai.top.$("#module" + b), c = a.height();
+Run.setFullMeasureBgHightInIe6 = function (b) {
+    if (Helper.isIE6()) {
+        var a = Helper.top.$("#module" + b), c = a.height();
         a.find(".fullmeasureOuterContentBg" + b).css("height", c + "px");
         a.find(".fullmeasureContentBg" + b).css("height", c + "px")
     }
 };
-Site.addStellarEvent = function () {
-    var a = Fai.top.$(".fullmeasureOuterContentBg"), b = false;
+Run.addStellarEvent = function () {
+    var a = Helper.top.$(".fullmeasureOuterContentBg"), b = false;
     if (a.length > 0) {
         a.each(function () {
             if (!!$(this).attr("data-stellar-background-ratio")) {
@@ -34972,44 +34972,44 @@ Site.addStellarEvent = function () {
         })
     }
     if (b) {
-        if (Fai.top._manageMode) {
-            Fai.top.$("#g_main").stellar("destroy");
-            Fai.top.$("#g_main").stellar({horizontalScrolling: false, responsive: false})
+        if (Helper.top._manageMode) {
+            Helper.top.$("#g_main").stellar("destroy");
+            Helper.top.$("#g_main").stellar({horizontalScrolling: false, responsive: false})
         } else {
-            $(Fai.top).stellar("destroy");
-            $(Fai.top).stellar({horizontalScrolling: false, responsive: false})
+            $(Helper.top).stellar("destroy");
+            $(Helper.top).stellar({horizontalScrolling: false, responsive: false})
         }
     }
 };
-Site.popupPwdTips = function (b, a, c) {
-    Site.getTopWindow().$.cookie("hasLoginSite", "true", {expires: 1, path: "/"});
-    Site.getTopWindow().$(".formDialog .formX").trigger("click");
-    Fai.ing2("<span style='font-size: 20px; color: #AFB2B5;'>请先修改您的密码</span><br><hr style='margin: 5px auto; color: #ccc;'><div style='font-size: 12px;'>您的密码过于简单，为避免盗号造成损失，请先修改密码。</div><div style='float: right;'><a class='tipsButton cancelBtn' href='javaScript:void(0);' onclick=\"Site.tipsClose('" + a + "','" + c + "')\">暂不修改</a><a class='tipsButton' href='" + b + "/portal.php#appId=setPwd' onclick='Site.logDog(100068,9);'>修改密码</a></div>", false);
-    Site.getTopWindow().$(".msg2").css({"text-align": "left", margin: "15px", width: "auto"});
-    Site.getTopWindow().$(".tips2").css({height: "205px", display: "none"}).slideDown();
-    Site.getTopWindow().$("#ing2").css({width: "452px", "margin-top": "105px"});
-    Site.getTopWindow().$("#ing2").css({transition: "opacity 0s ease", position: "fixed", top: "0"});
-    Fai.bg(0, 0.02);
-    Site.getTopWindow().$("body").css("overflow", "hidden");
-    Site.getTopWindow().$("#popupBg0").click(function () {
-        Site.tipsClose(a, c)
+Run.popupPwdTips = function (b, a, c) {
+    Run.getTopWindow().$.cookie("hasLoginRun", "true", {expires: 1, path: "/"});
+    Run.getTopWindow().$(".formDialog .formX").trigger("click");
+    Helper.ing2("<span style='font-size: 20px; color: #AFB2B5;'>请先修改您的密码</span><br><hr style='margin: 5px auto; color: #ccc;'><div style='font-size: 12px;'>您的密码过于简单，为避免盗号造成损失，请先修改密码。</div><div style='float: right;'><a class='tipsButton cancelBtn' href='javaScript:void(0);' onclick=\"Run.tipsClose('" + a + "','" + c + "')\">暂不修改</a><a class='tipsButton' href='" + b + "/portal.php#appId=setPwd' onclick='Run.logDog(100068,9);'>修改密码</a></div>", false);
+    Run.getTopWindow().$(".msg2").css({"text-align": "left", margin: "15px", width: "auto"});
+    Run.getTopWindow().$(".tips2").css({height: "205px", display: "none"}).slideDown();
+    Run.getTopWindow().$("#ing2").css({width: "452px", "margin-top": "105px"});
+    Run.getTopWindow().$("#ing2").css({transition: "opacity 0s ease", position: "fixed", top: "0"});
+    Helper.bg(0, 0.02);
+    Run.getTopWindow().$("body").css("overflow", "hidden");
+    Run.getTopWindow().$("#popupBg0").click(function () {
+        Run.tipsClose(a, c)
     });
-    Site.getTopWindow().$("#ing2 .close").bind("click", function () {
-        Site.tipsClose(a, c)
+    Run.getTopWindow().$("#ing2 .close").bind("click", function () {
+        Run.tipsClose(a, c)
     })
 };
-Site.tipsClose = function (a, b) {
-    Site.getTopWindow().Fai.removeIng2();
-    Site.getTopWindow().Fai.removeBg();
-    Site.getTopWindow().$("body").css("overflow", "scroll");
-    $.cookie("hasLoginSite", "false", {expires: 1, path: "/"});
+Run.tipsClose = function (a, b) {
+    Run.getTopWindow().Helper.removeIng2();
+    Run.getTopWindow().Helper.removeBg();
+    Run.getTopWindow().$("body").css("overflow", "scroll");
+    $.cookie("hasLoginRun", "false", {expires: 1, path: "/"});
     window.location.href = "http://" + a + "." + b + ""
 };
-Site.changeAdmHref = function (a, b) {
+Run.changeAdmHref = function (a, b) {
     window.location.href = "http://" + a + "." + b + ""
 };
-Site.getDialogContent = function (b, a) {
-    var d = b ? "suc-ico" : "resultFailIcon";
+Run.getDialogContent = function (b, a) {
+    var d = b ? "suc-ico" : "resultHelperlIcon";
     var c = ["<table style='width:100%;height:100%;'>", "<tr>", "<td style='width:100px;'></td>", "<td style='width:180px;'>", "<div class='" + d + " addItemTextTips' style='max-width:160px;font-size:14px; color:#636363; overflow: hidden;word-wrap:normal; white-space: nowrap; text-overflow: ellipsis;' >" + a + "</div>", "</td>", "<td style='width:100px;'></td>", "</tr>", "</table>"];
     return c.join("")
 };
@@ -35177,21 +35177,21 @@ Site.getDialogContent = function (b, a) {
     }
 
     a.clamp = b
-})(Site);
-Site.userReadyOperateSite = function () {
-    Site.mallCartInit(_colId);
-    Site.mobiWebInit();
-    if (!Fai.top._oem) {
-        Site.changeTheLogoSize()
+})(Run);
+Run.userReadyOperateRun = function () {
+    Run.mallCartInit(_colId);
+    Run.mobiWebInit();
+    if (!Helper.top._oem) {
+        Run.changeTheLogoSize()
     }
-    Site.refreshFooterItemSpacing();
-    Site.bindInTabSwitch()
+    Run.refreshFooterItemSpacing();
+    Run.bindInTabSwitch()
 };
 (function () {
-    if (Fai.top != window) {
+    if (Helper.top != window) {
         return
     }
-    var f = Fai.top.window.location.hash, b, c, a;
+    var f = Helper.top.window.location.hash, b, c, a;
     if (!f) {
         return
     }
@@ -35203,7 +35203,7 @@ Site.userReadyOperateSite = function () {
     if (b.length < 1) {
         return
     }
-    c = Fai.top._manageMode ? "#g_main" : Fai.top.window;
+    c = Helper.top._manageMode ? "#g_main" : Helper.top.window;
     a = b.parents(":not(#g_main)");
     $(c).one("scroll", function () {
         a.each(function () {
@@ -35218,14 +35218,14 @@ Site.userReadyOperateSite = function () {
         })
     })
 })();
-Site.loginSiteInit = function (b, a, d, e) {
-    var c = $.cookie("hasLoginSite");
+Run.loginRunInit = function (b, a, d, e) {
+    var c = $.cookie("hasLoginRun");
     if (c == "true" && c != null) {
-        $.cookie("hasLoginSite", "false", {expires: 1, path: "/"});
-        Site.changeAdmHref(b, a)
+        $.cookie("hasLoginRun", "false", {expires: 1, path: "/"});
+        Run.changeAdmHref(b, a)
     }
     if (d) {
-        Fai.ing(e, true)
+        Helper.ing(e, true)
     }
 };
 (function (h, m, n, d) {

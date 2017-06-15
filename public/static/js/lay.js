@@ -5,13 +5,13 @@ function showYuanDanWindow() {
 
     if (_openbigImg == true) {
         if (hasShowYuanDanLuckyGuy == 'true' || _hasGetYuanDanLuckyGuy_ != 'true') {
-            Site.isShowThreeDaysLuckyGuy = "true";
-            Site.isTenMinutes = 'true';
+            Run.isShowThreeDaysLuckyGuy = "true";
+            Run.isTenMinutes = 'true';
             $.cookie("hasShowYuanDanLuckyGuy", false, {path: "/"});
-            Site.drawLottery();
+            Run.drawLottery();
         } else {
 
-            Site.sendResult2();
+            Run.sendResult2();
         }
     }
 }
@@ -20,7 +20,7 @@ function showYuanDanWindow() {
 var fk_sale = new Object();
 fk_sale.cid = 13775917;
 fk_sale.siteVer = 10;
-fk_sale.popupWindowSiteVer = 10;
+fk_sale.popupWindowRunVer = 10;
 fk_sale.isLuckyGuyFlag = false;
 fk_sale.popupWindowEndYear = 2017;
 fk_sale.popupWindowEndMonth = 5;
@@ -43,8 +43,8 @@ fk_sale.domainImgBigBg = '';
 fk_sale.domainImgClose = '';
 fk_sale.siteBizBigClose = '';
 fk_sale.siteBizBigBg = '';
-fk_sale.showSiteBizWindow = false;
-fk_sale.showSitePopWindow = false;
+fk_sale.showRunBizWindow = false;
+fk_sale.showRunPopWindow = false;
 fk_sale.openFlyer = false;
 
 
@@ -53,7 +53,7 @@ fk_sale.openFlyer = false;
 //console.log(window.location.host.lastIndexOf("."));
 var _jsErrCahche = [];
 window.onerror = function (sMsg, sUrl, sLine) {
-    if (typeof Site === 'undefined') {
+    if (typeof Run === 'undefined') {
         alert('您的网页未加载完成，请尝试按“CTRL+功能键F5”重新加载。');
     }
     if (sLine < 1 || typeof sMsg != 'string' || sMsg.length < 1) {
@@ -89,7 +89,7 @@ window.onerror = function (sMsg, sUrl, sLine) {
 };
 
 
-Fai.top = window;
+Helper.top = window;
 var bgmCloseToOpen = false;
 var _debug = false;
 var _isPre = false;
@@ -114,31 +114,31 @@ var _templateDefLayout = {
 
 $(function () {
 
-    //Site.changeTheLogoSize();
-    Site.showOrHideMailBox();
+    //Run.changeTheLogoSize();
+    Run.showOrHideMailBox();
 
 
-    Site.loginSiteInit('', '', false, "");
+    Run.loginRunInit('', '', false, "");
 
     //topBarMember
 
 
     // 绑定退出事件
-    Site.bindBeforeUnloadEvent(false, false, false);
+    Run.bindBeforeUnloadEvent(false, false, false);
 
-    Site.initTemplateLayout(_templateDefLayout.NAV_FLOAT, true, false);
+    Run.initTemplateLayout(_templateDefLayout.NAV_FLOAT, true, false);
     // spider统计
 
 
     // ajax统计
-    Site.total({colId: 108, pdId: -1, ndId: -1, sc: 0, rf: "/home/house/newhouse.html"});
+    Run.total({colId: 108, pdId: -1, ndId: -1, sc: 0, rf: "/home/house/newhouse.html"});
     //前端性能数据上报
-    //Site.report();
+    //Run.report();
     //保留旧用户的初始化版式区域4 和区域5 中，区域4的padding-right空间
-    Site.colLayout45Width();
+    Run.colLayout45Width();
     //各个模块inc吐出脚本
-    Site.initCorpTitleJump();
-    Site.initBanner({
+    Run.initCorpTitleJump();
+    Run.initBanner({
         "_open": true,
         "data": [{
             "title": "",
@@ -158,16 +158,16 @@ $(function () {
         "btnType": 1,
         "wideScreen": false
     }, {"_open": false}, 4);
-    Site.loadNewsList(529, {"y": 0, "s": 0, "w": 1}, false);
-    Site.loadNewsNewStyle(529, false, false, false, true, false, true, false, false, false);
+    Run.loadNewsList(529, {"y": 0, "s": 0, "w": 1}, false);
+    Run.loadNewsNewStyle(529, false, false, false, true, false, true, false, false, false);
 
-    Site.setFullMeasureBgHightInIe6(388);
+    Run.setFullMeasureBgHightInIe6(388);
     ;
     $(function () {
-        Site.inFullmeasueAnimation.animateFm(388, 0, 1, {"c": 0, "d": 4.0, "s": 1.0});
+        Run.inFullmeasueAnimation.animateFm(388, 0, 1, {"c": 0, "d": 4.0, "s": 1.0});
     });
-    Site.loadNewsList(385, {"y": 0, "s": 0, "w": 1}, false);
-    Site.loadNewsNewStyle(385, false, false, false, true, true, false, false, false, false);
+    Run.loadNewsList(385, {"y": 0, "s": 0, "w": 1}, false);
+    Run.loadNewsNewStyle(385, false, false, false, true, true, false, false, false, false);
 
     jzUtils.run({"name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true}, {
         "moduleId": 555,
@@ -187,7 +187,7 @@ $(function () {
             "isInit": false
         },
         "tagetOption": {"targetParent": "floatImg_J", "target": "floatImg_J"},
-        "callback": Site.createImageEffectContent_photo,
+        "callback": Run.createImageEffectContent_photo,
         "callbackArgs": []
     });
     jzUtils.run({"name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true}, {
@@ -208,7 +208,7 @@ $(function () {
             "isInit": false
         },
         "tagetOption": {"targetParent": "floatImg_J", "target": "floatImg_J"},
-        "callback": Site.createImageEffectContent_photo,
+        "callback": Run.createImageEffectContent_photo,
         "callbackArgs": []
     });
     jzUtils.run({"name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true}, {
@@ -229,7 +229,7 @@ $(function () {
             "isInit": false
         },
         "tagetOption": {"targetParent": "floatImg_J", "target": "floatImg_J"},
-        "callback": Site.createImageEffectContent_photo,
+        "callback": Run.createImageEffectContent_photo,
         "callbackArgs": []
     });
     jzUtils.run({"name": "ImageEffect.FUNC.BASIC.Init", "callMethod": true}, {
@@ -250,29 +250,29 @@ $(function () {
             "isInit": false
         },
         "tagetOption": {"targetParent": "floatImg_J", "target": "floatImg_J"},
-        "callback": Site.createImageEffectContent_photo,
+        "callback": Run.createImageEffectContent_photo,
         "callbackArgs": []
     });
 
 
-    Site.initPage();	// 这个要放在最后，因为模块组初始化时会把一些模块隐藏，导致没有高度，所以要放最后执行
+    Run.initPage();	// 这个要放在最后，因为模块组初始化时会把一些模块隐藏，导致没有高度，所以要放最后执行
 
 
     setTimeout(afterModuleLoaded, 0);
 
 
-    Site.triggerGobalEvent("siteReadyLoad");
+    Run.triggerGobalEvent("siteReadyLoad");
 
 
 });
 
 function afterModuleLoaded() {
 
-    Site.initPage2();
+    Run.initPage2();
 
 
-    //Site.mallCartInit(_colId);
-    //Site.mobiWebInit();
+    //Run.mallCartInit(_colId);
+    //Run.mobiWebInit();
 
 
 } // afterModuleLoaded end
@@ -561,7 +561,7 @@ var fk_old_onload = window.onload;
 window.onload = function () {
 
 
-    Site.cacheModuleFunc.runSiteInit();
+    Run.cacheModuleFunc.runRunInit();
 
 
     if (typeof fk_old_onload == "function") {
@@ -569,13 +569,13 @@ window.onload = function () {
     }
 
 
-    Site.pageOnload();
+    Run.pageOnload();
 
 
 };
 
 
-Site.beforeUnloadFunc();
+Run.beforeUnloadFunc();
 
 
 $LAB.script("/static/js/home/photoSlide.min.js?v=201702271724");
@@ -583,6 +583,6 @@ $LAB.script("/static/js/home//imageEffect.min.js?v=201703131745")
     .wait(function () {
         jzUtils.trigger({
             "name": "ImageEffect.FUNC.BASIC.Init",
-            "base": Site
+            "base": Run
         });
     });
