@@ -764,6 +764,8 @@ $(function () {
     }, false);
 
     Site.initPjax();
+
+    // Site.wait('Most people can not see this message, please share with us! <br> 【God is a girl, please treat her as a lover】');
 });
 
 
