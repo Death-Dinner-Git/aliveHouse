@@ -767,7 +767,7 @@ Site.initBanner = function (data, options) {
     //渲染HTML
     for (var i=0;i<num;i++){
         var aPicAttr='',aDescAttr='',alt='',desc='',btnIndex='';
-        if (data[i].target !== undefined){
+        if (data[i].target !== undefined && data[i].target !== ''){
             if (config.targetType == '2'){
                 aPicAttr = ' target="_blank" href="'+ data[i].target +'"';
                 aDescAttr = ' target="_blank" href="'+ data[i].target +'"';
@@ -778,8 +778,8 @@ Site.initBanner = function (data, options) {
         if (data[i].title !== undefined){
             alt = ' alt="'+ data[i].title +'"';
         }
-        if (data[i].desc !== undefined){
-            desc = '<a hidefocus="true" '+aDescAttr+'><h>'+ data[i].desc +'</h></a> ';
+        if (data[i].desc !== undefined && data[i].desc !== ''){
+            desc = '<h3><a hidefocus="true" '+aDescAttr+' ><span>'+ data[i].desc +'</span></a></h3>';
         }
         content += '<span class="item">' +
             '<a hidefocus="true" '+aPicAttr+'>' +
