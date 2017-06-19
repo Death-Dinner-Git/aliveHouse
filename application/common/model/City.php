@@ -108,7 +108,7 @@ class City extends Model
     {
         $ret = [];
         $query = City::load();
-        if (empty($name)){
+        if (empty($where)){
             $where = ['level'=>'2'];
         }
         $query = $query->where($where);
