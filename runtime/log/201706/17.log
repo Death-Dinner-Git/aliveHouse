@@ -1,0 +1,2397 @@
+[ 2017-06-17T14:21:23+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ log ] www.alivehouse.com/ [运行时间：0.381025s][吞吐率：2.62req/s] [内存消耗：562.45kb] [文件加载：44]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\IndexController->indexAction[ D:\upupw\aliveHouse\application\home\controller\IndexController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\index\index.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:24+08:00 ] 127.0.0.1 127.0.0.1 GET /static/images/modules/fourPart,jpg
+[ log ] www.alivehouse.com/static/images/modules/fourPart,jpg [运行时间：0.144839s][吞吐率：6.90req/s] [内存消耗：134.33kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'images',
+    2 => 'modules',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'image/webp,image/*,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/static/css/home/newStyle.css',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:24+08:00 ] 127.0.0.1 127.0.0.1 GET /static/images/modules/middlePart,jpg
+[ log ] www.alivehouse.com/static/images/modules/middlePart,jpg [运行时间：0.142455s][吞吐率：7.02req/s] [内存消耗：134.33kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'images',
+    2 => 'modules',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'image/webp,image/*,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/static/css/home/newStyle.css',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:24+08:00 ] 127.0.0.1 127.0.0.1 GET /ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.145402s][吞吐率：6.88req/s] [内存消耗：134.99kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'ajax',
+    1 => 'mail_h.php',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:24+08:00 ] 127.0.0.1 127.0.0.1 POST /ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/ajax/statistics_h.php?cmd=visited [运行时间：0.162940s][吞吐率：6.14req/s] [内存消耗：135.10kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'ajax',
+    1 => 'statistics_h.php',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '155',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:25+08:00 ] 127.0.0.1 127.0.0.1 POST /ajax/logAjaxErr_h.php?cmd=ajaxErr&error=Not%20Found&status=404
+[ log ] www.alivehouse.com/ajax/logAjaxErr_h.php?cmd=ajaxErr&error=Not%20Found&status=404 [运行时间：0.133130s][吞吐率：7.51req/s] [内存消耗：134.58kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'ajax',
+    1 => 'logAjaxErr_h.php',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '101',
+  'origin' => 'http://www.alivehouse.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => '*/*',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'ajaxErr',
+  'error' => 'Not Found',
+  'status' => '404',
+  'msg' => 'ajaxUrl=../ajax/mail_h.php?cmd=showOrHideMailBox;refer=http://www.alivehouse.com/',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:25+08:00 ] 127.0.0.1 127.0.0.1 POST /ajax/logAjaxErr_h.php?cmd=ajaxErr&error=Not%20Found&status=404
+[ log ] www.alivehouse.com/ajax/logAjaxErr_h.php?cmd=ajaxErr&error=Not%20Found&status=404 [运行时间：0.277069s][吞吐率：3.61req/s] [内存消耗：134.58kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'ajax',
+    1 => 'logAjaxErr_h.php',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '92',
+  'origin' => 'http://www.alivehouse.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => '*/*',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'ajaxErr',
+  'error' => 'Not Found',
+  'status' => '404',
+  'msg' => 'ajaxUrl=ajax/statistics_h.php?cmd=visited;refer=http://www.alivehouse.com/',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:25+08:00 ] 127.0.0.1 127.0.0.1 GET /static/images/theme/theme-page-banner2.jpg
+[ log ] www.alivehouse.com/static/images/theme/theme-page-banner2.jpg [运行时间：0.206298s][吞吐率：4.85req/s] [内存消耗：134.34kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'images',
+    2 => 'theme',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'image/webp,image/*,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:25+08:00 ] 127.0.0.1 127.0.0.1 POST /
+[ log ] www.alivehouse.com/ [运行时间：0.446728s][吞吐率：2.24req/s] [内存消耗：302.14kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '179',
+  'origin' => 'http://www.alivehouse.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => '*/*',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'msg' => 'Error:Uncaught ReferenceError: Site is not defined;Line:1;Url:http://www.alivehouse.com/static/js/home/photoSlide.min.js?v=201702271724',
+)
+[ info ] [ RUN ] app\home\controller\IndexController->indexAction[ D:\upupw\aliveHouse\application\home\controller\IndexController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\index\index.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:26+08:00 ] 127.0.0.1 127.0.0.1 POST /
+[ log ] www.alivehouse.com/ [运行时间：0.620239s][吞吐率：1.61req/s] [内存消耗：301.73kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'origin' => 'http://www.alivehouse.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => '*/*',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'msg' => 'Error:Uncaught ReferenceError: Site is not defined;Line:1;Url:http://www.alivehouse.com/static/js/home/imageEffect.min.js?v=201703131745',
+)
+[ info ] [ RUN ] app\home\controller\IndexController->indexAction[ D:\upupw\aliveHouse\application\home\controller\IndexController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\index\index.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:27+08:00 ] 127.0.0.1 127.0.0.1 POST /ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/ajax/statistics_h.php?cmd=visitTime [运行时间：0.121785s][吞吐率：8.21req/s] [内存消耗：135.16kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'ajax',
+    1 => 'statistics_h.php',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:27+08:00 ] 127.0.0.1 127.0.0.1 POST /ajax/logAjaxErr_h.php?cmd=ajaxErr&error=Not%20Found&status=404
+[ log ] www.alivehouse.com/ajax/logAjaxErr_h.php?cmd=ajaxErr&error=Not%20Found&status=404 [运行时间：0.131203s][吞吐率：7.62req/s] [内存消耗：134.58kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'ajax',
+    1 => 'logAjaxErr_h.php',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '94',
+  'origin' => 'http://www.alivehouse.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => '*/*',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'ajaxErr',
+  'error' => 'Not Found',
+  'status' => '404',
+  'msg' => 'ajaxUrl=ajax/statistics_h.php?cmd=visitTime;refer=http://www.alivehouse.com/',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:27+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.282828s][吞吐率：3.54req/s] [内存消耗：243.32kb] [文件加载：44]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:28+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.175378s][吞吐率：5.70req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:21:28+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.202803s][吞吐率：4.93req/s] [内存消耗：159.32kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:24+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.213469s][吞吐率：4.68req/s] [内存消耗：159.34kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:24+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.281444s][吞吐率：3.55req/s] [内存消耗：243.66kb] [文件加载：44]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:24+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.164516s][吞吐率：6.08req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:24+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.194302s][吞吐率：5.15req/s] [内存消耗：159.48kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:26+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.154283s][吞吐率：6.48req/s] [内存消耗：194.83kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:27+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.172309s][吞吐率：5.80req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:27+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.209618s][吞吐率：4.77req/s] [内存消耗：159.45kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:28+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.175449s][吞吐率：5.70req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:30+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.153382s][吞吐率：6.52req/s] [内存消耗：194.45kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:30+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.165400s][吞吐率：6.05req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:30+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.201088s][吞吐率：4.97req/s] [内存消耗：159.48kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:32:33+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.178665s][吞吐率：5.60req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:05+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.209374s][吞吐率：4.78req/s] [内存消耗：159.45kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:05+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.277946s][吞吐率：3.60req/s] [内存消耗：243.66kb] [文件加载：44]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:06+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.180936s][吞吐率：5.53req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:06+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.207611s][吞吐率：4.82req/s] [内存消耗：159.48kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:06+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.202890s][吞吐率：4.93req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:06+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.239656s][吞吐率：4.17req/s] [内存消耗：194.91kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:07+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.162990s][吞吐率：6.14req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:07+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.193171s][吞吐率：5.18req/s] [内存消耗：159.48kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:07+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.194228s][吞吐率：5.15req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:07+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.232013s][吞吐率：4.31req/s] [内存消耗：194.91kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:07+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.182484s][吞吐率：5.48req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T14:57:07+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.210628s][吞吐率：4.75req/s] [内存消耗：159.48kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:02:16+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.221391s][吞吐率：4.52req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:02:16+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.258989s][吞吐率：3.86req/s] [内存消耗：194.51kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:02:16+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.166193s][吞吐率：6.02req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:02:16+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.200181s][吞吐率：5.00req/s] [内存消耗：159.48kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:02:23+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.175943s][吞吐率：5.68req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:02:23+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.202389s][吞吐率：4.94req/s] [内存消耗：194.58kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:02:24+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.167702s][吞吐率：5.96req/s] [内存消耗：136.00kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:02:24+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.198387s][吞吐率：5.04req/s] [内存消耗：159.63kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:05:39+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.219846s][吞吐率：4.55req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:05:39+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.250164s][吞吐率：4.00req/s] [内存消耗：194.51kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:05:40+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.176239s][吞吐率：5.67req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:05:40+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.226890s][吞吐率：4.41req/s] [内存消耗：159.48kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'origin' => 'http://www.alivehouse.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:05:54+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.217454s][吞吐率：4.60req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:05:54+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.271568s][吞吐率：3.68req/s] [内存消耗：243.66kb] [文件加载：44]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:05:55+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.164184s][吞吐率：6.09req/s] [内存消耗：135.73kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:05:55+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.217475s][吞吐率：4.60req/s] [内存消耗：159.48kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'origin' => 'http://www.alivehouse.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:06:13+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.195844s][吞吐率：5.11req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:06:18+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.140418s][吞吐率：7.12req/s] [内存消耗：159.45kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:06:18+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.194991s][吞吐率：5.13req/s] [内存消耗：243.73kb] [文件加载：44]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:06:19+08:00 ] 127.0.0.1 127.0.0.1 GET /home/ajax/mail_h.php?cmd=showOrHideMailBox
+[ log ] www.alivehouse.com/home/ajax/mail_h.php?cmd=showOrHideMailBox [运行时间：0.136389s][吞吐率：7.33req/s] [内存消耗：136.00kb] [文件加载：34]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'ajax',
+    2 => 'mail_h.php',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'showOrHideMailBox',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:06:19+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.160181s][吞吐率：6.24req/s] [内存消耗：159.63kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'origin' => 'http://www.alivehouse.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => '*/*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:06:29+08:00 ] 127.0.0.1 127.0.0.1 GET /home/build/build.html
+[ log ] www.alivehouse.com/home/build/build.html [运行时间：0.176637s][吞吐率：5.66req/s] [内存消耗：194.80kb] [文件加载：42]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'build',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://www.alivehouse.com/',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\BuildController->buildAction[ D:\upupw\aliveHouse\application\home\controller\BuildController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html [ array (
+  0 => 'DEFAULT_URL',
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T15:06:30+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visited
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visited [运行时间：0.174632s][吞吐率：5.73req/s] [内存消耗：159.45kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '180',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visited',
+  'colId' => '108',
+  'pdId' => '-1',
+  'ndId' => '-1',
+  'browserType' => '2',
+  'screenType' => '7',
+  'sc' => '0',
+  'rf' => '/home/house/newhouse.html',
+  'visitUrl' => 'http://www.alivehouse.com/home/build/build.html',
+  'visitEquipment' => 'pc',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-06-17T16:02:05+08:00 ] 127.0.0.1 127.0.0.1 POST /home/build/ajax/statistics_h.php?cmd=visitTime
+[ log ] www.alivehouse.com/home/build/ajax/statistics_h.php?cmd=visitTime [运行时间：0.167002s][吞吐率：5.99req/s] [内存消耗：159.38kb] [文件加载：43]
+[ info ] [ LANG ] D:\upupw\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'build',
+    2 => 'ajax',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.alivehouse.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'http://www.alivehouse.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'referer' => 'http://www.alivehouse.com/home/build/build.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=unuitcsbkdbj2l481lstiit8q7',
+)
+[ info ] [ PARAM ] array (
+  'cmd' => 'visitTime',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------

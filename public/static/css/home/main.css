@@ -1428,3 +1428,10 @@ a:hover, a:focus {
     width: 100%;
     height: auto;
 }
+
+#banner-body .bannerBody .item p.desc{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+}
