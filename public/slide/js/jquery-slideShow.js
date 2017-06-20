@@ -1,6 +1,6 @@
 /**
- * Created by jinpei chen on 2017/4/19.
- * 15779356528@163.com
+ * Created by alive Dinner on 2017/4/19.
+ * 909387235@qq.com
  */
 (function ($) {
     var imageData=[],
@@ -71,6 +71,7 @@
             $('.chooseBar button').css("background", setting.barColor);
             updateButton(middlePosition);
         }
+
         /*
          * *****事件委托，点击下一张图片******
          * */

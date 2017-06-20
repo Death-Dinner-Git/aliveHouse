@@ -1431,6 +1431,13 @@ a:hover, a:focus {
     height: auto;
 }
 
+<<<<<<< HEAD
+#banner-body .bannerBody .item p.desc{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+=======
 #banner-body .bannerBody .item h3{
     position: absolute;
     margin: 0;
@@ -1466,4 +1473,5 @@ a:hover, a:focus {
     font-size: 20px;
     line-height: 20px;
     font-weight: 400;
+>>>>>>> b2643be6637522f05735e179f6de613271d9501e
 }
