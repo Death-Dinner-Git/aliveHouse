@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:72:"D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html";i:1497531353;s:73:"D:\upupw\aliveHouse\public/../application/common\view\layouts\header.html";i:1497455240;s:71:"D:\upupw\aliveHouse\public/../application/common\view\layouts\demo.html";i:1497683171;s:73:"D:\upupw\aliveHouse\public/../application/common\view\layouts\footer.html";i:1497371668;s:72:"D:\upupw\aliveHouse\public/../application/common\view\layouts\extra.html";i:1497371668;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:72:"D:\upupw\aliveHouse\public/../application/home\view\build\build-box.html";i:1497968632;s:73:"D:\upupw\aliveHouse\public/../application/common\view\layouts\header.html";i:1497455240;s:71:"D:\upupw\aliveHouse\public/../application/common\view\layouts\demo.html";i:1497968632;s:73:"D:\upupw\aliveHouse\public/../application/common\view\layouts\footer.html";i:1497371668;s:72:"D:\upupw\aliveHouse\public/../application/common\view\layouts\extra.html";i:1497371668;}*/ ?>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -20,7 +20,7 @@
     <link type="text/css" href="/static/css/home/main.css" rel="stylesheet">
 
     <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/slider.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
 
     <script type="text/javascript">
         var _cid = 13775917;
@@ -291,15 +291,23 @@
                 <!-- 顶级主体 中间 区域导航开启 -->
                 <section class="centerTable flex-middle-center">
 
-                    <div id="webBanner" class="webBanner bannerTable" style="height: 487px;width: 1200px;">
+                    <div id="webBanner" class="webBanner bannerTable" style="width: 1200px;">
                         <div class="bannerBody">
                             <span class="item">
                                 <a hidefocus="true" target="_blank" href=""><img src="/static/images/theme/theme-banner1.jpg" alt="" /></a>
+<<<<<<< HEAD
                                 <p class="desc"><a hidefocus="true" target="_blank" href="">文字1</a></p>
                             </span>
                             <span class="item">
                                 <a hidefocus="true" target="_blank" href=""><img src="/static/images/theme/theme-banner2.jpg" alt="" /></a>
                                 <p class="desc"><a hidefocus="true" target="_blank" href="">文字2</a></p>
+=======
+                                <h3><a hidefocus="true" target="_blank" href=""><span>文字1</span></a></h3>
+                            </span>
+                            <span class="item">
+                                <a hidefocus="true" target="_blank" href=""><img src="/static/images/theme/theme-banner2.jpg" alt="" /></a>
+                                <h3><a hidefocus="true" target="_blank" href=""><span>文字2</span></a></h3>
+>>>>>>> b2643be6637522f05735e179f6de613271d9501e
                             </span>
                         </div>
                         <div class="bannerPrev switchBtn"></div>
@@ -558,11 +566,35 @@
 </section>
 <!-- This webContainerBottom end 下 结束 -->
 
-<script type="text/javascript" src="__JS__/jquery.js"></script>
-<script type="text/javascript" src="__JS__/slider.js"></script>
+<script type="text/javascript" src="__JS__/site.js"></script>
 <script>
 
-    var slider = {}
+    var data = [
+        {
+            "title": "图片1",
+            "desc": "",
+            "target": "",
+            "src": "/static/images/theme/theme-banner1.jpg",
+        },
+        {
+            "title": "图片2",
+            "desc": "",
+            "target": "",
+            "src": "/static/images/theme/theme-banner2.jpg",
+        },
+    ];
+    var options = {
+        "banner": "#webBanner",
+//        "width": 1200,
+//        "height": 487,
+        "playTime": 4000,
+        "animateTime": 1500,
+        "btnType": 1,
+        "targetType":"2",
+        "wideScreen": false
+    };
+
+    Site.initBanner(data,options);
 
 </script>
 
@@ -900,15 +932,6 @@
 <!-- background music -->
 <div id="bgMusic" class="bgMusic"></div>
 
-<script type="text/javascript" src="/static/js/home/jquery-core.min.js"></script>
-<script type="text/javascript" src="/static/js/home/jquery-mousewheel.min.js"></script>
-<script type="text/javascript" src="/static/js/home/helper.js"></script>
-<script type="text/javascript" src="/static/js/home/jquery-ui-core.min.js"></script>
-<script type="text/javascript" src="/static/js/home/run.js"></script>
-<script type="text/javascript" src="/static/js/home/messageConfig.js"></script>
-
-<!-- define Core JS -->
-<script type="text/javascript" src="/static/js/lay.js"></script>
 <script type="text/javascript" src=""></script>
 
 </body>

@@ -1154,6 +1154,20 @@ class Helper
 
 
     /**
+     * xml字符串转数组
+     * @param string $xml      xml字符串   请确保xml结构完全正确规范
+     * @return array
+     */
+    function xmlToArray($xml){
+        //将xml字符串转换为对象
+        $obj = simplexml_load_string($xml);
+        //将对象转换成json字符串再将json字符串转为数组
+        $array = json_decode(json_encode($obj),true);
+
+        return $array;
+    }
+
+    /**
      * @description 设置缓存
      * @param $html
      * @param $userId
