@@ -579,7 +579,7 @@ Run.beforeUnloadFunc();
 
 
 $LAB.script("/static/js/home/photoSlide.min.js?v=201702271724");
-$LAB.script("/static/js/home//imageEffect.min.js?v=201703131745")
+$LAB.script("/static/js/home/imageEffect.min.js?v=201703131745")
     .wait(function () {
         jzUtils.trigger({
             "name": "ImageEffect.FUNC.BASIC.Init",

@@ -76,13 +76,15 @@
                 <!-- 顶级主体 中间 区域导航开启 -->
                 <section class="centerTable flex-middle-center">
 
-                    <div id="webBanner" class="webBanner bannerTable" style="height: 487px;width: 1200px;">
+                    <div id="webBanner" class="webBanner bannerTable" style="width: 1200px;">
                         <div class="bannerBody">
                             <span class="item">
-                                <img src="/static/images/theme/theme-banner1.jpg" alt="" />
+                                <a hidefocus="true" target="_blank" href=""><img src="/static/images/theme/theme-banner1.jpg" alt="" /></a>
+                                <h3><a hidefocus="true" target="_blank" href=""><span>文字1</span></a></h3>
                             </span>
                             <span class="item">
-                                <img src="/static/images/theme/theme-banner1.jpg" alt="" />
+                                <a hidefocus="true" target="_blank" href=""><img src="/static/images/theme/theme-banner2.jpg" alt="" /></a>
+                                <h3><a hidefocus="true" target="_blank" href=""><span>文字2</span></a></h3>
                             </span>
                         </div>
                         <div class="bannerPrev switchBtn"></div>
@@ -132,7 +134,7 @@
     <!-- This webBannerTable end -->
 
     <!-- This webBannerTable start -->
-    <section id="webContentBody" class="webContentBody">
+    <section id="webContentBody" class="webContentBody" style="display: none;">
 
         <div class="newsList J_newsList  newsNewModuleStyle_three "
              id="newsList385"
@@ -341,11 +343,35 @@
 </section>
 <!-- This webContainerBottom end 下 结束 -->
 
-<script type="text/javascript" src="__JS__/jquery.js"></script>
-<script type="text/javascript" src="__JS__/slider.js"></script>
+<script type="text/javascript" src="__JS__/site.js"></script>
 <script>
 
-    var slidr = {}
+    var data = [
+        {
+            "title": "图片1",
+            "desc": "",
+            "target": "",
+            "src": "/static/images/theme/theme-banner1.jpg",
+        },
+        {
+            "title": "图片2",
+            "desc": "",
+            "target": "",
+            "src": "/static/images/theme/theme-banner2.jpg",
+        },
+    ];
+    var options = {
+        "banner": "#webBanner",
+//        "width": 1200,
+//        "height": 487,
+        "playTime": 4000,
+        "animateTime": 1500,
+        "btnType": 1,
+        "targetType":"2",
+        "wideScreen": false
+    };
+
+    Site.initBanner(data,options);
 
 </script>
 
