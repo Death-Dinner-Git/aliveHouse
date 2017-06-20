@@ -22,7 +22,7 @@ var options = {
     "wideScreen": false
 };
 
-Run.initBanner(data,options);
+Site.initBanner(data,options);
 
 if (typeof Run === 'undefined'){
     Run = {};

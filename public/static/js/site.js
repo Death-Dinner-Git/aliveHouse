@@ -726,22 +726,83 @@ Site.loadPage =  function (pageElement,total) {
 
 /*  */
 Site.initBanner = function (data, options) {
-    var config = {
+    if (data === undefined || data.length <= 0){
+        return;
+    }
+    var $default = {
         banner:"#webBanner",
-        bannerBody:".bannerBody",
-        bannerPrev:".bannerPrev",
-        bannerNext:".bannerNext",
-        bannerBottom:".bannerBottom",
-        height:"780",
-        width:"1920",
+        bannerBody:"bannerBody",
+        bannerPrev:"bannerPrev",
+        bannerNext:"bannerNext",
+        switchStyle:"switchBtn",
+        bannerBottom:"bannerBottom",
+        height:"0",
+        width:"0",
         playTime:"4000",
         animateTime:"1500",
         btnType:"1",
         targetType:"2",
         wideScreen:false
     };
-    var $banner = Helper.top.$(config.banner);
-    var $bannerBody = Helper.top.$(config.bannerBody);
+    var config = $.extend($default,options),index = 1,t,num = data.length,content='',bottom='';
+    var $banner = $(config.banner);
+    //没有容器，中断
+    if ($banner.length <=0){
+        return;
+    }
+    if (config.wideScreen){
+        config.width = _width;
+        config.height = _height;
+    }else{
+        var width = $banner.width();
+        var height = $banner.height();
+        if (config.width<=0){
+            config.width = width > 0 ? width : _width;
+        }
+        if (config.height <= 0){
+            config.height = height > 0 ? height : config.width/1200*400 ;
+        }
+    }
+
+    //渲染HTML
+    for (var i=0;i<num;i++){
+        var aPicAttr='',aDescAttr='',alt='',desc='',btnIndex='';
+        if (data[i].target !== undefined && data[i].target !== ''){
+            if (config.targetType == '2'){
+                aPicAttr = ' target="_blank" href="'+ data[i].target +'"';
+                aDescAttr = ' target="_blank" href="'+ data[i].target +'"';
+            }else if (config.targetType == '1'){
+                aPicAttr = ' target="_blank" href="'+ data[i].target +'"';
+            }
+        }
+        if (data[i].title !== undefined){
+            alt = ' alt="'+ data[i].title +'"';
+        }
+        if (data[i].desc !== undefined && data[i].desc !== ''){
+            desc = '<h3><a hidefocus="true" '+aDescAttr+' ><span>'+ data[i].desc +'</span></a></h3>';
+        }
+        content += '<span class="item">' +
+            '<a hidefocus="true" '+aPicAttr+'>' +
+            '<img src="'+data[i].src+'" '+alt+' style="width:'+config.width+'px;height:'+config.height+'px;" />' +
+            '</a> ' + desc + '</span>';
+
+        if (config.btnType == '1'){
+            btnIndex = (i+1);
+        }
+        bottom += '<span>'+btnIndex+'</span>';
+    }
+
+    content = '<div class="'+config.bannerBody+'">'+content+'</div>' +
+        '<div class="'+config.bannerPrev+ ' ' +config.switchStyle +'"></div> ' +
+        '<div class="'+config.bannerNext+ ' ' +config.switchStyle +'"></div> ' +
+        '<div class="'+ config.bannerBottom +'">'+bottom+'</div>';
+
+    $banner.html(content).css({width:config.width,height:config.height});
+    var $bannerBody = $(config.banner+' .'+config.bannerBody);
+    var $bannerPrev = $(config.banner+' .'+config.bannerPrev);
+    var $bannerNext = $(config.banner+' .'+config.bannerNext);
+    var $bannerBottom = $(config.banner+' .'+config.bannerBottom);
+
 };
 
 $(function () {
