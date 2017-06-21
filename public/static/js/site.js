@@ -749,10 +749,10 @@ Site.initBanner = function (data, options) {
     var imageData=[],
         imageWidth,
         offsetLength=0,//偏移长度
-        length=0,
-        imagePosition=2,
-        middlePosition=1,
-        lastPosition=0;//用于记录后退
+        size=0,
+        lastPosition=0,//用于记录后退
+        index = 0,
+        t;
     var $default = {
         banner:"#webBanner",
         bannerBody:"bannerBody",
@@ -773,8 +773,9 @@ Site.initBanner = function (data, options) {
         barColor:false,//背景色
         hiddenControl:false,//设置隐藏左右切换按钮
     };
-    var config = $.extend($default,options),index = 1,t,content='',bar='',control='';
+    var config = $.extend($default,options);
     var $banner = $(config.banner);
+    $banner.css({overflow: "hidden"});
     //没有容器，中断
     if ($banner.length <=0){
         return;
@@ -793,15 +794,15 @@ Site.initBanner = function (data, options) {
         }
     }
     imageData = data;
-    length = imageData.length;
-    if(imageData.length>3){
-        length=4;
-    }
-    var loadLength=imageData.length>3?imageData.length:3;
-    var barButton=[];//底部导航条
+    imageWidth = config.width;
+    var barButton=[],//底部导航条
+        contentBody=[],  //轮播主体
+        content,
+        bar='',
+        control='';
     //渲染HTML
     for (var i=0;i<imageData.length;i++){
-        var aPicAttr='',aDescAttr='',alt='',desc='',btnIndex='',barDesc='';
+        var item = '',aPicAttr='',aDescAttr='',alt='',desc='',btn='',barDesc='';
         if (imageData[i].target !== undefined && imageData[i].target !== ''){
             if (config.targetType == '2'){
                 aPicAttr = ' target="_blank" href="'+ imageData[i].target +'"';
@@ -817,16 +818,23 @@ Site.initBanner = function (data, options) {
             desc = '<h3><a hidefocus="true" '+aDescAttr+' ><span>'+ imageData[i].desc +'</span></a></h3>';
             barDesc = imageData[i].desc;
         }
-        content += '<span class="item">' +
+        item = '<span class="item" style="left:'+(i*imageWidth)+';">' +
             '<a hidefocus="true" '+aPicAttr+'>' +
             '<img src="'+imageData[i].src+'" '+alt+' style="width:'+config.width+'px;height:'+config.height+'px;" />' +
             '</a> ' + desc + '</span>';
 
+        btn = '<span data-cid="'+i+'" data-title="'+barDesc+'"></span>';
         if (config.barType == '1'){
-            btnIndex = (i+1);
+            btn = '<span data-cid="'+i+'" data-title="'+barDesc+'">'+(i+1)+'</span>';
         }
-        barButton.push('<span data-cid="'+btnIndex+'" data-title="'+barDesc+'"></span>');
+
+        barButton.push(btn);
+        contentBody.push(item);
     }
+    if (contentBody.length>0){
+        contentBody.push(contentBody[0]);
+    }
+    size = contentBody.length;
     if(!config.hiddenControl) {
         control = '<div class="'+config.bannerPrev+ ' ' +config.switchStyle +'"></div> ' +
         '<div class="'+config.bannerNext+ ' ' +config.switchStyle +'"></div> ';
@@ -834,7 +842,7 @@ Site.initBanner = function (data, options) {
     if(!config.hiddenBar) {
         bar = '<div class="'+ config.bannerBottom +'">'+barButton.join("")+'</div>';
     }
-    content = '<div class="'+config.bannerBody+'">'+content+'</div>' +control + bar;
+    content = '<div class="'+config.bannerBody+'">'+contentBody.join("")+'</div>' +control + bar;
     $banner.html(content).css({width:config.width,height:config.height});
     //======= HTML 渲染结束 ========//
 
@@ -843,41 +851,37 @@ Site.initBanner = function (data, options) {
     var $bannerNext = $(config.banner+' .'+config.bannerNext);
     var $bannerBottom = $(config.banner+' .'+config.bannerBottom);
 
-    if(setting.autoPlay){
+    $bannerBody.find('.item').last().css({left:imageData.length*imageWidth});
+    updateButton();
+
+    if(config.autoPlay){
         autoShow();
     }
 
     /*
      * *****事件委托，点击下一张图片******
      * */
-    $(document).on("click",config.banner+' .'+config.bannerNext,function () {
+    $bannerNext.on("click",function () {
         NEXT();
     });
 
     /*
      * ********事件委托，上一张图片*******
      * */
-    $(document).on("click",config.banner+' .'+config.bannerNext,function(){
-        //clearInterval(t);
+    $bannerPrev.on("click",function(){
         LAST();
     });
 
     /*
      * ***** 事件委托，底部导航条点击
      * */
-    $(document).on("click",config.banner+' .'+config.bannerBottom,function () {
-        index=Number($(this).attr("data-cid"));
-        updateButton(index);
-        var cz=n-middlePosition;
-        if(cz>0){
-            for(var i=0;i<cz;i++){
-                NEXT();
-            }
-        }else{
-            for(var i=0;i<-cz;i++){
-                LAST();
-            }
-        }
+    $(document).on("click",config.banner+' .'+config.bannerBottom+' span',function () {
+        index=$(this).attr("data-cid");
+    });
+    $(config.banner+' .'+config.bannerBottom+' span').hover(function () {
+        index=$(this).attr("data-cid");
+    },function () {
+        index=$(this).attr("data-cid");
     });
 
     /*
@@ -891,60 +895,43 @@ Site.initBanner = function (data, options) {
             NEXT();
         },config.interval);
     }
-    /*
-     * ****更新底部导航条
-     * */
-    function updateButton(index){
-        !$bannerBottom.eq(index).hasClass('active') || $bannerBottom.eq(index).addClass('active');
-    }
+
     /*
      * *******下一张图片
      * */
     function NEXT() {
-        if(imagePosition<imageData.length-1){
-            imagePosition++;
-            lastPosition++;
-            offsetLength=-imageWidth;
-        }else{
-            var d=$(".slideImageBox ul li:first-child").clone();
-            d.removeAttr("style");
-            $(".slideImageBox ul li:first-child").remove();
-            $(".slideImageBox ul").append(d);
+        index++;
+        if (index === size){
+            index = 1;
+            $banner.find('.item').eq(index).css({left:0});
         }
-        $(".slideImageBox ul li:first-child").css({"margin-left":offsetLength+"px"});
-        $("#theImgBox"+middlePosition).removeClass("oneImageBox").addClass("oneImageBox2");
-        ++middlePosition;
-        middlePosition=middlePosition>imageData.length-1?0:middlePosition;//
-        updateButton(middlePosition);
-        $("#theImgBox"+middlePosition).removeClass("oneImageBox2").addClass("oneImageBox");
+        var position = index*imageWidth;
+        var $this = $banner.find('.item').eq(index);
+        !$this || $this.stop().css({left:position}).animate({left:0},628);
+        lastPosition = index;
     }
+
     /*
      * ***上一张
      * */
     function LAST() {
-        if(lastPosition>0){
-            lastPosition--;
-            imagePosition--;
-            offsetLength+=imageWidth;
-        }else{
-            var d=$(".slideImageBox ul li:last-child").clone();
-            d.css("margin-left",-imageWidth+"px");
-            $(".slideImageBox ul li:last-child").remove();
-            $(".slideImageBox ul li:first-child").removeAttr("style");
-            $(".slideImageBox ul").prepend(d);//向前添加
+        index--;
+        if (index === -1){
+            index = size-2;
+            $banner.find('.item').eq(index).css({left:0});
         }
-        //强制触发重绘
-        setTimeout(function () {
-            $(".slideImageBox ul li:first-child").css({"margin-left":offsetLength+"px"});
-            $("#theImgBox"+middlePosition).removeClass("oneImageBox").addClass("oneImageBox2");
-            --middlePosition;
-            middlePosition=middlePosition>-1?middlePosition:imageData.length-1;//
-            updateButton(middlePosition);
-            $("#theImgBox"+middlePosition).removeClass("oneImageBox2").addClass("oneImageBox");
-        });
-        ///
+        var position = index*imageWidth;
+        var $this = $banner.find('.item').eq(index);
+        !$this || $this.stop().css({left:position}).animate({left:0},628);
+        lastPosition = index;
     }
-    //*******all******************
+
+    /*
+     * ****更新底部导航条
+     * */
+    function updateButton(){
+        !$bannerBottom.find('span').eq(index).removeClass('active').addClass('active').siblings().removeClass('active');
+    }
 
 };
 
