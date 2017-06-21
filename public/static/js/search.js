@@ -1,8 +1,9 @@
+
 /**
  * JS 模糊查询
  * @param options
  * 1. 当前的input add targetClass
- * 2. 隐藏域里面统一增加同类名 叫 hiddenClass
+ * 2. 隐藏域里面统一增加同类名 叫 hiddenClass 必需有属性 lay-search="refresh"
  * 3. 在各个父级元素上 添加类名 parentClass
  * @constructor
  */
@@ -504,12 +505,23 @@ AutoComplete.prototype = {
     }
 };
 
-// // 初始化
-// $(function () {
-//     var auto = new AutoComplete({
-//         url: '/manage/ajax/getCity',
-//         targetClass: '.inputKey',          // 输入框目标元素
-//         parentClass: '.layui-input-inline',          // 父级类
-//         hiddenClass: '.inputHide'          // 隐藏域input
-//     });
-// });
+//例子
+
+//html
+/*
+ <div class="layui-input-block">
+ <input type="hidden" name="seeItem" value="{" class="layui-input" lay-search="refresh" lay-filter="build" />
+ <input type="text" value="{" placeholder="提示"  class="layui-input" lay-filter="buildKey" />
+ </div>
+ */
+//使用
+
+/*
+ var auto = new AutoComplete({
+ url: 'http://www.xxx.com',
+ targetClass: '[lay-filter="buildKey"]',        // 输入框目标元素
+ parentClass: '.layui-input-block',             // 父级类
+ hiddenClass: '[lay-filter="build"]',             // 隐藏域input
+ key: 'name'          // 请求参数键
+ });
+ */
