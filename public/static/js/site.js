@@ -748,11 +748,10 @@ Site.initBanner = function (data, options) {
     }
     var imageData=[],
         imageWidth,
-        offsetLength=0,//偏移长度
+        position = 0,
         size=0,
-        lastPosition=0,//用于记录后退
         index = 0,
-        t;
+        t, $index;
     var $default = {
         banner:"#webBanner",
         bannerBody:"bannerBody",
@@ -818,7 +817,7 @@ Site.initBanner = function (data, options) {
             desc = '<h3><a hidefocus="true" '+aDescAttr+' ><span>'+ imageData[i].desc +'</span></a></h3>';
             barDesc = imageData[i].desc;
         }
-        item = '<span class="item" style="left:'+(i*imageWidth)+';">' +
+        item = '<span class="item">' +
             '<a hidefocus="true" '+aPicAttr+'>' +
             '<img src="'+imageData[i].src+'" '+alt+' style="width:'+config.width+'px;height:'+config.height+'px;" />' +
             '</a> ' + desc + '</span>';
@@ -836,8 +835,8 @@ Site.initBanner = function (data, options) {
     }
     size = contentBody.length;
     if(!config.hiddenControl) {
-        control = '<div class="'+config.bannerPrev+ ' ' +config.switchStyle +'"></div> ' +
-        '<div class="'+config.bannerNext+ ' ' +config.switchStyle +'"></div> ';
+        control = '<div class="'+config.bannerPrev+ ' ' +config.switchStyle +'" style="display: none;"></div> ' +
+        '<div class="'+config.bannerNext+ ' ' +config.switchStyle +'" style="display: none;"></div> ';
     }
     if(!config.hiddenBar) {
         bar = '<div class="'+ config.bannerBottom +'">'+barButton.join("")+'</div>';
@@ -851,12 +850,34 @@ Site.initBanner = function (data, options) {
     var $bannerNext = $(config.banner+' .'+config.bannerNext);
     var $bannerBottom = $(config.banner+' .'+config.bannerBottom);
 
-    $bannerBody.find('.item').last().css({left:imageData.length*imageWidth});
-    updateButton();
+    /**
+     * 初始化
+     */
+    $bannerBody.css({width:size*imageWidth,left:0});
+    for (var j=0;j<size;j++){
+        if(j<index){
+            position = -(j*imageWidth);
+        }else if (j>index){
+            position = j*imageWidth;
+        }else {
+            position = 0;
+        }
+        $index = $bannerBody.find('.item').eq(j);
+        !$index || $index.stop().css({left:position});
+    }
 
     if(config.autoPlay){
         autoShow();
     }
+    $banner.hover(function () {
+        $bannerPrev.css({display:"flex"});
+        $bannerNext.css({display:"flex"});
+        clearTimeout(t);
+    },function () {
+        autoShow();
+        $bannerPrev.css({display:"none"});
+        $bannerNext.css({display:"none"});
+    });
 
     /*
      * *****事件委托，点击下一张图片******
@@ -875,13 +896,16 @@ Site.initBanner = function (data, options) {
     /*
      * ***** 事件委托，底部导航条点击
      * */
-    $(document).on("click",config.banner+' .'+config.bannerBottom+' span',function () {
+    $bannerBottom.find('span').on('click',function () {
         index=$(this).attr("data-cid");
+        MOVE();
     });
-    $(config.banner+' .'+config.bannerBottom+' span').hover(function () {
+    $bannerBottom.find('span').hover(function () {
         index=$(this).attr("data-cid");
+        MOVE();
     },function () {
         index=$(this).attr("data-cid");
+        MOVE();
     });
 
     /*
@@ -903,12 +927,9 @@ Site.initBanner = function (data, options) {
         index++;
         if (index === size){
             index = 1;
-            $banner.find('.item').eq(index).css({left:0});
+            $bannerBody.css({left:0});
         }
-        var position = index*imageWidth;
-        var $this = $banner.find('.item').eq(index);
-        !$this || $this.stop().css({left:position}).animate({left:0},628);
-        lastPosition = index;
+        MOVE();
     }
 
     /*
@@ -918,19 +939,28 @@ Site.initBanner = function (data, options) {
         index--;
         if (index === -1){
             index = size-2;
-            $banner.find('.item').eq(index).css({left:0});
+            $bannerBody.css({left:-(size-1)*imageWidth});
         }
-        var position = index*imageWidth;
-        var $this = $banner.find('.item').eq(index);
-        !$this || $this.stop().css({left:position}).animate({left:0},628);
-        lastPosition = index;
+        MOVE();
     }
 
-    /*
-     * ****更新底部导航条
-     * */
-    function updateButton(){
-        !$bannerBottom.find('span').eq(index).removeClass('active').addClass('active').siblings().removeClass('active');
+    /**
+     * 初始化
+     */
+    function MOVE() {
+        updateBar();
+        $bannerBody.stop().animate({left:-imageWidth*index},config.animateTime);
+    }
+
+    /**
+     * 更新底部导航条
+     */
+    function updateBar(){
+        var i = index
+        if(index=== (size-1)){
+            i = 0;
+        }
+        !$bannerBottom.find('span').eq(i).removeClass('active').addClass('active').siblings().removeClass('active');
     }
 
 };
@@ -1117,7 +1147,7 @@ Site.slider = function (data,options) {
         ///
     }
     //*******all******************
-}
+};
 
 $(function () {
 
