@@ -16,8 +16,8 @@ layui.config({
         navbar = layui.navbar(),
         util = layui.util;
     tab = layui.tab({
-        elem: '.dinner-tab-box' //设置选项卡容器
-        ,
+        elem: '.dinner-tab-box', //设置选项卡容器
+        filter:2,
         // maxSetting: {
         // 	max: 5,
         // 	tipMsg: '只能开5个哇，不能再开了。真的。'
@@ -126,12 +126,14 @@ layui.config({
         if(typeof $this === 'object'&& $this.length >= 1 && $this.data('url') !== undefined ) {
             var _url = $this.data('url'),
                 _icon = $this.data('icon'),
-                _title = $this.data('title');
+                _title = $this.data('title'),
+                _id = $this.data('id');
             if (_title !== undefined ){
                 tab.tabAdd({
                     href: _url,
                     icon: _icon || 'fa fa-circle-o',
-                    title: _title
+                    title: _title,
+                    id: _id || null
                 });
             }else{
                 layer.msg('缺少请求标题');

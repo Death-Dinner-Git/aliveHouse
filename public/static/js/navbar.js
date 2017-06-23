@@ -73,7 +73,7 @@ layui.define(['element','layer'], function(exports) {
 								key: 'navbar',
 								value: result
 							});
-							var html = getHtml(result);
+							html = getHtml(result);
                             $container.html(header+html);
                             element.init();
 						},
@@ -85,7 +85,7 @@ layui.define(['element','layer'], function(exports) {
 						}
 					});
 				} else {
-					var html = getHtml(cacheNavbar.navbar);
+					html = getHtml(cacheNavbar.navbar);
                     $container.html(header+html);
 					element.init();
 					_that.config.elem = $container;
@@ -161,14 +161,16 @@ layui.define(['element','layer'], function(exports) {
 								var href = $a.data('url');
 								var icon = $a.children('i:first').data('icon');
 								var title = $a.children('cite').text();
+								var id = $a.children('cite').data('id');
 								var data = {
 									elem: $a,
 									field: {
 										href: href,
 										icon: icon,
-										title: title
+										title: title,
+										id:id
 									}
-								}
+								};
 								callback(data);
 							});
 						});
@@ -178,14 +180,16 @@ layui.define(['element','layer'], function(exports) {
 							var href = $a.data('url');
 							var icon = $a.children('i:first').data('icon');
 							var title = $a.children('cite').text();
+                            var id = $a.children('cite').data('id');
 							var data = {
 								elem: $a,
 								field: {
 									href: href,
 									icon: icon,
-									title: title
+									title: title,
+                                    id:id
 								}
-							}
+							};
 							callback(data);
 						});
 					}
@@ -204,7 +208,7 @@ layui.define(['element','layer'], function(exports) {
 	 * @param {Object} data
 	 */
 	function getHtml(data) {
-		var _options= data.attr || {}, _prefix= data.prefix || '', _suffix= data.suffix || '', menu= data.menus || {},  optionStr = '', ulHtml = '';
+		var _options= data.attr || {}, _prefix= data.prefix || '', _suffix= data.suffix || '', menu= data.menus || {},  optionStr = '', ulHtml = '',index = new Date().getTime();
         for (var _item in _options) {
             optionStr += _item + '="'+_options[_item]+'"';
         }
@@ -219,9 +223,10 @@ layui.define(['element','layer'], function(exports) {
         /**
          * 获取每个菜单html字符串
          * @param {Object} item
+         * @return {string}
          */
 		function getItem(item) {
-            var  itemTag = 'li', itemHtml = '', _aClass ='', _iClass ='', _liClass ='', _itemUrl;
+            var  itemTag = 'li', itemHtml = '', _aClass ='', _iClass ='', _liClass ='', _itemUrl, unique = 'NAV_';
 			if (item.data !== undefined && (item.data !== '' || item.data !== null)){
 				_liClass = (item.data.li_class !== undefined && item.data.li_class !== '') ? item.data.li_class : 'layui-nav-item';
                 _aClass = (item.data.a_class !== undefined && item.data.a_class !== '') ? item.data.a_class : '';
@@ -231,10 +236,16 @@ layui.define(['element','layer'], function(exports) {
                 _liClass = 'layui-nav-child-item';
                 itemTag = 'dd';
             }
+            if(item.id !== undefined && item.id !== null) {
+                unique += item.id;
+            }else {
+				unique += index;
+				index++;
+			}
             if(item.children !== undefined && item.children.length > 0) {
             	itemHtml += '<a class="'+ _aClass +'" href="javascript:;">' +
                     '<i class="'+ _iClass +'"></i> ' +
-                    '<cite class="title">'+ item.text +'</cite> ' +
+                    '<cite class="title" data-id="'+unique+'">'+ item.text +'</cite> ' +
 					'<em class="layui-nav-more"></em>' +
                     '</a>';
                 itemHtml += '<dl class="layui-nav-child">';
@@ -249,7 +260,7 @@ layui.define(['element','layer'], function(exports) {
 				}
                 itemHtml += '<a class="'+ _aClass +'" href="javascript:;" data-url="'+ _itemUrl +'">' +
 					'<i class="'+ _iClass +'" data-icon="'+ _iClass +'"></i> ' +
-					'<cite class="title">'+ item.text +'</cite> ' +
+					'<cite class="title" data-id="'+unique+'">'+ item.text +'</cite> ' +
 					'</a>';
             }
             if(item.spread) {

@@ -11,6 +11,7 @@ layui.define(['element','layer'], function(exports) {
 			this.config = {
 				elem: undefined,
 				closed: true, //是否包含删除按钮
+				filter: 1, //过滤方式 可选值 1 或 2  默认为1 以title 为 过滤， 2 以 data-id
 				autoRefresh: true,
 				contextMenu:false,
                 dblclickRefresh:true,
@@ -62,31 +63,65 @@ layui.define(['element','layer'], function(exports) {
 	};
 	/**
 	 * 查询tab是否存在，如果存在则返回索引值，不存在返回-1
-	 * @param {String} 标题
+	 * @param {String} title 标题
+	 * @param {String} id  参数filter设置为 2 才生效
 	 */
-	Tab.prototype.exists = function(title) {
+	Tab.prototype.exists = function(title,id) {
+        var _config = this.config;
 		var that = ELEM.titleBox === undefined ? this.init() : this,
 			tabIndex = -1;
+        if ( parseInt(_config.filter) !== 2 ){
+        	id = null;
+        }
 		ELEM.titleBox.find('li').each(function(i, e) {
 			var $cite = $(this).children('cite');
-			if($cite.text() === title) {
-				tabIndex = i;
-			};
+			if ( parseInt(_config.filter) === 2 ){
+				if (id){
+                    if($cite.data('id') === id) {
+                        tabIndex = i;
+                    }
+				}else {
+                    if($cite.text() === title) {
+                        tabIndex = i;
+                    }
+				}
+			}else {
+                if($cite.text() === title) {
+                    tabIndex = i;
+                }
+			}
 		});
 		return tabIndex;
 	};
 	/**
 	 * 获取tabid
-	 * @param {String} 标题
+	 * @param {String} title 标题
+	 * @param {String} id  参数filter设置为 2 才生效
 	 */
-	Tab.prototype.getTabId=function(title){
+	Tab.prototype.getTabId=function(title,id){
+        var _config = this.config;
 		var that = ELEM.titleBox === undefined ? this.init() : this,
 			tabId = -1;
+        if ( parseInt(_config.filter) !== 2 ){
+            id = null;
+        }
 		ELEM.titleBox.find('li').each(function(i, e) {
 			var $cite = $(this).children('cite');
-			if($cite.text() === title) {
-				tabId = $(this).attr('lay-id');
-			};
+            if ( parseInt(_config.filter) === 2 ){
+                if (id){
+                    if($cite.data('id') === id) {
+                        tabId = $(this).attr('lay-id');
+                    }
+                }else {
+                    if($cite.text() === title) {
+                        tabId = $(this).attr('lay-id');
+                    }
+                }
+            }else {
+                if($cite.text() === title) {
+                    tabId = $(this).attr('lay-id');
+                }
+            }
 		});
 		return tabId;
 	};
@@ -97,7 +132,7 @@ layui.define(['element','layer'], function(exports) {
 	Tab.prototype.tabAdd = function(data) {
 		var that = this;
 		var _config = that.config;
-		var tabIndex = that.exists(data.title);
+		var tabIndex = that.exists(data.title,data.id || null);
 		if(tabIndex === -1) {
 			//设置只能同时打开多少个tab选项卡
 			if(_config.maxSetting !== 'undefined') {
@@ -127,7 +162,12 @@ layui.define(['element','layer'], function(exports) {
 					title += '<i class="layui-icon">' + data.icon + '</i>';
 				}
 			}
-			title += '<cite>' + data.title + '</cite>';
+
+			var unique = globalTabIdIndex;
+			if(data.id !== undefined) {
+                unique = data.id;
+			}
+			title += '<cite data-id="'+unique+'">' + data.title + '</cite>';
 			if(_config.closed) {
 				title += '<i class="layui-icon layui-unselect layui-tab-close" data-id="' + globalTabIdIndex + '">&#x1006;</i>';
 			}
@@ -161,9 +201,9 @@ layui.define(['element','layer'], function(exports) {
             }
 
 			//切换到当前打开的选项卡
-			element.tabChange(ELEM.tabFilter, that.getTabId(data.title));
+			element.tabChange(ELEM.tabFilter, that.getTabId(data.title, data.id || null));
 		} else {
-			element.tabChange(ELEM.tabFilter, that.getTabId(data.title));
+			element.tabChange(ELEM.tabFilter, that.getTabId(data.title, data.id || null));
 			//自动刷新
 			if(_config.autoRefresh) {
 				_config.elem.find('div.layui-tab-content > div').eq(tabIndex).children('iframe')[0].contentWindow.location.reload();
