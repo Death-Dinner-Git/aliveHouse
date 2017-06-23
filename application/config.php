@@ -130,6 +130,8 @@ return [
         'taglib_begin' => '{',
         // 标签库标签结束标记
         'taglib_end'   => '}',
+        // 预先加载的标签库
+        'taglib_pre_load'     =>    'app\common\taglib\W,app\common\taglib\T',
 
         'layout_on'     =>  true,
         'layout_name'   =>  'common@layouts/default-main',
