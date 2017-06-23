@@ -36,10 +36,24 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">复选框</label>
                 <div class="layui-input-block checkbox-left">
-                    <input type="checkbox" name="like[write]" title="写作">
-                    <input type="checkbox" name="like[read]" title="阅读" checked="">
-                    <input type="checkbox" name="like[game]" title="游戏">
+                    <input type="checkbox" name="like[write]" title="写作" lay-verify="checked" lay-filter="like" lay-error="至少选择一个兴趣" />
+                    <input type="checkbox" name="like[read]" title="阅读" checked=""  lay-verify="checked" lay-filter="like" lay-error="至少选择一个兴趣" />
+                    <input type="checkbox" name="like[game]" title="游戏"  lay-verify="checked" lay-filter="like" lay-error="至少选择一个兴趣" />
+                    <button class="layui-btn" lay-filter="get">获取多选值</button>
                 </div>
+                <script>
+
+                    $(function () {
+                        $(document).on('click','[lay-filter="get"]',function () {
+                            var value = [];
+                            $('[name^="like"]:checked').each(function(){
+                                value.push($(this).attr('title'));
+                            });
+                            alert(JSON.stringify(value));
+                        })
+                    });
+
+                </script>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">开关-关</label>
@@ -94,6 +108,16 @@
                         <select name="city" lay-search="refresh" lay-filter="city">
                             <option value="">请选择</option>
                         </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">搜索：</label>
+                    <div class="layui-input-inline">
+                        <input type="hidden" name="key" required="" lay-verify="required" placeholder="请输入关键词" class="layui-input inputHide" lay-search="refresh" lay-filter="key" />
+                        <input type="text" required="" lay-verify="required" placeholder="请输入关键词" class="layui-input inputKey"/>
                     </div>
                 </div>
             </div>
@@ -422,6 +446,7 @@
 
 </div>
 <script type="text/javascript" src="__JS__/validator.js"></script>
+<script type="text/javascript" src="__JS__/search.js"></script>
 <script>
     layui.config({
         base: '/static/js/',
@@ -460,6 +485,17 @@
                     }
                 });
                 return message;
+            },
+            checked: function (value, item) {
+                var $this = $(item);
+                if (!$this.checked){
+                    var filter = $this.attr('lay-filter');
+                    var message = $this.attr('lay-error') || '至少选择一个'+$this.attr('name');
+                    var checked = $('input[lay-filter="'+filter+'"]:checked');
+                    if (checked.length <= 0){
+                        return message;
+                    }
+                }
             }
         });
 
@@ -476,6 +512,16 @@
                 title: '最终的提交信息'
             });
             return false;
+        });
+
+        // 初始化
+        $(function () {
+            var auto = new AutoComplete({
+                url: '/manage/ajax/getCity',
+                targetClass: '.inputKey',          // 输入框目标元素
+                parentClass: '.layui-input-inline',          // 父级类
+                hiddenClass: '.inputHide'          // 隐藏域input
+            });
         });
 
         selectSearch("/manage/ajax/getCity", '[lay-filter="city"]');

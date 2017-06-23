@@ -724,11 +724,34 @@ Site.loadPage =  function (pageElement,total) {
     });
 };
 
+/* 预加载图片 */
+Site.loadImage = function (selecter) {
+    var $this = $(selecter),url= $this.data('url'),$parent = $this.data('parent');
+    if (!url){
+        return;
+    }
+    var img=new Image();
+    img.onload=function(){
+        img.onload=null;
+        if (!$parent){
+        }else {
+            $parent.append("<img src='"+url+ " />");
+        }
+    };
+    img.src=url;
+};
+
 /*  */
 Site.initBanner = function (data, options) {
     if (data === undefined || data.length <= 0){
         return;
     }
+    var imageData=[],
+        imageWidth,
+        position = 0,
+        size=0,
+        index = 0,
+        t, $index;
     var $default = {
         banner:"#webBanner",
         bannerBody:"bannerBody",
@@ -740,12 +763,18 @@ Site.initBanner = function (data, options) {
         width:"0",
         playTime:"4000",
         animateTime:"1500",
-        btnType:"1",
+        barType:"1", //底部类型
+        hiddenBar:false,//设置是否隐藏底部导航条
         targetType:"2",
-        wideScreen:false
+        wideScreen:false,
+        autoPlay:true,//自动播放
+        interval:6000,//播放间隔
+        barColor:false,//背景色
+        hiddenControl:false,//设置隐藏左右切换按钮
     };
-    var config = $.extend($default,options),index = 1,t,num = data.length,content='',bottom='';
+    var config = $.extend($default,options);
     var $banner = $(config.banner);
+    $banner.css({overflow: "hidden"});
     //没有容器，中断
     if ($banner.length <=0){
         return;
@@ -763,46 +792,215 @@ Site.initBanner = function (data, options) {
             config.height = height > 0 ? height : config.width/1200*400 ;
         }
     }
-
+    imageData = data;
+    imageWidth = config.width;
+    var barButton=[],//底部导航条
+        contentBody=[],  //轮播主体
+        content,
+        bar='',
+        control='';
     //渲染HTML
-    for (var i=0;i<num;i++){
-        var aPicAttr='',aDescAttr='',alt='',desc='',btnIndex='';
-        if (data[i].target !== undefined && data[i].target !== ''){
+    for (var i=0;i<imageData.length;i++){
+        var item = '',aPicAttr='',aDescAttr='',alt='',desc='',btn='',barDesc='';
+        if (imageData[i].target !== undefined && imageData[i].target !== ''){
             if (config.targetType == '2'){
-                aPicAttr = ' target="_blank" href="'+ data[i].target +'"';
-                aDescAttr = ' target="_blank" href="'+ data[i].target +'"';
+                aPicAttr = ' target="_blank" href="'+ imageData[i].target +'"';
+                aDescAttr = ' target="_blank" href="'+ imageData[i].target +'"';
             }else if (config.targetType == '1'){
-                aPicAttr = ' target="_blank" href="'+ data[i].target +'"';
+                aPicAttr = ' target="_blank" href="'+ imageData[i].target +'"';
             }
         }
-        if (data[i].title !== undefined){
-            alt = ' alt="'+ data[i].title +'"';
+        if (imageData[i].title !== undefined){
+            alt = ' alt="'+ imageData[i].title +'"';
         }
-        if (data[i].desc !== undefined && data[i].desc !== ''){
-            desc = '<h3><a hidefocus="true" '+aDescAttr+' ><span>'+ data[i].desc +'</span></a></h3>';
+        if (imageData[i].desc !== undefined && imageData[i].desc !== ''){
+            desc = '<h3><a hidefocus="true" '+aDescAttr+' ><span>'+ imageData[i].desc +'</span></a></h3>';
+            barDesc = imageData[i].desc;
         }
-        content += '<span class="item">' +
+        item = '<span class="item">' +
             '<a hidefocus="true" '+aPicAttr+'>' +
-            '<img src="'+data[i].src+'" '+alt+' style="width:'+config.width+'px;height:'+config.height+'px;" />' +
+            '<img src="'+imageData[i].src+'" '+alt+' style="width:'+config.width+'px;height:'+config.height+'px;" />' +
             '</a> ' + desc + '</span>';
 
-        if (config.btnType == '1'){
-            btnIndex = (i+1);
+        btn = '<span data-cid="'+i+'" data-title="'+barDesc+'"></span>';
+        if (config.barType == '1'){
+            btn = '<span data-cid="'+i+'" data-title="'+barDesc+'">'+(i+1)+'</span>';
         }
-        bottom += '<span>'+btnIndex+'</span>';
+
+        barButton.push(btn);
+        contentBody.push(item);
     }
-
-    content = '<div class="'+config.bannerBody+'">'+content+'</div>' +
-        '<div class="'+config.bannerPrev+ ' ' +config.switchStyle +'"></div> ' +
-        '<div class="'+config.bannerNext+ ' ' +config.switchStyle +'"></div> ' +
-        '<div class="'+ config.bannerBottom +'">'+bottom+'</div>';
-
+    if (contentBody.length>0){
+        contentBody.push(contentBody[0]);
+    }
+    size = contentBody.length;
+    if(!config.hiddenControl) {
+        control = '<div class="'+config.bannerPrev+ ' ' +config.switchStyle +'" style="display: none;"></div> ' +
+        '<div class="'+config.bannerNext+ ' ' +config.switchStyle +'" style="display: none;"></div> ';
+    }
+    if(!config.hiddenBar) {
+        bar = '<div class="'+ config.bannerBottom +'">'+barButton.join("")+'</div>';
+    }
+    content = '<div class="'+config.bannerBody+'">'+contentBody.join("")+'</div>' +control + bar;
     $banner.html(content).css({width:config.width,height:config.height});
+    //======= HTML 渲染结束 ========//
+
     var $bannerBody = $(config.banner+' .'+config.bannerBody);
     var $bannerPrev = $(config.banner+' .'+config.bannerPrev);
     var $bannerNext = $(config.banner+' .'+config.bannerNext);
     var $bannerBottom = $(config.banner+' .'+config.bannerBottom);
 
+    /**
+     * 初始化
+     */
+    $bannerBody.css({width:size*imageWidth,left:0});
+    for (var j=0;j<size;j++){
+        if(j<index){
+            position = -(j*imageWidth);
+        }else if (j>index){
+            position = j*imageWidth;
+        }else {
+            position = 0;
+        }
+        $index = $bannerBody.find('.item').eq(j);
+        !$index || $index.stop().css({left:position});
+    }
+
+    if(config.autoPlay){
+        autoShow();
+    }
+    $banner.hover(function () {
+        $bannerPrev.css({display:"flex"});
+        $bannerNext.css({display:"flex"});
+        clearTimeout(t);
+    },function () {
+        autoShow();
+        $bannerPrev.css({display:"none"});
+        $bannerNext.css({display:"none"});
+    });
+
+    /*
+     * *****事件委托，点击下一张图片******
+     * */
+    $bannerNext.on("click",function () {
+        NEXT();
+    });
+
+    /*
+     * ********事件委托，上一张图片*******
+     * */
+    $bannerPrev.on("click",function(){
+        LAST();
+    });
+
+    /*
+     * ***** 事件委托，底部导航条点击
+     * */
+    $bannerBottom.find('span').on('click',function () {
+        index=$(this).attr("data-cid");
+        MOVE();
+    });
+    $bannerBottom.find('span').hover(function () {
+        index=$(this).attr("data-cid");
+        MOVE();
+    },function () {
+        index=$(this).attr("data-cid");
+        MOVE();
+    });
+
+    /*
+     * ******自定义方法*****
+     *
+     */
+
+    //图片自动播放
+    function autoShow() {
+        t=setInterval(function () {
+            NEXT();
+        },config.interval);
+    }
+
+    /*
+     * *******下一张图片
+     * */
+    function NEXT() {
+        index++;
+        if (index === size){
+            index = 1;
+            $bannerBody.css({left:0});
+        }
+        MOVE();
+    }
+
+    /*
+     * ***上一张
+     * */
+    function LAST() {
+        index--;
+        if (index === -1){
+            index = size-2;
+            $bannerBody.css({left:-(size-1)*imageWidth});
+        }
+        MOVE();
+    }
+
+    /**
+     * 初始化
+     */
+    function MOVE() {
+        updateBar();
+        $bannerBody.stop().animate({left:-imageWidth*index},config.animateTime);
+    }
+
+    /**
+     * 更新底部导航条
+     */
+    function updateBar(){
+        var i = index
+        if(index=== (size-1)){
+            i = 0;
+        }
+        !$bannerBottom.find('span').eq(i).removeClass('active').addClass('active').siblings().removeClass('active');
+    }
+
+};
+
+/*  */
+Site.getSelectCheckboxValues = function(selecter) {
+    selecter = selecter || '[lay-filter="selected"]';
+    var values = [];
+    $('input'+selecter+':checked').each(function () {
+        values.push($(this).val());
+    });
+    return values;
+};
+
+/*  */
+Site.getSelectCheckboxValues = function(selecter,checked) {
+    selecter = selecter || '[lay-filter="selected"]';
+    var values = [];
+    if (checked === undefined || checked === true){
+        $('input'+selecter+':checked').each(function () {
+            values.push($(this).val());
+        });
+    }else {
+        $('input'+selecter+':not(:checked)').each(function () {
+            values.push($(this).val());
+        });
+    }
+    return values;
+};
+
+/*  */
+Site.reconvert = function (str){
+    str = str.replace(/(\\u)(\w{4})/gi,function($0){
+        return (String.fromCharCode(parseInt((escape($0).replace(/(%5Cu)(\w{4})/g,"$2")),16)));
+    });
+
+    str = str.replace(/(&#x)(\w{4});/gi,function($0){
+        return String.fromCharCode(parseInt(escape($0).replace(/(%26%23x)(\w{4})(%3B)/g,"$2"),16));
+    });
+    return str;
 };
 
 $(function () {

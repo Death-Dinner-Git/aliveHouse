@@ -19,9 +19,6 @@ if (typeof Slider === "undefined") {
             h: 500
         };
     }
-}
-
-$(function () {
     Slider.prototype = {
         nextSlider: function (dis) {
             var self = this;
@@ -236,4 +233,4 @@ $(function () {
 
         constructor: Slider
     };
-});
+}

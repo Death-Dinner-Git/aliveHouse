@@ -1154,6 +1154,20 @@ class Helper
 
 
     /**
+     * xml字符串转数组
+     * @param string $xml      xml字符串   请确保xml结构完全正确规范
+     * @return array
+     */
+    function xmlToArray($xml){
+        //将xml字符串转换为对象
+        $obj = simplexml_load_string($xml);
+        //将对象转换成json字符串再将json字符串转为数组
+        $array = json_decode(json_encode($obj),true);
+
+        return $array;
+    }
+
+    /**
      * @description 设置缓存
      * @param $html
      * @param $userId
@@ -1287,6 +1301,69 @@ class Helper
             }
         }
         return $data;
+    }
+
+    /**\@description 获取客户端IP
+     * @return string|null
+     */
+    public static function get_client_ip(){
+        $IP = null;
+        if (getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown')) {
+            $IP = getenv('HTTP_CLIENT_IP');
+        }elseif(getenv('HTTP_X_FORWARDED_FOR') && strcasecmp(getenv('HTTP_X_FORWARDED_FOR'), 'unknown')) {
+            $IP = getenv('HTTP_X_FORWARDED_FOR');
+        }elseif(getenv('REMOTE_ADDR') && strcasecmp(getenv('REMOTE_ADDR'), 'unknown')) {
+            $IP = getenv('REMOTE_ADDR');
+        }elseif(isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown')) {
+            $IP = $_SERVER['REMOTE_ADDR'];
+        }
+        return $IP;
+    }
+
+    /**
+     * @description 解析编码成中文 配合函数 unicode2utf8 使用
+     * @param $s
+     * @return mixed
+     */
+    public static function uni_decode($s) {
+        preg_match_all('/\&\#([0-9]{2,5})\;/', $s, $html_uni);
+        preg_match_all('/[\\\%]u([0-9a-f]{4})/ie', $s, $js_uni);
+        $source = array_merge($html_uni[0], $js_uni[0]);
+        $js = array();
+        for($i=0;$i<count($js_uni[1]);$i++) {
+            $js[] = hexdec($js_uni[1][$i]);
+        }
+        $utf8 = array_merge($html_uni[1], $js);
+        $code = $s;
+        for($j=0;$j<count($utf8);$j++) {
+            $code = str_replace($source[$j], self::unicode2utf8($utf8[$j]), $code);
+        }
+        return $code;//$s;//preg_replace('/\\\u([0-9a-f]{4})/ie', "chr(hexdec('\\1'))",  $s);
+    }
+
+    /**
+     * @description 解析编码成中文 配合函数 uni_decode 使用
+     * @param $c
+     * @return string
+     */
+    private static function unicode2utf8($c) {
+        $str="";
+        if ($c < 0x80) {
+            $str.=chr($c);
+        } else if ($c < 0x800) {
+            $str.=chr(0xc0 | $c>>6);
+            $str.=chr(0x80 | $c & 0x3f);
+        } else if ($c < 0x10000) {
+            $str.=chr(0xe0 | $c>>12);
+            $str.=chr(0x80 | $c>>6 & 0x3f);
+            $str.=chr(0x80 | $c & 0x3f);
+        } else if ($c < 0x200000) {
+            $str.=chr(0xf0 | $c>>18);
+            $str.=chr(0x80 | $c>>12 & 0x3f);
+            $str.=chr(0x80 | $c>>6 & 0x3f);
+            $str.=chr(0x80 | $c & 0x3f);
+        }
+        return $str;
     }
 
 
