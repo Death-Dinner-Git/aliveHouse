@@ -28,7 +28,7 @@ return [
 //    'password'        => 'root',
 //    'password'        => 'wofang#car',
     'password'        => 'Haofangzhiye@123',
-//    'password'        => 'wzDarbE7esINiA1fjh@123',
+//    'password'        => 'wzDarbE7esINiA1fjh@123', // ,S_y*w;r9w?*
     // 端口
     'hostport'        => '3306',
     // 连接dsn

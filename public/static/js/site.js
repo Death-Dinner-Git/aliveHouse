@@ -724,7 +724,10 @@ Site.loadPage =  function (pageElement,total) {
     });
 };
 
-/* 预加载图片 */
+/**
+ * 图片懒加载
+ * @param selecter
+ */
 Site.loadImage = function (selecter) {
     var $this = $(selecter),url= $this.data('url'),$parent = $this.data('parent');
     if (!url){
@@ -741,7 +744,11 @@ Site.loadImage = function (selecter) {
     img.src=url;
 };
 
-/*  */
+/**
+ *
+ * @param data
+ * @param options
+ */
 Site.initBanner = function (data, options) {
     if (data === undefined || data.length <= 0){
         return;
@@ -874,7 +881,9 @@ Site.initBanner = function (data, options) {
         $bannerNext.css({display:"flex"});
         clearTimeout(t);
     },function () {
-        autoShow();
+        if(config.autoPlay){
+            autoShow();
+        }
         $bannerPrev.css({display:"none"});
         $bannerNext.css({display:"none"});
     });
@@ -950,6 +959,7 @@ Site.initBanner = function (data, options) {
     function MOVE() {
         updateBar();
         $bannerBody.stop().animate({left:-imageWidth*index},config.animateTime);
+        $bannerBody.find('.item').eq(index).removeClass('active').addClass('active').siblings().removeClass('active');
     }
 
     /**
@@ -965,7 +975,11 @@ Site.initBanner = function (data, options) {
 
 };
 
-/*  */
+/**
+ *
+ * @param selecter
+ * @returns {Array}
+ */
 Site.getSelectCheckboxValues = function(selecter) {
     selecter = selecter || '[lay-filter="selected"]';
     var values = [];
@@ -975,7 +989,12 @@ Site.getSelectCheckboxValues = function(selecter) {
     return values;
 };
 
-/*  */
+/**
+ *
+ * @param selecter
+ * @param checked
+ * @returns {Array}
+ */
 Site.getSelectCheckboxValues = function(selecter,checked) {
     selecter = selecter || '[lay-filter="selected"]';
     var values = [];
@@ -991,7 +1010,11 @@ Site.getSelectCheckboxValues = function(selecter,checked) {
     return values;
 };
 
-/*  */
+/**
+ *
+ * @param str
+ * @returns {*}
+ */
 Site.reconvert = function (str){
     str = str.replace(/(\\u)(\w{4})/gi,function($0){
         return (String.fromCharCode(parseInt((escape($0).replace(/(%5Cu)(\w{4})/g,"$2")),16)));

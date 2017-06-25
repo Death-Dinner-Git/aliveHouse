@@ -27,7 +27,7 @@ class IndexController extends HomeController
      */
     public function homeAction()
     {
-        return view('index/indexOld');
+        return view('index/index-box');
     }
 
 }

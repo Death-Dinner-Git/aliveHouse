@@ -1,251 +1,507 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
 
     <title> [ Home ] </title>
 
 </head>
+
 <body>
 
-<div id="main-content-container" class="main-content-container">
+<!-- This webContainerTop start 上 开始 -->
+<section id="webContainerTop" style="display: none;">
+
+    <!-- This absTopForms start -->
+    <section id="absTopTable">
+
+    </section>
+    <!-- This absTopForms end -->
+
+    <!-- This fullTopForms start -->
+    <section id="fullTopTable">
+
+    </section>
+    <!-- This fullTopForms end -->
+
+</section>
+<!-- This webContainerTop end 上 结束 -->
+
+<!-- This webContainerMiddle start 中 开始 -->
+<section id="webContainerMiddle" class="webContainerMiddle">
 
     <!-- This webBannerTable start -->
-    <section>
+    <section id="webBannerTable" class="webBannerTable flex" style="min-height: 300px;">
 
+        <!-- This bannerAbsTable start -->
+        <section id="bannerAbsTable" class="absTopTable"
+                 style="display:block;min-height: 300px;background-size: cover;background: #F4F4F4 url('/static/uploads/new-house-max-bg.jpg') no-repeat center;">
+        </section>
+        <!-- This bannerAbsTable end -->
 
+        <div id="banner-body" class="flex" style="display: block;min-height: 300px;">
 
-        <div class="clearfloat"></div>
+            <!-- This bannerTopTable start -->
+            <section id="bannerTopTable" class="topTable" style="display: none;">
+
+                <!-- 左侧 区域开启 -->
+                <section class="leftTable flex-top-left" style="display: none;">
+
+                </section>
+                <!-- 左侧 区域结束 -->
+
+                <!-- 中间 区域开启 -->
+                <section class="centerTable flex-top-center" style="display: none;">
+
+                </section>
+                <!-- 中间 区域结束 -->
+
+                <!-- 右侧 区域开启 -->
+                <section class="rightTable flex-top-right" style="display: none;">
+
+                </section>
+                <!-- 右侧 区域结束 -->
+
+            </section>
+            <!-- This bannerTopTable end -->
+
+            <!-- This bannerMiddleTable start -->
+            <section id="bannerMiddleTable" class="middleTable">
+
+                <!-- 顶级主体 左侧 区域开启 -->
+                <section class="leftTable flex-middle-left" style="display: none;">
+
+                </section>
+                <!-- 顶级主体 左侧 区域结束 -->
+
+                <!-- 顶级主体 中间 区域导航开启 -->
+                <section class="centerTable flex-middle-center">
+
+                    <div id="webBanner" class="webBanner bannerTable" style="width: 1349px; overflow: hidden; height: 645px;">
+                        <div class="bannerBody" style="width: 6745px; left: 0px;">
+                            <span class="item" style="left: 0px;">
+                                <a hidefocus="true">
+                                    <img src="/static/images/theme/theme-banner1.jpg" alt="图片1" style="width:1349px;height:645px;">
+                                </a>
+                            </span>
+                            <span class="item" style="left: 1349px;">
+                                <a hidefocus="true">
+                                    <img src="/static/images/theme/theme-banner3.jpg" alt="图片2" style="width:1349px;height:645px;">
+                                </a>
+                            </span>
+                            <span class="item" style="left: 2698px;">
+                                <a hidefocus="true">
+                                    <img src="/static/images/theme/theme-banner1.jpg" alt="图片1" style="width:1349px;height:645px;">
+                                </a>
+                            </span>
+                            <span class="item" style="left: 4047px;"><a
+                                    hidefocus="true">
+                                <img src="/static/images/theme/theme-banner3.jpg" alt="图片2" style="width:1349px;height:645px;">
+                            </a>
+                            </span>
+                            <span class="item" style="left: 5396px;">
+                                <a hidefocus="true">
+                                    <img src="/static/images/theme/theme-banner1.jpg" alt="图片1" style="width:1349px;height:645px;">
+                                </a>
+                            </span>
+                        </div>
+                        <div class="bannerPrev switchBtn" style="display: none;"></div>
+                        <div class="bannerNext switchBtn" style="display: none;"></div>
+                        <div class="bannerBottom">
+                            <span data-cid="0" data-title="" class="active">1</span>
+                            <span data-cid="1" data-title="" class="">2</span>
+                            <span data-cid="2" data-title="" class="">3</span>
+                            <span data-cid="3" data-title="" class="">4</span>
+                        </div>
+                    </div>
+
+                </section>
+                <!-- 顶级主体 中间 区域导航结束 -->
+
+                <!-- 顶级主体 右侧 区域导航开启 -->
+                <section class="rightTable flex-middle-right" style="display: none;">
+
+                </section>
+                <!-- 顶级主体右侧区域导航结束 -->
+
+            </section>
+            <!-- This bannerMiddleTable end -->
+
+            <!-- This bannerBottomTable start -->
+            <section id="bannerBottomTable" class="bottomTable">
+
+                <!-- 左侧 区域开启 -->
+                <section class="leftTable flex-bottom-left" style="display: none;">
+
+                </section>
+                <!-- 左侧 区域结束 -->
+
+                <!-- 中间 区域开启 -->
+                <section class="centerTable flex-bottom-center" style="display: none;">
+
+                </section>
+                <!-- 中间 区域结束 -->
+
+                <!-- 右侧 区域开启 -->
+                <section class="rightTable flex-bottom-left" style="display: none;">
+
+                </section>
+                <!-- 右侧 区域结束 -->
+
+            </section>
+            <!-- This bannerBottomTable end -->
+
+        </div>
 
     </section>
     <!-- This webBannerTable end -->
 
-    <!-- This absMiddleTable start -->
-    <section>
+    <!-- This webBannerTable start -->
+    <section id="webContentBody" class="webContentBody">
 
-        <table class="absMiddleTable" cellpadding="0" cellspacing="0">
-            <tbody><tr>
-                <td align="center">
-                    <div id="absForms" class="forms sideForms absForms">
+        <div class="alive-layout">
 
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+            <div class="alive-header" style="height: 50px;"></div>
 
-        <div class="clearfloat"></div>
-
-    </section>
-    <!-- This absMiddleTable end -->
-
-    <!-- This fullmeasureTopForms start -->
-    <section>
-
-        <div id="fullmeasureTopForms" class="fullmeasureContainer forms fk-fullmeasureForms fullmeasureForms fullmeasureTopForms">
-            <div id="module535" _indexclass="formIndex1" _modulestyle="80" _moduleid="535" class="form form535 formIndex1 formStyle80 fk-formFullmeasure " title="" style="height: 733px;" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="0" _inpack="0" _autoheight="0" _global="false" _independent="false" fmslidestyle="0" fmpage="1" iscarousel="0" displaytime="4" carouselspeed="1">
-                <div class="fillContentRelative" style="position: relative; z-index: -1; height: 590px; width: 100%; display: none;"></div>
-                <div style="position: static;" class="fullmeasureOuterContentPage fullmeasureOuterContentPage1 J_fullmeasurePageShow" page="1">
-                    <div class="fullmeasureOuterContentBg fullmeasureOuterContentBg535 fullmeasureStyle0"></div>
-                    <div class="fullmeasureOuterContent fullmeasureOuterContent535">
-                        <div class="fullmeasureContent fullmeasureContent535" id="fullmeasureContent535_1" moduleid="535">
-                            <div class="fullmeasureContentBg fullmeasureContentBg535"></div>
-                            <div id="module15" _indexclass="formIndex1" _modulestyle="50" _moduleid="15" systempattern="60" class="form form15 formStyle50 jz-modulePattern60 formIndex1" title="" style="" _side="0" _intab="0" _inmulmcol="0" _infullmeasure="535" _inpack="0" _autoheight="1" _global="false" _independent="false">
-                                <table class="formTop formTop15" cellpadding="0" cellspacing="0">
-                                    <tbody>
-                                    <tr>
-                                        <td class="left"></td>
-                                        <td class="center"></td>
-                                        <td class="right"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-                                <table class="formBanner formBanner15" cellpadding="0" cellspacing="0" style="">
-                                    <tbody>
-                                    <tr>
-                                        <td class="left left15"></td>
-                                        <td class="center center15" valign="top">
-                                            <table cellpadding="0" cellspacing="0" class="formBannerTitle formBannerTitle15">
-                                                <tbody>
-                                                <tr>
-                                                    <td class="titleLeft titleLeft15" valign="top"></td>
-                                                    <td class="titleCenter titleCenter15" valign="top">
-                                                        <div class="titleText titleText15">
-                                                            <span class="bannerNormalTitle fk_mainTitle mainTitle mainTitle15">Contact</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="titleRight titleRight15" valign="top"></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                        <td class="right right15"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-                                <table class=" formMiddle formMiddle15" style="" cellpadding="0" cellspacing="0">
-                                    <tbody>
-                                    <tr>
-                                        <td class="formMiddleLeft formMiddleLeft15"></td>
-                                        <td class="formMiddleCenter formMiddleCenter15 " valign="top">
-                                            <div class="formMiddleContent formMiddleContent15 fk-formContentOtherPadding" tabstyle="0">
-                                                <div id="msgBoard15" class="msgBoard msgSubmit" style="margin-left:14px;">
-                                                    <div id="msgAdd" class="msgSAdd">
-                                                        <div class="g_tip msgTips"></div>
-                                                        <div class="msgSAdd_N">
-                                                            <div class="msgAddTitle_N">Post your message：</div>
-                                                            <div style="width: 330px; _width: 350px;" class="msgPanel_N"><div class="msgSubmit_overToPoint" style="float:left;width:60px">
-                                                                <div class="msgSubmit_PropBoard" style="width:56px">Name：</div>
-                                                            </div>
-                                                                <input style="width: 194px;" class="g_itext msg_ipt msg_isMust" id="reqName" name="Name" type="text" size="14" maxlength="50" value=""><font class="star">*</font>
-                                                            </div>
-                                                            <div style="width: 330px; _width: 350px;" class="msgPanel_N">
-                                                                <div class="msgSubmit_overToPoint" style="float:left;width:60px">
-                                                                    <div class="msgSubmit_PropBoard" style="width:56px">Email：</div>
-                                                                </div>
-                                                                <input style="width: 194px;" class="g_itext msg_ipt " id="reqEmail" name="Email" type="text" size="14" maxlength="50" value="">
-                                                            </div>
-                                                            <div style="width: 330px; _width: 350px;" class="msgPanel_N"><div class="msgSubmit_overToPoint" style="float:left;width:60px">
-                                                                <div class="msgSubmit_PropBoard" style="width:56px">Phone：</div>
-                                                            </div>
-                                                                <input style="width: 194px;" class="g_itext msg_ipt " id="reqPhone" name="Phone" type="text" size="14" maxlength="50" value="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="msgAddText_N">
-                                                            <div style="float:left;width:60px" class="msgSubmit_overToPoint">
-                                                                <div class="msgSubmit_PropBoard" style="width:56px">Words：</div>
-                                                            </div>
-                                                            <textarea class="g_textarea" id="reqContent" rows="3" cols="50" style="resize:vertical;width: 914px;" placeholder="Message to be displayed after review" maxlength="10000"></textarea>
-                                                        </div>
-                                                        <div class="msgCaptcha_N  J_msgBoardCaptcha msgBoardCaptchaHide">
-                                                            <div style="float:left;width:60px" class="msgSubmit_overToPoint">
-                                                                <div class="msgSubmit_PropBoard" style="width:56px">Code：</div>
-                                                            </div>
-                                                            <div style="float:left;">
-                                                                <input class="g_itext" id="msgBoardCaptcha" type="text" maxlength="4">
-                                                            </div>
-                                                            <div style="float:left;" class="validateCode_N">
-                                                                <img alt="" onclick="Site.changeMsgBoardValidateCode()" title="Can not see, change one" id="msgBoardCaptchaImg" style="height:24px;width:80px;cursor:pointer;vertical-align: -8px;margin-left:10px;" src="/aliveHouse/web/validateCode.php">
-                                                            </div>
-                                                        </div>
-                                                        <div class="msgAddButton_N">
-                                                            <div style="float:left;width:60px" class="msgSubmit_overToPoint">
-                                                                <div class="msgSubmit_PropBoard" style="width:56px">&nbsp;</div>
-                                                            </div>
-                                                            <div class="m_ibutton m_ibutton4">
-                                                                <div class="left"></div>
-                                                                <div class="middle" style="min-width:106px;" onclick="Site.msgBoardAddMsg(false,15,0)">Post</div>
-                                                                <div class="right"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="msgFlag_N">
-                                                            <div style="float:left;text-align:left;" class="msgSubmit_overToPoint">Message：</div>
-                                                        </div>
-                                                        <div class="msgNot_N g_border_t" style="text-align:center;">
-                                                            <div style="text-align:left;margin-top:20px">Not Message</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="pagenation15" class="pagenation_N">
-                                                    <div class="pagePrev_N prevHide_model">
-                                                        <div class="pageArrow_ph J_pageArrow_N"></div>
-                                                        <a hidefocus="true" style="padding:0;margin-left:0;">
-                                                            <span style="margin-left:0px;" class="unclick">上一页</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="pageNo"><span class="selected">1</span></div>
-                                                    <div class="pageNext_N nextHide_model">
-                                                        <a hidefocus="true" style="padding:0;margin-left:0;"><span class="unclick">下一页</span></a>
-                                                        <div class="pageArrow_nh J_pageArrow_N"></div>
-                                                    </div>
-                                                    <div class="pageTotal">共<span>1</span>页</div>
-                                                    <div class="jumpPageDiv">到第<input id="jumpPage" type="text" maxlength="10" class="jumpPage" oninput="this.value=this.value.replace(/[^0-9]+/g,&quot;&quot;);" onkeypress="javascript:return Fai.isNumberKey(event);">页
-                                                        <a id="jumpBtn" onclick="Site.jumpToPage(15,1,&quot;//home/contact/contact.html&quot;)" type="button" class="bottomSearch">确定</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="formMiddleRight formMiddleRight15"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-                                <table class="formBottom formBottom15" cellpadding="0" cellspacing="0">
-                                    <tbody>
-                                    <tr>
-                                        <td class="left left15"></td>
-                                        <td class="center center15"></td>
-                                        <td class="right right15"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="clearfloat clearfloat15"></div>
+            <div class="alive-body">
+                <div class="alive-flex alive-outer">
+                    <div class="alive-item-outer" style="width: 310px; height: 340px;">
+                        <div>
+                            <a class="" href="" target="_blank" style="width:320px;height:184px;">
+                                <div style="bottom:49.0px;">
+                                    <img alt="文章附图" title="" src="/static/uploads/ima11.jpg"
+                                         style="width:310.0px;height:282.0px;">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <div style="width: 100%;">
+                                <div>
+                                    <a class="" href="" target="_blank"></a>
+                                </div>
+                                <a hidefocus="true" href="" target="_blank" title="" class="" mix="1">二手房过户有什么需要准备的？</a>
                             </div>
+                            <p>先了解一下购房过户手续的一...</p>
                         </div>
                     </div>
-                    <div class="clearfloat clearfloat535"></div>
+
+                    <div class="alive-item-outer" style="width: 310px; height: 340px;">
+                        <div>
+                            <a class="" href="" target="_blank" style="width:320px;height:184px;">
+                                <div style="bottom:49.0px;">
+                                    <img alt="文章附图" title="" src="/static/uploads/ima11.jpg"
+                                         style="width:310.0px;height:282.0px;">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <div style="width: 100%;">
+                                <div>
+                                    <a class="" href="" target="_blank"></a>
+                                </div>
+                                <a hidefocus="true" href="" target="_blank" title="" class="" mix="1">二手房过户有什么需要准备的？</a>
+                            </div>
+                            <p>先了解一下购房过户手续的一...</p>
+                        </div>
+                    </div>
+
+                    <div class="alive-item-outer" style="width: 310px; height: 340px;">
+                        <div>
+                            <a class="" href="" target="_blank" style="width:320px;height:184px;">
+                                <div style="bottom:49.0px;">
+                                    <img alt="文章附图" title="" src="/static/uploads/ima11.jpg"
+                                         style="width:310.0px;height:282.0px;">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <div style="width: 100%;">
+                                <div>
+                                    <a class="" href="" target="_blank"></a>
+                                </div>
+                                <a hidefocus="true" href="" target="_blank" title="" class="" mix="1">二手房过户有什么需要准备的？</a>
+                            </div>
+                            <p>先了解一下购房过户手续的一...</p>
+                        </div>
+                    </div>
+
+                    <div class="alive-item-outer" style="width: 310px; height: 340px;">
+                        <div>
+                            <a class="" href="" target="_blank" style="width:320px;height:184px;">
+                                <div style="bottom:49.0px;">
+                                    <img alt="文章附图" title="" src="/static/uploads/ima11.jpg"
+                                         style="width:310.0px;height:282.0px;">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <div style="width: 100%;">
+                                <div>
+                                    <a class="" href="" target="_blank"></a>
+                                </div>
+                                <a hidefocus="true" href="" target="_blank" title="" class="" mix="1">二手房过户有什么需要准备的？</a>
+                            </div>
+                            <p>先了解一下购房过户手续的一...</p>
+                        </div>
+                    </div>
+
+                    <div class="alive-item-outer" style="width: 310px; height: 340px;">
+                        <div>
+                            <a class="" href="" target="_blank" style="width:320px;height:184px;">
+                                <div style="bottom:49.0px;">
+                                    <img alt="文章附图" title="" src="/static/uploads/ima11.jpg"
+                                         style="width:310.0px;height:282.0px;">
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <div style="width: 100%;">
+                                <div>
+                                    <a class="" href="" target="_blank"></a>
+                                </div>
+                                <a hidefocus="true" href="" target="_blank" title="" class="" mix="1">二手房过户有什么需要准备的？</a>
+                            </div>
+                            <p>先了解一下购房过户手续的一...</p>
+                        </div>
+                    </div>
+
+                    <div class="alive-item-outer" style="width: 310px; height: 340px;">
+                        <div>
+                            <a class="" href="" target="_blank" style="width:320px;height:184px;">
+                                <div style="bottom:49.0px;">
+                                    <img alt="文章附图" title="" src="/static/uploads/ima11.jpg"
+                                         style="width:310.0px;height:282.0px;">
+                                </div>
+                            </a>
+                        </div>
+
+                        <div>
+                            <div style="width: 100%;">
+                                <div>
+                                    <a class="" href="" target="_blank"></a>
+                                </div>
+                                <a hidefocus="true" href="" target="_blank" title="" class="" mix="1">二手房过户有什么需要准备的？</a>
+                            </div>
+                            <p>先了解一下购房过户手续的一...</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <wbr style="display:none;"></div>
+            <div class="alive-footer"></div>
 
-        <div class="clearfloat"></div>
-
-    </section>
-    <!-- This fullmeasureTopForms end -->
-
-    <!-- This webContainerTable start -->
-    <section>
-
-
-
-        <div class="clearfloat"></div>
-
-    </section>
-    <!-- This webContainerTable end -->
-
-    <!-- This fullmeasureBottomForms start -->
-    <section>
-
-
-        <div id="fullmeasureBottomForms" class="fullmeasureContainer forms fk-fullmeasureForms fullmeasureForms fullmeasureBottomForms" style="display: none;">
-            <wbr style="display:none;">
         </div>
 
-        <div class="clearfloat"></div>
+        <div class="alive-layout">
 
-    </section>
-    <!-- This fullmeasureBottomForms end -->
+            <div class="alive-header" style="height: 50px;"></div>
 
-    <!-- This absBottomTable start -->
-    <section>
-
-        <table class="absBottomTable" cellpadding="0" cellspacing="0">
-            <tbody>
-            <tr>
-                <td align="center">
-                    <div id="absBottomForms" class="forms sideForms absForms">
-                        <div style="position:absolute;"></div><!-- for ie6 -->
-
+            <div class="alive-body">
+                <div class="alive-line alive-outer" style="height:640px;">
+                    <div class="alive-flex alive-outer" style="position: relative;">
+                        <div class="alive-line-item alive-level" style="height:100px;">
+                            <div class="level-left line-left line-title" style="width:200px;vertical-align:top;">
+                                <a hidefocus="true" href="" target="_blank">2017/05/15</a>
+                            </div>
+                            <div class="level-right line-right alive-level">
+                                <div class="level-left line-icon">
+                                    <div class="circleOuter">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                                <div class="level-right line-content">
+                                    <div class="content-title">
+                                        <a class="" hidefocus="true" href="" target="_blank" title="">title</a>
+                                    </div>
+                                    <div class="content-body">
+                                        <p class="summary">content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hideLine" style="width: 100%;">
+                        <div class="alive-line-item alive-level" style="height:100px;">
+                            <div class="level-left line-left line-title" style="width:200px;vertical-align:top;">
+                                <a hidefocus="true" href="" target="_blank">2017/05/15</a>
+                            </div>
+                            <div class="level-right line-right alive-level">
+                                <div class="level-left line-icon">
+                                    <div class="circleOuter">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                                <div class="level-right line-content">
+                                    <div class="content-title">
+                                        <a class="" hidefocus="true" href="" target="_blank" title="">title</a>
+                                    </div>
+                                    <div class="content-body">
+                                        <p class="summary">content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hideLine" style="width: 100%;">
+                        <div class="alive-line-item alive-level" style="height:100px;">
+                            <div class="level-left line-left line-title" style="width:200px;vertical-align:top;">
+                                <a hidefocus="true" href="" target="_blank">2017/05/15</a>
+                            </div>
+                            <div class="level-right line-right alive-level">
+                                <div class="level-left line-icon">
+                                    <div class="circleOuter">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                                <div class="level-right line-content">
+                                    <div class="content-title">
+                                        <a class="" hidefocus="true" href="" target="_blank" title="">title</a>
+                                    </div>
+                                    <div class="content-body">
+                                        <p class="summary">content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hideLine" style="width: 100%;">
+                        <div class="alive-line-item alive-level" style="height:100px;">
+                            <div class="level-left line-left line-title" style="width:200px;vertical-align:top;">
+                                <a hidefocus="true" href="" target="_blank">2017/05/15</a>
+                            </div>
+                            <div class="level-right line-right alive-level">
+                                <div class="level-left line-icon">
+                                    <div class="circleOuter">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                                <div class="level-right line-content">
+                                    <div class="content-title">
+                                        <a class="" hidefocus="true" href="" target="_blank" title="">title</a>
+                                    </div>
+                                    <div class="content-body">
+                                        <p class="summary">content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hideLine" style="width: 100%;">
+                        <div class="alive-line-item alive-level" style="height:100px;">
+                            <div class="level-left line-left line-title" style="width:200px;vertical-align:top;">
+                                <a hidefocus="true" href="" target="_blank">2017/05/15</a>
+                            </div>
+                            <div class="level-right line-right alive-level">
+                                <div class="level-left line-icon">
+                                    <div class="circleOuter">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                                <div class="level-right line-content">
+                                    <div class="content-title">
+                                        <a class="" hidefocus="true" href="" target="_blank" title="">title</a>
+                                    </div>
+                                    <div class="content-body">
+                                        <p class="summary">content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hideLine" style="width: 100%;">
+                        <div class="alive-line-item alive-level" style="height:100px;">
+                            <div class="level-left line-left line-title" style="width:200px;vertical-align:top;">
+                                <a hidefocus="true" href="" target="_blank">2017/05/15</a>
+                            </div>
+                            <div class="level-right line-right alive-level">
+                                <div class="level-left line-icon">
+                                    <div class="circleOuter">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                                <div class="level-right line-content">
+                                    <div class="content-title">
+                                        <a class="" hidefocus="true" href="" target="_blank" title="">title</a>
+                                    </div>
+                                    <div class="content-body">
+                                        <p class="summary">content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="upLine" style="height:100%;left: 222px;">
                     </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                </div>
+            </div>
 
-        <div class="clearfloat"></div>
+            <div class="alive-footer"></div>
+
+        </div>
 
     </section>
-    <!-- This absBottomTable end -->
+    <!-- This webBannerTable end -->
 
-    <div class="clearfloat"></div>
+</section>
+<!-- This webContainerMiddle end 中 结束 -->
 
-</div>
+<!-- This webContainerBottom start 下 开始 -->
+<section id="webContainerBottom" style="display: none;">
 
-<!-- Load Core CSS -->
+    <!-- This fullBottomForms start -->
+    <section id="fullBottomTable">
 
-<!-- Load Core JS -->
+    </section>
+    <!-- This fullBottomForms end -->
+
+    <!-- This absBottomForms start -->
+    <section id="absBottomTable">
+
+    </section>
+    <!-- This absBottomForms end -->
+
+</section>
+<!-- This webContainerBottom end 下 结束 -->
+
+<script>
+
+    $(function () {
+        var data = [
+            {
+                "title": "图片1",
+                "desc": "",
+                "target": "",
+                "src": "/static/images/theme/theme-banner1.jpg",
+            },
+            {
+                "title": "图片2",
+                "desc": "",
+                "target": "",
+                "src": "/static/images/theme/theme-banner3.jpg",
+            },
+            {
+                "title": "图片1",
+                "desc": "",
+                "target": "",
+                "src": "/static/images/theme/theme-banner1.jpg",
+            },
+            {
+                "title": "图片2",
+                "desc": "",
+                "target": "",
+                "src": "/static/images/theme/theme-banner3.jpg",
+            }
+        ];
+        var options = {
+            "banner": "#webBanner",
+//        "width": 1200,
+//        "height": 487,
+            "playTime": 4000,
+            "animateTime": 628,
+            "interval": 2000,
+            "btnType": 1,
+            "targetType": "2",
+            "wideScreen": true,
+            "autoPlay":false
+        };
+        Site.initBanner(data,options);
+    });
+
+</script>
 
 </body>
 </html>

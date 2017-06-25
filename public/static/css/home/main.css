@@ -535,7 +535,7 @@ textarea {
     vertical-align: top; /* 2 */
 }
 
-table {
+alive {
     border-collapse: collapse;
     border-spacing: 0;
 }
@@ -773,18 +773,17 @@ a:hover, a:focus {
     color: #777777;
 }
 
-.none,.hidden{
+.none, .hidden {
     display: none;
 }
-
 
 /*========================
 
  布局
 
   =======================*/
-.none,.hidden{
-    display: none!important;
+.none, .hidden {
+    display: none !important;
 }
 
 #alive-site-body {
@@ -792,16 +791,22 @@ a:hover, a:focus {
 }
 
 #alive-site-body .flex > * {
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 }
 
 #alive-site-main, #alive-site-web {
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column wrap;
     justify-content: space-between;
     align-items: stretch;
@@ -817,8 +822,11 @@ a:hover, a:focus {
 
 #web-header-container #header-content-container {
     margin: auto;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: stretch;
@@ -834,8 +842,11 @@ a:hover, a:focus {
 
 #web-main-container #main-content-container {
     margin: auto;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: stretch;
@@ -851,8 +862,11 @@ a:hover, a:focus {
 
 #web-footer-container #footer-content-container {
     margin: auto;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: stretch;
@@ -865,8 +879,11 @@ a:hover, a:focus {
 }
 
 #web-extra-container #extra-content-container {
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column wrap;
     justify-content: space-between;
     align-items: stretch;
@@ -901,8 +918,11 @@ a:hover, a:focus {
 /* 头部 */
 
 #header-content-container #header-full-container {
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     position: absolute;
     top: 0;
     left: 0;
@@ -910,8 +930,11 @@ a:hover, a:focus {
 
 #header-content-container .header-body {
     position: relative;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: stretch;
@@ -926,20 +949,29 @@ a:hover, a:focus {
 }
 
 #header-content-container .header-body #headerAbsTable #headerAbs {
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
 #header-content-container .header-body #headerTopTable {
     order: 1;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
 #header-content-container .header-body #headerMiddleTable {
     order: 2;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     height: 45px;
     width: 100%;
     flex-flow: row nowrap;
@@ -949,8 +981,11 @@ a:hover, a:focus {
 
 #header-content-container .header-body #headerBottomTable {
     order: 3;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
 #headerMiddleTable #headerLeft {
@@ -999,8 +1034,11 @@ a:hover, a:focus {
     width: 100%;
     height: 40px;
     padding-right: 15px;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: flex-end;
     align-items: stretch;
@@ -1017,8 +1055,11 @@ a:hover, a:focus {
     background: none;
     cursor: pointer;
     border-spacing: 0;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
@@ -1053,8 +1094,11 @@ a:hover, a:focus {
 /* 底部 */
 
 #footer-content-container #footer-full-container {
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     position: absolute;
     top: 0;
     left: 0;
@@ -1062,8 +1106,11 @@ a:hover, a:focus {
 
 #footer-content-container .footer-body {
     position: relative;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: stretch;
@@ -1078,14 +1125,20 @@ a:hover, a:focus {
 }
 
 #footer-content-container .footer-body #footerAbsTable #footerAbs {
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
 #footer-content-container .footer-body #footerTopTable {
     order: 1;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
 #footerTopTable .leftTable {
@@ -1108,8 +1161,11 @@ a:hover, a:focus {
 
 #footer-content-container .footer-body #footerMiddleTable {
     order: 2;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     height: 200px;
     width: 100%;
     flex-flow: row nowrap;
@@ -1137,8 +1193,11 @@ a:hover, a:focus {
 
 #footer-content-container .footer-body #footerBottomTable {
     order: 3;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     height: 100px;
     width: 100%;
     flex-flow: row nowrap;
@@ -1169,8 +1228,11 @@ a:hover, a:focus {
     width: 100%;
     height: 200px;
     padding: 0 15px;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: stretch;
@@ -1181,8 +1243,11 @@ a:hover, a:focus {
     height: 200px;
     cursor: pointer;
     border-spacing: 0;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
     justify-content: flex-end;
     align-items: stretch;
@@ -1222,8 +1287,11 @@ a:hover, a:focus {
     width: 100%;
     height: 100px;
     padding: 0 15px;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
     justify-content: flex-end;
     align-items: stretch;
@@ -1237,8 +1305,11 @@ a:hover, a:focus {
     width: auto;
     height: 25px;
     border-spacing: 0;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
@@ -1250,8 +1321,11 @@ a:hover, a:focus {
 }
 
 #footerContent .item a {
-    display: flex;
-    display: -webkit-flex; /* Safari */
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
@@ -1259,7 +1333,6 @@ a:hover, a:focus {
 }
 
 /* 其他 */
-
 
 /* 主体 */
 
@@ -1273,12 +1346,16 @@ a:hover, a:focus {
 #main-content-container #webContainerMiddle {
     margin: auto;
     order: 2;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: stretch;
     min-height: 600px;
+    height: auto;
     min-width: 1200px;
 }
 
@@ -1290,30 +1367,35 @@ a:hover, a:focus {
 }
 
 /* 主体 中区 */
-#webContainerMiddle{
-    display: -webkit-flex; /* Safari */
-    display: flex;
+#webContainerMiddle {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: stretch;
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
-
 /* 主体 中区 轮播 */
-#webContainerMiddle #webBannerTable{
-    display: -webkit-flex; /* Safari */
-    display: flex;
+#webContainerMiddle #webBannerTable {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: stretch;
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 /* 主体 中区 轮播 背景 */
-#webContainerMiddle #webBannerTable #bannerAbsTable{
+#webContainerMiddle #webBannerTable #bannerAbsTable {
     position: absolute;
     top: 120px;
     left: 0;
@@ -1322,27 +1404,31 @@ a:hover, a:focus {
 }
 
 /* 主体 中区 轮播区  */
-#webBanner{
-    position: relative;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+#webBanner {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
     justify-content: center;
     align-items: stretch;
     width: 100%;
-    height: 100%;
+    max-height: 100%;
+    height: auto;
     z-index: 3;
     overflow: hidden;
+    position: relative;
 }
 
-#webBanner .bannerBody{
+#webBanner .bannerBody {
     position: relative;
     width: 100%;
     height: 100%;
     z-index: 3;
 }
 
-#webBanner .switchBtn{
+#webBanner .switchBtn {
     display: block;
     position: absolute;
     top: 50%;
@@ -1362,16 +1448,16 @@ a:hover, a:focus {
     z-index: 5;
 }
 
-#webBanner .switchBtn{
+#webBanner .switchBtn {
     box-shadow: inset 0 0 20px 5px #F4F4F4;
     opacity: 0.628;
 }
 
-#webBanner .switchBtn:hover{
+#webBanner .switchBtn:hover {
     opacity: 1;
 }
 
-#webBanner .bannerPrev{
+#webBanner .bannerPrev {
     left: 20px;
     background: url(/static/images/site/left.png) no-repeat rgba(0, 0, 0, 0.1);
     margin-left: 1%;
@@ -1379,27 +1465,30 @@ a:hover, a:focus {
     background-color: #727272 \9;
 }
 
-#webBanner .bannerNext{
+#webBanner .bannerNext {
     right: 20px;
     background: url(/static/images/site/right.png) no-repeat rgba(0, 0, 0, 0.1);
     margin-right: 1%;
     background: url(/static/images/site/right.gif) no-repeat \9;
     background-color: #727272 \9;
- }
+}
 
-#webBanner .bannerBottom{
+#webBanner .bannerBottom {
     position: absolute;
     bottom: 0;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: center;
     align-items: stretch;
     width: 100%;
     height: 40px;
- }
+}
 
-#banner-body .bannerBottom span{
+#banner-body .bannerBottom span {
     display: inline-block;
     width: 12px;
     height: 12px;
@@ -1416,22 +1505,21 @@ a:hover, a:focus {
     opacity: 0.628;
 }
 
-#banner-body .bannerBottom span:hover,#banner-body .bannerBottom .active{
+#banner-body .bannerBottom span:hover, #banner-body .bannerBottom .active {
     color: #FFFFFF;
     background-color: #727272;
     opacity: 1;
 }
 
-#banner-body .bannerBody .item{
+#banner-body .bannerBody .item {
     position: absolute;
     overflow: hidden;
 }
 
-#banner-body .bannerBody .item img{
+#banner-body .bannerBody .item img {
     width: 100%;
     height: auto;
 }
-
 
 #banner-body .bannerBody .item p.desc {
     position: absolute;
@@ -1439,12 +1527,16 @@ a:hover, a:focus {
     height: auto;
     bottom: 0;
 }
-#banner-body .bannerBody .item h3{
+
+#banner-body .bannerBody .item h3 {
     position: absolute;
     margin: 0;
     bottom: 0;
-    display: -webkit-flex; /* Safari */
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
     justify-content: center;
     align-items: stretch;
@@ -1452,19 +1544,19 @@ a:hover, a:focus {
     height: 0;
 }
 
-#banner-body .bannerBody .item h3 a{
+#banner-body .bannerBody .item h3 a {
     position: relative;
     opacity: 0.9;
     color: #000000;
     font-weight: 400;
 }
 
-#banner-body .bannerBody .item h3 a:hover{
+#banner-body .bannerBody .item h3 a:hover {
     opacity: 1;
 }
 
-#banner-body .bannerBody .item h3 a span{
-    display:inline-block;
+#banner-body .bannerBody .item h3 a span {
+    display: inline-block;
     position: absolute;
     bottom: 50px;
     left: -150px;
@@ -1474,4 +1566,509 @@ a:hover, a:focus {
     font-size: 20px;
     line-height: 20px;
     font-weight: 400;
+}
+
+/**
+alive-icon   用于图标
+alive-box   用于排除一些UI框架（如Bootstrap）强制将全部元素设为box-sizing: border-box所引发的尺寸偏差
+alive-clear   用于消除浮动（一般不怎么常用，因为alive几乎没用到浮动）
+alive-inline   用于将标签设为内联块状元素
+alive-elip    用于单行文本溢出省略
+alive-unselect   用于屏蔽选中
+alive-disabled    用于设置元素不可点击状态
+alive-circle    用于设置元素为圆形
+alive-show   用于显示块状元素
+alive-hide   用于隐藏元素
+ 
+alive-main    用于设置一个宽度为 1140px的水平居中块
+ 
+alive-bg-red   用于设置元素赤色背景
+alive-bg-orange   用于设置元素橙色背景
+alive-bg-green   用于设置元素墨绿色背景（主色调）
+alive-bg-cyan   用于设置元素青色背景
+alive-bg-blue   用于设置元素蓝色背景
+alive-bg-black   用于设置元素经典黑色背景
+alive-bg-gray    用于设置元素经典灰色背景
+ */
+
+.alive-layout {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.alive-flex {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.alive-layout .alive-header, .alive-layout .alive-body, .alive-layout .alive-footer {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+}
+
+.alive-layout .alive-header {
+    order: 1;
+    width: auto;
+}
+
+.alive-layout .alive-header.empty,.alive-layout .alive-footer.empty  {
+    display: none;
+}
+
+.alive-layout .alive-body {
+    order: 2;
+    width: 100%;
+}
+
+.alive-layout .alive-footer {
+    order: 3;
+    width: 100%;
+}
+
+.alive-justStart {
+    justify-content: flex-start;
+}
+
+.alive-justEnd {
+    justify-content: flex-end;
+}
+
+.alive-justCenter {
+    justify-content: center;
+}
+
+.alive-justBetween {
+    justify-content: space-between;
+}
+
+.alive-justAround {
+    justify-content: space-around;
+}
+
+.alive-itemStart {
+    align-items: flex-start;
+}
+
+.alive-itemEnd {
+    align-items: flex-end;
+}
+
+.alive-itemCenter {
+    align-items: center;
+}
+
+.alive-itemLine {
+    align-items: baseline;
+}
+
+.alive-itemStretch {
+    align-items: stretch;
+}
+
+.alive-center {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: center;
+    align-items: center;
+}
+
+.alive-outer {
+    margin: 20px;
+}
+
+.alive-outer.outer-min {
+    margin: 15px;
+}
+
+.alive-layout .alive-item-outer {
+    margin: 0 20px 30px;
+}
+
+.alive-layout .alive-item-outer.outer-min {
+    margin: 0 15px 20px;
+}
+
+.row {
+    flex-basis: 100%;
+}
+
+/* ==================
+    网格布局
+==================== */
+
+/*
+基本网格布局
+ */
+.alive-table {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.alive-row {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+
+.alive-row .row-item {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; /* Firefox */
+    -webkit-box-sizing: border-box; /* Safari */
+    flex: 0 0 25%;
+}
+
+.alive-table .alive-cell {
+    flex: 1;
+}
+
+/*
+百分比布局
+ */
+.alive-table .alive-cell.col-full {
+    flex: 0 0 100%;
+}
+
+.alive-table .alive-cell.col-2 {
+    flex: 0 0 50%;
+}
+
+.alive-table .alive-cell.col-3 {
+    flex: 0 0 33.3333%;
+}
+
+.alive-table .alive-cell.col-4 {
+    flex: 0 0 25%;
+}
+
+/*
+输入框的布局
+ */
+
+.alive-flex {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.alive-flex .alive-input {
+    flex: 1;
+}
+
+/*
+悬挂式布局
+ */
+
+.alive-media {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    align-items: flex-start;
+}
+
+.alive-media .media-title {
+    margin: 1em;
+}
+
+.alive-media .media-body {
+    flex: 1;
+}
+
+/*
+固定的底栏
+ */
+
+.alive-fixed {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.alive-fixed .fixed-body {
+    flex: 1;
+}
+
+/*
+流式布局
+ */
+
+.alive-parent {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+
+.alive-parent .alive-child {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; /* Firefox */
+    -webkit-box-sizing: border-box; /* Safari */
+    flex: 0 0 25%;
+}
+
+/*
+上下分布
+ */
+.alive-upLevel {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    align-content: space-between;
+    align-items: stretch;
+    height: 100%;
+}
+
+.alive-upLevel.half > *:nth-child(1) {
+    flex: 1;
+}
+
+.alive-upLevel.half > *:nth-child(2) {
+    flex: 1;
+}
+
+.alive-upLevel.half > *:nth-child(2) + * {
+    display: none;
+}
+
+.alive-upLevel .upLevel-top:empty {
+    display: none;
+}
+
+.alive-upLevel .upLevel-down {
+    flex: 1;
+}
+
+.alive-upLevel .upLevel-item {
+    width: 100%;
+}
+
+/*
+左右分布
+ */
+.alive-level {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    align-content: space-between;
+    align-items: stretch;
+    width: 100%;
+}
+
+.alive-level.half > *:nth-child(1) {
+    flex: 1;
+}
+
+.alive-level.half > *:nth-child(2) {
+    flex: 1;
+}
+
+.alive-level.half > *:nth-child(2) + * {
+    display: none;
+}
+
+.alive-level .level-left:empty{
+    display: none;
+}
+
+.alive-level .level-right {
+    flex: 1;
+}
+
+.alive-level .level-item {
+    height: 100%;
+}
+
+/*
+横线
+ */
+
+hr {
+    height: 1px;
+    margin: 10px 0;
+    border: 0;
+    background-color: #e2e2e2;
+    clear: both;
+    width: 100%;
+}
+
+hr.hideLine {
+    visibility: hidden;
+}
+
+hr.line {
+    clear: both;
+    height: 1px;
+    line-height: 1px;
+    margin: 0;
+    font-size: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-top: 0;
+    border-left: none;
+    border-right: 0;
+}
+
+hr.line.dashed {
+    border-style: dashed;
+}
+
+/*
+竖线
+ */
+hr.upLine {
+    width: 1px;
+    height: 0;
+    position: absolute;
+    background: #dadada;
+    top: 0;
+    left: 0;
+}
+
+hr.line.dashed, hr.upLine.dashed {
+    border-style: dashed;
+}
+
+/**
+时间线
+ */
+.alive-line {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+}
+
+.alive-line .line-title {
+    min-height: 23px;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+    text-align: right;
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    line-height: 28px;
+}
+
+.alive-line .line-content {
+    text-align: justify;
+    height: auto;
+    padding-left: 0;
+    white-space: nowrap;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+}
+
+.alive-line .line-content .content-title {
+    vertical-align: middle;
+    min-height: 23px;
+    line-height: 23px;
+    cursor: pointer;
+}
+
+.alive-line .line-content .content-title a {
+    width: 100%;
+    vertical-align: bottom;
+    display: inline-block;
+    text-decoration: none;
+    height: 23px;
+    line-height: 23px;
+    outline: 0;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.alive-line .line-content .content-body .summary {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #808080;
+    margin-bottom: 6px;
+    padding: 4px 0 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.circleOuter {
+    position: relative;
+    display: inline-block;
+    margin: 5px 15px 0;
+    width: 18px;
+    height: 18px;
+    background: #f4f4f4;
+    border-radius: 50%;
+    vertical-align: top;
+    z-index: 1;
+}
+
+.circle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #bababa;
+    border-radius: 50%;
+    left: 3px;
+    top: 3px;
+    z-index: 2;
 }
