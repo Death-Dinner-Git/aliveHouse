@@ -1,5 +1,14 @@
 @charset "utf-8";
 
+.color{
+     color: #4fb8a3;
+     color: #4fbca4;
+     color: #359fb7;
+     color: #1895ab;
+     color: #0081c5;
+     color: #023180;
+ }
+
 /*==========================================
  change  layui.css
  ===========================================*/
@@ -287,6 +296,11 @@
     color: #ffffff;
 }
 
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+    background: #0081c5; ;
+    color: #ffffff;
+}
+
 .btn-orange:hover, .btn-orange:active, .btn-orange:focus {
     background: rgba(215, 113, 80, 1.0);
     color: #ffffff;
@@ -424,7 +438,8 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 
 body {
     background-color: #FFFFFF;
-    color: #000000;
+    /*color: #000000;*/
+    color:#3e4849;
     font-family: 'Open Sans', Arial, Helvetica, sans-serif, "微软雅黑", "Microsoft YaHei", "Microsoft YaHei UI", "Segoe UI", Arial, Verdana, Sans-Serif, sans-serif;
     font-size: 12px;
 }
@@ -473,11 +488,13 @@ a {
     text-decoration: none;
     color: #333333;
     font-family: "Microsoft YaHei";
+    cursor:pointer;
 }
 
 a:hover {
     text-decoration: none;
 }
+
 
 fieldset, img {
     border: 0;

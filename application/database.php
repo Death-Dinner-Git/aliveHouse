@@ -28,7 +28,7 @@ return [
 //    'password'        => 'root',
 //    'password'        => 'wofang#car',
     'password'        => 'Haofangzhiye@123',
-//    'password'        => 'wzDarbE7esINiA1fjh@123', // ,S_y*w;r9w?*
+//    'password'        => 'wzDarbE7esINiA1fjh@123', // ',S_y*w;r9w?*'  // mysql -u root -h127.0.0.1 -p',S_y*w*;r9w?*' u_api Alivehouse@123 // authentication_string
     // 端口
     'hostport'        => '3306',
     // 连接dsn
