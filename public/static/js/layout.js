@@ -242,15 +242,26 @@ layui.config({
         $('#dinner-side-full').on('click', function() {
             var docElm = document.documentElement;
             var status = $(this).attr('data-full');
+            var hide = $(this).attr('data-hide');
             var icon = $(this).find('i');
             if ( status === 'false' ){
                 fullScreen(docElm);
                 $(this).attr('data-full','true');
                 icon.attr('class',icon.attr('data-close')).attr('title','退出全屏');
+                if (hide === '1'){
+
+                }else if (hide === '2'){
+
+                }
             }else{
                 exitFullScreen(docElm);
                 $(this).attr('data-full','false');
                 icon.attr('class',icon.attr('data-open')).attr('title','进入全屏');
+                if (hide === '1'){
+
+                }else if (hide === '2'){
+
+                }
             }
         });
 

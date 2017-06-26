@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://nimbus.everhelper.me/auth/?f=login -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, minimum-scale=1, maximum-scale=1" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<title>Nimbus - Authorization</title>
+<link rel="stylesheet" href="./Nimbus - Authorization_files/style.css">
+<link rel="stylesheet" type="text/css" href="./Nimbus - Authorization_files/forms_nimbus.css">
+<!--[if IE 9]>
+<link rel="stylesheet" href="/style/ie/ie9.css">
+<![endif]-->
+<!--[if IE 8]>
+<link rel="stylesheet" href="/style/ie/ie8.css">
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" href="/style/ie/ie7.css">
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="./Nimbus - Authorization_files/animate.css">
+<script type="text/javascript" async="" src="./Nimbus - Authorization_files/ga.js.下载"></script><script src="./Nimbus - Authorization_files/jquery.min.js.下载"></script>
+<script src="./Nimbus - Authorization_files/jquery.validate.js.下载"></script>
+<script src="./Nimbus - Authorization_files/addonconnector.js.下载"></script>
+<script src="./Nimbus - Authorization_files/eventemitter.js.下载"></script>
+<script src="./Nimbus - Authorization_files/animo.js.下载"></script>
+<script src="./Nimbus - Authorization_files/async.js.下载"></script>
+<script src="./Nimbus - Authorization_files/auth.js.下载"></script>
+<script src="./Nimbus - Authorization_files/openid.js.下载"></script>
+
+<script>
+  var gSetup = {"passMinLength":8,"successRedirect":"postauth.php?url=%2Fclient","service":"nimbus","apiPrefix":null};
+</script>
+</head>
+<body>
+
+<!-- wrap it all -->
+<div class="wrap_it_all">
+  <div class="wrap_it_all">
+<!-- header -->
+<header class="site_header">
+    <div class="wrapper">
+        <div class="header_top">
+            <div class="logo"><a href="https://nimbus.everhelper.me/" title="Nimbus Everhelper"><img src="./Nimbus - Authorization_files/logo.svg" alt="Nimbus Everhelper"></a></div>
+            <!-- menu -->
+            <div id="menu" class="menu">
+                <button id="menu_button" class="menu_button" type="button" name=""><span><img src="./Nimbus - Authorization_files/menu.svg" alt="menu"></span></button>
+                <div class="menu_wrapper">
+                    <div class="menu_holder animated"><i class="menu_overlay"></i>
+                        <div class="menu_content">
+                            <div id="menu_close" class="menu_close animated"><img src="./Nimbus - Authorization_files/close.png" alt="CLOSE"></div>
+                            <nav class="menu_nav">
+                                <ul>
+                                    <li><a href="https://nimbus.everhelper.me/note.php" title="Nimbus Note">Nimbus Note</a></li>
+                                    <li><a href="https://nimbus.everhelper.me/clipper.php" title="Nimbus Clipper">Nimbus Clipper</a></li>
+                                    <li><a href="https://nimbus.everhelper.me/screenshot.php" title="Nimbus Screen Capture">Nimbus Screen Capture</a></li>
+                                    <li><a href="http://everhelperblog.com/" title="Nimbus Blog" target="_blank">Nimbus Blog</a></li>
+                                    <li><a href="http://help.everhelper.me/" title="Help" target="_blank">Help</a></li>
+                                    <li><a href="https://nimbus.everhelper.me/contact-us.php" title="Contact Us">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                            <div class="menu_actions">
+                                                                <a class="button button_big button_fit button_blue" href="https://nimbus.everhelper.me/auth" title=""><span>Sign in</span></a> <a class="button button_big button_fit" href="https://nimbus.everhelper.me/auth?f=register"><span>Create Account</span></a>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /menu --> 
+        </div>
+        <nav class="main_menu">
+            <ul>
+                <li class="menu_parent"><a href="https://nimbus.everhelper.me/auth/?f=login" title="Nimbus products menu">Nimbus products</a>
+                    <ul class="menu_products">
+                        <li class="menu_products_note"><a href="https://nimbus.everhelper.me/note.php" title="Nimbus Note">Nimbus Note</a></li>
+                        <li class="menu_products_clipper"><a href="https://nimbus.everhelper.me/clipper.php" title="Nimbus Clipper">Nimbus Clipper</a></li>
+                        <li class="menu_products_screen"><a href="https://nimbus.everhelper.me/screenshot.php" title="Nimbus Screen Capture">Nimbus Screen Capture</a></li>
+                    </ul>
+                </li>
+                <li><a href="http://everhelperblog.com/" title="Nimbus Blog" target="_blank">Nimbus Blog</a></li>
+                <li><a href="http://help.everhelper.me/" title="Help" target="_blank">Help</a></li>
+                <li><a href="https://nimbus.everhelper.me/contact-us.php" title="Contact Us">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="header_buttons">
+                        <a class="button button_blue" href="https://nimbus.everhelper.me/auth" title=""><span>Sign in</span></a> <a class="button" href="https://nimbus.everhelper.me/auth?f=register"><span>Create Account</span></a>
+                        <br class="clear">
+        </div>
+    </div>
+</header>
+<!-- /header --> 
+<!-- form container -->
+  <div class="form_container">
+    <div class="center">
+      <div class="switch-to-container">
+                <a class="go-away-link" href="http://everhelper.me/auth?success=">
+          Switch to EverHelper
+        </a>
+              </div>
+      <!-- form -->
+      <div id="form_login" class="form" style="opacity: 1; display: block;">
+        <div class="form_wrapper">
+          <form method="POST" action="https://nimbus.everhelper.me/auth/?f=login" novalidate="novalidate">
+            <div class="form_logo"></div>
+                        <div class="form_top_text">Never forget something important for you!</div>
+                        <div class="form_error_text">Login or Password are incorrect</div>
+            <input type="hidden" name="token">
+            <input class="form_text form_error_field" name="login" type="text" placeholder="Email or Username">
+            <input class="form_text form_error_field" name="password" type="password" placeholder="Password" required="" aria-required="true">
+            <button class="form_button button" type="submit" name=""><span>SIGN IN</span></button>
+                        <div class="form_text_separate">or</div>
+            <div class="social_auth_icons">
+              <button class="button form_button social_auth_icon social_auth_icon_google" type="button" name="">
+                <span><i></i></span>
+              </button>
+              <button class="button form_button social_auth_icon social_auth_icon_facebook" type="button" name="">
+                <span><i></i></span>
+              </button>
+            </div>
+                        <div class="form_links"> <a href="https://nimbus.everhelper.me/auth/?f=login#" data-frm="remind" title="Restore Password">Restore password</a> or <a data-frm="register" href="https://nimbus.everhelper.me/auth/?f=login#" title="Register">Register a new Account</a> </div>
+          </form>
+        </div>
+      </div>
+      <!-- /form -->
+
+      <div id="form_register" class="form">
+        <div class="form_wrapper">
+          <form method="" name="" action="https://nimbus.everhelper.me/auth/?f=login">
+            <div class="form_logo"></div>
+            <div class="form_error_text">Login or Password are incorrect</div>
+            <input type="hidden" name="token">
+            <input class="form_text" type="text" name="login" placeholder="Enter your email">
+            <input class="form_text" type="password" name="password" minlength="8" placeholder="Password" id="register-password" required="">
+            <input class="form_text" type="password" name="repassword" placeholder="Retype password" equalto="#register-password">
+                        <div class="form_notes_text">By clicking “Sign up”, you agree to our <a href="http://nimbus.everhelper.me/terms-and-conditions.php" title="Terms and Conditions">Terms and Conditions</a></div>
+                        <button class="form_button button" type="submit" name=""><span>Sign up</span></button>
+            <div class="form_checkbox">
+              <label>
+                <input type="checkbox" name="subscribe" value="1" checked="">
+                <i></i>Subscribe to service updates</label>
+            </div>
+            <div class="form_links"> <a data-frm="login" href="https://nimbus.everhelper.me/auth/?f=login#" title="Login">Login page</a> </div>
+          </form>
+        </div>
+      </div>
+      <!-- /form -->
+
+      <!-- form -->
+      <div id="form_remind" class="form">
+        <div class="form_wrapper">
+          <form method="" name="" action="https://nimbus.everhelper.me/auth/?f=login">
+            <div class="form_logo"></div>
+            <div class="form_success_text">Restore instructions have been sent to your email</div>
+            <div class="form_error_text"></div>
+            <div class="form_restore_text">To restore password you need to enter your Login Email</div>
+            <input class="form_text" type="email" name="login" placeholder="Login Email" required="">
+            <button class="form_button button" type="submit" name=""><span>RESTORE  PASSWORD</span></button>
+            <div class="form_links"> <a data-frm="login" href="https://nimbus.everhelper.me/auth/?f=login#" title="Login">Login</a> or <a href="https://nimbus.everhelper.me/auth/?f=login#" data-frm="register" title="Register">Register a new Account</a> </div>
+          </form>
+        </div>
+      </div>
+      <!-- /form -->
+
+      <!-- form -->
+      <div id="form_otp" class="form">
+        <div class="form_wrapper">
+          <form method="" name="" action="https://nimbus.everhelper.me/auth/?f=login">
+            <div class="form_logo"></div>
+            <div class="form_success_text"></div>
+            <div class="form_error_text"></div>
+            <div class="form_restore_text">Please enter the temporary code from Google Authenticator</div>
+            <input autocomplete="off" maxlength="6" class="form_text" type="text" name="code" placeholder="Code" required="">
+            <button class="form_button button" type="submit" name=""><span>Continue</span></button>
+          </form>
+        </div>
+      </div>
+      <!-- /form -->
+
+      <!-- form -->
+      <div id="form_captcha" class="form">
+        <div class="form_wrapper">
+          <form method="" name="" action="https://nimbus.everhelper.me/auth/?f=login">
+            <div class="form_logo"></div>
+            <div class="form_success_text"></div>
+            <div class="form_error_text"></div>
+            <div class="form_restore_text">We detected a suspicious activity from your device, in order to continue please verify that you are a human by entering the text from the image below</div>
+            <div class="form_captcha_image_container"></div>
+            <input autocomplete="off" class="form_text" type="text" name="code" placeholder="Text from the image" required="">
+            <button class="form_button button" type="submit" name=""><span>Continue</span></button>
+          </form>
+        </div>
+      </div>
+      <!-- /form -->
+
+      <!-- form  invite -->
+      <div id="form_invite" class="form">
+        <div class="form_wrapper">
+          <form method="" name="" action="https://nimbus.everhelper.me/auth/?f=login">
+            <input type="hidden" name="token">
+            <div class="form_user_name"></div>
+            <div class="form_logo"></div>
+            <div class="form_invite_message">Unidentified invitation</div>
+            <a class="form_message_status" href="https://nimbus.everhelper.me/auth/?f=login"><span>Declined</span></a>
+            <button class="form_button button" type="submit" name="accepted"><span>Accept Invitation</span></button>
+            <div style="height:10px">&nbsp;</div>
+            <button class="form_button button button-refused" type="button" name="refused"><span>Decline Invitation</span></button>
+          </form>
+        </div>
+      </div>
+      <!-- /form  invite -->
+
+      
+    </div>
+  </div>
+  <!-- /form container -->
+
+</div>
+  </div>
+<!-- footer -->
+<footer class="site_footer">
+    <div class="site_footer_divider"></div>
+    <div class="wrapper">
+        <div class="footer_menus">
+            <nav class="footer_menu">
+                <div class="footer_menu_wrapper">
+                    <h4 class="footer_menu_title">OUR PRODUCTS</h4>
+                    <ul>
+                        <li><a href="https://nimbus.everhelper.me/note.php" title="Nimbus Notes">Nimbus Note</a></li>
+                        <li><a href="https://nimbus.everhelper.me/clipper.php" title="Nimbus Clipper">Nimbus Clipper</a></li>
+                        <li><a href="https://nimbus.everhelper.me/screenshot.php" title="Nimbus Screen Capture">Nimbus Screen Capture</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <nav class="footer_menu">
+                <div class="footer_menu_wrapper">
+                    <h4 class="footer_menu_title">OUR support</h4>
+                    <ul>
+                        <li><a href="http://everhelperblog.com/" title="Nimbus Blog">Nimbus Blog</a></li>
+                        <li><a href="https://nimbus.everhelper.me/contact-us.php" title="Contact US">Contact US</a></li>
+						 <li><a href="http://help.everhelper.me/" title="Knowledge Base">Knowledge Base</a></li>
+                        <li><a href="https://nimbus.everhelper.me/comparison/" title="Nimbus Note Comparsion">Nimbus Note Comparsion</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <nav class="footer_menu">
+                <div class="footer_menu_wrapper">
+                    <h4 class="footer_menu_title">ABOUT US</h4>
+                    <ul>
+                        <li><a href="https://nimbus.everhelper.me/terms-and-conditions.php" title="Terms &amp; Conditions">Terms &amp; Conditions</a></li>
+                        <li><a href="https://nimbus.everhelper.me/privacy.php" title="Privacy Policy">Privacy Policy</a></li>
+				        <li><a href="https://nimbus.everhelper.me/data-protection.php" title="Data Protection">Data Protection</a></li>
+						<li><a href="https://nimbus.everhelper.me/security.php" title="Security">Security</a></li>
+                        <li><a href="https://nimbus.everhelper.me/why-us.php" title="Why Us">About Us</a></li>
+                        <li><a href="https://nimbus.everhelper.me/pricing.php" title="Pricing">Pricing</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <br class="clear footer_menu_clear">
+        </div>
+        <div class="footer_cards">
+            <div class="footer_cards_block"><img src="./Nimbus - Authorization_files/Visacard_logo.svg"></div>
+            <div class="footer_cards_block"><img src="./Nimbus - Authorization_files/MasterCard-Logo.svg"></div>
+            <br class="clear">
+        </div>
+        <br class="clear footer_top_clear">
+    </div>
+    <div class="copy">√© Copyright
+        2017        Nimbus Web INC. All Rights Resevered</div>
+</footer>
+<!-- /footer -->
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-48557534-1']);
+      _gaq.push(['_setDomainName', 'everhelper.me']);
+      _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</body></html>
