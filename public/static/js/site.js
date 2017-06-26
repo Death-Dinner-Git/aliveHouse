@@ -872,6 +872,7 @@ Site.initBanner = function (data, options) {
         $index = $bannerBody.find('.item').eq(j);
         !$index || $index.stop().css({left:position});
     }
+    !$bannerBottom.find('span').eq(0).addClass('active');
 
     if(config.autoPlay){
         autoShow();
