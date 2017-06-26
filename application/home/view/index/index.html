@@ -35,6 +35,9 @@
 
         <!-- This bannerAbsTable start -->
         <section id="bannerAbsTable" class="absTopTable">
+
+
+
         </section>
         <!-- This bannerAbsTable end -->
 
@@ -74,45 +77,9 @@
                 <!-- 顶级主体 左侧 区域结束 -->
 
                 <!-- 顶级主体 中间 区域导航开启 -->
-                <section class="centerTable flex-middle-center">
+                <section class="centerTable flex-middle-center" style="position: relative;">
 
-                    <div id="webBanner" class="webBanner bannerTable" style="width: 1349px; overflow: hidden; height: 645px;">
-                        <div class="bannerBody" style="width: 6745px; left: 0px;">
-                            <span class="item" style="left: 0px;">
-                                <a hidefocus="true">
-                                    <img src="/static/images/theme/theme-banner1.jpg" alt="图片1" style="width:1349px;height:645px;">
-                                </a>
-                            </span>
-                            <span class="item" style="left: 1349px;">
-                                <a hidefocus="true">
-                                    <img src="/static/images/theme/theme-banner3.jpg" alt="图片2" style="width:1349px;height:645px;">
-                                </a>
-                            </span>
-                            <span class="item" style="left: 2698px;">
-                                <a hidefocus="true">
-                                    <img src="/static/images/theme/theme-banner1.jpg" alt="图片1" style="width:1349px;height:645px;">
-                                </a>
-                            </span>
-                            <span class="item" style="left: 4047px;"><a
-                                    hidefocus="true">
-                                <img src="/static/images/theme/theme-banner3.jpg" alt="图片2" style="width:1349px;height:645px;">
-                            </a>
-                            </span>
-                            <span class="item" style="left: 5396px;">
-                                <a hidefocus="true">
-                                    <img src="/static/images/theme/theme-banner1.jpg" alt="图片1" style="width:1349px;height:645px;">
-                                </a>
-                            </span>
-                        </div>
-                        <div class="bannerPrev switchBtn" style="display: none;"></div>
-                        <div class="bannerNext switchBtn" style="display: none;"></div>
-                        <div class="bannerBottom">
-                            <span data-cid="0" data-title="" class="active">1</span>
-                            <span data-cid="1" data-title="" class="">2</span>
-                            <span data-cid="2" data-title="" class="">3</span>
-                            <span data-cid="3" data-title="" class="">4</span>
-                        </div>
-                    </div>
+                    <div id="webBanner" style="width: 1349px; overflow: hidden; height: 645px;"></div>
 
                 </section>
                 <!-- 顶级主体 中间 区域导航结束 -->
@@ -605,6 +572,48 @@
 <!-- This webContainerBottom end 下 结束 -->
 
 <script>
+
+    $(function () {
+        var data = [
+            {
+                "title": "图片1",
+                "desc": "",
+                "target": "",
+                "src": "/static/images/theme/theme-banner1.jpg",
+            },
+            {
+                "title": "图片2",
+                "desc": "",
+                "target": "",
+                "src": "/static/images/theme/theme-banner3.jpg",
+            },
+            {
+                "title": "图片1",
+                "desc": "",
+                "target": "",
+                "src": "/static/images/theme/theme-banner1.jpg",
+            },
+            {
+                "title": "图片2",
+                "desc": "",
+                "target": "",
+                "src": "/static/images/theme/theme-banner3.jpg",
+            }
+        ];
+        var options = {
+            "banner": "#webBanner",
+//        "width": 1200,
+//        "height": 487,
+            "playTime": 4000,
+            "animateTime": 628,
+            "interval": 4000,
+            "btnType": 1,
+            "targetType": "2",
+            "wideScreen": true,
+            "autoPlay":true
+        };
+        Site.initBanner(data,options);
+    });
 
 </script>
 
