@@ -729,7 +729,7 @@ Site.loadPage =  function (pageElement,total) {
  * @param selecter
  */
 Site.loadImage = function (selecter) {
-    var $this = $(selecter),url= $this.data('url'),$parent = $this.data('parent');
+    var $this = $(selecter),url= $this.data('url'),$parent = $this.data('target');
     if (!url){
         return;
     }
@@ -737,8 +737,11 @@ Site.loadImage = function (selecter) {
     img.onload=function(){
         img.onload=null;
         if (!$parent){
+            if ($this.is('img')){
+                $this.attr('src',url);
+            }
         }else {
-            $parent.append("<img src='"+url+ " />");
+            $($parent).append("<img src='"+url+ " />");
         }
     };
     img.src=url;
@@ -754,6 +757,7 @@ Site.initBanner = function (data, options) {
         return;
     }
     var imageData=[],
+        loadImage = [],
         imageWidth,
         position = 0,
         size=0,
@@ -826,7 +830,7 @@ Site.initBanner = function (data, options) {
         }
         item = '<span class="item">' +
             '<a hidefocus="true" '+aPicAttr+'>' +
-            '<img src="'+imageData[i].src+'" '+alt+' style="width:'+config.width+'px;height:'+config.height+'px;" />' +
+            '<img data-url="'+imageData[i].src+'" '+alt+' style="width:'+config.width+'px;height:'+config.height+'px;" />' +
             '</a> ' + desc + '</span>';
 
         btn = '<span data-cid="'+i+'" data-title="'+barDesc+'"></span>';
@@ -869,10 +873,13 @@ Site.initBanner = function (data, options) {
         }else {
             position = 0;
         }
+        loadImage.push(false);
         $index = $bannerBody.find('.item').eq(j);
         !$index || $index.stop().css({left:position});
     }
-    !$bannerBottom.find('span').eq(0).addClass('active');
+    $bannerBottom.find('span').eq(0).addClass('active');
+    load(0);
+    load(size-1);
 
     if(config.autoPlay){
         autoShow();
@@ -923,6 +930,16 @@ Site.initBanner = function (data, options) {
      *
      */
 
+    //图片懒加载
+    function load(k) {
+        k = k || index;
+        if (loadImage[k] === true){
+            return;
+        }
+        Site.loadImage($bannerBody.find('.item').eq(k).find('img'));
+        loadImage[k] = true;
+    }
+
     //图片自动播放
     function autoShow() {
         t=setInterval(function () {
@@ -959,6 +976,7 @@ Site.initBanner = function (data, options) {
      */
     function MOVE() {
         updateBar();
+        load();
         $bannerBody.stop().animate({left:-imageWidth*index},config.animateTime);
         $bannerBody.find('.item').eq(index).removeClass('active').addClass('active').siblings().removeClass('active');
     }

@@ -1,7 +1,6 @@
 ﻿@charset "utf-8";
 input[type="checkbox"] {
     vertical-align: -2px;
-    _vertical-align: -1px;
 }
 
 img {
@@ -142,19 +141,19 @@ a {
 }
 
 .g_close {
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1332px -36px no-repeat
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1332px -36px no-repeat
 }
 
 .g_close:hover {
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1369px -36px no-repeat
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1369px -36px no-repeat
 }
 
 .g_imgPrev {
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1584px -204px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1584px -204px
 }
 
 .g_imgNext {
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1548px -204px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1548px -204px
 }
 
 .g_control_prev {
@@ -253,16 +252,16 @@ span.g_control_next:before {
 }
 
 .siteFormAddButton .s_ibutton1 .left, .voteOperate .s_ibutton1 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton1 .left {
-    background: url(/static/images/member/buttonStyle/red_left.png?v=201503231713) left no-repeat
+    background: url(../../images-bak/member/buttonStyle/red_left.png?v=201503231713) left no-repeat
 }
 
 .siteFormAddButton .s_ibutton1 .middle, .voteOperate .s_ibutton1 .middle, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton1 .middle {
-    background: url(/static/images/member/buttonStyle/red_middle.png?v=201503231713) 0 repeat-x;
+    background: url(../../images-bak/member/buttonStyle/red_middle.png?v=201503231713) 0 repeat-x;
     background-color: #f54f4f
 }
 
 .siteFormAddButton .s_ibutton1 .right, .voteOperate .s_ibutton1 .right, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton1 .right {
-    background: url(/static/images/member/buttonStyle/red_right.png?v=201503231713) right no-repeat
+    background: url(../../images-bak/member/buttonStyle/red_right.png?v=201503231713) right no-repeat
 }
 
 .siteFormAddButton .s_ibutton2 .left, .voteOperate .s_ibutton2 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton2 .left {
@@ -278,16 +277,16 @@ span.g_control_next:before {
 }
 
 .siteFormAddButton .s_ibutton3 .left, .voteOperate .s_ibutton3 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton3 .left {
-    background: url(/static/images/member/buttonStyle/yellow_left.png?v=201503231713) left no-repeat
+    background: url(../../images-bak/member/buttonStyle/yellow_left.png?v=201503231713) left no-repeat
 }
 
 .siteFormAddButton .s_ibutton3 .middle, .voteOperate .s_ibutton3 .middle, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton3 .middle {
-    background: url(/static/images/member/buttonStyle/yellow_middle.png?v=201503231713) 0 repeat-x;
+    background: url(../../images-bak/member/buttonStyle/yellow_middle.png?v=201503231713) 0 repeat-x;
     background-color: #ffad2b
 }
 
 .siteFormAddButton .s_ibutton3 .right, .voteOperate .s_ibutton3 .right, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton3 .right {
-    background: url(/static/images/member/buttonStyle/yellow_right.png?v=201503231713) right no-repeat
+    background: url(../../images-bak/member/buttonStyle/yellow_right.png?v=201503231713) right no-repeat
 }
 
 .siteFormAddButton .s_ibutton4 .left, .voteOperate .s_ibutton4 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton4 .left {
@@ -303,16 +302,16 @@ span.g_control_next:before {
 }
 
 .siteFormAddButton .s_ibutton5 .left, .voteOperate .s_ibutton5 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton5 .left {
-    background: url(/static/images/member/buttonStyle/blue_left.png?v=201503231713) left no-repeat
+    background: url(../../images-bak/member/buttonStyle/blue_left.png?v=201503231713) left no-repeat
 }
 
 .siteFormAddButton .s_ibutton5 .middle, .voteOperate .s_ibutton5 .middle, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton5 .middle {
-    background: url(/static/images/member/buttonStyle/blue_middle.png?v=201503231713) 0 repeat-x;
+    background: url(../../images-bak/member/buttonStyle/blue_middle.png?v=201503231713) 0 repeat-x;
     background-color: #5ab4ff
 }
 
 .siteFormAddButton .s_ibutton5 .right, .voteOperate .s_ibutton5 .right, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton5 .right {
-    background: url(/static/images/member/buttonStyle/blue_right.png?v=201503231713) right no-repeat
+    background: url(../../images-bak/member/buttonStyle/blue_right.png?v=201503231713) right no-repeat
 }
 
 .siteFormAddButton .s_ibutton6 .left, .voteOperate .s_ibutton6 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton6 .left {
@@ -328,16 +327,16 @@ span.g_control_next:before {
 }
 
 .siteFormAddButton .s_ibutton7 .left, .voteOperate .s_ibutton7 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton7 .left {
-    background: url(/static/images/member/buttonStyle/green_left.png?v=201503231713) left no-repeat
+    background: url(../../images-bak/member/buttonStyle/green_left.png?v=201503231713) left no-repeat
 }
 
 .siteFormAddButton .s_ibutton7 .middle, .voteOperate .s_ibutton7 .middle, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton7 .middle {
-    background: url(/static/images/member/buttonStyle/green_middle.png?v=201503231713) 0 repeat-x;
+    background: url(../../images-bak/member/buttonStyle/green_middle.png?v=201503231713) 0 repeat-x;
     background-color: #85c300
 }
 
 .siteFormAddButton .s_ibutton7 .right, .voteOperate .s_ibutton7 .right, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton7 .right {
-    background: url(/static/images/member/buttonStyle/green_right.png?v=201503231713) right no-repeat
+    background: url(../../images-bak/member/buttonStyle/green_right.png?v=201503231713) right no-repeat
 }
 
 .siteFormAddButton .s_ibutton8 .left, .voteOperate .s_ibutton8 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton8 .left {
@@ -353,16 +352,16 @@ span.g_control_next:before {
 }
 
 .siteFormAddButton .s_ibutton9 .left, .voteOperate .s_ibutton9 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton9 .left {
-    background: url(/static/images/member/buttonStyle/pink_left.png?v=201503231713) left no-repeat
+    background: url(../../images-bak/member/buttonStyle/pink_left.png?v=201503231713) left no-repeat
 }
 
 .siteFormAddButton .s_ibutton9 .middle, .voteOperate .s_ibutton9 .middle, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton9 .middle {
-    background: url(/static/images/member/buttonStyle/pink_middle.png?v=201503231713) 0 repeat-x;
+    background: url(../../images-bak/member/buttonStyle/pink_middle.png?v=201503231713) 0 repeat-x;
     background-color: #e13e8d
 }
 
 .siteFormAddButton .s_ibutton9 .right, .voteOperate .s_ibutton9 .right, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton9 .right {
-    background: url(/static/images/member/buttonStyle/pink_right.png?v=201503231713) right no-repeat
+    background: url(../../images-bak/member/buttonStyle/pink_right.png?v=201503231713) right no-repeat
 }
 
 .siteFormAddButton .s_ibutton10 .left, .voteOperate .s_ibutton10 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton10 .left {
@@ -378,16 +377,16 @@ span.g_control_next:before {
 }
 
 .siteFormAddButton .s_ibutton11 .left, .voteOperate .s_ibutton11 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton11 .left {
-    background: url(/static/images/member/buttonStyle/black_left.png?v=201503231713) left no-repeat
+    background: url(../../images-bak/member/buttonStyle/black_left.png?v=201503231713) left no-repeat
 }
 
 .siteFormAddButton .s_ibutton11 .middle, .voteOperate .s_ibutton11 .middle, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton11 .middle {
-    background: url(/static/images/member/buttonStyle/black_middle.png?v=201503231713) 0 repeat-x;
+    background: url(../../images-bak/member/buttonStyle/black_middle.png?v=201503231713) 0 repeat-x;
     background-color: #8e8e8e
 }
 
 .siteFormAddButton .s_ibutton11 .right, .voteOperate .s_ibutton11 .right, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton11 .right {
-    background: url(/static/images/member/buttonStyle/black_right.png?v=201503231713) right no-repeat
+    background: url(../../images-bak/member/buttonStyle/black_right.png?v=201503231713) right no-repeat
 }
 
 .siteFormAddButton .s_ibutton12 .left, .voteOperate .s_ibutton12 .left, .msgSubmit .msgSAdd .msgAddButton_N .m_ibutton12 .left {
@@ -434,32 +433,32 @@ span.g_control_next:before {
 }
 
 .g_sB_rt {
-    background: url(/static/images/site/float/float_default.png) no-repeat 0 0
+    background: url(../../images-bak/site/float/float_default.png) no-repeat 0 0
 }
 
 .g_sB_rc {
-    background: url(/static/images/site/float/float_default.png) repeat-y -60px 0
+    background: url(../../images-bak/site/float/float_default.png) repeat-y -60px 0
 }
 
 .g_sB_rb {
-    background: url(/static/images/site/float/float_default.png) no-repeat -120px 0
+    background: url(../../images-bak/site/float/float_default.png) no-repeat -120px 0
 }
 
 .g_sB_lt {
-    background: url(/static/images/site/float/float_default.png) no-repeat -180px 0
+    background: url(../../images-bak/site/float/float_default.png) no-repeat -180px 0
 }
 
 .g_sB_lc {
-    background: url(/static/images/site/float/float_default.png) repeat-y -240px 0
+    background: url(../../images-bak/site/float/float_default.png) repeat-y -240px 0
 }
 
 .g_sB_lb {
-    background: url(/static/images/site/float/float_default.png) no-repeat -300px 0
+    background: url(../../images-bak/site/float/float_default.png) no-repeat -300px 0
 }
 
 .g_mallBuy {
     height: 22px;
-    background: url(/static/images/buy-icon-03.png?v=201501201112) no-repeat 0 -375px;
+    background: url(../../images-bak/buy-icon-03.png?v=201501201112) no-repeat 0 -375px;
     display: inline-block;
     padding-left: 25px;
     border-radius: 5px 0 0 5px;
@@ -474,14 +473,14 @@ span.g_control_next:before {
     display: inline-block;
     float: left;
     cursor: pointer;
-    background: url(/static/images/buy-icon-03.png?v=201501201112) 0 -405px repeat-x;
+    background: url(../../images-bak/buy-icon-03.png?v=201501201112) 0 -405px repeat-x;
     margin-left: -1px;
     padding: 0 5px;
     border-radius: 0 5px 5px 0
 }
 
 .g_mallBuyBig {
-    background: url(/static/images/buy-icon-02.png?v=201503170954) no-repeat 0 -577px;
+    background: url(../../images-bak/buy-icon-02.png?v=201503170954) no-repeat 0 -577px;
     padding-left: 32px;
     display: inline-block;
     height: 35px;
@@ -492,7 +491,7 @@ span.g_control_next:before {
 
 .g_mallBuyBig span {
     letter-spacing: 5px;
-    background: url(/static/images/buy-icon-02.png?v=201503170954) repeat 0 -624px;
+    background: url(../../images-bak/buy-icon-02.png?v=201503170954) repeat 0 -624px;
     font-size: 18px;
     font-weight: bold;
     color: #fff;
@@ -522,7 +521,7 @@ span.g_control_next:before {
     display: inline-block;
     height: 22px;
     line-height: 23px;
-    background: #b30000 url(/static/images/cart.png?v=201505251717) 8px center no-repeat;
+    background: #b30000 url(../../images-bak/cart.png?v=201505251717) 8px center no-repeat;
     padding: 0 8px 0 28px;
     letter-spacing: 4px;
     border-radius: 4px;
@@ -551,7 +550,7 @@ span.g_control_next:before {
     width: 15px;
     height: 13px;
     margin-right: 10px;
-    background: url(/static/images/cart.png?v=201505251717) center no-repeat;
+    background: url(../../images-bak/cart.png?v=201505251717) center no-repeat;
     position: relative;
     top: 4px;
     *zoom: 1;
@@ -595,7 +594,7 @@ span.g_control_next:before {
 }
 
 .productTileForm .propList .fifth_mallBuy.fk-mallBgCar, .productMarqueeForm .fifth_mallBuy.fk-mallBgCar, .product-gallery .product-container .fifth_mallBuy.fk-mallBgCar, .productList .productDoublePicListForm .fifth_mallBuy.fk-mallBgCar, .fk-mallBgCar {
-    background: url(/static/images/site/mallBuyBtn/mallBuyCar.png?v=201701181028) no-repeat center center
+    background: url(../../images-bak/site/mallBuyBtn/mallBuyCar.png?v=201701181028) no-repeat center center
 }
 
 .g_border {
@@ -655,28 +654,28 @@ span.g_control_next:before {
 }
 
 .g_photoBack {
-    background: url(/static/images/site/photo_back.png) center no-repeat;
+    background: url(../../images-bak/site/photo_back.png) center no-repeat;
     cursor: pointer
 }
 
 .g_topFlag1 {
-    background: url(/static/images/g_topFlag1.gif?v=201404011729) no-repeat 0 -36px
+    background: url(../../images-bak/g_topFlag1.gif?v=201404011729) no-repeat 0 -36px
 }
 
 .g_topFlag2 {
-    background: url(/static/images/g_topFlag2.gif) no-repeat 0 -37px
+    background: url(../../images-bak/g_topFlag2.gif) no-repeat 0 -37px
 }
 
 .g_topFlag3 {
-    background: url(/static/images/g_topFlag3.gif) no-repeat 0 -36px
+    background: url(../../images-bak/g_topFlag3.gif) no-repeat 0 -36px
 }
 
 .g_topFlag4 {
-    background: url(/static/images/g_topFlag4.gif) no-repeat 0 4px
+    background: url(../../images-bak/g_topFlag4.gif) no-repeat 0 4px
 }
 
 .g_topFlag5 {
-    background: url(/static/images/g_topFlag5.gif?v=201606131822) no-repeat 0 2px
+    background: url(../../images-bak/g_topFlag5.gif?v=201606131822) no-repeat 0 2px
 }
 
 .g_html {
@@ -1285,7 +1284,7 @@ span.g_control_next:before {
 }
 
 .localer .localerPanel_4 .arrow {
-    background: url(/static/images/locater/locater_Arrow1.png?v=201412291810) center no-repeat;
+    background: url(../../images-bak/locater/locater_Arrow1.png?v=201412291810) center no-repeat;
     position: absolute;
     width: 7px;
     top: 0;
@@ -1379,7 +1378,7 @@ span.g_control_next:before {
 }
 
 .localer .localerPanel_5 .arrow {
-    background: url(/static/images/locater/locater_Arrow1.png?v=201412291810) center no-repeat;
+    background: url(../../images-bak/locater/locater_Arrow1.png?v=201412291810) center no-repeat;
     position: absolute;
     width: 12px;
     height: 26px;
@@ -1483,7 +1482,7 @@ span.g_control_next:before {
     position: absolute;
     top: 0;
     right: 0;
-    background: url(/static/images/locater/locater_Arrow2.png?v=201412291810) center no-repeat;
+    background: url(../../images-bak/locater/locater_Arrow2.png?v=201412291810) center no-repeat;
     transition: all ease .7s;
     -moz-transition: all ease .7s;
     -webkit-transition: all ease .7s;
@@ -1563,51 +1562,51 @@ span.g_control_next:before {
 }
 
 .localer .localerPanel_7 .languageCn_Icon {
-    background: url(/static/images/locater/locater_National/national_cn.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_cn.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageTcn_Icon {
-    background: url(/static/images/locater/locater_National/national_cn.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_cn.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageEn_Icon {
-    background: url(/static/images/locater/locater_National/national_en.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_en.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageJp_Icon {
-    background: url(/static/images/locater/locater_National/national_jp.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_jp.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageKor_Icon {
-    background: url(/static/images/locater/locater_National/national_kor.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_kor.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageLo_Icon {
-    background: url(/static/images/locater/locater_National/national_lo.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_lo.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageTh_Icon {
-    background: url(/static/images/locater/locater_National/national_th.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_th.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageEs_Icon {
-    background: url(/static/images/locater/locater_National/national_es.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_es.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageRu_Icon {
-    background: url(/static/images/locater/locater_National/national_ru.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_ru.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageFra_Icon {
-    background: url(/static/images/locater/locater_National/national_fra.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_fra.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_7 .languageIt_Icon {
-    background: url(/static/images/locater/locater_National/national_it.png?v=201504131729) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_it.png?v=201504131729) center no-repeat
 }
 
 .localer .localerPanel_7 .languageDe_Icon {
-    background: url(/static/images/locater/locater_National/national_de.png?v=201606271735) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_de.png?v=201606271735) center no-repeat
 }
 
 .localer .localerPanel_7 .text {
@@ -1622,7 +1621,7 @@ span.g_control_next:before {
     top: 0;
     right: 0;
     padding: 0 7px;
-    background: url(/static/images/locater/locater_Arrow3.png?v=201412301116) center no-repeat;
+    background: url(../../images-bak/locater/locater_Arrow3.png?v=201412301116) center no-repeat;
     transition: all ease .7s;
     -moz-transition: all ease .7s;
     -webkit-transition: all ease .7s;
@@ -1705,51 +1704,51 @@ span.g_control_next:before {
 }
 
 .localer .localerPanel_8 .languageCn_Icon {
-    background: url(/static/images/locater/locater_National/national_text_cn.png?v=201412311457) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_cn.png?v=201412311457) center no-repeat
 }
 
 .localer .localerPanel_8 .languageTcn_Icon {
-    background: url(/static/images/locater/locater_National/national_text_tcn.png?v=201412311457) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_tcn.png?v=201412311457) center no-repeat
 }
 
 .localer .localerPanel_8 .languageEn_Icon {
-    background: url(/static/images/locater/locater_National/national_text_en.png?v=201412311457) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_en.png?v=201412311457) center no-repeat
 }
 
 .localer .localerPanel_8 .languageJp_Icon {
-    background: url(/static/images/locater/locater_National/national_text_jp.png?v=201412311457) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_jp.png?v=201412311457) center no-repeat
 }
 
 .localer .localerPanel_8 .languageKor_Icon {
-    background: url(/static/images/locater/locater_National/national_text_kor.png?v=201412311457) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_kor.png?v=201412311457) center no-repeat
 }
 
 .localer .localerPanel_8 .languageLo_Icon {
-    background: url(/static/images/locater/locater_National/national_text_lo.png?v=201412311457) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_lo.png?v=201412311457) center no-repeat
 }
 
 .localer .localerPanel_8 .languageTh_Icon {
-    background: url(/static/images/locater/locater_National/national_text_th.png?v=201501051314) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_th.png?v=201501051314) center no-repeat
 }
 
 .localer .localerPanel_8 .languageEs_Icon {
-    background: url(/static/images/locater/locater_National/national_text_es.png?v=201412311457) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_es.png?v=201412311457) center no-repeat
 }
 
 .localer .localerPanel_8 .languageRu_Icon {
-    background: url(/static/images/locater/locater_National/national_text_ru.png?v=201412311457) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_ru.png?v=201412311457) center no-repeat
 }
 
 .localer .localerPanel_8 .languageFra_Icon {
-    background: url(/static/images/locater/locater_National/national_text_fra.png?v=201412311457) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_fra.png?v=201412311457) center no-repeat
 }
 
 .localer .localerPanel_8 .languageIt_Icon {
-    background: url(/static/images/locater/locater_National/national_text_it.png?v=201504131729) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_it.png?v=201504131729) center no-repeat
 }
 
 .localer .localerPanel_8 .languageDe_Icon {
-    background: url(/static/images/locater/locater_National/national_text_de.png?v=201606271735) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_text_de.png?v=201606271735) center no-repeat
 }
 
 .localer .localerPanel_8 .text {
@@ -1764,7 +1763,7 @@ span.g_control_next:before {
     padding: 0 7px;
     top: 0;
     right: 0;
-    background: url(/static/images/locater/locater_Arrow3.png?v=201412301116) center no-repeat;
+    background: url(../../images-bak/locater/locater_Arrow3.png?v=201412301116) center no-repeat;
     transition: all ease .7s;
     -moz-transition: all ease .7s;
     -webkit-transition: all ease .7s;
@@ -1852,51 +1851,51 @@ span.g_control_next:before {
 }
 
 .localer .localerPanel_9 .languageCn_Icon {
-    background: url(/static/images/locater/locater_National/national_cn.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_cn.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageTcn_Icon {
-    background: url(/static/images/locater/locater_National/national_cn.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_cn.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageEn_Icon {
-    background: url(/static/images/locater/locater_National/national_en.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_en.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageJp_Icon {
-    background: url(/static/images/locater/locater_National/national_jp.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_jp.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageKor_Icon {
-    background: url(/static/images/locater/locater_National/national_kor.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_kor.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageLo_Icon {
-    background: url(/static/images/locater/locater_National/national_lo.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_lo.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageTh_Icon {
-    background: url(/static/images/locater/locater_National/national_th.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_th.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageEs_Icon {
-    background: url(/static/images/locater/locater_National/national_es.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_es.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageRu_Icon {
-    background: url(/static/images/locater/locater_National/national_ru.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_ru.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageFra_Icon {
-    background: url(/static/images/locater/locater_National/national_fra.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_fra.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageIt_Icon {
-    background: url(/static/images/locater/locater_National/national_it.png?v=201412301116) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_it.png?v=201412301116) center no-repeat
 }
 
 .localer .localerPanel_9 .languageDe_Icon {
-    background: url(/static/images/locater/locater_National/national_de.png?v=201606271735) center no-repeat
+    background: url(../../images-bak/locater/locater_National/national_de.png?v=201606271735) center no-repeat
 }
 
 .localer .localerPanel_9 .text {
@@ -1909,7 +1908,7 @@ span.g_control_next:before {
     position: absolute;
     top: 0;
     right: 0;
-    background: url(/static/images/locater/locater_Arrow3.png?v=201412301116) center no-repeat;
+    background: url(../../images-bak/locater/locater_Arrow3.png?v=201412301116) center no-repeat;
     transition: all ease .7s;
     -moz-transition: all ease .7s;
     -webkit-transition: all ease .7s;
@@ -2733,11 +2732,11 @@ span.g_control_next:before {
     z-index: 16;
     cursor: pointer;
     display: none;
-    background: url(/static/images/template/frame/navleft.gif?v=201610311810) no-repeat
+    background: url(../../images-bak/template/frame/navleft.gif?v=201610311810) no-repeat
 }
 
 .nav .itemPrevHover {
-    background: url(/static/images/template/frame/navleft2.gif?v=201610311810) no-repeat
+    background: url(../../images-bak/template/frame/navleft2.gif?v=201610311810) no-repeat
 }
 
 .nav .itemContainer {
@@ -2764,11 +2763,11 @@ span.g_control_next:before {
     display: none;
     z-index: 16;
     cursor: pointer;
-    background: url(/static/images/template/frame/navright.gif?v=201610311810) no-repeat
+    background: url(../../images-bak/template/frame/navright.gif?v=201610311810) no-repeat
 }
 
 .nav .itemNextHover {
-    background: url(/static/images/template/frame/navright2.gif?v=201610311810) no-repeat
+    background: url(../../images-bak/template/frame/navright2.gif?v=201610311810) no-repeat
 }
 
 .nav .itemSep {
@@ -3616,12 +3615,12 @@ span.g_control_next:before {
 
 .productFilter .productFilterFold {
     padding-left: 15px;
-    background: url(/static/images/fold.png?v=201501201112) 0 -35px no-repeat
+    background: url(../../images-bak/fold.png?v=201501201112) 0 -35px no-repeat
 }
 
 .productFilter .productFilterUnfold {
     padding-left: 15px;
-    background: url(/static/images/fold.png?v=201501201112) 0 5px no-repeat
+    background: url(../../images-bak/fold.png?v=201501201112) 0 5px no-repeat
 }
 
 .productFilter .productFilterNotFold {
@@ -4313,7 +4312,7 @@ body .forms .siteEditor.form .fkEditor {
     z-index: 0;
     zoom: 1;
     cursor: pointer;
-    background: #56a1e3 url(/static/images/v2/mbg01.png?v=201705101138) -785px -2px no-repeat
+    background: #56a1e3 url(../../images-bak/v2/mbg01.png?v=201705101138) -785px -2px no-repeat
 }
 
 .newsList .line .newsTitle a.editBtn:hover {
@@ -4327,7 +4326,7 @@ body .forms .siteEditor.form .fkEditor {
     z-index: 0;
     zoom: 1;
     cursor: pointer;
-    background: #56a1e3 url(/static/images/v2/mbg01.png?v=201705101138) -785px -2px no-repeat
+    background: #56a1e3 url(../../images-bak/v2/mbg01.png?v=201705101138) -785px -2px no-repeat
 }
 
 .newsList .wWLine {
@@ -5103,7 +5102,7 @@ body .forms .siteEditor.form .fkEditor {
     display: block;
     width: 50px;
     height: 50px;
-    background-image: url(/static/images/site/msgUpImg/upload.png);
+    background-image: url(../../images-bak/site/msgUpImg/upload.png);
     background-repeat: no-repeat
 }
 
@@ -5160,7 +5159,7 @@ body .forms .siteEditor.form .fkEditor {
     right: 0;
     margin-top: -5px;
     margin-right: -5px;
-    background-image: url(/static/images/site/msgUpImg/delete.png?v=201508181910);
+    background-image: url(../../images-bak/site/msgUpImg/delete.png?v=201508181910);
     background-repeat: no-repeat
 }
 
@@ -5233,7 +5232,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .msgBoard_msgUser_level {
-    background: url(/static/images/site/msgUpImg/memberLevel.png?v=201603211725) no-repeat;
+    background: url(../../images-bak/site/msgUpImg/memberLevel.png?v=201603211725) no-repeat;
     width: 15px;
     height: 13px;
     display: inline-block;
@@ -5342,7 +5341,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .fk-icons-star {
-    background: url(/static/images/xin.png?v=201512151853) no-repeat 0 -44px
+    background: url(../../images-bak/xin.png?v=201512151853) no-repeat 0 -44px
 }
 
 .fk-icons-star.no_select {
@@ -5358,11 +5357,11 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .fk-icons-star.lt_no_select {
-    background: url(/static/images/xin.png?v=201512151853) no-repeat -42px -47px
+    background: url(../../images-bak/xin.png?v=201512151853) no-repeat -42px -47px
 }
 
 .fk-icons-star.lt_select_more {
-    background: url(/static/images/xin.png?v=201512151853) no-repeat -42px -0px
+    background: url(../../images-bak/xin.png?v=201512151853) no-repeat -42px -0px
 }
 
 .statisticStarList li span.fk-icons-star {
@@ -5531,7 +5530,7 @@ body .forms .siteEditor.form .fkEditor {
     width: 16px;
     height: 16px;
     z-index: 10;
-    background: url(/static/images/site/msgUpImg/close.png?v=201508172031) no-repeat
+    background: url(../../images-bak/site/msgUpImg/close.png?v=201508172031) no-repeat
 }
 
 .msg_close_show_img_icon:hover {
@@ -5644,11 +5643,11 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .msgBoard .isReply {
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1045px -230px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1045px -230px
 }
 
 .msgBoard .isReply_N {
-    background: url(/static/images/msgBoard/public.png?v=201603141743) no-repeat
+    background: url(../../images-bak/msgBoard/public.png?v=201603141743) no-repeat
 }
 
 .msgBoard .msgAdd .msgBoardCaptchaHide {
@@ -6189,7 +6188,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .productListSytle .slideLink .slideBtn {
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1187px -11px;
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1187px -11px;
     width: 18px;
     height: 30px;
     line-height: 30px;
@@ -6199,7 +6198,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .productListSytle .slideLink:hover .slideBtn {
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1150px -11px;
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1150px -11px;
     width: 18px;
     height: 30px;
     line-height: 30px;
@@ -6921,7 +6920,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 18px;
     width: 18px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1228px -261px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1228px -261px
 }
 
 .product-gallery .product-container .modifyPhotoTool .deleteIcon {
@@ -6930,7 +6929,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 18px;
     width: 18px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1276px -284px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1276px -284px
 }
 
 .product-gallery .product-container .prop-container {
@@ -7408,7 +7407,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .productDoublePicListForm .propList .fifth_mallBuy.fk-mallBgCar, .productHotTextListHot .fifth_mallBuy.fk-mallBgCar, .productPicListForm .fifth_mallBuy.fk-mallBgCar, .productSmallPicForms .fk-mallBgCar {
-    background: url(/static/images/site/mallBuyBtn/mallBuyCar.png?v=201701181028) no-repeat center center
+    background: url(../../images-bak/site/mallBuyBtn/mallBuyCar.png?v=201701181028) no-repeat center center
 }
 
 .productTileForm .sixth_ProductPanel, .product-gallery .product-container .sixth_ProductPanel {
@@ -7708,7 +7707,7 @@ body .forms .siteEditor.form .fkEditor {
 .showSaleTimeImg {
     width: 16px;
     height: 16px;
-    background-image: url(/static/images/salePromotion/time.png?v=201512071738);
+    background-image: url(../../images-bak/salePromotion/time.png?v=201512071738);
     background-repeat: no-repeat;
     padding-bottom: 8px;
     padding-right: 10px
@@ -7766,14 +7765,14 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .itemPrice .saleMemOrJt {
-    background: url(/static/images/salePromotion/jtDown.png?v=201512071738) no-repeat;
+    background: url(../../images-bak/salePromotion/jtDown.png?v=201512071738) no-repeat;
     width: 6px;
     height: 4px;
     margin-left: 4px
 }
 
 .itemPrice .saleMemOrJtUp {
-    background: url(/static/images/salePromotion/jtUp.png?v=201512071738) no-repeat
+    background: url(../../images-bak/salePromotion/jtUp.png?v=201512071738) no-repeat
 }
 
 .itemPrice .saleMemOrRedVal {
@@ -7993,7 +7992,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .multiPhotoImgLoad {
-    background: url(/static/images/loading/loading_2b.gif?v=201509071734) center center no-repeat;
+    background: url(../../images-bak/loading/loading_2b.gif?v=201509071734) center center no-repeat;
     z-index: 100;
     top: 0;
     position: absolute;
@@ -8066,83 +8065,83 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .shareInfo .copy {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -437px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -437px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -437px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -437px 0 no-repeat
 }
 
 .shareInfo .sina_weibo {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -56px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -56px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -56px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -56px 0 no-repeat
 }
 
 .shareInfo .qq_weibo {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -332px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -332px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -332px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -332px 0 no-repeat
 }
 
 .shareInfo .qq_zone {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -387px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -387px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -387px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -387px 0 no-repeat
 }
 
 .shareInfo .kaixin001 {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -140px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -140px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -140px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -140px 0 no-repeat
 }
 
 .shareInfo .renren {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -84px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -84px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -84px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -84px 0 no-repeat
 }
 
 .shareInfo .douban {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -253px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -253px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -253px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -253px 0 no-repeat
 }
 
 .shareInfo .baidu_hi {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -360px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -360px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -360px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -360px 0 no-repeat
 }
 
 .shareInfo .baidu_tieba {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -412px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -412px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -412px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -412px 0 no-repeat
 }
 
 .shareInfo .taojianghu {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -112px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -112px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -112px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -112px 0 no-repeat
 }
 
 .shareInfo .sohu_weibo {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -279px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -279px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -279px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -279px 0 no-repeat
 }
 
 .shareInfo .netease_weibo {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -305px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -305px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -305px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -305px 0 no-repeat
 }
 
 .shareInfo .FaceBook {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -168px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -168px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -168px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -168px 0 no-repeat
 }
 
 .shareInfo .Twitter {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -196px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -196px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -196px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -196px 0 no-repeat
 }
 
 .shareInfo .LinkedIn {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -224px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -224px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -224px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -224px 0 no-repeat
 }
 
 .shareInfo .Weixin {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -29px 0 no-repeat;
-    _background: url(/static/images/site/n_shareIcn.gif?v=201503091711) -29px 0 no-repeat
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -29px 0 no-repeat;
+    _background: url(../../images-bak/site/n_shareIcn.gif?v=201503091711) -29px 0 no-repeat
 }
 
 .productDetail .shareInfo .shareCtrl a {
@@ -8442,15 +8441,15 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .notice-image0 {
-    background: url(/static/images/site/noticeIco1.gif) no-repeat left center
+    background: url(../../images-bak/site/noticeIco1.gif) no-repeat left center
 }
 
 .notice-image1 {
-    background: url(/static/images/site/noticeIco2.gif) no-repeat left center
+    background: url(../../images-bak/site/noticeIco2.gif) no-repeat left center
 }
 
 .notice-image2 {
-    background: url(/static/images/site/noticeIco3.gif) no-repeat left center
+    background: url(../../images-bak/site/noticeIco3.gif) no-repeat left center
 }
 
 .notice-ico {
@@ -8523,43 +8522,43 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .serOnline-service .qqImg0 {
-    background: url(/static/images/qq/pa45.gif) no-repeat
+    background: url(../../images-bak/qq/pa45.gif) no-repeat
 }
 
 .serOnline-service .qqImg1 {
-    background: url(/static/images/qq/pa4.gif) no-repeat
+    background: url(../../images-bak/qq/pa4.gif) no-repeat
 }
 
 .serOnline-service .qqImg2 {
-    background: url(/static/images/qq/pa10.gif) no-repeat
+    background: url(../../images-bak/qq/pa10.gif) no-repeat
 }
 
 .serOnline-service .qqImg3 {
-    background: url(/static/images/qq/pa3.gif) no-repeat
+    background: url(../../images-bak/qq/pa3.gif) no-repeat
 }
 
 .serOnline-service .qqImgOffLine0 {
-    background: url(/static/images/qq/offline/pa45.gif?v=201601111801) no-repeat
+    background: url(../../images-bak/qq/offline/pa45.gif?v=201601111801) no-repeat
 }
 
 .serOnline-service .qqImgOffLine1 {
-    background: url(/static/images/qq/offline/pa4.gif?v=201601111801) no-repeat
+    background: url(../../images-bak/qq/offline/pa4.gif?v=201601111801) no-repeat
 }
 
 .serOnline-service .qqImgOffLine2 {
-    background: url(/static/images/qq/offline/pa10.gif?v=201601111801) no-repeat
+    background: url(../../images-bak/qq/offline/pa10.gif?v=201601111801) no-repeat
 }
 
 .serOnline-service .qqImgOffLine3 {
-    background: url(/static/images/qq/offline/pa3.gif?v=201601111801) no-repeat
+    background: url(../../images-bak/qq/offline/pa3.gif?v=201601111801) no-repeat
 }
 
 .serOnline-service .skypeImg {
-    background: url(/static/images/comm/ueditor/images/skype2.png) no-repeat
+    background: url(../../images-bak/comm/ueditor/images/skype2.png) no-repeat
 }
 
 .serOnline-service .wawaImg {
-    background: url(/static/images/wangwang/wawa.gif) center center no-repeat
+    background: url(../../images-bak/wangwang/wawa.gif) center center no-repeat
 }
 
 .serOnline-service .serOnline-img {
@@ -8601,16 +8600,16 @@ body .forms .siteEditor.form .fkEditor {
     width: 27px;
     height: 27px;
     display: inline-block;
-    background: url(/static/images/site/serviceOnlineTime1.png?v=201406161741) no-repeat;
-    _background: url(/static/images/site/serviceOnlineTime1.gif?v=201406161741) no-repeat
+    background: url(../../images-bak/site/serviceOnlineTime1.png?v=201406161741) no-repeat;
+    _background: url(../../images-bak/site/serviceOnlineTime1.gif?v=201406161741) no-repeat
 }
 
 .serOnline-contact .contact-header-img {
     width: 27px;
     height: 27px;
     display: inline-block;
-    background: url(/static/images/site/serviceOnlineCall.png?v=201406161741) no-repeat;
-    _background: url(/static/images/site/serviceOnlineCall.gif?v=201406161741) no-repeat
+    background: url(../../images-bak/site/serviceOnlineCall.png?v=201406161741) no-repeat;
+    _background: url(../../images-bak/site/serviceOnlineCall.gif?v=201406161741) no-repeat
 }
 
 .serOnline-list-h {
@@ -8798,12 +8797,12 @@ body .forms .siteEditor.form .fkEditor {
     height: 92px;
     position: absolute;
     left: 0;
-    background: url(/static/images/site/photoArrowLeft.png) no-repeat;
+    background: url(../../images-bak/site/photoArrowLeft.png) no-repeat;
     z-index: 1
 }
 
 .photoSmallPicForms .photoSmallPicUpForms a.photoSmallPicArrow_left:hover {
-    background: url(/static/images/site/photoArrowLeftHover.png) no-repeat
+    background: url(../../images-bak/site/photoArrowLeftHover.png) no-repeat
 }
 
 .photoSmallPicForms .photoSmallPicUpForms a.photoSmallPicArrow_right {
@@ -8812,11 +8811,11 @@ body .forms .siteEditor.form .fkEditor {
     position: absolute;
     right: 0;
     top: 0;
-    background: url(/static/images/site/photoArrowRight.png) no-repeat
+    background: url(../../images-bak/site/photoArrowRight.png) no-repeat
 }
 
 .photoSmallPicForms .photoSmallPicUpForms a.photoSmallPicArrow_right:hover {
-    background: url(/static/images/site/photoArrowRightHover.png) no-repeat
+    background: url(../../images-bak/site/photoArrowRightHover.png) no-repeat
 }
 
 .photoSmallPicForms .photoSmallPicName {
@@ -8875,7 +8874,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 18px;
     width: 18px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1228px -261px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1228px -261px
 }
 
 .photoForm .modifyPhotoTool .deleteIcon {
@@ -8884,7 +8883,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 18px;
     width: 18px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1276px -284px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1276px -284px
 }
 
 .photoForm p {
@@ -8997,7 +8996,7 @@ body .forms .siteEditor.form .fkEditor {
 
 .listPhotosList .dragHover, .listPhotosGallery .dragHover, .photoMarqueeForm .dragHover {
     z-index: 1;
-    background: url(/static/images/bg04.png?v=201607111726) -353px -6px no-repeat
+    background: url(../../images-bak/bg04.png?v=201607111726) -353px -6px no-repeat
 }
 
 .listPhotosList .resizeBcolor, .listPhotosGallery .resizeBcolor, .photoMarqueeForm .resizeBcolor {
@@ -9032,8 +9031,8 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .listPhotosGallery .ls_gallery_prev {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) -33px -170px no-repeat;
-    _background: url(/static/images/site/prev_nextarrow/New_prev.gif?v=201608151840) no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) -33px -170px no-repeat;
+    _background: url(../../images-bak/site/prev_nextarrow/New_prev.gif?v=201608151840) no-repeat;
     width: 7px;
     height: 13px;
     position: absolute;
@@ -9042,8 +9041,8 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .listPhotosGallery .ls_gallery_next {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) -33px -142px no-repeat;
-    _background: url(/static/images/site/prev_nextarrow/New_next.gif?v=201608151840) no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) -33px -142px no-repeat;
+    _background: url(../../images-bak/site/prev_nextarrow/New_next.gif?v=201608151840) no-repeat;
     width: 7px;
     height: 13px;
     position: absolute;
@@ -9173,12 +9172,12 @@ body .forms .siteEditor.form .fkEditor {
 .carouselPhotosSmallPic .photoSmallPicUpForms a.photoSmallPicArrow_left:hover, .carouselPhotosSmallPic .photoSmallPicUpForms a.photoSmallPicArrow_right:hover {
     background: #282828;
     opacity: .8;
-    fiter: alpha(opacity=80)
+    fiter: alpha(opacity=80);
 }
 
 .carouselPhotosSmallPic .photoSmallPicUpForms a.photoSmallPicArrow_left .cs_smallpic_prev {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) -33px -170px no-repeat;
-    _background: url(/static/images/site/prev_nextarrow/New_prev.gif?v=201608151840) no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) -33px -170px no-repeat;
+    _background: url(../../images-bak/site/prev_nextarrow/New_prev.gif?v=201608151840) no-repeat;
     width: 7px;
     height: 13px;
     position: absolute;
@@ -9187,8 +9186,8 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .carouselPhotosSmallPic .photoSmallPicUpForms a.photoSmallPicArrow_right .cs_smallpic_next {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) -33px -142px no-repeat;
-    _background: url(/static/images/site/prev_nextarrow/New_next.gif?v=201608151840) no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) -33px -142px no-repeat;
+    _background: url(../../images-bak/site/prev_nextarrow/New_next.gif?v=201608151840) no-repeat;
     width: 7px;
     height: 13px;
     position: absolute;
@@ -9254,7 +9253,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 18px;
     width: 18px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1228px -261px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1228px -261px
 }
 
 .photoMarqueeForms .modifyPhotoTool .deleteIcon {
@@ -9263,7 +9262,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 18px;
     width: 18px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1276px -284px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1276px -284px
 }
 
 .photoMarqueeForms {
@@ -9461,7 +9460,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 18px;
     width: 18px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1228px -261px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1228px -261px
 }
 
 .photo-gallery .photo-container .modifyPhotoTool .deleteIcon {
@@ -9470,7 +9469,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 18px;
     width: 18px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) no-repeat -1276px -284px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) no-repeat -1276px -284px
 }
 
 .photo-gallery .photo-container .prop-container {
@@ -9651,22 +9650,22 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .photoGroupForm .photoGroupUp .photoShowPrevIcon {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat 0 -12px;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat 0 -12px;
     left: 58px
 }
 
 .photoGroupForm .photoGroupUp .photoShowPrevIcon:hover {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat -50px -12px;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat -50px -12px;
     cursor: pointer
 }
 
 .photoGroupForm .photoGroupUp .photoShowNextIcon {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat 0 -68px;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat 0 -68px;
     right: 58px
 }
 
 .photoGroupForm .photoGroupUp .photoShowNextIcon:hover {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat -50px -68px;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat -50px -68px;
     cursor: pointer
 }
 
@@ -9790,7 +9789,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .photoGroupForm .showList .shareListIcon {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat 0 -140px;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat 0 -140px;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -9799,7 +9798,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .photoGroupForm .showList .shareListMore {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat 0 -165px;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat 0 -165px;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -9809,7 +9808,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .photoGroupForm .showList .shareListMore-hover {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat 0 -180px;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat 0 -180px;
     width: 20px;
     height: 20px
 }
@@ -9878,7 +9877,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .photoGroupForm .pageDiv .pagePrevIcon {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat 0 -180px;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat 0 -180px;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -9888,7 +9887,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .photoGroupForm .pageDiv .pageNextIcon {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat 0 -165px;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat 0 -165px;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -9919,7 +9918,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .user_level_icon {
-    background: url(/static/images/site/msgUpImg/memberLevel.png?v=201603211725) no-repeat;
+    background: url(../../images-bak/site/msgUpImg/memberLevel.png?v=201603211725) no-repeat;
     line-height: 20px;
     width: 20px;
     height: 20px;
@@ -9999,7 +9998,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .photoSwitchBg {
-    background: url(/static/images/site/photoSwitchBg.png?v=201409151747) 0 0 repeat
+    background: url(../../images-bak/site/photoSwitchBg.png?v=201409151747) 0 0 repeat
 }
 
 .imageSwitchBtn_dot {
@@ -10046,53 +10045,53 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .arrow_next {
-    background: url(/static/images/site/right.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1);
+    background: url(../../images-bak/site/right.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1);
     margin-right: 1%;
     float: right;
-    background: url(/static/images/site/right.gif?v=201406241613) no-repeat \9;
+    background: url(../../images-bak/site/right.gif?v=201406241613) no-repeat \9;
     background-color: #727272 \9;
     filter: alpha(opacity=50)
 }
 
 .arrow_prev {
-    background: url(/static/images/site/left.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1);
+    background: url(../../images-bak/site/left.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1);
     margin-left: 1%;
     float: left;
-    background: url(/static/images/site/left.gif?v=201406241613) no-repeat \9;
+    background: url(../../images-bak/site/left.gif?v=201406241613) no-repeat \9;
     background-color: #727272 \9;
     filter: alpha(opacity=50)
 }
 
 .arrow_next_hover {
-    background: url(/static/images/site/right.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.3);
-    background: url(/static/images/site/right.gif?v=201406241613) no-repeat \9;
+    background: url(../../images-bak/site/right.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.3);
+    background: url(../../images-bak/site/right.gif?v=201406241613) no-repeat \9;
     background-color: #727272 \9;
     filter: alpha(opacity=80)
 }
 
 .arrow_prev_hover {
-    background: url(/static/images/site/left.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.3);
-    background: url(/static/images/site/left.gif?v=201406241613) no-repeat \9;
+    background: url(../../images-bak/site/left.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.3);
+    background: url(../../images-bak/site/left.gif?v=201406241613) no-repeat \9;
     background-color: #727272 \9;
     filter: alpha(opacity=80)
 }
 
 .arrow_next_disable {
-    background: url(/static/images/site/right.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1);
+    background: url(../../images-bak/site/right.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1);
     cursor: default
 }
 
 .arrow_next_disable:hover {
-    background: url(/static/images/site/right.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1)
+    background: url(../../images-bak/site/right.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1)
 }
 
 .arrow_prev_disable {
-    background: url(/static/images/site/left.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1);
+    background: url(../../images-bak/site/left.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1);
     cursor: default
 }
 
 .arrow_prev_disable:hover {
-    background: url(/static/images/site/left.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1)
+    background: url(../../images-bak/site/left.png?v=201406241613) no-repeat rgba(0, 0, 0, 0.1)
 }
 
 #module21 {
@@ -10230,35 +10229,35 @@ body .forms .siteEditor.form .fkEditor {
 
 .slide .g_imgPrev {
     float: left;
-    background: url(/static/images/slide.gif);
+    background: url(../../images-bak/slide.gif);
     width: 45px;
     height: 80px;
     margin-left: 0
 }
 
 .slide .g_imgPrevHover {
-    background: url(/static/images/slide.gif) 0 -117px
+    background: url(../../images-bak/slide.gif) 0 -117px
 }
 
 .slide .g_imgPrevNotClick {
-    background: url(/static/images/slide.gif) 0 -249px;
+    background: url(../../images-bak/slide.gif) 0 -249px;
     cursor: default
 }
 
 .slide .g_imgNext {
     float: right;
-    background: url(/static/images/slide.gif) -84px 0;
+    background: url(../../images-bak/slide.gif) -84px 0;
     width: 45px;
     height: 80px;
     margin-right: 0
 }
 
 .slide .g_imgNextHover {
-    background: url(/static/images/slide.gif) -84px -120px
+    background: url(../../images-bak/slide.gif) -84px -120px
 }
 
 .slide .g_imgNextNotClick {
-    background: url(/static/images/slide.gif) -84px -252px;
+    background: url(../../images-bak/slide.gif) -84px -252px;
     cursor: default
 }
 
@@ -10311,7 +10310,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 80px;
     margin: 0 auto 10px auto;
     border: 1px #ebecec solid;
-    background: url(/static/images/slide_topBg.jpg)
+    background: url(../../images-bak/slide_topBg.jpg)
 }
 
 .slide .albums .albumsList {
@@ -10382,7 +10381,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .slide .productInfo .g_imgPrev {
-    background: url(/static/images/slide.gif) -200px 2px no-repeat;
+    background: url(../../images-bak/slide.gif) -200px 2px no-repeat;
     width: 13px;
     height: 65px;
     margin: 0 12px 0 2px;
@@ -10391,15 +10390,15 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .slide .productInfo .g_imgPrevHover {
-    background: url(/static/images/slide.gif) -200px -106px no-repeat
+    background: url(../../images-bak/slide.gif) -200px -106px no-repeat
 }
 
 .slide .productInfo .g_imgPrevNotClick {
-    background: url(/static/images/slide.gif) -200px -226px no-repeat
+    background: url(../../images-bak/slide.gif) -200px -226px no-repeat
 }
 
 .slide .productInfo .g_imgNext {
-    background: url(/static/images/slide.gif) -285px 2px no-repeat;
+    background: url(../../images-bak/slide.gif) -285px 2px no-repeat;
     width: 13px;
     height: 65px;
     display: block;
@@ -10408,11 +10407,11 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .slide .productInfo .g_imgNextHover {
-    background: url(/static/images/slide.gif) -285px -106px no-repeat
+    background: url(../../images-bak/slide.gif) -285px -106px no-repeat
 }
 
 .slide .productInfo .g_imgNextNotClick {
-    background: url(/static/images/slide.gif) -285px -226px no-repeat
+    background: url(../../images-bak/slide.gif) -285px -226px no-repeat
 }
 
 .slide .imgDiv {
@@ -10598,7 +10597,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .slide .productInfo .productProp .basicInfo table {
-    width: 98%:
+    width: 98%;
 }
 
 .slide .productInfo .productOther {
@@ -10622,17 +10621,17 @@ body .forms .siteEditor.form .fkEditor {
 
 .formTabButtonTopLeft {
     width: 0;
-    background: url(/static/images/site/formTabButton/bg.gif) repeat-x 0 0
+    background: url(../../images-bak/site/formTabButton/bg.gif) repeat-x 0 0
 }
 
 .formTabButtonTopCenter {
     width: 100%;
-    background: url(/static/images/site/formTabButton/bgMiddle.gif?v=201508101752) repeat-x
+    background: url(../../images-bak/site/formTabButton/bgMiddle.gif?v=201508101752) repeat-x
 }
 
 .formTabButtonTopRight {
     width: 5px;
-    background: url(/static/images/site/formTabButton/bg.gif) no-repeat 0 -72px
+    background: url(../../images-bak/site/formTabButton/bg.gif) no-repeat 0 -72px
 }
 
 .formTabButtonList {
@@ -10666,35 +10665,35 @@ body .forms .siteEditor.form .fkEditor {
 
 .formTabButton .formTabLeft {
     width: 5px;
-    background: url(/static/images/site/formTabButton/tabbtn_default.gif) no-repeat 0 0
+    background: url(../../images-bak/site/formTabButton/tabbtn_default.gif) no-repeat 0 0
 }
 
 .formTabButton .formTabMiddle {
     padding: 0 4px;
-    background: url(/static/images/site/formTabButton/tabbtn_default.gif) repeat-x 0 -35px;
+    background: url(../../images-bak/site/formTabButton/tabbtn_default.gif) repeat-x 0 -35px;
     -webkit-transition: all .3s;
     transition: all .3s
 }
 
 .formTabButton .formTabRight {
     width: 5px;
-    background: url(/static/images/site/formTabButton/tabbtn_default.gif) no-repeat 0 -70px
+    background: url(../../images-bak/site/formTabButton/tabbtn_default.gif) no-repeat 0 -70px
 }
 
 .formTabButton .formTabLeftHover {
     height: 28px;
-    background: url(/static/images/site/formTabButton/selected_default.gif) no-repeat 0 0
+    background: url(../../images-bak/site/formTabButton/selected_default.gif) no-repeat 0 0
 }
 
 .formTabButton .formTabMiddleHover {
     height: 28px;
     color: #ec0b0b;
-    background: url(/static/images/site/formTabButton/selected_default.gif) repeat-x 0 -35px
+    background: url(../../images-bak/site/formTabButton/selected_default.gif) repeat-x 0 -35px
 }
 
 .formTabButton .formTabRightHover {
     height: 28px;
-    background: url(/static/images/site/formTabButton/selected_default.gif) no-repeat 0 -70px
+    background: url(../../images-bak/site/formTabButton/selected_default.gif) no-repeat 0 -70px
 }
 
 .formTabButtonOther {
@@ -11515,12 +11514,12 @@ body .forms .siteEditor.form .fkEditor {
 
 .siteFormFUDescIcon {
     margin: 0 3px;
-    background: url(/static/images/styleSiteForm/siteFormFUDescIcon.png?v=201410231750) center center no-repeat
+    background: url(../../images-bak/styleSiteForm/siteFormFUDescIcon.png?v=201410231750) center center no-repeat
 }
 
 .siteFormFUDescIcons {
     margin: 0 3px;
-    background: url(/static/images/styleSiteForm/siteFormFUDescIcons.png?v=201511301805) center center no-repeat;
+    background: url(../../images-bak/styleSiteForm/siteFormFUDescIcons.png?v=201511301805) center center no-repeat;
     height: 15px;
     font-size: 14px;
     width: 14px;
@@ -11550,91 +11549,91 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .siteGroupFre {
-    background: url(/static/images/sitefree2.png?v=201411102015) center no-repeat
+    background: url(../../images-bak/sitefree2.png?v=201411102015) center no-repeat
 }
 
 .siteTitle-hover .siteGroupFre {
-    background: url(/static/images/sitefree2.png?v=201411102015) center no-repeat
+    background: url(../../images-bak/sitefree2.png?v=201411102015) center no-repeat
 }
 
 .siteGroupCoo {
-    background: url(/static/images/sitecoo2.png?v=201702102015) no-repeat center;
+    background: url(../../images-bak/sitecoo2.png?v=201702102015) no-repeat center;
     color: #1f51b2 !important
 }
 
 .siteGroupCoo-redPoint {
-    background: url(/static/images/sitecoo3.png?v=201702161742) no-repeat center
+    background: url(../../images-bak/sitecoo3.png?v=201702161742) no-repeat center
 }
 
 .siteGroupPro {
-    background: url(/static/images/sitepro2.png?v=201612010035) no-repeat center;
+    background: url(../../images-bak/sitepro2.png?v=201612010035) no-repeat center;
     color: red
 }
 
 .siteGroupPro-redPoint {
-    background: url(/static/images/sitepro3.png?v=201612010035) no-repeat center;
+    background: url(../../images-bak/sitepro3.png?v=201612010035) no-repeat center;
     color: red
 }
 
 .siteGroupStd {
-    background: url(/static/images/sitestd2.png?v=201411102015) no-repeat center;
+    background: url(../../images-bak/sitestd2.png?v=201411102015) no-repeat center;
     color: #fc6500
 }
 
 .siteGroupStd-redPoint {
-    background: url(/static/images/sitestd3.png?v=201605161742) no-repeat center
+    background: url(../../images-bak/sitestd3.png?v=201605161742) no-repeat center
 }
 
 .siteGroupPop {
-    background: url(/static/images/sitepop2.png?v=201411102015) no-repeat center;
+    background: url(../../images-bak/sitepop2.png?v=201411102015) no-repeat center;
     color: #d00000
 }
 
 .siteGroupPop-redPoint {
-    background: url(/static/images/sitepop3.png?v=201605161742) no-repeat center
+    background: url(../../images-bak/sitepop3.png?v=201605161742) no-repeat center
 }
 
 .siteGroupBiz {
-    background: url(/static/images/sitebiz2.png?v=201411102015) no-repeat center;
+    background: url(../../images-bak/sitebiz2.png?v=201411102015) no-repeat center;
     color: #0075b1
 }
 
 .siteGroupBiz-redPoint {
-    background: url(/static/images/sitebiz3.png?v=201605161742) no-repeat center
+    background: url(../../images-bak/sitebiz3.png?v=201605161742) no-repeat center
 }
 
 .siteGroupUlt {
-    background: url(/static/images/siteult.png?v=201411102015) no-repeat center;
+    background: url(../../images-bak/siteult.png?v=201411102015) no-repeat center;
     color: #0075b1
 }
 
 .siteGroupOTri {
-    background: url(/static/images/sitetri.png?v=201411102015) no-repeat center;
+    background: url(../../images-bak/sitetri.png?v=201411102015) no-repeat center;
     color: red
 }
 
 .siteGroupOLow {
-    background: url(/static/images/sitelow.png?v=201411102015) no-repeat center;
+    background: url(../../images-bak/sitelow.png?v=201411102015) no-repeat center;
     color: red
 }
 
 .siteGroupOMid {
-    background: url(/static/images/sitemid.png?v=201411102015) no-repeat center;
+    background: url(../../images-bak/sitemid.png?v=201411102015) no-repeat center;
     color: red
 }
 
 .siteGroupOAdv {
-    background: url(/static/images/siteadv.png?v=201411102015) no-repeat center;
+    background: url(../../images-bak/siteadv.png?v=201411102015) no-repeat center;
     color: red
 }
 
 .siteGroupOExp {
-    background: url(/static/images/siteexp.png?v=201411102015) no-repeat center;
+    background: url(../../images-bak/siteexp.png?v=201411102015) no-repeat center;
     color: red
 }
 
 .siteGroupOExt {
-    background: url(/static/images/sitecus.png?v=201312171630) no-repeat center;
+    background: url(../../images-bak/sitecus.png?v=201312171630) no-repeat center;
     color: red
 }
 
@@ -11680,13 +11679,13 @@ body .forms .siteEditor.form .fkEditor {
     width: 8px;
     height: 40px;
     cursor: pointer;
-    background: url(/static/images/close02.png?v=201503021753) center no-repeat;
+    background: url(../../images-bak/close02.png?v=201503021753) center no-repeat;
     float: left;
     display: inline
 }
 
 .tips .close_hover {
-    background: url(/static/images/close03.png?v=201503021753) center no-repeat
+    background: url(../../images-bak/close03.png?v=201503021753) center no-repeat
 }
 
 .tips a {
@@ -11700,11 +11699,11 @@ body .forms .siteEditor.form .fkEditor {
     line-height: 22px;
     vertical-align: middle;
     display: inline-block;
-    background: url(/static/images/site/musicButtons/sound_0_on.gif) 0 0 no-repeat
+    background: url(../../images-bak/site/musicButtons/sound_0_on.gif) 0 0 no-repeat
 }
 
 .bgplayerButtonP {
-    background: url(/static/images/site/musicButtons/sound_0_off.gif) 0 0 no-repeat
+    background: url(../../images-bak/site/musicButtons/sound_0_off.gif) 0 0 no-repeat
 }
 
 .visitorCounterPosition table {
@@ -11715,7 +11714,7 @@ body .forms .siteEditor.form .fkEditor {
     float: left;
     width: 15px;
     height: 20px;
-    background: url(/static/images/site/visitorCounter/black1.gif) no-repeat
+    background: url(../../images-bak/site/visitorCounter/black1.gif) no-repeat
 }
 
 .visitorCounter_cp_0 {
@@ -11814,7 +11813,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .formDialog .formX {
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -500px -357px no-repeat;
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -500px -357px no-repeat;
     position: absolute;
     right: 1px;
     top: 0;
@@ -11826,7 +11825,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .formDialog .formX:hover {
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -500px -323px no-repeat
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -500px -323px no-repeat
 }
 
 .formDialog .formH {
@@ -11836,15 +11835,15 @@ body .forms .siteEditor.form .fkEditor {
     padding: 0;
     width: 43px;
     height: 27px;
-    background: url(/static/images/styleDesign/newWin.gif?v=201204251113) no-repeat 0 -150px;
-    _background: url(/static/images/styleDesign/newWin_IE6/H.gif) no-repeat 0 0;
+    background: url(../../images-bak/styleDesign/newWin.gif?v=201204251113) no-repeat 0 -150px;
+    _background: url(../../images-bak/styleDesign/newWin_IE6/H.gif) no-repeat 0 0;
     outline: 0;
     cursor: pointer
 }
 
 .formDialog .formH:hover {
     background-position: 0 -180px;
-    _background: url(/static/images/styleDesign/newWin_IE6/H_hover.gif) no-repeat 0 0
+    _background: url(../../images-bak/styleDesign/newWin_IE6/H_hover.gif) no-repeat 0 0
 }
 
 .formDialog .formArc {
@@ -11855,7 +11854,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .formDialog .formTCSite {
-    background: url(/static/images/site/rapidsite/bottom_img2.png) repeat-x 0 -30px;
+    background: url(../../images-bak/site/rapidsite/bottom_img2.png) repeat-x 0 -30px;
     height: 27px;
     line-height: 27px;
     margin: 0;
@@ -11869,13 +11868,13 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .formDialog .formTLSite {
-    background: url(/static/images/site/rapidsite/bottom_img2.png) no-repeat;
+    background: url(../../images-bak/site/rapidsite/bottom_img2.png) no-repeat;
     padding-left: 3px;
     height: 27px
 }
 
 .formDialog .formTRSite {
-    background: url(/static/images/site/rapidsite/bottom_img2.png) no-repeat right -60px;
+    background: url(../../images-bak/site/rapidsite/bottom_img2.png) no-repeat right -60px;
     padding-right: 3px;
     *zoom: 1;
     height: 27px
@@ -11888,7 +11887,7 @@ body .forms .siteEditor.form .fkEditor {
     padding: 0;
     width: 44px;
     height: 27px;
-    background: url(/static/images/site/rapidsite/close.png) no-repeat center center;
+    background: url(../../images-bak/site/rapidsite/close.png) no-repeat center center;
     outline: 0;
     cursor: pointer
 }
@@ -11901,7 +11900,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 40px;
     z-index: 100;
     cursor: move;
-    background: url(/static/images/site/transpace.png) repeat
+    background: url(../../images-bak/site/transpace.png) repeat
 }
 
 .formDialog .formMSG {
@@ -11932,15 +11931,15 @@ body .forms .siteEditor.form .fkEditor {
     padding: 0;
     width: 43px;
     height: 27px;
-    background: url(/static/images/styleDesign/newWin.gif?v=201204251113) no-repeat 0 -150px;
-    _background: url(/static/images/styleDesign/newWin_IE6/H.gif) no-repeat 0 0;
+    background: url(../../images-bak/styleDesign/newWin.gif?v=201204251113) no-repeat 0 -150px;
+    _background: url(../../images-bak/styleDesign/newWin_IE6/H.gif) no-repeat 0 0;
     outline: 0;
     cursor: pointer
 }
 
 .formDialog .formH:hover {
     background-position: 0 -180px;
-    _background: url(/static/images/styleDesign/newWin_IE6/H_hover.gif) no-repeat 0 0
+    _background: url(../../images-bak/styleDesign/newWin_IE6/H_hover.gif) no-repeat 0 0
 }
 
 .formDialog .popupCheckboxs {
@@ -11951,7 +11950,7 @@ body .forms .siteEditor.form .fkEditor {
 
 .waitingP {
     display: block;
-    background: url(/static/images/loading/loading_2b.gif?v=201509071734) no-repeat center #fff;
+    background: url(../../images-bak/loading/loading_2b.gif?v=201509071734) no-repeat center #fff;
     position: absolute;
     top: 27px;
     height: 180px
@@ -12015,7 +12014,7 @@ body .forms .siteEditor.form .fkEditor {
     padding: 0;
     width: 18px;
     height: 18px;
-    background: url(/static/images/v2/mbg01.png?v=201705101138) -449px -187px no-repeat;
+    background: url(../../images-bak/v2/mbg01.png?v=201705101138) -449px -187px no-repeat;
     outline: 0;
     cursor: pointer;
     margin-top: 10px;
@@ -12047,8 +12046,8 @@ body .forms .siteEditor.form .fkEditor {
 
 .formBox .formBtn {
     text-decoration: none;
-    background: url(/static/images/site/popupBox/btn.png?v=201311251752) no-repeat 1px 1px;
-    _background: url(/static/images/site/popupBox/btn.gif?v=201311251752) no-repeat 1px 1px;
+    background: url(../../images-bak/site/popupBox/btn.png?v=201311251752) no-repeat 1px 1px;
+    _background: url(../../images-bak/site/popupBox/btn.gif?v=201311251752) no-repeat 1px 1px;
     width: 100px;
     height: 32px;
     display: inline-block;
@@ -12106,7 +12105,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .formBox .reActWarn {
-    background: url(/static/images/site/popupBox/reAct1.png?v=201311251752) 0 no-repeat
+    background: url(../../images-bak/site/popupBox/reAct1.png?v=201311251752) 0 no-repeat
 }
 
 .formBox .memEmailAlterInput {
@@ -12123,8 +12122,8 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .formBox .alertWarn {
-    background: url(/static/images/bg02.png?v=201702071034) no-repeat -1664px -19px;
-    _background: url(/static/images/bg02.png?v=201702071034) no-repeat -1664px -19px
+    background: url(../../images-bak/bg02.png?v=201702071034) no-repeat -1664px -19px;
+    _background: url(../../images-bak/bg02.png?v=201702071034) no-repeat -1664px -19px
 }
 
 .formBox .memberFdPwdLastMsg {
@@ -12323,7 +12322,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 24px;
     line-height: 24px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1692px -144px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1692px -144px
 }
 
 .sitetips .tbutton .styleSettingButtonC {
@@ -12336,7 +12335,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 24px;
     line-height: 24px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1700px -144px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1700px -144px
 }
 
 .sitetips .tbutton .styleSettingButtonR {
@@ -12347,7 +12346,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 24px;
     line-height: 24px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1890px -168px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1890px -168px
 }
 
 .sitetips .oneTemplateBtn {
@@ -12367,7 +12366,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 24px;
     line-height: 24px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1692px -192px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1692px -192px
 }
 
 .sitetips .tbutton:hover .styleSettingButtonC {
@@ -12379,7 +12378,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 24px;
     line-height: 24px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1700px -192px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1700px -192px
 }
 
 .sitetips .tbutton:hover .styleSettingButtonR {
@@ -12389,7 +12388,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 24px;
     line-height: 24px;
     cursor: pointer;
-    background: url(/static/images/bg-icon-01.png?v=201705171314) -1890px -216px
+    background: url(../../images-bak/bg-icon-01.png?v=201705171314) -1890px -216px
 }
 
 .siteTipsDemoTemplate {
@@ -12496,7 +12495,7 @@ body .forms .siteEditor.form .fkEditor {
 }
 
 .ui-autocomplete-loading {
-    background: white url('/static/images/ing.gif') right center no-repeat
+    background: white url('../../images-bak/ing.gif') right center no-repeat
 }
 
 * html .ui-autocomplete {
@@ -12937,7 +12936,7 @@ body .forms .siteEditor.form .fkEditor {
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
     border: 1px solid #d3d3d3;
-    background: #e6e6e6 url(/static/images/comm/fai/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
+    background: #e6e6e6 url(../../images-bak/comm/fai/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
     font-weight: normal;
     color: #555
 }
@@ -12949,7 +12948,7 @@ body .forms .siteEditor.form .fkEditor {
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
     border: 1px solid #999;
-    background: #dadada url(/static/images/comm/fai/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;
+    background: #dadada url(../../images-bak/comm/fai/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;
     font-weight: normal;
     color: #212121
 }
@@ -12961,7 +12960,7 @@ body .forms .siteEditor.form .fkEditor {
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
     border: 1px solid #aaa;
-    background: #fff url(/static/images/comm/fai/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x;
+    background: #fff url(../../images-bak/comm/fai/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x;
     font-weight: normal;
     color: #212121
 }
@@ -12993,7 +12992,7 @@ body .forms .siteEditor.form .fkEditor {
 
 .ui-widget-header {
     border: 1px solid #aaa;
-    background: #ccc url(/static/images/comm/fai/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;
+    background: #ccc url(../../images-bak/comm/fai/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;
     color: #222;
     font-weight: bold
 }
@@ -13003,7 +13002,7 @@ body .forms .siteEditor.form .fkEditor {
     height: 38px;
     display: none;
     cursor: pointer;
-    background: url(/static/images/site/backtotop.png?v=201411241810) no-repeat;
+    background: url(../../images-bak/site/backtotop.png?v=201411241810) no-repeat;
     position: fixed;
     z-index: 9030;
     right: 40px;
@@ -13045,31 +13044,31 @@ body .forms .siteEditor.form .fkEditor {
 .ajaxLoading1 {
     width: 16px;
     height: 16px;
-    background: url(/static/images/comm/fai/loading/loading_1.gif?v=201303261613) no-repeat center center
+    background: url(../../images-bak/comm/fai/loading/loading_1.gif?v=201303261613) no-repeat center center
 }
 
 .ajaxLoading2 {
     width: 32px;
     height: 32px;
-    background: url(/static/images/comm/fai/loading/loading_2b2.gif?v=201506291735) no-repeat center center
+    background: url(../../images-bak/comm/fai/loading/loading_2b2.gif?v=201506291735) no-repeat center center
 }
 
 .ajaxLoading3 {
     width: 220px;
     height: 19px;
-    background: url(/static/images/comm/fai/loading/loading_3.gif?v=201208151411) no-repeat center center
+    background: url(../../images-bak/comm/fai/loading/loading_3.gif?v=201208151411) no-repeat center center
 }
 
 .ajaxLoading4 {
     width: 128px;
     height: 15px;
-    background: url(/static/images/comm/fai/loading/loading_4.gif?v=201208151411) no-repeat center center
+    background: url(../../images-bak/comm/fai/loading/loading_4.gif?v=201208151411) no-repeat center center
 }
 
 .ajaxLoading5 {
     width: 15px;
     height: 15px;
-    background: url(/static/images/comm/fai/loading/loading_5.gif?v=201208151411) no-repeat center center
+    background: url(../../images-bak/comm/fai/loading/loading_5.gif?v=201208151411) no-repeat center center
 }
 
 .weather2 {
@@ -13171,7 +13170,7 @@ ul.weather2 li em {
     width: 100%;
     height: 100%;
     position: absolute;
-    background: url(/static/images/comm/fai/loading/loading_1.gif?v=201303261613) no-repeat center center
+    background: url(../../images-bak/comm/fai/loading/loading_1.gif?v=201303261613) no-repeat center center
 }
 
 .weather2 .cityName11 {
@@ -13380,17 +13379,17 @@ ul.weather2 li em {
 }
 
 .backgroundline {
-    background: url(/static/images/site/rapidsite/bottom_img2.png) repeat-x
+    background: url(../../images-bak/site/rapidsite/bottom_img2.png) repeat-x
 }
 
 .resultFailIcon {
-    background: url(/static/images/bg03.png?v=201603141743) no-repeat 0 -44px;
-    _background: url(/static/images/addMallCartDialog.gif?v=201303111629) no-repeat 1px -41px
+    background: url(../../images-bak/bg03.png?v=201603141743) no-repeat 0 -44px;
+    _background: url(../../images-bak/addMallCartDialog.gif?v=201303111629) no-repeat 1px -41px
 }
 
 .suc-ico {
-    background: url(/static/images/bg03.png?v=201603141743) no-repeat;
-    _background: url(/static/images/addMallCartDialog.gif?v=201303111629) no-repeat 1px -74px
+    background: url(../../images-bak/bg03.png?v=201603141743) no-repeat;
+    _background: url(../../images-bak/addMallCartDialog.gif?v=201303111629) no-repeat 1px -74px
 }
 
 .shopping {
@@ -13433,7 +13432,7 @@ ul.weather2 li em {
 }
 
 .mallJia {
-    background: url(/static/images/jia.png?v=201303111629) no-repeat;
+    background: url(../../images-bak/jia.png?v=201303111629) no-repeat;
     width: 11px;
     height: 11px;
     _height: 13px;
@@ -13445,11 +13444,11 @@ ul.weather2 li em {
 
 .disableMallJia {
     cursor: default;
-    background: url(/static/images/jiaDisable.png?v=201303111629) no-repeat
+    background: url(../../images-bak/jiaDisable.png?v=201303111629) no-repeat
 }
 
 .mallJian {
-    background: url(/static/images/jian.png?v=201303111629) no-repeat;
+    background: url(../../images-bak/jian.png?v=201303111629) no-repeat;
     width: 11px;
     height: 11px;
     _height: 13px;
@@ -13463,7 +13462,7 @@ ul.weather2 li em {
 
 .disableMallJian {
     cursor: default;
-    background: url(/static/images/jianDisable.png?v=201303111629) no-repeat
+    background: url(../../images-bak/jianDisable.png?v=201303111629) no-repeat
 }
 
 .cartBuyCount {
@@ -14197,11 +14196,11 @@ ul.weather2 li em {
     outline: 0;
     text-decoration: none;
     cursor: pointer;
-    background: url(/static/images/comm/fai/color/color_transparent.gif)
+    background: url(../../images-bak/comm/fai/color/color_transparent.gif)
 }
 
 a.color_transparent:hover {
-    background: url(/static/images/comm/fai/color/color_transparent.gif) -18px 0
+    background: url(../../images-bak/comm/fai/color/color_transparent.gif) -18px 0
 }
 
 .color_sure {
@@ -14213,11 +14212,11 @@ a.color_transparent:hover {
     top: 4px;
     outline: 0;
     text-decoration: none;
-    background: url(/static/images/comm/fai/color/color_sure.gif)
+    background: url(../../images-bak/comm/fai/color/color_sure.gif)
 }
 
 a.color_sure:hover {
-    background: url(/static/images/comm/fai/color/color_sure.gif) -20px 0
+    background: url(../../images-bak/comm/fai/color/color_sure.gif) -20px 0
 }
 
 .color_close {
@@ -14228,11 +14227,11 @@ a.color_sure:hover {
     top: 4px;
     outline: 0;
     text-decoration: none;
-    background: url(/static/images/comm/fai/color/color_close.gif)
+    background: url(../../images-bak/comm/fai/color/color_close.gif)
 }
 
 a.color_close:hover {
-    background: url(/static/images/comm/fai/color/color_close.gif) -20px 0
+    background: url(../../images-bak/comm/fai/color/color_close.gif) -20px 0
 }
 
 .color_borderTableColor {
@@ -14252,11 +14251,11 @@ a.color_close:hover {
 }
 
 .loadingPlaceholderBackground {
-    background: url(/static/images/loading/loading_2b.gif?v=201509071734) center no-repeat
+    background: url(../../images-bak/loading/loading_2b.gif?v=201509071734) center no-repeat
 }
 
 .webSiteQrCode {
-    background: url(/static/images/site/qrCode.gif?v=201401061745) #FFF;
+    background: url(../../images-bak/site/qrCode.gif?v=201401061745) #FFF;
     width: 18px;
     height: 18px;
     line-height: 18px;
@@ -14530,14 +14529,14 @@ a.color_close:hover {
     display: block;
     width: 14px;
     height: 13px;
-    background: url(/static/images/site/faiscoAd/close.png?v=201402101854) 0 0 no-repeat;
+    background: url(../../images-bak/site/faiscoAd/close.png?v=201402101854) 0 0 no-repeat;
     float: right;
     margin-top: 3px;
     margin-right: 2px
 }
 
 .siteAdvertisement_box a.closeImg:hover {
-    background: url(/static/images/site/faiscoAd/close.png?v=201402101854) 0 -13px no-repeat
+    background: url(../../images-bak/site/faiscoAd/close.png?v=201402101854) 0 -13px no-repeat
 }
 
 .siteAdvertisement_box a.reportUrl {
@@ -14574,7 +14573,7 @@ a.color_close:hover {
     left: 10px;
     width: 9px;
     height: 6px;
-    background: url(/static/images/site/faiscoAd/sanj.png?v=201402101854) 0 -2px no-repeat
+    background: url(../../images-bak/site/faiscoAd/sanj.png?v=201402101854) 0 -2px no-repeat
 }
 
 .siteAdvertisement_boxTip {
@@ -14621,7 +14620,7 @@ a.color_close:hover {
     left: 6px;
     width: 157px;
     height: 22px;
-    background: url(/static/images/site/faiscoAd/dingzhi_hover.png?v=201608291758) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/dingzhi_hover.png?v=201608291758) 0 0 no-repeat
 }
 
 #default_Ad.siteAdvertisement_box .siteAdvertisement_title {
@@ -14637,14 +14636,14 @@ a.color_close:hover {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(/static/images/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat;
+    background: url(../../images-bak/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat;
     float: right;
     margin-top: 3px;
     margin-right: 2px
 }
 
 #default_Ad.siteAdvertisement_box a.closeImg:hover {
-    background: url(/static/images/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat
 }
 
 #hd_Ad.siteAdvertisement_box {
@@ -14666,7 +14665,7 @@ a.color_close:hover {
     left: 59px;
     width: 15px;
     height: 114px;
-    background: url(/static/images/site/faiscoAd/vert_title_hover.png?v=201608291758) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/vert_title_hover.png?v=201608291758) 0 0 no-repeat
 }
 
 #hd_Ad.siteAdvertisement_box .siteAdvertisement_title {
@@ -14682,14 +14681,14 @@ a.color_close:hover {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(/static/images/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat;
+    background: url(../../images-bak/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat;
     float: right;
     margin-top: 3px;
     margin-right: 2px
 }
 
 #hd_Ad.siteAdvertisement_box a.closeImg:hover {
-    background: url(/static/images/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat
 }
 
 #hd_Ad.siteAdvertisement_box .mobi_ad_bg {
@@ -14699,11 +14698,11 @@ a.color_close:hover {
     height: 141px;
     top: 23px;
     left: 83px;
-    background: url(/static/images/site/faiscoAd/hd_bg_gq.gif?v=201609181814) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/hd_bg_gq.gif?v=201609181814) 0 0 no-repeat
 }
 
 #hd_Ad.siteAdvertisement_box .mobi_ad_bg:hover {
-    background: url(/static/images/site/faiscoAd/hd_bg_hover.png?v=201609181814) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/hd_bg_hover.png?v=201609181814) 0 0 no-repeat
 }
 
 #flyer_Ad.siteAdvertisement_box {
@@ -14726,7 +14725,7 @@ a.color_close:hover {
     left: 6px;
     width: 15px;
     height: 114px;
-    background: url(/static/images/site/faiscoAd/vert_title_hover.png?v=201608291758) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/vert_title_hover.png?v=201608291758) 0 0 no-repeat
 }
 
 #flyer_Ad.siteAdvertisement_box .siteAdvertisement_title {
@@ -14742,14 +14741,14 @@ a.color_close:hover {
     display: block;
     width: 15px;
     height: 15px;
-    background: url(/static/images/site/faiscoAd/flyer_close.png?v=201608291758) 0 0 no-repeat;
+    background: url(../../images-bak/site/faiscoAd/flyer_close.png?v=201608291758) 0 0 no-repeat;
     float: right;
     margin-top: 3px;
     margin-right: 2px
 }
 
 #flyer_Ad.siteAdvertisement_box a.closeImg:hover {
-    background: url(/static/images/site/faiscoAd/flyer_close.png?v=201608291758) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/flyer_close.png?v=201608291758) 0 0 no-repeat
 }
 
 #flyer_Ad.siteAdvertisement_box .siteAdvertisement_Inner .siteAdvertisement_adImg img {
@@ -14766,7 +14765,7 @@ a.color_close:hover {
 }
 
 #flyer_Ad.siteAdvertisement_box .mobi_ad_bg:hover {
-    background: url(/static/images/site/faiscoAd/flyer_hover.png?v=201608291758) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/flyer_hover.png?v=201608291758) 0 0 no-repeat
 }
 
 #daily_Ad.siteAdvertisement_box {
@@ -14789,7 +14788,7 @@ a.color_close:hover {
     left: 0;
     width: 129px;
     height: 19px;
-    background: url(/static/images/site/faiscoAd/daily_title_hover.png?v=201609211406) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/daily_title_hover.png?v=201609211406) 0 0 no-repeat
 }
 
 #daily_Ad.siteAdvertisement_box .siteAdvertisement_title {
@@ -14805,14 +14804,14 @@ a.color_close:hover {
     display: block;
     width: 15px;
     height: 15px;
-    background: url(/static/images/site/faiscoAd/daily_close.png?v=201609211406) 0 0 no-repeat;
+    background: url(../../images-bak/site/faiscoAd/daily_close.png?v=201609211406) 0 0 no-repeat;
     float: right;
     margin-top: 3px;
     margin-right: 2px
 }
 
 #daily_Ad.siteAdvertisement_box a.closeImg:hover {
-    background: url(/static/images/site/faiscoAd/daily_close.png?v=201609211406) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/daily_close.png?v=201609211406) 0 0 no-repeat
 }
 
 #daily_Ad.siteAdvertisement_box .mobi_ad_bg {
@@ -14822,7 +14821,7 @@ a.color_close:hover {
     height: 26px;
     left: 19px;
     bottom: 30px;
-    background: url(/static/images/site/faiscoAd/daily_btn.png?v=201609211406) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/daily_btn.png?v=201609211406) 0 0 no-repeat
 }
 
 #dailyHD_Ad.siteAdvertisement_box {
@@ -14845,7 +14844,7 @@ a.color_close:hover {
     left: 6px;
     width: 15px;
     height: 114px;
-    background: url(/static/images/site/faiscoAd/vert_title_hover.png?v=201608291758) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/vert_title_hover.png?v=201608291758) 0 0 no-repeat
 }
 
 #dailyHD_Ad.siteAdvertisement_box .siteAdvertisement_title {
@@ -14861,14 +14860,14 @@ a.color_close:hover {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(/static/images/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat;
+    background: url(../../images-bak/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat;
     float: right;
     margin-top: 3px;
     margin-right: 2px
 }
 
 #dailyHD_Ad.siteAdvertisement_box a.closeImg:hover {
-    background: url(/static/images/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/close_dz.png?v=201608291758) 0 0 no-repeat
 }
 
 #dailyHD_Ad.siteAdvertisement_box .siteAdvertisement_Inner .siteAdvertisement_adImg img {
@@ -14882,11 +14881,11 @@ a.color_close:hover {
     height: 141px;
     top: 18px;
     left: 30px;
-    background: url(/static/images/site/faiscoAd/dailyHd_bg.gif?v=201609211522) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/dailyHd_bg.gif?v=201609211522) 0 0 no-repeat
 }
 
 #dailyHD_Ad.siteAdvertisement_box .mobi_ad_bg:hover {
-    background: url(/static/images/site/faiscoAd/hd_bg_hover.png?v=201609181814) 0 0 no-repeat
+    background: url(../../images-bak/site/faiscoAd/hd_bg_hover.png?v=201609181814) 0 0 no-repeat
 }
 
 .loadingImg {
@@ -14949,7 +14948,7 @@ a.color_close:hover {
     width: 100%;
     top: 0;
     left: 0;
-    background: url(/static/images/white_bg.png?v=201410081739) repeat-x;
+    background: url(../../images-bak/white_bg.png?v=201410081739) repeat-x;
     z-index: 61
 }
 
@@ -14998,7 +14997,7 @@ a.color_close:hover {
     display: block;
     width: 25px;
     height: 20px;
-    background: url(/static/images/topBarVip.gif?v=201412011712) 5px 0 no-repeat;
+    background: url(../../images-bak/topBarVip.gif?v=201412011712) 5px 0 no-repeat;
     margin-top: 4px
 }
 
@@ -15037,7 +15036,7 @@ a.color_close:hover {
     float: right;
     width: 25px;
     height: 20px;
-    background: url(/static/images/topBarVip.gif?v=201412011712) 5px 0 no-repeat;
+    background: url(../../images-bak/topBarVip.gif?v=201412011712) 5px 0 no-repeat;
     margin-top: 4px
 }
 
@@ -15058,7 +15057,7 @@ a.color_close:hover {
     height: 37px;
     margin-right: 5px;
     margin-top: 5px;
-    background: url(/static/images/topBarData.gif?v=201509091825) 5px 5px no-repeat;
+    background: url(../../images-bak/topBarData.gif?v=201509091825) 5px 5px no-repeat;
     cursor: pointer;
     _background-position: 5px 4px
 }
@@ -15123,7 +15122,7 @@ a.color_close:hover {
     float: left;
     width: 25px;
     height: 20px;
-    background: url(/static/images/bg02.png?v=201702071034) -151px -261px no-repeat;
+    background: url(../../images-bak/bg02.png?v=201702071034) -151px -261px no-repeat;
     cursor: pointer
 }
 
@@ -15132,7 +15131,7 @@ a.color_close:hover {
 }
 
 .memberBar .orderCart:hover .siteIco {
-    background: url(/static/images/bg02.png?v=201702071034) -151px -376px no-repeat
+    background: url(../../images-bak/bg02.png?v=201702071034) -151px -376px no-repeat
 }
 
 .memberBar .myOrder {
@@ -15148,7 +15147,7 @@ a.color_close:hover {
     margin-right: 3px;
     margin-top: 5px;
     height: 37px;
-    background: url(/static/images/topBarOrder.gif?v=201509091825) 5px 6px no-repeat;
+    background: url(../../images-bak/topBarOrder.gif?v=201509091825) 5px 6px no-repeat;
     cursor: pointer;
     _background-position: 5px 5px
 }
@@ -15196,17 +15195,17 @@ a.color_close:hover {
 }
 
 .memberBar .l_Btn .qqLgn {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) 0 0 no-repeat;
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) 0 0 no-repeat;
     margin-top: 7px
 }
 
 .memberBar .l_Btn .wbLgn {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -56px 0 no-repeat;
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -56px 0 no-repeat;
     margin-top: 7px
 }
 
 .memberBar .l_Btn .wxLgn {
-    background: url(/static/images/site/n_shareIcn.png?v=201601191458) -27px 0 no-repeat;
+    background: url(../../images-bak/site/n_shareIcn.png?v=201601191458) -27px 0 no-repeat;
     margin-top: 7px
 }
 
@@ -15274,7 +15273,7 @@ a.color_close:hover {
 }
 
 .memberBar .mallCartItem .mallCart_icon {
-    background: url(/static/images/mallCart/mallcart_icon.gif?v=201412011712) center no-repeat;
+    background: url(../../images-bak/mallCart/mallcart_icon.gif?v=201412011712) center no-repeat;
     width: 20px;
     margin-left: 2px;
     margin-right: 7px;
@@ -15283,7 +15282,7 @@ a.color_close:hover {
 
 .memberBar .mallCartItem .mallCart_down {
     margin-top: 0;
-    background: url(/static/images/mallCart/mallcart_down.gif?v=201412011712) center no-repeat;
+    background: url(../../images-bak/mallCart/mallcart_down.gif?v=201412011712) center no-repeat;
     width: 10px;
     margin-right: 3px;
     transition: all ease .3s;
@@ -15334,7 +15333,7 @@ a.color_close:hover {
 .memberBar .mallCartPanel .mallCartLoad {
     width: 290px;
     position: absolute;
-    background: url(/static/images/loading/loading_2b.gif?v=201509071734) center no-repeat;
+    background: url(../../images-bak/loading/loading_2b.gif?v=201509071734) center no-repeat;
     background-color: #fff;
     cursor: default;
     top: 0;
@@ -15415,7 +15414,7 @@ a.color_close:hover {
 .memberBar .mallCartPanel .mallCartList .mcProductList ul .mcProductList_pro .mcProductList_proNoPic {
     width: 45px;
     height: 45px;
-    background: url(/static/images/mallCart/mallcart_noPro.gif?v=201412021746) center no-repeat;
+    background: url(../../images-bak/mallCart/mallcart_noPro.gif?v=201412021746) center no-repeat;
     margin-top: 5px
 }
 
@@ -15538,7 +15537,7 @@ a.color_close:hover {
 }
 
 .memberBar .mobiWebItem .mobiWeb_icon {
-    background: url(/static/images/mobiWeb/mobi.png?v=201507141419) center no-repeat;
+    background: url(../../images-bak/mobiWeb/mobi.png?v=201507141419) center no-repeat;
     width: 12px;
     margin-right: 3px
 }
@@ -15549,20 +15548,20 @@ a.color_close:hover {
 }
 
 .memberBar .mobiWebItem_hover .mobiWeb_icon {
-    background: url(/static/images/mobiWeb/mobi_hover.png?v=201507141419) center no-repeat;
+    background: url(../../images-bak/mobiWeb/mobi_hover.png?v=201507141419) center no-repeat;
     width: 12px;
     margin-right: 3px
 }
 
 .memberBar .mobiWebItem .mobi_down {
     margin-top: -1px;
-    background: url(/static/images/mobiWeb/mobi_down.png?v=201507141419) center no-repeat;
+    background: url(../../images-bak/mobiWeb/mobi_down.png?v=201507141419) center no-repeat;
     width: 10px;
     transition: all ease .3s
 }
 
 .memberBar .mobiWebItem_hover .mobi_down {
-    background: url(/static/images/mobiWeb/mobi_up.png?v=201507141419) center no-repeat;
+    background: url(../../images-bak/mobiWeb/mobi_up.png?v=201507141419) center no-repeat;
     transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
@@ -15612,7 +15611,7 @@ a.color_close:hover {
     display: table-cell;
     *display: block;
     width: 16px;
-    background: url(/static/images/site/pMallIco.png?v=201411171723) center left no-repeat
+    background: url(../../images-bak/site/pMallIco.png?v=201411171723) center left no-repeat
 }
 
 .pd_mall_Group .p_m_cotainer .p_m_cotainerCenter .p_m_value {
@@ -15764,7 +15763,7 @@ a.color_close:hover {
 }
 
 .wxSharehideCloseBtn {
-    background: url(/static/images/bg02.png?v=201702071034) -1501px 3px no-repeat;
+    background: url(../../images-bak/bg02.png?v=201702071034) -1501px 3px no-repeat;
     margin: 15px 6px 0 0
 }
 
@@ -15792,7 +15791,7 @@ a.color_close:hover {
     width: 190px;
     height: 190px;
     margin: 50px auto;
-    background: url(/static/images/loading/loading_2b.gif?v=201509071734) no-repeat center center
+    background: url(../../images-bak/loading/loading_2b.gif?v=201509071734) no-repeat center center
 }
 
 .jumpCtrl {
@@ -16038,12 +16037,12 @@ a.color_close:hover {
 
 .footerItemAddPic {
     cursor: pointer;
-    background: transparent url(/static/images/footer/normalImg.png?v=201410161515) no-repeat 0 0;
-    _background: transparent url(/static/images/footer/normalImg.gif?v=201410161515) no-repeat 0 0
+    background: transparent url(../../images-bak/footer/normalImg.png?v=201410161515) no-repeat 0 0;
+    _background: transparent url(../../images-bak/footer/normalImg.gif?v=201410161515) no-repeat 0 0
 }
 
 .footerItemAddPic:hover {
-    background: transparent url(/static/images/footer/addImg.gif?v=201410161515) no-repeat 0 0
+    background: transparent url(../../images-bak/footer/addImg.gif?v=201410161515) no-repeat 0 0
 }
 
 .footerItemPicEdit {
@@ -16054,8 +16053,8 @@ a.color_close:hover {
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background: transparent url(/static/images/footer/rightCorner.png?v=201410161515) no-repeat 18px -10px;
-    _background: transparent url(/static/images/footer/rightCorner.gif?v=201410161515) no-repeat 18px -10px
+    background: transparent url(../../images-bak/footer/rightCorner.png?v=201410161515) no-repeat 18px -10px;
+    _background: transparent url(../../images-bak/footer/rightCorner.gif?v=201410161515) no-repeat 18px -10px
 }
 
 .footerItemPicEdit-hover {
@@ -16064,7 +16063,7 @@ a.color_close:hover {
 
 .footerItemPicCover-n, .footerItemPicCover-s, .footerItemPicCover-w, .footerItemPicCover-e {
     position: absolute;
-    background: transparent url(/static/images/footer/imgBorder.gif?v=201411031433) no-repeat 0 0
+    background: transparent url(../../images-bak/footer/imgBorder.gif?v=201411031433) no-repeat 0 0
 }
 
 .footerItemPicCover-n, .footerItemPicCover-s {
@@ -16175,7 +16174,7 @@ a.color_close:hover {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    background: transparent url(/static/images/footer/graySquare.jpg?v=201411031155) no-repeat left center
+    background: transparent url(../../images-bak/footer/graySquare.jpg?v=201411031155) no-repeat left center
 }
 
 .footerPattern3 .footerItemSpacing {
@@ -16362,7 +16361,7 @@ div.levelStyle .footerItemBottomList li {
     height: 81px;
     z-index: 10;
     top: 40%;
-    background: url(/static/images/v2/vbg01.png?v=201705021426) no-repeat
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) no-repeat
 }
 
 .fmSlideStyleArrowBaseBg {
@@ -16521,7 +16520,7 @@ div.levelStyle .footerItemBottomList li {
     *display: inline;
     width: 7px;
     height: 11px;
-    background: url(/static/images/propfilter/to.gif?v=201412011712) no-repeat;
+    background: url(../../images-bak/propfilter/to.gif?v=201412011712) no-repeat;
     margin-right: 8px;
     position: relative;
     *top: -4px
@@ -16557,7 +16556,7 @@ div.levelStyle .footerItemBottomList li {
 .fp_cur_conds .conds_sc .prSearch {
     width: 18px;
     height: 18px;
-    background: url(/static/images/propfilter/search.png?v=201601181715) no-repeat
+    background: url(../../images-bak/propfilter/search.png?v=201601181715) no-repeat
 }
 
 .fp_cur_conds .conds_sc .prSearchIcon {
@@ -16591,7 +16590,7 @@ div.levelStyle .footerItemBottomList li {
 .fp_cur_conds .item_c, .fp_select_tab .item_c {
     width: 9px;
     height: 9px;
-    background: url(/static/images/propfilter/close.gif?v=201412011712) no-repeat;
+    background: url(../../images-bak/propfilter/close.gif?v=201412011712) no-repeat;
     position: absolute;
     top: 8px;
     right: 4px;
@@ -16690,7 +16689,7 @@ div.levelStyle .footerItemBottomList li {
     display: inline-block;
     width: 7px;
     height: 4px;
-    background: url(/static/images/propfilter/sqzk.gif?v=201412011712) no-repeat;
+    background: url(../../images-bak/propfilter/sqzk.gif?v=201412011712) no-repeat;
     vertical-align: middle;
     margin-left: 2px;
     cursor: pointer
@@ -16746,19 +16745,19 @@ div.levelStyle .footerItemBottomList li {
     right: 10px;
     top: 50%;
     margin-top: -5px;
-    background: url(/static/images/propfilter/u.gif?v=201412011712) no-repeat
+    background: url(../../images-bak/propfilter/u.gif?v=201412011712) no-repeat
 }
 
 .fp_sort .sort_select.sort_desc .item_d {
-    background: url(/static/images/propfilter/d.gif?v=201412011712) no-repeat
+    background: url(../../images-bak/propfilter/d.gif?v=201412011712) no-repeat
 }
 
 .fp_sort a.sort_select:hover .item_d {
-    background: url(/static/images/propfilter/d.gif?v=201412011712) 0 -50px no-repeat
+    background: url(../../images-bak/propfilter/d.gif?v=201412011712) 0 -50px no-repeat
 }
 
 .fp_sort a.sort_select.sort_desc:hover .item_d {
-    background: url(/static/images/propfilter/u.gif?v=201412011712) 0 -50px no-repeat
+    background: url(../../images-bak/propfilter/u.gif?v=201412011712) 0 -50px no-repeat
 }
 
 .fp_sort .sort_priceArea {
@@ -16844,28 +16843,28 @@ div.levelStyle .footerItemBottomList li {
 }
 
 .fp_sort .sortPage .sortPagePrev1 {
-    background: url(/static/images/propfilter/jt.png?v=201601181715) -14px center no-repeat;
+    background: url(../../images-bak/propfilter/jt.png?v=201601181715) -14px center no-repeat;
     text-decoration: none;
     padding: 8px 3px;
     margin-right: 18px
 }
 
 .fp_sort .sortPage .sortPagePrev2 {
-    background: url(/static/images/propfilter/jt.png?v=201601181715) 1px 13px no-repeat;
+    background: url(../../images-bak/propfilter/jt.png?v=201601181715) 1px 13px no-repeat;
     text-decoration: none;
     padding: 8px 3px;
     margin-right: 18px
 }
 
 .fp_sort .sortPage .sortPageNext1 {
-    background: url(/static/images/propfilter/jt.png?v=201601181715) -6px 13px no-repeat;
+    background: url(../../images-bak/propfilter/jt.png?v=201601181715) -6px 13px no-repeat;
     text-decoration: none;
     padding: 8px 3px;
     margin-left: 18px
 }
 
 .fp_sort .sortPage .sortPageNext2 {
-    background: url(/static/images/propfilter/jt.png?v=201601181715) -20px center no-repeat;
+    background: url(../../images-bak/propfilter/jt.png?v=201601181715) -20px center no-repeat;
     text-decoration: none;
     padding: 8px 3px;
     margin-left: 18px
@@ -16903,7 +16902,7 @@ div.levelStyle .footerItemBottomList li {
     *display: block;
     width: 16px;
     height: 100%;
-    background: url(/static/images/site/pMallIco.png) left center no-repeat
+    background: url(../../images-bak/site/pMallIco.png) left center no-repeat
 }
 
 .navAPanel {
@@ -16953,7 +16952,7 @@ div.levelStyle .footerItemBottomList li {
     height: 43px;
     line-height: 34px;
     padding: 0 12px;
-    background: url(/static/images/floatTip/middle.png?v=201503021753) repeat-x
+    background: url(../../images-bak/floatTip/middle.png?v=201503021753) repeat-x
 }
 
 .floatTip .floatTip_content_IE {
@@ -16972,7 +16971,7 @@ div.levelStyle .footerItemBottomList li {
     position: absolute;
     bottom: 0;
     left: 70%;
-    background: url(/static/images/floatTip/arrow.png?v=201503021753) center no-repeat
+    background: url(../../images-bak/floatTip/arrow.png?v=201503021753) center no-repeat
 }
 
 .floatTip .floatTip_arrow_IE {
@@ -16981,8 +16980,8 @@ div.levelStyle .footerItemBottomList li {
     position: absolute;
     bottom: -7px;
     _bottom: -8px;
-    background: url(/static/images/floatTip/arrow_IE.png?v=201503021753) center no-repeat;
-    _background: url(/static/images/floatTip/arrow_IE6.gif?v=201503021753) center no-repeat
+    background: url(../../images-bak/floatTip/arrow_IE.png?v=201503021753) center no-repeat;
+    _background: url(../../images-bak/floatTip/arrow_IE6.gif?v=201503021753) center no-repeat
 }
 
 .floatTip .floatTip_right {
@@ -16991,7 +16990,7 @@ div.levelStyle .footerItemBottomList li {
     right: -6px;
     width: 6px;
     height: 100%;
-    background: url(/static/images/floatTip/right.png?v=201503021753) 0 0 no-repeat
+    background: url(../../images-bak/floatTip/right.png?v=201503021753) 0 0 no-repeat
 }
 
 .floatTip .floatTip_right_IE {
@@ -17004,7 +17003,7 @@ div.levelStyle .footerItemBottomList li {
     left: -6px;
     width: 6px;
     height: 100%;
-    background: url(/static/images/floatTip/left.png?v=201503021753) 0 0 no-repeat
+    background: url(../../images-bak/floatTip/left.png?v=201503021753) 0 0 no-repeat
 }
 
 .floatTip .floatTip_left_IE {
@@ -17048,11 +17047,11 @@ div.extBanner {
     position: absolute;
     top: 0;
     right: 26px;
-    background: url(/static/images/mobiPlatform/close.gif?v=201505041724) no-repeat 0 0
+    background: url(../../images-bak/mobiPlatform/close.gif?v=201505041724) no-repeat 0 0
 }
 
 .mp-closeBtn:hover {
-    background: url(/static/images/mobiPlatform/close.gif?v=201505041724) no-repeat 0 -30px
+    background: url(../../images-bak/mobiPlatform/close.gif?v=201505041724) no-repeat 0 -30px
 }
 
 .mobiPlatformIcon {
@@ -17068,15 +17067,15 @@ div.extBanner {
 .mobiPlatformIcon_left {
     top: 50%;
     left: 0;
-    background: url(/static/images/mobiPlatform/phoneTip_left.png?v=201504291350) no-repeat 0 0;
-    *background: url(/static/images/mobiPlatform/phoneTip2_left.png?v=201504291350) no-repeat 0 0
+    background: url(../../images-bak/mobiPlatform/phoneTip_left.png?v=201504291350) no-repeat 0 0;
+    *background: url(../../images-bak/mobiPlatform/phoneTip2_left.png?v=201504291350) no-repeat 0 0
 }
 
 .mobiPlatformIcon_right {
     top: 50%;
     right: 0;
-    background: url(/static/images/mobiPlatform/phoneTip_right.png?v=201504291350) no-repeat 0 0;
-    *background: url(/static/images/mobiPlatform/phoneTip2_right.png?v=201504291350) no-repeat 0 0
+    background: url(../../images-bak/mobiPlatform/phoneTip_right.png?v=201504291350) no-repeat 0 0;
+    *background: url(../../images-bak/mobiPlatform/phoneTip2_right.png?v=201504291350) no-repeat 0 0
 }
 
 .mobiPlatformIcon-handle {
@@ -17110,15 +17109,15 @@ div.extBanner {
 .mobiPlatform_big {
     width: 295px;
     height: 592px;
-    background: url(/static/images/mobiPlatform/big_phone.png?v=201504291350) no-repeat 0 0;
-    _background: url(/static/images/mobiPlatform/big_phone.gif?v=201504291350) no-repeat 0 0
+    background: url(../../images-bak/mobiPlatform/big_phone.png?v=201504291350) no-repeat 0 0;
+    _background: url(../../images-bak/mobiPlatform/big_phone.gif?v=201504291350) no-repeat 0 0
 }
 
 .mobiPlatform_small {
     width: 291px;
     height: 483px;
-    background: url(/static/images/mobiPlatform/small_phone.png?v=201504291350) no-repeat 0 0;
-    _background: url(/static/images/mobiPlatform/small_phone.gif?v=201504291350) no-repeat 0 0
+    background: url(../../images-bak/mobiPlatform/small_phone.png?v=201504291350) no-repeat 0 0;
+    _background: url(../../images-bak/mobiPlatform/small_phone.gif?v=201504291350) no-repeat 0 0
 }
 
 .mobiPlatform_big .mp-innerIframe {
@@ -17139,7 +17138,7 @@ div.extBanner {
 
 .mp-innerIframe2 {
     position: relative;
-    background: url(/static/images/mobiPlatform/updateTip.jpg?v=201504291350) no-repeat center center
+    background: url(../../images-bak/mobiPlatform/updateTip.jpg?v=201504291350) no-repeat center center
 }
 
 .mp-updateBtnContainer {
@@ -17162,7 +17161,7 @@ div.extBanner {
     width: 120px;
     height: 33px;
     margin: 0 auto;
-    background: url(/static/images/mobiPlatform/updateBtn.jpg?v=201504291350) no-repeat 0 0
+    background: url(../../images-bak/mobiPlatform/updateBtn.jpg?v=201504291350) no-repeat 0 0
 }
 
 .mp-loading {
@@ -17178,7 +17177,7 @@ div.extBanner {
     position: absolute;
     width: 40px;
     height: 40px;
-    background: url(/static/images/loading/loading.png?v=201504301149) no-repeat 0 0;
+    background: url(../../images-bak/loading/loading.png?v=201504301149) no-repeat 0 0;
     border-radius: 5px;
     background-size: 40px 40px
 }
@@ -17211,7 +17210,7 @@ div.extBanner {
     position: absolute;
     top: -46px;
     left: -16px;
-    background: url(/static/images/mobiPlatform/hoverTips.png?v=201506011730) no-repeat 0 0
+    background: url(../../images-bak/mobiPlatform/hoverTips.png?v=201506011730) no-repeat 0 0
 }
 
 .styleBlockSet {
@@ -17237,7 +17236,7 @@ div.extBanner {
     margin: 7px 5px;
     width: 41px;
     height: 38px;
-    background: url(/static/images/site/backtotop.png?v=201411241810) no-repeat
+    background: url(../../images-bak/site/backtotop.png?v=201411241810) no-repeat
 }
 
 .siteBackToTop_special_01 {
@@ -17245,7 +17244,7 @@ div.extBanner {
     height: 32px;
     position: absolute;
     margin: 10px 10px;
-    background-image: url(/static/images/backToTop/01.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/01.png?v=201505251717)
 }
 
 .siteBackToTop_special_01_hover {
@@ -17253,7 +17252,7 @@ div.extBanner {
     height: 32px;
     position: absolute;
     margin: 10px 10px;
-    background-image: url(/static/images/backToTop/01_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/01_hover.png?v=201505251717)
 }
 
 .siteBackToTop_special_02 {
@@ -17261,7 +17260,7 @@ div.extBanner {
     height: 48px;
     position: absolute;
     margin: 2px 13px;
-    background-image: url(/static/images/backToTop/02.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/02.png?v=201505251717)
 }
 
 .siteBackToTop_special_02_hover {
@@ -17269,7 +17268,7 @@ div.extBanner {
     height: 48px;
     position: absolute;
     margin: 2px 13px;
-    background-image: url(/static/images/backToTop/02_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/02_hover.png?v=201505251717)
 }
 
 .siteBackToTop_special_03 {
@@ -17277,7 +17276,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/03.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/03.png?v=201505251717)
 }
 
 .siteBackToTop_special_03_hover {
@@ -17285,7 +17284,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/03_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/03_hover.png?v=201505251717)
 }
 
 .siteBackToTop_special_04 {
@@ -17293,7 +17292,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 3px;
-    background-image: url(/static/images/backToTop/04.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/04.png?v=201505251717)
 }
 
 .siteBackToTop_special_04_hover {
@@ -17301,7 +17300,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 3px;
-    background-image: url(/static/images/backToTop/04_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/04_hover.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_01 {
@@ -17309,7 +17308,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/01.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/01.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_01_hover {
@@ -17317,7 +17316,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/01_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/01_hover.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_02 {
@@ -17325,7 +17324,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/02.png?v=201608291758)
+    background-image: url(../../images-bak/backToTop/firstStyle/02.png?v=201608291758)
 }
 
 .siteBackToTop_firstStyle_02_hover {
@@ -17333,7 +17332,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/02_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/02_hover.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_03 {
@@ -17341,7 +17340,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/03.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/03.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_03_hover {
@@ -17349,7 +17348,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/03_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/03_hover.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_04 {
@@ -17357,7 +17356,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/04.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/04.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_04_hover {
@@ -17365,7 +17364,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/04_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/04_hover.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_05 {
@@ -17373,7 +17372,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/05.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/05.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_05_hover {
@@ -17381,7 +17380,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/05_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/05_hover.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_06 {
@@ -17389,7 +17388,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/06.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/06.png?v=201505251717)
 }
 
 .siteBackToTop_firstStyle_06_hover {
@@ -17397,7 +17396,7 @@ div.extBanner {
     height: 42px;
     position: absolute;
     margin: 5px 5px;
-    background-image: url(/static/images/backToTop/firstStyle/06_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/firstStyle/06_hover.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_01 {
@@ -17405,7 +17404,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/01.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/01.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_01_hover {
@@ -17413,7 +17412,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/01_hover.png?v=201505261406)
+    background-image: url(../../images-bak/backToTop/secondStyle/01_hover.png?v=201505261406)
 }
 
 .siteBackToTop_secondStyle_02 {
@@ -17421,7 +17420,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/02.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/02.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_02_hover {
@@ -17429,7 +17428,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/02_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/02_hover.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_03 {
@@ -17437,7 +17436,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/03.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/03.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_03_hover {
@@ -17445,7 +17444,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/03_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/03_hover.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_04 {
@@ -17453,7 +17452,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/04.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/04.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_04_hover {
@@ -17461,7 +17460,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/04_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/04_hover.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_05 {
@@ -17469,7 +17468,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/05.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/05.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_05_hover {
@@ -17477,7 +17476,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/05_hover.png?v=201505261406)
+    background-image: url(../../images-bak/backToTop/secondStyle/05_hover.png?v=201505261406)
 }
 
 .siteBackToTop_secondStyle_06 {
@@ -17485,7 +17484,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/06.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/06.png?v=201505251717)
 }
 
 .siteBackToTop_secondStyle_06_hover {
@@ -17493,7 +17492,7 @@ div.extBanner {
     height: 50px;
     position: absolute;
     margin: 1px 1px;
-    background-image: url(/static/images/backToTop/secondStyle/06_hover.png?v=201505251717)
+    background-image: url(../../images-bak/backToTop/secondStyle/06_hover.png?v=201505251717)
 }
 
 @-webkit-keyframes mp-loading-iconAction {
@@ -17613,7 +17612,7 @@ div.extBanner {
 .photoSlidePanel .loading .loadImg {
     width: 103px;
     height: 103px;
-    background: url(/static/images/site/photoSlide/load.gif?v=201506031009) no-repeat;
+    background: url(../../images-bak/site/photoSlide/load.gif?v=201506031009) no-repeat;
     margin: 0 auto;
     z-index: 101
 }
@@ -17630,7 +17629,7 @@ div.extBanner {
 .photoSlidePanel .top .close {
     width: 34px;
     height: 34px;
-    background: url(/static/images/site/photoSlide/btn_close.png?v=201505221626) 0 0 no-repeat
+    background: url(../../images-bak/site/photoSlide/btn_close.png?v=201505221626) 0 0 no-repeat
 }
 
 .photoSlidePanel .middle {
@@ -17648,19 +17647,19 @@ div.extBanner {
 }
 
 .photoSlidePanel .middle .prev {
-    background: url(/static/images/site/photoSlide/btn_next_prev.png?v=201505221626) 0 0 no-repeat
+    background: url(../../images-bak/site/photoSlide/btn_next_prev.png?v=201505221626) 0 0 no-repeat
 }
 
 .photoSlidePanel .middle .prev_hover {
-    background: url(/static/images/site/photoSlide/btn_next_prev.png?v=201505221626) 0 -243px no-repeat
+    background: url(../../images-bak/site/photoSlide/btn_next_prev.png?v=201505221626) 0 -243px no-repeat
 }
 
 .photoSlidePanel .middle .next {
-    background: url(/static/images/site/photoSlide/btn_next_prev.png?v=201505221626) 0 -81px no-repeat
+    background: url(../../images-bak/site/photoSlide/btn_next_prev.png?v=201505221626) 0 -81px no-repeat
 }
 
 .photoSlidePanel .middle .next_hover {
-    background: url(/static/images/site/photoSlide/btn_next_prev.png?v=201505221626) 0 -162px no-repeat
+    background: url(../../images-bak/site/photoSlide/btn_next_prev.png?v=201505221626) 0 -162px no-repeat
 }
 
 .photoSlidePanel .bottom {
@@ -17894,7 +17893,7 @@ div.extBanner {
     width: 23px;
     height: 22px;
     cursor: pointer;
-    background: url(/static/images/popupWindow/close.png?v=201511161854) -2px -3px no-repeat;
+    background: url(../../images-bak/popupWindow/close.png?v=201511161854) -2px -3px no-repeat;
     display: inline;
     position: absolute;
     top: 6px;
@@ -17902,7 +17901,7 @@ div.extBanner {
 }
 
 .tips2 .close_hover {
-    background: url(/static/images/popupWindow/close.png?v=201511161854) -2px -32px no-repeat
+    background: url(../../images-bak/popupWindow/close.png?v=201511161854) -2px -32px no-repeat
 }
 
 .coupon div {
@@ -18143,67 +18142,67 @@ div.extBanner {
 }
 
 .coupon .coupon-red-left {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) 0 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) 0 0 no-repeat
 }
 
 .coupon .coupon-red-right {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -11px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -11px 0 no-repeat
 }
 
 .coupon .coupon-orange-left {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -22px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -22px 0 no-repeat
 }
 
 .coupon .coupon-orange-right {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -33px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -33px 0 no-repeat
 }
 
 .coupon .coupon-yellow-left {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -44px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -44px 0 no-repeat
 }
 
 .coupon .coupon-yellow-right {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -55px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -55px 0 no-repeat
 }
 
 .coupon .coupon-green-left {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -66px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -66px 0 no-repeat
 }
 
 .coupon .coupon-green-right {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -77px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -77px 0 no-repeat
 }
 
 .coupon .coupon-blue-left {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -88px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -88px 0 no-repeat
 }
 
 .coupon .coupon-blue-right {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -99px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -99px 0 no-repeat
 }
 
 .coupon .coupon-pink-left {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -110px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -110px 0 no-repeat
 }
 
 .coupon .coupon-pink-right {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -121px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -121px 0 no-repeat
 }
 
 .coupon .coupon-purple-left {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -132px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -132px 0 no-repeat
 }
 
 .coupon .coupon-purple-right {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -143px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -143px 0 no-repeat
 }
 
 .coupon .coupon-invalid-left {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -154px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -154px 0 no-repeat
 }
 
 .coupon .coupon-invalid-right {
-    background: url(/static/images/coupon/v_waveLine.png?v=201605161742) -165px 0 no-repeat
+    background: url(../../images-bak/coupon/v_waveLine.png?v=201605161742) -165px 0 no-repeat
 }
 
 .popupBody-text {
@@ -18289,84 +18288,84 @@ div.extBanner {
 }
 
 .fileType-iconDoc {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -11px -16px
 }
 
 .fileType-iconPpt {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -11px -45px
 }
 
 .fileType-iconXls {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -11px -74px
 }
 
 .fileType-iconPdf {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -12px -103px
 }
 
 .fileType-iconJpg {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -12px -132px
 }
 
 .fileType-iconTxt {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -12px -161px
 }
 
 .fileType-iconPng {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -12px -190px
 }
 
 .fileType-iconDefault {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -11px -219px
 }
 
 .fileType-iconRar {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 21px;
     height: 19px;
     background-position: -12px -248px
 }
 
 .fileType-iconAvi {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 21px;
     height: 19px;
     background-position: -12px -277px
 }
 
 .fileType-iconZip {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -12px -306px
 }
 
 .fileType-iconRm {
-    background: url(/static/images/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
+    background: url(../../images-bak/comm/fai/attach-smallIcon.png?v=201611281833) no-repeat;
     width: 20px;
     height: 19px;
     background-position: -12px -335px
@@ -18507,7 +18506,7 @@ div.extBanner {
 
 .styleMall .point2 {
     float: left;
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1571px no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1571px no-repeat;
     width: 15px;
     height: 15px
 }
@@ -18557,7 +18556,7 @@ div.extBanner {
 
 .styleYHD .displayRight {
     float: right;
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1571px no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1571px no-repeat;
     width: 5%;
     height: 15px;
     min-width: 6.7px
@@ -18565,7 +18564,7 @@ div.extBanner {
 
 .styleYHD .displayRight-hover {
     float: right;
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1530px no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1530px no-repeat;
     width: 5%;
     height: 15px;
     min-width: 6.7px
@@ -18664,7 +18663,7 @@ div.extBanner {
 }
 
 .mallMenuJD {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1480px no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1480px no-repeat;
     width: 15px;
     height: 15px;
     position: absolute;
@@ -18697,7 +18696,7 @@ div.extBanner {
 
 .styleJD .displayRight {
     float: right;
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1530px no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1530px no-repeat;
     width: 5%;
     height: 15px;
     min-width: 6.7px
@@ -18806,7 +18805,7 @@ div.extBanner {
 }
 
 .mallMenuTM {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1480px no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1480px no-repeat;
     width: 15px;
     height: 15px;
     position: absolute;
@@ -18869,7 +18868,7 @@ div.extBanner {
 
 .styleTM .displayRight {
     float: right;
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1615px no-repeat;
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1615px no-repeat;
     width: 5%;
     height: 15px;
     min-width: 6.5px
@@ -19034,11 +19033,11 @@ div.extBanner {
 }
 
 .memberLoginDialogPanel .memberLoginDialogItem .memberAcctInput {
-    background: url(/static/images/member/icon_user.jpg) 0 no-repeat
+    background: url(../../images-bak/member/icon_user.jpg) 0 no-repeat
 }
 
 .memberLoginDialogPanel .memberLoginDialogItem .memberPwdInput {
-    background: url(/static/images/member/icon_pwd.jpg?v=201503231713) 0 no-repeat
+    background: url(../../images-bak/member/icon_pwd.jpg?v=201503231713) 0 no-repeat
 }
 
 .memberLoginDialogPanel .memberLoginDialogItemList .memberCaptcha {
@@ -19190,15 +19189,15 @@ div.extBanner {
 }
 
 .memberLoginDialogPanel .thirdPartyLogin .sina {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1727px no-repeat
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1727px no-repeat
 }
 
 .memberLoginDialogPanel .thirdPartyLogin .qq {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1667px no-repeat
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1667px no-repeat
 }
 
 .memberLoginDialogPanel .thirdPartyLogin .wx {
-    background: url(/static/images/v2/vbg01.png?v=201705021426) 0 -1787px no-repeat
+    background: url(../../images-bak/v2/vbg01.png?v=201705021426) 0 -1787px no-repeat
 }
 
 .memberRegisterDialogPanel {
@@ -19450,7 +19449,7 @@ div.extBanner {
     margin-left: 356px;
     width: 14px;
     height: 14px;
-    background: url(/static/images/viewClose.png?v=201610211723);
+    background: url(../../images-bak/viewClose.png?v=201610211723);
     cursor: pointer;
     transition: all .35s;
     transform: rotate(0deg);
@@ -19568,7 +19567,7 @@ div.extBanner {
     margin-left: 333px;
     width: 14px;
     height: 14px;
-    background: url(/static/images/viewClose.png?v=201610211723);
+    background: url(../../images-bak/viewClose.png?v=201610211723);
     cursor: pointer;
     transition: all .35s;
     transform: rotate(0deg);
@@ -19904,7 +19903,7 @@ div.extBanner {
 .fk-popupWindowVT .pWHead .pWHead_close_img {
     width: 18px;
     height: 18px;
-    background: url(/static/images/v2/mbg01.png?v=201705101138) -449px -187px no-repeat;
+    background: url(../../images-bak/v2/mbg01.png?v=201705101138) -449px -187px no-repeat;
     cursor: pointer;
     transform: rotate(0deg);
     transition: all .35s
@@ -19965,7 +19964,7 @@ div.extBanner {
     position: absolute;
     display: block;
     top: 65px;
-    background: url(/static/images/loading/loading_2b.gif?v=201509071734) no-repeat center #fff
+    background: url(../../images-bak/loading/loading_2b.gif?v=201509071734) no-repeat center #fff
 }
 
 .fk-popupWindowVT .pWCenter .tabs_extendedLine {
@@ -20884,27 +20883,27 @@ div.extBanner {
 
 @media screen\9 {
     .form .photo-gallery .photo-gallery-inner .g_control_prev, .g_control_prev {
-        background: url(/static/images/v2/vbg01.png?v=201705021426) -136px -135px no-repeat;
+        background: url(../../images-bak/v2/vbg01.png?v=201705021426) -136px -135px no-repeat;
         width: 27px;
         height: 41px;
-        _background: url(/static/images/site/prev_nextarrow/prev-2.gif?v=201704241050) -13px -2px no-repeat
+        _background: url(../../images-bak/site/prev_nextarrow/prev-2.gif?v=201704241050) -13px -2px no-repeat
     }
 
     .form .photo-gallery .photo-gallery-inner .g_control_next, .g_control_next {
-        background: url(/static/images/v2/vbg01.png?v=201705021426) -202px -135px no-repeat;
+        background: url(../../images-bak/v2/vbg01.png?v=201705021426) -202px -135px no-repeat;
         width: 27px;
         height: 41px;
-        _background: url(/static/images/site/prev_nextarrow/next-2.gif?v=201704241050) -13px -2px no-repeat
+        _background: url(../../images-bak/site/prev_nextarrow/next-2.gif?v=201704241050) -13px -2px no-repeat
     }
 
     .forms .form .formMiddle .productSmallPicForms .smallPicDownForms .g_imgPrev {
-        background: url(/static/images/v2/vbg01.png?v=201705021426) -251px -137px no-repeat;
-        _background: url(/static/images/site/prev_nextarrow/prev-1.gif?v=201704241050)
+        background: url(../../images-bak/v2/vbg01.png?v=201705021426) -251px -137px no-repeat;
+        _background: url(../../images-bak/site/prev_nextarrow/prev-1.gif?v=201704241050)
     }
 
     .forms .form .formMiddle .productSmallPicForms .smallPicDownForms .g_imgNext {
-        background: url(/static/images/v2/vbg01.png?v=201705021426) -291px -137px no-repeat;
-        _background: url(/static/images/site/prev_nextarrow/next-1.gif?v=201704241050)
+        background: url(../../images-bak/v2/vbg01.png?v=201705021426) -291px -137px no-repeat;
+        _background: url(../../images-bak/site/prev_nextarrow/next-1.gif?v=201704241050)
     }
 }
 
