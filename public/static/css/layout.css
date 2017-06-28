@@ -800,7 +800,7 @@ a:focus {
 #alive-site-body .flex > * {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -811,7 +811,7 @@ a:focus {
 #alive-site-main, #alive-site-web {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column wrap;
@@ -831,7 +831,7 @@ a:focus {
     margin: auto;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -851,7 +851,7 @@ a:focus {
     margin: auto;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -864,14 +864,14 @@ a:focus {
 #web-footer-container {
     order: 3;
     height: 300px;
-    background: #333333 url('/static/images/footer/webFooterTable.jpg') no-repeat center;
+    background: #333333 url('../images/footer/webFooterTable.jpg') no-repeat center;
 }
 
 #web-footer-container #footer-content-container {
     margin: auto;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -888,7 +888,7 @@ a:focus {
 #web-extra-container #extra-content-container {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column wrap;
@@ -927,7 +927,7 @@ a:focus {
 #header-content-container #header-full-container {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     position: absolute;
@@ -939,7 +939,7 @@ a:focus {
     position: relative;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -958,7 +958,7 @@ a:focus {
 #header-content-container .header-body #headerAbsTable #headerAbs {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
@@ -967,7 +967,7 @@ a:focus {
     order: 1;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
@@ -976,7 +976,7 @@ a:focus {
     order: 2;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     height: 45px;
@@ -990,7 +990,7 @@ a:focus {
     order: 3;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
@@ -1043,7 +1043,7 @@ a:focus {
     padding-right: 15px;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -1064,7 +1064,7 @@ a:focus {
     border-spacing: 0;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -1103,7 +1103,7 @@ a:focus {
 #footer-content-container #footer-full-container {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     position: absolute;
@@ -1115,7 +1115,7 @@ a:focus {
     position: relative;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -1134,7 +1134,7 @@ a:focus {
 #footer-content-container .footer-body #footerAbsTable #footerAbs {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
@@ -1143,7 +1143,7 @@ a:focus {
     order: 1;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
@@ -1170,7 +1170,7 @@ a:focus {
     order: 2;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     height: 200px;
@@ -1202,7 +1202,7 @@ a:focus {
     order: 3;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     height: 100px;
@@ -1237,7 +1237,7 @@ a:focus {
     padding: 0 15px;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -1252,7 +1252,7 @@ a:focus {
     border-spacing: 0;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -1295,7 +1295,7 @@ a:focus {
     padding: 0 15px;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -1314,7 +1314,7 @@ a:focus {
     border-spacing: 0;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -1326,7 +1326,7 @@ a:focus {
     color: #999999;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -1356,7 +1356,7 @@ a:focus {
     order: 2;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -1378,7 +1378,7 @@ a:focus {
 #webContainerMiddle {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -1392,7 +1392,7 @@ a:focus {
 #webContainerMiddle #webBannerTable {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -1415,7 +1415,7 @@ a:focus {
 #webBanner {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -1467,17 +1467,17 @@ a:focus {
 
 #webBanner .bannerPrev {
     left: 20px;
-    background: url(/static/images/site/left.png) no-repeat rgba(0, 0, 0, 0.1);
+    background: url(../images/site/left.png?20170808) no-repeat rgba(0, 0, 0, 0.1);
     margin-left: 1%;
-    background: url(/static/images/site/left.gif) no-repeat \9;
+    background: url(../images/site/left.gif?20170808) no-repeat \9;
     background-color: #727272 \9;
 }
 
 #webBanner .bannerNext {
     right: 20px;
-    background: url(/static/images/site/right.png) no-repeat rgba(0, 0, 0, 0.1);
+    background: url(../images/site/right.png?20170808) no-repeat rgba(0, 0, 0, 0.1);
     margin-right: 1%;
-    background: url(/static/images/site/right.gif) no-repeat \9;
+    background: url(../images/site/right.gif?20170808) no-repeat \9;
     background-color: #727272 \9;
 }
 
@@ -1486,7 +1486,7 @@ a:focus {
     bottom: 0;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -1542,7 +1542,7 @@ a:focus {
     bottom: 0;
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -1607,7 +1607,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-layout {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column wrap;
@@ -1621,7 +1621,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-flex {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row wrap;
@@ -1636,7 +1636,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-layout .alive-header, .alive-layout .alive-body, .alive-layout .alive-footer {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row wrap;
@@ -1705,16 +1705,6 @@ alive-bg-gray    用于设置元素经典灰色背景
     align-items: stretch;
 }
 
-.alive-center {
-    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
-    display: -webkit-flex; /* NEW - Chrome */
-    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
-    justify-content: center;
-    align-items: center;
-}
-
 .alive-outer {
     margin: 20px;
 }
@@ -1735,6 +1725,278 @@ alive-bg-gray    用于设置元素经典灰色背景
     flex-basis: 100%;
 }
 
+/*
+ 模块标题
+*/
+.alive-title{
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    padding-bottom: 3px;
+    margin-bottom: 47px;
+}
+
+/* 底部线 */
+.alive-title:before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    background-color: #d4d4d4;
+
+}
+
+/* 标题 */
+.alive-title .title{
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 50px;
+    color: #000000;
+    font-size: 30px;
+}
+
+/* 标识 */
+.alive-title .title:before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: #ff6633;
+
+}
+
+/* 其他 */
+.alive-title .extra{
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding:5px 15px;
+    line-height: 25px;
+    color: #a6a6a6;
+    background: #f6f6f6;
+    font-size: 14px;
+}
+
+/* 其他 */
+.alive-title .extra:hover{
+    color: #f6f6f6;
+    background: #a6a6a6;
+    opacity: 0.9;
+}
+
+/* 第二元素隐藏 */
+.alive-title > *:nth-child(2) + *{
+    display: none;
+}
+
+
+/*======================
+ 内联模块  方位  九宫格
+ ======================*/
+
+/* 西北区 */
+.alive-topLeft {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* 中北区 */
+.alive-topCenter {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* 东北区 */
+.alive-topRight {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+/* 中西区 */
+.alive-middleLeft {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 居中区 */
+.alive-center,.alive-middleCenter {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 中东区 */
+.alive-middleRight {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* 西南区 */
+.alive-bottomLeft {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+/* 中南区 */
+.alive-bottomCenter {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* 东南区 */
+.alive-bottomRight {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+/*======================
+   方位  上 横中 下 左 树中 右
+ ======================*/
+
+/* 上 */
+.alive-top {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+/* 下 */
+.alive-bottom {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+/* 横中 */
+.alive-centerLevel {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* 左 */
+.alive-left {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+/* 右 */
+.alive-right {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+/* 树中 */
+.alive-centerUpLevel {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row;
+    justify-content: center;
+    align-items: stretch;
+}
+
 /* ==================
     网格布局
 ==================== */
@@ -1745,7 +2007,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-table {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
@@ -1753,7 +2015,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-row {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row wrap;
@@ -1797,7 +2059,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-flex {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
@@ -1813,7 +2075,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-media {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     align-items: flex-start;
@@ -1834,7 +2096,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-fixed {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     min-height: 100vh;
@@ -1852,7 +2114,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-parent {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row wrap;
@@ -1872,7 +2134,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-upLevel {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
@@ -1886,6 +2148,14 @@ alive-bg-gray    用于设置元素经典灰色背景
 }
 
 .alive-upLevel.half > *:nth-child(2) {
+    flex: 1;
+}
+
+.alive-level > .top {
+    flex: 1;
+}
+
+.alive-level > .bottom {
     flex: 1;
 }
 
@@ -1911,7 +2181,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 .alive-level {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: row nowrap;
@@ -1925,6 +2195,14 @@ alive-bg-gray    用于设置元素经典灰色背景
 }
 
 .alive-level.half > *:nth-child(2) {
+    flex: 1;
+}
+
+.alive-level > .left {
+    flex: 1;
+}
+
+.alive-level > .right {
     flex: 1;
 }
 
@@ -2048,7 +2326,7 @@ hr.line.dashed, hr.upLine.dashed {
 .alive-line {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -ms-flexbox; /*  - IE 10 */
     display: -webkit-flex; /* NEW - Chrome */
     display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
     flex-flow: column nowrap;
