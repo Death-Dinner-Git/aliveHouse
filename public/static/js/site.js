@@ -17,6 +17,7 @@ var config = {
         small: '400px',
         min: '300px'
     },
+    imageError:'/static/images/not-capture.png',
     layuiBase:'/static/js/',
     initComponents:['jquery', 'element', 'layer', 'form', 'flow','laydate'],
     allComponents:['jquery', 'element', 'layer', 'util', 'form', 'code', 'laydate', 'flow', 'layedit', 'upload','laypage']
@@ -725,28 +726,23 @@ Site.loadPage =  function (pageElement,total) {
 };
 
 /**
- * 图片懒加载
+ * 单张图片懒加载
  * @param options
  */
 Site.loadImage = function (options) {
     var $config = {
         img:undefined,
         url:null,
-        callback:null
+        error:null,
+        callback:null,
+        removeUrl:true
     };
     $config = $.extend($config,options);
-    var $this = $($config.img),url= $this.data('url'),$parent = $this.data('target');
+    var $this = $($config.img),url= $this.data('url'),$parent = $this.data('target'),status = false;
     if (!url){
         return;
     }
     var img=new Image(); // 创建一个Image对象，实现图片的预下载
-
-    img.src=url;
-
-    if (img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
-        reImage();
-        return; // 直接返回，不用再处理onload事件
-    }
 
     img.onload=function(){
         if(typeof(img.readyState)=='undefined')
@@ -756,8 +752,7 @@ Site.loadImage = function (options) {
         //在IE8以及以下版本中需要判断readyState而不是complete
         if ((img.readyState=='complete'||img.readyState=="loaded")||img.complete)
         {
-            //console.log('width='+imgloader.width+',height='+imageloader.height);//读取原始图片大小
-            callback({'msg':'ok','src':src,'id':id});
+            status = true;
         }else{
             img.onreadystatechange(event);
         }
@@ -766,9 +761,35 @@ Site.loadImage = function (options) {
     };
 
     //当加载出错或者图片不存在
-    img.onerror = function(evt)
+    img.onerror = function()
     {
-        callback({'msg':'error','id':id});
+        if (typeof $config.error === 'function'){
+            $config.error.call();
+        }else{
+            var _width = 200,_height = 200;
+            if ($this.width()<_width){
+                _width = $this.width();
+            }
+            if ($this.height()<_height){
+                _height = $this.height();
+            }
+            $this.parent().css({
+                position:'relative',
+                display:'inline-block',
+                width:$this.width(),
+                height:$this.height(),
+                background:'#f4f4f4'
+            });
+            $this.attr('src',config.imageError).css({
+                position:'absolute',
+                width:_width,
+                height:_height,
+                left:'50%',
+                top:'50%',
+                marginLeft:-(_width/2),
+                marginTop:-(_height/2)
+            });
+        }
     };
 
     //当加载状态改变
@@ -777,15 +798,24 @@ Site.loadImage = function (options) {
         //此方法只有IE8以及一下版本会调用
     };
 
+    img.src=url;
+
+    if (img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
+        reImage();
+        return; // 直接返回，不用再处理onload事件
+    }
+
     function reImage() {
-        if (img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
+        if (status || img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
             if (typeof $config.callback === 'function'){
                 $config.callback.call(img);
             }
             if (!$parent){
                 if ($this.is('img')){
                     $this.attr('src',url);
-                    $this.removeAttr('data-url');
+                    if($config.removeUrl){
+                        $this.removeAttr('data-url');
+                    }
                 }
             }else {
                 $($parent).append("<img src='"+url+ " />");
@@ -803,30 +833,54 @@ Site.lazyLoadScroll = function (options){
     var _config={
         element:null,
         lazyClass:'lazy',
-        hasLazyClass:'hasLazy'
+        hasLazyClass:'hasLazy',
+        removeUrl:true
     };
     _config = $.extend(_config,options);
     var temp = -1;//用来判断是否是向下滚动（向上滚动就不需要判断延迟加载图片了）
-    _config.element = _config.element || window;
-    $(document).on('scroll',_config.element,function (e) {
-        var lazyImgArr = [];
-        $(this).find('img').each(function () {
-            $(this).removeClass(_config.lazyClass).addClass(_config.lazyClass);
-            lazyImgArr.push($(this));
-        });
+    _config.element = _config.element || document.body;
+    $(_config.element).find('img').each(function () {
+        var $this = $(this);
+        $this.removeClass(_config.lazyClass).addClass(_config.lazyClass);
+    });
+    $(_config.element).find('img'+'.'+_config.lazyClass).each(function () {
+        var $this = $(this);
         _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
         _config.bodyHeight = Site.clientTop(_config.element); // body（页面）可见区域的总高度
-        if(temp < _config.scrollHeight) {//为true表示是向下滚动，否则是向上滚动，不需要执行动作。
-            $.each(lazyImgArr,function (i,item) {
-                var imgTop = Site.offsetTop(item);//1305（图片纵坐标）
-                if((imgTop - _config.scrollHeight) <= _config.bodyHeight) {
-                    item.attr('src',item.attr('data-url'));
-                    $(this).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
-                    // item.removeAttr('data-url');
-                }
-            });
-            temp = _config.scrollHeight;
+        var imgTop = Site.offsetTop($this);//（图片纵坐标）
+        if((imgTop - _config.scrollHeight) >=0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+            Site.loadImage({img:$this});
+            $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
+            if (_config.removeUrl){
+                $this.removeAttr('data-url');
+            }
         }
+    });
+    $(document).on('scroll',_config.element,function (e) {
+        _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
+        _config.bodyHeight = Site.clientTop(_config.element); // body（页面）可见区域的总高度
+        $(this).find('img'+'.'+_config.lazyClass).each(function () {
+            var $this = $(this);
+            var imgTop = Site.offsetTop($this);//（图片纵坐标）
+            if(temp < _config.scrollHeight) {//为true表示是向下滚动，否则是向上滚动，不需要执行动作。
+                if((imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+                    Site.loadImage({img:$this});
+                    $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
+                    if (_config.removeUrl){
+                        $this.removeAttr('data-url');
+                    }
+                }
+                temp = _config.scrollHeight;
+            }else {
+                if((imgTop - _config.scrollHeight) >=0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+                    Site.loadImage({img:$this});
+                    $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
+                    if (_config.removeUrl){
+                        $this.removeAttr('data-url');
+                    }
+                }
+            }
+        });
     });
 };
 
@@ -1072,7 +1126,8 @@ Site.initBanner = function (data, options) {
         if (loadImage[k] === true){
             return;
         }
-        Site.loadImage($bannerBody.find('.item').eq(k).find('img'));
+        var img = $bannerBody.find('.item').eq(k).find('img');
+        Site.loadImage({img:img});
         loadImage[k] = true;
     }
 
@@ -1151,7 +1206,7 @@ Site.addEvent = function (obj,type,func){
  * @returns {String||Number}
  */
 Site.offsetTop = function (element){
-    element = element || document;
+    element = element || document.body;
     var that = $(element);
     return that.offset().top;
 };
@@ -1162,7 +1217,7 @@ Site.offsetTop = function (element){
  * @returns {String||Number}
  */
 Site.scrollTop = function (element){
-    element = element || document;
+    element = element || document.body;
     var that = $(element);
     return that.scrollTop();
 };
@@ -1173,9 +1228,9 @@ Site.scrollTop = function (element){
  * @returns {String||Number}
  */
 Site.clientTop = function (element){
-    element = element || document;
+    element = element || document.body;
     var that = $(element);
-    return that.offset().top - that.scrollTop();
+    return  that.scrollTop() - Site.offsetTop();
 };
 
 /**
@@ -1240,6 +1295,8 @@ $(function () {
     }, false);
 
     Site.initPjax();
+
+    Site.lazyLoadScroll();
 
     // Site.wait('Most people can not see this message, please share with us! <br> 【God is a girl, please treat her as a lover】');
 });
