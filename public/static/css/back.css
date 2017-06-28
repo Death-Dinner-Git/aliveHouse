@@ -755,15 +755,15 @@ body .layui-footer .layui-main a {
 ================================== */
 .checkbox-left .layui-form-checkbox {
     padding-left: 30px !important;
-    padding-right: 0px !important;
+    padding-right: 0 !important;
 }
 
 .checkbox-left .layui-form-checkbox i {
-    left: 0px !important;
+    left: 0 !important;
 }
 
 .layui-form-select dl {
-    padding: 0px 0 !important;
+    padding: 0 !important;
     min-height: 36px !important;
 }
 

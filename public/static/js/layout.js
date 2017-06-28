@@ -88,6 +88,7 @@ layui.config({
         elem: '#dinner-nav-side',
         // data: navs,
         cached: true,
+        // citeType: 2,
         url: '/manage/index/nav'
     });
 
