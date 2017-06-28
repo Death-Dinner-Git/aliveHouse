@@ -726,25 +726,161 @@ Site.loadPage =  function (pageElement,total) {
 
 /**
  * 图片懒加载
- * @param selecter
+ * @param options
  */
-Site.loadImage = function (selecter) {
-    var $this = $(selecter),url= $this.data('url'),$parent = $this.data('target');
+Site.loadImage = function (options) {
+    var $config = {
+        img:undefined,
+        url:null,
+        callback:null
+    };
+    $config = $.extend($config,options);
+    var $this = $($config.img),url= $this.data('url'),$parent = $this.data('target');
     if (!url){
         return;
     }
-    var img=new Image();
-    img.onload=function(){
-        img.onload=null;
-        if (!$parent){
-            if ($this.is('img')){
-                $this.attr('src',url);
-            }
-        }else {
-            $($parent).append("<img src='"+url+ " />");
-        }
-    };
+    var img=new Image(); // 创建一个Image对象，实现图片的预下载
+
     img.src=url;
+
+    if (img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
+        reImage();
+        return; // 直接返回，不用再处理onload事件
+    }
+
+    img.onload=function(){
+        if(typeof(img.readyState)=='undefined')
+        {
+            img.readyState = 'undefined';
+        }
+        //在IE8以及以下版本中需要判断readyState而不是complete
+        if ((img.readyState=='complete'||img.readyState=="loaded")||img.complete)
+        {
+            //console.log('width='+imgloader.width+',height='+imageloader.height);//读取原始图片大小
+            callback({'msg':'ok','src':src,'id':id});
+        }else{
+            img.onreadystatechange(event);
+        }
+        img.onload=null;
+        reImage();
+    };
+
+    //当加载出错或者图片不存在
+    img.onerror = function(evt)
+    {
+        callback({'msg':'error','id':id});
+    };
+
+    //当加载状态改变
+    img.onreadystatechange = function(e)
+    {
+        //此方法只有IE8以及一下版本会调用
+    };
+
+    function reImage() {
+        if (img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
+            if (typeof $config.callback === 'function'){
+                $config.callback.call(img);
+            }
+            if (!$parent){
+                if ($this.is('img')){
+                    $this.attr('src',url);
+                    $this.removeAttr('data-url');
+                }
+            }else {
+                $($parent).append("<img src='"+url+ " />");
+            }
+        }
+    }
+};
+
+/**
+ * 图片延迟加载 图片懒加载
+ * @param options
+ */
+Site.lazyLoadScroll = function (options){
+    //配置些参数
+    var _config={
+        element:null,
+        lazyClass:'lazy',
+        hasLazyClass:'hasLazy'
+    };
+    _config = $.extend(_config,options);
+    var temp = -1;//用来判断是否是向下滚动（向上滚动就不需要判断延迟加载图片了）
+    _config.element = _config.element || window;
+    $(document).on('scroll',_config.element,function (e) {
+        var lazyImgArr = [];
+        $(this).find('img').each(function () {
+            $(this).removeClass(_config.lazyClass).addClass(_config.lazyClass);
+            lazyImgArr.push($(this));
+        });
+        _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
+        _config.bodyHeight = Site.clientTop(_config.element); // body（页面）可见区域的总高度
+        if(temp < _config.scrollHeight) {//为true表示是向下滚动，否则是向上滚动，不需要执行动作。
+            $.each(lazyImgArr,function (i,item) {
+                var imgTop = Site.offsetTop(item);//1305（图片纵坐标）
+                if((imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+                    item.attr('src',item.attr('data-url'));
+                    $(this).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
+                    // item.removeAttr('data-url');
+                }
+            });
+            temp = _config.scrollHeight;
+        }
+    });
+};
+
+/**
+ * 图片懒加载
+ * @param options
+ */
+Site.lazyLoad = function (options){
+    //配置些参数
+    var _config={
+        element:null,
+        eleGroup:[],
+        eleTop:null,
+        eleHeight:null,
+        screenHeight:null,
+        visibleHeight:null,
+        scrollHeight:null,
+        scrolloverHeight:null,
+        limitHeight:null
+    };
+    _config = $.extend(_config,options);
+    var _element = _config.element;
+    var _eleGroup = _config.eleGroup;
+
+    //没有数据中断
+    if ( !(_config.element || _eleGroup) ){
+        return;
+    }
+
+    // 对数据进行初始化
+    if (_config.element){
+        var $element = $(_config.element);
+        if ($element.is('img')){
+            _eleGroup.push($element);
+        }else {
+            $element.find('img').each(function () {
+                _eleGroup.push($(this));
+            });
+        }
+    }
+
+    _config.screenHeight = _config.screenHeight || Site.clientTop();
+    _config.scrolloverHeight = _config.scrolloverHeight || Site.scrollTop();
+
+    if(Site.scrollTop() === 0){
+        _config.limitHeight = _config.scrolloverHeight + _config.screenHeight;
+    }else{
+        _config.limitHeight = Site.scrollTop() + _config.screenHeight;
+    }
+    for(var i=0,j=_config.eleGroup.length;i<j;i++){
+        if(Site.offsetTop(_config.eleGroup[i])<=limitHeight && _config.eleGroup[i].attr('data-url')){
+            Site.loadImage({img:_config.eleGroup[i]});
+        }
+    }
 };
 
 /**
@@ -996,16 +1132,50 @@ Site.initBanner = function (data, options) {
 
 /**
  *
- * @param selecter
+ * @param obj
+ * @param type
+ * @param func
  * @returns {Array}
  */
-Site.getSelectCheckboxValues = function(selecter) {
-    selecter = selecter || '[lay-filter="selected"]';
-    var values = [];
-    $('input'+selecter+':checked').each(function () {
-        values.push($(this).val());
-    });
-    return values;
+Site.addEvent = function (obj,type,func){
+    if(obj.addEventListener){
+        obj.addEventListener(type,func,false);
+    }else if(obj.attachEvent){
+        obj.attachEvent('on'+type,func);
+    }
+};
+
+/**
+ * 获取元素的距离页面顶端的距离
+ * @param element
+ * @returns {String||Number}
+ */
+Site.offsetTop = function (element){
+    element = element || document;
+    var that = $(element);
+    return that.offset().top;
+};
+
+/**
+ * 获取滚动条距离页面顶端的距离
+ * @param element
+ * @returns {String||Number}
+ */
+Site.scrollTop = function (element){
+    element = element || document;
+    var that = $(element);
+    return that.scrollTop();
+};
+
+/**
+ * 获取元素距离浏览器可见区域顶端的距离
+ * @param element
+ * @returns {String||Number}
+ */
+Site.clientTop = function (element){
+    element = element || document;
+    var that = $(element);
+    return that.offset().top - that.scrollTop();
 };
 
 /**

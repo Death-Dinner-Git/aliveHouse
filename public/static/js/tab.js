@@ -15,6 +15,7 @@ layui.define(['element','layer'], function(exports) {
 				autoRefresh: true,
 				contextMenu:false,
                 dblclickRefresh:true,
+                iconShow:true, // tab 图标是否显示 默认 显示
                 // maxSetting:{
 				// 	max:10,
 				// }
@@ -155,7 +156,7 @@ layui.define(['element','layer'], function(exports) {
 			globalTabIdIndex++;
 			var content = '<iframe src="' + data.href + '" data-id="' + globalTabIdIndex + '"></iframe>';
 			var title = '';
-			if(data.icon !== undefined) {
+			if(data.icon !== undefined && _config.iconShow) {
 				if(data.icon.indexOf('fa-') !== -1) {
 					title += '<i class="fa ' + data.icon + '" aria-hidden="true"></i>';
 				} else {
