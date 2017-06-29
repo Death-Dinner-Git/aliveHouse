@@ -285,7 +285,8 @@
         分割线
         <hr>
 
-        <table class="layui-table">
+        <table class="layui-table" id="alive-table">
+            <div><label class="table-toggle layui-btn">选择</label></div>
             <colgroup>
                 <col width="150">
                 <col width="200">
@@ -445,17 +446,34 @@
     </fieldset>
 
 </div>
-<script type="text/javascript" src="__JS__/validator.js"></script>
+<!--<script type="text/javascript" src="__JS__/validator.js"></script>-->
 <script type="text/javascript" src="__JS__/search.js"></script>
+<!--<script type="text/javascript" src="__JS__/table.js"></script>-->
 <script>
     layui.config({
         base: '/static/js/',
-    }).use(['form', 'layedit', 'laydate', 'validator'], function () {
+    }).use(['form', 'layedit', 'laydate', 'validator','layTable'], function () {
         var form = layui.validator(),
             layer = layui.layer,
             layedit = layui.layedit,
             laydate = layui.laydate;
 
+        var table = layui.layTable();
+
+        table.set({
+            type: '1', //表格数据显示方式  可选值 1 或 2 ；1 为 选择确定，2为 滚动显示 ; 默认是 1
+            elem: '#alive-table', //表格容器
+            toggleElem: ".table-toggle", //触发容器
+            title: [], // 列标题 数组  为空自动读取
+            max:8, // 表格最多显示列数 默认是 8 列
+            success: function () {
+                console.log();
+            },
+            fail: function (msg) {
+                layer.msg(msg);
+            }
+        });
+        table.render();
         //创建一个编辑器
         var editIndex = layedit.build('LAY_demo_editor');
         //自定义验证规则
