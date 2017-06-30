@@ -132,12 +132,95 @@
     overflow: hidden;
 }
 
-#homeSecondHandHouse .item .itemTitle p {
-    font-size: 16px;
-    color: #333333;
+#homeSecondHandHouse .item .itemTitle .itemDesc {
+    margin-top: 0.4rem;
 }
 
-#homeSecondHandHouse .item .itemTitle .house-date {
+#homeSecondHandHouse .item .itemTitle p {
+    padding-left: 10px;
+    line-height: 1.8em;
+    height: 3.6em;
+    font-size: 16px;
+    color: #333333;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+#homeSecondHandHouse .item .itemTitle .house-price {
+    padding-left: 10px;
+    line-height: 1.8em;
+    font-size: 14px;
+    color: #ff6633;
+}
+
+#homeSecondHandHouse .item .itemTitle .house-date a{
+    margin-right: 10px;
+    padding: 0 10px;
+    border: 1px solid #ff6633;
+    line-height: 1.8em;
+    font-size: 14px;
+    color: #ff6633;
+}
+
+/* 二手好房 热门 */
+
+#homeSecondHandHouseHot {
+
+}
+
+#homeSecondHandHouseHot .item {
+    width: 396px;
+    height: 100%;
+}
+
+#homeSecondHandHouseHot .item .itemIcon {
+    position: relative;
+    padding: 8px;
+    background-color: #FFFFFF;
+    width: 370px;
+    height: 280px;
+    overflow: hidden;
+}
+
+#homeSecondHandHouseHot .item .itemIcon .bottom-desc {
+    position: absolute;
+    bottom: 8px;
+    padding: 0 15px;
+    background:rgba(0,0,0,0.5);
+    width: 340px;
+    height: 30px;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 28px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#homeSecondHandHouseHot .item .itemIcon img{
+    width: 100%;
+    height: 100%;
+}
+
+#homeSecondHandHouseHot .item .itemTitle {
+    width: 360px;
+    padding: 0 18px;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+#homeSecondHandHouseHot .item .itemTitle span{
+    margin-right: 10px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+#homeSecondHandHouseHot .item .itemTitle span{
+    margin-right: 10px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #FFFFFF;
 }
 
 

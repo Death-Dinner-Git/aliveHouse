@@ -30,6 +30,46 @@
 
 /** 页面元素 **/
 
+/*=======================
+ form
+========================*/
+.checkbox-left .layui-form-checkbox {
+    padding-left: 30px !important;
+    padding-right: 0 !important;
+}
+
+.checkbox-left .layui-form-checkbox i {
+    left: 0 !important;
+}
+
+.layui-form-select dl {
+    padding: 0 !important;
+    min-height: 36px !important;
+}
+
+.layui-form-select p.layui-select-none {
+    line-height: 26px;
+}
+
+/* =======================================
+		table
+================================== */
+
+/** 表格修饰 **/
+
+.layui-table[lay-skin="nob"] th, .layui-table[lay-skin="nob"] td {
+    border: none;
+}
+
+.layui-table[lay-bg="none"] tr {
+    background-color: inherit;
+}
+
+.layui-table[lay-bg="none"] tbody tr:hover {
+    background-color: #f8f8f8;
+}
+
+
 /* 引用 */
 
 /* 字段集合 */
@@ -1728,7 +1768,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 /*
  模块标题
 */
-.alive-title{
+.alive-title {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox; /*  - IE 10 */
@@ -1744,7 +1784,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 }
 
 /* 底部线 */
-.alive-title:before{
+.alive-title:before {
     content: '';
     display: block;
     position: absolute;
@@ -1757,7 +1797,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 }
 
 /* 标题 */
-.alive-title .title{
+.alive-title .title {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox; /*  - IE 10 */
@@ -1775,7 +1815,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 }
 
 /* 标识 */
-.alive-title .title:before{
+.alive-title .title:before {
     content: '';
     display: block;
     position: absolute;
@@ -1788,7 +1828,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 }
 
 /* 其他 */
-.alive-title .extra{
+.alive-title .extra {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox; /*  - IE 10 */
@@ -1798,7 +1838,7 @@ alive-bg-gray    用于设置元素经典灰色背景
     justify-content: center;
     align-items: center;
     position: relative;
-    padding:5px 15px;
+    padding: 5px 15px;
     line-height: 25px;
     color: #a6a6a6;
     background: #f6f6f6;
@@ -1806,17 +1846,16 @@ alive-bg-gray    用于设置元素经典灰色背景
 }
 
 /* 其他 */
-.alive-title .extra:hover{
+.alive-title .extra:hover {
     color: #f6f6f6;
     background: #a6a6a6;
     opacity: 0.9;
 }
 
 /* 第二元素隐藏 */
-.alive-title > *:nth-child(2) + *{
+.alive-title > *:nth-child(2) + * {
     display: none;
 }
-
 
 /*======================
  内联模块  方位  九宫格
@@ -1867,7 +1906,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 }
 
 /* 居中区 */
-.alive-center,.alive-middleCenter {
+.alive-center, .alive-middleCenter {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox; /*  - IE 10 */
@@ -2333,6 +2372,7 @@ hr.line.dashed, hr.upLine.dashed {
     justify-content: space-between;
     align-items: stretch;
     width: 100%;
+    max-width: 100%;
 }
 
 .alive-line .line-title {
@@ -2344,6 +2384,7 @@ hr.line.dashed, hr.upLine.dashed {
     display: inline-block;
     vertical-align: top;
     width: auto;
+    max-width: 100%;
     line-height: 28px;
 }
 
@@ -2354,6 +2395,7 @@ hr.line.dashed, hr.upLine.dashed {
     white-space: nowrap;
     font-size: 14px;
     color: rgb(102, 102, 102);
+    max-width: 100%;
 }
 
 .alive-line .line-content .content-title {
@@ -2361,10 +2403,11 @@ hr.line.dashed, hr.upLine.dashed {
     min-height: 23px;
     line-height: 23px;
     cursor: pointer;
+    max-width: 100%;
 }
 
 .alive-line .line-content .content-title a {
-    width: 100%;
+    max-width: 100%;
     vertical-align: bottom;
     display: inline-block;
     text-decoration: none;
@@ -2385,6 +2428,8 @@ hr.line.dashed, hr.upLine.dashed {
     color: #808080;
     margin-bottom: 6px;
     padding: 4px 0 0 0;
+    max-width: 100%;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -2411,3 +2456,4 @@ hr.line.dashed, hr.upLine.dashed {
     top: 3px;
     z-index: 2;
 }
+
