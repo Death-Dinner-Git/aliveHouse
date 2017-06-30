@@ -22,7 +22,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">图片懒加载</label>
                 <div class="layui-input-block checkbox-left">
-                    <div lay-filter="loading" lay-src="/static/images/goods-background.png" lay-class="user-images"
+                    <div lay-filter="loading" lay-src="/static/images/default-user.png" lay-class="user-images"
                          lay-title="个人信息" lay-alt="我的头像" style="width: 100%;">
                     </div>
                     <a data-url="/manage/user/view.html?iframe=true" class="img" lay-filter="url" data-title="个人信息">
@@ -240,9 +240,9 @@
                         <option value="4">杭州</option>
                     </select>
                     <div class="layui-unselect layui-form-select">
-                        <div class="layui-select-title"><input type="text" placeholder="请选择" value="" readonly=""
-                                                               class="layui-input layui-unselect"><i
-                                class="layui-edge"></i></div>
+                        <div class="layui-select-title">
+                            <input type="text" placeholder="请选择" value="" readonly="" class="layui-input layui-unselect">
+                            <i class="layui-edge"></i></div>
                         <dl class="layui-anim layui-anim-upbit">
                             <dd lay-value="0" class="">北京</dd>
                             <dd lay-value="1" class="">上海</dd>
@@ -285,8 +285,174 @@
         分割线
         <hr>
 
-        <table class="layui-table" id="alive-table">
-            <div><label class="table-toggle layui-btn">选择</label></div>
+        <div style="width: 1400px;overflow-x:auto;position: relative;">
+            <div class="toggle-container"><label class="table-toggle layui-btn">选择</label></div>
+            <table class="layui-table" id="alive-table" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th style="width: 200px;">客户来源</th>
+                    <th style="width: 200px;">1销售所在部门</th>
+                    <th style="width: 200px;">2销售所在部门</th>
+                    <th style="width: 200px;">3销售所在部门</th>
+                    <th style="width: 200px;">1地接所在部门</th>
+                    <th style="width: 200px;">2地接所在部门</th>
+                    <th style="width: 200px;">3地接所在部门</th>
+                    <th style="width: 200px;">司陪</th>
+                    <th style="width: 200px;">1销售</th>
+                    <th style="width: 200px;">2销售</th>
+                    <th style="width: 200px;">3销售</th>
+                    <th style="width: 200px;">1地接</th>
+                    <th style="width: 200px;">2地接</th>
+                    <th style="width: 200px;">3地接</th>
+                    <th style="width: 200px;">1销售组长</th>
+                    <th style="width: 200px;">2销售组长</th>
+                    <th style="width: 200px;">3销售组长</th>
+                    <th style="width: 200px;">1地接组长</th>
+                    <th style="width: 200px;">2地接组长</th>
+                    <th style="width: 200px;">3地接组长</th>
+                    <th style="width: 200px;">1销售主管</th>
+                    <th style="width: 200px;">2销售主管</th>
+                    <th style="width: 200px;">3销售主管</th>
+                    <th style="width: 200px;">1地接主管</th>
+                    <th style="width: 200px;">2地接主管</th>
+                    <th style="width: 200px;">3地接主管</th>
+                    <th style="width: 200px;">1销售经理</th>
+                    <th style="width: 200px;">2销售经理</th>
+                    <th style="width: 200px;">3销售经理</th>
+                    <th style="width: 200px;">1地接经理</th>
+                    <th style="width: 200px;">2地接经理</th>
+                    <th style="width: 200px;">3地接经理</th>
+                    <th style="width: 200px;">成交月份</th>
+                    <th style="width: 200px;">成交日期</th>
+                    <th style="width: 200px;">客户姓名</th>
+                    <th style="width: 200px;">联系电话</th>
+                    <th style="width: 200px;">"开发商（开发票名称）"</th>
+                    <th style="width: 200px;">项目所在区域</th>
+                    <th style="width: 200px;">项目名称</th>
+                    <th style="width: 200px;">成交房号</th>
+                    <th style="width: 200px;">付款方式</th>
+                    <th style="width: 200px;">面积(㎡)</th>
+                    <th style="width: 200px;">"单价(㎡/元)"</th>
+                    <th style="width: 200px;">总房款(元)</th>
+                    <th style="width: 200px;">返点</th>
+                    <th style="width: 200px;">返点金额</th>
+                    <th style="width: 200px;">可结金额</th>
+                    <th style="width: 200px;">已结金额（手写）</th>
+                    <th style="width: 200px;">"返优惠金额（结佣后给客户返）"</th>
+                    <th style="width: 200px;">"返优惠金额（从佣金中扣除）"</th>
+                    <th style="width: 200px;">爱心基金扣款</th>
+                    <th style="width: 200px;">二级代理费用</th>
+                    <th style="width: 200px;">返优惠备注</th>
+                    <th style="width: 200px;">销售部提交的报销申请（此处填写金额并批注详细内容）</th>
+                    <th style="width: 200px;">"成交奖励核算业绩"</th>
+                    <th style="width: 200px;">"成交奖励备注"</th>
+                    <th style="width: 200px;">"成交奖励是否交回"</th>
+                    <th style="width: 200px;">"实际业绩（公司）"</th>
+                    <th style="width: 200px;">"实际业绩（销售部）"</th>
+                    <th style="width: 200px;">1销售业绩</th>
+                    <th style="width: 200px;">2销售业绩</th>
+                    <th style="width: 200px;">3销售业绩</th>
+                    <th style="width: 200px;">1地接业绩</th>
+                    <th style="width: 200px;">2地接业绩</th>
+                    <th style="width: 200px;">3地接业绩</th>
+                    <th style="width: 200px;">1销售套数</th>
+                    <th style="width: 200px;">2销售套数</th>
+                    <th style="width: 200px;">3销售套数</th>
+                    <th style="width: 200px;">1地接套数</th>
+                    <th style="width: 200px;">2地接套数</th>
+                    <th style="width: 200px;">3地接套数</th>
+                    <th style="width: 200px;">装修情况</th>
+                    <th style="width: 200px;">合同签署</th>
+                    <th style="width: 200px;">总审核</th>
+                    <th style="width: 200px;">操作记录</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <p></p>
+                        <span class="layui-btn layui-btn-mini layui-btn-normal edit">编辑</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="layui-table">
             <colgroup>
                 <col width="150">
                 <col width="200">

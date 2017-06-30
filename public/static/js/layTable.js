@@ -7,7 +7,7 @@ layui.define(['layer', 'form'], function (exports) {
     var mod_name = 'layTable',
         $ = layui.jquery,
         layer = parent.layer === undefined ? layui.layer : parent.layer,
-        form = layui.form;
+        form = layui.form();
 
     var Table = function () {
         this.config = {
@@ -46,7 +46,8 @@ layui.define(['layer', 'form'], function (exports) {
     Table.prototype.render = function () {
         var that = this;
         var _config = that.config;
-        ELEM.parent = $(_config.elem), ELEM.toggle = $(_config.toggleElem);
+        ELEM.parent = $(_config.elem);
+        ELEM.toggle = $(_config.toggleElem);
         if (ELEM.parent === 0) {
             layer.msg('Table Error:找不到配置的容器elem!');
             ELEM.valid = false;
@@ -57,14 +58,26 @@ layui.define(['layer', 'form'], function (exports) {
         }
         if (ELEM.valid){
             if (_config.type !== 2){
-                ELEM.parent.scroll(function () {
-                    layer.msg('表滚动事件');
+                var container = ELEM.toggle.parent();
+                container.css({position:"relative"});
+                ELEM.parent.find('thead tr th').each(function () {
+                    _config.title.push($(this).text());
                 });
-                ELEM.toggle.on('click',function () {
+                var index = 1;
+                var inputs = [];
+                var select;
+                $.each(_config.title,function (i,item) {
+                    inputs.push('<dd><input type="checkbox" name="title[]" title="'+item+'" /></dd>');
+                });
+                select = '<div class="layui-unselect layui-form-select"><dl class="layui-anim layui-anim-upbit">'+inputs.join("")+'</dl><div';
+                container.append(select);
+                form.render('checkbox');
+                ELEM.toggle.on('click',function (e) {
+                    !container.find('layui-form-select').hasClass('layui-form-selected') || container.find('layui-form-select').addClass('layui-form-selected');
                     layer.msg('选择表列数');
                 });
             }else {
-
+                layer.msg('此功能未开放');
             }
         }
         return that;

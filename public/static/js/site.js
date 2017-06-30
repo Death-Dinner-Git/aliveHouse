@@ -17,10 +17,10 @@ var config = {
         small: '400px',
         min: '300px'
     },
-    imageError:'/static/images/not-capture.png',
-    layuiBase:'/static/js/',
-    initComponents:['jquery', 'element', 'layer', 'form', 'flow','laydate'],
-    allComponents:['jquery', 'element', 'layer', 'util', 'form', 'code', 'laydate', 'flow', 'layedit', 'upload','laypage']
+    imageError: '/static/images/not-capture.png',
+    layuiBase: '/static/js/',
+    initComponents: ['jquery', 'element', 'layer', 'form', 'flow', 'laydate'],
+    allComponents: ['jquery', 'element', 'layer', 'util', 'form', 'code', 'laydate', 'flow', 'layedit', 'upload', 'laypage']
 };
 
 var _width = document.documentElement.clientWidth;//获取页面可见宽度
@@ -34,7 +34,7 @@ if (typeof Site === "undefined") {
 Site.init = function () {
     //layui
     layui.config({
-        base:config.layuiBase
+        base: config.layuiBase
     }).use(config.initComponents, function () {
         window.jQuery = window.$ = layui.jquery;
         window.element = element = layui.element;
@@ -42,7 +42,7 @@ Site.init = function () {
         window.form = form = layui.form;
         window.flow = flow = layui.flow;
         window.laydate = laydate = layui.laydate;
-        if (typeof $ === "undefined"){
+        if (typeof $ === "undefined") {
             $ = layui.jquery;
         }
         var device = layui.device();
@@ -66,64 +66,71 @@ Site.init = function () {
 };
 
 /*  */
-Site.getModule = function (name,parentWin) {
+Site.getModule = function (name, parentWin) {
     var module;
 
-    switch (name){
-        case 'jquery':{
+    switch (name) {
+        case 'jquery': {
             module = top.window.jQuery ? top.window.jQuery : (window.jQuery ? window.jQuery : (jQuery ? jQuery : layui.jQuery ) );
-        }break;
-        case 'element':{
+        }
+            break;
+        case 'element': {
             module = top.window.element ? top.window.element : (window.element ? window.element : (element ? element : layui.element ) );
-            if (typeof module === 'function'){
+            if (typeof module === 'function') {
                 module = module();
             }
-        }break;
-        case 'layer':{
-            if (parentWin === false){
+        }
+            break;
+        case 'layer': {
+            if (parentWin === false) {
                 module = layui.layer ? layui.layer : (layer ? layer : (window.layer ? window.layer : top.window.layer ));
-            }else {
+            } else {
                 module = top.window.layer ? top.window.layer : (window.layer ? window.layer : (layer ? layer : layui.layer ));
             }
-        }break;
-        case 'form':{
+        }
+            break;
+        case 'form': {
             module = window.form ? window.form : (form ? form : layui.form );
-            if (!module){
-                layui.use(['form'], function(){
+            if (!module) {
+                layui.use(['form'], function () {
                     module = layui.form;
                 });
             }
-        }break;
-        case 'laydate':{
+        }
+            break;
+        case 'laydate': {
             module = top.window.laydate ? top.window.laydate : (window.laydate ? window.laydate : (laydate ? laydate : layui.laydate ) );
-        }break;
-        case 'flow':{
+        }
+            break;
+        case 'flow': {
             module = top.window.flow ? top.window.flow : (window.flow ? window.flow : (flow ? flow : layui.flow )  );
-        }break;
-        default:{
-        }break;
+        }
+            break;
+        default: {
+        }
+            break;
     }
 
     return module;
 };
 
 /*  */
-Site.getUtil = function (callback,component) {
-    if (util !== undefined){
-        if (typeof callback === 'function'){
+Site.getUtil = function (callback, component) {
+    if (util !== undefined) {
+        if (typeof callback === 'function') {
             callback(util);
         }
-    }else {
-        if (!component){
+    } else {
+        if (!component) {
             component.push('util');
-        }else {
+        } else {
             component = 'util';
         }
         layui.config({
-            base:config.layuiBase
+            base: config.layuiBase
         }).use(component, function () {
             window.util = util = layui.util;
-            if (typeof callback === 'function'){
+            if (typeof callback === 'function') {
                 callback(util);
             }
         });
@@ -131,17 +138,17 @@ Site.getUtil = function (callback,component) {
 };
 
 /*  */
-Site.getCoder = function (component,callback) {
-    if (code !== undefined){
-        if (typeof callback === 'function'){
+Site.getCoder = function (component, callback) {
+    if (code !== undefined) {
+        if (typeof callback === 'function') {
             callback(code);
         }
-    }else {
+    } else {
         layui.config({
-            base:config.layuiBase
+            base: config.layuiBase
         }).use(component, function () {
             window.code = code = layui.code;
-            if (typeof callback === 'function'){
+            if (typeof callback === 'function') {
                 callback(code);
             }
         });
@@ -149,17 +156,17 @@ Site.getCoder = function (component,callback) {
 };
 
 /*  */
-Site.getLayEditor = function (component,callback) {
-    if (layedit !== undefined){
-        if (typeof callback === 'function'){
+Site.getLayEditor = function (component, callback) {
+    if (layedit !== undefined) {
+        if (typeof callback === 'function') {
             callback(layedit);
         }
-    }else {
+    } else {
         layui.config({
-            base:config.layuiBase
+            base: config.layuiBase
         }).use(component, function () {
             window.layedit = layedit = layui.layedit;
-            if (typeof callback === 'function'){
+            if (typeof callback === 'function') {
                 callback(layedit);
             }
         });
@@ -167,17 +174,17 @@ Site.getLayEditor = function (component,callback) {
 };
 
 /*  */
-Site.getUploader = function (component,callback) {
-    if (upload !== undefined){
-        if (typeof callback === 'function'){
+Site.getUploader = function (component, callback) {
+    if (upload !== undefined) {
+        if (typeof callback === 'function') {
             callback(upload);
         }
-    }else {
+    } else {
         layui.config({
-            base:config.layuiBase
+            base: config.layuiBase
         }).use(component, function () {
             window.upload = upload = layui.upload;
-            if (typeof callback === 'function'){
+            if (typeof callback === 'function') {
                 callback(upload);
             }
         });
@@ -186,16 +193,16 @@ Site.getUploader = function (component,callback) {
 
 /*  */
 Site.getLayPager = function (callback) {
-    if (laypage !== undefined){
-        if (typeof callback === 'function'){
+    if (laypage !== undefined) {
+        if (typeof callback === 'function') {
             callback(laypage);
         }
-    }else {
+    } else {
         layui.config({
-            base:config.layuiBase
+            base: config.layuiBase
         }).use('laypage', function () {
             window.laypage = laypage = layui.laypage;
-            if (typeof callback === 'function'){
+            if (typeof callback === 'function') {
                 callback(laypage);
             }
         });
@@ -203,7 +210,7 @@ Site.getLayPager = function (callback) {
 };
 
 /*  */
-Site.loadScript =  function (url) {
+Site.loadScript = function (url) {
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src = url;
@@ -211,7 +218,7 @@ Site.loadScript =  function (url) {
 };
 
 /*  */
-Site.showUrl =  function (title, url, width, height, type, maxmin, ele, shade, scroll, shadeClose, refresh) {
+Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, scroll, shadeClose, refresh) {
     var content = '', stop = true;
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
@@ -255,7 +262,7 @@ Site.showUrl =  function (title, url, width, height, type, maxmin, ele, shade, s
 };
 
 /*  */
-Site.msg =  function (content) {
+Site.msg = function (content) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -264,7 +271,7 @@ Site.msg =  function (content) {
 };
 
 /*  */
-Site.wait =  function (content) {
+Site.wait = function (content) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -276,7 +283,7 @@ Site.wait =  function (content) {
 };
 
 /*  */
-Site.loading =  function (icon) {
+Site.loading = function (icon) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -286,7 +293,7 @@ Site.loading =  function (icon) {
 };
 
 /*  */
-Site.load =  function (url, content) {
+Site.load = function (url, content) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -302,7 +309,7 @@ Site.load =  function (url, content) {
 };
 
 /*  */
-Site.loadFrame =  function (title, url, width, height, ele, btn) {
+Site.loadFrame = function (title, url, width, height, ele, btn) {
     var content;
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
@@ -333,19 +340,19 @@ Site.loadFrame =  function (title, url, width, height, ele, btn) {
 };
 
 /*  */
-Site.hide =  function () {
+Site.hide = function () {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
     }
     myLayer.closeAll();
-    if (window.layer){
+    if (window.layer) {
         window.layer.closeAll();
     }
 };
 
 /*  */
-Site.error =  function (content) {
+Site.error = function (content) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -354,7 +361,7 @@ Site.error =  function (content) {
 };
 
 /*  */
-Site.success =  function (content) {
+Site.success = function (content) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -363,7 +370,7 @@ Site.success =  function (content) {
 };
 
 /*  */
-Site.tip =  function (content) {
+Site.tip = function (content) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -372,7 +379,7 @@ Site.tip =  function (content) {
 };
 
 /* 确认对话框 */
-Site.confirm =  function (url, msg, width, height, shade) {
+Site.confirm = function (url, msg, width, height, shade) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -396,7 +403,7 @@ Site.confirm =  function (url, msg, width, height, shade) {
 };
 
 /*  */
-Site.showDialog =  function (title, msg, callBack, width, height, shade) {
+Site.showDialog = function (title, msg, callBack, width, height, shade) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -424,9 +431,9 @@ Site.showDialog =  function (title, msg, callBack, width, height, shade) {
 };
 
 /*  */
-Site.tab =  function (options, parentWin, width, height, shade) {
+Site.tab = function (options, parentWin, width, height, shade) {
     parentWin = parentWin || true;
-    var myLayer = Site.getModule('layer',parentWin);
+    var myLayer = Site.getModule('layer', parentWin);
     if (!myLayer) {
         myLayer = layer;
     }
@@ -448,7 +455,7 @@ Site.tab =  function (options, parentWin, width, height, shade) {
 };
 
 /*  */
-Site.imgLoading =  function (ele) {
+Site.imgLoading = function (ele) {
     var $this = $(ele);
     if ($this === undefined || $this.attr('lay-src') === undefined || $this.attr('lay-filter') !== 'loading') {
         return;
@@ -486,9 +493,9 @@ Site.imgLoading =  function (ele) {
 };
 
 /*  */
-Site.photos =  function (type, target, json, parentWin, width, height, shade) {
+Site.photos = function (type, target, json, parentWin, width, height, shade) {
     parentWin = parentWin || true;
-    var myLayer = Site.getModule('layer',parentWin);
+    var myLayer = Site.getModule('layer', parentWin);
     if (!myLayer) {
         myLayer = layer;
     }
@@ -565,7 +572,7 @@ Site.photos =  function (type, target, json, parentWin, width, height, shade) {
 };
 
 /*  */
-Site.resizeShowTab =  function () {
+Site.resizeShowTab = function () {
     if (window.parent) {
         window.parent.$(".layui-show").find("iframe").load();
     }
@@ -575,7 +582,7 @@ Site.resizeShowTab =  function () {
 };
 
 /*  */
-Site.getUrlParam =  function (name) {
+Site.getUrlParam = function (name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]);
@@ -583,7 +590,7 @@ Site.getUrlParam =  function (name) {
 };
 
 /*  */
-Site.pjax =  function (_url, _type, _data, _dataType, _beforeSend, _success, _error) {
+Site.pjax = function (_url, _type, _data, _dataType, _beforeSend, _success, _error) {
     if (typeof _url !== 'string') {
         return;
     }
@@ -628,7 +635,7 @@ Site.pjax =  function (_url, _type, _data, _dataType, _beforeSend, _success, _er
 };
 
 /*  */
-Site.initPjax =  function () {
+Site.initPjax = function () {
     if ($.support.pjax) {
 
         $(document).on('click', 'a[lay-filter^="pjax"]', function (event) {
@@ -679,46 +686,46 @@ Site.initPjax =  function () {
 };
 
 /*  */
-Site.addPjax =  function (selector, container, options) {
+Site.addPjax = function (selector, container, options) {
     if ($.support.pjax) {
         $(document).pjax(selector, container, options);
     }
 };
 
 /*  */
-Site.loadPage =  function (pageElement,total) {
+Site.loadPage = function (pageElement, total) {
     Site.getLayPager(function () {
         var laypage = layui.laypage;
         total = total || true;
         pageElement = pageElement || 'paging_0124';
-        var _page = $('#'+pageElement),
+        var _page = $('#' + pageElement),
             currPage = Site.getUrlParam('pageNumber'),
             count = _page.attr('data-count'),
             pages = _page.attr('data-pages');
         currPage = currPage > 1 ? currPage : 1;
         count = count ? count : 0;
-        _page.attr('data-page',currPage);
+        _page.attr('data-page', currPage);
         laypage({
-            curr:currPage,
+            curr: currPage,
             cont: pageElement,
             pages: pages,
             skip: true,
-            jump: function(obj,first){
-                if(obj.curr != currPage) {
+            jump: function (obj, first) {
+                if (obj.curr != currPage) {
                     var url = location.href;
-                    if(url.indexOf("?") == -1) {
-                        location.href = url+"?pageNumber="+obj.curr;
-                    }else {
+                    if (url.indexOf("?") == -1) {
+                        location.href = url + "?pageNumber=" + obj.curr;
+                    } else {
                         var page = Site.getUrlParam('pageNumber');
-                        if(page) {
-                            location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
-                        }else {
-                            location.href = url.replace("?","?pageNumber="+obj.curr+"&");
+                        if (page) {
+                            location.href = url.replace("pageNumber=" + page, "pageNumber=" + obj.curr);
+                        } else {
+                            location.href = url.replace("?", "?pageNumber=" + obj.curr + "&");
                         }
                     }
                 }
-                if (total){
-                    _page.prepend('<span class="dinner-page-total"> 数量: '+(count)+' </span>');
+                if (total) {
+                    _page.prepend('<span class="dinner-page-total"> 数量: ' + (count) + ' </span>');
                 }
             }
         });
@@ -731,74 +738,70 @@ Site.loadPage =  function (pageElement,total) {
  */
 Site.loadImage = function (options) {
     var $config = {
-        img:undefined,
-        url:null,
-        error:null,
-        callback:null,
-        removeUrl:true
+        img: undefined,
+        url: null,
+        error: null,
+        callback: null,
+        removeUrl: true
     };
-    $config = $.extend($config,options);
-    var $this = $($config.img),url= $this.data('url'),$parent = $this.data('target'),status = false;
-    if (!url){
+    $config = $.extend($config, options);
+    var $this = $($config.img), url = $this.data('url'), $parent = $this.data('target'), status = false;
+    if (!url) {
         return;
     }
-    var img=new Image(); // 创建一个Image对象，实现图片的预下载
+    var img = new Image(); // 创建一个Image对象，实现图片的预下载
 
-    img.onload=function(){
-        if(typeof(img.readyState)=='undefined')
-        {
+    img.onload = function () {
+        if (typeof(img.readyState) == 'undefined') {
             img.readyState = 'undefined';
         }
         //在IE8以及以下版本中需要判断readyState而不是complete
-        if ((img.readyState=='complete'||img.readyState=="loaded")||img.complete)
-        {
+        if ((img.readyState == 'complete' || img.readyState == "loaded") || img.complete) {
             status = true;
-        }else{
+        } else {
             img.onreadystatechange(event);
         }
-        img.onload=null;
+        img.onload = null;
         reImage();
     };
 
     //当加载出错或者图片不存在
-    img.onerror = function()
-    {
-        if (typeof $config.error === 'function'){
+    img.onerror = function () {
+        if (typeof $config.error === 'function') {
             $config.error.call();
-        }else{
-            var _width = 200,_height = 200;
-            if ($this.width()<_width){
+        } else {
+            var _width = 200, _height = 200;
+            if ($this.width() < _width) {
                 _width = $this.width();
             }
-            if ($this.height()<_height){
+            if ($this.height() < _height) {
                 _height = $this.height();
             }
             $this.parent().css({
-                position:'relative',
-                display:'inline-block',
-                width:$this.width(),
-                height:$this.height(),
-                background:'#f4f4f4'
+                position: 'relative',
+                display: 'inline-block',
+                width: $this.width(),
+                height: $this.height(),
+                background: '#f4f4f4'
             });
-            $this.attr('src',config.imageError).css({
-                position:'absolute',
-                width:_width,
-                height:_height,
-                left:'50%',
-                top:'50%',
-                marginLeft:-(_width/2),
-                marginTop:-(_height/2)
+            $this.attr('src', config.imageError).css({
+                position: 'absolute',
+                width: _width,
+                height: _height,
+                left: '50%',
+                top: '50%',
+                marginLeft: -(_width / 2),
+                marginTop: -(_height / 2)
             });
         }
     };
 
     //当加载状态改变
-    img.onreadystatechange = function(e)
-    {
+    img.onreadystatechange = function (e) {
         //此方法只有IE8以及一下版本会调用
     };
 
-    img.src=url;
+    img.src = url;
 
     if (img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
         reImage();
@@ -807,18 +810,18 @@ Site.loadImage = function (options) {
 
     function reImage() {
         if (status || img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
-            if (typeof $config.callback === 'function'){
+            if (typeof $config.callback === 'function') {
                 $config.callback.call(img);
             }
-            if (!$parent){
-                if ($this.is('img')){
-                    $this.attr('src',url);
-                    if($config.removeUrl){
+            if (!$parent) {
+                if ($this.is('img')) {
+                    $this.attr('src', url);
+                    if ($config.removeUrl) {
                         $this.removeAttr('data-url');
                     }
                 }
-            }else {
-                $($parent).append("<img src='"+url+ " />");
+            } else {
+                $($parent).append("<img src='" + url + " />");
             }
         }
     }
@@ -828,54 +831,54 @@ Site.loadImage = function (options) {
  * 图片延迟加载 图片懒加载
  * @param options
  */
-Site.lazyLoadScroll = function (options){
+Site.lazyLoadScroll = function (options) {
     //配置些参数
-    var _config={
-        element:null,
-        lazyClass:'lazy',
-        hasLazyClass:'hasLazy',
-        removeUrl:true
+    var _config = {
+        element: null,
+        lazyClass: 'lazy',
+        hasLazyClass: 'hasLazy',
+        removeUrl: true
     };
-    _config = $.extend(_config,options);
+    _config = $.extend(_config, options);
     var temp = -1;//用来判断是否是向下滚动（向上滚动就不需要判断延迟加载图片了）
     _config.element = _config.element || document.body;
     $(_config.element).find('img').each(function () {
         var $this = $(this);
         $this.removeClass(_config.lazyClass).addClass(_config.lazyClass);
     });
-    $(_config.element).find('img'+'.'+_config.lazyClass).each(function () {
+    $(_config.element).find('img' + '.' + _config.lazyClass).each(function () {
         var $this = $(this);
         _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
         _config.bodyHeight = Site.clientTop(_config.element); // body（页面）可见区域的总高度
         var imgTop = Site.offsetTop($this);//（图片纵坐标）
-        if((imgTop - _config.scrollHeight) >=0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) {
-            Site.loadImage({img:$this});
+        if ((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+            Site.loadImage({img: $this});
             $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
-            if (_config.removeUrl){
+            if (_config.removeUrl) {
                 $this.removeAttr('data-url');
             }
         }
     });
-    $(document).on('scroll',_config.element,function (e) {
+    $(document).on('scroll', _config.element, function (e) {
         _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
         _config.bodyHeight = Site.clientTop(_config.element); // body（页面）可见区域的总高度
-        $(this).find('img'+'.'+_config.lazyClass).each(function () {
+        $(this).find('img' + '.' + _config.lazyClass).each(function () {
             var $this = $(this);
             var imgTop = Site.offsetTop($this);//（图片纵坐标）
-            if(temp < _config.scrollHeight) {//为true表示是向下滚动，否则是向上滚动，不需要执行动作。
-                if((imgTop - _config.scrollHeight) <= _config.bodyHeight) {
-                    Site.loadImage({img:$this});
+            if (temp < _config.scrollHeight) {//为true表示是向下滚动，否则是向上滚动，不需要执行动作。
+                if ((imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+                    Site.loadImage({img: $this});
                     $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
-                    if (_config.removeUrl){
+                    if (_config.removeUrl) {
                         $this.removeAttr('data-url');
                     }
                 }
                 temp = _config.scrollHeight;
-            }else {
-                if((imgTop - _config.scrollHeight) >=0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) {
-                    Site.loadImage({img:$this});
+            } else {
+                if ((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+                    Site.loadImage({img: $this});
                     $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
-                    if (_config.removeUrl){
+                    if (_config.removeUrl) {
                         $this.removeAttr('data-url');
                     }
                 }
@@ -888,34 +891,34 @@ Site.lazyLoadScroll = function (options){
  * 图片懒加载
  * @param options
  */
-Site.lazyLoad = function (options){
+Site.lazyLoad = function (options) {
     //配置些参数
-    var _config={
-        element:null,
-        eleGroup:[],
-        eleTop:null,
-        eleHeight:null,
-        screenHeight:null,
-        visibleHeight:null,
-        scrollHeight:null,
-        scrolloverHeight:null,
-        limitHeight:null
+    var _config = {
+        element: null,
+        eleGroup: [],
+        eleTop: null,
+        eleHeight: null,
+        screenHeight: null,
+        visibleHeight: null,
+        scrollHeight: null,
+        scrolloverHeight: null,
+        limitHeight: null
     };
-    _config = $.extend(_config,options);
+    _config = $.extend(_config, options);
     var _element = _config.element;
     var _eleGroup = _config.eleGroup;
 
     //没有数据中断
-    if ( !(_config.element || _eleGroup) ){
+    if (!(_config.element || _eleGroup)) {
         return;
     }
 
     // 对数据进行初始化
-    if (_config.element){
+    if (_config.element) {
         var $element = $(_config.element);
-        if ($element.is('img')){
+        if ($element.is('img')) {
             _eleGroup.push($element);
-        }else {
+        } else {
             $element.find('img').each(function () {
                 _eleGroup.push($(this));
             });
@@ -925,14 +928,14 @@ Site.lazyLoad = function (options){
     _config.screenHeight = _config.screenHeight || Site.clientTop();
     _config.scrolloverHeight = _config.scrolloverHeight || Site.scrollTop();
 
-    if(Site.scrollTop() === 0){
+    if (Site.scrollTop() === 0) {
         _config.limitHeight = _config.scrolloverHeight + _config.screenHeight;
-    }else{
+    } else {
         _config.limitHeight = Site.scrollTop() + _config.screenHeight;
     }
-    for(var i=0,j=_config.eleGroup.length;i<j;i++){
-        if(Site.offsetTop(_config.eleGroup[i])<=limitHeight && _config.eleGroup[i].attr('data-url')){
-            Site.loadImage({img:_config.eleGroup[i]});
+    for (var i = 0, j = _config.eleGroup.length; i < j; i++) {
+        if (Site.offsetTop(_config.eleGroup[i]) <= limitHeight && _config.eleGroup[i].attr('data-url')) {
+            Site.loadImage({img: _config.eleGroup[i]});
         }
     }
 };
@@ -943,175 +946,175 @@ Site.lazyLoad = function (options){
  * @param options
  */
 Site.initBanner = function (data, options) {
-    if (data === undefined || data.length <= 0){
+    if (data === undefined || data.length <= 0) {
         return;
     }
-    var imageData=[],
+    var imageData = [],
         loadImage = [],
         imageWidth,
         position = 0,
-        size=0,
+        size = 0,
         index = 0,
         t, $index;
     var $default = {
-        banner:"#webBanner",
-        bannerBody:"bannerBody",
-        bannerPrev:"bannerPrev",
-        bannerNext:"bannerNext",
-        switchStyle:"switchBtn",
-        bannerBottom:"bannerBottom",
-        height:"0",
-        width:"0",
-        playTime:"4000",
-        animateTime:"1500",
-        barType:"1", //底部类型
-        hiddenBar:false,//设置是否隐藏底部导航条
-        targetType:"2",
-        wideScreen:false,
-        autoPlay:true,//自动播放
-        interval:6000,//播放间隔
-        barColor:false,//背景色
-        hiddenControl:false,//设置隐藏左右切换按钮
+        banner: "#webBanner",
+        bannerBody: "bannerBody",
+        bannerPrev: "bannerPrev",
+        bannerNext: "bannerNext",
+        switchStyle: "switchBtn",
+        bannerBottom: "bannerBottom",
+        height: "0",
+        width: "0",
+        playTime: "4000",
+        animateTime: "1500",
+        barType: "1", //底部类型
+        hiddenBar: false,//设置是否隐藏底部导航条
+        targetType: "2",
+        wideScreen: false,
+        autoPlay: true,//自动播放
+        interval: 6000,//播放间隔
+        barColor: false,//背景色
+        hiddenControl: false,//设置隐藏左右切换按钮
     };
-    var config = $.extend($default,options);
+    var config = $.extend($default, options);
     var $banner = $(config.banner);
     $banner.css({overflow: "hidden"});
     //没有容器，中断
-    if ($banner.length <=0){
+    if ($banner.length <= 0) {
         return;
     }
-    if (config.wideScreen){
+    if (config.wideScreen) {
         config.width = _width;
         config.height = _height;
-    }else{
+    } else {
         var width = $banner.width();
         var height = $banner.height();
-        if (config.width<=0){
+        if (config.width <= 0) {
             config.width = width > 0 ? width : _width;
         }
-        if (config.height <= 0){
-            config.height = height > 0 ? height : config.width/1200*400 ;
+        if (config.height <= 0) {
+            config.height = height > 0 ? height : config.width / 1200 * 400;
         }
     }
     imageData = data;
     imageWidth = config.width;
-    var barButton=[],//底部导航条
-        contentBody=[],  //轮播主体
+    var barButton = [],//底部导航条
+        contentBody = [],  //轮播主体
         content,
-        bar='',
-        control='';
+        bar = '',
+        control = '';
     //渲染HTML
-    for (var i=0;i<imageData.length;i++){
-        var item = '',aPicAttr='',aDescAttr='',alt='',desc='',btn='',barDesc='';
-        if (imageData[i].target !== undefined && imageData[i].target !== ''){
-            if (config.targetType == '2'){
-                aPicAttr = ' target="_blank" href="'+ imageData[i].target +'"';
-                aDescAttr = ' target="_blank" href="'+ imageData[i].target +'"';
-            }else if (config.targetType == '1'){
-                aPicAttr = ' target="_blank" href="'+ imageData[i].target +'"';
+    for (var i = 0; i < imageData.length; i++) {
+        var item = '', aPicAttr = '', aDescAttr = '', alt = '', desc = '', btn = '', barDesc = '';
+        if (imageData[i].target !== undefined && imageData[i].target !== '') {
+            if (config.targetType == '2') {
+                aPicAttr = ' target="_blank" href="' + imageData[i].target + '"';
+                aDescAttr = ' target="_blank" href="' + imageData[i].target + '"';
+            } else if (config.targetType == '1') {
+                aPicAttr = ' target="_blank" href="' + imageData[i].target + '"';
             }
         }
-        if (imageData[i].title !== undefined){
-            alt = ' alt="'+ imageData[i].title +'"';
+        if (imageData[i].title !== undefined) {
+            alt = ' alt="' + imageData[i].title + '"';
         }
-        if (imageData[i].desc !== undefined && imageData[i].desc !== ''){
-            desc = '<h3><a hidefocus="true" '+aDescAttr+' ><span>'+ imageData[i].desc +'</span></a></h3>';
+        if (imageData[i].desc !== undefined && imageData[i].desc !== '') {
+            desc = '<h3><a hidefocus="true" ' + aDescAttr + ' ><span>' + imageData[i].desc + '</span></a></h3>';
             barDesc = imageData[i].desc;
         }
         item = '<span class="item">' +
-            '<a hidefocus="true" '+aPicAttr+'>' +
-            '<img data-url="'+imageData[i].src+'" '+alt+' style="width:'+config.width+'px;height:'+config.height+'px;" />' +
+            '<a hidefocus="true" ' + aPicAttr + '>' +
+            '<img data-url="' + imageData[i].src + '" ' + alt + ' style="width:' + config.width + 'px;height:' + config.height + 'px;" />' +
             '</a> ' + desc + '</span>';
 
-        btn = '<span data-cid="'+i+'" data-title="'+barDesc+'"></span>';
-        if (config.barType == '1'){
-            btn = '<span data-cid="'+i+'" data-title="'+barDesc+'">'+(i+1)+'</span>';
+        btn = '<span data-cid="' + i + '" data-title="' + barDesc + '"></span>';
+        if (config.barType == '1') {
+            btn = '<span data-cid="' + i + '" data-title="' + barDesc + '">' + (i + 1) + '</span>';
         }
 
         barButton.push(btn);
         contentBody.push(item);
     }
-    if (contentBody.length>0){
+    if (contentBody.length > 0) {
         contentBody.push(contentBody[0]);
     }
     size = contentBody.length;
-    if(!config.hiddenControl) {
-        control = '<div class="'+config.bannerPrev+ ' ' +config.switchStyle +'" style="display: none;"></div> ' +
-        '<div class="'+config.bannerNext+ ' ' +config.switchStyle +'" style="display: none;"></div> ';
+    if (!config.hiddenControl) {
+        control = '<div class="' + config.bannerPrev + ' ' + config.switchStyle + '" style="display: none;"></div> ' +
+            '<div class="' + config.bannerNext + ' ' + config.switchStyle + '" style="display: none;"></div> ';
     }
-    if(!config.hiddenBar) {
-        bar = '<div class="'+ config.bannerBottom +'">'+barButton.join("")+'</div>';
+    if (!config.hiddenBar) {
+        bar = '<div class="' + config.bannerBottom + '">' + barButton.join("") + '</div>';
     }
-    content = '<div class="'+config.bannerBody+'">'+contentBody.join("")+'</div>' +control + bar;
-    $banner.html(content).css({width:config.width,height:config.height});
+    content = '<div class="' + config.bannerBody + '">' + contentBody.join("") + '</div>' + control + bar;
+    $banner.html(content).css({width: config.width, height: config.height});
     //======= HTML 渲染结束 ========//
 
-    var $bannerBody = $(config.banner+' .'+config.bannerBody);
-    var $bannerPrev = $(config.banner+' .'+config.bannerPrev);
-    var $bannerNext = $(config.banner+' .'+config.bannerNext);
-    var $bannerBottom = $(config.banner+' .'+config.bannerBottom);
+    var $bannerBody = $(config.banner + ' .' + config.bannerBody);
+    var $bannerPrev = $(config.banner + ' .' + config.bannerPrev);
+    var $bannerNext = $(config.banner + ' .' + config.bannerNext);
+    var $bannerBottom = $(config.banner + ' .' + config.bannerBottom);
 
     /**
      * 初始化
      */
-    $bannerBody.css({width:size*imageWidth,left:0});
-    for (var j=0;j<size;j++){
-        if(j<index){
-            position = -(j*imageWidth);
-        }else if (j>index){
-            position = j*imageWidth;
-        }else {
+    $bannerBody.css({width: size * imageWidth, left: 0});
+    for (var j = 0; j < size; j++) {
+        if (j < index) {
+            position = -(j * imageWidth);
+        } else if (j > index) {
+            position = j * imageWidth;
+        } else {
             position = 0;
         }
         loadImage.push(false);
         $index = $bannerBody.find('.item').eq(j);
-        !$index || $index.stop().css({left:position});
+        !$index || $index.stop().css({left: position});
     }
     $bannerBottom.find('span').eq(0).addClass('active');
     load(0);
-    load(size-1);
+    load(size - 1);
 
-    if(config.autoPlay){
+    if (config.autoPlay) {
         autoShow();
     }
     $banner.hover(function () {
-        $bannerPrev.css({display:"flex"});
-        $bannerNext.css({display:"flex"});
+        $bannerPrev.css({display: "flex"});
+        $bannerNext.css({display: "flex"});
         clearTimeout(t);
-    },function () {
-        if(config.autoPlay){
+    }, function () {
+        if (config.autoPlay) {
             autoShow();
         }
-        $bannerPrev.css({display:"none"});
-        $bannerNext.css({display:"none"});
+        $bannerPrev.css({display: "none"});
+        $bannerNext.css({display: "none"});
     });
 
     /*
      * *****事件委托，点击下一张图片******
      * */
-    $bannerNext.on("click",function () {
+    $bannerNext.on("click", function () {
         NEXT();
     });
 
     /*
      * ********事件委托，上一张图片*******
      * */
-    $bannerPrev.on("click",function(){
+    $bannerPrev.on("click", function () {
         LAST();
     });
 
     /*
      * ***** 事件委托，底部导航条点击
      * */
-    $bannerBottom.find('span').on('click',function () {
-        index=$(this).attr("data-cid");
+    $bannerBottom.find('span').on('click', function () {
+        index = $(this).attr("data-cid");
         MOVE();
     });
     $bannerBottom.find('span').hover(function () {
-        index=$(this).attr("data-cid");
+        index = $(this).attr("data-cid");
         MOVE();
-    },function () {
-        index=$(this).attr("data-cid");
+    }, function () {
+        index = $(this).attr("data-cid");
         MOVE();
     });
 
@@ -1123,19 +1126,19 @@ Site.initBanner = function (data, options) {
     //图片懒加载
     function load(k) {
         k = k || index;
-        if (loadImage[k] === true){
+        if (loadImage[k] === true) {
             return;
         }
         var img = $bannerBody.find('.item').eq(k).find('img');
-        Site.loadImage({img:img});
+        Site.loadImage({img: img});
         loadImage[k] = true;
     }
 
     //图片自动播放
     function autoShow() {
-        t=setInterval(function () {
+        t = setInterval(function () {
             NEXT();
-        },config.interval);
+        }, config.interval);
     }
 
     /*
@@ -1143,9 +1146,9 @@ Site.initBanner = function (data, options) {
      * */
     function NEXT() {
         index++;
-        if (index === size){
+        if (index === size) {
             index = 1;
-            $bannerBody.css({left:0});
+            $bannerBody.css({left: 0});
         }
         MOVE();
     }
@@ -1155,9 +1158,9 @@ Site.initBanner = function (data, options) {
      * */
     function LAST() {
         index--;
-        if (index === -1){
-            index = size-2;
-            $bannerBody.css({left:-(size-1)*imageWidth});
+        if (index === -1) {
+            index = size - 2;
+            $bannerBody.css({left: -(size - 1) * imageWidth});
         }
         MOVE();
     }
@@ -1168,16 +1171,16 @@ Site.initBanner = function (data, options) {
     function MOVE() {
         updateBar();
         load();
-        $bannerBody.stop().animate({left:-imageWidth*index},config.animateTime);
+        $bannerBody.stop().animate({left: -imageWidth * index}, config.animateTime);
         $bannerBody.find('.item').eq(index).removeClass('active').addClass('active').siblings().removeClass('active');
     }
 
     /**
      * 更新底部导航条
      */
-    function updateBar(){
+    function updateBar() {
         var i = index
-        if(index=== (size-1)){
+        if (index === (size - 1)) {
             i = 0;
         }
         !$bannerBottom.find('span').eq(i).removeClass('active').addClass('active').siblings().removeClass('active');
@@ -1192,15 +1195,15 @@ Site.initBanner = function (data, options) {
  * 将总距离分成很多小段，然后每隔一段时间跳一段
  * @param {object} options {index:"xxx",selector:"xxx",type:true}
  */
-Site.jump =  function(options) {
-    var _config = $.extend({index:0,selector:".jump-this",type:true},options);
+Site.jump = function (options) {
+    var _config = $.extend({index: 0, selector: ".jump-this", type: true}, options);
     var jump = document.querySelectorAll(_config.selector);
     // 获取需要滚动的距离
     var total = jump[index].offsetTop;
     var distance = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
     var step = total / 50;
     // 平滑滚动，时长500ms，每10ms一跳，共50跳
-    if (_config.type !== true){
+    if (_config.type !== true) {
         // Chrome
         document.body.scrollTop = total;
         // Firefox
@@ -1215,7 +1218,7 @@ Site.jump =  function(options) {
         step = newTotal / 50;
         smoothUp()
     }
-    function smoothDown () {
+    function smoothDown() {
         if (distance < total) {
             distance += step;
             document.body.scrollTop = distance;
@@ -1228,7 +1231,8 @@ Site.jump =  function(options) {
             window.pageYOffset = total
         }
     }
-    function smoothUp () {
+
+    function smoothUp() {
         if (distance > total) {
             distance -= step;
             document.body.scrollTop = distance;
@@ -1248,28 +1252,28 @@ Site.jump =  function(options) {
  * 将总距离分成很多小段，然后每隔一段时间跳一段
  * @param {Number} distance
  */
-Site.jumpAnimate =  function(distance) {
+Site.jumpAnimate = function (distance) {
 
 };
 
 /**
  * 鼠标滚动
  */
-Site.srcoll =  function () {
+Site.srcoll = function () {
 
 };
 
 /**
  * 阻止浏览器冒泡事件
  */
-Site.stopPropagation =  function(event) {
+Site.stopPropagation = function (event) {
     event.stopPropagation();
 };
 
 /**
  * 阻止浏览器默认事件
  */
-Site.preventDefault =  function(event) {
+Site.preventDefault = function (event) {
     event.preventDefault();
 };
 
@@ -1280,11 +1284,11 @@ Site.preventDefault =  function(event) {
  * @param func
  * @returns {Array}
  */
-Site.addEvent = function (obj,type,func){
-    if(obj.addEventListener){
-        obj.addEventListener(type,func,false);
-    }else if(obj.attachEvent){
-        obj.attachEvent('on'+type,func);
+Site.addEvent = function (obj, type, func) {
+    if (obj.addEventListener) {
+        obj.addEventListener(type, func, false);
+    } else if (obj.attachEvent) {
+        obj.attachEvent('on' + type, func);
     }
 };
 
@@ -1293,7 +1297,7 @@ Site.addEvent = function (obj,type,func){
  * @param element
  * @returns {String||Number}
  */
-Site.offsetTop = function (element){
+Site.offsetTop = function (element) {
     element = element || document.body;
     var that = $(element);
     return that.offset().top;
@@ -1304,7 +1308,7 @@ Site.offsetTop = function (element){
  * @param element
  * @returns {String||Number}
  */
-Site.scrollTop = function (element){
+Site.scrollTop = function (element) {
     element = element || document.body;
     var that = $(element);
     return that.scrollTop();
@@ -1315,10 +1319,10 @@ Site.scrollTop = function (element){
  * @param element
  * @returns {String||Number}
  */
-Site.clientTop = function (element){
+Site.clientTop = function (element) {
     element = element || document.body;
     var that = $(element);
-    return  that.scrollTop() - Site.offsetTop();
+    return that.scrollTop() - Site.offsetTop();
 };
 
 /**
@@ -1327,15 +1331,15 @@ Site.clientTop = function (element){
  * @param checked
  * @returns {Array}
  */
-Site.getSelectCheckboxValues = function(selecter,checked) {
+Site.getSelectCheckboxValues = function (selecter, checked) {
     selecter = selecter || '[lay-filter="selected"]';
     var values = [];
-    if (checked === undefined || checked === true){
-        $('input'+selecter+':checked').each(function () {
+    if (checked === undefined || checked === true) {
+        $('input' + selecter + ':checked').each(function () {
             values.push($(this).val());
         });
-    }else {
-        $('input'+selecter+':not(:checked)').each(function () {
+    } else {
+        $('input' + selecter + ':not(:checked)').each(function () {
             values.push($(this).val());
         });
     }
@@ -1347,13 +1351,13 @@ Site.getSelectCheckboxValues = function(selecter,checked) {
  * @param str
  * @returns {*}
  */
-Site.reconvert = function (str){
-    str = str.replace(/(\\u)(\w{4})/gi,function($0){
-        return (String.fromCharCode(parseInt((escape($0).replace(/(%5Cu)(\w{4})/g,"$2")),16)));
+Site.reconvert = function (str) {
+    str = str.replace(/(\\u)(\w{4})/gi, function ($0) {
+        return (String.fromCharCode(parseInt((escape($0).replace(/(%5Cu)(\w{4})/g, "$2")), 16)));
     });
 
-    str = str.replace(/(&#x)(\w{4});/gi,function($0){
-        return String.fromCharCode(parseInt(escape($0).replace(/(%26%23x)(\w{4})(%3B)/g,"$2"),16));
+    str = str.replace(/(&#x)(\w{4});/gi, function ($0) {
+        return String.fromCharCode(parseInt(escape($0).replace(/(%26%23x)(\w{4})(%3B)/g, "$2"), 16));
     });
     return str;
 };
@@ -1388,6 +1392,180 @@ $(function () {
 
     // Site.wait('Most people can not see this message, please share with us! <br> 【God is a girl, please treat her as a lover】');
 });
+
+
+function isArray(value) {
+    return Object.prototype.toString.call(value) === "[object Array]";
+}
+
+function isFunction(value) {
+    return Object.prototype.toString.call(value) === "[object Function]";
+}
+
+function isRegExp(value) {
+    return Object.prototype.toString.call(value) === "[object RegExp]";
+}
+
+function isNativeJSON() {
+    return window.JSON && Object.prototype.toString.call(JSON) === "[object JSON]";
+}
+
+/*
+ 定义类 时 需要注意 作用域 安全的构造函数
+ 不安全的因素：由于this是运行时分配，如使用 new 指令实例化类 this会指向 实例化对象；
+ 如果直接调用构造函数 那么 this 会指向全局 对象 window ，
+ 然后你的代码就会覆盖window原生的同名函数或属性，埋下bug;
+ 推荐使用安全方式编写类或函数
+ */
+function Helper(name) {
+    if (this instanceof Helper) {
+        this.name = name;
+    } else {
+        return new Helper(name);
+    }
+}
+
+// 浏览器兼容函数编写规范
+// 使用 call 或 apply 来继承
+function X() {
+    if (A) {
+        A.call(X); // 如果存在A 让 X 继承 A
+    } else if (B) {
+        B.call(X); // 如果存在B 让 X 继承 B
+    } else {
+        throw new Error('no A or B');
+    }
+    return new X();
+}
+
+/*
+ 使用 Object.preventExtensions()  来声明 对象 是 不可扩展对象;
+ var person = {name:'wdd'};
+ undefined
+ Object.preventExtensions(person);
+ Object {name: "wdd"}
+ person.age = 10;
+ 10
+ person
+ Object {name: "wdd"}
+ Object.isExtensible(person);
+ false
+ */
+
+/*
+ 密封对象 Object.seal 密封对象不可扩展，并且不能删除对象的属性或方法，但是属性值可以修改
+ */
+
+/*
+ 冰冻对象 Object.freeze 冰冻对象不可扩展，并且不能修改，只可访问
+ */
+
+/*
+ 函数节流 思想：某些代码不可以没有间断的连续重复执行 （即反复执行）
+ */
+var processor = {
+    timeoutId: null,
+    //实际进行处理的方法
+    performProcessing: function () {
+        console.log('重复执行中...');
+    },
+    //初始化调用方法
+    process: function () {
+        clearTimeout(this.timeoutId);
+        var that = this;
+        this.timeoutId = setTimeout(function () {
+            that.performProcessing();
+        }, 100);
+    }
+};
+
+//尝试开启执行
+// processor.process();
+
+/*
+ text 转 数组
+ */
+function toArray(data) {
+    return eval('(' + data + ')');
+};
+/*
+ 中央定时器
+ */
+
+var timers = {
+    timerId: 0,
+    timers: [],
+    add: function (fn) {
+        this.timers.push(fn);
+    },
+    start: function () {
+        if (this.timerId) {
+            return;
+        }
+        (function runNext() {
+            if (timers.timers.length > 0) {
+                for (var i = 0; i < timers.timers.length; i++) {
+                    if (timers.timers[i]() === false) {
+                        timers.timers.splice(i, 1);
+                        i--;
+                    }
+                }
+                timers.timerId = setTimeout(runNext, 16);
+            }
+        })();
+    }
+};
+
+/*
+ AJAX 进度条
+ */
+
+function progress() {
+    var myXhr = $.ajaxSettings.xhr();
+    if (myXhr.upload) {
+        myXhr.upload.addEventListener('progress', function (e) {
+            if (e.lengthComputable) {
+                $('progress').attr({
+                    value: e.loaded,
+                    max: e.total,
+                });
+            }
+        }, false);
+    }
+    return myXhr;
+}
+
+/*
+ AJAX 进度条
+ */
+function ajaxJump(url, _Callback) {
+    $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        processData: false,
+        type: 'get',
+        jsonpCallback: _Callback,
+        success: function (data) {
+           console.log(data);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest.status);
+            console.log(XMLHttpRequest.readyState);
+            console.log(textStatus);
+        }
+    });
+}
+
+/*
+ 类型
+ */
+// console.log(typeof undefined); //输出 undefined
+// console.log(typeof null); //输出 object
+// console.log(typeof true); //输出 boolean
+// console.log(typeof 42); //输出 number
+// console.log(typeof "42du"); //输出 string
+// console.log(typeof new Object()); //输出 object
+// console.log(typeof function(){}); //输出 function
 
 
 
