@@ -17,24 +17,26 @@
     <script type="text/javascript" src="__JS__/bootstrap.js"></script>
     <script type="text/javascript" src="_LAYUI_/layui.js"></script>
 
-    <!-- Fake Loader start -->
-    <link rel="stylesheet" href="_PLUGINS_/fakeloader/css/fakeloader.css">
-    <script src="_PLUGINS_/fakeloader/js/fakeloader.js"></script>
+    <!--&lt;!&ndash; Fake Loader start &ndash;&gt;-->
+    <!--<link rel="stylesheet" href="_PLUGINS_/fakeloader/css/fakeloader.css">-->
+    <!--<script src="_PLUGINS_/fakeloader/js/fakeloader.js"></script>-->
     <script>
-        var _spinner2 = {
-            timeToHide:1200,
-            bgColor:"#1abc9c",
-            spinner:"spinner2",
-            zIndex:'20170407',
-            loadCss:{
-                top:'46%',
-                left:'50%'
-            }
-        };
+//        var _spinner2 = {
+//            timeToHide:1200,
+//            bgColor:"#1abc9c",
+//            spinner:"spinner2",
+//            zIndex:'20170407',
+//            loadCss:{
+//                top:'46%',
+//                left:'50%'
+//            }
+//        };
 
         $(document).ready(function(){
-            $(".fakeloader").fakeLoader(_spinner2);
-            layui.use(['layer', 'util'], function() {
+//            $(".fakeloader").fakeLoader(_spinner2);
+            layui.config({
+                base: '/static/js/' //设定扩展模块所在的目录
+            }).use(['layer', 'util'], function() {
                 var $ = layui.jquery,
                     layer = layui.layer,
                     util = layui.util;

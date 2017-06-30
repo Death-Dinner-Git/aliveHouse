@@ -1186,6 +1186,94 @@ Site.initBanner = function (data, options) {
 };
 
 /**
+ * 动态锚点 平滑滚动
+ * 通过 offsetTop 获取对象到窗体顶部的距离，然后赋值给 scrollTop，就能实现锚点的功能
+ * 需要注意的是，各浏览器下获取 scrollTop 有所差异
+ * 将总距离分成很多小段，然后每隔一段时间跳一段
+ * @param {object} options {index:"xxx",selector:"xxx",type:true}
+ */
+Site.jump =  function(options) {
+    var _config = $.extend({index:0,selector:".jump-this",type:true},options);
+    var jump = document.querySelectorAll(_config.selector);
+    // 获取需要滚动的距离
+    var total = jump[index].offsetTop;
+    var distance = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+    var step = total / 50;
+    // 平滑滚动，时长500ms，每10ms一跳，共50跳
+    if (_config.type !== true){
+        // Chrome
+        document.body.scrollTop = total;
+        // Firefox
+        document.documentElement.scrollTop = total;
+        // Safari
+        window.pageYOffset = total;
+    }
+    if (total > distance) {
+        smoothDown()
+    } else {
+        var newTotal = distance - total;
+        step = newTotal / 50;
+        smoothUp()
+    }
+    function smoothDown () {
+        if (distance < total) {
+            distance += step;
+            document.body.scrollTop = distance;
+            document.documentElement.scrollTop = distance;
+            window.pageYOffset = distance;
+            setTimeout(smoothDown, 10);
+        } else {
+            document.body.scrollTop = total;
+            document.documentElement.scrollTop = total;
+            window.pageYOffset = total
+        }
+    }
+    function smoothUp () {
+        if (distance > total) {
+            distance -= step;
+            document.body.scrollTop = distance;
+            document.documentElement.scrollTop = distance;
+            window.pageYOffset = distance;
+            setTimeout(smoothUp, 10);
+        } else {
+            document.body.scrollTop = total;
+            document.documentElement.scrollTop = total;
+            window.pageYOffset = total
+        }
+    }
+};
+
+/**
+ * 动态锚点 平滑滚动
+ * 将总距离分成很多小段，然后每隔一段时间跳一段
+ * @param {Number} distance
+ */
+Site.jumpAnimate =  function(distance) {
+
+};
+
+/**
+ * 鼠标滚动
+ */
+Site.srcoll =  function () {
+
+};
+
+/**
+ * 阻止浏览器冒泡事件
+ */
+Site.stopPropagation =  function(event) {
+    event.stopPropagation();
+};
+
+/**
+ * 阻止浏览器默认事件
+ */
+Site.preventDefault =  function(event) {
+    event.preventDefault();
+};
+
+/**
  *
  * @param obj
  * @param type
