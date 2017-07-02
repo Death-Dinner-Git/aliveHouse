@@ -16,7 +16,10 @@ class ContactController extends HomeController
      */
     public function contactAction()
     {
-        return view('contact/contact');
+        return view('contact/contact',[
+            'meta_title'=>'联系我们',
+            'nav'=>'contact'
+        ]);
     }
 
 }

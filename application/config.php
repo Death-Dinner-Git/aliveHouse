@@ -140,7 +140,7 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
-        '_TITLE_'=>'alive House',
+        '_TITLE_'=>'[ alive House ]',
         '_LAYUI_'=>'/static/plugins/layui/src',
         '_PLUGINS_'=>'/static/plugins',
         '_SHORTCUT_'=>'/static/images/shortcut-icon-logo.png',

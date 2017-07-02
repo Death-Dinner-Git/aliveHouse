@@ -16,7 +16,10 @@ class HouseController extends HomeController
      */
     public function newHouseAction()
     {
-        return view('house/newHouse');
+        return view('house/newHouse',[
+            'meta_title'=>'新房',
+            'nav'=>'new-house'
+        ]);
     }
 
     /**
@@ -25,7 +28,10 @@ class HouseController extends HomeController
      */
     public function secondHandHouseAction()
     {
-        return view('house/secondHandHouse');
+        return view('house/secondHandHouse',[
+            'meta_title'=>'二手房',
+            'nav'=>'second-house'
+        ]);
     }
 
 }

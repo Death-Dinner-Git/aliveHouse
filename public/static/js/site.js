@@ -841,17 +841,24 @@ Site.lazyLoadScroll = function (options) {
     };
     _config = $.extend(_config, options);
     var temp = -1;//用来判断是否是向下滚动（向上滚动就不需要判断延迟加载图片了）
-    _config.element = _config.element || document.body;
+    var type = 0;
+    _config.scrollHeight = Site.scrollTop(); // 滚动的高度
+    _config.bodyHeight = Site.clientHeight(); // body（页面）可见区域的总高度
+    if (_config.element){
+        _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
+        _config.bodyHeight = Site.clientTop(_config.element); // body（页面）可见区域的总高度
+    }else{
+        type = 1;
+        _config.element = document;
+    }
     $(_config.element).find('img').each(function () {
         var $this = $(this);
         $this.removeClass(_config.lazyClass).addClass(_config.lazyClass);
     });
     $(_config.element).find('img' + '.' + _config.lazyClass).each(function () {
         var $this = $(this);
-        _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
-        _config.bodyHeight = Site.clientTop(_config.element); // body（页面）可见区域的总高度
         var imgTop = Site.offsetTop($this);//（图片纵坐标）
-        if ((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+        if ( ((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) || ((imgTop - _config.scrollHeight) <= Site.clientHeight() && type ) ) {
             Site.loadImage({img: $this});
             $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
             if (_config.removeUrl) {
@@ -860,13 +867,18 @@ Site.lazyLoadScroll = function (options) {
         }
     });
     $(document).on('scroll', _config.element, function (e) {
-        _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
-        _config.bodyHeight = Site.clientTop(_config.element); // body（页面）可见区域的总高度
+        if (type){
+            _config.scrollHeight = Site.scrollTop(); // 滚动的高度
+            _config.bodyHeight = Site.clientHeight(); // body（页面）可见区域的总高度
+        }else {
+            _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
+            _config.bodyHeight = $(_config.element).height(); //可见区域的总高度
+        }
         $(this).find('img' + '.' + _config.lazyClass).each(function () {
             var $this = $(this);
             var imgTop = Site.offsetTop($this);//（图片纵坐标）
             if (temp < _config.scrollHeight) {//为true表示是向下滚动，否则是向上滚动，不需要执行动作。
-                if ((imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+                if (((imgTop - _config.scrollHeight) <= _config.bodyHeight) || ((imgTop - _config.scrollHeight) <= Site.clientHeight() && type )) {
                     Site.loadImage({img: $this});
                     $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
                     if (_config.removeUrl) {
@@ -875,7 +887,7 @@ Site.lazyLoadScroll = function (options) {
                 }
                 temp = _config.scrollHeight;
             } else {
-                if ((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) {
+                if (((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) ||　((imgTop - _config.scrollHeight) <= Site.clientHeight() && type )) {
                     Site.loadImage({img: $this});
                     $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
                     if (_config.removeUrl) {
@@ -1309,9 +1321,13 @@ Site.offsetTop = function (element) {
  * @returns {String||Number}
  */
 Site.scrollTop = function (element) {
-    element = element || document.body;
-    var that = $(element);
-    return that.scrollTop();
+    var scrollTop = 0;
+    if (element === undefined){
+        scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+    }else {
+        scrollTop = $(element).scrollTop();
+    }
+    return scrollTop;
 };
 
 /**
@@ -1323,6 +1339,32 @@ Site.clientTop = function (element) {
     element = element || document.body;
     var that = $(element);
     return that.scrollTop() - Site.offsetTop();
+};
+
+/**
+ * 获取页面可见高度
+ * @param element
+ * @returns {String||Number}
+ */
+Site.clientHeight = function (element) {
+    var _height = document.documentElement.clientHeight;//获取页面可见高度
+    if (element !== undefined){
+        _height = $(element).height();
+    }
+    return _height;
+};
+
+/**
+ * 获取页面可见宽度
+ * @param element
+ * @returns {String||Number}
+ */
+Site.clientWidth = function (element) {
+    var _width = document.documentElement.clientWidth;//获取页面可见宽度
+    if (element !== undefined){
+        _width = $(element).width();
+    }
+    return _width;
 };
 
 /**

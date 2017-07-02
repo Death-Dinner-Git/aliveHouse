@@ -17,7 +17,8 @@ class BuildController extends HomeController
     public function buildAction()
     {
         return view('build/build',[
-
+            'meta_title'=>'楼盘',
+            'nav'=>'build'
         ]);
     }
 

@@ -18,7 +18,9 @@ class IndexController extends HomeController
     {
         // 临时选择其他模板的布局功能
 //        $this->view->engine->layout('layouts/index');
-        return view('index/index');
+        return view('index/index',[
+            'meta_title'=>'首页'
+        ]);
     }
 
     /**

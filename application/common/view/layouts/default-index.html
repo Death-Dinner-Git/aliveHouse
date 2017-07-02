@@ -24,10 +24,6 @@
     <link rel="stylesheet" type="text/css" href="__CSS__/home.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
 
-    <script type="text/javascript">
-        var _cid = 13775917;
-    </script>
-
     <!-- Define base CSS -->
     <style id="styleWebSite" type="text/css">
         #header-content-container{width:1200px;}
@@ -50,12 +46,12 @@
     </style>
 
 </head>
-<body id="alive-site-body">
+<body id="alive-site-body" lay-position="rel">
 
 
-<div id="alive-site-main" class="alive-site-main">
+<section id="alive-site-main" class="alive-site-main">
 
-    <div id="alive-site-web" class="alive-site-web">
+    <article id="alive-site-web" class="alive-site-web">
 
         <!-- 顶部 区域开启 -->
         <section id="web-header-container" class="web-header-container">
@@ -69,11 +65,11 @@
         <section id="web-main-container" class="web-main-container">
 
             <!-- 右侧 主体内容开启 -->
-            <div id="main-content-container" class="main-content-container">
+            <article id="main-content-container" class="main-content-container">
 
                 {__CONTENT__}
 
-            </div>
+            </article>
             <!-- 右侧 主体内容结束 -->
 
         </section>
@@ -101,9 +97,9 @@
         </section>
         <!-- 其他 区域结束 -->
 
-    </div>
+    </article>
 
-</div>
+</section>
 
 <!-- fakeLoader start -->
 <div class="fakeloader"></div>
@@ -141,7 +137,18 @@
 <!-- background music -->
 <div id="bgMusic" class="bgMusic"></div>
 
-<script type="text/javascript" src="__JS__/site.js"></script>
+<script src="__JS__/site.js"></script>
+
+<script>
+    $(function () {
+        //导航标识
+        var $headerNav = $('#headerNav');
+        var selected = $headerNav.attr('lay-select');
+        if(selected || selected !== ''){
+            $headerNav.find('.item[lat-filter="'+selected+'"]').addClass('itemSelected');
+        }
+    });
+</script>
 
 </body>
 </html>

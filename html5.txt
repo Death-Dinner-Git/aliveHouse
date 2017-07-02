@@ -1,0 +1,68 @@
+(function(){if(!/*@cc_on!@*/0)return;var e ="abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(','),i=e.length;while(i--){document.createElement(e[i])}})()
+最后在css里面加上这段：
+
+/*html5*/ article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}
+
+
+article：标签定义外部的内容。比如来自一个外部的新闻提供者的一篇新的文章，或者来自 blog 的文本，或者是来自论坛的文本。亦或是来自其他外部源内容。
+
+aside：Aside 的内容是独立的内容，但应与文档内容相关。标签定义 article 以外的内容。aside 的内容应该与 article 的内容相关。
+
+audio：标签定义声音，比如音乐或其他音频流。
+
+canvas：标签定义图形，比如图表和其他图像。这个 HTML 元素是为了客户端矢量图形而设计的。它自己没有行为，但却把一个绘图 API 展现给客户端 JavaScript 以使脚本能够把想绘制的东西都绘制到一块画布上。
+
+command：标签定义命令按钮，比如单选按钮、复选框或按钮。
+
+datalist：标签定义可选数据的列表。与 input 元素配合使用，就可以制作出输入值的下拉列表。
+
+details：标签定义元素细节,用户可进行查看,或通过点击进行隐藏。与 legend 标签一起使用,该标题对用户是可见的，当在其上点击时可打开或关闭 detail。
+
+embed：标签定义嵌入的内容，比如插件。
+
+figcaption：标签定义 figure 元素的标题。”figcaption” 元素应该被置于 “figure” 元素的第一个或最后一个子元素的位置。
+
+figure：标签用于对元素进行组合。使用 figcaption 元素为元素组添加标题。
+
+footer：标签定义 section 或 document 的页脚。典型地，它会包含创作者的姓名、文档的创作日期以及/或者联系信息。
+
+header：标签定义 section 或 document 的页眉。
+
+hgroup：标签用于对网页或区段（section）的标题进行组合。
+
+keygen：标签定义生成密钥。
+
+mark：主要用来在视觉上向用户呈现那些需要突出的文字。标签的一个比较典型的应用就是在搜索结果中向用户高亮显示搜索关键词。
+
+meter：标签定义度量衡。仅用于已知最大和最小值的度量。必须定义度量的范围，既可以在元素的文本中，也可以在 min/max 属性中定义。
+
+nav：标签定义导航链接的部分。
+
+output：标签定义不同类型的输出，比如脚本的输出。
+
+progress：标签运行中的进程。可以使用标签来显示 JavaScript 中耗费时间的函数的进程。
+
+rp：标签在 ruby 注释中使用，以定义不支持 ruby 元素的浏览器所显示的内容。
+
+rt：标签定义字符（中文注音或字符）的解释或发音。
+
+ruby：标签定义 ruby 注释（中文注音或字符）。
+
+section：标签定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。
+
+source：标签为媒介元素（比如和）定义媒介资源。
+
+summary：标签包含 details 元素的标题，”details” 元素用于描述有关文档或文档片段的详细信息。”summary” 元素应该是 “details” 元素的第一个子元素。
+
+time：标签定义日期或时间，或者两者。
+
+video：标签定义视频，比如电影片段或其他视频流。
+
+
+
+
+
+
+
+
+

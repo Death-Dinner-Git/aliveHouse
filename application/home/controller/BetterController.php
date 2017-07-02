@@ -16,7 +16,10 @@ class BetterController extends HomeController
      */
     public function betterAction()
     {
-        return view('better/better');
+        return view('better/better',[
+            'meta_title'=>'家装',
+            'nav'=>'better'
+        ]);
     }
 
 }

@@ -73,9 +73,11 @@
 前端开始
 *=======================/
 
-/* 主页 */
+/* =========================
+ 主页 页面
+===========================*/
 
-/*  服务导览 */
+/*  主页 服务导览 小节 */
 
 #homeService {
 
@@ -111,7 +113,7 @@
     color: #646464;
 }
 
-/* 二手好房 */
+/*  主页 二手好房 小节 */
 
 #homeSecondHandHouse {
 
@@ -162,7 +164,7 @@
     color: #ff6633;
 }
 
-/* 二手好房 热门 */
+/* 主页  热门 二手好房 小节  */
 
 #homeSecondHandHouseHot {
 
@@ -222,5 +224,194 @@
     font-size: 16px;
     color: #FFFFFF;
 }
+
+/* =========================
+ 新房 页面
+===========================*/
+
+/* 热门楼盘 */
+#newHouseBuild {
+
+}
+
+#newHouseBuild .item{
+
+}
+
+#newHouseBuild .item + .item{
+    margin-left: 10px;
+}
+
+#newHouseBuild .item p a{
+    font-family: 微软雅黑;
+    font-size: 15px;
+    line-height: 28px;
+}
+
+#newHouseBuild .item p{
+    font-size: 15px;
+    line-height: 28px;
+    text-align: center;
+}
+
+
+/* =========================
+ 二手房 页面
+===========================*/
+
+/* =========================
+ 家装 页面
+===========================*/
+
+/* 家装推荐 */
+#betterHot{
+
+}
+
+#betterHot .item {
+    width: 350px;
+    height: 100%;
+}
+
+#betterHot .item .itemIcon {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 350px;
+    height: 211px;
+    overflow: hidden;
+}
+
+#betterHot .item .itemIcon img{
+    width: 100%;
+    height: 100%;
+}
+
+#betterHot .item .itemTitle{
+    margin-top: 4px;
+    height: 166px;
+}
+
+#betterHot .item .itemTitle .key  p{
+    padding: 0 15px;
+    line-height: 36px;
+    font-size: 18px;
+    height: 36px;
+    color: #333;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+#betterHot .item .itemTitle .key  a{
+    color: #333;
+    cursor: pointer;
+}
+
+#betterHot .item .itemTitle .key  a:hover{
+    color: #f63;
+}
+
+#betterHot .item .itemTitle .detail  p{
+    padding: 0 15px;
+    line-height: 1.6em;
+    max-height: 90px;
+    font-size: 14px;
+    color: #888;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    text-align: justify;
+}
+
+
+/* =========================
+ 楼盘 页面
+===========================*/
+
+/* 楼盘 热门楼盘 列表 */
+
+#buildHot{
+
+}
+
+#buildHot .item {
+    width: 350px;
+    height: 100%;
+}
+
+#buildHot .item .itemIcon {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 350px;
+    height: 211px;
+    overflow: hidden;
+}
+
+#buildHot .item .itemIcon img{
+    width: 100%;
+    height: 100%;
+}
+
+#buildHot .item .itemTitle{
+    margin-top: 4px;
+    height: 166px;
+}
+
+#buildHot .item .itemTitle .key  p{
+    padding: 0 15px;
+    line-height: 36px;
+    font-size: 18px;
+    height: 36px;
+    color: #333;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+#buildHot .item .itemTitle .key  a{
+    color: #333;
+    cursor: pointer;
+}
+
+#buildHot .item .itemTitle .key  a:hover{
+    color: #f63;
+}
+
+#buildHot .item .itemTitle .detail  p{
+    padding: 0 15px;
+    line-height: 1.6em;
+    max-height: 90px;
+    font-size: 14px;
+    color: #888;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    text-align: justify;
+}
+
+
+/* 楼盘 时光线 */
+
+#buildTimeLine{
+
+}
+
+#buildTimeLine .itemTitle a{
+    color: #333;
+}
+
+#buildTimeLine .itemTitle a:hover{
+    color: #f63;
+}
+
+#buildTimeLine .itemDetail p{
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    text-align: justify;
+}
+
+
+/* =========================
+ 联系我们 页面
+===========================*/
 
 

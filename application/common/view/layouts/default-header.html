@@ -2,12 +2,12 @@
 <section id="header-content-container" class="header-content-container flex">
 
     <!-- 顶级 全屏操作 容器 开始 -->
-    <section id="header-full-container">
+    <article id="header-full-container">
 
-    </section>
+    </article>
     <!-- 顶级 全屏操作 容器 结束 -->
 
-    <div class="header-body">
+    <article class="header-body">
 
         <!-- This headerAbsTable start -->
         <section id="headerAbsTable" class="absTopTable">
@@ -24,21 +24,21 @@
         <section id="headerTopTable" class="topTable">
 
             <!-- 左侧 区域开启 -->
-            <section class="leftTable flex-top-left">
+            <article class="leftTable flex-top-left">
 
-            </section>
+            </article>
             <!-- 左侧 区域结束 -->
 
             <!-- 中间 区域开启 -->
-            <section class="centerTable flex-top-center">
+            <article class="centerTable flex-top-center">
 
-            </section>
+            </article>
             <!-- 中间 区域结束 -->
 
             <!-- 右侧 区域开启 -->
-            <section class="rightTable flex-top-left">
+            <article class="rightTable flex-top-left">
 
-            </section>
+            </article>
             <!-- 右侧 区域结束 -->
 
         </section>
@@ -48,18 +48,18 @@
         <section id="headerMiddleTable" class="middleTable">
 
             <!-- 顶级主体 左侧 logo区域开启 -->
-            <section id="headerLeft" class="leftTable flex-middle-left">
+            <article id="headerLeft" class="leftTable flex-middle-left">
 
                 <div id="corpTitle" class="corpTitle">
                     <span>Alive</span>&nbsp;
                     <span>House</span>
                 </div>
 
-            </section>
+            </article>
             <!-- 顶级主体 左侧 logo区域结束 -->
 
             <!-- 顶级主体 中间 区域导航开启 -->
-            <section id="headerCenter" class="centerTable flex-middle-center" style="display: none;">
+            <article id="headerCenter" class="centerTable flex-middle-center" style="display: none;">
 
                 <div id="headerHeaderZone" class="headerZone">
                     <div class="headerZone-bg"></div>
@@ -68,41 +68,41 @@
 
                 </div>
 
-            </section>
+            </article>
             <!-- 顶级主体 中间 区域导航结束 -->
 
             <!-- 顶级主体 右侧 区域导航开启 -->
-            <section id="headerRight" class="rightTable flex-middle-right">
+            <article id="headerRight" class="rightTable flex-middle-right">
 
-                <div id="headerNav" class="headerNav">
+                <div id="headerNav" class="headerNav" lay-select="nav-{$nav ? $nav : 'home'}">
 
-                    <span class="item">
-                        <a hidefocus="true" style="outline:none;" href="/home/index/index.html" target="_self" onclick=""><span class="itemName">Home</span></a>
+                    <span class="item" lat-filter="nav-home">
+                        <a hidefocus="true" style="outline:none;" href="/home/index/index.html" target="_self" onclick=""><span class="itemName">首页</span></a>
                     </span>
 
-                    <span class="item">
-                        <a hidefocus="true" style="outline:none;" href="/home/better/better.html" target="_self" onclick=""><span class="itemName">Better</span></a>
+                    <span class="item" lat-filter="nav-new-house">
+                        <a hidefocus="true" style="outline:none;" href="/home/house/newhouse.html" target="_self" onclick=""><span class="itemName">新房</span></a>
                     </span>
 
-                    <span class="item">
-                        <a hidefocus="true" style="outline:none;" href="/home/house/secondhandhouse.html" target="_self" onclick=""><span class="itemName">Second-House</span></a>
+                    <span class="item" lat-filter="nav-second-house">
+                        <a hidefocus="true" style="outline:none;" href="/home/house/secondhandhouse.html" target="_self" onclick=""><span class="itemName">二手房</span></a>
                     </span>
 
-                    <span class="item">
-                        <a hidefocus="true" style="outline:none;" href="/home/house/newhouse.html" target="_self" onclick=""><span class="itemName">New-House</span></a>
+                    <span class="item" lat-filter="nav-build">
+                        <a hidefocus="true" style="outline:none;" href="/home/build/build.html" target="_self" onclick=""><span class="itemName">楼盘</span></a>
                     </span>
 
-                    <span class="item itemSelected">
-                        <a hidefocus="true" style="outline:none;" href="/home/build/build.html" target="_self" onclick=""><span class="itemName">Build</span></a>
+                    <span class="item" lat-filter="nav-better">
+                        <a hidefocus="true" style="outline:none;" href="/home/better/better.html" target="_self" onclick=""><span class="itemName">家装</span></a>
                     </span>
 
-                    <span class="item">
-                        <a hidefocus="true" style="outline:none;" href="/home/contact/contact.html" target="_self" onclick=""><span class="itemName">Contact</span></a>
+                    <span class="item" lat-filter="nav-contact">
+                        <a hidefocus="true" style="outline:none;" href="/home/contact/contact.html" target="_self" onclick=""><span class="itemName">联系我们</span></a>
                     </span>
 
                 </div>
 
-            </section>
+            </article>
             <!-- 顶级主体右侧区域导航结束 -->
 
         </section>
@@ -112,27 +112,27 @@
         <section id="headerBottomTable" class="bottomTable">
 
             <!-- 左侧 区域开启 -->
-            <section class="leftTable flex-bottom-left" style="display: none;">
+            <article class="leftTable flex-bottom-left" style="display: none;">
 
-            </section>
+            </article>
             <!-- 左侧 区域结束 -->
 
             <!-- 中间 区域开启 -->
-            <section id="headerBottom" class="centerTable flex-bottom-center">
+            <article id="headerBottom" class="centerTable flex-bottom-center">
 
-            </section>
+            </article>
             <!-- 中间 区域结束 -->
 
             <!-- 右侧 区域开启 -->
-            <section class="rightTable flex-bottom-left" style="display: none;">
+            <article class="rightTable flex-bottom-left" style="display: none;">
 
-            </section>
+            </article>
             <!-- 右侧 区域结束 -->
 
         </section>
         <!-- This headerBottomTable end -->
 
-    </div>
+    </article>
 
 </section>
 <!-- 顶部 主体内容结束 -->

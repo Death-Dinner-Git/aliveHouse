@@ -69,7 +69,6 @@
     background-color: #f8f8f8;
 }
 
-
 /* 引用 */
 
 /* 字段集合 */
@@ -457,12 +456,12 @@
 
 html {
     font-size: 100%;
-    height: 100%;
+    min-height: 100%;
     background-color: #FFFFFF;
 }
 
 * html {
-    padding: 0px
+    padding: 0;
 }
 
 /* iframe */
@@ -493,6 +492,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     display: block;
 }
 
+details summary:hover{
+    cursor: pointer;
+    color: #f63;
+}
+
+details summary:focus{
+    outline: none;
+    cursor: pointer;
+}
+
 audio, canvas, video {
     display: inline-block;
 }
@@ -500,6 +509,10 @@ audio, canvas, video {
 audio:not([controls]) {
     display: none;
     height: 0;
+}
+
+[hidefocus],[hidefocus]:focus{
+    outline: none;
 }
 
 [hidden] {
@@ -837,6 +850,10 @@ a:focus {
     background-color: rgba(0, 0, 0, 0);
 }
 
+#alive-site-body[lay-position="rel"] {
+    position: relative;
+}
+
 #alive-site-body .flex > * {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
@@ -1092,10 +1109,10 @@ a:focus {
 }
 
 #headerNav .item {
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    /*border-bottom-right-radius: 20px;*/
+    /*border-bottom-left-radius: 20px;*/
+    /*border-top-right-radius: 20px;*/
+    /*border-top-left-radius: 20px;*/
     margin-right: 5px;
     min-width: 100px;
     height: 40px;
@@ -1110,17 +1127,19 @@ a:focus {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 #headerNav .item a {
+    position: relative;
     padding: 5px;
     outline: none;
     text-decoration: none;
     text-shadow: none;
-    color: #333333;
+    color: #222;
     font-family: 微软雅黑;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
     display: block;
     word-break: keep-all;
@@ -1130,12 +1149,44 @@ a:focus {
     max-width: none;
 }
 
-#headerNav .item.itemSelected, #headerNav .item:hover {
-    background-color: #ff6633;
+#headerNav .item:after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #d4d4d4;
+    visibility: visible;
+}
+
+#headerNav .item:before {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #ff6358;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    z-index: 1;
+}
+
+#headerNav .item.itemSelected:before, #headerNav .item:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 #headerNav .item.itemSelected a, #headerNav .item:hover a {
-    color: #F4F4F4;
+    /*color: #F4F4F4;*/
+    color: #ff6633;
 }
 
 /* 底部 */
@@ -1766,7 +1817,7 @@ alive-bg-gray    用于设置元素经典灰色背景
 }
 
 /*
- 模块标题
+ 模块 居左 标题
 */
 .alive-title {
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1810,7 +1861,7 @@ alive-bg-gray    用于设置元素经典灰色背景
     padding-left: 15px;
     padding-right: 15px;
     line-height: 50px;
-    color: #000000;
+    color: #111;
     font-size: 30px;
 }
 
@@ -1855,6 +1906,106 @@ alive-bg-gray    用于设置元素经典灰色背景
 /* 第二元素隐藏 */
 .alive-title > *:nth-child(2) + * {
     display: none;
+}
+
+/*
+ 模块 居中标题
+*/
+.alive-titleCenter {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    padding-bottom: 3px;
+    margin-bottom: 47px;
+    overflow: hidden;
+}
+.alive-titleCenter.border:after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 3px;
+    left: 0;
+    background-color: #d4d4d4;
+    visibility: visible;
+}
+
+/* 标题 */
+.alive-titleCenter .item {
+    min-width: 100px;
+    height: 50px;
+    background: none;
+    cursor: pointer;
+    border-spacing: 0;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /*  - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 40px;
+    color: #111;
+    font-size: 26px;
+    position: relative;
+}
+
+.alive-titleCenter .item + .item{
+    margin-left: 5px;
+}
+
+.alive-titleCenter .item:after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #d4d4d4;
+    visibility: visible;
+}
+
+.alive-titleCenter .item:before {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #ff6358;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    z-index: 1;
+}
+
+.alive-titleCenter .item.active:before, .alive-titleCenter .item:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.alive-titleCenter .item:hover{
+    color: rgba(255,102,51,0.9);
+}
+
+.alive-titleCenter .item.active{
+    color: #ff6633;
 }
 
 /*======================
@@ -2357,6 +2508,51 @@ hr.line.dashed, hr.upLine.dashed {
 
 .downLine:hover:before {
     opacity: 0.9;
+}
+
+/*
+活标识
+*/
+
+.alive-Border{
+    position: relative;
+}
+
+.alive-Border:after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #d4d4d4;
+    visibility: visible;
+    top: 1.372em;
+}
+
+.alive-Border:before {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #ff6358;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    z-index: 1;
+    top: 1.372em;
+}
+
+.alive-Border.active:before,.alive-Border:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 /**
