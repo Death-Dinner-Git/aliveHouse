@@ -1058,6 +1058,10 @@ Site.initBanner = function (data, options) {
         bar = '<div class="' + config.bannerBottom + '">' + barButton.join("") + '</div>';
     }
     content = '<div class="' + config.bannerBody + '">' + contentBody.join("") + '</div>' + control + bar;
+    if (config.wideScreen){
+        $banner.css({position:"absolute",width: "100%",left:'0',right:"0"}).after('<div style="height: '+config.height+'px;visibility: visible;"></div>');
+        content = '<div style="position: relative;width:'+config.width+'px;height:'+config.height+'px;">' + content + '</div>';
+    }
     $banner.html(content).css({width: config.width, height: config.height});
     //======= HTML 渲染结束 ========//
 

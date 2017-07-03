@@ -348,7 +348,7 @@ layui.define('layer', function(exports){
         
         radios.each(function(index, radio){
           var othis = $(this), hasRender = othis.next('.' + CLASS), disabled = this.disabled;
-          
+
           if(typeof othis.attr('lay-ignore') === 'string') return othis.show();
           
           //替代元素
