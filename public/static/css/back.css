@@ -27,14 +27,14 @@
     padding: 20px;
 }
 
-
 /* ===========================
   	头部
   	==============================*/
 .header {
     height: 70px;
-    border-bottom: 1px solid #404553;
-    background-color: #393D49;
+    /*border-bottom: 1px solid #404553;*/
+    /*background-color: #393D49;*/
+    background-color: #191b2e;
     color: #fff;
 }
 
@@ -83,12 +83,13 @@
     height: 50px;
     line-height: 50px;
     font-size: 30px;
+    color: #f4f4f4;
     text-align: center;
     vertical-align: middle;
 }
 
 .dinner-logo-title span:hover {
-    color: #f4f4f4;
+    color: #999;
 }
 
 @media screen and (max-width: 1800px) {
@@ -203,6 +204,21 @@
     border: none;
 }
 
+.dinner-header-body .layui-nav-child {
+    padding: 0;
+    background-color: #191b2e;
+}
+
+.dinner-header-body .layui-nav-child dd a {
+    background-color: #191b2e;
+    color: #c2c2c2 !important;
+}
+
+.dinner-header-body .layui-nav-child dd a:hover {
+    background-color: #4E5465;
+    color: #eee !important;
+}
+
 /* 头部控制侧栏按钮 */
 .dinner-side-menu, .dinner-side-toggle, .dinner-side-full {
     position: absolute;
@@ -244,7 +260,7 @@
     /*left: 210px;*/
     top: 0;
     bottom: 0;
-    left: 200px;
+    left: 199px;
     width: 0;
     height: 100%;
     color: white;
@@ -263,10 +279,6 @@
     cursor: pointer;
 }
 
-.dinner-sidebar-toggle .dinner-sidebar-toggle-container:hover {
-    opacity: 0.872;
-}
-
 .dinner-sidebar-toggle .dinner-sidebar-toggle-container .dinner-sidebar-toggle-box {
     margin: auto;
     height: 45px;
@@ -274,7 +286,7 @@
 }
 
 .dinner-sidebar-toggle .dinner-sidebar-toggle-container .dinner-sidebar-toggle-box i:before {
-    color: #1fb5ac;
+    color: #fff;
     text-align: center;
     vertical-align: middle;
     height: 45px;
@@ -282,9 +294,9 @@
     font-size: 15px;
 }
 
-.dinner-sidebar-toggle .dinner-sidebar-toggle-container .dinner-sidebar-toggle-box i:before:hover {
+.dinner-sidebar-toggle .dinner-sidebar-toggle-container .dinner-sidebar-toggle-box i:hover:before {
     color: #1fb5ac;
-    opacity: 1;
+    opacity: 0.95;
 }
 
 /* 头部左侧 */
@@ -348,7 +360,8 @@
 }
 
 .header ul.dinner-header-item .layui-this {
-    background: #393D49;
+    /*background: #393D49;*/
+    background: #191b2e;
     border-bottom: none;
 }
 
@@ -442,7 +455,6 @@
     border-radius: 0;
     outline: none !important;
     margin: 0;
-    font: inherit;
     -webkit-appearance: textfield;
     -webkit-rtl-ordering: logical;
     user-select: text;
@@ -461,8 +473,9 @@
 
 /* 头部 主题一 */
 .header-theme-one {
-    border-bottom-color: #1AA094;
-    background-color: #393D49;
+    /*border-bottom-color: #191b2e;*/
+    /*background-color: #393D49;*/
+    background-color: #191b2e;
 }
 
 .header-theme-one .logo {
@@ -480,14 +493,14 @@
 }
 
 .header-theme-one .layui-nav .layui-nav-item a {
-    color: #999;
+    color: #f4f4f4;
     padding-left: 15px;
     padding-right: 15px;
     position: relative;
 }
 
 .header-theme-one .layui-nav .layui-this {
-    background-color: #f2f2f2;
+    background-color: #999;
 }
 
 .header-theme-one .layui-nav .layui-nav-item a:hover, .header-theme-one .layui-nav .layui-this a {
@@ -514,16 +527,22 @@
 		主体左侧侧栏区域 | 侧栏
 ================================== */
 .layui-side {
-    padding-top: 70px !important;
+    margin-top: 70px !important;
+    border-top: 1px solid #4E5465;
     padding-bottom: 15px !important;
 }
 
 .layui-side .layui-nav-child {
-    padding-left: 20px;
+    padding: 1px 0 1px 20px;
+}
+
+.layui-side .layui-nav-child .layui-nav-child-item + .layui-nav-child-item {
+    margin-top: 1px;
 }
 
 .layui-side-bg {
-    background: #393D49;
+    /*background: #393D49;*/
+    background: #191b2e;
 }
 
 .layui-dinner-side {
@@ -568,8 +587,14 @@
 }
 
 .layui-nav-tree {
-    padding: 4px;
+    padding: 1px;
     margin-top: 140px;
+    /*background: #393D49;*/
+    background: #191b2e;
+}
+
+.layui-nav-tree li.layui-nav-item + li.layui-nav-item {
+    margin-top: 1px;
 }
 
 .layui-nav-tree li.layui-nav-item a {
@@ -589,10 +614,20 @@
     padding-right: 3px;
 }
 
+.layui-nav-tree .layui-nav-title a, .layui-nav-tree .layui-nav-title a:hover, .layui-nav-itemed > a {
+    background-color: #4E5465 !important;
+    color: #fff !important;
+}
+
 /*二级菜单*/
 .layui-nav-tree .layui-nav-child dd.layui-nav-child-item:hover {
     background-color: #4E5465 !important;
-    border-left: 3px solid #1fb5ac;
+    border-left: 2px solid #1fb5ac;
+}
+
+.layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .layui-nav-tree .layui-nav-child dd.layui-this {
+    background-color: #4E5465;
+    color: #fff;
 }
 
 /* =======================================
@@ -604,9 +639,20 @@
     /*padding-right: 15px !important;*/
 }
 
+#dinner-body .layui-tab-card {
+    border-left: none !important;
+}
+
+#dinner-body .layui-tab {
+    margin: 0 0 10px 0 !important;
+}
+
+#dinner-body .layui-tab-content {
+    margin-left: 10px;
+}
+
 .layui-body {
     bottom: 0;
-    border-left: solid 2px #1AA094;
 }
 
 .layui-tab-content {
@@ -678,8 +724,14 @@
     height: 100%;
 }
 
-.dinner-tab-box > .layui-tab-title {
-    border-bottom: 1px solid #1AA094;
+.dinner-tab-box > .layui-tab-title li:hover {
+    background-color: #1AA094;
+    opacity: 0.9;
+    color: white;
+}
+
+.dinner-tab-box > .layui-tab-title li:nth-child(1) {
+    margin-left: 20px;
 }
 
 .dinner-tab-box .layui-tab-title cite {
@@ -725,7 +777,6 @@ body .layui-dinner-foot {
     background-color: #eee;
     color: #666;
     font-weight: 300;
-    border-left: 2px solid #1AA094;
     z-index: 998;
 }
 
@@ -769,6 +820,14 @@ body .layui-footer .layui-main a {
 
 .layui-form-select p.layui-select-none {
     line-height: 26px;
+}
+
+.layui-form-label.middle{
+    width: 110px;
+}
+
+.layui-form-label.long{
+    width: 140px;
 }
 
 /* =======================================
@@ -908,7 +967,8 @@ a.layui-layer-refrash:hover {
     text-align: center;
     line-height: 80px;
     margin: 0 1px 1px 0;
-    background-color: #393D49;
+    /*background-color: #393D49;*/
+    background-color: #191b2e;
     color: #fff;
 }
 
