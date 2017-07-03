@@ -184,7 +184,7 @@ layui.config({
                 width: '200px'
             });
             $(this).animate({
-                left: '200'
+                left: '199'
             });
             logo.animate({
                 width: '200'
