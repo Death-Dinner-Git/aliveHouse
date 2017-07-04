@@ -8,29 +8,35 @@
  * @constructor
  */
 function AutoComplete(options) {
-    this.config = {
-        targetClass: '',          // 输入框目标元素
-        parentClass: '',          // 父级类
-        hiddenClass: '',          // 隐藏域input
-        searchForm: '',     //form表单
-        hoverBg: 'hoverBg',             // 鼠标移上去的背景
-        outBg: 'outBg',               // 鼠标移下拉的背景
-        isSelectHide: true,                 // 点击下拉框 是否隐藏
-        isHideTarget: false,                 // 点击下拉框 是否隐藏输入框
-        url: '',                    // url接口
-        key: '',                    // url借口参数默认键值如为空，则取hidden input name，如再空则为 key
-        height: 300,                     // 默认为0 不设置的话 那么高度自适应
-        manySelect: false,                 // 输入框是否多选 默认false 单选
-        renderHTMLCallback: null,                  // keyup时 渲染数据后的回调函数
-        callback: null,                  // 点击某一项 提供回调
-        closedCallback: null                   // 点击输入框某一项x按钮时 回调函数
-    };
-    this.cache = {
-        currentIndex: -1,
-        oldIndex: -1,
-        inputArrs: []                 // 多选时候 输入框值放到数组里面去
-    };
-    this.init(options);
+    if (this instanceof AutoComplete) {
+        this.config = {
+            targetClass: '',          // 输入框目标元素
+            parentClass: '',          // 父级类
+            hiddenClass: '',          // 隐藏域input
+            searchForm: '',     //form表单
+            hoverBg: 'hoverBg',             // 鼠标移上去的背景
+            outBg: 'outBg',               // 鼠标移下拉的背景
+            isSelectHide: true,                 // 点击下拉框 是否隐藏
+            isHideTarget: false,                 // 点击下拉框 是否隐藏输入框
+            url: '',                    // url接口
+            key: '',                    // url借口参数默认键值如为空，则取hidden input name，如再空则为 key
+            height: 300,                     // 默认为0 不设置的话 那么高度自适应
+            manySelect: false,                 // 输入框是否多选 默认false 单选
+            renderHTMLCallback: null,                  // keyup时 渲染数据后的回调函数
+            callback: null,                  // 点击某一项 提供回调
+            closedCallback: null                   // 点击输入框某一项x按钮时 回调函数
+        };
+        this.cache = {
+            currentIndex: -1,
+            oldIndex: -1,
+            data: [],                   // ajax 接收数据
+            itemVal: null,               // 被选中的值
+            inputArrs: []                 // 多选时候 输入框值放到数组里面去
+        };
+        this.init(options);
+    } else {
+        return new AutoComplete(options);
+    }
 }
 
 AutoComplete.prototype = {
@@ -168,6 +174,7 @@ AutoComplete.prototype = {
             var plen = $('.auto-tips p', targetParent).length,
                 keyCode = e.keyCode;
             _cache.oldIndex = _cache.currentIndex;
+            var curVal = '',embId = '',_index = -1, pCls;
             // 上移操作
             if (keyCode == 38) {
                 if (_cache.currentIndex == -1) {
@@ -185,28 +192,30 @@ AutoComplete.prototype = {
                     self._scrollAdjust($('.auto-tips'),percentage*_config.height);
                     !$('.auto-tips .p-index' + _cache.currentIndex, targetParent).hasClass(_config.hoverBg) &&
                     $('.auto-tips .p-index' + _cache.currentIndex, targetParent).addClass(_config.hoverBg).siblings().removeClass(_config.hoverBg);
-                    var curAttr = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('data-html'),
-                        embId = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('embId');
+                    curVal = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('data-html');
+                    embId = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('embId');
+                    _index = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('data-index');
 
                     // 判断是否是多选操作 多选操作 暂留接口
                     if (_config.manySelect) {
-                        _cache.inputArrs.push(curAttr);
+                        _cache.inputArrs.push(curVal);
                         _cache.inputArrs = self._unique(_cache.inputArrs);
                         self._manySelect(targetParent);
                     } else {
-                        $(_config.targetClass, targetParent).val(curAttr);
+                        $(_config.targetClass, targetParent).val(curVal);
                         // 上移操作增加一个属性 当失去焦点时候 判断有没有这个属性
                         if (!$(_config.targetClass, targetParent).attr('up')) {
                             $(_config.targetClass, targetParent).attr('up', 'true');
                         }
 
-                        var pCls = $(_config.targetClass, targetParent).closest(_config.parentClass);
+                        pCls = $(_config.targetClass, targetParent).closest(_config.parentClass);
                         $(_config.hiddenClass, pCls).val(embId);
-                        self._createDiv(targetParent, curAttr);
+                        self._createDiv(targetParent, curVal);
                         self._closed(targetParent);
                         // hover
                         self._hover(targetParent);
                     }
+                    _config.callback && $.isFunction(_config.callback) && _config.callback(_cache.data[_index]);
 
                 }
             } else if (keyCode == 40) { //下移操作
@@ -225,41 +234,43 @@ AutoComplete.prototype = {
                     self._scrollAdjust($('.auto-tips'),percentage*_config.height);
                     !$('.auto-tips .p-index' + _cache.currentIndex, targetParent).hasClass(_config.hoverBg) &&
                     $('.auto-tips .p-index' + _cache.currentIndex, targetParent).addClass(_config.hoverBg).siblings().removeClass(_config.hoverBg);
-                    var curAttr = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('data-html'),
-                        embId = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('embId');
-
+                    curVal = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('data-html');
+                    embId = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('embId');
+                    _index = $('.auto-tips .p-index' + _cache.currentIndex, targetParent).attr('data-index');
 
                     // 判断是否是多选操作 多选操作 暂留接口
                     if (_config.manySelect) {
-                        _cache.inputArrs.push(curAttr);
+                        _cache.inputArrs.push(curVal);
                         _cache.inputArrs = self._unique(_cache.inputArrs);
                         self._manySelect(targetParent);
                     } else {
-                        $(_config.targetClass, targetParent).val(curAttr);
+                        $(_config.targetClass, targetParent).val(curVal);
 
                         // 下移操作增加一个属性 当失去焦点时候 判断有没有这个属性
                         if (!$(_config.targetClass, targetParent).attr('down')) {
                             $(_config.targetClass, targetParent).attr('down', 'true');
                         }
-                        var pCls = $(_config.targetClass, targetParent).closest(_config.parentClass);
+                        pCls = $(_config.targetClass, targetParent).closest(_config.parentClass);
                         $(_config.hiddenClass, pCls).val(embId);
-                        self._createDiv(targetParent, curAttr);
+                        self._createDiv(targetParent, curVal);
                         self._closed(targetParent);
                         // hover
                         self._hover(targetParent);
                     }
-
+                    _config.callback && $.isFunction(_config.callback) && _config.callback(_cache.data[_index]);
                 }
             } else if (keyCode == 13) { //回车操作
-                var curVal = $('.auto-tips .p-index' + _cache.oldIndex, targetParent).attr('data-html');
+                curVal = $('.auto-tips .p-index' + _cache.oldIndex, targetParent).attr('data-html');
+                embId = $('.auto-tips .p-index' + _cache.oldIndex, targetParent).attr('embId');
+                _index = $('.auto-tips .p-index' + _cache.oldIndex, targetParent).attr('data-index');
                 $(_config.targetClass, targetParent).val(curVal);
+                $(_config.hiddenClass, targetParent).val(embId);
                 if (_config.isSelectHide) {
                     !$(".auto-tips", targetParent).hasClass('hidden') && $(".auto-tips", targetParent).addClass('hidden');
                 }
-
                 _cache.currentIndex = -1;
                 _cache.oldIndex = -1;
-
+                _config.callback && $.isFunction(_config.callback) && _config.callback(_cache.data[_index]);
             }
         }
     },
@@ -308,6 +319,11 @@ AutoComplete.prototype = {
             _config = self.config,
             _cache = self.cache,
             html = '';
+        if (ret.length <=0){
+            ret = _cache.data;
+        }else {
+            self.cache.data = ret;
+        }
 
         for (var i = 0, ilen = ret.length; i < ilen; i += 1) {
             var img = '';
@@ -315,7 +331,7 @@ AutoComplete.prototype = {
                 img = '<img src="' + ret[i].image + '" style="margin-right:5px;" height="25" width="25" title="" alt="">';
             }
 
-            html += '<p  data-html = "' + ret[i].name +'" embId="' + ret[i].id + '" class="p-index' + i + '">' +
+            html += '<p  data-html = "' + ret[i].name +'" embId="' + ret[i].id + ' " data-index="' + i + '" class="p-index' + i + '">' +
                 img +
                 '<span>' + ret[i].name + '</span>' +
                 '</p>';
@@ -327,7 +343,7 @@ AutoComplete.prototype = {
         $('.auto-tips', targetParent).html(html);
         $('.auto-tips', targetParent).hasClass('hidden') && $('.auto-tips', targetParent).removeClass('hidden');
         $('.auto-tips p:last', targetParent).css({"border-bottom": 'none'});
-        _config.renderHTMLCallback && $.isFunction(_config.renderHTMLCallback) && _config.renderHTMLCallback();
+        _config.renderHTMLCallback && $.isFunction(_config.renderHTMLCallback) && _config.renderHTMLCallback(ret);
         // 出现滚动条 计算p的长度 * 一项p的高度 是否大于 设置的高度 如是的话 出现滚动条 反之
         var plen = $('.auto-tips p', targetParent).length,
             pheight = $('.auto-tips p', targetParent).height();
@@ -346,10 +362,14 @@ AutoComplete.prototype = {
         var self = this,
             _config = self.config,
             _cache = self.cache;
+        if (ret.length <=0){
+            ret = _cache.data;
+        }
         $('.auto-tips p', targetParent).unbind('click');
         $('.auto-tips p', targetParent).bind('click', function (e) {
             var dataAttr = $(this).attr('data-html'),
-                embId = $(this).attr('embId');
+                embId = $(this).attr('embId'),
+                index = $(this).attr('data-index');
 
             // 判断是否多选
             if (_config.manySelect) {
@@ -372,7 +392,7 @@ AutoComplete.prototype = {
             if (_config.isSelectHide) {
                 !$('.auto-tips', targetParent).hasClass('hidden') && $('.auto-tips', targetParent).addClass('hidden');
             }
-            _config.callback && $.isFunction(_config.callback) && _config.callback();
+            _config.callback && $.isFunction(_config.callback) && _config.callback(ret[index]);
         });
         // 鼠标移上效果
         $('.auto-tips p', targetParent).hover(function (e) {
