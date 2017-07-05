@@ -32,4 +32,14 @@ class AjaxController extends ManageController
         return json($ret);
     }
 
+    /**
+     * @description 上传器
+     * @return \think\response\Json
+     */
+    public function uploaderAction()
+    {
+        $ret = ['code'=>'1','msg'=>'成功','src'=>'/static/images/upload-img.png'];
+        return json($ret);
+    }
+
 }

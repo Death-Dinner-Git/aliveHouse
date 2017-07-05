@@ -57,6 +57,7 @@ layui.define(['element','layer'], function(exports) {
 			layer.msg('Tab error:请为elem容器设置一个lay-filter过滤器');
 		}
 		_config.elem = $container;
+		ELEM.elem = $container;
 		ELEM.titleBox = $container.children('ul.layui-tab-title');
 		ELEM.contentBox = $container.children('div.layui-tab-content');
 		ELEM.tabFilter = filter;
@@ -298,6 +299,15 @@ layui.define(['element','layer'], function(exports) {
 			});
 		}
 	};
+
+	Tab.prototype.getActive = function () {
+		var active = ELEM.elem.find('div.layui-tab-content > .layui-tab-item.layui-show').children('iframe');
+		var ret;
+		if (active.length > 0){
+            ret = active[0].contentWindow;
+		}
+		return ret || window;
+    };
 
 	Tab.prototype.on = function(events, callback) {
 	};

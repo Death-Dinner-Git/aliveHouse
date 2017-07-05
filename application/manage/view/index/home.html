@@ -435,6 +435,16 @@
                 内容区域
             </div>
         </fieldset>
+
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>相册</legend>
+            <div class="layui-field-box">
+                <div id="layer-photos-demo" class="layer-photos-demo" style="overflow: hidden;">
+                    <img layer-pid="图片id，可以不写" layer-src="/static/uploads/theme/home/theme-banner1.jpg" src="/static/images/upload-img.png" alt="图片名" style="max-width: 800px;">
+                    <img layer-pid="图片id，可以不写" layer-src="/static/uploads/theme/home/theme-banner1.jpg" src="/static/images/upload-img.png" alt="图片名" style="max-width: 800px;">
+                </div>
+            </div>
+        </fieldset>
         <hr>
         分割线
 
@@ -455,27 +465,7 @@
             layer = layui.layer,
             layedit = layui.layedit,
             laydate = layui.laydate;
-//
-//        layer.open({
-//            type: 2,
-//            content: 'http://www.alivehouse.com/manage',
-//            success: function(layero, index){
-//                // 在父窗口中获取iframe中的元素
-//                // 格式 $("#iframe的ID").contents().find("#iframe中的控件ID")
-//                // 格式 $('#父窗口中的元素ID', parent.document)
-////                $('#'+ doms[0] + index).find('iframe').contents().find(selector);
-//                var body = layer.getChildFrame('body', index); //当你试图在当前页获取iframe页的DOM元素时，你可以用此方法。selector即iframe页的选择器
-//                var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：
-//                var _index = layer.getFrameIndex(iframeWin.name);  //重新获取iframe索引
-////                layer.iframeAuto(index); // 指定iframe层自适应 ，调用该方法时，iframe层的高度会重新进行适应
-////                layer.iframeSrc(index, url) //重置特定iframe url
-////                layer.setTop(layero); //置顶当前窗口
-////                layer.title(name, index); // 改变title
-////                layer.full(index);  //全屏
-////                layer.min(index);  //最小化
-////                layer.restore(index)  //还原
-//            }
-//        });
+
 
 
         //创建一个编辑器
@@ -525,6 +515,40 @@
 
         Site.imgLoading();
 
+        var json = {
+            "title": "", //相册标题
+            "id": 123, //相册id
+            "start": 0, //初始显示的图片序号，默认0
+            "data": [   //相册包含的图片，数组格式
+                {
+                    "alt": "图片名",
+                    "pid": 666, //图片id
+                    "src": "/static/uploads/theme/home/theme-banner1.jpg", //原图地址
+                    "thumb": "/static/images/upload-img.png" //缩略图地址
+                },
+                {
+                    "alt": "图片名",
+                    "pid": 667, //图片id
+                    "src": "/static/uploads/theme/home/theme-banner1.jpg", //原图地址
+                    "thumb": "/static/images/upload-img.png" //缩略图地址
+                }
+            ]
+        };
+
+        top.layer.photos({
+            photos: '#layer-photos-demo',
+            area: ['62.8%', '80%'],
+            shadeClose: true,
+            tab: function (pic, layero) {
+                console.log(pic) //当前图片的一些信息
+            },
+            anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+        });
+
+        Site.photos({
+            json:json
+        });
+
         //初始化
         form.init();
 
@@ -542,61 +566,10 @@
                 url: '/manage/ajax/getCity',
                 targetClass: '.inputKey',          // 输入框目标元素
                 parentClass: '.layui-input-inline',          // 父级类
-                hiddenClass: '.inputHide'          // 隐藏域input
+                hiddenClass: '.inputHide',          // 隐藏域input
+                key:'name'
             });
         });
-
-        selectSearch("/manage/ajax/getCity", '[lay-filter="city"]');
-
-        function selectSearch(url, ele, param) {
-            var timerId = null;
-            $(document).on('keyup', '.layui-form-selected input.layui-input', function () {
-                clearTimeout(timerId);
-                var $this = $(this), value = $this.val(),
-                    $parent = $this.parents('.layui-form-selected'),
-                    $select = $parent.siblings('select[lay-search="refresh"]' + ele),
-                    selectedId = $select.data('selected'),
-                    option = '<option value="">请选择</option>';
-                if ($select.length <= 0) {
-                    return;
-                }
-
-                if (value === '') {
-                    $select.html(option);
-                    form.render('select');
-                    $select.siblings('.layui-unselect.layui-form-select').addClass('layui-form-selected').find('input.layui-input').trigger('focus').val(value);
-                    return;
-                }
-
-                if ($select.length > 0) {
-                    param = param || {};
-                    timerId = setTimeout(function () {
-                        $.get(url, param,
-                            function (data, status, xhr) {
-                                if (data.length > 0) {
-                                    for (var i = 0; i < data.length; i++) {
-                                        var selected = '';
-                                        if (data[i].id == selectedId) {
-                                            selected = 'selected';
-                                        }
-                                        option += '	<option value="' + data[i].id + '" ' + selected + '>' + data[i].name + '</option>';
-                                    }
-                                }
-                                $select.html(option);
-                                form.render('select');
-                                $select.siblings('.layui-unselect.layui-form-select').addClass('layui-form-selected').find('input.layui-input').trigger('focus').val(value);
-                            }
-                        );
-                    }, 628);
-                }
-            }).on('blur', '.layui-form-selected input.layui-input', function () {
-                var $this = $(this),
-                    $select = $this.parents('.layui-form-selected').siblings('select[lay-search="refresh"]' + ele);
-                if ($select.val() === '') {
-                    $this.val('');
-                }
-            });
-        }
 
     });
 </script>

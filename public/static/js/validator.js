@@ -48,7 +48,6 @@ layui.define('layer', function(exports){
                     IsNumber: [
                         /^-?\d+$|^(-?\d+)(\.\d+)?$/
                         ,'只能填写数值'
-
                     ],
                     //验证整数
                     IsInteger:[
@@ -155,7 +154,6 @@ layui.define('layer', function(exports){
                                 var lastDay = new Date(year, month, 0).getDate();
                                 return message;
                             }
-                            return;
                         } else {
                             return message;
                         }
@@ -170,9 +168,7 @@ layui.define('layer', function(exports){
                         }
                         var pattern = '^\\d{' + lengthBegin + ',' + lengthEnd + '}$';
                         var regex = new RegExp(pattern);
-                        if(input.match(regex)) {
-                            return;
-                        } else {
+                        if(!input.match(regex)) {
                             return message;
                         }
                     },
@@ -207,9 +203,7 @@ layui.define('layer', function(exports){
                         }
                         pattern += ']+$';
                         var regex = new RegExp(pattern);
-                        if(input.match(regex)) {
-                            return;
-                        } else {
+                        if(!input.match(regex)) {
                             return message;
                         }
                     },
@@ -218,9 +212,7 @@ layui.define('layer', function(exports){
                         var message = '字符串超出规定范围';
                         var pattern = '^.{' + lengthBegin + ',' + lengthEnd + '}$';
                         var regex = new RegExp(pattern);
-                        if(input.match(regex)) {
-                            return;
-                        } else {
+                        if(!input.match(regex)) {
                             return message;
                         }
                     },
@@ -229,9 +221,7 @@ layui.define('layer', function(exports){
                         var message = '字符串超出规定范围';
                         var pattern = '^[0-9a-zA-z]{' + lengthBegin + ',' + lengthEnd + '}$';
                         var regex = new RegExp(pattern);
-                        if(input.match(regex)) {
-                            return;
-                        } else {
+                        if(!input.match(regex)) {
                             return message;
                         }
                     },
@@ -250,9 +240,7 @@ layui.define('layer', function(exports){
                             pattern += '\\u4E00-\\u9FA5';
                         pattern += ']{' + lengthBegin + ',' + lengthEnd + '}$';
                         var regex = new RegExp(pattern);
-                        if(input.match(regex)) {
-                            return;
-                        } else {
+                        if(!input.match(regex)) {
                             return message;
                         }
                     },
@@ -261,9 +249,7 @@ layui.define('layer', function(exports){
                         var message = '字符串字节数超出规定范围';
                         var regex = /[^\x00-\xff]/g;
                         var byteLength = input.replace(regex, 'ok').length;
-                        if(byteLength >= lengthBegin && byteLength <= lengthEnd) {
-                            return;
-                        } else {
+                        if(!(byteLength >= lengthBegin && byteLength <= lengthEnd)) {
                             return message;
                         }
                     },
@@ -347,7 +333,6 @@ layui.define('layer', function(exports){
                             if(valnum != input.substr(17, 1)) {
                                 return message;
                             }
-                            return;
                         }
                         return message;
                     }

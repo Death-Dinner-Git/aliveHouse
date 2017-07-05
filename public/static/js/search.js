@@ -13,17 +13,19 @@ function AutoComplete(options) {
             targetClass: '',          // 输入框目标元素
             parentClass: '',          // 父级类
             hiddenClass: '',          // 隐藏域input
-            searchForm: '',     //form表单
+            searchForm: '',        //form表单
             hoverBg: 'hoverBg',             // 鼠标移上去的背景
             outBg: 'outBg',               // 鼠标移下拉的背景
             isSelectHide: true,                 // 点击下拉框 是否隐藏
             isHideTarget: false,                 // 点击下拉框 是否隐藏输入框
+            paste: false,                 // 禁止 ctrl+v 和 黏贴事件 默认不禁止
+            enter: true,                 // 回车选择下拉项是否 阻止默认事件和冒泡事件  默认禁止 （此功能是防止 form 绑定 回车事件）
             url: '',                    // url接口
             key: '',                    // url借口参数默认键值如为空，则取hidden input name，如再空则为 key
             height: 300,                     // 默认为0 不设置的话 那么高度自适应
             manySelect: false,                 // 输入框是否多选 默认false 单选
-            renderHTMLCallback: null,                  // keyup时 渲染数据后的回调函数
-            callback: null,                  // 点击某一项 提供回调
+            renderHTMLCallback: null,             // keyup时 渲染数据后的回调函数
+            callback: null,                     // 点击某一项 提供回调
             closedCallback: null                   // 点击输入框某一项x按钮时 回调函数
         };
         this.cache = {
@@ -57,14 +59,16 @@ AutoComplete.prototype = {
             /*
              *  禁止 ctrl+v 和 黏贴事件
              */
-            $(item).unbind('paste');
-            $(item).bind('paste', function (e) {
-                e.preventDefault();
-                var target = e.target,
-                    targetParent = $(target).closest(_config.parentClass);
-                $(this).val('');
-                $(_config.hiddenClass, targetParent) && $(_config.hiddenClass, targetParent).val('');
-            });
+            if (!_config.paste){
+                $(item).unbind('paste');
+                $(item).bind('paste', function (e) {
+                    e.preventDefault();
+                    var target = e.target,
+                        targetParent = $(target).closest(_config.parentClass);
+                    $(this).val('');
+                    $(_config.hiddenClass, targetParent) && $(_config.hiddenClass, targetParent).val('');
+                });
+            }
 
             $(item).keyup(function (e) {
                 _cache.inputArrs = [];
@@ -271,6 +275,9 @@ AutoComplete.prototype = {
                 _cache.currentIndex = -1;
                 _cache.oldIndex = -1;
                 _config.callback && $.isFunction(_config.callback) && _config.callback(_cache.data[_index]);
+                if(_config.enter){
+                   return;
+                }
             }
         }
     },

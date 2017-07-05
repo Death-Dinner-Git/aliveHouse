@@ -18,6 +18,7 @@ layui.config({
     tab = layui.tab({
         elem: '.dinner-tab-box', //设置选项卡容器
         filter:2,
+        autoRefresh:true,
         // maxSetting: {
         // 	max: 5,
         // 	tipMsg: '只能开5个哇，不能再开了。真的。'
@@ -120,6 +121,7 @@ layui.config({
     });
 
     window.addTab = addTab;
+    window.getActive = tab.getActive;
     window.layui = layui;
 
     function addTab(ele) {

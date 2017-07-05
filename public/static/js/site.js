@@ -232,7 +232,7 @@ Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, sc
             stop = false;
         }, "html");
     } else {
-        scroll = scroll === true ? 'yes' : 'no';
+        scroll = scroll === false ?  'no' : 'yes';
         content = [url, scroll];
         stop = false;
     }
@@ -248,7 +248,7 @@ Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, sc
     shade = shade || (maxmin !== undefined && maxmin === true && parseInt(type) === 2 ? 0 : 0.3);
     shadeClose = shadeClose || false;
     refresh = refresh || false;
-    myLayer.open({
+    return myLayer.open({
         type: type,
         area: [width, height],
         maxmin: maxmin,
@@ -257,7 +257,8 @@ Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, sc
         refresh: refresh,
         id: ele,
         title: '<p style="text-align: center;">' + title + '</p>',
-        content: content
+        content: content,
+        end:end
     });
 };
 
@@ -267,7 +268,7 @@ Site.msg = function (content) {
     if (!myLayer) {
         myLayer = layer;
     }
-    myLayer.msg(content, {time: 2000});
+    return myLayer.msg(content, {time: 2000});
 };
 
 /*  */
@@ -279,7 +280,7 @@ Site.wait = function (content) {
     if (!content) {
         content = "请稍后....";
     }
-    myLayer.msg(content, {shade: 0.3, time: 10000});
+    return myLayer.msg(content, {shade: 0.3, time: 1000});
 };
 
 /*  */
@@ -289,7 +290,7 @@ Site.loading = function (icon) {
         myLayer = layer;
     }
     icon = icon || 1;
-    myLayer.load(icon, {type: 3, icon: icon, shade: 0.3});
+    return myLayer.load(icon, {type: 3, icon: icon, shade: 0.3});
 };
 
 /*  */
@@ -302,10 +303,10 @@ Site.load = function (url, content) {
         content = "加载中....";
     }
 
-    myLayer.msg(content, {shade: 0.3, time: 1000});
+    myLayer.msg(content, {shade: 0.3, time: 628});
     setTimeout(function () {
         window.location.href = url;
-    }, 1000);
+    }, 628);
 };
 
 /*  */
@@ -322,7 +323,7 @@ Site.loadFrame = function (title, url, width, height, ele, btn) {
     btn = btn === true ? ['全部关闭'] : undefined;
 
     //多窗口模式，层叠置顶
-    myLayer.open({
+    return myLayer.open({
         type: 2 //此处以iframe举例
         , title: title
         , area: [width, height]
@@ -346,8 +347,15 @@ Site.hide = function () {
         myLayer = layer;
     }
     myLayer.closeAll();
-    if (window.layer) {
-        window.layer.closeAll();
+    if (top.window.layer) {
+        top.window.layer.closeAll();
+    }
+};
+
+/*  */
+Site.close = function (index) {
+    if (top.window.layer) {
+        top.window.layer.close(index);
     }
 };
 
@@ -357,7 +365,7 @@ Site.error = function (content) {
     if (!myLayer) {
         myLayer = layer;
     }
-    myLayer.msg(content, {icon: 2, time: 2000});
+    return myLayer.msg(content, {icon: 2, time: 2000});
 };
 
 /*  */
@@ -366,7 +374,7 @@ Site.success = function (content) {
     if (!myLayer) {
         myLayer = layer;
     }
-    myLayer.msg(content, {icon: 1, time: 2000});
+    return myLayer.msg(content, {icon: 1, time: 2000});
 };
 
 /*  */
@@ -375,7 +383,27 @@ Site.tip = function (content) {
     if (!myLayer) {
         myLayer = layer;
     }
-    myLayer.msg(content, {icon: 0, time: 2000});
+    return myLayer.msg(content, {icon: 0, time: 2000});
+};
+
+/**
+ * @description 信息提示函数
+ * @param msg 提示信息
+ * @param icon 提示图标：默认是0；可支持表情类型有 0-6
+ *              icon 值解释 ：(0--感叹号；1--对符号；2---错符号；3--问号；4--锁头；5--失败表情，6--成功表情)
+ * @param shift 提示出现动画：默认是0;可支持的动画类型有0-6 ，如果不想显示动画，设置 shift: -1 即可。
+ *             shift值解释： (0--中间显示；1--从上显示；2--从下显示；3--从左显示；4--从左下旋转显示；5--淡出，6--震动)
+ * @param time 提示消失时间: 单位是毫秒（1秒=1000毫秒）。
+ * @param shade 弹层外区域:默认是0 。可取值 0到1，如果你想定义别的颜色，可以shade: [0.8, '#393D49']；如果你不想显示遮罩，可以shade: 0
+ */
+Site.showTip = function (msg,icon,shift,time,shade) {
+    msg = (msg !== undefined && msg !== '') ? msg : '提示信息缺失' ;
+    icon = (icon === undefined) ? 0 : ( (parseInt(icon) >= 0 && parseInt(icon) <=6) ? parseInt(icon) : 0 );
+    shift = (shift === undefined) ? 0 : ( (parseInt(shift) >= 0 && parseInt(shift) <=6) ? parseInt(shift) : 0 );
+    time = (time === undefined) ? 1000 : ( parseInt(time) > 0? parseInt(time) : 1000 );
+    shade = (shade === undefined) ? 0 : ( (shade >= 0 && shade <=1) ? shade : 0 );
+    var config = {icon: icon,shift: shift,time:time,shade:shade};
+    return top.layer.msg(msg,config);
 };
 
 /* 确认对话框 */
@@ -390,7 +418,7 @@ Site.confirm = function (url, msg, width, height, shade) {
         shade = config.shade;
     }
     shade = shade || config.shade;
-    myLayer.open({
+    return myLayer.open({
         area: [width, height],
         shade: shade,
         shadeClose: true,
@@ -414,7 +442,7 @@ Site.showDialog = function (title, msg, callBack, width, height, shade) {
         shade = config.shade;
     }
     shade = shade || config.shade;
-    myLayer.open({
+    return myLayer.open({
         title: title,
         area: [width, height],
         shade: shade,
@@ -446,7 +474,7 @@ Site.tab = function (options, parentWin, width, height, shade) {
         shade = config.shade;
     }
     shade = shade || config.shade;
-    myLayer.tab({
+    return myLayer.tab({
         area: [width, height],
         shade: shade,
         shadeClose: true,
@@ -493,28 +521,31 @@ Site.imgLoading = function (ele) {
 };
 
 /*  */
-Site.photos = function (type, target, json, parentWin, width, height, shade) {
-    parentWin = parentWin || true;
-    var myLayer = Site.getModule('layer', parentWin);
+Site.photos = function (options) {
+    var photoConfig = {
+        elem:undefined,
+        url:'',
+        json:[],
+        parentWin:true,
+        width:config.width.max,
+        height:config.height.max,
+        shade:config.shade,
+        callback:null
+    };
+    photoConfig = $.extend(photoConfig,options);
+    var myLayer = Site.getModule('layer', photoConfig.parentWin);
     if (!myLayer) {
         myLayer = layer;
     }
+    var index, load;
 
-    type = type || '1';
-    width = width || config.width.min;
-    height = height || config.height.min;
-    if (shade === true) {
-        shade = config.shade;
-    }
-    shade = shade || config.shade;
-
-    if (parseInt(type) === '1') {
+    if (photoConfig.url !== '') {
         $.ajax({
             type: "post",
-            url: target,
+            url: photoConfig.url,
             dataType: 'json',
             beforeSend: function () {
-                loading();
+                load = Site.loading();
             },
             success: function (data) {
                 /**
@@ -534,8 +565,8 @@ Site.photos = function (type, target, json, parentWin, width, height, shade) {
                  }
                  */
 
-                setTimeout(hide(), 500);
-                myLayer.photos({
+                setTimeout(Site.close(load), 500);
+                index = myLayer.photos({
                     photos: data,
                     tab: function (pic, layero) {
                         console.log(pic) //当前图片的一些信息
@@ -544,8 +575,8 @@ Site.photos = function (type, target, json, parentWin, width, height, shade) {
                 });
             },
             error: function (data) {
-                hide();
-                error('加载失败', true);
+                Site.close(load);
+                Site.error('加载失败', true);
             }
         });
     } else {
@@ -557,26 +588,59 @@ Site.photos = function (type, target, json, parentWin, width, height, shade) {
          </div>
          */
 
-        myLayer.photos({
-            photos: target,
-            area: [width, height],
-            shade: shade,
+        index = myLayer.photos({
+            photos: photoConfig.json,
+            area: [photoConfig.width, photoConfig.height],
+            shade: photoConfig.shade,
             shadeClose: true,
             tab: function (pic, layero) {
                 console.log(pic) //当前图片的一些信息
             },
             anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
         });
-
     }
+    return index;
 };
+
+/*  */
+Site.uploader = function (options) {
+    var _config = {
+        elem:'.layui-upload-file',
+        url:'/manage/ajax/uploader',
+        before:null,  // 上传成功后的回调函数,参数 input 表单
+        success:null, // 上传成功后的回调函数,参数res代表后天返回的数据，input是文件input 表单
+    };
+    _config = $.extend(_config,options);
+    layui.use(['upload'], function () {
+        var upload = layui.upload,
+            index;
+        upload({
+            elem:_config.elem,
+            url: _config.url,
+            before: function (input) {
+                index = Site.loading();
+                if (typeof _config.before === 'function'){
+                    _config.before(input);
+                }
+            },
+            success: function (res, input) {
+                Site.close(index);
+                if (typeof _config.success === 'function'){
+                    _config.success(res,input);
+                }
+            }
+        });
+
+    });
+};
+
+
 
 /*  */
 Site.resizeShowTab = function () {
     if (window.parent) {
         window.parent.$(".layui-show").find("iframe").load();
-    }
-    else {
+    }else {
         $(".layui-show").find("iframe").load();
     }
 };
@@ -1392,6 +1456,16 @@ Site.getSelectCheckboxValues = function (selecter, checked) {
     return values;
 };
 
+Site.getTab = function () {
+    if (typeof top.window.getActive === 'function'){
+        return top.window.getActive();
+    }
+};
+
+Site.reLoad = function () {
+    Site.getTab().location.reload();
+};
+
 /**
  *
  * @param str
@@ -1612,6 +1686,28 @@ function ajaxJump(url, _Callback) {
 // console.log(typeof "42du"); //输出 string
 // console.log(typeof new Object()); //输出 object
 // console.log(typeof function(){}); //输出 function
+
+//
+//        layer.open({
+//            type: 2,
+//            content: 'http://www.alivehouse.com/manage',
+//            success: function(layero, index){
+//                // 在父窗口中获取iframe中的元素
+//                // 格式 $("#iframe的ID").contents().find("#iframe中的控件ID")
+//                // 格式 $('#父窗口中的元素ID', parent.document)
+////                $('#'+ doms[0] + index).find('iframe').contents().find(selector);
+//                var body = layer.getChildFrame('body', index); //当你试图在当前页获取iframe页的DOM元素时，你可以用此方法。selector即iframe页的选择器
+//                var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：
+//                var _index = layer.getFrameIndex(iframeWin.name);  //重新获取iframe索引
+////                layer.iframeAuto(index); // 指定iframe层自适应 ，调用该方法时，iframe层的高度会重新进行适应
+////                layer.iframeSrc(index, url) //重置特定iframe url
+////                layer.setTop(layero); //置顶当前窗口
+////                layer.title(name, index); // 改变title
+////                layer.full(index);  //全屏
+////                layer.min(index);  //最小化
+////                layer.restore(index)  //还原
+//            }
+//        });
 
 
 
