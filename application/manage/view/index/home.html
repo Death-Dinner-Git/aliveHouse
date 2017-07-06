@@ -17,7 +17,20 @@
 <div>
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>Do it !</legend>
-        <form class="layui-form" action="" id="form-login">
+        <form class="layui-form" id="default-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号码</label>
+                <div class="layui-input-inline">
+                    <input type="text" lay-verify="layAjax" lay-url="/manage/ajax/phone" lay-error="已存在手机号" class="layui-input" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <label class="layui-btn" lay-submit="" lay-filter="demo">立即提交</label>
+                </div>
+            </div>
+        </form>
+        <form class="layui-form" id="form-login">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">图片懒加载</label>
@@ -455,13 +468,12 @@
     </fieldset>
 
 </div>
-<!--<script type="text/javascript" src="__JS__/validator.js"></script>-->
 <script type="text/javascript" src="__JS__/search.js"></script>
 <script>
     layui.config({
         base: '/static/js/',
-    }).use(['form', 'layedit', 'laydate', 'validator'], function () {
-        var form = layui.validator(),
+    }).use(['layedit', 'laydate', 'forms'], function () {
+        var forms = layui.forms(),
             layer = layui.layer,
             layedit = layui.layedit,
             laydate = layui.laydate;
@@ -471,7 +483,7 @@
         //创建一个编辑器
         var editIndex = layedit.build('LAY_demo_editor');
         //自定义验证规则
-        form.verify({
+        forms.verify({
             title: function (value, item) {
                 if (value.length < 5) {
                     return '标题至少得5个字符啊';
@@ -482,7 +494,7 @@
                 layedit.sync(editIndex);
             },
             password: [/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/, '密码格式错误'],
-            layAjax: function (value, item) {
+            ajax: function (value, item) {
                 var message = true;
                 console.log(item.name);
                 $.ajax({
@@ -511,16 +523,15 @@
             }
         });
 
-
         //绑定form提交
-        form.set({ELEM:'#default-form'});
+        forms.set({ELEM:'#default-form'});
 
         /**
          * 自定义验证规则
          * exist 使用方式 lay-verify="exist" lay-group="XXX" lay-error="XXX"
          * checked 使用方式 lay-verify="checked" lay-group="XXX" lay-error="XXX"
          */
-        form.verify({
+        forms.verify({
             exist: function (value, item) {
                 var $this = $(item);
                 if (!$this.checked || (!$this.is('input[type="checkbox"]') && $.trim(value) === '')){
@@ -554,11 +565,38 @@
                         return message;
                     }
                 }
-            }
+            },
+            layAjax: function (value, item) {
+                var $this = $(item);
+                var message = $this.attr('lay-error') || '验证不通过';
+                var url = $this.attr('lay-error') || '';
+                var hasAjax = $this.attr('lay-hasAjax') || false;
+                var name = $this.attr('name') || 'key';
+                var param = '&'+name+'='+value;
+                if (!hasAjax && url !== ''){
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: param,
+                        async: false,
+                        success: function (data) {
+                            console.log(data);
+                            if (data.code == '1') {
+                                $this.attr('lay-hasAjax','true');
+                                if(data.msg !== undefined){
+                                    message = data.msg;
+                                }
+                            }
+                        }
+                    });
+                    return message;
+                }
+            },
         });
 
         //监听提交
-        form.on('submit(submit)', function (data) {
+        forms.on('submit(demo)', function (data) {
+            console.log(data);
             var param = data.field || {},$form = $(data.form),url = $form.attr('action'),index;
             if (url === undefined || url === ''){
                 url = $config.url;
@@ -588,8 +626,6 @@
                 }
             });
         });
-
-        form.set({ELEM: '#form-login'});
 
         Site.imgLoading();
 
@@ -625,17 +661,6 @@
 
         Site.photos({
             json:json
-        });
-
-        //初始化
-        form.init();
-
-        //监听提交
-        form.on('submit(submit)', function (data) {
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            });
-            return false;
         });
 
         // 初始化

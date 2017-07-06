@@ -218,7 +218,7 @@ Site.loadScript = function (url) {
 };
 
 /*  */
-Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, scroll, shadeClose, refresh) {
+Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, scroll, shadeClose, refresh,end) {
     var content = '', stop = true;
     var myLayer = Site.getModule('layer');
     if (!myLayer) {

@@ -42,4 +42,14 @@ class AjaxController extends ManageController
         return json($ret);
     }
 
+    /**
+     * @description 手机
+     * @return \think\response\Json
+     */
+    public function phoneAction()
+    {
+        $ret = ['code'=>'1','msg'=>'成功','param'=>$_REQUEST];
+        return json($ret);
+    }
+
 }
