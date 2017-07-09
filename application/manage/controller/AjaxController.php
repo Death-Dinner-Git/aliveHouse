@@ -48,7 +48,7 @@ class AjaxController extends ManageController
      */
     public function phoneAction()
     {
-        $ret = ['code'=>'1','msg'=>'成功','param'=>$_REQUEST];
+        $ret = ['code'=>'1','param'=>$_REQUEST];
         return json($ret);
     }
 
