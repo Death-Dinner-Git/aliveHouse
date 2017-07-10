@@ -217,6 +217,31 @@ Site.loadScript = function (url) {
     document.body.appendChild(script);
 };
 
+/* 克隆方法 */
+Site.clone = function (obj) {
+    var o;
+    if (typeof obj === "object") {
+        if (obj === null) {
+            o = null;
+        } else {
+            if (obj instanceof Array) {
+                o = [];
+                for (var i = 0, len = obj.length; i < len; i++) {
+                    o.push(Site.clone(obj[i]));
+                }
+            } else {
+                o = {};
+                for (var j in obj) {
+                    o[j] = Site.clone(obj[j]);
+                }
+            }
+        }
+    } else {
+        o = obj;
+    }
+    return o;
+};
+
 /*  */
 Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, scroll, shadeClose, refresh,end) {
     var content = '', stop = true;
