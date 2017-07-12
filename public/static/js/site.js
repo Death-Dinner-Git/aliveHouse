@@ -1552,6 +1552,97 @@ Site.toUpper = function (str) {
     }).join(' ');
 };
 
+/**
+ * //删除左右两端的空格
+ * @param str
+ */
+Site.trim = function(str){
+    return str.replace(/(^\s*)|(\s*$)/g, "");
+};
+
+/**
+ * //删除左边的空格
+ * @param str
+ */
+Site.ltrim = function (str){
+    return str.replace(/(^\s*)/g,"");
+};
+
+/**
+ * //删除右边的空格
+ * @param str
+ */
+Site.rtrim = function (str){
+    return str.replace(/(\s*$)/g,"");
+};
+
+/**
+ * //获得对象长度
+ * @param jsonData
+ * @returns {number}
+ */
+Site.getJsonLength = function(jsonData){
+    var jsonLength = 0;
+    for(var item in jsonData){
+        jsonLength++;
+    }
+    return jsonLength;
+};
+
+/**
+ * 获取日期
+ * // 内部给Date对象加上自定义属性
+ * @param format
+ * @param times
+ * @returns {string}
+ */
+Site.date = function (format,times) {
+    //给Date对象加上自定义属性
+    if (Date.format === undefined){
+        Date.prototype.format = function(format){
+            var o = {
+                "M+" : this.getMonth()+1, //month
+                "d+" : this.getDate(), //day
+                "h+" : this.getHours(), //hour
+                "m+" : this.getMinutes(), //minute
+                "s+" : this.getSeconds(), //second
+                "q+" : Math.floor((this.getMonth()+3)/3), //quarter
+                "S" : this.getMilliseconds() //millisecond
+            };
+
+            if(/(y+)/.test(format)) {
+                format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+            }
+
+            if(/(Y+)/.test(format)) {
+                format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+            }
+
+            for(var k in o) {
+                if(new RegExp("("+ k +")").test(format)) {
+                    format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+                }
+            }
+            // var myDate = new Date();
+            // myDate.getYear(); //获取当前年份(2位)
+            // myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+            // myDate.getMonth(); //获取当前月份(0-11,0代表1月)
+            // myDate.getDate(); //获取当前日(1-31)
+            // myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+            // myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)
+            // myDate.getHours(); //获取当前小时数(0-23)
+            // myDate.getMinutes(); //获取当前分钟数(0-59)
+            // myDate.getSeconds(); //获取当前秒数(0-59)
+            // myDate.getMilliseconds(); //获取当前毫秒数(0-999)
+            // myDate.toLocaleDateString(); //获取当前日期
+            // myDate.toLocaleTimeString(); //获取当前时间
+            // myDate.toLocaleString( ); //获取日期与时间
+            return format;
+        };
+    }
+    return new Date(times).format(format);
+};
+
 $(function () {
 
     Site.init();
@@ -1779,58 +1870,13 @@ function ajaxJump(url, _Callback) {
 //            }
 //        });
 
-
-
-
 //对字符串处理的方法
 String.prototype.trim=function(){//删除左右两端的空格
     return this.replace(/(^\s*)|(\s*$)/g, "");
-}
+};
 String.prototype.ltrim=function(){//删除左边的空格
     return this.replace(/(^\s*)/g,"");
-}
+};
 String.prototype.rtrim=function(){//删除右边的空格
     return this.replace(/(\s*$)/g,"");
-}
-function trim(str){ //删除左右两端的空格
-    return str.replace(/(^\s*)|(\s*$)/g, "");
-}
-function ltrim(str){ //删除左边的空格
-    return str.replace(/(^\s*)/g,"");
-}
-function rtrim(str){ //删除右边的空格
-    return str.replace(/(\s*$)/g,"");
-}
-
-//获得对象长度
-function getJsonLength(jsonData){
-
-    var jsonLength = 0;
-
-    for(var item in jsonData){
-
-        jsonLength++;
-
-    }
-
-    return jsonLength;
-
-}
-
-function date() {
-    var myDate = new Date();
-
-    myDate.getYear(); //获取当前年份(2位)
-    myDate.getFullYear(); //获取完整的年份(4位,1970-????)
-    myDate.getMonth(); //获取当前月份(0-11,0代表1月)
-    myDate.getDate(); //获取当前日(1-31)
-    myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
-    myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)
-    myDate.getHours(); //获取当前小时数(0-23)
-    myDate.getMinutes(); //获取当前分钟数(0-59)
-    myDate.getSeconds(); //获取当前秒数(0-59)
-    myDate.getMilliseconds(); //获取当前毫秒数(0-999)
-    myDate.toLocaleDateString(); //获取当前日期
-    var mytime=myDate.toLocaleTimeString(); //获取当前时间
-    myDate.toLocaleString( ); //获取日期与时间
-}
+};

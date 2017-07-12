@@ -10,11 +10,13 @@ layui.define('layer', function (exports) {
     "use strict";
 
     var $ = layui.jquery;
-    var layer = layui.layer;
+    var layer = top.layui.layer || layui.layer;
     var device = layui.device();
     var MOD_NAME = 'uploader';
     var elemDragEnter = 'layui-upload-enter';
     var elemIframe = 'layui-upload-iframe';
+    var progressId = 'uploadProgress';
+    var progressIndex;
     var progress = false; //浏览器是否支持进度条
 
     var msgConf = {
@@ -196,20 +198,53 @@ layui.define('layer', function (exports) {
         });
     };
 
-    //进度条
+    //进度条事件
     Uploader.prototype.progress = function (e) {
-        var html = '<progress id="uploadprogress" min="0" max="100" value="0">0</progress>';
+        var that = this;
+        var progressValue = 0;
+        that.showProgress();
         //定义progress的回调函数
         xhr.upload.onprogress = function (event) {
             if (event.lengthComputable) {
-                var complete = (event.loaded / event.total * 100 | 0);
-                var progress = document.getElementById('uploadprogress');
-                progress.value = progress.innerHTML = complete;
+                progressValue = (event.loaded / event.total * 100 | 0);
+                that.setProgress(progressValue)
             }
         };
-        if(e.lengthComputable){
-            progress.innerHTML = Math.round(100*e.loaded/e.total)+" % complete!";
+        xhr.success = function () {
+            that.closeProgress();
+        };
+        return that;
+    };
+
+    //显示进度条
+    Uploader.prototype.showProgress = function () {
+        var that = this;
+        var progress = '<div class="layui-progress"><div id="'+progressId+'" class="layui-progress-bar layui-bg-red" lay-percent="0%"></div></div>';
+        progressIndex = layer.msg(progress,{
+            time:false,
+            area: ['400px'],
+            shade: ['0.372', '#000']
+        });
+        return that;
+    };
+
+    //关闭进度条
+    Uploader.prototype.closeProgress = function () {
+        var that = this;
+        layer.close(progressIndex);
+        return that;
+    };
+
+    //设置进度条
+    Uploader.prototype.setProgress = function (percent) {
+        var that = this;
+        percent = parseInt(percent);
+        if(percent >= 0 && percent <=100) {
+            percent = percent+'%';
         }
+        var progress = $('#' + progressId,top.window.document);
+        !progress[0] || progress.stop().animate({width:percent});
+        return that;
     };
 
     // 本地浏览
@@ -332,17 +367,21 @@ layui.define('layer', function (exports) {
         }
 
         options.before && options.before(input);
+        that.showProgress();
         item.parent().submit();
 
         var iframe = $('#' + elemIframe), timer = setInterval(function () {
             var res;
             try {
                 res = iframe.contents().find('body').text();
+                // that.setProgress(Math.random(100));
             } catch (e) {
                 layer.msg('上传接口存在跨域', msgConf);
+                // that.closeProgress();
                 clearInterval(timer);
             }
             if (res) {
+                // that.closeProgress();
                 clearInterval(timer);
                 iframe.contents().find('body').html('');
                 try {
@@ -354,6 +393,16 @@ layui.define('layer', function (exports) {
                 typeof options.success === 'function' && options.success(res, input);
             }
         }, 30);
+
+        var k = 0;
+        var sd = setInterval(function () {
+            k += 10;
+            that.setProgress(k);
+            if (k>=100){
+                clearInterval(sd);
+                that.closeProgress();
+            }
+        },1000);
 
         input.value = '';
     };

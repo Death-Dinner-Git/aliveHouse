@@ -21,13 +21,13 @@ return [
 //    'database'        => 'wofangtaxi',
     'database'        => 'haofangzhiye',
     // 用户名
-    'username'        => 'root',
+//    'username'        => 'root',
 //    'username'        => 'wofangcar',
-//    'username'        => 'haofangzhiye',
+    'username'        => 'haofangzhiye',
     // 密码
-    'password'        => 'root',
+//    'password'        => 'root',
 //    'password'        => 'wofang#car',
-//    'password'        => 'Haofangzhiye@123',
+    'password'        => 'Haofangzhiye@123',
 //    'password'        => 'wzDarbE7esINiA1fjh@123', // ',S_y*w;r9w?*'  // mysql -u root -h127.0.0.1 -p',S_y*w*;r9w?*' u_api Alivehouse@123 // authentication_string
     // 端口
     'hostport'        => '3306',
