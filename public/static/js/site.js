@@ -1494,6 +1494,22 @@ Site.reLoad = function () {
 /**
  *
  * @param str
+ * @param tag
+ * @returns {*}
+ */
+Site.getTag = function (str,tag) {
+    var reg = '/<'+tag+'>(.*?)<\/'+tag+'>/';
+    reg = eval(reg);
+    var ret = '';
+    if (reg.test(str)){
+        ret = reg.exec(str)[1];
+    }
+    return ret;
+};
+
+/**
+ *
+ * @param str
  * @returns {*}
  */
 Site.reconvert = function (str) {
@@ -1505,6 +1521,35 @@ Site.reconvert = function (str) {
         return String.fromCharCode(parseInt(escape($0).replace(/(%26%23x)(\w{4})(%3B)/g, "$2"), 16));
     });
     return str;
+};
+
+/**
+ *
+ * @param str
+ * @returns {*}
+ */
+Site.toUpperCase = function (str) {
+    return str.toUpperCase();
+};
+
+/**
+ *
+ * @param str
+ * @returns {*}
+ */
+Site.toLowerCase = function (str) {
+    return str.toLowerCase();
+};
+
+/**
+ *
+ * @param str
+ * @returns {*}
+ */
+Site.toUpper = function (str) {
+    return s.toLowerCase().split(/\s+/).map(function(item, index) {
+        return item.slice(0, 1).toUpperCase() + item.slice(1);
+    }).join(' ');
 };
 
 $(function () {
@@ -1736,3 +1781,56 @@ function ajaxJump(url, _Callback) {
 
 
 
+
+//对字符串处理的方法
+String.prototype.trim=function(){//删除左右两端的空格
+    return this.replace(/(^\s*)|(\s*$)/g, "");
+}
+String.prototype.ltrim=function(){//删除左边的空格
+    return this.replace(/(^\s*)/g,"");
+}
+String.prototype.rtrim=function(){//删除右边的空格
+    return this.replace(/(\s*$)/g,"");
+}
+function trim(str){ //删除左右两端的空格
+    return str.replace(/(^\s*)|(\s*$)/g, "");
+}
+function ltrim(str){ //删除左边的空格
+    return str.replace(/(^\s*)/g,"");
+}
+function rtrim(str){ //删除右边的空格
+    return str.replace(/(\s*$)/g,"");
+}
+
+//获得对象长度
+function getJsonLength(jsonData){
+
+    var jsonLength = 0;
+
+    for(var item in jsonData){
+
+        jsonLength++;
+
+    }
+
+    return jsonLength;
+
+}
+
+function date() {
+    var myDate = new Date();
+
+    myDate.getYear(); //获取当前年份(2位)
+    myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+    myDate.getMonth(); //获取当前月份(0-11,0代表1月)
+    myDate.getDate(); //获取当前日(1-31)
+    myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+    myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)
+    myDate.getHours(); //获取当前小时数(0-23)
+    myDate.getMinutes(); //获取当前分钟数(0-59)
+    myDate.getSeconds(); //获取当前秒数(0-59)
+    myDate.getMilliseconds(); //获取当前毫秒数(0-999)
+    myDate.toLocaleDateString(); //获取当前日期
+    var mytime=myDate.toLocaleTimeString(); //获取当前时间
+    myDate.toLocaleString( ); //获取日期与时间
+}

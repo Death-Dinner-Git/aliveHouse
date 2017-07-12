@@ -38,7 +38,7 @@ class AjaxController extends ManageController
      */
     public function uploaderAction()
     {
-        $ret = ['code'=>'1','msg'=>'成功','src'=>'/static/images/upload-img.png'];
+        $ret = ['code'=>'1','msg'=>'成功','src'=>'/static/images/upload-img.png','param'=>$_REQUEST,'file'=>$_FILES];
         return json($ret);
     }
 
