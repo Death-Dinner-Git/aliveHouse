@@ -117,8 +117,10 @@ AutoComplete.prototype = {
                 if ($(this).attr('up') || $(this).attr('down')) {
                     return;
                 } else {
-                    $(this).val('');
-                    $(_config.hiddenClass, targetParent).val('');
+                    if (!($(this).attr('readOnly') !== undefined || $(this).attr('disabled') !== undefined)){
+                        $(this).val('');
+                        $(_config.hiddenClass, targetParent).val('');
+                    }
                 }
             });
 
