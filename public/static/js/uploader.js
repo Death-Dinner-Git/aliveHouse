@@ -15,9 +15,16 @@ layui.define('layer', function (exports) {
     var MOD_NAME = 'uploader';
     var elemDragEnter = 'layui-upload-enter';
     var elemIframe = 'layui-upload-iframe';
+    // 创建一个XMLHTTPRequest对象
+    var xhr = function(){
+        if(window.ActiveXObject) {
+            return new ActiveXObject('Microsoft.XMLHTTP');
+        }else if(window.XMLHTTPRequest){
+            return new XMLHTTPRequest();
+        }
+    }();
     var progressId = 'uploadProgress';
     var progressIndex;
-    var progress = false; //浏览器是否支持进度条
 
     var msgConf = {
         icon: 2
@@ -27,59 +34,6 @@ layui.define('layer', function (exports) {
         , video: '视频'
         , audio: '音频'
     };
-
-
-    //自用工具库
-    var whenReady = (function(){
-        var ready = false;
-        var funcs = [];//存储函数的数组
-        function handler(e){
-            if(ready) return;
-            if(e.type === 'readystatechange' && document.readyState !== 'commplete'){
-                return;
-            }
-            for(var i=0;i<funcs.length;i++){
-                funcs[i].call(document);
-            }
-            //进行标记
-            ready  = true;
-            funcs = null;//置空
-        }
-        if(document.addEventListener){
-            document.addEventListener('DOMContentLoaded', handler,false);
-            document.addEventListener('readystatechange', handler,false);
-            window.addEventListener('load',handler,false);
-        }else{
-            //兼容IE等不支持addEventListener方法的浏览器
-            document.attachEvent('onreadystatechange',handler);
-            window.attachEvent('onload',handler);
-        }
-        return function isReady(f){
-
-            if(ready){
-                f.call(document);
-            }else{
-                funcs.push(f);
-            }
-        }
-    }());
-
-    whenReady(function(){
-        var elts = document.getElementsByTagName('input');
-        for (var i = 0; i < elts.length; i++) {
-            var input=elts[i];
-            if(input.type !=='file') continue;
-            var url = input.getAttribute('data-uploadTo');
-            if(!url) continue;
-            input.addEventListener('change', function(){
-                var file = this.files[0];
-                if(!file) return;
-                var xhr = new  XMLHttpRequest();
-                xhr.open('POST',url);
-                xhr.send(file);
-            },false);
-        }
-    });
 
     var Uploader = function (options) {
         if (this instanceof Uploader) {
@@ -175,26 +129,29 @@ layui.define('layer', function (exports) {
                     item.unwrap().unwrap();
                 }
             }
-            ;
 
             //包裹元素
             item.wrap(form);
 
             //检查浏览器是否支持进度条事件
             checkBrowserIsSupportProgressEvent();
-            if (progress === false){
-                layer.msg('对不起您的浏览器不支持http进度事件！请更换谷歌或者火狐浏览器！');
+
+            // //触发本地浏览
+            // item.off('change').on('change', function () {
+            //     that.reader(this,type);
+            // });
+
+            if (that.isAjax){
+                //触发 Ajax 上传
+                item.off('change').on('change', function () {
+                    that.ajax(this, type);
+                });
+            }else {
+                //触发 iframe 上传
+                item.off('change').on('change', function () {
+                    that.action(this, type);
+                });
             }
-
-            //触发本地浏览
-            item.off('change').on('change', function () {
-                that.reader(this,type);
-            });
-
-            //触发上传
-            item.off('change').on('change', function () {
-                that.action(this, type);
-            });
         });
     };
 
@@ -203,16 +160,54 @@ layui.define('layer', function (exports) {
         var that = this;
         var progressValue = 0;
         that.showProgress();
-        //定义progress的回调函数
-        xhr.upload.onprogress = function (event) {
-            if (event.lengthComputable) {
-                progressValue = (event.loaded / event.total * 100 | 0);
-                that.setProgress(progressValue)
+
+        if (that.options.isAjax){
+            //定义progress的回调函数
+            // XHR.upload.onprogress 是提交请求的响应回调，XHR.onprogress 是上传成功后的响应回调
+            xhr.upload.onprogress = function (event) {
+                if (event.lengthComputable) {
+                    progressValue = (event.loaded / event.total * 100 | 0);
+                    that.setProgress(progressValue)
+                }
+            };
+            xhr.onprogress = function (event) {
+                that.setProgress(100);
+            };
+            xhr.success = function () {
+                that.closeProgress();
+            };
+        }else {
+
+            //获取iframe的window属性
+            var iframe = $('#' + elemIframe);
+            if (iframe.length <=0 ){
+                return;
             }
-        };
-        xhr.success = function () {
-            that.closeProgress();
-        };
+            var uploadWindow = iframe[0].contentWindow;
+            var uploadDocument = uploadWindow.document;
+            var handler = function (e){
+                console.log(document.readyState);
+                console.log(e);
+                console.log(e.type);
+                if(e.type === 'readystatechange' && document.readyState !== 'commplete'){
+                }
+            };
+
+            if(document.addEventListener){
+                document.addEventListener('readystatechange', handler,false);
+            }else{
+                //兼容IE等不支持addEventListener方法的浏览器
+                document.attachEvent('onreadystatechange',handler);
+            }
+
+            if(uploadDocument.addEventListener){
+                uploadDocument.addEventListener('readystatechange', handler,false);
+            }else{
+                //兼容IE等不支持addEventListener方法的浏览器
+                uploadDocument.attachEvent('onreadystatechange',handler);
+            }
+
+        }
         return that;
     };
 
@@ -330,14 +325,14 @@ layui.define('layer', function (exports) {
     };
 
     //提交上传
-    Uploader.prototype.action = function (input, type) {
+    Uploader.prototype.ajax = function (input, type) {
         var that = this, options = that.options, val = input.value;
         var item = $(input), ext = item.attr('lay-ext') || options.ext || ''; //获取支持上传的文件扩展名;
 
+        console.log(input);
         if (!val) {
             return;
         }
-
         //校验文件
         switch (type) {
             case 'file': //一般文件
@@ -368,6 +363,10 @@ layui.define('layer', function (exports) {
 
         options.before && options.before(input);
         that.showProgress();
+        var file = this.files[0];
+        if(!file) return;
+        xhr.open('POST',that.options.url);
+        xhr.send(file);
         item.parent().submit();
 
         var iframe = $('#' + elemIframe), timer = setInterval(function () {
@@ -407,6 +406,82 @@ layui.define('layer', function (exports) {
         input.value = '';
     };
 
+    //提交上传
+    Uploader.prototype.action = function (input, type) {
+        var that = this, options = that.options, val = input.value;
+        var item = $(input), ext = item.attr('lay-ext') || options.ext || ''; //获取支持上传的文件扩展名;
+
+        if (!val) {
+            return;
+        }
+
+        for(var key =0 ; key < input.files.length ;key++){
+            /**
+             * lastModified 最后一次修改文件的时间戳
+             * lastModifiedDate 最后一次修改文件的时间对象
+             * name 文件名称
+             * type 文件类型
+             * size 文件大小 单位是字节
+             */
+            var file = input.files[key];
+            var name = file.name || val;
+            //校验文件
+            switch (type) {
+                case 'file': //一般文件
+                    if (ext && !RegExp('\\w\\.(' + ext + ')$', 'i').test(escape(name))) {
+                        layer.msg('不支持该文件格式', msgConf);
+                        return input.value = '';
+                    }
+                    break;
+                case 'video': //视频文件
+                    if (!RegExp('\\w\\.(' + (ext || 'avi|mp4|wma|rmvb|rm|flash|3gp|flv') + ')$', 'i').test(escape(name))) {
+                        layer.msg('不支持该视频格式', msgConf);
+                        return input.value = '';
+                    }
+                    break;
+                case 'audio': //音频文件
+                    if (!RegExp('\\w\\.(' + (ext || 'mp3|wav|mid') + ')$', 'i').test(escape(name))) {
+                        layer.msg('不支持该音频格式', msgConf);
+                        return input.value = '';
+                    }
+                    break;
+                default: //图片文件
+                    if (!RegExp('\\w\\.(' + (ext || 'jpg|png|gif|bmp|jpeg') + ')$', 'i').test(escape(name))) {
+                        layer.msg('不支持该图片格式', msgConf);
+                        return input.value = '';
+                    }
+                    break;
+            }
+        }
+
+        options.before && options.before(input);
+        that.progress();
+        item.parent().submit();
+
+        var iframe = $('#' + elemIframe), timer = setInterval(function () {
+            var res;
+            try {
+                res = iframe.contents().find('body').text();
+            } catch (e) {
+                layer.msg('上传接口存在跨域', msgConf);
+                clearInterval(timer);
+            }
+            if (res) {
+                clearInterval(timer);
+                iframe.contents().find('body').html('');
+                try {
+                    res = JSON.parse(res);
+                } catch (e) {
+                    res = {};
+                    return layer.msg('请对上传接口返回JSON字符', msgConf);
+                }
+                typeof options.success === 'function' && options.success(res, input);
+            }
+        }, 30);
+
+        input.value = '';
+    };
+
     //新实例化
     Uploader.prototype.create = function (options) {
         var that = this;
@@ -438,8 +513,12 @@ layui.define('layer', function (exports) {
 
     //HTTP的进度事件
     var checkBrowserIsSupportProgressEvent = function () {
+        var isSupport = false;
         if('onprogress' in (new XMLHttpRequest())){
-            progress = true;
+            isSupport = true;
+        }
+        if (!isSupport){
+            layer.msg('对不起您的浏览器不支持http进度事件！请更换谷歌或者火狐浏览器！');
         }
     };
 

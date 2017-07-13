@@ -1034,22 +1034,29 @@ layer.photos = function(options, loop, key){
   var dict = {};
   options = options || {};
   if(!options.photos) return;
-  var type = options.photos.constructor === Object;
+
+  //此处更改，因为源代码有问题
+  var type = typeof options.photos === "object";
   var photos = type ? options.photos : {}, data = photos.data || [];
   var start = photos.start || 0;
   dict.imgIndex = (start|0) + 1;
   
   options.img = options.img || 'img';
+
+  //增加一个查询上限，为了iframe查询
+  options.parent = options.parent || document;
   
   var success = options.success;
   delete options.success;
 
   if(!type){ //页面直接获取
-    var parent = $(options.photos), pushData = function(){
+    var parent = $(options.photos,options.parent), pushData = function(){
       data = [];
       parent.find(options.img).each(function(index){
         var othis = $(this);
         othis.attr('layer-index', index);
+        //增加手型鼠标
+        othis.css({cursor:'pointer'});
         data.push({
           alt: othis.attr('alt'),
           pid: othis.attr('layer-pid'),
@@ -1060,7 +1067,7 @@ layer.photos = function(options, loop, key){
     };
     
     pushData();
-    
+
     if (data.length === 0) return;
     
     loop || parent.on('click', options.img, function(){

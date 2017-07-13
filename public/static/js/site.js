@@ -548,10 +548,11 @@ Site.imgLoading = function (ele) {
 /*  */
 Site.photos = function (options) {
     var photoConfig = {
-        elem:undefined,
-        url:'',
-        json:undefined,
+        photos:undefined,
+        url:undefined,
         parentWin:true,
+        shade: config.shade,
+        tab:undefined,
         callback:null
     };
     photoConfig = $.extend(photoConfig,options);
@@ -560,8 +561,16 @@ Site.photos = function (options) {
         myLayer = layer;
     }
     var index, load;
+    if(!(photoConfig.photos || photoConfig.url)) return;
+    var type = typeof photoConfig.photos === "object";
+    var photos = type ? photoConfig.photos : {};
+    var tab = photoConfig.tab || function (pic, layero) {
+        top.layer.msg(pic.alt,{
+            offset: 't'
+        }) //当前图片的一些信息
+    };
 
-    if (photoConfig.url !== '') {
+    if (photoConfig.url !== undefined) {
         $.ajax({
             type: "post",
             url: photoConfig.url,
@@ -590,9 +599,8 @@ Site.photos = function (options) {
                 setTimeout(Site.close(load), 500);
                 index = myLayer.photos({
                     photos: data,
-                    tab: function (pic, layero) {
-                        console.log(pic) //当前图片的一些信息
-                    },
+                    tab: tab,
+                    shade:photoConfig.shade,
                     anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
                 });
             },
@@ -601,7 +609,7 @@ Site.photos = function (options) {
                 Site.error('加载失败', true);
             }
         });
-    } else if(photoConfig.json && typeof photoConfig.json === "object" ){
+    } else if(type){
         /**
          *  data 返回格式
          {
@@ -619,13 +627,12 @@ Site.photos = function (options) {
          }
          */
         index = myLayer.photos({
-            photos: photoConfig.json,
-            tab: function (pic, layero) {
-                console.log(pic) //当前图片的一些信息
-            },
+            photos: photos,
+            tab: tab,
+            shade:photoConfig.shade,
             anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
         });
-    }else if(photoConfig.elem !== undefined ){
+    }else{
         /**
          //HTML示例
          <div id="layer-photos-demo" class="layer-photos-demo">
@@ -635,10 +642,10 @@ Site.photos = function (options) {
          */
 
         index = myLayer.photos({
-            photos: photoConfig.elem,
-            tab: function (pic, layero) {
-                console.log(pic) //当前图片的一些信息
-            },
+            photos: photoConfig.photos,
+            parent: document,
+            tab: tab,
+            shade:photoConfig.shade,
             anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
         });
     }
@@ -840,10 +847,71 @@ Site.loadPage = function (pageElement, total) {
 };
 
 /**
+ * 图片自适应
+ * @param img
+ * @param full
+ * @return {[*,*]}
+ */
+Site.getAutoPhoto = function (img,full) {
+    if ( !(img instanceof Image)){
+        return;
+    }
+    var imgarea = [img.width, img.height];
+    var winarea = [$(window).width() - 100, $(window).height() - 100];
+
+    //如果 取全屏返回全屏减少 100 的宽高
+    //如果 实际图片的宽或者高比 屏幕大（那么进行缩放）
+    if(full){
+        imgarea[0] = winarea[0];
+        imgarea[1] = winarea[1];
+    }else if(imgarea[0]>winarea[0] || imgarea[1]>winarea[1]){
+        var wh = [imgarea[0]/winarea[0],imgarea[1]/winarea[1]];//取宽度缩放比例、高度缩放比例
+        if(wh[0] > wh[1]){//取缩放比例最大的进行缩放
+            imgarea[0] = imgarea[0]/wh[0];
+            imgarea[1] = imgarea[1]/wh[0];
+        } else if(wh[0] < wh[1]){
+            imgarea[0] = imgarea[0]/wh[1];
+            imgarea[1] = imgarea[1]/wh[1];
+        }
+    }
+    return [imgarea[0]+'px', imgarea[1]+'px'];
+};
+
+/**
+ *  //图片预加载
+ * @param url
+ * @param callback
+ * @param error
+ * @return {Image}
+ */
+Site.loadImage = function(url, callback, error){
+    var img = new Image();
+    img.src = url;
+    if(img.complete){
+        if (typeof callback === "function"){
+            callback(img)
+        }
+    }
+    img.onload = function(){
+        img.onload = null;
+        if (typeof callback === "function"){
+            callback(img)
+        }
+    };
+    img.onerror = function(e){
+        img.onerror = null;
+        if (typeof callback === "function"){
+            error(e);
+        }
+    };
+    return img;
+};
+
+/**
  * 单张图片懒加载
  * @param options
  */
-Site.loadImage = function (options) {
+Site.lazyImages = function (options) {
     var $config = {
         img: undefined,
         url: null,
@@ -966,7 +1034,7 @@ Site.lazyLoadScroll = function (options) {
         var $this = $(this);
         var imgTop = Site.offsetTop($this);//（图片纵坐标）
         if ( ((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) || ((imgTop - _config.scrollHeight) <= Site.clientHeight() && type ) ) {
-            Site.loadImage({img: $this});
+            Site.lazyImages({img: $this});
             $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
             if (_config.removeUrl) {
                 $this.removeAttr('data-url');
@@ -986,7 +1054,7 @@ Site.lazyLoadScroll = function (options) {
             var imgTop = Site.offsetTop($this);//（图片纵坐标）
             if (temp < _config.scrollHeight) {//为true表示是向下滚动，否则是向上滚动，不需要执行动作。
                 if (((imgTop - _config.scrollHeight) <= _config.bodyHeight) || ((imgTop - _config.scrollHeight) <= Site.clientHeight() && type )) {
-                    Site.loadImage({img: $this});
+                    Site.lazyImages({img: $this});
                     $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
                     if (_config.removeUrl) {
                         $this.removeAttr('data-url');
@@ -995,7 +1063,7 @@ Site.lazyLoadScroll = function (options) {
                 temp = _config.scrollHeight;
             } else {
                 if (((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) ||　((imgTop - _config.scrollHeight) <= Site.clientHeight() && type )) {
-                    Site.loadImage({img: $this});
+                    Site.lazyImages({img: $this});
                     $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
                     if (_config.removeUrl) {
                         $this.removeAttr('data-url');
@@ -1054,7 +1122,7 @@ Site.lazyLoad = function (options) {
     }
     for (var i = 0, j = _config.eleGroup.length; i < j; i++) {
         if (Site.offsetTop(_config.eleGroup[i]) <= limitHeight && _config.eleGroup[i].attr('data-url')) {
-            Site.loadImage({img: _config.eleGroup[i]});
+            Site.lazyImages({img: _config.eleGroup[i]});
         }
     }
 };
@@ -1253,7 +1321,7 @@ Site.initBanner = function (data, options) {
             return;
         }
         var img = $bannerBody.find('.item').eq(k).find('img');
-        Site.loadImage({img: img});
+        Site.lazyImages({img: img});
         loadImage[k] = true;
     }
 
@@ -1499,14 +1567,96 @@ Site.getSelectCheckboxValues = function (selecter, checked) {
     return values;
 };
 
+/**
+ *
+ * @return {*}
+ */
+Site.getXhr = function () {
+    if(window.ActiveXObject) {
+        return new ActiveXObject('Microsoft.XMLHTTP');
+    }else if(window.XMLHTTPRequest){
+        return new XMLHTTPRequest();
+    }
+};
+
+/**
+ * 获取后台iframe展示的页面
+ * @return {*}
+ */
 Site.getTab = function () {
     if (typeof top.window.getActive === 'function'){
         return top.window.getActive();
     }
 };
 
+/**
+ * 后台iframe展示的页面重新加载
+ */
 Site.reLoad = function () {
     Site.getTab().location.reload();
+};
+
+/**
+ * 页面加载readyState的五种状态
+ * 可以通过用document.onreadystatechange的方法来监听状态改变
+ * 0 －'Uninitialized' （未初始化）还没有调用send()方法
+ * 1 －'Loading' （载入）已调用send()方法，正在发送请求
+ * 2 －'Loaded' （载入完成）send()方法执行完成，已经接收到全部响应内容
+ * 3 －'Interactive' （交互）正在解析响应内容
+ * 4 －'Completed' （完成）响应内容解析完成，可以在客户端调用了
+ */
+Site.loadStatus = function (dom) {
+    dom = dom || document;
+
+    var whenReady = (function(){
+        var ready = false;
+        var funcs = [];//存储函数的数组
+        function handler(e){
+            if(ready) return;
+            if(e.type === 'readystatechange' && dom.readyState !== 'commplete'){
+                return;
+            }
+            for(var i=0;i<funcs.length;i++){
+                funcs[i].call(dom);
+            }
+            //进行标记
+            ready  = true;
+            funcs = null;//置空
+        }
+        if(dom.addEventListener){
+            dom.addEventListener('DOMContentLoaded', handler,false);
+            dom.addEventListener('readystatechange', handler,false);
+            window.addEventListener('load',handler,false);
+        }else{
+            //兼容IE等不支持addEventListener方法的浏览器
+            dom.attachEvent('onreadystatechange',handler);
+            window.attachEvent('onload',handler);
+        }
+        return function isReady(f){
+            if(ready){
+                f.call(document);
+            }else{
+                funcs.push(f);
+            }
+        }
+    }());
+
+    whenReady(function(){
+        var elts = document.getElementsByTagName('input');
+        for (var i = 0; i < elts.length; i++) {
+            var input=elts[i];
+            if(input.type !=='file') continue;
+            var url = input.getAttribute('data-uploadTo');
+            if(!url) continue;
+            input.addEventListener('change', function(){
+                var file = this.files[0];
+                if(!file) return;
+                var xhr = new  XMLHttpRequest();
+                xhr.open('POST',url);
+                xhr.send(file);
+            },false);
+        }
+    });
 };
 
 /**
@@ -1845,7 +1995,7 @@ function ajaxJump(url, _Callback) {
         type: 'get',
         jsonpCallback: _Callback,
         success: function (data) {
-           console.log(data);
+            console.log(data);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest.status);
