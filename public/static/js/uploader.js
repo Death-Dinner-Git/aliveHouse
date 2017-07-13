@@ -25,6 +25,9 @@ layui.define('layer', function (exports) {
     }();
     var progressId = 'uploadProgress';
     var progressIndex;
+    var stopProgress = false;
+    var speed; //速度 单位b
+    var total = 0; //总量 单位b
 
     var msgConf = {
         icon: 2
@@ -133,6 +136,9 @@ layui.define('layer', function (exports) {
             //包裹元素
             item.wrap(form);
 
+            //检查网速
+            that.getSpeed();
+
             //检查浏览器是否支持进度条事件
             checkBrowserIsSupportProgressEvent();
 
@@ -155,15 +161,34 @@ layui.define('layer', function (exports) {
         });
     };
 
+    /**
+     *获取速度
+     */
+    Uploader.prototype.getSpeed = function () {
+        var that = this;
+        var start = new Date().getTime(),time,size = 165585;
+        var img = new Image();
+        img.onload = function(){
+            time = new Date().getTime()-start;
+            speed = Math.floor(size/time);
+            img.onload = null;
+        };
+        img.src = '/static/images/getSpeed.png?time='+start;
+        return that;
+    };
+
     //进度条事件
     Uploader.prototype.progress = function (e) {
         var that = this;
         var progressValue = 0;
-        that.showProgress();
-
+        //重置停止进度条命令
+        stopProgress = false;
         if (that.options.isAjax){
             //定义progress的回调函数
             // XHR.upload.onprogress 是提交请求的响应回调，XHR.onprogress 是上传成功后的响应回调
+            xhr.beforeSend = function () {
+                that.showProgress();
+            };
             xhr.upload.onprogress = function (event) {
                 if (event.lengthComputable) {
                     progressValue = (event.loaded / event.total * 100 | 0);
@@ -176,37 +201,40 @@ layui.define('layer', function (exports) {
             xhr.success = function () {
                 that.closeProgress();
             };
+            xhr.error = function () {
+                that.closeProgress();
+            };
         }else {
 
-            //获取iframe的window属性
-            var iframe = $('#' + elemIframe);
-            if (iframe.length <=0 ){
-                return;
-            }
-            var uploadWindow = iframe[0].contentWindow;
-            var uploadDocument = uploadWindow.document;
-            var handler = function (e){
-                console.log(document.readyState);
-                console.log(e);
-                console.log(e.type);
-                if(e.type === 'readystatechange' && document.readyState !== 'commplete'){
-                }
+            that.showProgress();
+            var getSpeed = function () {
+                return speed;
             };
-
-            if(document.addEventListener){
-                document.addEventListener('readystatechange', handler,false);
-            }else{
-                //兼容IE等不支持addEventListener方法的浏览器
-                document.attachEvent('onreadystatechange',handler);
-            }
-
-            if(uploadDocument.addEventListener){
-                uploadDocument.addEventListener('readystatechange', handler,false);
-            }else{
-                //兼容IE等不支持addEventListener方法的浏览器
-                uploadDocument.attachEvent('onreadystatechange',handler);
-            }
-
+            var time = 500, send = 0,start=new Date().getTime(),progress = setInterval(function () {
+                if (stopProgress){
+                    clearInterval(progress);
+                    progressValue = 100;
+                    that.closeProgress();
+                    that.setProgress(progressValue);
+                    return false;
+                }
+                if (speed <= 0){
+                    speed = getSpeed();
+                }
+                if (progressValue >= 95){
+                    return false;
+                }else if(progressValue>=0 && progressValue <= 100){
+                    send = speed*((new Date().getTime())-start);
+                    progressValue = Math.floor((send/total*100));
+                    if (progressValue >= 95){
+                        progressValue = 95;
+                    }
+                    if (stopProgress){
+                        progressValue = 100;
+                    }
+                    that.setProgress(progressValue);
+                }
+            },500);
         }
         return that;
     };
@@ -218,7 +246,11 @@ layui.define('layer', function (exports) {
         progressIndex = layer.msg(progress,{
             time:false,
             area: ['400px'],
-            shade: ['0.372', '#000']
+            shade: ['0.372', '#000'],
+            closeBtn:2,
+            end: function(index, layero){
+                layer.close(progressIndex);
+            }
         });
         return that;
     };
@@ -239,6 +271,10 @@ layui.define('layer', function (exports) {
         }
         var progress = $('#' + progressId,top.window.document);
         !progress[0] || progress.stop().animate({width:percent});
+        if(percent>=100){
+            stopProgress = true;
+            that.closeProgress();
+        }
         return that;
     };
 
@@ -415,6 +451,7 @@ layui.define('layer', function (exports) {
             return;
         }
 
+        total = 0; //重置上传总量
         for(var key =0 ; key < input.files.length ;key++){
             /**
              * lastModified 最后一次修改文件的时间戳
@@ -425,6 +462,7 @@ layui.define('layer', function (exports) {
              */
             var file = input.files[key];
             var name = file.name || val;
+            total += file.size;
             //校验文件
             switch (type) {
                 case 'file': //一般文件
@@ -455,7 +493,10 @@ layui.define('layer', function (exports) {
         }
 
         options.before && options.before(input);
-        that.progress();
+
+        if (that.options.progress){
+            that.progress();
+        }
         item.parent().submit();
 
         var iframe = $('#' + elemIframe), timer = setInterval(function () {
@@ -464,9 +505,23 @@ layui.define('layer', function (exports) {
                 res = iframe.contents().find('body').text();
             } catch (e) {
                 layer.msg('上传接口存在跨域', msgConf);
+                if (that.options.progress){
+                    stopProgress = true;
+                    that.setProgress(100);
+                    setTimeout(function () {
+                        that.closeProgress();
+                    },400);
+                }
                 clearInterval(timer);
             }
             if (res) {
+                if (that.options.progress){
+                    stopProgress = true;
+                    that.setProgress(100);
+                    setTimeout(function () {
+                        that.closeProgress();
+                    },400);
+                }
                 clearInterval(timer);
                 iframe.contents().find('body').html('');
                 try {

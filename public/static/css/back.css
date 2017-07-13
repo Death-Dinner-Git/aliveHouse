@@ -220,7 +220,7 @@
 }
 
 /* 头部控制侧栏按钮 */
-.dinner-side-menu, .dinner-side-toggle, .dinner-side-full {
+.dinner-side-menu, .dinner-side-toggle, .dinner-side-full, .dinner-side-refresh {
     position: absolute;
     cursor: pointer;
     z-index: 19940201;
@@ -233,19 +233,23 @@
     top: 15px;
 }
 
-.dinner-side-toggle i:before, .dinner-side-full i:before {
+.dinner-side-toggle i:before, .dinner-side-full i:before, .dinner-side-refresh i:before {
     text-align: center;
     vertical-align: middle;
     line-height: 40px;
     font-size: 22px;
 }
 
-.dinner-side-menu:hover, .dinner-side-toggle:hover, .dinner-side-full:hover {
+.dinner-side-menu:hover, .dinner-side-toggle:hover, .dinner-side-full:hover, .dinner-side-refresh:hover {
     background-color: #1fb5ac;
 }
 
 .dinner-side-full {
     right: 20px;
+}
+
+.dinner-side-refresh {
+    right: 75px;
 }
 
 .dinner-side-toggle {

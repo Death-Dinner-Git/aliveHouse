@@ -502,20 +502,6 @@
                 }
             }
         });
-        var handler = function (e){
-            console.log(document.readyState);
-            console.log(e);
-            console.log(e.type);
-            if(e.type === 'readystatechange' && document.readyState !== 'commplete'){
-            }
-        };
-
-        if(document.addEventListener){
-            document.addEventListener('readystatechange', handler,false);
-        }else{
-            //兼容IE等不支持addEventListener方法的浏览器
-            document.attachEvent('onreadystatechange',handler);
-        }
 
 //        var html = '<div class="layui-progress"><div class="layui-progress-bar layui-bg-red" lay-percent="10%"></div></div>';
 //        var index = top.layer.msg(html,{

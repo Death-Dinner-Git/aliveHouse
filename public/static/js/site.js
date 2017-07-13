@@ -1608,55 +1608,18 @@ Site.reLoad = function () {
 Site.loadStatus = function (dom) {
     dom = dom || document;
 
-    var whenReady = (function(){
-        var ready = false;
-        var funcs = [];//存储函数的数组
-        function handler(e){
-            if(ready) return;
-            if(e.type === 'readystatechange' && dom.readyState !== 'commplete'){
-                return;
-            }
-            for(var i=0;i<funcs.length;i++){
-                funcs[i].call(dom);
-            }
-            //进行标记
-            ready  = true;
-            funcs = null;//置空
+    var handler = function (e){
+        if(e.type === 'readystatechange' && dom.readyState !== 'commplete'){
         }
-        if(dom.addEventListener){
-            dom.addEventListener('DOMContentLoaded', handler,false);
-            dom.addEventListener('readystatechange', handler,false);
-            window.addEventListener('load',handler,false);
-        }else{
-            //兼容IE等不支持addEventListener方法的浏览器
-            dom.attachEvent('onreadystatechange',handler);
-            window.attachEvent('onload',handler);
-        }
-        return function isReady(f){
-            if(ready){
-                f.call(document);
-            }else{
-                funcs.push(f);
-            }
-        }
-    }());
+    };
 
-    whenReady(function(){
-        var elts = document.getElementsByTagName('input');
-        for (var i = 0; i < elts.length; i++) {
-            var input=elts[i];
-            if(input.type !=='file') continue;
-            var url = input.getAttribute('data-uploadTo');
-            if(!url) continue;
-            input.addEventListener('change', function(){
-                var file = this.files[0];
-                if(!file) return;
-                var xhr = new  XMLHttpRequest();
-                xhr.open('POST',url);
-                xhr.send(file);
-            },false);
-        }
-    });
+    if(dom.addEventListener){
+        dom.addEventListener('readystatechange', handler,false);
+    }else{
+        //兼容IE等不支持addEventListener方法的浏览器
+        dom.attachEvent('onreadystatechange',handler);
+    }
+
 };
 
 /**

@@ -16,6 +16,7 @@ function AutoComplete(options) {
             searchForm: '',        //form表单
             hoverBg: 'hoverBg',             // 鼠标移上去的背景
             outBg: 'outBg',               // 鼠标移下拉的背景
+            hasSelected: false,                   // 是否已选择
             isSelectHide: true,                 // 点击下拉框 是否隐藏
             isHideTarget: false,                 // 点击下拉框 是否隐藏输入框
             paste: false,                 // 禁止 ctrl+v 和 黏贴事件 默认不禁止
@@ -117,7 +118,7 @@ AutoComplete.prototype = {
                 if ($(this).attr('up') || $(this).attr('down')) {
                     return;
                 } else {
-                    if (!($(this).attr('readOnly') !== undefined || $(this).attr('disabled') !== undefined)){
+                    if (!($(this).attr('readOnly') !== undefined || $(this).attr('disabled') !== undefined || _config.hasSelected)){
                         $(this).val('');
                         $(_config.hiddenClass, targetParent).val('');
                     }
@@ -221,6 +222,9 @@ AutoComplete.prototype = {
                         // hover
                         self._hover(targetParent);
                     }
+                    if(!_config.hasSelected){
+                        _config.hasSelected = true;
+                    }
                     _config.callback && $.isFunction(_config.callback) && _config.callback(_cache.data[_index]);
 
                 }
@@ -263,6 +267,9 @@ AutoComplete.prototype = {
                         // hover
                         self._hover(targetParent);
                     }
+                    if(!_config.hasSelected){
+                        _config.hasSelected = true;
+                    }
                     _config.callback && $.isFunction(_config.callback) && _config.callback(_cache.data[_index]);
                 }
             } else if (keyCode == 13) { //回车操作
@@ -276,6 +283,9 @@ AutoComplete.prototype = {
                 }
                 _cache.currentIndex = -1;
                 _cache.oldIndex = -1;
+                if(!_config.hasSelected){
+                    _config.hasSelected = true;
+                }
                 _config.callback && $.isFunction(_config.callback) && _config.callback(_cache.data[_index]);
                 if(_config.enter){
                    return;
@@ -400,6 +410,9 @@ AutoComplete.prototype = {
             self._closed(targetParent);
             if (_config.isSelectHide) {
                 !$('.auto-tips', targetParent).hasClass('hidden') && $('.auto-tips', targetParent).addClass('hidden');
+            }
+            if(!_config.hasSelected){
+                _config.hasSelected = true;
             }
             _config.callback && $.isFunction(_config.callback) && _config.callback(ret[index]);
         });

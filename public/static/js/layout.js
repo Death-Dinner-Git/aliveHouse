@@ -143,6 +143,13 @@ layui.config({
             }
         }
     }
+    
+    // 刷新按钮
+    $('#dinner-side-refresh').on('click',function () {
+        if (typeof top.window.getActive === 'function'){
+            top.window.getActive().location.reload();
+        }
+    });
 
     // dinner-side-menu向左折叠
     $('#dinner-sidebar-toggle').click(function() {
