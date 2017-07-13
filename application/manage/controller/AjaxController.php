@@ -43,7 +43,7 @@ class AjaxController extends ManageController
             $item = ['src'=>'/static/images/upload-img.png','icon'=>'/static/images/upload-img.png'];
             $images[] = $item;
         }
-        $ret = ['code'=>'1','msg'=>'成功','images'=>$images,'param'=>$_REQUEST,'file'=>$_FILES];
+        $ret = ['code'=>'1','msg'=>'成功','images'=>$images];
         return json($ret);
     }
 
