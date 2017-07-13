@@ -464,8 +464,8 @@
             <legend>相册</legend>
             <div class="layui-field-box">
                 <div id="layer-photos-demo" class="layer-photos-demo" style="overflow: hidden;">
-                    <img layer-pid="图片id，可以不写" layer-src="/static/uploads/theme/home/theme-banner1.jpg" src="/static/images/upload-img.png" alt="图片名" style="max-width: 800px;">
-                    <img layer-pid="图片id，可以不写" layer-src="/static/uploads/theme/home/theme-banner1.jpg" src="/static/images/upload-img.png" alt="图片名" style="max-width: 800px;">
+                    <img layer-pid="01" layer-src="/static/images/upload-img.png" src="/static/images/upload-img.png" alt="图片名" style="max-width: 800px;">
+                    <img layer-pid="02" layer-src="/static/images/upload-img.png" src="/static/images/upload-img.png" alt="图片名" style="max-width: 800px;">
                 </div>
             </div>
         </fieldset>
@@ -670,26 +670,26 @@
                 {
                     "alt": "图片名",
                     "pid": 666, //图片id
-                    "src": "/static/uploads/theme/home/theme-banner1.jpg", //原图地址
+                    "src": "/static/images/upload-img.png", //原图地址
                     "thumb": "/static/images/upload-img.png" //缩略图地址
                 },
                 {
                     "alt": "图片名",
                     "pid": 667, //图片id
-                    "src": "/static/uploads/theme/home/theme-banner1.jpg", //原图地址
+                    "src": "/static/images/upload-img.png", //原图地址
                     "thumb": "/static/images/upload-img.png" //缩略图地址
                 }
             ]
         };
 
-        top.layer.photos({
-            photos: '#layer-photos-demo',
-            area: ['62.8%', '80%'],
-            shadeClose: true,
-            tab: function (pic, layero) {
-                console.log(pic) //当前图片的一些信息
-            },
-            anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+        top.layer.ready(function(){
+            top.layer.photos({
+                photos: '#layer-photos-demo',
+                tab: function (pic, layero) {
+                    console.log(pic) //当前图片的一些信息
+                },
+                anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+            });
         });
 
         Site.photos({

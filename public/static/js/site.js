@@ -550,11 +550,8 @@ Site.photos = function (options) {
     var photoConfig = {
         elem:undefined,
         url:'',
-        json:[],
+        json:undefined,
         parentWin:true,
-        width:config.width.max,
-        height:config.height.max,
-        shade:config.shade,
         callback:null
     };
     photoConfig = $.extend(photoConfig,options);
@@ -604,7 +601,31 @@ Site.photos = function (options) {
                 Site.error('加载失败', true);
             }
         });
-    } else {
+    } else if(photoConfig.json && typeof photoConfig.json === "object" ){
+        /**
+         *  data 返回格式
+         {
+             "title": "", //相册标题
+             "id": 123, //相册id
+             "start": 0, //初始显示的图片序号，默认0
+             "data": [   //相册包含的图片，数组格式
+                 {
+                     "alt": "图片名",
+                     "pid": 666, //图片id
+                     "src": "", //原图地址
+                     "thumb": "" //缩略图地址
+                 }
+             ]
+         }
+         */
+        index = myLayer.photos({
+            photos: photoConfig.json,
+            tab: function (pic, layero) {
+                console.log(pic) //当前图片的一些信息
+            },
+            anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+        });
+    }else if(photoConfig.elem !== undefined ){
         /**
          //HTML示例
          <div id="layer-photos-demo" class="layer-photos-demo">
@@ -614,10 +635,7 @@ Site.photos = function (options) {
          */
 
         index = myLayer.photos({
-            photos: photoConfig.json,
-            area: [photoConfig.width, photoConfig.height],
-            shade: photoConfig.shade,
-            shadeClose: true,
+            photos: photoConfig.elem,
             tab: function (pic, layero) {
                 console.log(pic) //当前图片的一些信息
             },
