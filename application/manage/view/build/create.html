@@ -129,14 +129,14 @@
 
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">楼盘描述:</label>
-                <div class="layui-input-block">
-                    <textarea  name="BuildingDetail[description]" placeholder="请输入楼盘详情" class="layui-textarea" style="max-width: 700px;"></textarea>
+                <div class="layui-input-block" style="padding-right: 120px;">
+                    <textarea  name="BuildingDetail[description]" placeholder="请输入楼盘详情" class="layui-textarea"></textarea>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">楼盘图片:</label>
-                <div class="layui-input-block">
+                <div class="layui-input-block" style="padding-right: 120px;">
                     <input type="hidden" value="" name="BuildingDetail[url]" placeholder="楼盘图片" class="layui-input">
                     <input type="file" id="BuildingDetail_file" name="file" placeholder="楼盘图片" class="layui-upload-file">
                     <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
@@ -202,12 +202,12 @@
         });
     });
     Site.uploader({
-        success:function (res,input) {
-            var $input = $(input);
-            $input.closest('.layui-upload-button').hide();
-            if (res.code == '1' && res.src !== undefined) {
-                $('[lay-filter="show"]').append('<img src="' + res.src + '">').show();
-            }
+        elem:'.layui-upload-file',
+        url: '/manage/ajax/uploader',
+        isAjax:true,
+        max:5,
+        success: function (res, input) {
+            console.log(res);
         }
     });
     var showMsg = function (msg,obj,passed) {
