@@ -209,12 +209,50 @@ Site.getLayPager = function (callback) {
     }
 };
 
-/*  */
-Site.loadScript = function (url) {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = url;
-    document.body.appendChild(script);
+/**
+ * JS 加载到顶部LoadJS
+ * @param url
+ */
+Site.loadJS = function loadJS (url, fn) {
+    var ss = document.getElementsByName('script'),
+        loaded = false;
+    for (var i = 0, len = ss.length; i < len; i++) {
+        if (ss[i].src && ss[i].getAttribute('src') == url) {
+            loaded = true;
+            break;
+        }
+    }
+    if (loaded) {
+        if (fn && typeof fn != 'undefined' && fn instanceof Function) fn();
+        return false;
+    }
+    var s = document.createElement('script'),
+        b = false;
+    s.setAttribute('type', 'text/javascript');
+    s.setAttribute('src', url);
+    s.onload = s.onreadystatechange = function () {
+        if (!b && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+            b = true;
+            if (fn && typeof fn != 'undefined' && fn instanceof Function) fn();
+        }
+    };
+    document.getElementsByTagName('head')[0].appendChild(s);
+};
+
+/**
+ * 清空 LoadJS 加载到顶部的js引用
+ * @param src
+ * @constructor
+ */
+Site.ClearJS = function   (src) {
+    var js = document.getElementsByTagName('head')[0].children;
+    var obj = null;
+    for (var i = 0; i < js.length; i++) {
+        if (js[i].tagName.toLowerCase() == "script" && js[i].attributes['src'].value.indexOf(src) > 0) {
+            obj = js[i];
+        }
+    }
+    document.getElementsByTagName('head')[0].removeChild(obj);
 };
 
 /* 克隆方法 */
@@ -565,10 +603,10 @@ Site.photos = function (options) {
     var type = typeof photoConfig.photos === "object";
     var photos = type ? photoConfig.photos : {};
     var tab = photoConfig.tab || function (pic, layero) {
-        top.layer.msg(pic.alt,{
-            offset: 't'
-        }) //当前图片的一些信息
-    };
+            top.layer.msg(pic.alt,{
+                offset: 't'
+            }) //当前图片的一些信息
+        };
 
     if (photoConfig.url !== undefined) {
         $.ajax({
@@ -679,10 +717,18 @@ Site.resizeShowTab = function () {
     }
 };
 
-/*  */
-Site.getUrlParam = function (name) {
+/**
+ * 获取url中的参数
+ * @param name
+ * @param url
+ * @return {null}
+ */
+Site.getUrlParam = function (name,url) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
+    if (url){
+        r = url.substr(url.indexOf('?')).match(reg);
+    }
     if (r != null) return unescape(r[2]);
     return null;
 };
@@ -795,7 +841,7 @@ Site.loadPage = function (pageElement, total) {
     Site.getLayPager(function () {
         var laypage = layui.laypage;
         total = total || true;
-        pageElement = pageElement || 'paging_0124';
+        pageElement = pageElement || 'paging';
         var _page = $('#' + pageElement),
             currPage = Site.getUrlParam('pageNumber'),
             count = _page.attr('data-count'),
@@ -1577,7 +1623,10 @@ Site.getTab = function () {
  * 后台iframe展示的页面重新加载
  */
 Site.reLoad = function () {
-    Site.getTab().location.reload();
+    var active = Site.getTab();
+    if(active){
+        active.location.reload();
+    }
 };
 
 /**
@@ -1758,9 +1807,313 @@ Site.date = function (format,times) {
     return new Date(times).format(format);
 };
 
+Site.compareDate = function (left,right,format) {
+    if (left.length > 0 && right.length>0) {
+        var sDate = new Date(left.replace(/-/g, "/"));
+        var eDate= new Date(right.replace(/-/g, "/"));
+        if (sDate > eDate) {
+            return false;
+        }
+    }
+};
+
+/**
+ * 手机类型判断
+ * @return {{userAgent: string, isAndroid: (*|boolean), isIphone: (*|boolean), isIpad: (*|boolean), isWeixin: (*|boolean)}}
+ * @constructor
+ */
+Site.BrowserInfo = function () {
+    return {
+        userAgent: navigator.userAgent.toLowerCase(),
+        isAndroid: Boolean(navigator.userAgent.match(/android/ig)),
+        isIphone: Boolean(navigator.userAgent.match(/iphone|ipod/ig)),
+        isIpad: Boolean(navigator.userAgent.match(/ipad/ig)),
+        isWeixin: Boolean(navigator.userAgent.match(/MicroMessenger/ig)),
+    }
+};
+
+/**
+ * 返回字符串长度，汉子计数为2
+ * @return {number}
+ */
+Site.strLength = function () {
+    var a = 0;
+    for (var i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) > 255)
+            a += 2;//按照预期计数增加2
+        else
+            a++;
+    }
+    return a;
+};
+
+/**
+ * 字符串截取方法
+ * @param charStr
+ * @param cutCount
+ * @return {string}
+ */
+Site. getCharactersLen = function (charStr, cutCount) {
+    if (charStr == null || charStr == '') return '';
+    var totalCount = 0;
+    var newStr = '';
+    for (var i = 0; i < charStr.length; i++) {
+        var c = charStr.charCodeAt(i);
+        if (c < 255 && c > 0) {
+            totalCount++;
+        } else {
+            totalCount += 2;
+        }
+        if (totalCount >= cutCount) {
+            newStr += charStr.charAt(i);
+            break;
+        }
+        else {
+            newStr += charStr.charAt(i);
+        }
+    }
+    return newStr;
+};
+
+/**
+ * 获得当前浏览器JS的版本
+ * @return {string}
+ */
+Site.getJSVersion = function () {
+    var n = navigator;
+    var u = n.userAgent;
+    var apn = n.appName;
+    var v = n.appVersion;
+    var ie = v.indexOf('MSIE ');
+    if (ie > 0){
+        apv = parseInt(i = v.substring(ie + 5));
+        if (apv > 3) {
+            apv = parseFloat(i);
+        }
+    } else {
+        apv = parseFloat(v);
+    }
+    var isie = (apn == 'Microsoft Internet Explorer');
+    var ismac = (u.indexOf('Mac') >= 0);
+    var javascriptVersion = "1.0";
+    if (String && String.prototype) {
+        javascriptVersion = '1.1';
+        if (javascriptVersion.match) {
+            javascriptVersion = '1.2';
+            var tm = new Date;
+            if (tm.setUTCDate) {
+                javascriptVersion = '1.3';
+                if (isie && ismac && apv >= 5) javascriptVersion = '1.4';
+                var pn = 0;
+                if (pn.toPrecision) {
+                    javascriptVersion = '1.5';
+                    a = new Array;
+                    if (a.forEach) {
+                        javascriptVersion = '1.6';
+                        i = 0;
+                        o = new Object;
+                        tcf = new Function('o', 'var e,i=0;try{i=new Iterator(o)}catch(e){}return i');
+                        i = tcf(o);
+                        if (i && i.next) {
+                            javascriptVersion = '1.7';
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return javascriptVersion;
+};
+
+/**
+ * 判断是否是 IE 浏览器
+ */
+Site.isIE = function () {
+    if (document.all){
+        alert('IE浏览器');
+    }else{
+        alert('非IE浏览器');
+    }
+    if (!!window.ActiveXObject){
+        alert('IE浏览器');
+    }else{
+        alert('非IE浏览器');
+    }
+    //判断是IE几
+    var isIE=!!window.ActiveXObject;
+    var isIE6=isIE&&!window.XMLHttpRequest;
+    var isIE8=isIE&&!!document.documentMode;
+    var isIE7=isIE&&!isIE6&&!isIE8;
+    if (isIE){
+        if (isIE6){
+            alert('ie6');
+        }else if (isIE8){
+            alert('ie8');
+        }else if (isIE7){
+            alert('ie7');
+        }
+    }
+};
+
+/**
+ * 判断浏览器
+ */
+Site.getOs = function () {
+    if (navigator.userAgent.indexOf("MSIE 8.0") > 0) {
+        return "MSIE8";
+    }
+    else if (navigator.userAgent.indexOf("MSIE 6.0") > 0) {
+        return "MSIE6";
+    }
+    else if (navigator.userAgent.indexOf("MSIE 7.0") > 0) {
+        return "MSIE7";
+    }
+    else if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0) {
+        return "Firefox";
+    }
+    if (navigator.userAgent.indexOf("Chrome") > 0) {
+        return "Chrome";
+    }
+    else {
+        return "Other";
+    }
+};
+
+/**
+ * 回车提交
+ * @param selector
+ * @param submit
+ */
+Site.enterSubmit = function (selector,submit) {
+    $(selector).onkeypress = function (event) {
+        var that = $(this);
+        event = (event) ? event : ((window.event) ? window.event : "")
+        keyCode = event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode);
+        if (keyCode == 13) {
+            if (submit){
+                $(submit).onclick();
+            }else {
+                that.closest('form').submit();
+            }
+        }
+    }
+};
+
+/**
+ * JS 写Cookie
+ * @param name
+ * @param value
+ * @param expires
+ * @param path
+ * @param domain
+ */
+Site.setCookie = function (name, value, expires, path, domain) {
+    if (!expires) expires = -1;
+    if (!path) path = "/";
+    var d = "" + name + "=" + value;
+    var e;
+    if (expires < 0) {
+        e = "";
+    }
+    else if (expires == 0) {
+        var f = new Date(1970, 1, 1);
+        e = ";expires=" + f.toUTCString();
+    }
+    else {
+        var now = new Date();
+        var f = new Date(now.getTime() + expires * 1000);
+        e = ";expires=" + f.toUTCString();
+    }
+    var dm;
+    if (!domain) {
+        dm = "";
+    }
+    else {
+        dm = ";domain=" + domain;
+    }
+    top.window.document.cookie = name + "=" + value + ";path=" + path + e + dm;
+};
+
+/**
+ * JS 读Cookie
+ * @param name
+ * @return {*}
+ */
+Site.getCookie = function (name) {
+    var nameEQ = name + "=";
+    var ca = top.window.document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) {
+            return decodeURIComponent(c.substring(nameEQ.length, c.length))
+        }
+    } return null
+};
+
+/**
+ * Ajax 中间件
+ * @param options
+ * @param middleWare
+ */
+Site.ajax = function(options, middleWare)  {
+    var deferred = $.Deferred();
+    var index;
+    var $options = $.extend({
+        url: null,
+        data: {},
+        dataType: 'json',
+        type: 'post',
+        beforeSend:function () {
+            index = Site.loading();
+        }
+    },options);
+
+    $.ajax($options).success(function (data) {
+        Site.close(index);
+        if (data.code != 200) {
+            deferred.reject(data.msg);
+        } else {
+            deferred.resolve(data.data)
+        }
+    }).error(function (error) {
+        Site.close(index);
+        deferred.reject('请求出错');
+    });
+
+    // 添加中间件
+    if(!middleWare || typeof middleWare !== "function") {
+        middleWare = function(){};
+    }
+    return deferred.done(middleWare).fail(function (error) {
+        Site.msg(error);
+    });
+};
+
+// 调用
+var obj = {
+    url: '/manage/ajax/uploader',
+    data: {
+        interface_name: 'name',
+        interface_params: JSON.stringify({})
+    }
+};
+var middleware = function(data) {
+    data.forEach(function(item){
+        item.fullName = item.firstName + item.lastName
+    })
+}
+
+
 $(function () {
 
+
     Site.init();
+
+    Site.ajax(obj, middleware)
+        .done(function(data){
+            console.log(data.fullName)
+        });
 
     if (typeof top.window.addTab === 'function') {
         $(document).on('click', '[lay-filter="url"]', function () {

@@ -398,6 +398,19 @@ layui.define('layer', function (exports) {
                                 }
                             }
                         },
+                        compare: function (value, item) {
+                            var $this = $(item);
+                            var check = $this.attr('lay-check');
+                            if (check){
+                                var target = $('[lay-filter="'+check+'"]') ||　$('[name="'+check+'"]');
+                                var message = $this.attr('lay-error') || '至少选择一个 '+$this.attr('name');
+                                if(target.length >0 ){
+                                    if (value != target.val()){
+                                        return message;
+                                    }
+                                }
+                            }
+                        },
                         // checked 使用方式 lay-verify="layAjax" lay-url="XXX" lay-error="XXX"
                         layAjax: function (value, item) {
                             var $this = $(item);
