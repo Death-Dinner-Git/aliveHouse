@@ -40,10 +40,18 @@ class AjaxController extends ManageController
     {
         $images = [];
         foreach ($_FILES as $key=>$value){
-            $item = ['src'=>'/static/images/upload-img.png','icon'=>'/static/images/upload-img.png'];
-            $images[] = $item;
+            //是否是多传,否则是单传
+            if(is_array($value['name'])){
+                foreach ($value['name'] as $index => $item) {
+                    $retItem = ['src'=>'/static/uploads/theme/new-house-max-bg.jpg','icon'=>'/static/images/upload-img.png','name'=>$value['name'][$index]];
+                    $images[] = $retItem;
+                }
+            }else{
+                $retItem = ['src'=>'/static/uploads/theme/new-house-max-bg.jpg','icon'=>'/static/images/upload-img.png','name'=>$value['name']];
+                $images[] = $retItem;
+            }
         }
-        $ret = ['code'=>'1','msg'=>'成功','images'=>$images];
+        $ret = ['code'=>'1','msg'=>'成功','images'=>$images,'file'=>$_FILES];
         return json($ret);
     }
 

@@ -951,6 +951,26 @@ a.layui-layer-refrash:hover {
     opacity: 1;
 }
 
+
+/* =======================================
+	 uploader	组件
+================================== */
+
+.layui-box.layui-upload-button.layui-upload-container{
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.layui-box.layui-upload-container .layui-upload-show-item{
+    position:relative;
+    display:inline-block;
+}
+
+.layui-box.layui-upload-container .layui-uploader-show-item .layui-uploader-show-item-icon{
+    position:absolute;
+}
+
 /* =======================================
 		独立组件
 ================================== */

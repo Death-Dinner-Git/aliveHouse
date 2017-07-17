@@ -20,13 +20,15 @@
 
         <form class="layui-form" id="default-form" action="/manage/ajax/uploader.html?test=1" method="post" enctype="multipart/form-data">
             <div class="layui-form-item">
-                <label class="layui-form-label">文件上传</label>
+                <label class="layui-form-label">单文件上传</label>
                 <div class="layui-input-inline">
-                    <input type="hidden" value="" name="" placeholder="楼盘图片" class="layui-input">
-                    <input type="file" name="build" multiple class="layui-upload-file">
-                    <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
-                    <input type="file" name="build[]" multiple class="layui-upload-file">
-                    <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
+                    <input type="file" name="build" class="layui-upload-file">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">多文件上传</label>
+                <div class="layui-input-block" style="padding-right: 120px;">
+                    <input type="file" name="build[]" multiple lay-multi="true" class="layui-upload-file">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -493,26 +495,12 @@
         var uploader = upload.create({
             elem:'.layui-upload-file',
             url: '/manage/ajax/uploader',
+            isAjax:true,
+            max:5,
             success: function (res, input) {
                 console.log(res);
-                var $input = $(input);
-                $input.closest('.layui-upload-button').hide();
-                if (res.code == '1' && res.src !== undefined) {
-                    $('[lay-filter="show"]').append('<img src="' + res.src + '">').show();
-                }
             }
         });
-
-//        var html = '<div class="layui-progress"><div class="layui-progress-bar layui-bg-red" lay-percent="10%"></div></div>';
-//        var index = top.layer.msg(html,{
-//            time:false,
-//            area: ['400px'],
-//            shade: ['0.372', '#000'],
-//            shadeClose: false,
-//            refresh: true,
-//            end:function () {
-//            }
-//        });
 
         //创建一个编辑器
         var editIndex = layedit.build('LAY_demo_editor');

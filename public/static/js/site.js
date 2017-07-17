@@ -654,37 +654,21 @@ Site.photos = function (options) {
 
 /*  */
 Site.uploader = function (options) {
-    var _config = {
+    options = $.extend({
         elem:'.layui-upload-file',
         url:'/manage/ajax/uploader',
+        isAjax: true,
         before:null,  // 上传成功后的回调函数,参数 input 表单
         success:null, // 上传成功后的回调函数,参数res代表后天返回的数据，input是文件input 表单
-    };
-    _config = $.extend(_config,options);
-    layui.use(['upload'], function () {
-        var upload = layui.upload,
-            index;
-        upload({
-            elem:_config.elem,
-            url: _config.url,
-            before: function (input) {
-                index = Site.loading();
-                if (typeof _config.before === 'function'){
-                    _config.before(input);
-                }
-            },
-            success: function (res, input) {
-                Site.close(index);
-                if (typeof _config.success === 'function'){
-                    _config.success(res,input);
-                }
-            }
-        });
+    },options);
 
+    layui.config({
+        base: config.layuiBase
+    }).use(['uploader'], function () {
+        var upload = layui.uploader();
+        upload.create(options)
     });
 };
-
-
 
 /*  */
 Site.resizeShowTab = function () {
@@ -1897,9 +1881,38 @@ var processor = {
 /*
  text 转 数组
  */
-function toArray(data) {
+var toArray = function(data) {
     return eval('(' + data + ')');
 };
+
+/**
+ * 动态规划求解
+ * @param num
+ * @returns {number}
+ */
+// var getClimbingWays = function (num) {
+//   if (num<1){
+//       return 0;
+//   }
+//   if (num === 1){
+//       return 1;
+//   }
+//   if (num ===21){
+//       return 2;
+//   }
+//   var a = 1;
+//   var b = 2;
+//   var temp = 0;
+//
+//   for(var i=3;i<=num;i++){
+//       temp = a + b;
+//       a = b;
+//       b = temp;
+//   }
+//
+//   return temp;
+// };
+
 /*
  中央定时器
  */
@@ -1948,7 +1961,7 @@ function progress() {
 }
 
 /*
- AJAX 进度条
+ AJAX 跨域
  */
 function ajaxJump(url, _Callback) {
     $.ajax({
