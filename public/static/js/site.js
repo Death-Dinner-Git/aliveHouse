@@ -783,6 +783,8 @@ Site.initPjax = function () {
     if ($.support.pjax) {
 
         $(document).on('click', 'a[lay-filter^="pjax"]', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
             var container = $(this).closest('[data-pjax-container]');
             if (typeof container !== undefined) {
                 var $container = $(container);
@@ -797,6 +799,8 @@ Site.initPjax = function () {
         });
 
         $(document).on('click', '[lay-pjax="submit"]', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
             var container = $(this).closest('[data-pjax-container]');
             if (typeof container !== undefined) {
                 var $container = $(container);
@@ -811,8 +815,8 @@ Site.initPjax = function () {
         });
 
         $(document).on('submit', '[data-pjax-container] form[lay-pjax-form]', function (event) {
-            e.preventDefault();
-            e.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
             var container = $(this).closest('[data-pjax-container]');
             if (typeof container !== undefined) {
                 var $container = $(container);
@@ -2090,30 +2094,10 @@ Site.ajax = function(options, middleWare)  {
     });
 };
 
-// 调用
-var obj = {
-    url: '/manage/ajax/uploader',
-    data: {
-        interface_name: 'name',
-        interface_params: JSON.stringify({})
-    }
-};
-var middleware = function(data) {
-    data.forEach(function(item){
-        item.fullName = item.firstName + item.lastName
-    })
-}
-
 
 $(function () {
 
-
     Site.init();
-
-    Site.ajax(obj, middleware)
-        .done(function(data){
-            console.log(data.fullName)
-        });
 
     if (typeof top.window.addTab === 'function') {
         $(document).on('click', '[lay-filter="url"]', function () {

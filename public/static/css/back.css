@@ -909,6 +909,7 @@ body .layui-footer .layui-main a {
     box-sizing: border-box !important;
 }
 
+
 /* =======================================
 		layer
 ================================== */
@@ -949,6 +950,85 @@ a.layui-layer-refrash {
 
 a.layui-layer-refrash:hover {
     opacity: 1;
+}
+
+/* =======================================
+	 居中
+================================== */
+
+.layui-table-cell{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* =======================================
+	 forms	组件
+================================== */
+
+.forms .layui-form-item{
+    font-size: 14px;
+}
+.forms .layui-form-item .layui-form-label{
+    width: 130px;
+}
+.forms .layui-form-item .layui-input-block{
+    margin-left: 160px;
+    padding-right: 130px;
+}
+.forms .layui-form-item .layui-input-inline{
+    width: 220px;
+}
+.forms .layui-form-item .layui-input-inline .layui-input{
+    font-size: 14px;
+}
+.help-hint{
+    display: block;
+    width: 100%;
+    padding-left: 30px;
+    height: 38px;
+    line-height: 38px;
+    border-radius: 2px;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.help-msg .fa{
+    position: absolute;
+    border-radius: 50%;
+    margin: 10px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+.help-msg .fa.fa-close,.help-msg .fa.fa-check{
+    border: 1px solid #d4d4d4;
+}
+.help-msg .fa-close:before{
+    color: #E85445;
+}
+.help-msg .fa-check:before{
+    color: #0DBD9F;
+}
+
+.forms .forms-button{
+    position: relative;
+    visibility: visible;
+}
+
+.forms .forms-button .layui-input-inline{
+    position: absolute;
+    left: 50%;
+    margin-left: -110px;
+}
+
+.forms .forms-button .layui-input-inline{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
 
 

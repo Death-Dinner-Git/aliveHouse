@@ -11,69 +11,21 @@
     <!-- load css -->
     <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/back.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
 
     <!-- For site js -->
     <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/bootstrap.js"></script>
     <script type="text/javascript" src="_LAYUI_/layui.js"></script>
 
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
-
-    <style>
-        #CreateForm .layui-form-item{
-            font-size: 14px;
-        }
-        #CreateForm .layui-form-item .layui-form-label{
-            width: 130px;
-        }
-        #CreateForm .layui-form-item .layui-input-block{
-            margin-left: 160px;
-        }
-        #CreateForm .layui-form-item .layui-input-inline{
-            width: 220px;
-        }
-        #CreateForm .layui-form-item .layui-input-inline .layui-input{
-            font-size: 14px;
-        }
-        .help-hint{
-            display: block;
-            width: 100%;
-            padding-left: 30px;
-            height: 38px;
-            line-height: 38px;
-            border-radius: 2px;
-            text-align: left;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        .help-msg .fa{
-            position: absolute;
-            border-radius: 50%;
-            margin: 10px;
-            width: 14px;
-            height: 14px;
-            text-align: center;
-            vertical-align: middle;
-        }
-        .help-msg .fa.fa-close,.help-msg .fa.fa-check{
-            border: 1px solid #d4d4d4;
-        }
-        .help-msg .fa-close:before{
-            color: #E85445;
-        }
-        .help-msg .fa-check:before{
-            color: #0DBD9F;
-        }
-    </style>
 
 </head>
 
 <body>
 
 <section style="max-width:1200px;margin: 30px auto;">
-    <form class="layui-form" id="defaultForm" style="margin-top: 20px;">
+    <form class="layui-form forms" id="defaultForm" style="margin-top: 20px;">
 
         <div class="layui-form-item">
             <label class="layui-form-label">楼盘地址:</label>
@@ -145,7 +97,7 @@
 
         </div>
 
-        <div class="layui-form-item">
+        <div class="layui-form-item forms-button">
             <label class="layui-form-label"></label>
             <div class="layui-input-inline">
                 <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>

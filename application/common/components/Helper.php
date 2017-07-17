@@ -1366,7 +1366,6 @@ class Helper
         return $str;
     }
 
-
     /**
      * @description 随机中文
      * @param int $length
@@ -1385,5 +1384,15 @@ class Helper
             $code .= iconv_substr($zhSet, floor(mt_rand(0, mb_strlen($zhSet, 'utf-8') - 1)), 1, 'utf-8');
         }
         return $code;
+    }
+
+    /**
+     * 将中文编码成拼音
+     * @param string $utf8Data utf8字符集数据
+     * @param string $sRetFormat 返回格式 [head:首字母|all:全拼音]
+     * @return string
+     */
+    public static function getZhPinYin($utf8Data, $sRetFormat = 'head'){
+        return \app\common\components\ChineseToPinyin::encode($utf8Data,$sRetFormat);
     }
 }
