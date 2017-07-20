@@ -953,6 +953,21 @@ a.layui-layer-refrash:hover {
 }
 
 /* =======================================
+	 内联
+================================== */
+
+.layui-table-cell{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.layui-text-align-center{
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* =======================================
 	 居中
 ================================== */
 

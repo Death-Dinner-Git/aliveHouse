@@ -545,6 +545,90 @@
             }
         });
 
+        // 重置为空处理
+        $(document).on('click', '[lay-filter="reset"]', function (e) {
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            if ($form.length > 0) {
+                // select
+                $form.find('select:not([lay-reset])').each(function () {
+                    $(this).val('');
+                });
+
+                // input
+                $form.find('input:not([lay-reset])').each(function () {
+                    $(this).val('');
+                });
+
+                // textarea
+                $form.find('textarea:not([lay-reset])').each(function () {
+                    $(this).html('');
+                });
+            }
+            forms.render();
+        });
+
+        //全选 | 全不选
+        forms.on('checkbox(selectAll)',function (data) {
+            var group = $(data.elem).attr('lay-group');
+            var child = $(data.elem).parents('.layui-form').find('input[type="checkbox"][lay-group="'+group+'"]');
+            child.each(function(index, item) {
+                item.checked = data.elem.checked;
+            });
+            forms.render('checkbox');
+        });
+
+        //删除
+        $(document).on('click','[lay-filter="delete"]',function () {
+            var that = $(this);
+            var id = that.closest('[data-key]').attr('data-key');
+            var url = $config.deleteUrl+'/id/'+id;
+            if (id === undefined)
+            {
+                layer.msg('找不到删除项');
+                return false;
+            }
+            var param = {};
+            layer.open({
+                title:'删除提示',
+                area: ['600px','300px'],
+                shade: ['0.372','#000'],
+                shadeClose:true,
+                content:'确实要删除选择项吗？',
+                btn: ['确定', '取消'],
+                btnAlign: 'c',
+                btn2: function(index, layero){
+                    layer.close(index);
+                },
+                yes:function(index) {
+                    layer.close(index);
+                    var i;
+                    $.ajax({
+                        url:url,
+                        type:'POST',
+                        data:param,
+                        beforeSend:function () {
+                            i = top.layer.load(1, {shade:0.1});
+                        },
+                        success:function (data) {
+                            top.layer.close(i);
+                            if (data.status == 1){
+                                that.closest('[data-key]').remove();
+                            }
+                            if (data.info !== undefined){
+                                top.layer.msg(data.info);
+                            }
+                        },
+                        error:function (data) {
+                            top.layer.close(i);
+                            top.layer.msg('Most people can not see this message, please share with us! <br> 【God is a girl, please treat her as a lover】');
+                        }
+                    });
+                    return false;
+                }
+            });
+        });
+
         //绑定form提交
         forms.set({ELEM:'#default-form'});
 

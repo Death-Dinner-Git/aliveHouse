@@ -486,6 +486,11 @@ Site.confirm = function (url, msg, width, height, shade) {
         shade: shade,
         shadeClose: true,
         content: msg,
+        btn: ['确定', '取消'],
+        btnAlign: 'c',
+        btn2: function(index, layero){
+            myLayer.close(index);
+        },
         yes: function () {
             window.location.href = url;
             return false;
@@ -511,6 +516,11 @@ Site.showDialog = function (title, msg, callBack, width, height, shade) {
         shade: shade,
         shadeClose: true,
         content: msg,
+        btn: ['确定', '取消'],
+        btnAlign: 'c',
+        btn2: function(index, layero){
+            myLayer.close(index);
+        },
         yes: function (index) {
             myLayer.close(index);
             if (callBack && (typeof callBack === "function" )) {
@@ -1582,19 +1592,19 @@ Site.clientWidth = function (element) {
 
 /**
  *
- * @param selecter
- * @param checked
+ * @param selector //组别
+ * @param checked //类别是 选择 或 不选择
  * @returns {Array}
  */
-Site.getSelectCheckboxValues = function (selecter, checked) {
-    selecter = selecter || '[lay-filter="selected"]';
+Site.getSelectCheckboxValues = function (selector, checked) {
+    selector = selector || '[lay-group="selected"]';
     var values = [];
     if (checked === undefined || checked === true) {
-        $('input' + selecter + ':checked').each(function () {
+        $('input' + selector + ':checked').each(function () {
             values.push($(this).val());
         });
     } else {
-        $('input' + selecter + ':not(:checked)').each(function () {
+        $('input' + selector + ':not(:checked)').each(function () {
             values.push($(this).val());
         });
     }
@@ -2004,6 +2014,87 @@ Site.enterSubmit = function (selector,submit) {
 };
 
 /**
+ * 初始化 文本框根据输入内容自适应高度 自动适应
+ * @param selector
+ */
+Site.initTextarea = function (selector) {
+    selector = selector || '[lay-height="auto"]';
+    $(document).off('keyup',selector).on('keyup',selector,function () {
+        Site.autoTextarea(this);
+    });
+};
+
+/**
+ * 文本框根据输入内容自适应高度
+ * @param elem 输入框元素
+ * @param extra 设置光标与输入框保持的距离(默认20)
+ * @param maxHeight 设置最大高度(可选)
+ */
+Site.autoTextarea = function (elem, extra, maxHeight) {
+    extra = extra || 20;
+    var isFirefox = !!document.getBoxObjectFor || 'mozInnerScreenX' in window,
+        isOpera = !!window.opera && !!window.opera.toString().indexOf('Opera'),
+        addEvent = function (type, callback) {
+            elem.addEventListener ?
+                elem.addEventListener(type, callback, false) :
+                elem.attachEvent('on' + type, callback);
+        },
+        getStyle = elem.currentStyle ? function (name) {
+            var val = elem.currentStyle[name];
+
+            if (name === 'height' && val.search(/px/i) !== 1) {
+                var rect = elem.getBoundingClientRect();
+                return rect.bottom - rect.top -
+                    parseFloat(getStyle('paddingTop')) -
+                    parseFloat(getStyle('paddingBottom')) + 'px';
+            };
+
+            return val;
+        } : function (name) {
+            return getComputedStyle(elem, null)[name];
+        },
+        minHeight = parseFloat(getStyle('height'));
+
+
+    elem.style.resize = 'none';
+
+    var change = function () {
+        var scrollTop, height,
+            padding = 0,
+            style = elem.style;
+
+        if (elem._length === elem.value.length) return;
+        elem._length = elem.value.length;
+
+        if (!isFirefox && !isOpera) {
+            padding = parseInt(getStyle('paddingTop')) + parseInt(getStyle('paddingBottom'));
+        };
+        scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+        elem.style.height = minHeight + 'px';
+        if (elem.scrollHeight > minHeight) {
+            if (maxHeight && elem.scrollHeight > maxHeight) {
+                height = maxHeight - padding;
+                style.overflowY = 'auto';
+            } else {
+                height = elem.scrollHeight - padding;
+                style.overflowY = 'hidden';
+            };
+            style.height = height + extra + 'px';
+            scrollTop += parseInt(style.height) - elem.currHeight;
+            document.body.scrollTop = scrollTop;
+            document.documentElement.scrollTop = scrollTop;
+            elem.currHeight = parseInt(style.height);
+        };
+    };
+
+    addEvent('propertychange', change);
+    addEvent('input', change);
+    addEvent('focus', change);
+    change();
+};
+
+/**
  * JS 写Cookie
  * @param name
  * @param value
@@ -2104,6 +2195,8 @@ $(function () {
             top.window.addTab(this);
         });
     }
+
+    Site.initTextarea();
 
 
     setTimeout(function () {

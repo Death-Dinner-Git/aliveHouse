@@ -20,96 +20,610 @@
 
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
 
+    <style>
+        .layui-tab-content .layui-show{
+            min-height: 80vh;
+        }
+    </style>
+
 </head>
 
 <body>
 
-<section style="max-width:1200px;margin: 30px auto;">
-    <form class="layui-form forms" id="defaultForm" style="margin-top: 20px;">
+<section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
+    <form class="layui-form forms" id="defaultForm">
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">楼盘地址:</label>
-            <div class="layui-input-inline">
-                <input type="text" value="" name="Building[address]" lay-verify="required" placeholder="楼盘地址" class="layui-input">
-            </div>
-            <div class="layui-input-inline help-msg">
-                <i class="fa"></i>
-                <label class="help-hint"></label>
-            </div>
-        </div>
+        <div class="layui-tab layui-tab-card" style="margin-top: 0;">
+            <ul class="layui-tab-title" style="position: fixed; z-index: 10;width: 1200px;left: 50%;margin-left: -600px;text-align: center;">
+                <li class="layui-this">基本信息</li>
+                <li>楼盘介绍</li>
+                <li>销售信息</li>
+                <li>建筑参数</li>
+                <li>其他信息</li>
+            </ul>
+            <div class="layui-tab-content" style="padding-top: 54px;padding-bottom: 20px;">
+                <!--基本信息-->
+                <div class="layui-tab-item layui-show">
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">所属城市:</label>
-            <div class="layui-input-inline">
-                <select name="Building[city_id]" lay-verify="required" lay-search >
-                    <option value="">选择城市</option>
-                    {volist name="lists" id="item"}
-                    <option value="{$key}">{$item}</option>
-                    {/volist}
-                </select>
-            </div>
-            <div class="layui-input-inline help-msg">
-                <i class="fa"></i>
-                <label class="help-hint"></label>
-            </div>
-        </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">楼盘地址:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" value="" name="Building[address]" lay-verify="required" placeholder="楼盘地址" class="layui-input">
+                        </div>
+                        <div class="layui-input-inline help-msg">
+                            <i class="fa"></i>
+                            <label class="help-hint"></label>
+                        </div>
+                    </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">楼盘名称:</label>
-            <div class="layui-input-inline">
-                <input type="text" value="" name="Building[name]" lay-verify="required" placeholder="楼盘名称" class="layui-input">
-            </div>
-            <div class="layui-input-inline help-msg">
-                <i class="fa"></i>
-                <label class="help-hint"></label>
-            </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所属城市:</label>
+                        <div class="layui-input-inline">
+                            <select name="Building[city_id]" lay-verify="required" lay-search >
+                                <option value="">选择城市</option>
+                                {volist name="lists" id="item"}
+                                <option value="{$key}">{$item}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                        <div class="layui-input-inline help-msg">
+                            <i class="fa"></i>
+                            <label class="help-hint"></label>
+                        </div>
+                    </div>
 
-        </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">楼盘名称:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" value="" name="Building[name]" lay-verify="required" placeholder="楼盘名称" class="layui-input">
+                        </div>
+                        <div class="layui-input-inline help-msg">
+                            <i class="fa"></i>
+                            <label class="help-hint"></label>
+                        </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">楼盘地址:</label>
-            <div class="layui-input-inline">
-                <input type="text" value="" name="Building[address]" lay-verify="required" placeholder="楼盘地址" class="layui-input">
-            </div>
-            <div class="layui-input-inline help-msg">
-                <i class="fa"></i>
-                <label class="help-hint"></label>
-            </div>
-        </div>
+                    </div>
 
-        <div class="more-input">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">楼盘地址:</label>
+                        <div class="layui-input-inline">
+                            <input type="text" value="" name="Building[address]" lay-verify="required" placeholder="楼盘地址" class="layui-input">
+                        </div>
+                        <div class="layui-input-inline help-msg">
+                            <i class="fa"></i>
+                            <label class="help-hint"></label>
+                        </div>
+                    </div>
 
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">楼盘描述:</label>
-                <div class="layui-input-block" style="padding-right: 120px;">
-                    <textarea  name="BuildingDetail[description]" placeholder="请输入楼盘详情" class="layui-textarea"></textarea>
+                    <div class="more-input">
+
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">楼盘描述:</label>
+                            <div class="layui-input-block" style="padding-right: 120px;">
+                                <textarea  name="BuildingDetail[description]" placeholder="请输入楼盘详情" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">楼盘图片:</label>
+                            <div class="layui-input-block" style="padding-right: 120px;">
+                                <input type="hidden" value="" name="BuildingDetail[url]" placeholder="楼盘图片" class="layui-input">
+                                <input type="file" id="BuildingDetail_file" name="file" placeholder="楼盘图片" class="layui-upload-file">
+                                <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼盘名称：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="title" id="title" onKeyUp="getTitlePinyin(this)"   placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <span class="need" id="titleTips">*请输入楼盘名称</span>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼盘拼音：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="titlePinyin" id="titlePinyin"  onkeyup="checkBuildPinyin(this)"   placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <span class="need">*请输入楼盘拼音</span>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼盘Logo：</label>
+                            <div style="float: left;">
+                                <input type="file"   id="icon" name="icon" >
+                            </div>
+                            <div class="layui-form-mid layui-word-aux need" style="margin-left: 20px;">*</div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="margin: 0;">
+                        <label class="layui-form-label">楼盘类型：</label>
+                        <div class="layui-input-block">
+                            <span class="need" style="position: relative;top: 5px;">*请至少选择一个楼盘类型</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item special">
+                        <label class="layui-form-label">楼盘特色：</label>
+                        <div class="layui-input-block">
+                            <div class="layui-inline" style="margin-bottom: 0;">
+                                <label class="layui-form-label" style="width: 44px;">其他：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="feature_2"  id="feature_2" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <span class="need">*请至少选择一个项目特色</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所属区域：</label>
+                        <div class="layui-input-inline">
+                            <select  lay-search="" id="province" name="province" lay-filter="province">
+                                <option value="">--省份--</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <select  lay-search="" id="city" name="city" lay-filter="city" onChange="getSubcity(this,'county')">
+                                <option value="">--城市--</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <select  lay-search="" id="county" name="county">
+                                <option value="">--区/县--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">板块：</label>
+                            <div class="layui-input-inline">
+                                <input type="text"  name="zone"  id="zone" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼盘地址：</label>
+                            <div class="layui-input-inline" style="width: 260px;">
+                                <input name="address" type="text" id="address"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <a class="showBaiduMap">[显示地图]</a>
+                        <span class="need">*不包括所属区域和板块</span>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">广告语：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="adTitle" id="adTitle"  autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">推荐理由：</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="请输入内容" name="reason" id="reason" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">总栋数：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="buildingNum" type="text" autocomplete="off" class="layui-input" id="buildingNum" onKeyUp="this.value=this.value.replace(/[^\d]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''));"/>-->
+                                <input name="buildingNum" type="text" autocomplete="off" class="layui-input" id="buildingNum" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9]/g,''));"/>
+                            </div>
+                            <span class="unit">栋</span>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">总套数：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="houseNum" type="text" autocomplete="off" class="layui-input" id="houseNum" onKeyUp="this.value=this.value.replace(/[^\d]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''));"/>-->
+                                <input name="houseNum" type="text" autocomplete="off" class="layui-input" id="houseNum" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9]/g,''));"/>
+                            </div>
+                            <span class="unit">套</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item special">
+                        <label class="layui-form-label">装修情况：</label>
+                        <div class="layui-input-block">
+                            <div class="layui-inline" style="margin-bottom: 0;">
+                                <label class="layui-form-label" style="width: 44px;">其他：</label>
+                                <div class="layui-input-inline">
+                                    <input name="decoration_2" type="text" autocomplete="off" class="layui-input" id="decoration_2" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">停车位：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="parkingNum" type="text" autocomplete="off" class="layui-input" id="parkingNum" onKeyUp="this.value=this.value.replace(/[^\d]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''));"/>-->
+                                <input name="parkingNum" type="text" autocomplete="off" class="layui-input" id="parkingNum" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9]/g,''));"/>
+                            </div>
+                            <span class="unit">个</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">开盘日期：</label>
+                            <div class="layui-input-inline">
+                                <input name="startTime" type="text" autocomplete="off" class="layui-input" id="startTime"/>
+                            </div>
+
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">入住日期：</label>
+                            <div class="layui-input-inline">
+                                <input name="joinTime" type="text" autocomplete="off" class="layui-input" id="joinTime"/>
+                            </div>
+
+                        </div>
+                        <span class="need" style="position: relative;top: 5px;">输入格式：2010-10-11</span>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">楼层状况：</label>
+                        <div class="layui-input-block">
+                            <textarea name="introduction" class="layui-textarea" id="introduction"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item special" style="margin-bottom: 0;">
+                        <label class="layui-form-label">楼盘状态：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" id="status" name="status" value="5" title="正常" checked="checked">
+                            <input type="radio" id="status" name="status" value="1" title="已删除">
+                        </div>
+                    </div>
+                    <div class="layui-form-item special">
+                        <label class="layui-form-label">权重设置：</label>
+                        <div class="layui-input-block">
+                        </div>
+                    </div>
+                </div>
+                <!--楼盘介绍-->
+                <div class="layui-tab-item">
+                    <div class="layui-form-item" style="padding-top: 54px;">
+                        <div class="layui-input-block">
+                            <textarea type="text" name="Building[address]" lay-verify="required" placeholder="楼盘介绍" class="layui-textarea" lay-height="auto"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!--销售信息-->
+                <div class="layui-tab-item">
+                    <div class="layui-form-item special" style="margin-bottom: 0;">
+                        <label class="layui-form-label">销售状态：</label>
+                        <div class="layui-input-block">
+                            <span class="need" style="position: relative;top: 4px;">*请选择销售状态</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼盘起价：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="priceMin" type="text" autocomplete="off" class="layui-input" id="priceMin" onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''));"/>-->
+                                <input name="priceMin" type="text" autocomplete="off" class="layui-input" id="priceMin" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));"/>
+
+                            </div>
+                            <span class="unit">元/㎡</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼盘最高价：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="priceMax" type="text" autocomplete="off" class="layui-input" id="priceMax" onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''));"/>-->
+                                <input name="priceMax" type="text" autocomplete="off" class="layui-input" id="priceMax" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));"/>
+                            </div>
+                            <span class="unit">元/㎡</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼盘均价：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="priceAvg" type="text" autocomplete="off" class="layui-input" id="priceAvg" onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''));"/>-->
+                                <input name="priceAvg" type="text" autocomplete="off" class="layui-input" id="priceAvg" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));"/>
+
+                            </div>
+                            <span class="unit">元/㎡</span>
+                        </div>
+                        <span class="need" style="margin-left: 50px;">均价、起价、最高价至少需要填写一项</span>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">单套总价：</label>
+                            <div class="layui-input-inline">
+                                <input name="priceSum" type="text" autocomplete="off" class="layui-input" id="priceSum"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">层差：</label>
+                            <div class="layui-input-inline">
+                                <input name="layerPoor" type="text" autocomplete="off" class="layui-input" id="layerPoor"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item special" style="margin-bottom: 0;">
+                        <label class="layui-form-label">总价范围：</label>
+                        <div class="layui-input-block">
+                        </div>
+                    </div>
+                    <div class="layui-form-item special">
+                        <label class="layui-form-label">现房期房：</label>
+                        <div class="layui-input-block">
+                        </div>
+                    </div>
+                    <div class="layui-form-item special" style="margin-bottom: 0;">
+                        <label class="layui-form-label" style="width: 120px;">同步到历史价格：</label>
+                        <div class="layui-input-block">
+                            <input name="priceHistory" lay-skin="primary" type="checkbox" id="priceHistory" value="1" onClick="showTongBu()"/>
+                        </div>
+                    </div>
+                    <li class="borb" id="tongbu" style="display:none;">
+                        <label>变动日期：</label><input name="changeTime" type="text" id="changeTime" onClick="WdatePicker()" value="<?php echo date('Y-m-d',time());?>" disabled/><br></br>
+                        <label>备注说明：</label><textarea name="remark" id="remark" disabled></textarea>
+                    </li>
+                </div>
+                <!--建筑参数-->
+                <div class="layui-tab-item">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">占地面积：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="buildingArea" type="text" id="buildingArea" onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''));"  autocomplete="off" class="layui-input"/>-->
+                                <input name="buildingArea" type="text" id="buildingArea"   autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));"/>
+                            </div>
+                            <span class="unit">平方米</span>
+                        </div>
+                        <span class="need" style="margin-left: 50px;">请填写占地面积</span>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">建筑面积：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="houseArea" type="text" id="houseArea" onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''));" autocomplete="off" class="layui-input"/>-->
+                                <input name="houseArea" type="text" id="houseArea"  autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));"/>
+                            </div>
+                            <span class="unit">平方米</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="position: relative;left: -10px;">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 100px;">单套最大面积：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="areaMax" type="text" id="areaMax" onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''));" autocomplete="off" class="layui-input"/>-->
+                                <input name="areaMax" type="text" id="areaMax" autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));"/>
+                            </div>
+                            <span class="unit">平方米</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="position: relative;left: -10px;">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 100px;">单套最小面积：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="areaMin" type="text" id="areaMin" onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''));"  autocomplete="off" class="layui-input"/>-->
+                                <input name="areaMin" type="text" id="areaMin"   autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));"/>
+                            </div>
+                            <span class="unit">平方米</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item special">
+                        <label class="layui-form-label">建筑形式：</label>
+                        <div class="layui-input-block">
+                            <div class="layui-inline" style="margin-bottom: 0;">
+                                <label class="layui-form-label" style="width: 44px;">其他：</label>
+                                <div class="layui-input-inline">
+                                    <input name="buildingType_2" type="text" id="buildingType_2" autocomplete="off" class="layui-input"/>
+                                </div>
+                            </div>
+                            <span class="need">*请选择建筑形式</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">容积率：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="FAR" type="text" id="FAR" size="12" onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''));" autocomplete="off" class="layui-input"/>-->
+                                <input name="FAR" type="text" id="FAR" size="12"  autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));"/>
+                            </div>
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">绿化率：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="poolRate" type="text" id="poolRate" size="12" onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''));" autocomplete="off" class="layui-input"/>-->
+                                <input name="poolRate" type="text" id="poolRate" size="12"  autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));"/>
+                            </div>
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">公摊率：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9.]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9.]/g,''));">
+                            </div>
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">承建商：</label>
+                            <div class="layui-input-inline">
+                                <input name="builders" type="text"  id="builders" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">结构：</label>
+                            <div class="layui-input-inline">
+                                <input name="structure" type="text" id="structure" size="12" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">外墙：</label>
+                            <div class="layui-input-inline">
+                                <input name="wall" type="text" id="wall" size="12" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--其他信息-->
+                <div class="layui-tab-item">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">开发商：</label>
+                            <div class="layui-input-inline">
+                                <input name="developer" type="text"  id="developer"  autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                        <span class="need">*请填写开发商</span>
+                        <div class="layui-inline fr">
+                            <label class="layui-form-label">投资商：</label>
+                            <div class="layui-input-inline">
+                                <input name="investor" type="text"  id="investor" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">代理商：</label>
+                            <div class="layui-input-inline">
+                                <input name="agent" type="text"  id="agent" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline fr">
+                            <label class="layui-form-label">项目负责人：</label>
+                            <div class="layui-input-inline">
+                                <input name="manager" type="text" id="manager" size="12" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">负责人电话：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="managerTel" type="text" id="managerTel" onKeyUp="this.value=this.value.replace(/[^\d-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d-]/g,''));" autocomplete="off" class="layui-input"/>-->
+                                <input name="managerTel" type="text" id="managerTel"  autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9-]/g,''));"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline fr">
+                            <label class="layui-form-label">现场接待人：</label>
+                            <div class="layui-input-inline">
+                                <input name="contacter" type="text" id="contacter" size="12"  autocomplete="off" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">接待人电话：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="contacterTel" type="text" id="contacterTel" onKeyUp="this.value=this.value.replace(/[^\d-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d-]/g,''));" autocomplete="off" class="layui-input"/>-->
+                                <input name="contacterTel" type="text" id="contacterTel"  autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9-]/g,''));"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline fr">
+                            <label class="layui-form-label">现场传真：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="fax" type="text" id="fax" onKeyUp="this.value=this.value.replace(/[^\d-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d-]/g,''));" autocomplete="off" class="layui-input"/>-->
+                                <input name="fax" type="text" id="fax"  autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9-]/g,''));"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">售楼处电话：</label>
+                            <div class="layui-input-inline">
+                                <!--<input name="saleTel" type="text" id="saleTel" onKeyUp="this.value=this.value.replace(/[^\d-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d-]/g,''));"  autocomplete="off" class="layui-input"/>-->
+                                <input name="saleTel" type="text" id="saleTel"  autocomplete="off" class="layui-input" onKeyUp="this.value=this.value.replace(/[^0-9-]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9-]/g,''));"/>
+                            </div>
+                        </div>
+                        <span class="need">请填写售楼处电话</span>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">售楼处地址：</label>
+                            <div class="layui-input-inline">
+                                <input name="saleAddress" type="text"  autocomplete="off" class="layui-input" id="saleAddress" />
+                            </div>
+                        </div>
+                        <span class="need">*请填写售楼处地址</span>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">项目网址：</label>
+                            <div class="layui-input-inline">
+                                <input name="website" type="text" autocomplete="off" class="layui-input" id="website" />
+                            </div>
+                        </div>
+                        <div class="layui-inline fr">
+                            <label class="layui-form-label">预售许可证：</label>
+                            <div class="layui-input-inline">
+                                <input name="licence" type="text" autocomplete="off" class="layui-input" id="licence"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">物业公司：</label>
+                            <div class="layui-input-inline">
+                                <input name="propertyName" type="text" autocomplete="off" class="layui-input" id="propertyName" />
+                            </div>
+                        </div>
+                        <div class="layui-inline fr">
+                            <label class="layui-form-label">物业费：</label>
+                            <div class="layui-input-inline">
+                                <input name="propertyFee" type="text" id="propertyFee" size="12" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">供暖：</label>
+                            <div class="layui-input-inline">
+                                <input name="heatingWay" type="text" id="heatingWay" size="12" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline fr">
+                            <label class="layui-form-label">供水：</label>
+                            <div class="layui-input-inline">
+                                <input name="waterWay" type="text" id="waterWay" size="12"  autocomplete="off" class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">供气：</label>
+                            <div class="layui-input-inline">
+                                <input name="naturalgasWay" type="text" id="naturalgasWay" size="12"  autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">楼盘图片:</label>
-                <div class="layui-input-block" style="padding-right: 120px;">
-                    <input type="hidden" value="" name="BuildingDetail[url]" placeholder="楼盘图片" class="layui-input">
-                    <input type="file" id="BuildingDetail_file" name="file" placeholder="楼盘图片" class="layui-upload-file">
-                    <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="layui-form-item forms-button">
-            <label class="layui-form-label"></label>
-            <div class="layui-input-inline">
+            <div class="layui-form-item" style="text-align: center;margin: 1vh 0 5vh;">
                 <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
+
     </form>
 
 </section>
 
 <script src="__JS__/site.js"></script>
 <script>
+
     $(function () {
         layui.use(['forms'],function () {
             var layer = top.layui.layer || layui.layer;
