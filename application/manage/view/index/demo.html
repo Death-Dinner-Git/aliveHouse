@@ -1,0 +1,695 @@
+<include file="Common:header" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/admin2/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/admin2/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/admin2/css/layui.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/admin2/css/main.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/admin2/css/used.css">
+<script src="__PUBLIC__/static/admin2/js/layui.js"></script>
+<style>
+    #zhuzhuang {
+        float: left;
+        width: 40%;
+        text-align: center;
+        padding-top: 20px;
+        padding-left: 100px;
+    }
+    .layui-table .action{
+        width: 160px;
+    }
+    .layui-table .action > *{
+        display: inline-block;
+        margin: 5px 5px;
+    }
+    .layui-form-item{
+        margin: 8px 0;
+    }
+    .layui-form-item .layui-inline{
+        margin: 5px 6px;
+    }
+    .layui-form-item .layui-input-inline{
+        width: 203px;
+    }
+    .layui-form-item .layui-input-inline input[type="text"]{
+        text-align: center;
+        vertical-align: middle;
+    }
+    .btn-more{
+        position: relative;
+        color: rgb(51, 51, 51);
+        background-color: rgb(242, 242, 242);
+        cursor: pointer;
+        padding: 0px 15px 0px 35px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(226, 226, 226);
+        border-image: initial;
+    }
+    .btn-more:hover{
+        color: rgb(51, 51, 51);
+    }
+</style>
+<body>
+
+<div class="layui-field-box">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 100%;text-align: left;font-size: 20px;font-weight: 300;">出车列表 (共<span>{$count}</span>条信息)</label>
+    </div>
+    <form class="layui-form layui-form-search" method="get" action="__URL__" id="search-form">
+        <div class="layui-collapse">
+            <div class="search_box">
+                <div class="layui-inline select-box">
+                    <div class="layui-input-inline">
+                        <select name="city" id="city">
+                            <option value="">区域</option>
+                            <option value="0">全部</option>
+                            <volist name="cityList" id="vo1">
+                                <option value="{$vo1.id}" <eq name="Think.get.city" value="$vo1.id">selected</eq>>{$vo1.name}</option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline select-box">
+                    <div class="layui-input-inline">
+                        <select name="aimType" id="aimType">
+                            <option value="">接客地</option>
+                            <option value="0">全部</option>
+                            <volist name="fenxiao.aimType" id="vo1">
+                                <option value="{$key}" <eq name="Think.get.aimType" value="$key">selected</eq> >{$vo1}</option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <div class="layui-input-inline"  style="width: 400px">
+                        <input name="keyword" type="text" placeholder="输入名称"  value="{$Think.get.keyword|getChineseGetValue}" class="layui-input" />
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <div class="layui-inline">
+                        <button type="submit" class="layui-btn">查找</button>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-btn layui-btn-primary" lay-filter="reset">重置</label>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-btn btn-more" lay-fliter="more" lay-target=".layui-colla-title" style="padding-left: 35px!important;">
+                            更多<i class="layui-icon layui-colla-icon"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title" style="display: none;"></h2>
+                <div class="layui-colla-content">
+                    <div class="layui-form-item">
+
+                        <label class="layui-form-label">部门:</label>
+                        <empty name="Think.get.departmentId">
+                            <div class="layui-input-inline">
+                                <select name="departmentId" lay-filter="getDepartment" data-type="1">
+                                    <option value="">请选择</option>
+                                    <option value="0">全部</option>
+                                    <volist name="departmentList" id="vo2">
+                                        <option value="{$vo2.id}">{$vo2.name}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                            <else/>
+                            <volist name="departmentList" id="vo1" key="k">
+                                <div class="layui-input-inline" lay-filter="item" data-key="{$k}">
+                                    <select name="departmentId" lay-search="" lay-filter="getDepartment" data-type="{$k}">
+                                        <option value="{$vo1.id}">请选择</option>
+                                        <volist name="vo1[0]" id="vo2">
+                                            <option value="{$vo2.id}" <php>if($vo2['id']==$departmentList[$k]['id']||$vo2['id']==$_GET['departmentId']){echo "selected";}</php>>{$vo2.name}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+                            </volist>
+                        </empty>
+
+                    </div>
+
+                    <div class="layui-form-item">
+
+                        <neq name="Think.session.isPrivate" value="1">
+                            <label class="layui-form-label">客户权属:</label>
+                            <div class="layui-input-inline">
+                                <select name="userId" id="belongUserId" class="selectable">
+                                    <optgroup label="请选择">
+                                        <option value="">请选择</option>
+                                        <option value="0">全部</option>
+                                    </optgroup>
+                                    <volist name="user_message" id="message">
+                                        <optgroup label="{$message[0]['departmentName']}">
+                                            <volist name="message" id="message_user">
+                                                <option value="{$message_user.id}" <eq name="Think.get.belongUserId" value="$message_user.id">selected</eq>>{$message_user.trueName}</option>
+                                            </volist>
+                                        </optgroup>
+                                    </volist>
+                                </select>
+                            </div>
+                        </neq>
+
+                    </div>
+
+                    <div class="layui-form-item">
+
+                        <label class="layui-form-label">司机:</label>
+                        <div class="layui-input-inline">
+                            <select name="driverId" id="driverId">
+                                <option value="">选择司机</option>
+                                <option value="0">全部</option>
+                                <volist name="driverList" id="vo1">
+                                    <option value="{$vo1.id}"  <eq name="vo1.id" value="$Think.get.driverId">selected </eq> >{$vo1.name}</option>
+                                </volist>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="layui-form-item">
+
+                        <label class="layui-form-label">车牌号:</label>
+                        <div class="layui-input-inline">
+                            <select name="carId" id="carId">
+                                <option value="">车牌号</option>
+                                <option value="0">全部</option>
+                                <volist name="carlist" id="vo1">
+                                    <option value="{$vo1.id}"  <eq name="vo1.id" value="$Think.get.carId">selected </eq> >{$vo1.type}&nbsp;&nbsp;{$vo1.number}&nbsp;&nbsp;{$vo1.seats}座</option>
+                                </volist>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="layui-form-item">
+
+                        <label class="layui-form-label">出车状态:</label>
+                        <div class="layui-inline">
+                            <input type="radio" name="status" value="all" title="不限" <eq name="Think.get.status" value="all">checked</eq> >
+                            <input type="radio" name="status" value="4" title="出车取消" <eq name="Think.get.status" value="4">checked</eq> >
+                            <input type="radio" name="status" value="5" title="待发布预约" <eq name="Think.get.status" value="5">checked</eq> >
+                            <input type="radio" name="status" value="6" title="待发布出车" <eq name="Think.get.status" value="6">checked</eq> >
+                            <input type="radio" name="status" value="7" title="出车当中" <eq name="Think.get.status" value="7">checked</eq> >
+                            <input type="radio" name="status" value="8" title="任务完成" <eq name="Think.get.status" value="8">checked</eq> >
+                        </div>
+
+                    </div>
+
+                    <div class="layui-form-item">
+
+                        <label class="layui-form-label">签到状态:</label>
+                        <div class="layui-inline">
+                            <input type="radio" name="isSign" value="0" title="不限" <eq name="Think.get.isSign" value="0">checked</eq> >
+                            <input type="radio" name="isSign" value="1" title="未签到" <eq name="Think.get.isSign" value="1">checked</eq> >
+                            <input type="radio" name="isSign" value="2" title="已签到" <eq name="Think.get.isSign" value="2">checked</eq> >
+                        </div>
+
+                    </div>
+
+                    <div class="layui-form-item">
+
+                        <label class="layui-form-label">出车时间：</label>
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input name="outAt1" type="text" value="{$Think.get.outAt1}" class="layui-input" lay-filter="startDate">
+                            </div>
+                            <div class="layui-form-mid">-</div>
+                            <div class="layui-input-inline">
+                                <input name="outAt2" type="text" value="{$Think.get.outAt2}" class="layui-input" lay-filter="endDate">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<table class="layui-table layui-form" lay-even="" lay-skin="row">
+    <div class="layui-form-item" style="overflow: hidden;">
+        <div class="layui-inline" style="float: left;">
+            <div class="layui-inline">
+                <label class="layui-btn layui-btn-danger" lay-filter="delete">删除</label>
+            </div>
+        </div>
+        <div class="layui-inline" style="float: right;margin-right: 80px;">
+            <div class="layui-inline">
+                <label class="layui-btn" lay-filter="create">添加特殊出车</label>
+            </div>
+        </div>
+    </div>
+    <thead>
+    <tr>
+        <th><input type="checkbox" lay-filter="selectAll" lay-group="tableItem"  lay-skin="primary" /></th>
+        <!--<th>ID</th>-->
+        <th>车牌号/司机</th>
+        <th>部门</th>
+        <th>置业顾问</th>
+        <th>起始地址</th>
+        <th>出发地</th>
+        <th>接客地点</th>
+        <th>出车时间</th>
+        <th>出车公里</th>
+        <th>油费</th>
+        <th>出车人数</th>
+        <th>司机签到</th>
+        <th>预看楼盘</th>
+        <th>业务备注</th>
+        <th style="width:50px; text-align: center">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <php>
+        function qiandao($orderAt,$outAt){
+        if($orderAt){
+        return "已签到 ".todate($orderAt,"Y-m-d H:i:s");
+        }else{
+        return "未签到";
+        }
+        }
+    </php>
+    <empty name="list">
+        <tr><td colspan="16">暂无满足您筛选条件的数据</td></tr>
+        <else/>
+        <volist id="vo" name="list">
+            <tr data-key="{$vo.id}">
+                <td style="width: 30px;"><input type="checkbox" name="id[]" value="{$vo.id}" lay-group="tableItem" lay-skin="primary"/></td>
+                <!--<td>{$vo.id}</td>-->
+                <td style=" text-align:left;padding-left:3px;">
+                    <p><eq name="vo.type2" value="2"><span style="color:#F00">[跨店] </span></eq> 车：{$vo.carNum}</p>
+                    <p>司：{$vo.driverName}</p>
+                </td>
+
+                <td>{$depaArr[$userIdToDapart[$vo['userId']]]}</td>
+                <td>
+                    <p><a href="javascript:;" onClick="goSearch('{$vo.userName}')">{$vo.userName}</a></p>
+                    <notempty name="vo.userName2"><p><a href="javascript:;" onClick="goSearch('{$vo.userName2}')">{$vo.userName2}</a></p></notempty>
+
+                </td>
+                <td>
+                    {$vo['carAddress']}
+                </td>
+
+                <td>{$cityArr[$vo['city']]}</td>
+                <td style=" text-align:left; padding-left:3px;"><p>接客：{$fenxiao['aimType'][$vo['aimType']]}</p>
+                    <p title="{$vo.area}">目的：{$buildingName[$vo['getArrangeId']]}</p>
+                </td>
+                <td>
+
+                    <p title="{$vo.outAt|toDate="Y-m-d H:i:s"}">出:{$vo.outAt|toDate="m-d H:i"}</p>
+                    <p title="{$vo.overAt|toDate="Y-m-d H:i:s"}">收:{$vo.overAt|toDate="m-d H:i"}</p>
+                    <p title="{$vo.signOutAt|toDate="Y-m-d H:i:s"}">司:{$vo.signOutAt|toDate="m-d H:i"}</p>
+                </td>
+                <td>
+
+                    <p>出:{$vo.startKm}</p>
+                    <p>收:{$vo.endKm}</p>
+                </td>
+                <td>{$vo.oilCost}</td>
+                <td>{$vo.manNum}</td>
+                <td title="{$vo.signAt|toDate="Y-m-d H:i:s"}">
+                <notempty name="vo.signAt">{$vo.signAt|toDate="m-d H:i"}<else />未签到</notempty>
+                </td>
+                <td title="{$vo.orderBuliding}">{$vo.orderBuliding|msubstr=0,8}</td>
+                <td title="{$vo.remarks}">{$vo.remarks}</td>
+                <td class="action">
+                    <switch name="vo.status">
+                        <case value="4">
+                            <span style="color: #ff6633;">已取消出车</span>
+                        </case>
+                        <case value="5">
+                            <label class="layui-btn layui-btn-mini" lay-filter="postOrder">发布预约</label>
+                            <label class="layui-btn layui-btn-mini" lay-filter="postOutCar">发布出车</label>
+                        </case>
+                        <case value="6">
+                            <span style="color: #ff6633;">已发布</span>
+                            <label class="layui-btn layui-btn-mini" lay-filter="postOutCar">发布出车</label>
+                        </case>
+                        <case value="7">
+                            <span style="color: #ff6633;"><notempty name="vo.trueOutAt">已出车<else/>等待出车</notempty></span>
+                            <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>
+                            <label class="layui-btn layui-btn-mini" lay-filter="runLog">行驶记录</label>
+                        </case>
+                        <case value="8">
+                            <span style="color: #ff6633;">出车完毕</span>&nbsp;
+                            <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>
+                            <label class="layui-btn layui-btn-mini" lay-filter="runLog">行驶记录</label>
+                        </case>
+
+                    </switch>
+                    <eq name="vo.type" value="2">
+                        <label class="layui-btn layui-btn-mini" lay-filter="arrange" lay-url="{:U('Suite/SuiteClient/newarranges',['id'=>$vo['clientId']])}">看房安排</label>
+                        <else />
+                        <label class="layui-btn layui-btn-mini" lay-filter="arrange" lay-url="{:U('Fenxiao/FenxiaoCar/edit',['clientId'=>$vo['clientId'],'getArrangeId'=>$vo['getArrangeId']])}">看房安排</label>
+                    </eq>
+                </td>
+            </tr>
+        </volist>
+    </empty>
+    </tbody>
+</table>
+
+<!-- 分页容器 -->
+<div id="page">{$page}</div>
+
+<script type="text/javascript" src="/Public/static/admin2/js/site.js"></script>
+<script type="text/javascript">
+    function goSearch(keyword){
+        $('#search-form input[name="keyword"]').val(keyword);
+        $("#search-form").submit();
+    }
+    $(function () {
+        var $config = {
+            postOrderUrl: "{:U('postOrder')}", //发布预约
+            postOutCarUrl: "{:U('postOutCar')}", //发布出车
+            updateUrl: "{:U('edit')}", //编辑
+            runLogUrl: "{:U('runLog1')}", //行驶记录
+            createUrl: "{:U('spadd')}", //添加特殊出车
+            deleteUrl: "{:U('delete')}", //删除
+        };
+
+        $(document).on('click', '.btn-more', function () {
+            var that = $(this);
+            var target = that.attr('lay-target');
+            $(target).trigger('click');
+            that.html('更多'+$(target).html());
+        });
+        layui.use(['layer','form', 'laydate'], function () {
+            var laydate = layui.laydate,
+                form = layui.form(),
+                layer = top.layui.layer ? top.layui.layer : layui.layer ;
+
+            // 监听联动部门
+            form.on('select(getDepartment)',function (data) {
+                var that = $(data.elem);
+                var key= that.closest('[lay-filter="getDepartment"]').attr('data-type');
+                $('[lay-filter="item"][data-key]').each(function (index,item) {
+                    var $this = $(this);
+                    if (parseInt($this.attr('data-key')) > key){
+                        $this.remove();
+                    }
+                });
+                $.get("/admin.php/Ajax/next_department",{pid:data.value},function(data){
+                    if(data && data != ''){
+                        that.closest('.layui-input-inline').after(data);
+                        var options = $('#pid_'+(parseInt(key)+1)).html();
+                        var html = '<div class="layui-input-inline" lay-filter="item" data-key="'+(parseInt(key)+1)+'">' +
+                            '<select name="departmentId" lay-search="" lay-filter="getDepartment" data-type="'+(parseInt(key)+1)+'">' +options+
+                            '</select>' +
+                            '</div>';
+                        that.closest('.layui-input-inline').after(html);
+                        $('#pid_'+(parseInt(key)+1)).remove();
+                        $('#department_'+(parseInt(key)+1)).remove();
+                        form.render('select');
+                    }
+                });
+            });
+
+            $(document).on('click', '[lay-filter="startDate"]', function () {
+                var that = this;
+                var date = {
+                    elem: this,
+                    istime: true,
+                    format: "YYYY-MM-DD",
+                    choose: function (dates) { //选择好日期的回调
+                    }
+                };
+                laydate(date);
+            });
+
+            $(document).on('click', '[lay-filter="endDate"]', function () {
+                var that = this;
+                var date = {
+                    elem: this,
+                    istime: true,
+                    format: "YYYY-MM-DD",
+                    choose: function (dates) { //选择好日期的回调
+                    }
+                };
+                laydate(date);
+            });
+
+            // 重置为空处理
+            $(document).on('click', '[lay-filter="reset"]', function (e) {
+                e.preventDefault();
+                var $form = $(this).closest('form');
+                if ($form.length > 0) {
+                    // select
+                    $form.find('select:not([lay-reset])').each(function () {
+                        $(this).val('');
+                    });
+
+                    // input
+                    $form.find('input:not([lay-reset])').each(function () {
+                        $(this).val('');
+                    });
+
+                    // textarea
+                    $form.find('textarea:not([lay-reset])').each(function () {
+                        $(this).html('');
+                    });
+                }
+                form.render();
+            });
+
+            //全选 | 全不选
+            form.on('checkbox(selectAll)',function (data) {
+                var group = $(data.elem).attr('lay-group');
+                var child = $(data.elem).parents('.layui-form').find('input[type="checkbox"][lay-group="'+group+'"]');
+                child.each(function(index, item) {
+                    item.checked = data.elem.checked;
+                });
+                form.render('checkbox');
+            });
+
+            //发布预约
+            $(document).on('click','[lay-filter="postOrder"]',function () {
+                var that = $(this);
+                var id = that.closest('[data-key]').attr('data-key');
+                var url = $config.postOrderUrl+'/id/'+id;
+                if (id === undefined)
+                {
+                    layer.msg('找不到发布预约项');
+                    return false;
+                }
+                var param = {};
+                layer.open({
+                    title:'发布预约提示',
+                    area: ['600px','300px'],
+                    shade: ['0.372','#000'],
+                    shadeClose:true,
+                    content:'确实要发布预约选择项吗？',
+                    btn: ['确定', '取消'],
+                    btnAlign: 'c',
+                    btn2: function(index, layero){
+                        layer.close(index);
+                    },
+                    yes:function(index) {
+                        layer.close(index);
+                        var i;
+                        $.ajax({
+                            url:url,
+                            type:'POST',
+                            data:param,
+                            beforeSend:function () {
+                                i = top.layer.load(1, {shade:0.1});
+                            },
+                            success:function (data) {
+                                top.layer.close(i);
+                                if (data.status == 1){
+                                    that.after('<span style="color: #ff6633;">已发布</span>');
+                                    that.remove();
+                                    data.info = '发布成功'
+                                }
+                                if (data.info !== undefined){
+                                    top.layer.msg(data.info);
+                                }
+                            },
+                            error:function (data) {
+                                top.layer.close(i);
+                                top.layer.msg('Most people can not see this message, please share with us! <br> 【God is a girl, please treat her as a lover】');
+                            }
+                        });
+                        return false;
+                    }
+                });
+            });
+
+            //发布出车
+            $(document).on('click','[lay-filter="postOutCar"]',function () {
+                var that = $(this);
+                var id = that.closest('[data-key]').attr('data-key');
+                var url = $config.postOutCarUrl+'/id/'+id;
+                top.layer.open({
+                    scrollbar:false,
+                    type: 2,
+                    title: '发布出车',
+                    shade: 0.3,
+                    area: ['900px', '62.8%'],
+                    content: url,
+                });
+            });
+
+            //编辑
+            $(document).on('click','[lay-filter="update"]',function () {
+                var that = $(this);
+                var id = that.closest('[data-key]').attr('data-key');
+                var url = $config.updateUrl+'/id/'+id;
+                top.layer.open({
+                    scrollbar:false,
+                    type: 2,
+                    title: '编辑',
+                    shade: 0.3,
+                    area: ['900px', '62.8%'],
+                    content: url,
+                });
+            });
+
+            //行驶记录
+            $(document).on('click','[lay-filter="runLog"]',function () {
+                var that = $(this);
+                var id = that.closest('[data-key]').attr('data-key');
+                var url = $config.runLogUrl+'/id/'+id;
+                top.layer.open({
+                    scrollbar:false,
+                    type: 2,
+                    title: '行驶记录',
+                    maxmin:true,
+                    shade: 0.3,
+                    area: ['1200px', '88%'],
+                    content: url,
+                });
+            });
+
+            //添加特殊出车
+            $(document).on('click','[lay-filter="create"]',function () {
+                var that = $(this);
+                var url = $config.createUrl;
+                top.layer.open({
+                    scrollbar:false,
+                    type: 2,
+                    title: '添加特殊出车',
+                    shade: 0.3,
+                    area: ['900px', '62.8%'],
+                    content: url,
+                });
+            });
+
+            //看房安排
+            $(document).on('click','[lay-filter="arrange"]',function () {
+                var that = $(this);
+                var url = that.attr('lay-url');
+                if(!url || url === ''){
+                    return;
+                }
+                top.layer.open({
+                    scrollbar:false,
+                    type: 2,
+                    title: '看房安排',
+                    shade: 0.3,
+                    area: ['1100px', '90%'],
+                    content: url,
+                    end:function () {
+                        if(top.window.isReload && typeof top.window.getActive === "function"){
+                            var activeWindow = top.window.getActive();
+                            if(activeWindow){
+                                activeWindow.location.reload();
+                            }
+                        }
+                    }
+                });
+            });
+
+            //删除
+            $(document).on('click','[lay-filter="delete"]',function () {
+                var that = $(this);
+                var id = that.closest('[data-key]').attr('data-key');
+                var ids;
+                if (!id){
+                    ids = getSelectCheckboxValues('[lay-group="tableItem"]');
+                    id = ids.join(',');
+                }
+                var url = $config.deleteUrl+'/id/'+id;
+                if (ids === undefined || ids.length <=0)
+                {
+                    layer.msg('请选择删除项');
+                    return false;
+                }
+                var param = {};
+                layer.open({
+                    title:'删除提示',
+                    area: ['600px','300px'],
+                    shade: ['0.372','#000'],
+                    shadeClose:true,
+                    content:'确实要删除选择项吗？',
+                    btn: ['确定', '取消'],
+                    btnAlign: 'c',
+                    btn2: function(index, layero){
+                        layer.close(index);
+                    },
+                    yes:function(index) {
+                        layer.close(index);
+                        var i;
+                        $.ajax({
+                            url:url,
+                            type:'POST',
+                            data:param,
+                            beforeSend:function () {
+                                i = top.layer.load(1, {shade:0.1});
+                            },
+                            success:function (data) {
+                                top.layer.close(i);
+                                if (data.status == 1){
+                                    if (ids){
+                                        $.each(ids,function (index,item) {
+                                            $('tr[data-key="'+item+'"]').remove();
+                                        })
+                                    }else {
+                                        that.closest('[data-key="'+id+'"]').remove();
+                                    }
+                                }
+                                if (data.info !== undefined){
+                                    if(data.info =='DELETE_SUCCESS'){
+                                        data.info = '删除成功';
+                                    }
+                                    top.layer.msg(data.info);
+                                }
+                            },
+                            error:function (data) {
+                                top.layer.close(i);
+                                top.layer.msg('Most people can not see this message, please share with us! <br> 【God is a girl, please treat her as a lover】');
+                            }
+                        });
+                        return false;
+                    }
+                });
+            });
+
+            function getSelectCheckboxValues(selecter, checked) {
+                selecter = selecter || '[lay-filter="selected"]';
+                var values = [];
+                if (checked === undefined || checked === true) {
+                    $('input' + selecter + ':checked').each(function () {
+                        values.push($(this).val());
+                    });
+                } else {
+                    $('input' + selecter + ':not(:checked)').each(function () {
+                        values.push($(this).val());
+                    });
+                }
+                return values;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+
+

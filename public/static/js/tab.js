@@ -170,8 +170,18 @@ layui.define(['element','layer'], function(exports) {
                 unique = data.id;
 			}
 			title += '<cite data-id="'+unique+'">' + data.title + '</cite>';
-			if(_config.closed) {
+
+            //关闭参数 只接受 字符串的 true 或 false ,其他情况读取全局配置
+			var closed = _config.closed;
+            if(data.closed === true){
+                closed = true;
+            }else if(data.closed === false){
+                closed = false;
+			}
+			if(closed) {
 				title += '<i class="layui-icon layui-unselect layui-tab-close" data-id="' + globalTabIdIndex + '">&#x1006;</i>';
+			}else {
+                title += '<i class="layui-icon layui-unselect layui-tab-close" data-id="' + globalTabIdIndex + '" style="display: none;">&#x1006;</i>';
 			}
 			//添加tab
 			element.tabAdd(ELEM.tabFilter, {
@@ -184,7 +194,7 @@ layui.define(['element','layer'], function(exports) {
 				$(this).height(ELEM.contentBox.height());
 				$(this).attr('frameborder','0');
 			});
-			if(_config.closed) {
+			if(closed) {
 				//监听关闭事件
 				ELEM.titleBox.find('li').children('i.layui-tab-close[data-id=' + globalTabIdIndex + ']').on('click', function() {
 					element.tabDelete(ELEM.tabFilter, $(this).parent('li').attr('lay-id')).init();

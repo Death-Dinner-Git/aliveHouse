@@ -129,12 +129,14 @@ layui.config({
         if(typeof $this === 'object'&& $this.length >= 1 && $this.data('url') !== undefined ) {
             var _url = $this.data('url'),
                 _icon = $this.data('icon'),
+                _closed = $this.data('closed'),
                 _title = $this.data('title'),
                 _id = $this.data('id');
             if (_title !== undefined ){
                 tab.tabAdd({
                     href: _url,
                     icon: _icon || 'fa fa-circle-o',
+                    closed: _closed,
                     title: _title,
                     id: _id || null
                 });
