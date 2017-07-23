@@ -14,47 +14,42 @@ class BuildController extends ManageController
 
     /**
      * @description 显示资源列表
-     * @param int $pageNumber
      * @param string $name
      * @param string $city
      * @param string $address
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $city = null,$address = null)
+    public function indexAction($name = null, $city = null,$address = null)
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
         $param = ['name'=>'','city'=>'','address'=>''];
-        $query = BuildingBase::load();
+        $model = BuildingBase::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);
             $nameWhere = ' `name` like '.' \'%'.$name.'%\'';
-            $query = $query->where($nameWhere);
+            $model->where($nameWhere);
         }
         if ($address && $address != ''){
             $param['address'] = trim($address);
             $nameWhere = ' `address` like '.' \'%'.$address.'%\'';
-            $query = $query->where($nameWhere);
+            $model->where($nameWhere);
         }
-        $lists = City::getCityList();
+        $cityLists = City::getCityList();
         if ($city && $city != ''){
             $param['city'] = trim($city);
-            if (in_array($city,array_keys($lists))){
+            if (in_array($city,array_keys($cityLists))){
                 $where =  array_merge($where, ['city_id'=>$city]);
             }
         }
 
-        $providerModel = clone $query;
-        $count = $query->where($where)->count();
-        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+
+        $list = $model->where($where)->paginate($each);
 
         $this->assign('meta_title', "楼盘清单");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
         $this->assign('param', $param);
-        $this->assign('lists', $lists);
+        $this->assign('cityLists', $cityLists);
+        $this->assign('list', $list);
         return view('build/index');
     }
 
@@ -139,18 +134,21 @@ class BuildController extends ManageController
 
     /**
      * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
+     * @return \think\response\Json
      */
-    public function deleteAction($id)
+    public function deleteAction()
     {
-        $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
+        $id = isset($_POST['id']) ? $_POST['id'] : ['2','3'];
+        $ret = ['status'=>0,'info'=>'删除失败'];
         if ($this->getRequest()->isAjax()){
-            $result = BuildingBase::update(['is_delete'=>'0'],['id'=>$id]);
+            $where = '`id` IN ('.implode(',',$id).')';
+            $result = BuildingBase::update(['is_delete'=>'0'],$where);
             if ($result){
-                $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
+                $ret = ['status'=>1,'info'=>'删除成功'];
             }
+        }
+        if (empty($id)){
+            $ret = ['status'=>1,'info'=>'删除成功'];
         }
         return json($ret);
     }

@@ -7,14 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
-    <style>
-        table td.action{
-            padding: 6px 10px;
-        }
-        table td.action a button i{
-            padding-right: 4px;
-        }
-    </style>
 
 </head>
 <body>
@@ -22,41 +14,108 @@
 <fieldset class="layui-elem-field">
     <legend>楼盘查询</legend>
     <div class="layui-field-box">
-        <form class="layui-form layui-form-pane" action="">
+        <form class="layui-form layui-form-pane layui-form-search" action="" lay-accordion>
             <div class="layui-form-item">
-
-                <label class="layui-form-label">所属城市:</label>
+                <div class="layui-input-inline search">
+                    <input type="text" name="keyword" placeholder="输入关键词" value="{$Think.get.keyword}" class="layui-input">
+                </div>
                 <div class="layui-input-inline">
                     <select name="city" lay-search >
-                        <option value="">选择城市</option>
+                        <option value="">可选择所属城市</option>
                         <option value="0">全部</option>
-                        {volist name="lists" id="item"}
+                        {volist name="cityLists" id="item"}
                         <option value="{$key}" {if condition="$key eq $param.city"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
 
-                <label class="layui-form-label">楼盘名称:</label>
-                <div class="layui-input-inline">
-                    <input type="text" value="{$param.name}" name="name" placeholder="楼盘名称" class="layui-input">
-                </div>
-
-                <label class="layui-form-label">楼盘地址:</label>
                 <div class="layui-input-inline">
                     <input type="text" value="{$param.address}" name="address" placeholder="楼盘地址" class="layui-input">
                 </div>
 
-                <button class="layui-btn" lay-submit="">查询</button>
+                <div class="layui-inline">
+                    <button type="submit" class="layui-btn">查找</button>
+                </div>
 
-                <label class="layui-btn" onclick="Site.showUrl('添加一个标签','/manage/build/create.html?iframe=true','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',[0.628, '#4d4d4d'])">添加</label>
+                <div class="layui-inline">
+                    <label class="layui-btn layui-btn-primary" lay-filter="reset">重置</label>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-btn btn-more layui-accordion" lay-fliter="more" lay-for="#layui-colla-title">更多</label>
+                </div>
+
+            </div>
+            <div class="layui-collapse" lay-accordion>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title" id="layui-colla-title" style="display: none;"></h2>
+                    <div class="layui-colla-content">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">部门:</label>
+                            <div class="layui-input-inline">
+                                <select name="departmentId" lay-filter="getDepartment">
+                                    <option value="">请选择</option>
+                                    <option value="0">全部</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+
+                            <neq name="Think.session.isPrivate" value="1">
+                                <label class="layui-form-label">客户权属:</label>
+                                <div class="layui-input-inline">
+                                    <select name="userId" id="belongUserId" class="selectable">
+                                        <optgroup label="请选择">
+                                            <option value="">请选择</option>
+                                            <option value="0">全部</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </neq>
+
+                        </div>
+
+                        <div class="layui-form-item">
+
+                            <label class="layui-form-label">时间：</label>
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input name="outAt1" type="text" value="" class="layui-input" lay-filter="startDate">
+                                </div>
+                                <div class="layui-form-mid">-</div>
+                                <div class="layui-input-inline">
+                                    <input name="outAt2" type="text" value="" class="layui-input" lay-filter="endDate">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </fieldset>
 
-<table class="layui-table" lay-even="" lay-skin="row">
+<section class="layui-table-action" style="margin-top: 15px;">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <div class="layui-inline">
+                <label class="layui-btn layui-btn-danger" lay-filter="delete">删除</label>
+            </div>
+        </div>
+        <div class="layui-inline" style="margin-right: 15px;">
+            <div class="layui-inline">
+                <label class="layui-btn" lay-filter="create">添加</label>
+            </div>
+        </div>
+    </div>
+</section>
+
+<table class="layui-table layui-form" lay-even="" lay-skin="row">
     <thead>
     <tr>
+        <th><input type="checkbox" lay-filter="selectAll" lay-group="tableItem" lay-skin="primary" /></th>
         <th>序号</th>
         <th>楼盘名称</th>
         <th>所属城市</th>
@@ -65,27 +124,27 @@
     </tr>
     </thead>
     <tbody>
-    {volist name="dataProvider" id="model" key="key" empty="<tr class='empty'><td colspan='5' style='text-align: center;'> 没有数据 </td> </tr>"}
+    {volist name="list" id="model" key="key" empty="<tr class='empty'><td colspan='5' style='text-align: center;'> 没有数据 </td> </tr>"}
     <tr data-key="{$model.id}">
+        <td style="width: 30px;"><input type="checkbox" name="id[{$key}]" value="{$model.id}" lay-group="tableItem" lay-skin="primary"/></td>
         <td style="width: 45px;text-align: center;">
-            {$key+($indexOffset)}
+            {$key+(($list->currentPage()-1) * ($list->listRows()))}
         </td>
         <td style="width: 100px;">{$model.name}</td>
         <td>
-            {if condition="isset($lists[$model.city_id])"}
-            {$lists[$model.city_id]}
+            {if condition="isset($cityLists[$model.city_id])"}
+            {$cityLists[$model.city_id]}
             {else} 无效
             {/if}
         </td>
         <td>{$model.address}</td>
-        <td style="width: 150px;text-align: center;" class="action">
-            <a href="javascript:void(0);">
-                <button onclick="Site.showUrl('编辑楼盘','/manage/build/update.html?iframe=true&id={$model.id}','50%','62.8%','2',true,true,'LAY_LABEL_CREATE',true)" class="layui-btn layui-btn-small">
-                    <i class="fa fa-pencil"></i>
-                    编辑
-                </button>
-            </a>
-            <a href="javascript:void(0);"><button onclick="Site.showDialog('信息确认','你确定删除此标签吗?',function(){deleteUser({$model.id});})" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
+        <td style="width: 150px;" class="action">
+            <label class="layui-btn layui-btn-mini" lay-filter="update">
+                <i class="fa fa-pencil"></i>编辑
+            </label>
+            <label class="layui-btn layui-btn-mini layui-btn-danger" lay-filter="delete">
+                <i class="fa fa-remove"></i>删除
+            </label>
         </td>
     </tr>
     {/volist}
@@ -93,71 +152,27 @@
 </table>
 
 <!-- 分页容器 -->
-<div id="paging_0124" style="text-align:right;" data-count="{$count}" data-pages="{$pages}" data-page=""></div>
+<div id="paging" class="paging" data-total="{$list->total()}" data-rows="{$list->listRows()}" data-currentPage="{$list->currentPage()}"></div>
 
 <script>
-    layui.use([ 'layer','laydate', 'form'], function() {});
-    function deleteUser(id) {
-        $.ajax({
-            type : "post",
-            url : '/manage/build/delete?id='+ id,
-            dataType : 'json',
-            beforeSend : function() {
-                Site.loading();
-            },
-            success : function(data) {
-                setTimeout(Site.hide(),500);
-                if (data.code == '1'){
-                    $('[data-key="'+id+'"]').remove();
-                    success('删除成功');
-                }else {
-                    Site.hide();
-                    error('删除失败');
-                }
-            },
-            error : function(data) {
-                Site.hide();
-                error('删除失败');
-            }
-        });
-    }
-</script>
-<script>
+    var url = {
+      create:"{:url('/manage/build/create')}",
+      update:"{:url('/manage/build/update')}",
+      delete:"{:url('/manage/build/delete')}",
+    };
     $(function() {
-        layui.use(['laypage', 'layer'], function(){
-            var laypage = layui.laypage,
-                element = 'paging_0124',
-                _page = $('#'+element),
-                currPage = Site.getUrlParam('pageNumber'),
-                count = _page.attr('data-count'),
-                pages = _page.attr('data-pages');
-            currPage = currPage > 1 ? currPage : 1;
-            count = count ? count : 0;
-            _page.attr('data-page',currPage);
-            laypage({
-                curr:currPage,
-                cont: element,
-                pages: pages,
-                skip: true,
-                jump: function(obj,first){
-                    if(obj.curr != currPage) {
-                        var url = location.href;
-                        if(url.indexOf("?") == -1) {
-                            location.href = url+"?pageNumber="+obj.curr;
-                        }else {
-                            var page = Site.getUrlParam('pageNumber');
-                            if(page) {
-                                location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
-                            }else {
-                                location.href = url.replace("?","?pageNumber="+obj.curr+"&");
-                            }
-                        }
-                    }
-                    _page.prepend('<span style="display: inline-block;text-align:center;padding: 0 20px;color: #333;font-size: 14px;"> 数量: '+(count)+' </span>');
-                }
-            });
-        });
+        //分页
+        Site.loadPage();
+        //添加
+        Back.create('create',{content:url.create});
+
+        //编辑
+        Back.update('update',{content:url.update});
+
+        //删除
+        Back.delete('delete',url.delete);
     });
+    layui.use([ 'layer','laydate', 'form'], function() {});
 </script>
 
 </body></html>

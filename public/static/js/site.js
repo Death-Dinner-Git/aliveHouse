@@ -5,7 +5,19 @@
  * Sort as
  * 		Utils/ModuleFunction/Other Global InitFunction
  */
-var config = {
+var _width = document.documentElement.clientWidth;//获取页面可见宽度
+var _height = document.documentElement.clientHeight;//获取页面可见高度
+var jquery, element, layer, util, form, code, laydate, flow, layedit, upload, laypage;
+
+if (typeof Site === "undefined") {
+    Site = {};
+}
+
+/**
+ * 配置
+ * @type {{shade: [*], width: {max: string, small: string, min: string}, height: {max: string, small: string, min: string}, imageError: string, layuiBase: string, initComponents: [*], allComponents: [*]}}
+ */
+Site.config = {
     shade: ['0.372', '#000'],
     width: {
         max: '800px',
@@ -23,19 +35,12 @@ var config = {
     allComponents: ['jquery', 'element', 'layer', 'util', 'form', 'code', 'laydate', 'flow', 'layedit', 'upload', 'laypage']
 };
 
-var _width = document.documentElement.clientWidth;//获取页面可见宽度
-var _height = document.documentElement.clientHeight;//获取页面可见高度
-var jquery, element, layer, util, form, code, laydate, flow, layedit, upload, laypage;
-
-if (typeof Site === "undefined") {
-    Site = {};
-}
 /* 初始化操作 */
 Site.init = function () {
     //layui
     layui.config({
-        base: config.layuiBase
-    }).use(config.initComponents, function () {
+        base: Site.config.layuiBase
+    }).use(Site.config.initComponents, function () {
         window.jQuery = window.$ = layui.jquery;
         window.element = element = layui.element;
         window.layer = layer = layui.layer;
@@ -127,7 +132,7 @@ Site.getUtil = function (callback, component) {
             component = 'util';
         }
         layui.config({
-            base: config.layuiBase
+            base: Site.config.layuiBase
         }).use(component, function () {
             window.util = util = layui.util;
             if (typeof callback === 'function') {
@@ -145,7 +150,7 @@ Site.getCoder = function (component, callback) {
         }
     } else {
         layui.config({
-            base: config.layuiBase
+            base: Site.config.layuiBase
         }).use(component, function () {
             window.code = code = layui.code;
             if (typeof callback === 'function') {
@@ -163,7 +168,7 @@ Site.getLayEditor = function (component, callback) {
         }
     } else {
         layui.config({
-            base: config.layuiBase
+            base: Site.config.layuiBase
         }).use(component, function () {
             window.layedit = layedit = layui.layedit;
             if (typeof callback === 'function') {
@@ -181,7 +186,7 @@ Site.getUploader = function (component, callback) {
         }
     } else {
         layui.config({
-            base: config.layuiBase
+            base: Site.config.layuiBase
         }).use(component, function () {
             window.upload = upload = layui.upload;
             if (typeof callback === 'function') {
@@ -199,7 +204,7 @@ Site.getLayPager = function (callback) {
         }
     } else {
         layui.config({
-            base: config.layuiBase
+            base: Site.config.layuiBase
         }).use('laypage', function () {
             window.laypage = laypage = layui.laypage;
             if (typeof callback === 'function') {
@@ -302,11 +307,11 @@ Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, sc
     if (stop) {
         return;
     }
-    width = width || config.width.max;
-    height = height || config.height.max;
+    width = width || Site.config.width.max;
+    height = height || Site.config.height.max;
     maxmin = maxmin !== undefined && maxmin === true && parseInt(type) === 2;
     if (shade === true) {
-        shade = config.shade;
+        shade = Site.config.shade;
     }
     shade = shade || (maxmin !== undefined && maxmin === true && parseInt(type) === 2 ? 0 : 0.3);
     shadeClose = shadeClose || false;
@@ -381,8 +386,8 @@ Site.loadFrame = function (title, url, width, height, ele, btn) {
     }
     title = title || '标题';
     content = [url, 'no'];
-    width = width || config.width.max;
-    height = height || config.height.min;
+    width = width || Site.config.width.max;
+    height = height || Site.config.height.min;
     btn = btn === true ? ['全部关闭'] : undefined;
 
     //多窗口模式，层叠置顶
@@ -475,12 +480,12 @@ Site.confirm = function (url, msg, width, height, shade) {
     if (!myLayer) {
         myLayer = layer;
     }
-    width = width || config.width.min;
-    height = height || config.height.min;
+    width = width || Site.config.width.min;
+    height = height || Site.config.height.min;
     if (shade === true) {
-        shade = config.shade;
+        shade = Site.config.shade;
     }
-    shade = shade || config.shade;
+    shade = shade || Site.config.shade;
     return myLayer.open({
         area: [width, height],
         shade: shade,
@@ -504,12 +509,12 @@ Site.showDialog = function (title, msg, callBack, width, height, shade) {
     if (!myLayer) {
         myLayer = layer;
     }
-    width = width || config.width.min;
-    height = height || config.height.min;
+    width = width || Site.config.width.min;
+    height = height || Site.config.height.min;
     if (shade === true) {
-        shade = config.shade;
+        shade = Site.config.shade;
     }
-    shade = shade || config.shade;
+    shade = shade || Site.config.shade;
     return myLayer.open({
         title: title,
         area: [width, height],
@@ -541,12 +546,12 @@ Site.tab = function (options, parentWin, width, height, shade) {
 
     options = options || [{title: 'TAB1', content: '内容1'}, {title: 'TAB2', content: '内容2'}];
 
-    width = width || config.width.min;
-    height = height || config.height.min;
+    width = width || Site.config.width.min;
+    height = height || Site.config.height.min;
     if (shade === true) {
-        shade = config.shade;
+        shade = Site.config.shade;
     }
-    shade = shade || config.shade;
+    shade = shade || Site.config.shade;
     return myLayer.tab({
         area: [width, height],
         shade: shade,
@@ -599,7 +604,7 @@ Site.photos = function (options) {
         photos:undefined,
         url:undefined,
         parentWin:true,
-        shade: config.shade,
+        shade: Site.config.shade,
         tab:undefined,
         callback:null
     };
@@ -711,7 +716,7 @@ Site.uploader = function (options) {
     },options);
 
     layui.config({
-        base: config.layuiBase
+        base: Site.config.layuiBase
     }).use(['uploader'], function () {
         var upload = layui.uploader();
         upload.create(options)
@@ -851,41 +856,43 @@ Site.addPjax = function (selector, container, options) {
 };
 
 /*  */
-Site.loadPage = function (pageElement, total) {
+Site.loadPage = function (pageElement, showTotal) {
     Site.getLayPager(function () {
         var laypage = layui.laypage;
-        total = total || true;
+        showTotal = showTotal || false;
         pageElement = pageElement || 'paging';
-        var _page = $('#' + pageElement),
-            currPage = Site.getUrlParam('pageNumber'),
-            count = _page.attr('data-count'),
-            pages = _page.attr('data-pages');
-        currPage = currPage > 1 ? currPage : 1;
-        count = count ? count : 0;
-        _page.attr('data-page', currPage);
-        laypage({
-            curr: currPage,
-            cont: pageElement,
-            pages: pages,
-            skip: true,
-            jump: function (obj, first) {
-                if (obj.curr != currPage) {
-                    var url = location.href;
-                    if (url.indexOf("?") == -1) {
-                        location.href = url + "?pageNumber=" + obj.curr;
-                    } else {
-                        var page = Site.getUrlParam('pageNumber');
-                        if (page) {
-                            location.href = url.replace("pageNumber=" + page, "pageNumber=" + obj.curr);
-                        } else {
-                            location.href = url.replace("?", "?pageNumber=" + obj.curr + "&");
+        layui.use(['laypage', 'layer'], function(){
+            var laypage = layui.laypage,
+                _page = $('#'+pageElement),
+                currentPage = _page.attr('data-currentPage'),
+                total = _page.attr('data-total'),
+                rows = _page.attr('data-rows'),
+                pages = Math.ceil(total/rows);
+            laypage({
+                curr:currentPage,
+                cont: pageElement,
+                pages: pages,
+                skip: true,
+                hash:true,
+                jump: function(obj,first){
+                    if(obj.curr != currentPage) {
+                        var url = location.href;
+                        if(url.indexOf("?") == -1) {
+                            location.href = url+"?page="+obj.curr;
+                        }else {
+                            var page = Site.getUrlParam('page');
+                            if(page) {
+                                location.href = url.replace("page="+page,"page="+obj.curr);
+                            }else {
+                                location.href = url.replace("?","?page="+obj.curr+"&");
+                            }
                         }
                     }
+                    if(showTotal && total>0){
+                        _page.prepend('<span class="page-total"> 数量: '+(total)+' </span>');
+                    }
                 }
-                if (total) {
-                    _page.prepend('<span class="dinner-page-total"> 数量: ' + (count) + ' </span>');
-                }
-            }
+            });
         });
     });
 };
@@ -1003,7 +1010,7 @@ Site.lazyImages = function (options) {
                 height: $this.height(),
                 background: '#f4f4f4'
             });
-            $this.attr('src', config.imageError).css({
+            $this.attr('src', Site.config.imageError).css({
                 position: 'absolute',
                 width: _width,
                 height: _height,

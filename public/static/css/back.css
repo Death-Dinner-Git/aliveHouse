@@ -802,6 +802,15 @@ body .layui-footer .layui-main a {
 }
 
 /* =======================================
+		右侧主体布局
+================================== */
+
+.layui-layout-back-main{
+    padding:0 15px 15px 15px;
+}
+
+
+/* =======================================
 		collapse
 ================================== */
 
@@ -833,150 +842,6 @@ body .layui-footer .layui-main a {
 .layui-form-label.long{
     width: 140px;
 }
-
-/* =======================================
-		table
-================================== */
-
-.layui-table[lay-even] tr:nth-child(even) {
-    background-color: #f8f8f8;
-}
-
-.layui-table[lay-even] tr:nth-child(odd) {
-    /*background-color: #d4d4d4;*/
-}
-
-.layui-table tr:hover {
-    background-color: #d4d4d4 !important;
-}
-
-.dinner-page-main {
-    display: flex;
-    overflow: hidden
-}
-
-.dinner-page-main .dinner-page-container {
-    margin: auto;
-    min-width: 500px;
-    min-height: 55px;
-}
-
-.dinner-page-main .dinner-page-container .dinner-page-content .dinner-page-total {
-    display: inline-block;
-    text-align: center;
-    padding: 0 20px;
-    color: #333;
-    font-size: 14px;
-}
-
-.layui-laypage .layui-laypage-total {
-    height: 28px;
-    line-height: 28px;
-    margin-left: 1px;
-    border: none;
-    padding: 0 0 0 15px;
-    font-weight: 400;
-}
-
-.layui-laypage .layui-laypage-total input, .layui-laypage .layui-laypage-total button {
-    height: 30px;
-    line-height: 30px;
-    border: 1px solid #009688;
-    border-radius: 2px;
-    vertical-align: top;
-    -webkit-box-sizing: border-box !important;
-    -moz-box-sizing: border-box !important;
-    box-sizing: border-box !important;
-}
-
-.layui-laypage .layui-laypage-total input {
-    width: 80px;
-    margin: 0 5px;
-    text-align: center;
-    background-color: #f4f4f4;
-}
-
-.layui-laypage .layui-laypage-total button {
-    height: 30px;
-    line-height: 30px;
-    border: none;
-    border-radius: 2px;
-    vertical-align: top;
-    background-color: #009688;
-    color: #FFFFFF;
-    -webkit-box-sizing: border-box !important;
-    -moz-box-sizing: border-box !important;
-    box-sizing: border-box !important;
-}
-
-
-/* =======================================
-		layer
-================================== */
-
-.layui-layer-dialog[type="dialog"] {
-
-}
-
-.layui-layer-dialog[type="dialog"] .layui-layer-title {
-    padding: 0 80px;
-    text-align: center;
-    font-size: 16px;
-}
-
-.layui-layer-dialog[type="dialog"] .layui-layer-content {
-    text-align: center;
-    font-size: 16px;
-    line-height: 30px;
-}
-
-.layui-layer-dialog[type="dialog"] .layui-layer-btn {
-    text-align: center;
-    font-size: 16px;
-}
-
-.layui-layer-dialog[type="dialog"] .layui-layer-btn .layui-layer-btn0 {
-    border-color: #1fb5ac;
-    background-color: #1fb5ac;
-    color: #fff;
-    font-size: 16px;
-}
-
-a.layui-layer-refrash {
-    background-image: url("/static/images/refresh.png");
-    background-size: 100%;
-    opacity: 0.75;
-}
-
-a.layui-layer-refrash:hover {
-    opacity: 1;
-}
-
-/* =======================================
-	 内联
-================================== */
-
-.layui-table-cell{
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.layui-text-align-center{
-    text-align: center;
-    vertical-align: middle;
-}
-
-/* =======================================
-	 居中
-================================== */
-
-.layui-table-cell{
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-}
-
 
 /* =======================================
 	 forms	组件
@@ -1046,6 +911,355 @@ a.layui-layer-refrash:hover {
     vertical-align: middle;
 }
 
+
+/* =======================================
+	 search 列表搜索 表单
+================================== */
+
+.layui-form-search > .layui-form-item{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.layui-form-search > .layui-form-item .search{
+    width: 400px;
+}
+
+/* 适配多设备 */
+@media screen and (max-width: 1200px) {
+    .layui-form-search > .layui-form-item .search{
+        width: 270px;
+    }
+
+}
+
+/* 适配多设备 */
+@media screen and (max-width: 1300px) {
+    .layui-form-search > .layui-form-item .search{
+        width: 370px;
+    }
+}
+
+/* 适配多设备 */
+@media screen and (max-width: 1400px) {
+    .layui-form-search > .layui-form-item .search{
+        width: 400px;
+    }
+}
+
+
+.layui-form-search > .layui-form-item > *{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.layui-elem-field .layui-form-search > .layui-form-item{
+    margin-bottom: 15px !important;
+}
+
+.layui-form-search .layui-collapse{
+    border:none;
+}
+
+.layui-form-search .layui-collapse .layui-colla-content{
+    border:none;
+    padding: 0;
+}
+
+/* =======================================
+		table
+================================== */
+
+.layui-table-action{
+
+}
+
+.layui-table-action > .layui-form-item{
+    overflow: hidden;
+    margin: 5px 0;
+}
+
+.layui-table-action > .layui-form-item > .layui-inline{
+    margin: 0;
+}
+
+.layui-table-action > .layui-form-item > .layui-inline:nth-child(1){
+    float: left;
+}
+
+.layui-table-action > .layui-form-item > .layui-inline:nth-child(2){
+    float: right;
+}
+
+.layui-table[lay-even] tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.layui-table[lay-even] tr:nth-child(odd) {
+    /*background-color: #d4d4d4;*/
+}
+
+.layui-table tr:hover {
+    background-color: #d4d4d4 !important;
+}
+
+.dinner-page-main {
+    display: flex;
+    overflow: hidden
+}
+
+.dinner-page-main .dinner-page-container {
+    margin: auto;
+    min-width: 500px;
+    min-height: 55px;
+}
+
+.layui-laypage .layui-laypage-total {
+    height: 28px;
+    line-height: 28px;
+    margin-left: 1px;
+    border: none;
+    padding: 0 0 0 15px;
+    font-weight: 400;
+}
+
+.layui-laypage .layui-laypage-total input, .layui-laypage .layui-laypage-total button {
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #009688;
+    border-radius: 2px;
+    vertical-align: top;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+}
+
+.layui-laypage .layui-laypage-total input {
+    width: 80px;
+    margin: 0 5px;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+.layui-laypage .layui-laypage-total button {
+    height: 30px;
+    line-height: 30px;
+    border: none;
+    border-radius: 2px;
+    vertical-align: top;
+    background-color: #009688;
+    color: #FFFFFF;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+}
+
+
+/* =======================================
+		分页
+================================== */
+
+/*
+layui 的分页样式
+ */
+.paging{
+    text-align: center;
+}
+.paging .page-total{
+    display: inline-block;
+    text-align: center;
+    padding: 0 15px;
+    margin-right: 15px;
+    color: #555;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 2px 0 0 2px;
+    border: 1px solid #C9C9C9;
+}
+
+
+.page {
+    text-align: center;
+}
+
+/*
+tp 的简单分页样式
+ */
+
+.pager {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0;
+    font-size: 0;
+    box-sizing: content-box!important;
+}
+.pager > li{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    border: 1px solid #e2e2e2;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 0 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+}
+
+.pager li span{
+    vertical-align: middle;
+    text-align: center;
+}
+
+.pager li a{
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.pager .disabled {
+    cursor: not-allowed;
+}
+
+.pager .active {
+    background-color: #009688;
+    color: #fff;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 2px;
+    padding: 1px 15px;
+}
+
+/*
+tp 的全部分页样式
+ */
+
+.pagination {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0;
+    font-size: 0;
+    box-sizing: content-box!important;
+}
+.pagination > li{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    border: 1px solid #e2e2e2;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 0 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+}
+
+.pagination li a{
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.pagination .disabled {
+    cursor: not-allowed;
+}
+
+.pagination .active {
+    background-color: #009688;
+    color: #fff;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 2px;
+    padding: 1px 15px;
+}
+
+/* =======================================
+		layer
+================================== */
+
+.layui-layer-dialog[type="dialog"] {
+
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-title {
+    padding: 0 80px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-content {
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-btn {
+    text-align: center;
+    font-size: 16px;
+}
+
+.layui-layer-dialog[type="dialog"] .layui-layer-btn .layui-layer-btn0 {
+    border-color: #1fb5ac;
+    background-color: #1fb5ac;
+    color: #fff;
+    font-size: 16px;
+}
+
+a.layui-layer-refrash {
+    background-image: url("/static/images/refresh.png");
+    background-size: 100%;
+    opacity: 0.75;
+}
+
+a.layui-layer-refrash:hover {
+    opacity: 1;
+}
+
+/* =======================================
+	 按钮
+================================== */
+
+.layui-btn.btn-more {
+    color: #191b2e;
+    background-color: rgb(222, 222, 222);
+    cursor: pointer;
+    padding: 0px 15px 0px 35px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(226, 226, 226);
+    border-image: initial;
+}
+
+.layui-btn.btn-more:hover{
+    color: #191b2e;
+}
+
+/* =======================================
+	 内联
+================================== */
+
+.layui-table-cell{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.layui-text-align-center{
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* =======================================
+	 居中
+================================== */
+
+.layui-table-cell{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
 
 /* =======================================
 	 uploader	组件
@@ -1257,6 +1471,20 @@ a.layui-layer-refrash:hover {
 .layui-table.text-center th, .layui-table.text-center td {
     text-align: center;
     vertical-align: middle;
+}
+
+table.layui-table .action{
+    text-align: center;
+    padding: 5px 10px;
+}
+
+table.layui-table .action > *{
+    display: inline-block;
+    margin: 4px 5px;
+}
+
+table.layui-table td.action a button i{
+    padding-right: 4px;
 }
 
 /* =======================================

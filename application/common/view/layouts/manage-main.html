@@ -32,7 +32,7 @@
 
     <div class="container"  id="container">
 
-        <div class="layui-layout layui-layout-back" id="layui_layout" style="padding: 15px;">
+        <div class="layui-layout layui-layout-back-main" id="layui_layout" style="padding:0 15px 15px 15px;">
 
             <!-- 右侧主体内容开启 -->
             {__CONTENT__}
@@ -46,6 +46,7 @@
 <!-- 加载js文件-->
 <!--  全局 -->
 <script type="text/javascript" src="__JS__/site.js"></script>
+<script type="text/javascript" src="__JS__/back.js"></script>
 <script>
     layui.use(['layer', 'util'], function() {
         var $ = layui.jquery,

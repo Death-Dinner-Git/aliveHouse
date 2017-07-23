@@ -5,7 +5,7 @@ if (!defined('THINK_PATH')) exit();
 
 //定义回调URL通用的URL
 
-define('URL_CALLBACK','/home/sdk/login?type=');
+$callback = '/home/sdk/login?type=';
 
 return [
 
@@ -16,7 +16,7 @@ return [
         // 应用注册成功后分配的KEY
         'app_secret' => '',
         // 定义回调URL通用的URL
-        'callback'   => URL_CALLBACK . 'sina',
+        'callback'   => $callback . 'sina',
     ],
 
     // 腾讯QQ登录配置
@@ -26,7 +26,7 @@ return [
         // 应用注册成功后分配的KEY
         'app_secret' => '',
         // 定义回调URL通用的URL
-        'callback'   => URL_CALLBACK . 'qq',
+        'callback'   => $callback . 'qq',
     ],
 
     // 微博配置
@@ -36,7 +36,7 @@ return [
         // 应用注册成功后分配的KEY
         'app_secret' => '',
         // 定义回调URL通用的URL
-        'callback'   => URL_CALLBACK . 'wechat',
+        'callback'   => $callback . 'wechat',
     ],
 
 ];
