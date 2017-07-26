@@ -39,19 +39,39 @@ class AjaxController extends ManageController
     public function uploaderAction()
     {
         $images = [];
-        foreach ($_FILES as $key=>$value){
-            //是否是多传,否则是单传
-            if(is_array($value['name'])){
-                foreach ($value['name'] as $index => $item) {
-                    $retItem = ['src'=>'/static/uploads/theme/new-house-max-bg.jpg','icon'=>'/static/images/upload-img.png','name'=>$value['name'][$index]];
-                    $images[] = $retItem;
-                }
-            }else{
-                $retItem = ['src'=>'/static/uploads/theme/new-house-max-bg.jpg','icon'=>'/static/images/upload-img.png','name'=>$value['name']];
+        $config = [];
+        if (isset($_REQUEST['file'])){
+            $config['fileField'] = $_REQUEST['file'];
+        }
+        $res = \app\common\components\Uploader::action($config);
+
+        //是否是多传,否则是单传
+        if (isset($res['code'])){
+            if ($res['code'] == '1'){
+                $retItem = [
+                    'src'=>$res['url'],
+                    'icon'=>$res['url_icon'],
+                    'name'=>$res['tmp_name']
+                ];
                 $images[] = $retItem;
             }
+            $ret['code'] = $res['code'];
+            $ret['msg'] = $res['msg'];
+        }else{
+            foreach ($res as $key=>$value){
+                if ($value['code'] == '1'){
+                    $retItem = [
+                        'src'=>$value['url'],
+                        'icon'=>$value['url_icon'],
+                        'name'=>$value['tmp_name']
+                    ];
+                    $images[] = $retItem;
+                }
+                $ret['code'] = $value['code'];
+                $ret['msg'] = $value['msg'];
+            }
         }
-        $ret = ['code'=>'1','msg'=>'成功','images'=>$images,'file'=>$_FILES];
+        $ret['images'] = $images;
         return json($ret);
     }
 

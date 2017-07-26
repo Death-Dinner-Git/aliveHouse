@@ -1631,12 +1631,14 @@ Site.getXhr = function () {
 };
 
 /**
- * 获取后台iframe展示的页面
+ * 获取后台iframe展示的页面 , 或只有一个页面的刷新
  * @return {*}
  */
 Site.getTab = function () {
     if (typeof top.window.getActive === 'function'){
         return top.window.getActive();
+    }else {
+        return top.window;
     }
 };
 

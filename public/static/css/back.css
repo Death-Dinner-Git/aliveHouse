@@ -648,7 +648,7 @@
 }
 
 #dinner-body .layui-tab {
-    margin: 0 0 10px 0 !important;
+    margin: 0 !important;
 }
 
 #dinner-body .layui-tab-content {
@@ -811,12 +811,84 @@ body .layui-footer .layui-main a {
 
 
 /* =======================================
+	 element
+================================== */
+.layui-form-select dl dd.layui-this {
+    background-color: #0DBD9F;
+    color: #fff;
+}
+
+/* =======================================
+	 文本
+================================== */
+
+.layui-text{
+    vertical-align: middle;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    color: #555;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.layui-text.layui-title{
+    height: 16px;
+    line-height: 16px;
+    padding: 0 6px;
+    color: #555;
+    border-radius: 1px;
+}
+
+.layui-text.layui-label{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 5px;
+    color: #555;
+}
+
+.layui-text.layui-primary{
+    background-color: #009688;
+    color: #fff;
+}
+
+.layui-text.layui-danger{
+    background-color: #FF5722;
+    color: #fff;
+}
+
+/*
+颜色
+*/
+
+.layui-color-default {
+    color: #555;
+}
+
+.layui-color-primary {
+    color: #009688;
+}
+
+.layui-color-danger{
+    color: #FF5722;
+}
+
+/* =======================================
 		collapse
 ================================== */
 
 /* =======================================
-		form
+		form 或  forms	组件
 ================================== */
+/* 复选框 */
 .checkbox-left .layui-form-checkbox {
     padding-left: 30px !important;
     padding-right: 0 !important;
@@ -825,6 +897,48 @@ body .layui-footer .layui-main a {
 .checkbox-left .layui-form-checkbox i {
     left: 0 !important;
 }
+
+.checkbox-primary .layui-form-checkbox:hover i {
+    color: #0DBD9F;
+}
+
+.checkbox-primary .layui-form-checked, .checkbox-primary .layui-form-checked:hover {
+    border-color: #0DBD9F;
+}
+
+.checkbox-primary .layui-form-checked span, .checkbox-primary .layui-form-checked:hover span {
+    background-color: #0DBD9F;
+}
+
+.checkbox-primary .layui-form-checked i, .checkbox-primary .layui-form-checked:hover i {
+    color: #0DBD9F;
+}
+
+.checkbox-primary .layui-form-checkbox[lay-skin="primary"]:hover i {
+    border-color: #0DBD9F;
+    color: #0DBD9F;
+}
+
+.checkbox-primary .layui-form-checked[lay-skin="primary"] span, .checkbox-primary .layui-form-checked[lay-skin="primary"]:hover span {
+    background-color: #FFF;
+}
+
+.checkbox-primary .layui-form-checked[lay-skin="primary"] i, .checkbox-primary .layui-form-checked[lay-skin="primary"]:hover i {
+    border-color: #0DBD9F;
+    background-color: #0DBD9F;
+    color: #fff;
+}
+
+.checkbox-primary .layui-form-onswitch {
+    border-color: #0DBD9F;
+    background-color: #0DBD9F;
+}
+
+/* 单选框 */
+.layui-form-radioed i, .layui-form-radio i:hover {
+    color: #0DBD9F;
+}
+
 
 .layui-form-select dl {
     padding: 0 !important;
@@ -842,10 +956,6 @@ body .layui-footer .layui-main a {
 .layui-form-label.long{
     width: 140px;
 }
-
-/* =======================================
-	 forms	组件
-================================== */
 
 .forms .layui-form-item{
     font-size: 14px;
@@ -909,6 +1019,25 @@ body .layui-footer .layui-main a {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+}
+
+.forms .layui-inline.extra .layui-input,.forms .layui-inline.extra-primary .layui-input{
+    height: 30px;
+    line-height: 30px;
+}
+
+.forms .layui-inline.extra{
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.forms .layui-inline.extra-primary{
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.forms .layui-inline.layui-width{
+    width: 175px;
 }
 
 

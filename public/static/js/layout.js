@@ -46,7 +46,7 @@ layui.config({
     //iframe自适应
     $(window).on('resize', function() {
         var $content = $('#dinner-tab .layui-tab-content');
-        $content.height($(this).height() - 163);
+        $content.height($(this).height() - 153);
         $content.find('iframe').each(function() {
             $(this).height($content.height());
         });

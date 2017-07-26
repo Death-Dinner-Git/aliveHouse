@@ -21,60 +21,7 @@ class BaseController extends Controller
     protected function _initialize()
     {
         config('default_module',request()->module());
-
-//        // 登录检测,未登录，跳转到登录
-//        if (!$this->isGuest()) {
-//            //还没登录跳转到登录页面
-//            if ( $this->getCurrentUrl() !== strtolower($this->getLoginUrl())){
-//                $this->goBack($this->getLoginUrl());
-//            }
-//        }
-
-        // 获取当前访问地址
-        $currentUrl = $this->getCurrentUrl();
-
-        //兼容iframe
-        $url = $this->getUrl();
-        // 权限检测，首页不需要权限
-        if('manage/index/index' === strtolower($currentUrl) || $url === '/'){
-            if ($url === '/'){
-                $url = $url.$this->getHomeUrl();
-            }
-        }else{
-            if (false) {
-                $this->error('权限不足！', url('manage/Index/index'));
-            }
-        }
-
-        //模板转换
-        if (!isset($_REQUEST['iframe'])){
-            if (stristr($url,'?') !== false){
-                $path = explode('?',$url);
-                if (isset($path[1])){
-                    $params = explode('&',$path[1]);
-                    foreach ($params as $key => $value){
-                        $pattern = '/^iframe=(.*?)$/i';
-                        if (preg_match($pattern,$value)){
-                            unset($params[$key]);
-                            break;
-                        }
-                    }
-                    $path[1] = 'iframe=true'.implode('&',$params);
-                }
-                $url = implode('?',$path);
-            }else{
-                $suffix = config('template.view_suffix');
-                if (!empty($suffix) && stristr($url,$suffix) !== false){
-                    $url = $url.'?iframe=true';
-                }else{
-                    $url = $url.$suffix.'?iframe=true';
-                }
-            }
-            $this->assign('DEFAULT_URL',$url);
-            $this->view->engine->layout('common@layouts/manage-index');
-        }else{
-            $this->view->engine->layout('common@layouts/manage-main');
-        }
+        $this->assign('URL',$this->getUrl());
     }
 
     /**

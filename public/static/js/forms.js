@@ -367,7 +367,7 @@ layui.define('layer', function (exports) {
                             var $this = $(item);
                             if (!$this.checked || (!$this.is('input[type="checkbox"]') && $.trim(value) === '')) {
                                 var group = $this.attr('lay-group');
-                                var message = $this.attr('lay-error') || '至少选择一个 ' + $this.attr('name');
+                                var message = $this.attr('lay-error') || $this.closest('[lay-error]').attr('lay-error') || '至少选择一个 ' + $this.attr('name');
                                 var pass = false;
                                 //检查checkbox radio类型
                                 var checked = $('input[lay-group="' + group + '"]:checked');
@@ -376,7 +376,7 @@ layui.define('layer', function (exports) {
                                 } else {
                                     //检查其他类型
                                     $('input[lay-group="' + group + '"][type!="checkbox"][type!="radio"]').each(function () {
-                                        if ($.trim($this.val()) !== '') {
+                                        if ($.trim($(this).val()) !== '') {
                                             pass = true;
                                         }
                                     });
@@ -391,7 +391,7 @@ layui.define('layer', function (exports) {
                             var $this = $(item);
                             if (!$this.checked) {
                                 var group = $this.attr('lay-group');
-                                var message = $this.attr('lay-error') || '至少选择一个 ' + $this.attr('name');
+                                var message = $this.attr('lay-error') || $this.closest('[lay-error]').attr('lay-error') || '至少选择一个 ' + $this.attr('name');
                                 var checked = $('input[lay-group="' + group + '"]:checked');
                                 if (checked.length <= 0) {
                                     return message;
@@ -400,10 +400,10 @@ layui.define('layer', function (exports) {
                         },
                         compare: function (value, item) {
                             var $this = $(item);
-                            var check = $this.attr('lay-check');
+                            var check = $this.attr('lay-compare');
                             if (check){
                                 var target = $('[lay-filter="'+check+'"]') ||　$('[name="'+check+'"]');
-                                var message = $this.attr('lay-error') || '至少选择一个 '+$this.attr('name');
+                                var message = $this.attr('lay-error') || '与 ('+$this.attr('name') + ') 的值不一致';
                                 if(target.length >0 ){
                                     if (value != target.val()){
                                         return message;

@@ -53,6 +53,18 @@ Back.tableBase = function (){
             form = layui.form(),
             layer = top.layui.layer ? top.layui.layer : layui.layer ;
 
+        $(document).off('click', '[lay-filter="date"]').on('click', '[lay-filter="date"]', function () {
+            var that = $(this);
+            var date = {
+                elem: this,
+                istime: true,
+                format: that.attr('lay-format') || 'YYYY-MM-DD',
+                choose: function (dates) { //选择好日期的回调
+                }
+            };
+            laydate(date);
+        });
+
         $(document).off('click', '[lay-filter="startDate"]').on('click', '[lay-filter="startDate"]', function () {
             var that = this;
             var date = {
@@ -128,7 +140,7 @@ Back.create = function (selector,options,url){
         type: 2,
         title: '添加',
         shade: 0.3,
-        area: ['1000px', '62.8%'],
+        area: ['1050px', '62.8%'],
         content: undefined,
     };
     config = $.extend(config,options);
@@ -160,7 +172,7 @@ Back.update = function (selector,options,url){
         type: 2,
         title: '编辑',
         shade: 0.3,
-        area: ['1000px', '62.8%'],
+        area: ['1050px', '62.8%'],
         content: undefined,
     };
     config = $.extend(config,options);
@@ -264,6 +276,77 @@ Back.delete = function (selector,url,options){
             return;
         }
         layer.open(config);
+    });
+};
+
+/**
+ * 提交表单
+ * @param _options
+ */
+Back.submit = function (_options){
+    var options = $.extend(
+        {
+            form:'form[action]',  // form 提交 对应的选择器
+            url:undefined,  // form 提交地址
+            submit:'submit',  // 提交选择器
+            success:undefined, // 提交成功执行回调,参数是返回数据
+            isClose:true, // 提交成功后关闭弹出层
+            isReload:true, // 提交成功后刷新当前窗口
+            verify:{} // 自定义验证规则
+        },_options);
+    layui.use(['layer','forms'],function () {
+        var layer = top.layui.layer || layui.layer;
+
+        //绑定form提交
+        var forms = layui.forms().create({ELEM:options.form});
+
+        //自定义验证规则
+        forms.verify( options.verify);
+
+        //监听提交
+        forms.on('submit('+options.submit+')', function (data) {
+            var param = $(data.form).serialize(),$form = $(data.form),url = options.url || $form.attr('action'),index;
+            if (url === undefined || url === ''){
+                //没有提交地址 中断
+                url = window.location.href;
+            }
+
+            $.ajax({
+                url:url,
+                type:'POST',
+                data:param,
+                beforeSend:function () {
+                    index = layer.load(1, {shade:0.1});
+                },
+                success:function (data) {
+                    layer.close(index);
+                    if (data.msg !== undefined){
+                        layer.msg(data.msg);
+                    }
+                    if (data.code == '1'){
+                        if(typeof options.success === 'function'){
+                            options.success(data);
+                        }
+
+                        if(options.isClose){
+                            layer.close(layer.getFrameIndex(window.name));
+                        }
+
+                        if(options.isReload){
+                            Site.reLoad();
+                        }
+
+                    }
+                },
+                error:function (data) {
+                    layer.close(index);
+                    layer.msg('Most people can not see this message, please share with us! <br> 【God is a girl, please treat her as a lover】');
+                }
+            });
+            //必须中断
+            return false;
+        });
+
     });
 };
 

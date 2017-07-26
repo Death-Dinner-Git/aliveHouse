@@ -54,6 +54,8 @@ layui.define('layer', function (exports) {
                 elem: '.layui-upload-file',
                 //指定元素的选择器，默认直接查找class为layui-upload-show的元素，如设置此项，返回json需要有src字典值 表示图片上传成功后的地址
                 showElem: '.layui-upload-show',
+                //指定每次成功更改图片后，把当前图片真实地址传递到指定的input表单;如有数据，以‘|’分割，如设置此项，返回json需要有src字典值 表示图片上传成功后的地址
+                targetElem: undefined,
                 //是否使用 gallery 展示
                 isShow: true,
                 //上传文件的接口
@@ -62,7 +64,7 @@ layui.define('layer', function (exports) {
                 method: 'post',
                 //执行上传前的回调
                 before: undefined,
-                //上传成功后的回调
+                //上传成功后的回调,参数有当前上传的数据，res,出发表单input，和全部图片cache
                 success: undefined,
                 //设定上传的文件类型，也可以直接在input设置lay-type=""来取代；图片类型images。默认，不用设定;普通文件类型 file ;视频文件类型 video; 音频文件类型 audio
                 type: undefined,
@@ -235,6 +237,7 @@ layui.define('layer', function (exports) {
         if(typeof res === "object"){
             var item = $(input);
             var index = item.attr(uploaderAttr);
+            var value = [];
             if(res.length >0 ){
                 var max = item.attr('lay-max') || that.options.max;
                 if (!that.options.isMulti){
@@ -248,6 +251,7 @@ layui.define('layer', function (exports) {
                 item.closest('.layui-uploader-container'+that.index).find('.'+elemShowContainer).html('');
                 that.imageId = 0;
                 for (var k  in res){
+                    value.push(res[k].src);
                     var gallery = '<div class="layui-upload-show-item" title="预览图片" style="position:relative;display:inline-block;height:100px;width: 100px;margin:5px;">' +
                         '<img layer-pid="'+(that.imageId++)+'" layer-src="'+res[k].src+'" src="'+res[k].icon+'" alt="'+res[k].name+'" style="height:100px;width: 100px;">' +
                         '<div class="layui-upload-show-item-icon" title="删除图片" style="position:absolute;display:block;bottom: 0;width: 100%;height:0;overflow:hidden;text-align: center;background-color: rgba(0,0,0,0.372);color: #fff;cursor: pointer;line-height: 17px;">' +
@@ -270,7 +274,8 @@ layui.define('layer', function (exports) {
                     that.delete(_imgIndex,input);
                     e.stopPropagation();
                 });
-                top.layer.photos({
+
+                layer.photos({
                     photos: '.layui-uploader-container'+ that.index + ' ' + '.'+elemShowContainer,
                     parent: document,
                     tab: function (pic, layero) {
@@ -284,6 +289,9 @@ layui.define('layer', function (exports) {
             }else {
                 item.closest('.layui-uploader-container'+that.index).find('.'+elemShowContainer).hide();
                 item.closest('.layui-upload-button').show();
+            }
+            if(that.options.targetElem){
+                $(that.options.targetElem).val(value.join('|'));
             }
         }
         return that;
@@ -506,12 +514,14 @@ layui.define('layer', function (exports) {
                 if (res.images !== undefined) {
                     if(typeof res.images === "object"){
                         for(var k in res.images){
-                            that.cache[index].push(res.images[k]);
+                            if (res.images[k].src !== undefined){
+                                that.cache[index].push(res.images[k]);
+                            }
                         }
                     }
                 }
-                that.show(that.cache[index],input);
-                typeof options.success === 'function' && options.success(res, input);
+                that.show(that.cache[index] || [],input);
+                typeof options.success === 'function' && options.success(res, input,that.cache[index] || res);
             }
         };
 
@@ -695,12 +705,14 @@ layui.define('layer', function (exports) {
                 if (res.images !== undefined) {
                     if(typeof res.images === "object"){
                         for(var k in res.images){
-                            that.cache[index].push(res.images[k]);
+                            if (res.images[k].src !== undefined){
+                                that.cache[index].push(res.images[k]);
+                            }
                         }
                     }
                 }
-                that.show(that.cache[index],input);
-                typeof options.success === 'function' && options.success(res, input);
+                that.show(that.cache[index] || [],input);
+                typeof options.success === 'function' && options.success(res, input,that.cache[index] || res);
             }
         }, 30);
 

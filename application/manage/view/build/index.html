@@ -103,6 +103,9 @@
             <div class="layui-inline">
                 <label class="layui-btn layui-btn-danger" lay-filter="delete">删除</label>
             </div>
+            <div class="layui-inline">
+                <label class="layui-text layui-label"> (共 <em class="layui-color-danger">{$list->total()}</em> 条信息)</label>
+            </div>
         </div>
         <div class="layui-inline" style="margin-right: 15px;">
             <div class="layui-inline">
@@ -115,7 +118,7 @@
 <table class="layui-table layui-form" lay-even="" lay-skin="row">
     <thead>
     <tr>
-        <th><input type="checkbox" lay-filter="selectAll" lay-group="tableItem" lay-skin="primary" /></th>
+        <th style="width: 20px;"><input type="checkbox" lay-filter="selectAll" lay-group="tableItem" lay-skin="primary" /></th>
         <th>序号</th>
         <th>楼盘名称</th>
         <th>所属城市</th>
@@ -124,27 +127,23 @@
     </tr>
     </thead>
     <tbody>
-    {volist name="list" id="model" key="key" empty="<tr class='empty'><td colspan='5' style='text-align: center;'> 没有数据 </td> </tr>"}
+    {volist name="list" id="model" key="key" empty="<tr class='empty'><td colspan='20' style='text-align: center;'> 没有数据 </td> </tr>"}
     <tr data-key="{$model.id}">
-        <td style="width: 30px;"><input type="checkbox" name="id[{$key}]" value="{$model.id}" lay-group="tableItem" lay-skin="primary"/></td>
+        <td style="width: 20px;"><input type="checkbox" name="id[{$key}]" value="{$model.id}" lay-group="tableItem" lay-skin="primary"/></td>
         <td style="width: 45px;text-align: center;">
             {$key+(($list->currentPage()-1) * ($list->listRows()))}
         </td>
-        <td style="width: 100px;">{$model.name}</td>
+        <td style="width: 100px;">{$model.title}</td>
         <td>
             {if condition="isset($cityLists[$model.city_id])"}
             {$cityLists[$model.city_id]}
             {else} 无效
             {/if}
         </td>
-        <td>{$model.address}</td>
+        <td>{$model.getBuildingDetails.address}</td>
         <td style="width: 150px;" class="action">
-            <label class="layui-btn layui-btn-mini" lay-filter="update">
-                <i class="fa fa-pencil"></i>编辑
-            </label>
-            <label class="layui-btn layui-btn-mini layui-btn-danger" lay-filter="delete">
-                <i class="fa fa-remove"></i>删除
-            </label>
+            <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>
+            <label class="layui-btn layui-btn-mini layui-btn-danger" lay-filter="delete">删除</label>
         </td>
     </tr>
     {/volist}
@@ -164,10 +163,10 @@
         //分页
         Site.loadPage();
         //添加
-        Back.create('create',{content:url.create});
+        Back.create('create',{content:url.create,area:['1050px','88%']});
 
         //编辑
-        Back.update('update',{content:url.update});
+        Back.update('update',{content:url.update,area:['1050px','88%']});
 
         //删除
         Back.delete('delete',url.delete);

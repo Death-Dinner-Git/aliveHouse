@@ -63,6 +63,50 @@ class BuildController extends ManageController
         $model = new BuildingBase();
         $lists = City::getCityList();
         if ($this->getRequest()->isPost()){
+            $param = <<<JS
+FAR
+adTitle
+address
+areaMax
+areaMin
+builders
+buildingArea
+buildingNum
+buildingTypeExtra
+city_id
+contacter
+contacterTel
+content
+county_id
+decorationExtra
+developer
+featureExtra
+houseArea
+houseNum
+investor
+joined_at
+licence
+logo
+parkingNum
+poolRate
+priceAvg
+priceMax
+priceMin
+priceSum
+propertyFee
+propertyName
+reason
+saleAddress
+saleTel
+started_at
+structure
+title
+titlePinyin
+url
+wall
+JS;
+
+            $this->error('测试', 'create',$_REQUEST,1);
             $data = (isset($_POST['Building']) ? $_POST['Building'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
@@ -150,6 +194,44 @@ class BuildController extends ManageController
         if (empty($id)){
             $ret = ['status'=>1,'info'=>'删除成功'];
         }
+        return json($ret);
+    }
+
+    public function uploadAction(){
+        $images = [];
+        $config = [];
+        if (isset($_REQUEST['file'])){
+            $config['fileField'] = $_REQUEST['file'];
+        }
+        $res = \app\common\components\Uploader::action($config);
+
+        //是否是多传,否则是单传
+        if (isset($res['code'])){
+            if ($res['code'] == '1'){
+                $retItem = [
+                    'src'=>$res['url'],
+                    'icon'=>$res['url_icon'],
+                    'name'=>$res['tmp_name']
+                ];
+                $images[] = $retItem;
+            }
+            $ret['code'] = $res['code'];
+            $ret['msg'] = $res['msg'];
+        }else{
+            foreach ($res as $key=>$value){
+                if ($value['code'] == '1'){
+                    $retItem = [
+                        'src'=>$value['url'],
+                        'icon'=>$value['url_icon'],
+                        'name'=>$value['tmp_name']
+                    ];
+                    $images[] = $retItem;
+                }
+                $ret['code'] = $value['code'];
+                $ret['msg'] = $value['msg'];
+            }
+        }
+        $ret['images'] = $images;
         return json($ret);
     }
 

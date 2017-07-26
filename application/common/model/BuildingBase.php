@@ -41,7 +41,7 @@ class BuildingBase extends Model
         'is_open',
         'type',
         'city_id',
-        'name',
+        'title',
         'address',
         'created_at',
         'updated_at',
@@ -99,11 +99,11 @@ class BuildingBase extends Model
     }
 
     /**
-     * @return \think\model\relation\HasMany
+     * @return \think\model\relation\hasOne
      */
     public function getBuildingDetails()
     {
-        return $this->hasMany(ucfirst(BuildingDetail::tableNameSuffix()), 'id','building_base_id');
+        return $this->hasOne(ucfirst(BuildingDetail::tableNameSuffix()), 'building_base_id','id');
     }
 
     /**
