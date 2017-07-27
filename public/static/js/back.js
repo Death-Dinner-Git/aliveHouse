@@ -16,6 +16,7 @@ if (typeof Back === "undefined") {
  */
 Back.config = {
     layuiBase: '/static/js/',
+    getCity:'/manage/ajax/getCity',
 };
 
 /* 初始化操作 */

@@ -31,7 +31,7 @@
 <body>
 
 <section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
-    <form class="layui-form forms" id="defaultForm" action="">
+    <form class="layui-form forms" id="defaultForm" action="" method="post">
 
         <div class="layui-tab layui-tab-card" style="margin-top: 0;">
             <ul class="layui-tab-title" style="position: fixed; z-index: 10;width: 100%;text-align: center;">
@@ -49,16 +49,16 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘名称：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="title" lay-verify="required" placeholder="请输入楼盘名称" class="layui-input">
+                                <input type="text" name="title" lay-verify="require" placeholder="请输入楼盘名称" class="layui-input">
                             </div>
                         </div>
                     </div>
 
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘拼音：</label>
+                            <label class="layui-form-label">楼盘拼音：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="titlePinyin" lay-verify="required" placeholder="请输入楼盘拼音" class="layui-input">
+                                <input type="text" name="titlePinyin" placeholder="请输入楼盘拼音" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><span class="layui-color-danger">*</span>所属区域：</label>
                             <div class="layui-input-inline">
-                                <select name="city_id" lay-verify="required" lay-search >
+                                <select name="city_id" lay-verify="require" lay-search >
                                     <option value="">选择城市</option>
                                     {volist name="lists" id="item"}
                                     <option value="{$key}">{$item}</option>
@@ -86,7 +86,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘地址：</label>
                             <div class="layui-input-inline">
-                                <input type="text" value="" name="address" lay-verify="required" placeholder="请输入楼盘地址" class="layui-input">
+                                <input type="text" value="" name="address" lay-verify="require" placeholder="请输入楼盘地址" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     <div class="layui-form-item layui-form-text">
                         <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘广告语：</label>
                         <div class="layui-input-block" style="padding-right: 120px;">
-                            <textarea  name="adTitle" placeholder="请输入楼盘广告语" lay-verify="required" class="layui-textarea" lay-height="auto"></textarea>
+                            <textarea  name="adTitle" placeholder="请输入楼盘广告语" lay-verify="require" class="layui-textarea" lay-height="auto"></textarea>
                         </div>
                     </div>
 
@@ -165,7 +165,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><span class="layui-color-danger">*</span>总栋数：</label>
                             <div class="layui-input-inline">
-                                <input type="text" value="" name="buildingNum" lay-verify="required" placeholder="总栋数" class="layui-input">
+                                <input type="text" value="" name="buildingNum" lay-verify="require" placeholder="总栋数" class="layui-input">
                             </div>
                             <label class="layui-text layui-label">栋</label>
                         </div>
@@ -175,7 +175,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><span class="layui-color-danger">*</span>总套数：</label>
                             <div class="layui-input-inline">
-                                <input type="text" value="" name="houseNum" lay-verify="required" placeholder="总套数" class="layui-input">
+                                <input type="text" value="" name="houseNum" lay-verify="require" placeholder="总套数" class="layui-input">
                             </div>
                             <label class="layui-text layui-label">套</label>
                         </div>
@@ -195,7 +195,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><span class="layui-color-danger">*</span>开盘日期：</label>
                             <div class="layui-input-inline">
-                                <input type="text" value="" name="started_at" lay-verify="required" lay-filter="date" lay-format="YYYY-MM-DD hh:00:00" placeholder="开盘日期" class="layui-input">
+                                <input type="text" value="" name="started_at" lay-verify="require" lay-filter="date" lay-format="YYYY-MM-DD hh:00:00" placeholder="开盘日期" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -409,7 +409,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><span class="layui-color-danger">*</span>售楼处电话：</label>
                             <div class="layui-input-inline">
-                                <input type="text" value="" name="saleTel" lay-verify="required" placeholder="请填写售楼处电话" class="layui-input">
+                                <input type="text" value="" name="saleTel" lay-verify="require" placeholder="请填写售楼处电话" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -417,7 +417,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label"><span class="layui-color-danger">*</span>售楼处地址：</label>
                         <div class="layui-input-block" style="padding-right: 120px;">
-                            <input type="text" value="" name="saleAddress" lay-verify="required" placeholder="售楼处地址" class="layui-input">
+                            <input type="text" value="" name="saleAddress" lay-verify="require" placeholder="售楼处地址" class="layui-input">
                         </div>
                     </div>
 
@@ -484,19 +484,14 @@
 <script src="__JS__/back.js"></script>
 <script>
 
+    layui.use(['form'],function () {
+        var form = layui.form();
+
+    });
+
     $(function () {
         var options = {
             form:'#defaultForm',
-            isReload:false,
-            verify:{
-                required:function () {
-
-                },checked:function () {
-
-                },exist:function () {
-
-                }
-            },
             success:console.log
         };
         Back.submit(options);

@@ -7,7 +7,7 @@ use app\common\model\AuthItem;
 use app\common\model\BackUser;
 
 /**
- * This is the model class for table "{{%back_ban}}".
+ * This is the model class for table "{{%ban}}".
  *
  * @property string $item_name
  * @property integer $back_user_id

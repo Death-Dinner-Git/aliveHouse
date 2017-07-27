@@ -6,6 +6,8 @@ use app\common\controller\ManageController;
 use app\manage\model\BuildingBase;
 use app\manage\model\City;
 use app\manage\model\BuildingDetail;
+use app\manage\model\BuildingContent;
+use app\manage\model\Images;
 
 class BuildController extends ManageController
 {
@@ -42,9 +44,15 @@ class BuildController extends ManageController
                 $where =  array_merge($where, ['city_id'=>$city]);
             }
         }
+        $helper = BuildingBase::getHelper();
+        $build = BuildingBase::load()->where(['id'=>'40'])->find();
+        var_dump($build->toArray());
+        var_dump($build->getCity->toArray());
+        var_dump($build->getBuildingDetail->toArray());
+        var_dump($build->getBuildingContent->toArray());
+        var_dump($helper::toArray($build->getImages));
 
-
-        $list = $model->where($where)->paginate($each);
+        $list = $model->where($where)->order('id DESC')->paginate($each);
 
         $this->assign('meta_title', "楼盘清单");
         $this->assign('param', $param);
@@ -60,61 +68,54 @@ class BuildController extends ManageController
      */
     public function createAction()
     {
-        $model = new BuildingBase();
         $lists = City::getCityList();
         if ($this->getRequest()->isPost()){
-            $param = <<<JS
-FAR
-adTitle
-address
-areaMax
-areaMin
-builders
-buildingArea
-buildingNum
-buildingTypeExtra
-city_id
-contacter
-contacterTel
-content
-county_id
-decorationExtra
-developer
-featureExtra
-houseArea
-houseNum
-investor
-joined_at
-licence
-logo
-parkingNum
-poolRate
-priceAvg
-priceMax
-priceMin
-priceSum
-propertyFee
-propertyName
-reason
-saleAddress
-saleTel
-started_at
-structure
-title
-titlePinyin
-url
-wall
-JS;
-
-            $this->error('测试', 'create',$_REQUEST,1);
-            $data = (isset($_POST['Building']) ? $_POST['Building'] : []);
-            $data['updated_at'] = date('Y-m-d H:i:s');
-            $data['created_at'] = date('Y-m-d H:i:s');
-            if ($data){
+            //
+            $model = new BuildingBase();
+            $base = $model->filter($_POST);
+            $base['is_delete'] = '1';
+            $base['updated_at'] = date('Y-m-d H:i:s');
+            $base['created_at'] = date('Y-m-d H:i:s');
+            if ($base){
                 $validate = BuildingBase::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $model->save($data)){
-                    $this->success('添加成功','create','',1);
+                if ($validate->check($base) && $model->save($base)){
+                    $prefix = '/static/uploads/buildingDetail/'.$model->id.'/';
+                    //
+                    $detailModel = new BuildingDetail();
+                    $detail = $detailModel->filter($_POST);
+                    $detail['building_base_id'] = $model->id;
+                    $to = $prefix.pathinfo($detail['logo'],PATHINFO_BASENAME);
+                    $detail['logo'] = $to;
+                    $this->copy($detail['logo'],$to);
+                    $detail['updated_at'] = date('Y-m-d H:i:s');
+                    $detail['created_at'] = date('Y-m-d H:i:s');
+                    //
+                    $contentModel = new BuildingContent();
+                    $content = $contentModel->filter($_POST);
+                    $content['building_base_id'] = $model->id;
+                    $ImagesModel = new Images();
+                    $urls = isset($_POST['url']) ? explode('|',$_POST['url']) : [];
+                    $images = [];
+                    foreach ($urls as $url){
+                        $item = [];
+                        $item['target_id'] = $model->id;
+                        $item['type'] = '1';
+                        $to = $prefix.pathinfo($url,PATHINFO_BASENAME);
+                        $item['url'] = $to;
+                        $this->copy($url,$to);
+                        $icon = pathinfo($url,PATHINFO_DIRNAME).'/'.pathinfo($url,PATHINFO_FILENAME).'_icon.'.pathinfo($url,PATHINFO_EXTENSION);
+                        $to = $prefix.pathinfo($icon,PATHINFO_BASENAME);
+                        $item['url_icon'] = $to;
+                        $this->copy($icon,$to);
+                        $item['url_title'] = $model->title;
+                        $item['created_at'] = $model->created_at;
+                        $images[] = $item;
+                    }
+                    $detailModel->save($detail);
+                    $contentModel->save($content);
+                    $ImagesModel->saveAll($images);
+                    $this->success('添加成功','create',$model,1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
@@ -182,10 +183,10 @@ JS;
      */
     public function deleteAction()
     {
-        $id = isset($_POST['id']) ? $_POST['id'] : ['2','3'];
+        $id = isset($_POST['id']) ? $_POST['id'] : [];
         $ret = ['status'=>0,'info'=>'删除失败'];
         if ($this->getRequest()->isAjax()){
-            $where = '`id` IN ('.implode(',',$id).')';
+            $where['id'] = ['in',implode(',',$id)];
             $result = BuildingBase::update(['is_delete'=>'0'],$where);
             if ($result){
                 $ret = ['status'=>1,'info'=>'删除成功'];
@@ -197,41 +198,17 @@ JS;
         return json($ret);
     }
 
+    /**
+     * 图片上传
+     * @return \think\response\Json
+     */
     public function uploadAction(){
-        $images = [];
         $config = [];
         if (isset($_REQUEST['file'])){
             $config['fileField'] = $_REQUEST['file'];
         }
-        $res = \app\common\components\Uploader::action($config);
+        $ret = \app\common\components\Uploader::action($config);
 
-        //是否是多传,否则是单传
-        if (isset($res['code'])){
-            if ($res['code'] == '1'){
-                $retItem = [
-                    'src'=>$res['url'],
-                    'icon'=>$res['url_icon'],
-                    'name'=>$res['tmp_name']
-                ];
-                $images[] = $retItem;
-            }
-            $ret['code'] = $res['code'];
-            $ret['msg'] = $res['msg'];
-        }else{
-            foreach ($res as $key=>$value){
-                if ($value['code'] == '1'){
-                    $retItem = [
-                        'src'=>$value['url'],
-                        'icon'=>$value['url_icon'],
-                        'name'=>$value['tmp_name']
-                    ];
-                    $images[] = $retItem;
-                }
-                $ret['code'] = $value['code'];
-                $ret['msg'] = $value['msg'];
-            }
-        }
-        $ret['images'] = $images;
         return json($ret);
     }
 

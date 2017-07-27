@@ -5,6 +5,8 @@ namespace app\common\model;
 use app\common\model\Model;
 use app\common\model\City;
 use app\common\model\BuildingDetail;
+use app\common\model\BuildingContent;
+use app\common\model\ImagesBuilding;
 use app\common\model\HouseBetter;
 use app\common\model\NewHouse;
 
@@ -15,13 +17,16 @@ use app\common\model\NewHouse;
  * @property integer $is_delete
  * @property integer $type
  * @property integer $city_id
- * @property string $name
- * @property string $address
+ * @property integer $county_id
+ * @property string $title
+ * @property string $titlePinYin
  * @property string $created_at
  * @property string $updated_at
  *
  * @property City $city
- * @property BuildingDetail[] $buildingDetails
+ * @property BuildingDetail $buildingDetail
+ * @property BuildingContent $BuildingContent
+ * @property images[] $images
  * @property HouseBetter[] $houseBetters
  * @property NewHouse[] $newHouses
  */
@@ -38,11 +43,10 @@ class BuildingBase extends Model
     protected $field = [
         'id',
         'is_delete',
-        'is_open',
-        'type',
-        'city_id',
         'title',
-        'address',
+        'titlePinyin',
+        'city_id',
+        'county_id',
         'created_at',
         'updated_at',
     ];
@@ -62,11 +66,10 @@ class BuildingBase extends Model
         return [
             'rule'=>[
                 ['is_delete','in:0,1','时效 无效'],
-                ['is_open','in:2,1','开盘 无效'],
-                ['type','number','类型 无效'],
                 ['city_id','number','城市 无效'],
-                ['name','max:255',],
-                ['address','max:255',],
+                ['county_id','number','区县 无效'],
+                ['title','max:255',],
+                ['titlePinyin','max:255',],
             ],
             'msg'=>[]
         ];
@@ -80,11 +83,10 @@ class BuildingBase extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'is_open' => '开盘;2=封盘,1=开盘;默认1;',
-            'type' => '类型;0=,1=;默认1;',
             'city_id' => '城市表ID',
-            'name' => '楼盘名',
-            'address' => '地址',
+            'county_id' => '城市表区县ID',
+            'title' => '楼盘名',
+            'titlePinyin' => '楼盘名拼音',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];
@@ -95,15 +97,31 @@ class BuildingBase extends Model
      */
     public function getCity()
     {
-        return $this->hasOne(ucfirst(City::tableNameSuffix()), 'city_id', 'id');
+        return $this->hasOne(ucfirst(City::tableNameSuffix()), 'id', 'city_id');
     }
 
     /**
      * @return \think\model\relation\hasOne
      */
-    public function getBuildingDetails()
+    public function getBuildingDetail()
     {
         return $this->hasOne(ucfirst(BuildingDetail::tableNameSuffix()), 'building_base_id','id');
+    }
+
+    /**
+     * @return \think\model\relation\hasOne
+     */
+    public function getBuildingContent()
+    {
+        return $this->hasOne(ucfirst(BuildingContent::tableNameSuffix()), 'building_base_id','id');
+    }
+
+    /**
+     * @return \think\model\relation\HasMany
+     */
+    public function getImages()
+    {
+        return $this->hasMany(ucfirst(ImagesBuilding::tableNameSuffix()), 'target_id', 'id');
     }
 
     /**
@@ -111,7 +129,7 @@ class BuildingBase extends Model
      */
     public function getHouseBetters()
     {
-        return $this->hasMany(ucfirst(HouseBetter::tableNameSuffix()), 'id', 'building_base_id');
+        return $this->hasMany(ucfirst(HouseBetter::tableNameSuffix()), 'building_base_id', 'id');
     }
 
     /**
@@ -119,6 +137,6 @@ class BuildingBase extends Model
      */
     public function getNewHouses()
     {
-        return $this->hasMany(ucfirst(NewHouse::tableNameSuffix()), 'id', 'building_base_id');
+        return $this->hasMany(ucfirst(NewHouse::tableNameSuffix()), 'building_base_id', 'id');
     }
 }

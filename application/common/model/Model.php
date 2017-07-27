@@ -24,7 +24,7 @@ class Model extends \think\Model
         return self::$_helper;
     }
 
-    private function getTableInformation($path = '',$namespace = ''){
+    public function getTableInformation($path = '',$namespace = ''){
         if (!file_exists($path) || !is_dir($path)){
             return;
         }
@@ -62,6 +62,37 @@ class Model extends \think\Model
      */
     public function rules(){
         return [];
+    }
+
+    //自动日期格式
+    public function setDate(){
+        return date('Y-m-d H:i:s');
+    }
+
+    //自动时间戳
+    public function setTime(){
+        return time();
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function filter($data = []){
+        $ret = [];
+        if (!empty($data) && is_array($data)){
+            $field = $this->field;
+            if (!$field){
+                $field = $this->getTableInfo()['fields'];
+            }
+            foreach ($field as $value){
+                $ret[$value] = isset($data[$value]) ? (is_array($data[$value]) ? (implode(',',$data[$value])) : $data[$value]) : null;
+                if ($ret[$value] === null){
+                    unset($ret[$value]);
+                }
+            }
+        }
+        return $ret;
     }
 
     /**

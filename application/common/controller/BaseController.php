@@ -167,23 +167,29 @@ class BaseController extends Controller
      */
     public function getFolder($pathStr = './',$clear = false)
     {
-//        if (strstr($pathStr, '/back/') !== false){
-//            $pathStr = preg_replace('/\/back\//', '/backend/web/', $pathStr, 1); //只替换一次
-//        }
-        if ( strrchr( $pathStr , "/" ) != "/" ) {
+        $pathStr = $this->getPath($pathStr);
+        if (strrchr($pathStr, "/") != "/") {
             $pathStr .= "/";
         }
-        if ( !file_exists( $pathStr ) ) {
+        if (!file_exists($pathStr)) {
             if (!mkdir($pathStr, 0777, true)) {
                 return false;
             }
-        }elseif($clear){
+        } elseif ($clear) {
             if (is_dir($pathStr) && strpos($pathStr, '/static/') !== false) //$d是目录名
             {
-                if ($od = opendir($pathStr)){
+                if ($od = opendir($pathStr)) {
                     while (($file = readdir($od)) !== false)  //读取该目录内文件
                     {
-                        @unlink($pathStr.'/'.$file);  //$file是文件名
+                        $delete = true;
+                        $createTime = filectime($pathStr . $file);
+                        //删除大于3天的文件
+                        if ($createTime + 3 * 24 * 60 * 60 > time()) {
+                            $delete = false;
+                        }
+                        if ($delete) {
+                            @unlink($pathStr . $file);  //$file是文件名
+                        }
                     }
                     closedir($od);
                 }
@@ -199,12 +205,8 @@ class BaseController extends Controller
      * @return bool
      */
     public function copy($from,$to){
-//        if (strstr($from,'/back/') !== false){
-//            $from = preg_replace('/\/back\//', '/backend/web/', $from, 1); //只替换一次
-//        }
-//        if (strstr($to,'/back/') !== false){
-//            $to = preg_replace('/\/back\//', '/backend/web/', $to, 1); //只替换一次
-//        }
+        $from = $this->getPath($from);
+        $to = $this->getPath($to);
         if (!file_exists($from)){
             return false;
         }
@@ -213,6 +215,36 @@ class BaseController extends Controller
         }
         @copy($from,$to);
         return true;
+    }
+
+    /**
+     * 获取有效根目录
+     * @return string
+     */
+    public function getWebPath(){
+        $path = ROOT_PATH;
+        if (strrchr($path, DIRECTORY_SEPARATOR) != DIRECTORY_SEPARATOR) {
+            $path .= DIRECTORY_SEPARATOR;
+        }
+        return $path .'public';
+    }
+
+    /**
+     * @param $path
+     * @return string
+     */
+    public function getPath($path){
+        $prefix = $this->getWebPath();
+        if (strpos($path, $prefix) === false) {
+            if (substr($path,0,1) == '.') {
+                $path = substr($path,1);
+            }
+            if (substr($path,0,1) != '/') {
+                $path = '/' . $path;
+            }
+            $path = $this->getWebPath().$path;
+        }
+        return $path;
     }
 
     /**

@@ -162,11 +162,11 @@ class Uploader
      * 获取上传文件有效目录
      */
     private static function getPath(){
-        if (!(strpos(self::$config['savePath'], './') || strpos(self::$config['savePath'], '/'))) {
-            self::$config['savePath'] = '/' . self::$config['savePath'];
+        if (substr(self::$config['savePath'],1,1) == '.') {
+            self::$config['savePath'] = substr(self::$config['savePath'],1);
         }
-        if (strrchr(self::$config['savePath'], "/") != "/") {
-            self::$config['savePath'] .= "/";
+        if (substr(self::$config['savePath'],1,1) != '/') {
+            self::$config['savePath'] = '/' . self::$config['savePath'];
         }
         if (substr(self::$config['savePath'], -4) != "/tmp") {
             self::$config['savePath'] .= "/tmp";

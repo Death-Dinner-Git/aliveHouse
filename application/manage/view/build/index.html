@@ -135,12 +135,9 @@
         </td>
         <td style="width: 100px;">{$model.title}</td>
         <td>
-            {if condition="isset($cityLists[$model.city_id])"}
-            {$cityLists[$model.city_id]}
-            {else} 无效
-            {/if}
+            {$model.getCity.name}
         </td>
-        <td>{$model.getBuildingDetails.address}</td>
+        <td>{$model.getBuildingDetail.address}</td>
         <td style="width: 150px;" class="action">
             <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>
             <label class="layui-btn layui-btn-mini layui-btn-danger" lay-filter="delete">删除</label>
