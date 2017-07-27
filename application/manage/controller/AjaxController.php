@@ -38,40 +38,11 @@ class AjaxController extends ManageController
      */
     public function uploaderAction()
     {
-        $images = [];
-        $config = [];
+        $config = ['format'=>'200*200'];
         if (isset($_REQUEST['file'])){
             $config['fileField'] = $_REQUEST['file'];
         }
-        $res = \app\common\components\Uploader::action($config);
-
-        //是否是多传,否则是单传
-        if (isset($res['code'])){
-            if ($res['code'] == '1'){
-                $retItem = [
-                    'src'=>$res['url'],
-                    'icon'=>$res['url_icon'],
-                    'name'=>$res['tmp_name']
-                ];
-                $images[] = $retItem;
-            }
-            $ret['code'] = $res['code'];
-            $ret['msg'] = $res['msg'];
-        }else{
-            foreach ($res as $key=>$value){
-                if ($value['code'] == '1'){
-                    $retItem = [
-                        'src'=>$value['url'],
-                        'icon'=>$value['url_icon'],
-                        'name'=>$value['tmp_name']
-                    ];
-                    $images[] = $retItem;
-                }
-                $ret['code'] = $value['code'];
-                $ret['msg'] = $value['msg'];
-            }
-        }
-        $ret['images'] = $images;
+        $ret = \app\common\components\Uploader::action($config);
         return json($ret);
     }
 

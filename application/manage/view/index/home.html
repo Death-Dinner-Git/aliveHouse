@@ -18,7 +18,13 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>Do it !</legend>
 
-        <form class="layui-form" id="default-form" action="/manage/ajax/uploader.html?test=1" method="post" enctype="multipart/form-data">
+        <form class="layui-form" id="default-form" action="/manage/ajax/uploader.html?file=file" method="post" enctype="multipart/form-data">
+            <div class="layui-form-item">
+                <label class="layui-form-label">单文件上传</label>
+                <div class="layui-input-inline">
+                    <input type="file" name="file" >
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">单文件上传</label>
                 <div class="layui-input-inline">
@@ -39,7 +45,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <label class="layui-btn" lay-submit="" lay-filter="demo">立即提交</label>
+                    <button class="layui-btn" type="submit">立即提交</button>
                 </div>
             </div>
         </form>
@@ -494,13 +500,17 @@
         var upload = layui.uploader();
         var uploader = upload.create({
             elem:'.layui-upload-file',
-            url: '/manage/ajax/uploader',
+            url: '/manage/ajax/uploader?file=build',
             isAjax:true,
             max:5,
             success: function (res, input) {
                 console.log(res);
+                if(res.code == '0' && res.msg){
+                    layer.msg(res.msg);
+                }
             }
         });
+        form.render(select('dsfsdf'))
 
         //创建一个编辑器
         var editIndex = layedit.build('LAY_demo_editor');

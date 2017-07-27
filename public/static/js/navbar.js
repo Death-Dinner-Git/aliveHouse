@@ -18,9 +18,11 @@ layui.define(['element','layer'], function(exports) {
 			cached: false, //是否使用缓存
 			spreadOne:false, //设置是否只展开一个二级菜单
             citeType:1 , // tab 标题 可选值 1 或 2  默认为1 以 列表 一级显示  ，2 以 tab 标题加入 parent 标题
+            notice:[], // 格式 [{url:"地址",id:'xx'}]
 		};
 		this.v = '0.0.1';
 	};
+
 	Navbar.prototype.render = function() {
 		var _that = this;
 		var _config = _that.config;
@@ -127,6 +129,24 @@ layui.define(['element','layer'], function(exports) {
 		return _that;
 	};
 
+	Navbar.prototype.notice = function () {
+        var _that = this;
+        var notice = _that.config.notice;
+		if (notice.length <= 0){
+			return _that;
+		}
+		for (var i = 0; i<notice.length; i++){
+			if(notice[i].url === undefined){
+				continue;
+			}
+			if(notice[i].id === undefined){
+				continue;
+			}
+            getNotice(notice[i]);
+		}
+		return _that;
+    };
+
 	/**
 	 * 配置Navbar
 	 * @param {Object} options
@@ -208,11 +228,12 @@ layui.define(['element','layer'], function(exports) {
 	Navbar.prototype.cleanCached = function(){
 		layui.data(cacheName,null);
 	};
+
 	/**
 	 * 获取html字符串
 	 * @param {Object} data
 	 */
-	function getHtml(data) {
+	var getHtml = function(data) {
 		var _options= data.attr || {}, _prefix= data.prefix || '', _suffix= data.suffix || '', menu= data.menus || {},  optionStr = '', ulHtml = '',index = new Date().getTime();
         for (var _item in _options) {
             optionStr += _item + '="'+_options[_item]+'"';
@@ -279,7 +300,42 @@ layui.define(['element','layer'], function(exports) {
             }
             return itemHtml;
         }
-	}
+	};
+
+	/**
+	 * 一次请求提示
+	 * @param {Object} noticeItem
+	 */
+	var getNotice = function(noticeItem) {
+        var unique = noticeItem.id;
+        var slider = $("#dinner-nav-side", top.document).find('cite[data-id="' + unique + '"]');
+        var parent;
+        if (slider.length > 0) {
+            parent = slider.closest('.layui-nav-item');
+            $.post(noticeItem.url, function (data) {
+                var isParent = false;
+                var isChild = false;
+                if (data == 1) {
+                    isChild = true;
+                }
+                if (isChild) {
+                    slider.closest('a').hasClass('active_red_new') || slider.closest('a').addClass('active_red_new');
+                } else {
+                    !slider.closest('a').hasClass('active_red_new') || slider.closest('a').removeClass('active_red_new');
+                }
+                if (parent.length > 0) {
+                    if (parent.find('a.active_red_new').length > 0) {
+                        isParent = true;
+                    }
+                    if (isParent) {
+                        parent.hasClass('active_red') || parent.addClass('active_red');
+                    } else {
+                        !parent.hasClass('active_red') || parent.removeClass('active_red');
+                    }
+                }
+            });
+        }
+	};
 
 	var navbar = new Navbar();
 

@@ -4,18 +4,20 @@ namespace app\common\components;
 
 class Uploader
 {
-    private static $webPath = ROOT_PATH . DIRECTORY_SEPARATOR . 'public';              //网站根目录
+    private static $webPath = ROOT_PATH;              //网站根目录
     private static $fileField;            //文件域名
     private static $allFile;              //全部文件上传对象
     private static $itemFile;             //当前处理的单个文件上传对象
     private static $oriName;              //原始文件名
     private static $fileName;             //新文件名
     private static $fullName;             //完整文件名,即从当前配置目录开始的URL
+    private static $iconFileName;         //缩略图名
+    private static $iconFullName;         //缩略图完整文件名,即从当前配置目录开始的URL
     private static $fileSize;             //文件大小
     private static $fileType;             //文件类型
     private static $stateInfo;            //上传状态信息,
-    private static $stateMap = [    //上传状态映射表，国际化用户需考虑此处数据的国际化
-        "SUCCESS",                //上传成功标记
+    private static $stateMap = [          //上传状态映射表，国际化用户需考虑此处数据的国际化
+        "SUCCESS",                        //上传成功标记
         "文件大小超出 upload_max_filesize 限制",
         "文件大小超出 MAX_FILE_SIZE 限制",
         "文件未被完整上传",
@@ -34,8 +36,12 @@ class Uploader
     //上传配置信息
     private static $config = [];
 
-    //返回信息
-    private static $ret = [];
+    //返回信息格式
+    private static $ret = [
+        'code'=>'0',
+        'msg'=>'上传失败',
+        'images'=>[],
+    ];
 
     /**
      * 图片AJAX上传
@@ -45,8 +51,6 @@ class Uploader
     public static function action($options = [])
     {
         set_time_limit(300); //上传执行时间不能超过五分钟
-        $res['code'] = 0;
-        $res['msg'] = '上传失败';
         //上传配置
         $config = [
             "file"=>[],
@@ -57,12 +61,13 @@ class Uploader
             "format" => false,                   // 格式 默认为false；当值为（false 或 0*0 或 0%）不做处理;当格式为（X*Y）则处理成长为X,宽为Y的图片，当格式为（X%）则处理成原图的X%. 最大为6000*6000
             "addMark" => false,                  //是否添加水印,默认值是 true 表示添加水印
             "clear" => false,                    //清除缓存文件
-            "uid" => '0',                        //清除缓存文件
+            "uid" => '0',                        //使用者ID，默认0
         ];
+        self::getWebPath();
         self::$config = array_merge($config, $options);
-        if (isset($config['format'])) {
-            if (!(preg_match('/^([1-9])([\d]){0,}\*([1-9])([\d]){0,}$/i', $config['format']) || preg_match('/^([1-9][\d]{0,})\%$/i', $config['format']))) {
-                $config['format'] = false;
+        if (isset(self::$config['format'])) {
+            if (!(preg_match('/^([1-9])([\d]){0,}\*([1-9])([\d]){0,}$/i', self::$config['format']) || preg_match('/^([1-9][\d]{0,})\%$/i', self::$config['format']))) {
+                self::$config['format'] = false;
             }
         }
         self::$fileField = self::$config['fileField'];
@@ -71,17 +76,10 @@ class Uploader
             self::$stateInfo = self::getStateInfo('NOT_FILE');
             return self::result();
         }
-        if (!(strpos(self::$config['savePath'], './') || strpos(self::$config['savePath'], '/'))) {
-            self::$config['savePath'] = '/' . self::$config['savePath'];
-        }
-        if (strrchr(self::$config['savePath'], "/") != "/") {
-            self::$config['savePath'] .= "/";
-        }
-        if (substr(self::$config['savePath'], -4) != "/tmp") {
-            self::$config['savePath'] .= "/tmp";
-        }
+        self::getPath();
         self::$config['savePath'] = self::$webPath . $config['savePath'].'/'.$config['uid'];
-        self::upFile();
+        self::upImages();
+        set_time_limit(1); // 重新恢复限制时间
         return self::$ret;
     }
 
@@ -90,7 +88,6 @@ class Uploader
      */
     public static function actionVideoupload()
     {
-        Yii::$app->getResponse()->format = 'json';
         $res['code'] = 1;
         $res['msg'] = '上传失败';
         //上传配置
@@ -126,7 +123,7 @@ class Uploader
             self::$config = $config;
             self::$config['tmpPath'] = self::$config['savePath'] . '/' . self::$config['sort'] . '/' . self::$config['uid'] . '/tmp/' . self::$config['unique'] . '/';
             self::$stateInfo = self::$stateMap[0];
-            self::upVideoFile();
+            self::upVideo();
             if ($config['end'] == 'true') {
                 self::buildUpFiles();
             }
@@ -150,15 +147,43 @@ class Uploader
         return $res;
     }
 
+
     /**
-     * 上传文件的主处理方法
+     * 获取有效根目录
      */
-    private static function upFile()
+    private static function getWebPath(){
+        if (strrchr(self::$webPath, DIRECTORY_SEPARATOR) != DIRECTORY_SEPARATOR) {
+            self::$webPath .= DIRECTORY_SEPARATOR;
+        }
+        self::$webPath .= 'public';
+    }
+
+    /**
+     * 获取上传文件有效目录
+     */
+    private static function getPath(){
+        if (!(strpos(self::$config['savePath'], './') || strpos(self::$config['savePath'], '/'))) {
+            self::$config['savePath'] = '/' . self::$config['savePath'];
+        }
+        if (strrchr(self::$config['savePath'], "/") != "/") {
+            self::$config['savePath'] .= "/";
+        }
+        if (substr(self::$config['savePath'], -4) != "/tmp") {
+            self::$config['savePath'] .= "/tmp";
+        }
+    }
+
+    /**
+     * 上传图片文件的主处理方法
+     */
+    private static function upImages()
     {
         //处理上传
         //是否多文件
         if(is_array(self::$allFile['name']) && is_array(self::$allFile['tmp_name'])){
             //多文件
+            $ret = [];
+            $images = [];
             foreach (self::$allFile['name'] as $key=>$value){
                 $file = [];
                 $file['name'] = self::$allFile['name'][$key];
@@ -167,18 +192,51 @@ class Uploader
                 $file['tmp_name'] = self::$allFile['tmp_name'][$key];
                 $file['error'] = self::$allFile['error'][$key];
                 self::$itemFile = $file;
-                self::$ret[] = self::load();
+                $res = self::uploadImages();
+                if ($res['code'] == '1'){
+                    $imagesItem = [
+                        'name'=>$res['name'],
+                        'tmp_name'=>$res['tmp_name'],
+                        'src'=>$res['src'],
+                        'icon'=>$res['icon'],
+                        'size'=>$res['size'],
+                        'type'=>$res['type'],
+                    ];
+                    $images[] = $imagesItem;
+                }
+                $ret['code'] = $res['code'];
+                $ret['msg'] = $res['msg'];
             }
+            $ret['images'] = $images;
+            self::$ret = $ret;
         }else{
             self::$itemFile = self::$allFile;
-            self::$ret = self::load();
+            $res = self::uploadImages();
+            $ret = [];
+            $images = [];
+            if ($res['code'] == '1'){
+                $imagesItem = [
+                    'name'=>$res['name'],
+                    'tmp_name'=>$res['tmp_name'],
+                    'src'=>$res['src'],
+                    'icon'=>$res['icon'],
+                    'size'=>$res['size'],
+                    'type'=>$res['type'],
+                ];
+                $images[] = $imagesItem;
+            }
+            $ret['code'] = $res['code'];
+            $ret['msg'] = $res['msg'];
+            $ret['images'] = $images;
+            self::$ret = $ret;
         }
     }
 
     /**
+     * 上传图片具体处理细节
      * @return array
      */
-    private static function load(){
+    private static function uploadImages(){
 
         self::$stateInfo = self::$stateMap[0];
 
@@ -224,8 +282,13 @@ class Uploader
                     self::$fullName = self::addMark(self::$fullName);
                 }
                 if (self::$config['format']) {
-                    $res = Helper::imageChangeByFormat(self::$fullName, self::$fullName, self::$config['format']);
-                    self::$config['param'] = $res;
+                    self::$iconFileName = pathinfo(self::$fileName,PATHINFO_FILENAME) . '_icon' . self::getFileExt();
+                    self::$iconFullName = $folder . self::$iconFileName;
+                    $res = \app\common\components\Helper::imageChangeByFormat(self::$fullName, self::$iconFullName, self::$config['format']);
+                    if($res['code'] == '0'){
+                        self::$iconFileName = self::$fileName;
+                        self::$iconFullName = $folder . self::$fileName;
+                    }
                 }
             }
         }
@@ -244,8 +307,8 @@ class Uploader
             $ret['code'] = 1;
             $ret['name'] = $info['name'];
             $ret['tmp_name'] = $info['tmp_name'];
-            $ret['url'] = str_replace(self::$webPath, '', $info['url']);
-            $ret['url_icon'] = str_replace(self::$webPath, '', $info['url_icon']);
+            $ret['src'] = str_replace(self::$webPath, '', $info['url']);
+            $ret['icon'] = str_replace(self::$webPath, '', $info['url_icon']);
             $ret['size'] = $info['size'];
             $ret['type'] = $info['type'];
             $ret['msg'] = '上传成功';
@@ -259,7 +322,7 @@ class Uploader
     /**
      * 上传视频文件的主处理方法
      */
-    private static function upVideoFile()
+    private static function upVideo()
     {
         //处理上传
         $file = self::$itemFile = $_FILES[self::$fileField];
@@ -305,47 +368,8 @@ class Uploader
         }
     }
 
-
     /**
-     * @description 自动创建存储文件夹,且删除文件夹内所有文件
-     * @param string $pathStr
-     * @param bool $clear
-     * @return bool|mixed|string
-     */
-    private static function getFolder($pathStr = './', $clear = false)
-    {
-        if (strrchr($pathStr, "/") != "/") {
-            $pathStr .= "/";
-        }
-        if (!file_exists($pathStr)) {
-            if (!mkdir($pathStr, 0777, true)) {
-                return false;
-            }
-        } elseif ($clear) {
-            if (is_dir($pathStr) && strpos($pathStr, '/static/uploads/') !== false) //$d是目录名
-            {
-                if ($od = opendir($pathStr)) {
-                    while (($file = readdir($od)) !== false)  //读取该目录内文件
-                    {
-                        $delete = true;
-                        $createTime = filectime($pathStr . $file);
-                        //删除大于3天的文件
-                        if ($createTime + 3 * 24 * 60 * 60 > time()) {
-                            $delete = false;
-                        }
-                        if ($delete) {
-                            @unlink($pathStr . $file);  //$file是文件名
-                        }
-                    }
-                    closedir($od);
-                }
-            }
-        }
-        return $pathStr;
-    }
-
-    /**
-     * 组装缓存文件
+     * 视频分批组装缓存文件
      */
     private static function buildUpFiles()
     {
@@ -388,6 +412,45 @@ class Uploader
         }
     }
 
+
+    /**
+     * @description 自动创建存储文件夹,且删除文件夹内所有文件
+     * @param string $pathStr
+     * @param bool $clear
+     * @return bool|mixed|string
+     */
+    private static function getFolder($pathStr = './', $clear = false)
+    {
+        if (strrchr($pathStr, "/") != "/") {
+            $pathStr .= "/";
+        }
+        if (!file_exists($pathStr)) {
+            if (!mkdir($pathStr, 0777, true)) {
+                return false;
+            }
+        } elseif ($clear) {
+            if (is_dir($pathStr) && strpos($pathStr, '/static/uploads/') !== false) //$d是目录名
+            {
+                if ($od = opendir($pathStr)) {
+                    while (($file = readdir($od)) !== false)  //读取该目录内文件
+                    {
+                        $delete = true;
+                        $createTime = filectime($pathStr . $file);
+                        //删除大于3天的文件
+                        if ($createTime + 3 * 24 * 60 * 60 > time()) {
+                            $delete = false;
+                        }
+                        if ($delete) {
+                            @unlink($pathStr . $file);  //$file是文件名
+                        }
+                    }
+                    closedir($od);
+                }
+            }
+        }
+        return $pathStr;
+    }
+
     /**
      * 处理base64编码的图片上传
      * @param $base64Data
@@ -417,7 +480,7 @@ class Uploader
             "tmp_name" => self::$oriName,
             "name" => self::$fileName,
             "url" => self::$fullName,
-            "url_icon" => self::$fullName,
+            "url_icon" => self::$iconFullName,
             "size" => self::$fileSize,
             "type" => self::$fileType,
             "msg" => self::$stateInfo
