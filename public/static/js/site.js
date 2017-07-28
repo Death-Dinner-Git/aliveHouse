@@ -2156,6 +2156,24 @@ Site.getCookie = function (name) {
 };
 
 /**
+ * 下载
+ * @param url
+ * @return {*}
+ */
+Site.download = function (url) {
+    var form = $("form#download-form");   //定义一个form表单
+    if(!form.length >0){
+        $('html body',document).append('<form id="download-form" class="_new"></form>');
+        form = $("form#download-form._new");
+    }
+    form.attr('style', 'display:none');   //在form表单中添加查询参数
+    form.attr('target', '_blank');
+    form.attr('method', 'POST');
+    form.attr('action', url);
+    form.submit();
+};
+
+/**
  * Ajax 中间件
  * @param options
  * @param middleWare
@@ -2454,12 +2472,15 @@ function ajaxJump(url, _Callback) {
 //        });
 
 //对字符串处理的方法
-String.prototype.trim=function(){//删除左右两端的空格
-    return this.replace(/(^\s*)|(\s*$)/g, "");
+String.prototype.trim=function(str){//删除左右两端的空格
+    str = str || "";
+    return this.replace(/(^\s*)|(\s*$)/g, '');
 };
-String.prototype.ltrim=function(){//删除左边的空格
-    return this.replace(/(^\s*)/g,"");
+String.prototype.ltrim=function(str){//删除左边的空格
+    str = str || "";
+    return this.replace(/(^\s*)/g,'');
 };
-String.prototype.rtrim=function(){//删除右边的空格
-    return this.replace(/(\s*$)/g,"");
+String.prototype.rtrim=function(str){//删除右边的空格
+    str = str || "";
+    return this.replace(/(\s*$)/g,'');
 };

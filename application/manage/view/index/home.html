@@ -263,7 +263,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">选择框</label>
                 <div class="layui-input-block">
-                    <select name="city" lay-verify="required">
+                    <select name="city" lay-verify="required" lay-filter="city">
                         <option value=""></option>
                         <option value="0">北京</option>
                         <option value="1">上海</option>
@@ -510,7 +510,6 @@
                 }
             }
         });
-        form.render(select('dsfsdf'))
 
         //创建一个编辑器
         var editIndex = layedit.build('LAY_demo_editor');
@@ -784,6 +783,7 @@
 
         // 初始化
         $(function () {
+            Site.download('/');
             var auto = new AutoComplete({
                 url: '/manage/ajax/getCity',
                 targetClass: '.inputKey',          // 输入框目标元素

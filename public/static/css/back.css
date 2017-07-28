@@ -1040,6 +1040,12 @@ body .layui-footer .layui-main a {
     width: 175px;
 }
 
+/*
+多选框
+*/
+.layui-form-selected dl{
+    min-height:50px;
+}
 
 /* =======================================
 	 search 列表搜索 表单

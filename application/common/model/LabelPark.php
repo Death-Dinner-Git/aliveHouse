@@ -49,7 +49,7 @@ class LabelPark extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $groupList = ['1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼房','7'=>'客服','8'=>'出租'];
+    public static $groupList = ['1'=>'预定','2'=>'客户','4'=>'新房','5'=>'二手房','6'=>'楼房','7'=>'客服'];
 
     /**
      * @inheritdoc

@@ -18,6 +18,8 @@ layui.define(['element','layer'], function(exports) {
 			cached: false, //是否使用缓存
 			spreadOne:false, //设置是否只展开一个二级菜单
             citeType:1 , // tab 标题 可选值 1 或 2  默认为1 以 列表 一级显示  ，2 以 tab 标题加入 parent 标题
+            parentMark:'active_red', // 父级标识
+            childMark:'active_red_new', // 子级标识
             notice:[], // 格式 [{url:"地址",id:'xx'}]
 		};
 		this.v = '0.0.1';
@@ -142,8 +144,46 @@ layui.define(['element','layer'], function(exports) {
 			if(notice[i].id === undefined){
 				continue;
 			}
-            getNotice(notice[i]);
+            _that.refreshNotice(notice[i]);
 		}
+		return _that;
+    };
+
+    /**
+	 * 刷新标识
+     * @return {Navbar}
+     */
+	Navbar.prototype.refreshNotice = function (noticeItem) {
+        var _that = this;
+        var _config = this.config;
+        var unique = noticeItem.id;
+        var slider = $(_config.elem, top.document).find('cite[data-id="' + unique + '"]');
+        var parent;
+        if (slider.length > 0) {
+            parent = slider.closest('.layui-nav-item');
+            $.post(noticeItem.url, function (data) {
+                var isParent = false;
+                var isChild = false;
+                if (data == 1) {
+                    isChild = true;
+                }
+                if (isChild) {
+                    slider.closest('a').hasClass(_config.childMark) || slider.closest('a').addClass(_config.childMark);
+                } else {
+                    !slider.closest('a').hasClass(_config.childMark) || slider.closest('a').removeClass(_config.childMark);
+                }
+                if (parent.length > 0) {
+                    if (parent.find('a.'+_config.childMark).length > 0) {
+                        isParent = true;
+                    }
+                    if (isParent) {
+                        parent.hasClass(_config.parentMark) || parent.addClass(_config.parentMark);
+                    } else {
+                        !parent.hasClass(_config.parentMark) || parent.removeClass(_config.parentMark);
+                    }
+                }
+            });
+        }
 		return _that;
     };
 
@@ -299,41 +339,6 @@ layui.define(['element','layer'], function(exports) {
                 itemHtml = '<'+ itemTag +' class="'+ _liClass +'">'+ itemHtml +'</'+ itemTag + '>';
             }
             return itemHtml;
-        }
-	};
-
-	/**
-	 * 一次请求提示
-	 * @param {Object} noticeItem
-	 */
-	var getNotice = function(noticeItem) {
-        var unique = noticeItem.id;
-        var slider = $("#dinner-nav-side", top.document).find('cite[data-id="' + unique + '"]');
-        var parent;
-        if (slider.length > 0) {
-            parent = slider.closest('.layui-nav-item');
-            $.post(noticeItem.url, function (data) {
-                var isParent = false;
-                var isChild = false;
-                if (data == 1) {
-                    isChild = true;
-                }
-                if (isChild) {
-                    slider.closest('a').hasClass('active_red_new') || slider.closest('a').addClass('active_red_new');
-                } else {
-                    !slider.closest('a').hasClass('active_red_new') || slider.closest('a').removeClass('active_red_new');
-                }
-                if (parent.length > 0) {
-                    if (parent.find('a.active_red_new').length > 0) {
-                        isParent = true;
-                    }
-                    if (isParent) {
-                        parent.hasClass('active_red') || parent.addClass('active_red');
-                    } else {
-                        !parent.hasClass('active_red') || parent.removeClass('active_red');
-                    }
-                }
-            });
         }
 	};
 
