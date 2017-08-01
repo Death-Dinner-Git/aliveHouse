@@ -11,7 +11,6 @@ layui.define('layer', function (exports) {
 
     var $ = layui.jquery;
     var layer = top.layui.layer || layui.layer;
-    var device = layui.device();
     var MOD_NAME = 'uploader';
     var elemDragEnter = 'layui-upload-enter';
     var elemIframe = 'layui-upload-iframe';
@@ -92,6 +91,7 @@ layui.define('layer', function (exports) {
             this.index = 0; //上传器索引
             this.imageId = 0; //已经上传图片数
             this.set(options);
+            this.init(options);
         } else {
             return new Uploader(options);
         }
@@ -724,7 +724,7 @@ layui.define('layer', function (exports) {
      * @param options
      */
     Uploader.prototype.create = function (options) {
-        var uploader = Uploader(options);
+        var uploader = new Uploader(options);
         uploader.index = ++uploaderIndex;
         uploader.init();
         return uploader;

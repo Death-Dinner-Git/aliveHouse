@@ -148,8 +148,8 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">搜索：</label>
                     <div class="layui-input-inline">
-                        <input type="hidden" name="key" required="" lay-verify="required" placeholder="请输入关键词" class="layui-input inputHide" lay-search="refresh" lay-filter="key" />
-                        <input type="text" required="" lay-verify="required" placeholder="请输入关键词" class="layui-input inputKey"/>
+                        <input type="hidden" name="key" value="4" data-value="4" lay-verify="required" placeholder="请输入关键词" class="layui-input inputHide" lay-search="refresh" lay-filter="key" />
+                        <input type="text" value="儋州" data-value="儋州" lay-verify="required" placeholder="请输入关键词" class="layui-input inputKey"/>
                     </div>
                 </div>
             </div>
@@ -488,17 +488,15 @@
     </fieldset>
 
 </div>
-<script type="text/javascript" src="__JS__/search.js"></script>
 <script>
     layui.config({
         base: '/static/js/',
-    }).use(['layedit', 'laydate', 'forms','uploader'], function () {
+    }).use(['layedit', 'laydate', 'forms','uploader','search'], function () {
         var forms = layui.forms(),
             layer = layui.layer,
             layedit = layui.layedit,
             laydate = layui.laydate;
-        var upload = layui.uploader();
-        var uploader = upload.create({
+        var uploader = layui.uploader({
             elem:'.layui-upload-file',
             url: '/manage/ajax/uploader?file=build',
             isAjax:true,
@@ -509,6 +507,14 @@
                     layer.msg(res.msg);
                 }
             }
+        });
+
+        var search = layui.search({
+            url: '/manage/ajax/getCity',
+            targetClass: '.inputKey',          // 输入框目标元素
+            parentClass: '.layui-input-inline',          // 父级类
+            hiddenClass: '.inputHide',          // 隐藏域input
+            key:'name'
         });
 
         //创建一个编辑器
@@ -781,17 +787,7 @@
 //            },
 //        });
 
-        // 初始化
-        $(function () {
-            Site.download('/');
-            var auto = new AutoComplete({
-                url: '/manage/ajax/getCity',
-                targetClass: '.inputKey',          // 输入框目标元素
-                parentClass: '.layui-input-inline',          // 父级类
-                hiddenClass: '.inputHide',          // 隐藏域input
-                key:'name'
-            });
-        });
+        Site.download('/');
 
     });
 </script>
