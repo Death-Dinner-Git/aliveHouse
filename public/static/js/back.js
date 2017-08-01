@@ -194,6 +194,42 @@ Back.update = function (selector,options,url){
 };
 
 /**
+ * 查看
+ * @param selector
+ * @param options
+ * @param url
+ */
+Back.view = function (selector,options,url){
+    if (!selector){
+        return;
+    }
+    var config = {
+        scrollbar:false,
+        type: 2,
+        title: '查看',
+        maxmin: true,
+        shade: false,
+        area: ['1050px', '62.8%'],
+        content: undefined,
+    };
+    config = $.extend(config,options);
+    //添加
+    $(document).off('click','[lay-filter="'+selector+'"]').on('click','[lay-filter="'+selector+'"]',function () {
+        var that = $(this);
+        config.content = url || config.content || that.attr('lay-url');
+        var layer = Back.getLayer();
+        var id = that.closest('[data-key]').attr('data-key');
+        if (!config.content || !id){
+            layer.msg('地址无效');
+            return;
+        }else{
+            config.content += '?id='+ id;
+        }
+        layer.open(config);
+    });
+};
+
+/**
  * 删除 （注意：与添加和编辑的参数顺序不一致）
  * @param selector
  * @param url

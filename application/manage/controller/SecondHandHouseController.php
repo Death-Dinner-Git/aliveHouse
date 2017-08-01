@@ -74,28 +74,7 @@ class SecondHandHouseController extends ManageController
      */
     public function createAction()
     {
-        $config = new Ban();
-        $configList = Ban::getTypeList();
-        $appList = Ban::getAppList();
-        if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Ban']) ? $_POST['Ban'] : []);
-            $data['updated_at'] = date('Y-m-d H:i:s');
-            $data['created_at'] = date('Y-m-d H:i:s');
-            if ($data){
-                $validate = Ban::getValidate();
-                $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
-                    $this->success('添加成功','create','',1);
-                }else{
-                    $error = $validate->getError();
-                    if (empty($error)){
-                        $error = $config->getError();
-                    }
-                    $this->error($error, 'create','',1);
-                }
-            }
-        }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return redirect(url('/manage/house/create?type=2'));
     }
 
     /**

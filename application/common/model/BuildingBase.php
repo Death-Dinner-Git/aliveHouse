@@ -9,6 +9,7 @@ use app\common\model\BuildingContent;
 use app\common\model\ImagesBuilding;
 use app\common\model\HouseBetter;
 use app\common\model\NewHouse;
+use app\common\model\BackUser;
 
 /**
  * This is the model class for table "{{%building_base}}".
@@ -29,6 +30,7 @@ use app\common\model\NewHouse;
  * @property images[] $images
  * @property HouseBetter[] $houseBetters
  * @property NewHouse[] $newHouses
+ * @property BackUser $createdBy
  */
 class BuildingBase extends Model
 {
@@ -122,6 +124,14 @@ class BuildingBase extends Model
     public function getImages()
     {
         return $this->hasMany(ucfirst(ImagesBuilding::tableNameSuffix()), 'target_id', 'id');
+    }
+
+    /**
+     * @return \think\model\relation\HasOne
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()),'id', 'created_by');
     }
 
     /**

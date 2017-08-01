@@ -139,8 +139,9 @@
         </td>
         <td>{$model.getBuildingDetail.address}</td>
         <td style="width: 150px;" class="action">
-            <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>
+            <label class="layui-btn layui-btn-mini" lay-filter="view">查看</label>
             <label class="layui-btn layui-btn-mini layui-btn-danger" lay-filter="delete">删除</label>
+            <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>
         </td>
     </tr>
     {/volist}
@@ -152,21 +153,25 @@
 
 <script>
     var url = {
-      create:"{:url('/manage/build/create')}",
-      update:"{:url('/manage/build/update')}",
-      delete:"{:url('/manage/build/delete')}",
+      createUrl:"{:url('/manage/build/create')}",
+      updateUrl:"{:url('/manage/build/update')}",
+      viewUrl:"{:url('/manage/build/view')}",
+      deleteUrl:"{:url('/manage/build/delete')}"
     };
     $(function() {
         //分页
         Site.loadPage();
         //添加
-        Back.create('create',{content:url.create,area:['1050px','88%']});
+        Back.create('create',{content:url.createUrl,area:['1050px','88%']});
 
         //编辑
-        Back.update('update',{content:url.update,area:['1050px','88%']});
+        Back.update('update',{content:url.updateUrl,area:['1050px','88%']});
+
+        //查看
+        Back.view('view',{content:url.viewUrl,area:['1050px','88%']});
 
         //删除
-        Back.delete('delete',url.delete);
+        Back.delete('delete',url.deleteUrl);
     });
     layui.use([ 'layer','laydate', 'form'], function() {});
 </script>

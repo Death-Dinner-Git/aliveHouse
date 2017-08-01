@@ -20,6 +20,11 @@ class Helper
         return self::$_instance;
     }
 
+    private function __construct()
+    {
+
+    }
+
     /**
      * @description 压缩图片 本函数用于 按照变量$format指定的格式，进行格式压缩.
      *

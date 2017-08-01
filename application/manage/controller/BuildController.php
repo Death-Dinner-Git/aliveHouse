@@ -2,6 +2,7 @@
 
 namespace app\manage\controller;
 
+use app\common\components\Helper;
 use app\common\controller\ManageController;
 use app\manage\model\BuildingBase;
 use app\manage\model\City;
@@ -44,13 +45,6 @@ class BuildController extends ManageController
                 $where =  array_merge($where, ['city_id'=>$city]);
             }
         }
-        $helper = BuildingBase::getHelper();
-        $build = BuildingBase::load()->where(['id'=>'40'])->find();
-        var_dump($build->toArray());
-        var_dump($build->getCity->toArray());
-        var_dump($build->getBuildingDetail->toArray());
-        var_dump($build->getBuildingContent->toArray());
-        var_dump($helper::toArray($build->getImages));
 
         $list = $model->where($where)->order('id DESC')->paginate($each);
 
@@ -138,7 +132,7 @@ class BuildController extends ManageController
     {
         $this->assign('meta_title', "详情");
         $model = BuildingBase::load()->where(['id'=>$id])->find();
-        return view('config/view',['model'=>$model]);
+        return view('build/view',['model'=>$model]);
     }
 
     /**

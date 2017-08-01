@@ -5,6 +5,8 @@ namespace app\manage\controller;
 use app\common\controller\ManageController;
 use app\manage\model\NewHouse;
 use app\manage\model\SecondHandHouse;
+use app\manage\model\Images;
+use app\manage\model\City;
 
 class HouseController extends ManageController
 {
@@ -51,24 +53,23 @@ class HouseController extends ManageController
 
     /**
      * @description 显示资源列表
-     * @param int $pageNumber
      * @param string $name
      * @param string $type
      * @param string $app
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction($name = null, $type = null,$app = null)
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
         $param = ['name'=>'','type'=>'','app'=>''];
-        $query = NewHouse::load();
+        $model = NewHouse::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);
             $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $query = $query->where($nameWhere);
+            $model->where($nameWhere);
         }
-        $lists = NewHouse::getTypeList();
+        $typeLists = NewHouse::getTypeList();
         if (isset($lists[0])){
             unset($lists[0]);
         }
@@ -78,37 +79,57 @@ class HouseController extends ManageController
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = NewHouse::load()->where($where)->count();
+        $cityLists = \app\manage\model\City::getCityList();
 
-        $this->assign('meta_title', "我的房源");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
+        $list = $model->where($where)->order('id DESC')->paginate($each);
+
         $this->assign('param', $param);
-        $this->assign('lists', $lists);
+        $this->assign('typeLists', $typeLists);
+        $this->assign('cityLists', $cityLists);
+        $this->assign('list', $list);
         return view('house/index');
     }
 
     /**
      * 显示创建资源表单页.| 保存新建的资源
      *
+     * @param $type int
      * @return \think\Response
      */
-    public function createAction()
+    public function createAction($type = 1)
     {
         $model = new NewHouse();
-        $lists = NewHouse::getTypeList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['NewHouse']) ? $_POST['NewHouse'] : []);
-            $data['updated_at'] = date('Y-m-d H:i:s');
-            $data['created_at'] = date('Y-m-d H:i:s');
-            if ($data){
+            //
+            $base = $model->filter($_POST);
+            $base['is_delete'] = '1';
+            $base['updated_at'] = date('Y-m-d H:i:s');
+            $base['created_at'] = date('Y-m-d H:i:s');
+            if ($base){
                 $validate = NewHouse::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $model->save($data)){
-                    $this->success('添加成功','create','',1);
+                if ($validate->check($base) && $model->save($base)){
+                    $prefix = '/static/uploads/house/'.$model->id.'/';
+                    $ImagesModel = new Images();
+                    $urls = isset($_POST['url']) ? explode('|',$_POST['url']) : [];
+                    $images = [];
+                    foreach ($urls as $url){
+                        $item = [];
+                        $item['target_id'] = $model->id;
+                        $item['type'] = '1';
+                        $to = $prefix.pathinfo($url,PATHINFO_BASENAME);
+                        $item['url'] = $to;
+                        $this->copy($url,$to);
+                        $icon = pathinfo($url,PATHINFO_DIRNAME).'/'.pathinfo($url,PATHINFO_FILENAME).'_icon.'.pathinfo($url,PATHINFO_EXTENSION);
+                        $to = $prefix.pathinfo($icon,PATHINFO_BASENAME);
+                        $item['url_icon'] = $to;
+                        $this->copy($icon,$to);
+                        $item['url_title'] = $model->title;
+                        $item['created_at'] = $model->created_at;
+                        $images[] = $item;
+                    }
+                    $ImagesModel->saveAll($images);
+                    $this->success('添加成功','create',$model,1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
@@ -118,7 +139,8 @@ class HouseController extends ManageController
                 }
             }
         }
-        return view('house/create',['meta_title'=>'添加配置','lists'=>$lists]);
+        $cityLists = City::getCityList();
+        return view('house/create',['meta_title'=>'添加房源','model'=>$model,'cityLists'=>$cityLists]);
     }
 
     /**
@@ -173,18 +195,21 @@ class HouseController extends ManageController
 
     /**
      * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
+     * @return \think\response\Json
      */
-    public function deleteAction($id)
+    public function deleteAction()
     {
-        $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
+        $id = isset($_POST['id']) ? $_POST['id'] : [];
+        $ret = ['status'=>0,'info'=>'删除失败'];
         if ($this->getRequest()->isAjax()){
-            $result = NewHouse::update(['is_delete'=>'0'],['id'=>$id]);
+            $where['id'] = ['in',implode(',',$id)];
+            $result = NewHouse::update(['is_delete'=>'0'],$where);
             if ($result){
-                $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
+                $ret = ['status'=>1,'info'=>'删除成功'];
             }
+        }
+        if (empty($id)){
+            $ret = ['status'=>1,'info'=>'删除成功'];
         }
         return json($ret);
     }

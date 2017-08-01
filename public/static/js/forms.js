@@ -466,14 +466,16 @@ layui.define('layer', function (exports) {
         },
         render: function (type) {
             var that = this, filter;
-            filter = type.match(/\(.*\)$/)||[]; //提取事件过滤器
-            type = type.replace(filter, ''); //获取事件本体名
-            if (filter[0]){
-                //找到过滤器
-                filter = filter[0].replace(/(^\(*)|(\)*$)/g, '');
-                filter = '[lay-filter="'+filter+'"]';
-            }else {
-                filter = '';
+            if(type){
+                filter = type.match(/\(.*\)$/)||[]; //提取事件过滤器
+                type = type.replace(filter, ''); //获取事件本体名
+                if (filter[0]){
+                    //找到过滤器
+                    filter = filter[0].replace(/(^\(*)|(\)*$)/g, '');
+                    filter = '[lay-filter="'+filter+'"]';
+                }else {
+                    filter = '';
+                }
             }
             var items = {
 

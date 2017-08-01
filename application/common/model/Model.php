@@ -13,15 +13,11 @@ use think\Config;
 class Model extends \think\Model
 {
 
-    protected static $_helper;
     /**
      * @return \app\common\components\Helper
      */
     public static function getHelper(){
-        if (!self::$_helper){
-            self::$_helper = \app\common\components\Helper::getInstance();
-        }
-        return self::$_helper;
+        return \app\common\components\Helper::getInstance();
     }
 
     public function getTableInformation($path = '',$namespace = ''){
@@ -55,6 +51,23 @@ class Model extends \think\Model
             @file_put_contents($path.'/ClassModel.php',$str);
             closedir($od);
         }
+    }
+
+    public function getTrans($attr = null,$key = null){
+        $ret = '';
+        if (!$attr){
+            return $ret;
+        }
+        if (property_exists($this,$attr)){
+            $data = $this->$attr;
+            if (is_numeric($data)){
+                $ret = $data;
+            }
+            if (isset($data[$key])){
+                $ret = $data[$key];
+            }
+        }
+        return $ret;
     }
 
     /**

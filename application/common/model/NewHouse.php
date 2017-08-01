@@ -3,6 +3,7 @@
 namespace app\common\model;
 
 use app\common\model\Model;
+use app\common\model\BackUser;
 use app\common\model\BuildingBase;
 
 /**
@@ -20,6 +21,7 @@ use app\common\model\BuildingBase;
  * @property string $updated_at
  *
  * @property BuildingBase $buildingBase
+ * @property BackUser $createdBy
  */
 class NewHouse extends Model
 {
@@ -35,11 +37,37 @@ class NewHouse extends Model
         'id',
         'is_delete',
         'building_base_id',
+        'title',
+        'city_id',
+        'county_id',
+        'address',
         'type',
         'room',
-        'description',
-        'address',
         'url',
+        'floorsType',
+        'onFloor',
+        'floors',
+        'face',
+        'houseType',
+        'fitment',
+        'eachPrice',
+        'price',
+        'years',
+        'area',
+        'description',
+        'supporting',
+        'traffic',
+        'around',
+        'houseLabel',
+        'istop',
+        'status',
+        'salestatus',
+        'contact',
+        'tel',
+        'email',
+        'weChat',
+        'qq',
+        'created_by',
         'created_at',
         'updated_at',
     ];
@@ -51,7 +79,8 @@ class NewHouse extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $typeList = ['1'=>'类型一','2'=>'类型二'];
+    public static $typeList = ['1'=>'新房','2'=>'二手房'];
+    public $statusList = ['1'=>'销售中','2'=>'已售完'];
 
     public static function getTypeList(){
         return self::$typeList;
@@ -100,6 +129,14 @@ class NewHouse extends Model
      */
     public function getBuildingBase()
     {
-        return $this->hasOne(ucfirst(BuildingBase::tableNameSuffix()),'building_base_id', 'id');
+        return $this->hasOne(ucfirst(BuildingBase::tableNameSuffix()),'id', 'building_base_id');
+    }
+
+    /**
+     * @return \think\model\relation\HasOne
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()),'id', 'created_by');
     }
 }
