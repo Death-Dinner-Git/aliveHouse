@@ -3,6 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
+use app\manage\model\BuildingBase;
 use app\manage\model\NewHouse;
 use app\manage\model\SecondHandHouse;
 use app\manage\model\Images;
@@ -96,27 +97,43 @@ class HouseController extends ManageController
      * @param $type int
      * @return \think\Response
      */
-    public function createAction($type = 1)
+    public function createAction($type = null)
     {
+        if (!$type){
+            $type = isset($_REQUEST['type']) ? $_REQUEST['type'] : '1';
+        }
         $model = new NewHouse();
         if ($this->getRequest()->isPost()){
             //
             $base = $model->filter($_POST);
             $base['is_delete'] = '1';
+            $base['created_by'] = '4';
             $base['updated_at'] = date('Y-m-d H:i:s');
             $base['created_at'] = date('Y-m-d H:i:s');
+            $base['building_base_id'] = isset($base['building_base_id']) ? trim($base['building_base_id']) : '0';
             if ($base){
                 $validate = NewHouse::getValidate();
                 $validate->scene('create');
                 if ($validate->check($base) && $model->save($base)){
                     $prefix = '/static/uploads/house/'.$model->id.'/';
+                    //
+                    $to = $prefix.pathinfo($base['url'],PATHINFO_BASENAME);
+                    $from = $base['url'];
+                    $model->url = $to;
+                    $this->copy($from,$to);
+                    $icon = pathinfo($from,PATHINFO_DIRNAME).'/'.pathinfo($from,PATHINFO_FILENAME).'_icon.'.pathinfo($from,PATHINFO_EXTENSION);
+                    $to = $prefix.pathinfo($icon,PATHINFO_BASENAME);
+                    $model->url_icon = $to;
+                    $this->copy($icon,$to);
+                    $model->isUpdate(true)->save();
+
                     $ImagesModel = new Images();
-                    $urls = isset($_POST['url']) ? explode('|',$_POST['url']) : [];
+                    $urls = isset($_POST['detail']) ? explode('|',$_POST['detail']) : [];
                     $images = [];
                     foreach ($urls as $url){
                         $item = [];
                         $item['target_id'] = $model->id;
-                        $item['type'] = '1';
+                        $item['type'] = '2';
                         $to = $prefix.pathinfo($url,PATHINFO_BASENAME);
                         $item['url'] = $to;
                         $this->copy($url,$to);
@@ -140,6 +157,7 @@ class HouseController extends ManageController
             }
         }
         $cityLists = City::getCityList();
+        $model->type = $type;
         return view('house/create',['meta_title'=>'添加房源','model'=>$model,'cityLists'=>$cityLists]);
     }
 

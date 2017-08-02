@@ -90,10 +90,10 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘Logo：</label>
+                        <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘封面：</label>
                         <div class="layui-input-block" style="padding-right: 120px;">
-                            <input type="file" id="BuildingLogo_file" name="file" placeholder="楼盘Logo" class="layui-upload-file">
-                            <input type="hidden" value="" name="logo" id="logo" lay-verify="require" lay-error="楼盘LOGO不能为空" placeholder="楼盘Logo" class="layui-input">
+                            <input type="file" id="BuildingLogo_file" name="file" placeholder="楼盘封面" class="layui-upload-file">
+                            <input type="hidden" value="" name="url" id="url" lay-verify="require" lay-error="楼盘LOGO不能为空" placeholder="楼盘封面" class="layui-input">
                             <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
                         </div>
                     </div>
@@ -226,7 +226,7 @@
                     <div class="layui-form-item">
                         <div class="layui-input-block" style="padding-right: 120px;">
                             <input type="file" id="BuildingDetail_file" name="file[]" placeholder="上传楼盘图片" multiple class="layui-upload-file">
-                            <input type="hidden" value="" name="url" id="url" placeholder="楼盘Logo" class="layui-input">
+                            <input type="hidden" value="" name="detail" id="detail" placeholder="上传楼盘图片" class="layui-input">
                             <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
                         </div>
                     </div>
@@ -489,27 +489,28 @@
         Back.submit(options);
     });
 
-    Site.uploader({
+    var indexLogo = Site.uploader({
         elem:'#BuildingLogo_file',
-        targetElem:'#logo',
+        targetElem:'#url',
         url: '/manage/ajax/uploader?file=file',
+        title:'上传楼盘封面',
         isAjax:true,
         success: function (res, input) {
             console.log(res);
-            console.log($('#logo').val());
+            console.log($('#url').val());
         }
     });
 
-    Site.uploader({
+    var indexUrl = Site.uploader({
         elem:'#BuildingDetail_file',
-        targetElem:'#url',
+        targetElem:'#detail',
         url: '/manage/ajax/uploader?file=file',
         title:'上传楼盘图片',
         isAjax:true,
         isMulti:true,
         success: function (res, input) {
             console.log(res);
-            console.log($('#url').val());
+            console.log($('#detail').val());
         }
     });
 

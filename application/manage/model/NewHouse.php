@@ -17,6 +17,7 @@ use app\manage\model\BuildingBase;
  * @property string $description
  * @property string $address
  * @property string $url
+ * @property string $url_icon
  * @property string $created_at
  * @property string $updated_at
  *

@@ -411,7 +411,7 @@ layui.define('jquery', function (exports) {
                     img = '<img src="' + ret[i].image + '" style="margin-right:5px;" height="25" width="25" title="" alt="">';
                 }
 
-                html += '<p  data-html = "' + ret[i].name +'" embId="' + ret[i].id + ' " data-index="' + i + '" class="p-index' + i + '">' +
+                html += '<p  data-html = "' + ret[i].name +'" embId="' + ret[i].id + '" data-index="' + i + '" class="p-index' + i + '">' +
                     img +
                     '<span>' + ret[i].name + '</span>' +
                     '</p>';

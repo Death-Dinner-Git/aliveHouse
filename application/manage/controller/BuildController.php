@@ -71,6 +71,13 @@ class BuildController extends ManageController
             $base['is_delete'] = '1';
             $base['updated_at'] = date('Y-m-d H:i:s');
             $base['created_at'] = date('Y-m-d H:i:s');
+            $base['created_by'] = '4';
+            if(empty($base['titlePinyin'])){
+                $helper = self::getHelper();
+                $pinyin = $helper::getZhPinYin($base['title']);
+                $base['titlePinyin'] = implode('',explode(' ',$pinyin));
+            }
+            $base['titlePinyin'] = strtolower($base['titlePinyin']);
             if ($base){
                 $validate = BuildingBase::getValidate();
                 $validate->scene('create');
@@ -79,9 +86,14 @@ class BuildController extends ManageController
                     //
                     $detail = $detailModel->filter($_POST);
                     $detail['building_base_id'] = $model->id;
-                    $to = $prefix.pathinfo($detail['logo'],PATHINFO_BASENAME);
-                    $detail['logo'] = $to;
-                    $this->copy($detail['logo'],$to);
+                    $to = $prefix.pathinfo($detail['url'],PATHINFO_BASENAME);
+                    $from = $detail['url'];
+                    $detail['url'] = $to;
+                    $this->copy($from,$to);
+                    $icon = pathinfo($from,PATHINFO_DIRNAME).'/'.pathinfo($from,PATHINFO_FILENAME).'_icon.'.pathinfo($from,PATHINFO_EXTENSION);
+                    $to = $prefix.pathinfo($icon,PATHINFO_BASENAME);
+                    $detail['url_icon'] = $to;
+                    $this->copy($icon,$to);
                     $detail['updated_at'] = date('Y-m-d H:i:s');
                     $detail['created_at'] = date('Y-m-d H:i:s');
                     //
@@ -89,8 +101,16 @@ class BuildController extends ManageController
                     $content = $contentModel->filter($_POST);
                     $content['building_base_id'] = $model->id;
                     $ImagesModel = new Images();
-                    $urls = isset($_POST['url']) ? explode('|',$_POST['url']) : [];
+                    $urls = isset($_POST['detail']) ? explode('|',$_POST['detail']) : [];
                     $images = [];
+                    $item = [];
+                    $item['target_id'] = $model->id;
+                    $item['type'] = '1';
+                    $item['url'] = $detail['url'];
+                    $item['url_icon'] = $detail['url_icon'];
+                    $item['url_title'] = $model->title;
+                    $item['created_at'] = $model->created_at;
+                    $images[] = $item;
                     foreach ($urls as $url){
                         $item = [];
                         $item['target_id'] = $model->id;

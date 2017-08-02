@@ -5,6 +5,8 @@ namespace app\common\model;
 use app\common\model\Model;
 use app\common\model\BackUser;
 use app\common\model\BuildingBase;
+use app\common\model\City;
+use app\common\model\ImagesNewHouse;
 
 /**
  * This is the model class for table "{{%new_house}}".
@@ -17,6 +19,7 @@ use app\common\model\BuildingBase;
  * @property string $description
  * @property string $address
  * @property string $url
+ * @property string $url_icon
  * @property string $created_at
  * @property string $updated_at
  *
@@ -48,6 +51,7 @@ class NewHouse extends Model
         'toilet',
         'veranda',
         'url',
+        'url_icon',
         'floorsType',
         'onFloor',
         'floors',
@@ -357,5 +361,29 @@ class NewHouse extends Model
     public function getCreatedBy()
     {
         return $this->hasOne(ucfirst(BackUser::tableNameSuffix()),'id', 'created_by');
+    }
+
+    /**
+     * @return \think\model\relation\HasOne
+     */
+    public function getCity()
+    {
+        return $this->hasOne(ucfirst(City::tableNameSuffix()),'id', 'city_id');
+    }
+
+    /**
+     * @return \think\model\relation\HasOne
+     */
+    public function getCounty()
+    {
+        return $this->hasOne(ucfirst(City::tableNameSuffix()),'id', 'county_id');
+    }
+
+    /**
+     * @return \think\model\relation\HasMany
+     */
+    public function getImages()
+    {
+        return $this->hasMany(ucfirst(ImagesNewHouse::tableNameSuffix()), 'target_id', 'id');
     }
 }

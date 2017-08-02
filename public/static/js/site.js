@@ -706,24 +706,6 @@ Site.photos = function (options) {
 };
 
 /*  */
-Site.uploader = function (options) {
-    options = $.extend({
-        elem:'.layui-upload-file',
-        url:'/manage/ajax/uploader',
-        isAjax: true,
-        before:null,  // 上传成功后的回调函数,参数 input 表单
-        success:null, // 上传成功后的回调函数,参数res代表后天返回的数据，input是文件input 表单
-    },options);
-
-    layui.config({
-        base: Site.config.layuiBase
-    }).use(['uploader'], function () {
-        var upload = layui.uploader();
-        upload.create(options)
-    });
-};
-
-/*  */
 Site.resizeShowTab = function () {
     if (window.parent) {
         window.parent.$(".layui-show").find("iframe").load();
@@ -2209,6 +2191,66 @@ Site.ajax = function(options, middleWare)  {
     }
     return deferred.done(middleWare).fail(function (error) {
         Site.msg(error);
+    });
+};
+
+
+var uploaderIndex = 1;
+var uploader = [];
+/**
+ * 上传
+ * @param options
+ * @returns {number}
+ */
+Site.uploader = function (options) {
+    var index = uploaderIndex;
+    uploaderIndex++;
+    options = $.extend({
+        elem:'.layui-upload-file',
+        url:'/manage/ajax/uploader',
+        isAjax: true,
+        before:null,  // 上传成功后的回调函数,参数 input 表单
+        success:null, // 上传成功后的回调函数,参数res代表后天返回的数据，input是文件input 表单
+    },options);
+
+    layui.config({
+        base: Site.config.layuiBase
+    }).use(['uploader'], function () {
+        uploader[uploaderIndex] = layui.uploader(options);
+    });
+
+    return index;
+};
+
+/**
+ * 获取上传器
+ * @param index
+ * @returns {*|undefined}
+ */
+Site.getUploader = function (index) {
+    return uploader[index] || undefined;
+};
+
+/**
+ * 搜索
+ * @param options
+ */
+Site.search = function (options) {
+    options = $.extend({
+        url: undefined,                  // 搜索地址
+        targetClass: undefined,          // 输入框目标元素
+        parentClass: undefined,          // 父级类
+        hiddenClass: undefined,          // 隐藏域input
+        key:'name'
+    },options);
+
+    if (!options.url || !options.targetClass || !options.parentClass || !options.hiddenClass){
+        return;
+    }
+    layui.config({
+        base: Site.config.layuiBase
+    }).use(['search'], function () {
+        var search = layui.search(options);
     });
 };
 

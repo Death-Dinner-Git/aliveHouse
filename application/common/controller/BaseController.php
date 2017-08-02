@@ -20,6 +20,7 @@ class BaseController extends Controller
      */
     protected function _initialize()
     {
+        $_SESSION['identity'] = session('identity');
         config('default_module',request()->module());
         $this->assign('URL',$this->getUrl());
     }

@@ -65,6 +65,8 @@ layui.define('layer', function (exports) {
                 before: undefined,
                 //上传成功后的回调,参数有当前上传的数据，res,出发表单input，和全部图片cache
                 success: undefined,
+                //初始化执数据，res,出发表单input，和全部图片cache
+                data: undefined,
                 //设定上传的文件类型，也可以直接在input设置lay-type=""来取代；图片类型images。默认，不用设定;普通文件类型 file ;视频文件类型 video; 音频文件类型 audio
                 type: undefined,
                 //自定义可支持的文件扩展名，也可以直接在input设置lay-ext=""来取代,注意是用|分割
@@ -125,9 +127,6 @@ layui.define('layer', function (exports) {
             //设置识别
             item.attr(uploaderAttr,index);
 
-            //设置前置缓存
-            that.cache[index] = [];
-
             var form = '<form target="' + elemIframe + '" method="' + (options.method || 'post') + '" key="set-mine" enctype="multipart/form-data" action="' + (options.url || '') + '"></form>';
 
             var type = item.attr('lay-type') || options.type; //获取文件类型
@@ -183,6 +182,15 @@ layui.define('layer', function (exports) {
             //检查浏览器是否支持进度条事件
             that.checkBrowserIsSupportProgressEvent();
 
+            //设置前置缓存
+            that.cache[index] = [];
+
+            //初始化数据
+            if (that.options.data){
+                that.cache[index] = that.options.data[index] || that.options.data;
+                that.show(that.cache[index],this);
+            }
+
             if (that.options.isAjax) {
                 //触发 Ajax 上传
                 item.off('change').on('change', function () {
@@ -234,6 +242,7 @@ layui.define('layer', function (exports) {
     Uploader.prototype.show = function (res,input) {
         var that = this;
         res = res || [];
+        console.log(res);
         if(typeof res === "object"){
             var item = $(input);
             var index = item.attr(uploaderAttr);

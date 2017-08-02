@@ -51,8 +51,8 @@ class IdentityValidate extends Validate
         'create'   =>  ['username','password'],
         'update'  =>  ['department_id','username','phone','password','rePassword'],
         'save'  =>  [],
-        'loginAjax'   =>  ['username'=> 'require|usernameExist:back_user,username'],
-        'login'  =>  ['username','password','__token__'],
+        'loginAjax'   =>  ['username'=> 'require|usernameExist:back_user,username','password'],
+        'login'  =>  ['username'=> 'require|usernameExist:back_user,username','password'],
         'signUp'  =>  ['department_id','username','phone','password'],
         'register'  =>  ['department_id','username','phone','password','rePassword','__token__'],
     ];

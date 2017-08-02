@@ -28,43 +28,33 @@ class LoginController extends BaseController
      */
     public function loginAction()
     {
-        if ($this->isGuest()) {
-            $this->goHome();
-        }
 
-        $username = trim(input('WF_username'));
-        $password = input('WF_password');
-        $token = input('__token__');
+        if ( $this->getRequest()->isAjax() && $this->getRequest()->isPost()){
+            $username = trim($this->getRequest()->request('username'));
+            $password = $this->getRequest()->request('password');
 
 //        // 图片验证码校验
-//        if (!$this->checkVerify(input('post.WF_verify')) && 'localhost' !== request()->host() && '127.0.0.1' !== request()->host()) {
+//        if (!$this->checkVerify(input('post.verify')) && 'localhost' !== request()->host() && '127.0.0.1' !== request()->host()) {
 //            $this->error('验证码输入错误');
 //        }
 
-        if ( request()->isAjax()){
             // 调用当前模型对应的Identity验证器类进行数据验证
-            $username = '';
-            if (request()->request('name') == 'WF_username'){
-                $username = trim(request()->request('param'));
-            }
             $data = [
                 'username'=>$username,
+                'password'=>$password,
             ];
+
             $validate = Identity::getValidate();
             $validate->scene('loginAjax');
-            if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
-                return json(['status'=>'y','info'=>'格式验证通过']);
-            }else{
-                return json(['status'=>'n','info'=>$validate->getError()]);
-            }
-        }
 
-        if (request()->isPost() && $username && $password && $token ) {
-            $identity = new Identity();
-            $identity->username = $username;
-            $identity->password = $password;
-            $res = $identity->login();
-            if ($res instanceof Identity){
+            if($validate->check($data)){
+
+                //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
+                $identity = new Identity();
+                $identity->username = $username;
+                $identity->password = $password;
+                $res = $identity->login();
+                if ($res instanceof Identity){
 
 //                // 验证管理员表里是否有该用户
 //                $account_object = new Access();
@@ -80,13 +70,19 @@ class LoginController extends BaseController
 //                } else {
 //                    $this->logoutAction();
 //                }
-
-//                $this->goBack();
-                $this->goHome();
+                    return json(['status'=>'1','info'=>'登陆成功','url'=>url($this->getHomeUrl())]);
+                }else{
+                    return json(['status'=>'0','info'=>$res]);
+                }
             }else{
-                $this->error($res, $this->getLoginUrl(),'',1);
+                return json(['status'=>'0','info'=>$validate->getError()]);
             }
         }
+
+        if ( $this->isGuest()) {
+            $this->goHome();
+        }
+
         // 临时关闭当前模板的布局功能
         $this->view->engine->layout(false);
         return view('login',['meta_title'=>'会员登录']);
@@ -100,7 +96,7 @@ class LoginController extends BaseController
     public function logoutAction()
     {
         Identity::logout();
-        $this->success('退出成功！', $this->getLoginUrl(),1);
+        $this->success('退出成功！', $this->getLoginUrl(),[],1);
     }
 
     /**

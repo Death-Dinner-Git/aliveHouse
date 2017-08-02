@@ -33,6 +33,31 @@ class AjaxController extends ManageController
     }
 
     /**
+     * @description 获取楼盘
+     * @param null $name
+     * @return \think\response\Json
+     */
+    public function getBuildingBaseAction($name=null)
+    {
+        $ret = [];
+        $where = ['is_delete'=>'1'];
+        $model = \app\manage\model\BuildingBase::load();
+        if ($name || ($name = $this->getRequest()->request('name'))){
+            if ($name != ''){
+                $nameWhere = " `title` like '%".$name."%' or `titlePinyin` like '%".$name."%'";
+                $model->where($nameWhere);
+            }
+        }
+        $list = $model->where($where)->limit(20)->select();
+        if (!empty($list)){
+            foreach ($list as $item){
+                $ret[] = ['id'=>$item['id'],'name'=>$item['title']];
+            }
+        }
+        return json($ret);
+    }
+
+    /**
      * @description 上传器
      * @return \think\response\Json
      */

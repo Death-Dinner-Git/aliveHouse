@@ -977,9 +977,16 @@ body .layui-footer .layui-main a {
 .layui-form-checked:not([lay-skin="primary"]) span, .layui-form-checked:not([lay-skin="primary"]):hover span {
     background-color: #0DBD9F;
 }
+
 .layui-form-checkbox[lay-skin="primary"]:hover i{
     color: #0DBD9F;
     background-color: #FFF;
+    border-color: #0DBD9F;
+}
+
+.layui-form-checked[lay-skin="primary"] i, .layui-form-checked[lay-skin="primary"]:hover i {
+    color: #fff;
+    background-color: #0DBD9F;
     border-color: #0DBD9F;
 }
 

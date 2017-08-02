@@ -9,13 +9,12 @@ class ConfigController extends ManageController
 {
     /**
      * @description 显示资源列表
-     * @param int $pageNumber
      * @param string $name
      * @param string $type
      * @param string $app
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction($name = null, $type = null,$app = null)
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
@@ -23,11 +22,11 @@ class ConfigController extends ManageController
         if ($this->getRequest()->isPjax()){
             $param['name'] = 'PJAX';
         }
-        $query = Config::load();
+        $model = Config::load();
         if ($name && $name != ''){
             $param['name'] = trim($name);
             $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $query = $query->where($nameWhere);
+            $model->where($nameWhere);
         }
         $typeList = Config::getTypeList();
         if (isset($typeList[0])){
@@ -46,17 +45,14 @@ class ConfigController extends ManageController
                 $where =  array_merge($where, ['app'=>$app]);
             }
         }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Config::load()->where($where)->count();
 
-        $this->assign('meta_title', "标签清单");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
+        $list = $model->where($where)->order('id DESC')->paginate($each);
+
+        $this->assign('meta_title', "楼盘清单");
         $this->assign('param', $param);
         $this->assign('typeList', $typeList);
         $this->assign('appList', $appList);
+        $this->assign('list', $list);
         return view('config/index');
     }
 

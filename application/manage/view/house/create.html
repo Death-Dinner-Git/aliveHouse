@@ -24,7 +24,7 @@
 <body>
 
 <section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
-    <form class="layui-form forms" id="defaultForm" action="__URL__" method="post" style="padding: 15px 0">
+    <form class="layui-form forms" id="defaultForm" action="" method="post" style="padding: 15px 0">
 
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-color-danger">*</span>房源标题：</label>
@@ -51,6 +51,16 @@
                 </div>
             </div>
         </div>
+
+        {if condition="$model->type eq '1'"}
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘名称：</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <input type="hidden" name="building_base_id" lay-filter="key" lay-search="refresh" lay-verify="require" placeholder="请输入楼盘名称关键词" class="layui-input" />
+                <input type="text" value="" lay-filter="keyword" lay-verify="require" placeholder="请输入楼盘名称关键词" class="layui-input"/>
+            </div>
+        </div>
+        {/if}
 
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-color-danger">*</span>房源地址：</label>
@@ -141,7 +151,7 @@
                 <label class="layui-form-label" style="width: 110px;">房屋类型：</label>
                 <div class="layui-input-inline" style="width: 130px;">
                     <select name="houseType" lay-verify="require" lay-search >
-                        <option value="">房屋朝向</option>
+                        <option value="">房屋类型</option>
                         {volist name="model->houseTypeList" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
@@ -220,9 +230,18 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-color-danger">*</span>房源封面：</label>
             <div class="layui-input-block" style="padding-right: 120px;">
-                <input type="file" id="BuildingLogo_file" name="file" placeholder="房源封面" class="layui-upload-file">
-                <input type="hidden" value="" name="logo" id="logo" lay-verify="require" lay-error="房源封面不能为空" placeholder="房源封面" class="layui-input">
-                <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
+                <input type="file" id="house_url_file" name="file" placeholder="房源封面" class="layui-upload-file">
+                <input type="hidden" value="" name="url" id="url" lay-verify="require" lay-error="房源封面不能为空" placeholder="房源封面" class="layui-input">
+                <div lay-filter="show-url" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>房源图片：</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <input type="file" id="house_detail_file" name="file[]" multiple placeholder="房源图片" class="layui-upload-file">
+                <input type="hidden" value="" name="detail" id="detail" class="layui-input">
+                <div lay-filter="show-detail" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
             </div>
         </div>
 
@@ -328,30 +347,21 @@
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label class="layui-form-label">委托人：</label>
-                <div class="layui-input-inline">
-                    <input type="text" value="" name="joined_at" lay-filter="date" placeholder="委托人" class="layui-input">
-                </div>
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">委托人联系方式：</label>
-                <div class="layui-input-inline">
-                    <input type="text" value="" name="joined_at" placeholder="委托人联系方式" class="layui-input">
-                </div>
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <div class="layui-inline">
                 <label class="layui-form-label"><span class="layui-color-danger">*</span>状态：</label>
                 <div class="layui-input-block checkbox-left checkbox-primary" style="padding-right: 120px;" lay-error="请至少选择一个状态状态">
                     {volist name="model->statusList" id="item" }
                     <input type="radio" name="status[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="status" />
                     {/volist}
                 </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <input type="hidden" value="{$model.type}" name="type">
+                <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
 
@@ -376,27 +386,36 @@
         Back.submit(options);
     });
 
-    Site.uploader({
-        elem:'#BuildingLogo_file',
-        targetElem:'#logo',
+    Site.search({
+        url: '/manage/ajax/getBuildingBase',
+        targetClass: '[lay-filter="keyword"]',      // 输入框目标元素
+        parentClass: '.layui-input-block',          // 父级类
+        hiddenClass: '[lay-filter="key"]',          // 隐藏域input
+        key:'name'
+    });
+
+    var indexUrl = Site.uploader({
+        elem:'#house_url_file',
+        targetElem:'#url',
         url: '/manage/ajax/uploader?file=file',
+        title:'上传房源封面',
         isAjax:true,
         success: function (res, input) {
             console.log(res);
-            console.log($('#logo').val());
+            console.log($('#url').val());
         }
     });
 
-    Site.uploader({
-        elem:'#BuildingDetail_file',
-        targetElem:'#url',
+    var indexDetail = Site.uploader({
+        elem:'#house_detail_file',
+        targetElem:'#detail',
         url: '/manage/ajax/uploader?file=file',
-        title:'上传楼盘图片',
+        title:'上传房源图片',
         isAjax:true,
         isMulti:true,
         success: function (res, input) {
             console.log(res);
-            console.log($('#url').val());
+            console.log($('#detail').val());
         }
     });
 

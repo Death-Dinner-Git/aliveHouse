@@ -127,18 +127,25 @@
         </td>
         <td>{$model.title}</td>
         <td>{$model.getBuildingBase.title}</td>
-        <td>{$model.city_id}/{$model.county_id}</td>
-        <td>{$model.eachPrice}{$model.price}</td>
+        <td>{$model.getCity.name}
+            {if condition="!empty($model->county_id)"}/{/if}
+            {$model.getCounty.name}
+        </td>
+        <td>
+            单价：{$model.eachPrice}
+            <br/>
+            总价：{$model.price}
+        </td>
         <td>{$model.room}</td>
         <td>{$model.created_at}</td>
         <td>{$model.getCreatedBy.username}</td>
         <td>{$model.contact}</td>
         <td>{$model->getTrans('statusList',$model.status)}</td>
         <td style="width: 150px;" class="action">
-            <div class="layui-inline checkbox-left checkbox-mini">
-                <input type="checkbox" title="推荐" lay-filter="isHot" lay-skin="default"/>
-                <input type="checkbox" title="置顶" lay-filter="isTop" lay-skin="default"/>
-            </div>
+            <!--<div class="layui-inline checkbox-left checkbox-mini">-->
+                <!--<input type="checkbox" title="推荐" lay-filter="isHot" lay-skin="default"/>-->
+                <!--<input type="checkbox" title="置顶" lay-filter="isTop" lay-skin="default"/>-->
+            <!--</div>-->
             <label class="layui-btn layui-btn-mini" lay-filter="view">查看</label>
             <label class="layui-btn layui-btn-mini layui-btn-danger" lay-filter="delete">删除</label>
             <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>

@@ -1397,7 +1397,7 @@ class Helper
      * @param string $sRetFormat 返回格式 [head:首字母|all:全拼音]
      * @return string
      */
-    public static function getZhPinYin($utf8Data, $sRetFormat = 'head'){
+    public static function getZhPinYin($utf8Data, $sRetFormat = 'all'){
         return \app\common\components\ChineseToPinyin::encode($utf8Data,$sRetFormat);
     }
 }
