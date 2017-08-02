@@ -1,6 +1,14 @@
 <?php
 
-class GetAction extends FenxiaoAction
+namespace app\common\controller;
+
+use think\Controller;
+
+/**
+ * Class TransController
+ * @package app\common\controller
+ */
+class TransController extends Controller
 {
     // 全部数据
     private $data = [

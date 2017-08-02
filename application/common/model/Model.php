@@ -53,6 +53,10 @@ class Model extends \think\Model
         }
     }
 
+    public function getTableInfoAll(){
+        $sql = "select * from information_schema.columns where table_name='wf_soap_detail' ";
+    }
+
     public function getTrans($attr = null,$key = null){
         $ret = '';
         if (!$attr){

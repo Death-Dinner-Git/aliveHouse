@@ -62,7 +62,8 @@ class BuildController extends ManageController
      */
     public function createAction()
     {
-        $lists = City::getCityList();
+        $cityLists = City::getCityList();
+        $detailModel = new BuildingDetail();
         if ($this->getRequest()->isPost()){
             //
             $model = new BuildingBase();
@@ -76,7 +77,6 @@ class BuildController extends ManageController
                 if ($validate->check($base) && $model->save($base)){
                     $prefix = '/static/uploads/buildingDetail/'.$model->id.'/';
                     //
-                    $detailModel = new BuildingDetail();
                     $detail = $detailModel->filter($_POST);
                     $detail['building_base_id'] = $model->id;
                     $to = $prefix.pathinfo($detail['logo'],PATHINFO_BASENAME);
@@ -119,7 +119,7 @@ class BuildController extends ManageController
                 }
             }
         }
-        return view('build/create',['meta_title'=>'添加楼盘','meta_util'=>'false','lists'=>$lists,]);
+        return view('build/create',['meta_title'=>'添加楼盘','meta_util'=>'false','model'=>$detailModel,'cityLists'=>$cityLists,]);
     }
 
     /**

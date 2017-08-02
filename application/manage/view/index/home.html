@@ -16,11 +16,12 @@
 <body>
 <div>
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>Do it !</legend>
+        <legend>Do it ! </legend>
 
         <form class="layui-form" id="default-form" action="/manage/ajax/uploader.html?file=file" method="post" enctype="multipart/form-data">
             <div class="layui-form-item">
                 <label class="layui-form-label">单文件上传</label>
+                {T:lang name='NewHouse' type="status" key="1" /}
                 <div class="layui-input-inline">
                     <input type="file" name="file" >
                 </div>

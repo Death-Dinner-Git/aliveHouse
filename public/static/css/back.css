@@ -958,16 +958,29 @@ body .layui-footer .layui-main a {
     left: 0 !important;
 }
 
+.layui-form-checkbox:not([lay-skin="primary"]):hover{
+    border: 1px solid #a3a3a3;
+}
+
+.layui-form-checkbox:not([lay-skin="primary"]):hover span {
+    background-color: #a3a3a3;
+}
+
 .layui-form-checkbox:hover i {
     color: #0DBD9F;
 }
 
-.layui-form-checked, .layui-form-checked:hover {
+.layui-form-checked:not([lay-skin="primary"]), .layui-form-checked:not([lay-skin="primary"]):hover {
     border-color: #0DBD9F;
 }
 
-.layui-form-checked span, .layui-form-checked:hover span {
+.layui-form-checked:not([lay-skin="primary"]) span, .layui-form-checked:not([lay-skin="primary"]):hover span {
     background-color: #0DBD9F;
+}
+.layui-form-checkbox[lay-skin="primary"]:hover i{
+    color: #0DBD9F;
+    background-color: #FFF;
+    border-color: #0DBD9F;
 }
 
 .layui-form-checked i, .layui-form-checked:hover i {

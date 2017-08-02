@@ -49,6 +49,7 @@ class BuildingBase extends Model
         'titlePinyin',
         'city_id',
         'county_id',
+        'created_by',
         'created_at',
         'updated_at',
     ];

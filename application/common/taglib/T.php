@@ -18,6 +18,7 @@ class T extends TagLib
         'close' => ['attr' => 'time,format', 'close' => 0], //闭合标签，默认为不闭合
         'empty' => ['attr' => 'name,empty', 'close' => 0], //闭合标签，默认为不闭合
         'open' => ['attr' => 'name,type', 'close' => 1],
+        'lang' => ['attr' => 'name,type,key', 'close' => 0], //闭合标签，默认为不闭合
 
     ];
 
@@ -60,6 +61,35 @@ class T extends TagLib
         if (!empty($tag['name'])) {
             $parse = "<?php if(!empty(" . $tag['name'] . ")) { echo " . $tag['name'] . ";}else{ echo '" . $empty . "';} ?>";
         }
+        return $parse;
+    }
+
+    /**
+     * @param $tag
+     * @param $content
+     * @return string
+     */
+    public function tagLang($tag, $content)
+    {
+        $class = $tag['name']; // name是必填项，这里不做判断了
+        $type = $tag['type']; // type是必填项，这里不做判断了
+        $key = $tag['key']; // type是必填项，这里不做判断了
+        $namespace = '\\app\\common\\model\\';
+        $class = $namespace.$class;
+        $ret = '';
+        if (class_exists($class)){
+            $model = new $class();
+            $type = $type.'List';
+            if(property_exists($model,$type)){
+                $data = $model->$type;
+                if (isset($data[$key])){
+                    $ret = $data[$key];
+                }else if (isset($data[0])){
+                    $ret = $data[0];
+                }
+            }
+        }
+        $parse = '<?php echo "'.$ret.'";  ?>';
         return $parse;
     }
 
