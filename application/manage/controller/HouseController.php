@@ -13,13 +13,42 @@ class HouseController extends ManageController
 {
 
     /**
-     * 显示资源列表
-     *
+     * @description 显示资源列表 //房源清单
+     * @param string $name
+     * @param string $type
+     * @param string $app
      * @return \think\Response
      */
-    public function superAction()
+    public function superAction($name = null, $type = null,$app = null)
     {
-        //
+        $where = ['is_delete'=>'1'];
+        $each = 12;
+        $param = ['name'=>'','type'=>'','app'=>''];
+        $model = NewHouse::load();
+        if ($name && $name != ''){
+            $param['name'] = trim($name);
+            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
+            $model->where($nameWhere);
+        }
+        $typeLists = NewHouse::getTypeList();
+        if (isset($lists[0])){
+            unset($lists[0]);
+        }
+        if ($type && $type != ''){
+            $param['type'] = trim($type);
+            if (in_array($type,array_keys($lists))){
+                $where =  array_merge($where, ['type'=>$type]);
+            }
+        }
+        $cityLists = \app\manage\model\City::getCityList();
+
+        $list = $model->where($where)->order('id DESC')->paginate($each);
+
+        $this->assign('param', $param);
+        $this->assign('typeLists', $typeLists);
+        $this->assign('cityLists', $cityLists);
+        $this->assign('list', $list);
+        return view('house/super');
     }
 
     /**
@@ -107,7 +136,7 @@ class HouseController extends ManageController
             //
             $base = $model->filter($_POST);
             $base['is_delete'] = '1';
-            $base['created_by'] = '4';
+            $base['created_by'] = $this->getIdentity('id');
             $base['updated_at'] = date('Y-m-d H:i:s');
             $base['created_at'] = date('Y-m-d H:i:s');
             $base['building_base_id'] = isset($base['building_base_id']) ? trim($base['building_base_id']) : '0';

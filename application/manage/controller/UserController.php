@@ -32,7 +32,7 @@ class UserController extends ManageController
     public function logAction()
     {
         $this->assign('meta_title', "日志信息");
-        return view('user/layer');
+        return view('user/log');
     }
 
     /**
@@ -46,7 +46,7 @@ class UserController extends ManageController
         if (empty($id)){
             $id = '1';
         }
-        $model = Identity::load()->where(['id'=>$id])->find();
+        $model = BackUser::load()->where(['id'=>$id])->find();
         return view('user/reset',['meta_title'=>'修改密码','model'=>$model]);
     }
 
@@ -61,44 +61,40 @@ class UserController extends ManageController
         if (empty($id)){
             $id = '1';
         }
-        $model = Identity::load()->where(['id'=>$id])->find();
+        $model = BackUser::load()->where(['id'=>$id])->find();
         return view('user/view',['meta_title'=>'个人信息','model'=>$model]);
     }
 
     /**
      * @description 清单
      * @param bool $super
-     * @param integer $pageNumber
      * @return string
      */
-    public function indexAction($super = false,$pageNumber = 1)
+    public function indexAction($super = false)
     {
-        $where = [];
-        $each = 10;
-        $key = '';
-        $type = '';
-        if (request()->request('key')){
-            $key = trim(request()->request('key'));
-            $where =  array_merge($where, ['real_name'=>$key]);
+        $where = ['is_delete'=>'1'];
+        $each = 12;
+        $model = BackUser::load();
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $nameWhere = ' `real_name` like '.' \'%'.$key.'%\'';
+            $model->where($nameWhere);
         }
         $typeList = BackUser::getDepartmentList();
-        if ($super == 'true' || request()->request('department_id')){
-            $type = $super == 'true' ? '1' : request()->request('department_id');
+        $department_id = trim($request->request('department_id'));
+        if ($super == 'true' || $department_id != ''){
+            $type = ($super == 'true') ? '1' : $department_id;
             if (in_array($type,array_keys($typeList))){
                 $where =  array_merge($where, ['department_id'=>$type]);
             }
         }
-        $dataProvider = BackUser::load()->where($where)->page($pageNumber,$each)->select();
-        $count = BackUser::load()->where($where)->count();
 
-        $this->assign('meta_title', "账号管理");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('key', $key);
-        $this->assign('type', $type);
+        $list = $model->where($where)->order('id DESC')->paginate($each);
+
+        $this->assign('meta_title', "管理员清单");
         $this->assign('typeList', $typeList);
+        $this->assign('list', $list);
         $this->assign('super', $super);
         return view('user/index');
     }
@@ -109,80 +105,82 @@ class UserController extends ManageController
      */
     public function registerAction(){
         $identity = new Identity();
-        $token = request()->request('__token__');
-        $data = (isset($_POST['Register']) ? $_POST['Register'] : []);
-        $departmentList = Identity::getDepartmentList();
-        if ( request()->isPost() && $token && $data){
+        $request = $this->getRequest();
+        $token = $request->request('__token__');
+        if ( $request->isPost() && $token ){
             // 调用当前模型对应的Identity验证器类进行数据验证
-//            $data['__token__'] = $token;
+            $data = [];
+            $data['department_id'] = $request->post('department_id');
+            $data['username'] = $request->post('username');
+            $data['phone'] = $request->post('phone');
+            $data['password'] = $request->post('password');
+            $data['rePassword'] = $request->post('rePassword');
             $validate = Identity::getValidate();
             $validate->scene('register');
             if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
                 $res = $identity->signUp($data);
-                if($res){
-                    if ($res instanceof Identity){
-                        $this->success('注册成功','login');
-                    }else{
-                        $this->error($res, 'register','',1);
-                    }
+                if ($res instanceof Identity){
+                    $this->success('注册成功','login');
+                }else{
+                    $this->error($res, 'register','',1);
                 }
             }else{
                 $this->error($validate->getError(), 'register','',1);
             }
         }
-        return view('user/create',['meta_title'=>'会员注册','departmentList'=>$departmentList]);
+        return view('user/create',['meta_title'=>'会员注册']);
     }
 
     /**
      * @description 编辑
      * @param $id
-     * @param $target
      * @return string
      */
-    public function updateAction($id,$target = null)
+    public function updateAction($id =null)
     {
         $where = ['id'=>$id];
-        $model = Identity::load()->where($where)->find();
+        $model = BackUser::load()->where($where)->find();
         if (!$model){
             return '';
         }
-        if ($this->getRequest()->isAjax()){
-            $res = ['status'=>'n','info'=>'更新失败'];
-            $passed = true;
+        $request = $this->getRequest();
+        if ($request->isPost()){
+            // 调用当前模型对应的Identity验证器类进行数据验证
+            $data = [];
+            $data['department_id'] = $request->post('department_id');
+            $data['username'] = $request->post('username');
+            $data['phone'] = $request->post('phone');
+            $data['password'] = $request->post('password');
+            $data['rePassword'] = $request->post('rePassword');
+            $old_username = $request->post('old_username');
+            $old_phone = $request->post('old_phone');
+            $old_department_id = $request->post('old_department_id');
+            if ($model->username != $old_username || $model->phone != $old_phone || $model->department_id != $old_department_id){
+                $this->error('非法操作', url('update',['id'=>$id]),[],1);
+            }
+            if($model->department_id == $data['department_id']){
+                unset($data['department_id']);
+            }
+            if($model->phone == $data['phone']){
+                unset($data['phone']);
+            }
+            if($model->username == $data['username']){
+                unset($data['username']);
+            }
             $validate = Identity::getValidate();
             $validate->scene('update');
-            $data = (isset($_REQUEST['Update']) ? $_REQUEST['Update'] : []);
-            if ($data){
-                $field = [];
-                foreach ($data as $key=>$value){
-                    $value = trim($value);
-                    if (!empty($value)){
-                        $field[] = $key;
-                    }
-                }
-                $validate->scene('update',$field);
-                if (!$validate->check($data)){
-                    $res['info'] = $validate->getError();
-                    $passed = false;
+            if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
+                $res = Identity::load()->updateUser($id,$data);
+                if ($res instanceof Identity){
+                    $this->success('更新成功', url('update',['id'=>$id]),[],1);
                 }else{
-
+                    $this->error($res,  url('update',['id'=>$id]),[],1);
                 }
+            }else{
+                $this->error($validate->getError(),  url('update',['id'=>$id]),[],1);
             }
-            if ($passed){
-                $res['info'] = '更新成功';
-                $res['status'] = 'y';
-                $data['updated_at'] = date('Y-m-d H:i:s');
-                $data['real_name'] = '小符';
-                if (Identity::update($data,$where)){
-                    $res['info'] = '更新成功';
-                }
-            }
-            return json($res);
         }
-        $this->assign('meta_title', "更新信息");
-        $this->assign('departmentList', Identity::getDepartmentList());
-        $this->assign('model', $model);
-        return view('user/update');
+        return view('user/update',['meta_title'=>'更新信息','departmentList'=>Identity::getDepartmentList(),'model'=>$model]);
     }
 
     /**

@@ -44,9 +44,6 @@
         <legend style="text-align:center;">{$meta_title ? $meta_title : '表单'}</legend>
         <div style="display: flex;">
             <div class="view-body" style="margin: auto;width: 800px;">
-                {volist name="model->getData()" id="value" key="key" empty="<p> 没有数据 </p>"}
-                <p>{$value}</p>
-                {/volist}
             </div>
         </div>
     </fieldset>

@@ -208,6 +208,7 @@ class Identity extends BackUser
 
     /**
      * Logs in a user using the provided username and password.
+     * @param $data array
      * @return boolean whether the user is logged in successfully
      * @return Identity|bool
      */
@@ -217,20 +218,63 @@ class Identity extends BackUser
         $validate = self::getValidate();
         $validate->scene('signUp');
         if( $validate->check($data)){
+            // $this->thisTime 根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
             $this->thisTime = date('Y-m-d H:i:s');
-            $newPassword = $this->getJoinPassword($data['password']);
-            $data['password'] = $this->generateHash($newPassword);
+            $enPassword = $this->setPassword($data['password']);
+            $data['password'] = $enPassword;
             $data['reg_ip'] = Identity::getIp();
-            $data['created_at'] = $this->thisTime;
+            $data['registered_at'] = $this->thisTime;
             $data['updated_at'] = $this->thisTime;
-            $db= $this->save($data);  //这里的save()执行的是添加
+            $model = new self();
+            $db= $model->save($data);  //这里的save()执行的是添加
             if ($db){
-                $code = '8'.$this->department_id.str_pad($this->id,4,'0',STR_PAD_LEFT);
-                Identity::update(['code'=>$code],['id'=>$this->id]);
-                $res = $this;
+                $padLength = 4;
+                if($model->id<9999){
+                    $padLength = 4;
+                }else if($model->id<999999){
+                    $padLength = 6;
+                }else if($model->id<99999999){
+                    $padLength = 8;
+                }else if($model->id<99999999){
+                    $padLength = 10;
+                }else if($model->id<9999999999){
+                    $padLength = 12;
+                }
+                $code = '8'.$model->department_id.str_pad($model->id,$padLength,'0',STR_PAD_LEFT);
+                $model::update(['code'=>$code],['id'=>$model->id]);
+                $res = $model;
             }
         }
+        return $res;
 
+    }
+
+    /**
+     * 更新信息
+     * @param $id int
+     * @param $data array
+     * @return Identity|bool
+     */
+    public function updateUser($id,$data)
+    {
+        $res = false;
+        $validate = self::getValidate();
+        $where = ['id'=>$id];
+        $validate->scene('update');
+        if( $validate->check($data)){
+            if(empty($data['password'])){
+                unset($data['password']);
+                unset($data['rePassword']);
+            }else{
+                $this->thisTime = date('Y-m-d H:i:s');
+                $enPassword = $this->setPassword($data['password']);
+                $data['password'] = $enPassword;
+                $data['updated_at'] = $this->thisTime;
+            }
+            //更新
+            $where['id'] = $id;
+            return Identity::update($data,$where);
+        }
         return $res;
 
     }
@@ -255,8 +299,7 @@ class Identity extends BackUser
             if ($identity = $this->findIdentity()){
                 if ( $this->validatePassword($this->password)){
                     if ($this->log()){
-                        $login_time = self::$login_time;
-                        $this->$login_time = date('Y-m-d H:i:s');
+                        $this->thisTime = date('Y-m-d H:i:s');
                         $enPassword = $this->setPassword($this->password);
                         //这里的save()执行的是更新
                         $result = $identity->load()
@@ -266,7 +309,8 @@ class Identity extends BackUser
                             ->where('d.level','in',self::$allowList)
                             ->update([
                                 't.password'=>$enPassword,
-                                't.updated_at'=>$this->$login_time
+                                't.logined_at'=>$this->thisTime,
+                                't.updated_at'=>$this->thisTime
                             ]);
                         if($result){
                             //if true, default keep one week online;
@@ -576,7 +620,7 @@ class Identity extends BackUser
             ->where(['t.is_delete'=>'1'])
             ->where(['t.username'=>$username])
             ->where('d.level','in',self::$allowList)
-            ->field('*,t.updated_at as t_updated_at,d.updated_at as d_updated_at')
+            ->field('t.*,d.name as departmentName')
             ->find();
     }
 
@@ -598,7 +642,7 @@ class Identity extends BackUser
             ->where(['t.is_delete'=>'1'])
             ->where(['t.phone'=>$phone])
             ->where('d.level','in',self::$allowList)
-            ->field('*,t.updated_at as t_updated_at,d.updated_at as d_updated_at')
+            ->field('t.*,d.name as departmentName')
             ->find();
     }
 
@@ -620,7 +664,7 @@ class Identity extends BackUser
             ->where(['t.is_delete'=>'1'])
             ->where(['t.email'=>$email])
             ->where('d.level','in',self::$allowList)
-            ->field('*,t.updated_at as t_updated_at,d.updated_at as d_updated_at')
+            ->field('t.*,d.name as departmentName')
             ->find();
     }
 
@@ -642,7 +686,7 @@ class Identity extends BackUser
             ->where(['t.is_delete'=>'1'])
             ->where(['t.id'=>$id])
             ->where('d.level','in',self::$allowList)
-            ->field('*,t.updated_at as t_updated_at,d.updated_at as d_updated_at')
+            ->field('t.*,d.name as departmentName')
             ->find();
     }
 
@@ -843,12 +887,12 @@ class Identity extends BackUser
     /**
      * @return string
      */
-    public function getJoinPassword($password){
+    protected function getJoinPassword($password){
         $newPassword = $password;
         if (self::$encryptType == 1){
             $newPassword = self::$passwordPrefix.$password.self::$passwordSuffix;
         }elseif (self::$encryptType == 2){
-            if (!$this->thisTime){
+            if (!$this->thisTime){//根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
                 $identity = $this->findIdentity();
                 if ($identity){
                     $login_time = self::$login_time;

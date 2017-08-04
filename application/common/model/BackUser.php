@@ -132,7 +132,7 @@ class BackUser extends Model
     protected $update = [];
 
     //所有账号类型
-    private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
+    private static $departmentList = ['1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
 
     /**
      * @return array

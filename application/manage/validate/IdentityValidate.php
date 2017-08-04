@@ -14,7 +14,7 @@ class IdentityValidate extends Validate
      */
     protected $rule = [
         '__token__|校验数据' =>  ['token'],
-        'username|用户名'  =>  ['require','max'=>32,'min'=>1,'regex:/^(?!_)(?!\d)(?!.*?_$)[\w]+$/','unique:back_user,username'],
+        'username|账号'  =>  ['require','max'=>32,'min'=>1,'regex:/^(?!_)(?!\d)(?!.*?_$)[\w]+$/','unique:back_user,username'],
         'department_id|部门'  =>  ['require','number','exist:department,id'],
         'phone|手机' =>  ['regex:/^(1)([\d]){10}$/','unique:back_user,phone'],
         'email|邮箱' =>  ['email','unique:back_user,email'],
@@ -40,6 +40,7 @@ class IdentityValidate extends Validate
         'password.regex'  =>  ':attribute 至少由数字、字符、特殊字符三种中的两种组成',
         'rePassword.require'  =>  ':attribute 不能为空',
         'rePassword.comparePassword'  =>  '两次密码 不一致',
+        'rePassword.confirm'  =>  '两次密码 不一致',
         'email' =>  ':attribute 不合法',
         'phone' =>  ':attribute 不合法',
     ];
@@ -49,7 +50,13 @@ class IdentityValidate extends Validate
      */
     protected $scene = [
         'create'   =>  ['username','password'],
-        'update'  =>  ['department_id','username','phone','password','rePassword'],
+        'update'  =>  [
+            'department_id'=>['number','exist:department,id'],
+            'username'=>['max'=>32,'min'=>1,'regex:/^(?!_)(?!\d)(?!.*?_$)[\w]+$/','unique:back_user,username'],
+            'phone',
+            'password'=>['max'=>32,'min'=>6],
+            'rePassword'=>['max'=>32,'min'=>6, 'confirm:password']
+        ],
         'save'  =>  [],
         'loginAjax'   =>  ['username'=> 'require|usernameExist:back_user,username','password'],
         'login'  =>  ['username'=> 'require|usernameExist:back_user,username','password'],

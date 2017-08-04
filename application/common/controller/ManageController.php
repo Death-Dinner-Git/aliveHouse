@@ -24,13 +24,13 @@ class ManageController extends BaseController
     {
         parent::_initialize();
 
-//        // 登录检测,未登录，跳转到登录
-//        if (!$this->isGuest()) {
-//            //还没登录跳转到登录页面
-//            if ( $this->getCurrentUrl() !== strtolower($this->getLoginUrl())){
-//                $this->goBack($this->getLoginUrl());
-//            }
-//        }
+        // 登录检测,未登录，跳转到登录
+        if (!$this->isGuest()) {
+            //还没登录跳转到登录页面
+            if ( $this->getCurrentUrl() !== strtolower($this->getLoginUrl())){
+                $this->goBack($this->getLoginUrl());
+            }
+        }
 
         // 获取当前访问地址
         $currentUrl = $this->getCurrentUrl();
@@ -54,5 +54,14 @@ class ManageController extends BaseController
         }else{
             $this->view->engine->layout('common@layouts/manage-main');
         }
+    }
+
+    /**
+     * @param null $key
+     * @return string|array|null
+     */
+    protected function getIdentity($key = null){
+        $identity = $_SESSION['identity'];
+        return !$key ? $identity : (isset($identity[$key]) ? $identity[$key] : null);
     }
 }

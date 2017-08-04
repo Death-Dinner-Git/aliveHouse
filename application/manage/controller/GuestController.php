@@ -97,7 +97,7 @@ class GuestController extends ManageController
         $each = 12;
         $param = ['name'=>'','city'=>'','address'=>''];
         $query = Guest::load();
-        if ($name && $name != ''){
+        if ($name && $name != 'guest'){
             $param['name'] = trim($name);
             $nameWhere = ' `name` like '.' \'%'.$name.'%\'';
             $query = $query->where($nameWhere);

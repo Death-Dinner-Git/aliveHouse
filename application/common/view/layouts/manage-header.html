@@ -63,17 +63,17 @@
             <li class="layui-nav-item first">
                 <a href="javascript:;">
                     <img src="/static/images/default-user.png" class="userimg">
-                    <cite>aliveDinner</cite>
+                    <cite>{if condition="isset($_SESSION['identity']['username'])"}{$_SESSION['identity']['username']}{/if}</cite>
                     <span class="layui-nav-more"></span>
                 </a>
-                <dl class="layui-nav-child">
-                    <dd>
-                        <a href="">操作1</a>
-                    </dd>
-                    <dd>
-                        <a href="">操作2</a>
-                    </dd>
-                </dl>
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd>-->
+                        <!--<a href="">操作1</a>-->
+                    <!--</dd>-->
+                    <!--<dd>-->
+                        <!--<a href="">操作2</a>-->
+                    <!--</dd>-->
+                <!--</dl>-->
             </li>
             <!--<li class="layui-nav-item">-->
             <!--<a href="javascript:;" id="lock">-->

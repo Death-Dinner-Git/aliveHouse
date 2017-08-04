@@ -71,7 +71,7 @@ class BuildController extends ManageController
             $base['is_delete'] = '1';
             $base['updated_at'] = date('Y-m-d H:i:s');
             $base['created_at'] = date('Y-m-d H:i:s');
-            $base['created_by'] = '4';
+            $base['created_by'] = $this->getIdentity('id');
             if(empty($base['titlePinyin'])){
                 $helper = self::getHelper();
                 $pinyin = $helper::getZhPinYin($base['title']);
@@ -167,7 +167,7 @@ class BuildController extends ManageController
         $lists = City::getCityList();
         $model = BuildingBase::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
-            return '';
+            $this->error('不存在此楼盘', 'create','',1);
         }
 
         if ($this->getRequest()->isPost()){

@@ -201,6 +201,14 @@
             cursor: pointer;
             opacity: 0.9;
         }
+        input:-webkit-autofill{
+            background: rgba(0,0,0,0) !important;
+            color: #FFF !important;
+        }
+        input:-webkit-autofill{
+            background: rgba(0,0,0,0) !important;
+            color: #FFF !important;
+        }
     </style>
 
     <title>登录</title>
@@ -342,7 +350,13 @@
 
         });
 
+
+        var onSubmit = false;
         $(document).on('keyup',function (e) {
+            //如提交中,阻止提交
+            if(onSubmit){
+                return;
+            }
             //键盘事件
             var keyCode = e.keyCode;
             if (keyCode === 13) {
@@ -377,9 +391,11 @@
                 type:'POST',
                 data:param,
                 beforeSend:function () {
+                    onSubmit = true;
                     index = layer.load(1, {shade:0.1});
                 },
                 success:function (data) {
+                    onSubmit = false;
                     layer.close(index);
                     if (data.info !== undefined){
                         layer.msg(data.info);
@@ -389,6 +405,7 @@
                     }
                 },
                 error:function (data) {
+                    onSubmit = false;
                     layer.close(index);
                     layer.msg('登陆失败');
                 }

@@ -52,10 +52,12 @@ class Department extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $levelList = ['0'=>'无效','1'=>'部门一'];
+    public $levelList = ['1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
+
+    public static $levelLists = ['1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
 
     public static function getLevelList(){
-        return self::$levelList;
+        return self::$levelLists;
     }
 
     /**
@@ -64,11 +66,14 @@ class Department extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'parent', 'order', 'level'], 'integer'],
-            [['remark'], 'string'],
-            [['name', 'code', 'created_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name', 'code'], 'string', 'max' => 100],
+            'rule'=>[
+                ['level','number|in:0,1,2,3','类型 无效'],
+                ['is_delete','in:0,1','时效 无效'],
+                ['name','max:100'],
+                ['code','max:100'],
+            ],
+            'msg'=>[
+            ]
         ];
     }
 
@@ -85,7 +90,7 @@ class Department extends Model
             'parent' => '上级',
             'code' => '编号',
             'order' => '顺序',
-            'level' => '等级;0=无效;1=部门一;',
+            'level' => '等级;0=无效;1董事会部门2总经理部门3业务员部门',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];
@@ -96,6 +101,14 @@ class Department extends Model
      */
     public function getBackUsers()
     {
-        return $this->hasMany(ucfirst(BackUser::tableNameSuffix()), 'id', 'department_id');
+        return $this->hasMany(ucfirst(BackUser::tableNameSuffix()), 'department_id', 'id');
+    }
+
+    /**
+     * @return \think\model\relation\HasOne
+     */
+    public function getParent()
+    {
+        return $this->hasOne(ucfirst(Department::tableNameSuffix()), 'id', 'parent');
     }
 }
