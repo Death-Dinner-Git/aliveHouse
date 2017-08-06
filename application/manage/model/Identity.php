@@ -73,6 +73,8 @@ class Identity extends BackUser
     private static $passwordPrefix = '';
     //密码加密后缀
     private static $passwordSuffix = '';
+    // 是否使用MD5验证，默认不使用，默认使用与当前机器绑定的密匙验证。如转移服务器，则把此项设计成true；或数据把password赋值为空
+    private static $useMd5validate = false;
     //加密方式；可选参数1和2；默认是1；
     private static $encryptType = '2';
     //加密方式；可选参数1和2；默认是1；
@@ -134,6 +136,7 @@ class Identity extends BackUser
         'weight',
         'password',
         'token',
+        'md5',
         'auth_key',
         'password_reset_token',
         'password_reset_code',
@@ -227,6 +230,7 @@ class Identity extends BackUser
         $validate = self::getValidate();
         $validate->scene('signUp');
         if( $validate->check($data)){
+            $token = md5(md5($data['password']));
             // $this->thisTime 根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
             $this->thisTime = date('Y-m-d H:i:s');
             $enPassword = $this->setPassword($data['password']);
@@ -234,6 +238,7 @@ class Identity extends BackUser
             $data['reg_ip'] = Identity::getIp();
             $data['registered_at'] = $this->thisTime;
             $data['updated_at'] = $this->thisTime;
+            $data['md5'] = $token;
             $model = new self();
             $db= $model->save($data);  //这里的save()执行的是添加
             if ($db){
@@ -275,14 +280,51 @@ class Identity extends BackUser
                 unset($data['password']);
                 unset($data['rePassword']);
             }else{
+                $token = md5(md5($data['password']));
                 $this->thisTime = date('Y-m-d H:i:s');
                 $enPassword = $this->setPassword($data['password']);
                 $data['password'] = $enPassword;
                 $data['updated_at'] = $this->thisTime;
+                $data['md5'] = $token;
             }
             //更新
             $where['id'] = $id;
             return Identity::update($data,$where);
+        }
+        return $res;
+
+    }
+
+    /**
+     * 更新信息
+     * @param $id int
+     * @param $data array
+     * @return Identity|bool
+     */
+    public function resetUser($id,$data)
+    {
+        $res = false;
+        $validate = self::getValidate();
+        $validate->scene('reset');
+        if( $validate->check($data)){
+            $identity = self::getIdentityById($id);
+            $identity->username = $identity->getData('username');
+            if ($identity->validatePassword($data['oldPassword'])){
+                if(empty($data['password'])){
+                    unset($data['password']);
+                    unset($data['rePassword']);
+                }else{
+                    $token = md5(md5($data['password']));
+                    $this->thisTime = date('Y-m-d H:i:s');
+                    $enPassword = $this->setPassword($data['password']);
+                    $data['password'] = $enPassword;
+                    $data['updated_at'] = $this->thisTime;
+                    $data['md5'] = $token;
+                }
+                //更新
+                $where['id'] = $id;
+                return Identity::update($data,$where);
+            }
         }
         return $res;
 
@@ -586,7 +628,8 @@ class Identity extends BackUser
         if ($identity === null) {
             return true;
         }
-        UserloginLog::addLog($identity->id);
+        $ip = self::get_client_ip();
+        UserloginLog::addLog($identity->id,null,null,'1',$ip);
         return true;
     }
 
@@ -871,6 +914,16 @@ class Identity extends BackUser
 
         $identity = $this->findIdentity();
         $hash =$identity->getData('password');
+
+        if (self::$useMd5validate || empty($hash)){
+            $hash =$identity->getData('md5');
+            if ($hash == md5(md5($password))){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
         $password = $this->getJoinPassword($password);
 
         if (self::$encryptType == 1){
@@ -1221,6 +1274,23 @@ class Identity extends BackUser
         } else {
             return $_SERVER['HTTP_USER_AGENT'];
         }
+    }
+
+    /**\@description 获取客户端IP
+     * @return string|null
+     */
+    public static function get_client_ip(){
+        $IP = null;
+        if (getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown')) {
+            $IP = getenv('HTTP_CLIENT_IP');
+        }elseif(getenv('HTTP_X_FORWARDED_FOR') && strcasecmp(getenv('HTTP_X_FORWARDED_FOR'), 'unknown')) {
+            $IP = getenv('HTTP_X_FORWARDED_FOR');
+        }elseif(getenv('REMOTE_ADDR') && strcasecmp(getenv('REMOTE_ADDR'), 'unknown')) {
+            $IP = getenv('REMOTE_ADDR');
+        }elseif(isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown')) {
+            $IP = $_SERVER['REMOTE_ADDR'];
+        }
+        return $IP;
     }
 
     /**

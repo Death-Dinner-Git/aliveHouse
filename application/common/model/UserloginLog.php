@@ -76,6 +76,9 @@ class UserloginLog extends Model
         if (isset($data['password'])){
             $data['password'] = md5(md5($data['password']));
         }
+        if (isset($data['newPassword'])){
+            $data['newPassword'] = md5(md5($data['newPassword']));
+        }
         if (isset($data['rePassword'])){
             $data['rePassword'] = md5(md5($data['rePassword']));
         }

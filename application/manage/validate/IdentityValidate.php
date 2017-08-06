@@ -57,6 +57,10 @@ class IdentityValidate extends Validate
             'password'=>['max'=>32,'min'=>6],
             'rePassword'=>['max'=>32,'min'=>6, 'confirm:password']
         ],
+        'reset'  =>  [
+            'password'=>['max'=>32,'min'=>6],
+            'rePassword'=>['max'=>32,'min'=>6, 'confirm:password']
+        ],
         'save'  =>  [],
         'loginAjax'   =>  ['username'=> 'require|usernameExist:back_user,username','password'],
         'login'  =>  ['username'=> 'require|usernameExist:back_user,username','password'],

@@ -52,9 +52,9 @@ class Department extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public $levelList = ['1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
+    public $levelList = ['1'=>'董事部门','2'=>'经理部门','3'=>'业务员部门'];
 
-    public static $levelLists = ['1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
+    public static $levelLists = ['1'=>'董事部门','2'=>'经理部门','3'=>'业务员部门'];
 
     public static function getLevelList(){
         return self::$levelLists;
@@ -109,6 +109,6 @@ class Department extends Model
      */
     public function getParent()
     {
-        return $this->hasOne(ucfirst(Department::tableNameSuffix()), 'id', 'parent');
+        return $this->hasOne(ucfirst(Department::tableNameSuffix()), 'id', 'parent',[],'LEFT');
     }
 }

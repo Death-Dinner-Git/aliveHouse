@@ -107,6 +107,7 @@ class UserController extends ManageController
         $identity = new Identity();
         $request = $this->getRequest();
         $token = $request->request('__token__');
+
         if ( $request->isPost() && $token ){
             // 调用当前模型对应的Identity验证器类进行数据验证
             $data = [];
@@ -128,6 +129,8 @@ class UserController extends ManageController
                 $this->error($validate->getError(), 'register','',1);
             }
         }
+        $typeList = BackUser::getDepartmentList();
+        $this->assign('typeList', $typeList);
         return view('user/create',['meta_title'=>'会员注册']);
     }
 
@@ -180,6 +183,8 @@ class UserController extends ManageController
                 $this->error($validate->getError(),  url('update',['id'=>$id]),[],1);
             }
         }
+        $typeList = BackUser::getDepartmentList();
+        $this->assign('typeList', $typeList);
         return view('user/update',['meta_title'=>'更新信息','departmentList'=>Identity::getDepartmentList(),'model'=>$model]);
     }
 

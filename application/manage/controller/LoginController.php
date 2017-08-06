@@ -88,6 +88,56 @@ class LoginController extends BaseController
         return view('login',['meta_title'=>'会员登录']);
     }
 
+    /**
+     * @description 新增
+     * @param $id
+     * @return string
+     */
+    public function resetAction($id = 0)
+    {
+        if (empty($id)){
+            throw new \think\Exception\HttpException(404,'该账号不存在',null,['code'=>'404','msg'=>'该账号不存在','info'=>'该账号不存在'],'404');
+        }
+        $find = false;
+
+        if ($model = Identity::load()->where(['id'=>$id])->find()){
+            $find = true;
+        }else if ($model = Identity::findByUsername($id)){
+            $find = true;
+        }else if ($model = Identity::findByPhone($id)){
+            $find = true;
+        }else if ($model = Identity::findByPasswordResetToken($id)){
+            $find = true;
+        }
+
+        if (!$find){
+            throw new \think\Exception\HttpException(404,'该账号不存在',null,['code'=>'404','msg'=>'该账号不存在','info'=>'该账号不存在'],'404');
+        }
+
+        $request = $this->getRequest();
+        if ($request->isPost() || $request->isAjax()){
+            // 调用当前模型对应的Identity验证器类进行数据验证
+            $data = [];
+            $data['oldPassword'] = $request->post('newPassword');
+            $data['password'] = $request->post('password');
+            $data['rePassword'] = $request->post('rePassword');
+            $validate = Identity::getValidate();
+            $validate->scene('reset');
+            if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
+                $res = Identity::load()->resetUser($id,$data);
+                if ($res){
+                    $this->success('更新成功', url('reset',['id'=>$id]),[],1);
+                }else{
+                    $this->error('原密码不正确',  url('reset',['id'=>$id]),[],1);
+                }
+            }else{
+                $this->error($validate->getError(),  url('reset',['id'=>$id]),[],1);
+            }
+        }
+
+        return view('user/reset',['meta_title'=>'修改密码','model'=>$model]);
+    }
+
 
     /**
      * @description Logout action.
@@ -99,34 +149,35 @@ class LoginController extends BaseController
         $this->success('退出成功！', $this->getLoginUrl(),[],1);
     }
 
-    /**
-     * @description Register Home Page
-     * @return \think\response\View
-     */
     public function registerAction(){
         $identity = new Identity();
-        $token = request()->request('__token__');
-        $data = (isset($_POST['Register']) ? $_POST['Register'] : []);
-        $departmentList = Identity::getDepartmentList();
-        if ( request()->isPost() && $token && $data){
+        $request = $this->getRequest();
+        $token = $request->request('__token__');
+
+        if ( $request->isPost() && $token ){
             // 调用当前模型对应的Identity验证器类进行数据验证
-//            $data['__token__'] = $token;
+            $data = [];
+            $data['department_id'] = $request->post('department_id');
+            $data['username'] = $request->post('username');
+            $data['phone'] = $request->post('phone');
+            $data['password'] = $request->post('password');
+            $data['rePassword'] = $request->post('rePassword');
             $validate = Identity::getValidate();
             $validate->scene('register');
             if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
                 $res = $identity->signUp($data);
-                if($res){
-                    if ($res instanceof Identity){
-                        $this->success('注册成功','login');
-                    }else{
-                        $this->error($res, 'register','',1);
-                    }
+                if ($res instanceof Identity){
+                    $this->success('注册成功','login');
+                }else{
+                    $this->error($res, 'register','',1);
                 }
             }else{
                 $this->error($validate->getError(), 'register','',1);
             }
         }
-        return view('user/create',['meta_title'=>'会员注册','departmentList'=>$departmentList]);
+        $typeList = Identity::getDepartmentList();
+        $this->assign('typeList', $typeList);
+        return view('user/create',['meta_title'=>'会员注册']);
     }
 
     /**

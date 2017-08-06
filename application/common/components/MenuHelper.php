@@ -379,11 +379,6 @@ class MenuHelper
 //            Configs::getIdentity()->logout();
             throw new \think\Exception\HttpException(402,'该账号未激活-请联系管理员',null,['code'=>'402','msg'=>'该账号未激活-请联系管理员'],'402');
         }
-        if (!IS_AJAX){
-            var_dump($userId);
-            var_dump($menus);
-            exit();
-        }
         return $menus;
     }
 

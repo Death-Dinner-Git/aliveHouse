@@ -548,6 +548,22 @@ class BaseController extends Controller
         return null;
     }
 
+    public function HttpException($statusCode = null, $message = null, array $headers = [], $code = null){
+        if (empty($statusCode)){
+            $statusCode = '404';
+        }
+        if (empty($code)){
+            $code = $statusCode;
+        }
+        if (empty($message)){
+            $message = '请求不存在';
+        }
+        if (empty($headers)){
+            $headers = ['code'=>$code,'msg'=>$message,'info'=>$message];
+        }
+        throw new \think\Exception\HttpException($statusCode,$message,null,$headers,$code);
+    }
+
 
     /**
      * @return \app\common\components\Helper

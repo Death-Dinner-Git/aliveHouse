@@ -54,6 +54,34 @@ class AuthAssignment extends Model
         ];
     }
 
+
+    /**
+     * 设置角色
+     * @param null $id
+     * @param null $role
+     * @return array|\think\response\Json
+     */
+    public static function setRole($id = null, $role = null)
+    {
+        $ret = ['status' => 0, 'info' => '分配角色失败'];
+        if (!(empty($id) || empty($role))) {
+            if (!AuthItem::get(['name' => $role])) {
+                $ret = '该角色不存在';
+            } elseif (!BackUser::get(['id' => $id])) {
+                $ret = '该账号不存在';
+            } elseif (!AuthAssignment::load()->where(['item_name' => $role, 'user_id' => $id])->find()) {
+                $ret = '该账号已属于该角色';
+            }else{
+                $data['item_name'] = $role;
+                $data['user_id'] = $id;
+                $data['create_at'] = date('Y-m-d H:i:s');
+                AuthAssignment::load()->save($data);
+                $ret = ['status' => 1, 'info' => '分配角色成功'];
+            }
+        }
+        return $ret;
+    }
+
     /**
      * @inheritdoc
      */

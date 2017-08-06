@@ -2207,7 +2207,7 @@ Site.ajax = function (options, middleWare) {
     $.ajax($options).success(function (data) {
         Site.close(index);
         if (data.code != 200) {
-            deferred.reject(data.msg);
+            deferred.reject(data.msg || data.info);
         } else {
             deferred.resolve(data.data)
         }

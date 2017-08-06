@@ -121,7 +121,6 @@
                     url:url.addChildUrl,
                     data:{name:add},
                     success:function (result) {
-                        console.log(result);
                         if (result.status == '1'){
                             left(unAssign);
                             right(data);
@@ -130,8 +129,6 @@
                             $('input[name="right"]').trigger('keyup');
                         }
                         if (result.info != undefined){
-                            console.log(result.info);
-//                            layer.msg(result.info);
                             Site.msg(result.info);
                         }
                     }
@@ -145,13 +142,11 @@
             var unAssign = Back.getSelectCheckboxValues('[lay-group="left"]','all');
             var data = remove.concat(unAssign);
             var count = $('.container-left').find('.item').length;
-            console.log(remove);
             if(count != data.length){
                 Site.ajax({
                     url:url.removeUrl,
                     data:{name:remove},
                     success:function (result) {
-                        console.log(result);
                         if (result.status == '1'){
                             left(data);
                             right(hasAssign);
@@ -159,10 +154,7 @@
                             $('input[name="left"]').trigger('keyup');
                             $('input[name="right"]').trigger('keyup');
                         }
-                        if (result.info != undefined){
-                            layer.msg(result.info);
-                        }
-                    }
+                    },
                 });
             }
         });

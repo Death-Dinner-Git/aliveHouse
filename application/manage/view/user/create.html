@@ -4,68 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
-
-    <!-- load css -->
-    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
-
-    <!-- For site js -->
-    <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/bootstrap.js"></script>
-    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
-
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
-
-    <style>
-        #CreateForm .layui-form-item{
-            font-size: 14px;
-        }
-        #CreateForm .layui-form-item .layui-form-label{
-            width: 130px;
-        }
-        #CreateForm .layui-form-item .layui-input-block{
-            margin-left: 160px;
-        }
-        #CreateForm .layui-form-item .layui-input-inline{
-            width: 220px;
-        }
-        #CreateForm .layui-form-item .layui-input-inline .layui-input{
-            font-size: 14px;
-        }
-        .help-hint{
-            display: block;
-            width: 100%;
-            padding-left: 30px;
-            height: 38px;
-            line-height: 38px;
-            border-radius: 2px;
-            text-align: left;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        .help-msg .fa{
-            position: absolute;
-            border-radius: 50%;
-            margin: 10px;
-            width: 14px;
-            height: 14px;
-            text-align: center;
-            vertical-align: middle;
-        }
-        .help-msg .fa.fa-close,.help-msg .fa.fa-check{
-            border: 1px solid #d4d4d4;
-        }
-        .help-msg .fa-close:before{
-            color: #E85445;
-        }
-        .help-msg .fa-check:before{
-            color: #0DBD9F;
-        }
-    </style>
 
 </head>
 
@@ -81,13 +20,25 @@
 
         {:token()}
 
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">管理等级：</label>-->
+            <!--<div class="layui-input-block" style="padding-right: 120px;">-->
+                <!--<input type="hidden" name="department_id" lay-filter="parent" lay-search="refresh" class="layui-input" />-->
+                <!--<input type="text" value="" lay-filter="targetParent" placeholder="分配部门" class="layui-input"/>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="layui-form-item">
-            <label class="layui-form-label">分配部门：</label>
-            <div class="layui-input-block" style="padding-right: 120px;">
-                <input type="hidden" name="department_id" lay-filter="parent" lay-search="refresh" class="layui-input" />
-                <input type="text" value="" lay-filter="targetParent" placeholder="分配部门" class="layui-input"/>
+            <label class="layui-form-label">管理等级:</label>
+            <div class="layui-input-block">
+                <select name="department_id" lay-search lay-verify="require" >
+                    <option value="">管理类型</option>
+                    {volist name="typeList" id="item"}
+                    <option value="{$key}" >{$item}</option>
+                    {/volist}
+                </select>
             </div>
         </div>
+
 
         <div class="layui-form-item">
             <label class="layui-form-label">会员名称:</label>
@@ -99,7 +50,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">手机号码:</label>
             <div class="layui-input-block">
-                <input type="text" value="" name="phone" lay-verify="require" placeholder="手机号码" class="layui-input">
+                <input type="text" value="" name="phone" lay-verify="require" maxlength="11" placeholder="手机号码" class="layui-input">
             </div>
         </div>
 
@@ -139,13 +90,13 @@
         };
         Back.submit(options);
 
-        Site.search({
-            url: '/manage/ajax/getDepartment',
-            targetClass: '[lay-filter="targetParent"]',      // 输入框目标元素
-            parentClass: '.layui-input-block',          // 父级类
-            hiddenClass: '[lay-filter="parent"]',          // 隐藏域input
-            key:'name'
-        });
+//        Site.search({
+//            url: '/manage/ajax/getDepartment',
+//            targetClass: '[lay-filter="targetParent"]',      // 输入框目标元素
+//            parentClass: '.layui-input-block',          // 父级类
+//            hiddenClass: '[lay-filter="parent"]',          // 隐藏域input
+//            key:'name'
+//        });
     });
 
 </script>

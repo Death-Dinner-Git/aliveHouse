@@ -7,6 +7,7 @@ return [
     // 默认权限(开放权限)
     'default_action'                 => [
         '/home/*',
+        '/manage/auth/*',
         '/manage/index/*',
         '/manage/login/*',
         '/manage/ajax/*',

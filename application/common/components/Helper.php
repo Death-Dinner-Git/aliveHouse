@@ -1217,6 +1217,30 @@ class Helper
         return $cache->get($key);
     }
 
+
+    /**
+     * 抛出异常
+     * @param null $statusCode
+     * @param null $message
+     * @param array $headers
+     * @param null $code
+     */
+    public static function HttpException($statusCode = null, $message = null, array $headers = [], $code = null){
+        if (empty($statusCode)){
+            $statusCode = '404';
+        }
+        if (empty($code)){
+            $code = $statusCode;
+        }
+        if (empty($message)){
+            $message = '请求不存在';
+        }
+        if (empty($headers)){
+            $headers = ['code'=>$code,'msg'=>$message,'info'=>$message];
+        }
+        throw new \think\Exception\HttpException($statusCode,$message,null,$headers,$code);
+    }
+
     public static function deleteLog($create_uid, $delete_uid, $table_name,$table_id, $data = null){
         $model = new \backend\models\DeleteLog();
         if (strlen($table_name) >= 50){

@@ -136,6 +136,8 @@ layui.define(['element','layer'], function(exports) {
 										}
                                     }
                                 } catch (e) {
+                                    layui.data(cacheTableName,{ key: _config.cacheKey, remove: true});
+                                    layui.data(cacheTableTime,{ key: _config.cacheKey, remove: true});
 									msg = '加载 Navbar 出错';
                                 }
                                 layer.msg(msg);
@@ -184,6 +186,8 @@ layui.define(['element','layer'], function(exports) {
                                     }
                                 }
                             } catch (e) {
+                                layui.data(cacheTableName,{ key: _config.cacheKey, remove: true});
+                                layui.data(cacheTableTime,{ key: _config.cacheKey, remove: true});
                                 msg = '加载 Navbar 出错';
                             }
                             layer.msg(msg);

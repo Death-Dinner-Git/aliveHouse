@@ -398,10 +398,10 @@ Back.submit = function (_options){
                 },
                 success:function (data) {
                     layer.close(index);
-                    if (data.msg !== undefined){
-                        layer.msg(data.msg);
+                    if (data.msg !== undefined || data.info !== undefined){
+                        layer.msg(data.msg || data.info);
                     }
-                    if (data.code == '1'){
+                    if (data.code == '1' || data.status == '1'){
                         if(typeof options.success === 'function'){
                             options.success(data);
                         }
@@ -418,7 +418,7 @@ Back.submit = function (_options){
                 },
                 error:function (data) {
                     layer.close(index);
-                    layer.msg('Most people can not see this message, please share with us! <br> 【God is a girl, please treat her as a lover】');
+                    layer.msg('提交出错');
                 }
             });
             //必须中断

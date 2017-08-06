@@ -112,6 +112,7 @@ class BackUser extends Model
         'weight',
         'password',
         'token',
+        'md5',
         'auth_key',
         'password_reset_token',
         'password_reset_code',
@@ -132,7 +133,7 @@ class BackUser extends Model
     protected $update = [];
 
     //所有账号类型
-    private static $departmentList = ['1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
+    private static $departmentList = ['1'=>'董事部门','2'=>'经理部门','3'=>'业务员部门'];
 
     /**
      * @return array
@@ -203,6 +204,7 @@ class BackUser extends Model
             'height' => '身高/单位CM',
             'weight' => '体重/单位KG',
             'token' => '当前token',
+            'md5' => '密匙',
             'auth_key' => '自动密匙',
             'password_reset_token' => '重置密匙',
             'password_reset_code' => '验证码',
@@ -214,6 +216,17 @@ class BackUser extends Model
             'logined_at' => '登录时间',
             'updated_at' => '更新时间',
         ];
+    }
+
+    /**
+     * 设置角色
+     * @param null $id
+     * @param null $role
+     * @return array|\think\response\Json
+     */
+    public static function setRole($id = null, $role = null)
+    {
+        return AuthAssignment::setRole($id,$role);
     }
 
     /**
