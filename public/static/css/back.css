@@ -821,6 +821,23 @@ body .layui-footer .layui-main a {
 /* =======================================
 	 文本
 ================================== */
+.layui-label{
+    vertical-align: middle;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    color: #555;
+    white-space: nowrap;
+    text-align: left;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
 
 .layui-text{
     vertical-align: middle;
@@ -863,6 +880,10 @@ body .layui-footer .layui-main a {
 .layui-text.layui-danger{
     background-color: #FF5722;
     color: #fff;
+}
+.layui-text-danger{
+    background-color: #fff;
+    color: #FF5722;
 }
 
 /*
@@ -1140,6 +1161,10 @@ body .layui-footer .layui-main a {
 
 .forms .layui-inline.layui-width{
     width: 175px;
+}
+
+.forms .layui-form-item .layui-input,.forms .layui-form-item .layui-textarea,.forms .layui-form-text{
+    font-size: 14px;
 }
 
 /*

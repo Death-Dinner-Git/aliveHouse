@@ -1,0 +1,3 @@
+-- 初始化一个开放角色
+
+INSERT INTO `haofangzhiye`.`hfzy_back_user` (`id`, `is_delete`, `code`, `department_id`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES ('1', '1', '00000000', '1', '00000000000', '0', NULL, '0', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, '0.0.0.0', NULL, NULL, '1970-01-01 00:00:01', '1970-01-01 00:00:01');

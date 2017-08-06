@@ -4,8 +4,10 @@ namespace app\manage\model;
 use app\manage\validate\IdentityValidate;
 
 use app\common\model\BackUser;
+use app\common\model\UserloginLog;
 use app\common\model\Department;
 use think\Request;
+use app\common\components\rbac\AuthManager;
 
 /**
  * @description This is the model class for table "{{%back_user}}".  扩展管理员
@@ -58,6 +60,9 @@ class Identity extends BackUser
     //登录请求路由
     public $loginUrl = 'manage/login/login';
 
+    //登录请求路由
+    public $defaultRoles = ['0'];
+
     //所有账号类型
     private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
     //允许登录账号类型
@@ -73,7 +78,7 @@ class Identity extends BackUser
     //加密方式；可选参数1和2；默认是1；
     private static $login_time = 'updated_at';
     //是否开启登录IP记录
-    private static $isLog = false;
+    private static $isLog = true;
     //用户加密SSL
     private $_useLibreSSL;
     //随机字符
@@ -93,6 +98,10 @@ class Identity extends BackUser
     public $rememberMe;
     //时间
     public $thisTime = '';
+    //本次登陆IP信息
+    public $thisIp;
+    //本次登陆是否异常
+    public $thisStatus;
 
     /**
      * @var \app\manage\model\Identity
@@ -302,17 +311,24 @@ class Identity extends BackUser
                         $this->thisTime = date('Y-m-d H:i:s');
                         $enPassword = $this->setPassword($this->password);
                         //这里的save()执行的是更新
+                        $data = [
+                            't.password'=>$enPassword,
+                            't.logined_at'=>$this->thisTime,
+                            't.updated_at'=>$this->thisTime
+                        ];
+
+                        if ($this->thisIp){
+                            $data['t.ip'] = $this->thisIp;
+                            $data['t.status'] = $this->thisStatus;
+                        }
                         $result = $identity->load()
                             ->alias('t')
                             ->join(Department::tableName().' d','t.department_id = d.id')
                             ->where(['t.username'=>$this->username])
                             ->where('d.level','in',self::$allowList)
-                            ->update([
-                                't.password'=>$enPassword,
-                                't.logined_at'=>$this->thisTime,
-                                't.updated_at'=>$this->thisTime
-                            ]);
+                            ->update($data);
                         if($result){
+                            $this->addLog();
                             //if true, default keep one week online;
                             $default = $this->rememberMe ? config('identity._rememberMe_duration') : ( config('identity._default_duration') ? config('identity._default_duration') : 0 ) ;
                             $duration = $duration ? $duration : $default ;
@@ -386,6 +402,23 @@ class Identity extends BackUser
         return $validate->check($data);
     }
 
+
+    /**
+     * 根据用户ID获取权限列表
+     * @param  integer $userId 用户ID
+     * @return array
+     */
+    public function getPermissionsByUser($userId = null)
+    {
+        $ret = [];
+        if ($userId === null) {
+            return $ret;
+        }
+        if ($userId === 0) {
+            return $ret;
+        }
+        return $ret;
+    }
 
     /**
      * 根据用户ID获取用户信息
@@ -478,7 +511,7 @@ class Identity extends BackUser
         }
         $identity = $this->findIdentity();
         if ($identity === null) {
-            return false;
+            return true;
         }
         $ret = false;
         $ip = json_decode($identity->getData('ip'), true);
@@ -532,8 +565,28 @@ class Identity extends BackUser
         $ip['once'][$currentIp][1] = $date;
         $ip['last'] = $ip['current'];
         $ip['current'] = [$currentIp,date('Y-m-d H:i:s')];
-        $identity->ip = json_encode($ip);
-        $identity->status = $ret ? '1' : '0';
+        $this->thisIp = json_encode($ip);
+        $this->thisStatus = $ret ? '1' : '0';
+        return true;
+    }
+
+    /**
+     * log login log
+     * @param $identity
+     * @return bool
+     */
+    private function addLog($identity = null)
+    {
+        if (!self::$isLog){
+            return true;
+        }
+        if (!$identity){
+            $identity = $this->findIdentity();
+        }
+        if ($identity === null) {
+            return true;
+        }
+        UserloginLog::addLog($identity->id);
         return true;
     }
 

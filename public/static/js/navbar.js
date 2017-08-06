@@ -3,7 +3,8 @@ layui.define(['element','layer'], function(exports) {
 	var $ = layui.jquery,
 		layer = parent.layer === undefined ? layui.layer : parent.layer,
 		element = layui.element(),
-		cacheName = 'navbar';
+		cacheTableName = 'navbarTable',
+		cacheTableTime = 'navbarTime';
 
 	var Navbar = function() {
 		/**
@@ -16,6 +17,11 @@ layui.define(['element','layer'], function(exports) {
 			url: undefined, //数据源地址
 			type: 'GET', //读取方式
 			cached: false, //是否使用缓存
+			cachedTime: false, //缓存过期时间
+			cacheKeyPrefix: 'NAVBAR_', //缓存键名前缀主要是为了唯一性
+			cacheKey: 'navbar', //缓存键名，此项是开启缓存后生效的
+			isError: false, //是否使用请求json出错提示
+			errorElem: undefined, //出错提示展示容器
 			spreadOne:false, //设置是否只展开一个二级菜单
             citeType:1 , // tab 标题 可选值 1 或 2  默认为1 以 列表 一级显示  ，2 以 tab 标题加入 parent 标题
             parentMark:'active_red', // 父级标识
@@ -56,7 +62,15 @@ layui.define(['element','layer'], function(exports) {
 		if(_config.data === undefined && _config.url === undefined) {
             layer.msg('Navbar error:请为Navbar配置数据源.');
 		}
-        layui.data(cacheName, null);
+		if(_config.cacheKey === undefined || _config.cacheKey === '') {
+            _config.cacheKey = _config.cacheKeyPrefix +'navbar';
+		}else{
+            _config.cacheKey = _config.cacheKeyPrefix + _config.cacheKey;
+		}
+
+        // 开发阶段 可以 不使用 缓存
+        // layui.data(cacheTableName, null);
+
 		if(_config.data !== undefined && typeof(_config.data) === 'object') {
 			var html = getHtml(_config.data);
             $container.html(header+html);
@@ -64,8 +78,29 @@ layui.define(['element','layer'], function(exports) {
 			_that.config.elem = $container;
 		} else {
 			if(_config.cached) {
-				var cacheNavbar = layui.data(cacheName);
-				if(cacheNavbar.navbar === undefined) {
+				_config.cachedTime = parseInt(_config.cachedTime)*1000;
+				var cacheNavbarTable = layui.data(cacheTableName),
+					cacheTimeValue = layui.data(cacheTableTime),
+					cacheNavbar,addTime;
+				if (_config.cachedTime>0){
+                    addTime = true;
+				}
+                for(var key in cacheNavbarTable){
+					var time = 0,remove;
+					if (typeof cacheTimeValue[key] !== undefined){
+						time = cacheTimeValue[key];
+                        remove = true;
+					}
+                    if (!addTime&&key == _config.cacheKey || remove && time<new Date().getTime()){
+                        layui.data(cacheTableName,{ key: key, remove: true});
+                        layui.data(cacheTableTime,{ key: key, remove: true});
+                    }
+					if (key == _config.cacheKey){
+                        cacheNavbar = cacheNavbarTable[key];
+						break;
+					}
+				}
+				if(cacheNavbar === undefined) {
 					$.ajax({
 						type: _config.type,
 						url: _config.url,
@@ -74,30 +109,54 @@ layui.define(['element','layer'], function(exports) {
 						success: function(result, status, xhr) {
 							//添加缓存
 							// console.log(result);
-							layui.data(cacheName, {
-								key: 'navbar',
+							layui.data(cacheTableName, {
+								key: _config.cacheKey,
 								value: result
 							});
+							if (addTime){
+                                layui.data(cacheTableTime, {
+                                    key: _config.cacheKey,
+                                    value: (new Date().getTime() + _config.cachedTime)
+                                });
+							}
 							html = getHtml(result);
                             $container.html(header+html);
                             element.init();
 						},
 						error: function(xhr, status, error) {
-                            layer.msg('Navbar error:' + error);
-						},
+                            if(_config.isError){
+                                var msg;
+                                try {
+                                    if (typeof xhr.responseJSON.msg !== undefined){
+                                        msg = xhr.responseJSON.msg;
+                                    }else if (typeof xhr.responseText !== undefined){
+                                        msg = JSON.parse(xhr.responseText);
+                                        if (msg.msg){
+                                            msg = msg.msg;
+										}
+                                    }
+                                } catch (e) {
+									msg = '加载 Navbar 出错';
+                                }
+                                layer.msg(msg);
+                                html = '<p>'+msg+'</p>';
+                                $(_config.errorElem).html(html);
+                            }
+                        },
 						complete: function(xhr, status) {
 							_that.config.elem = $container;
 						}
 					});
 				} else {
-					html = getHtml(cacheNavbar.navbar);
+					html = getHtml(cacheNavbar);
                     $container.html(header+html);
 					element.init();
 					_that.config.elem = $container;
 				}
 			} else {
 				//清空缓存
-				layui.data(cacheName, null);
+				layui.data(cacheTableName, null);
+				layui.data(cacheTableTime, null);
 				$.ajax({
 					type: _config.type,
 					url: _config.url,
@@ -110,8 +169,28 @@ layui.define(['element','layer'], function(exports) {
                         element.init();
 					},
 					error: function(xhr, status, error) {
-                        layer.msg('Navbar error:' + error);
-					},
+                        if(_config.isError){
+                        	console.log(xhr);
+                        	console.log(status);
+                        	console.log(error);
+                            var msg;
+                            try {
+                                if (typeof xhr.responseJSON.msg !== undefined){
+                                    msg = xhr.responseJSON.msg;
+                                }else if (typeof xhr.responseText !== undefined){
+                                    msg = JSON.parse(xhr.responseText);
+                                    if (msg.msg){
+                                        msg = msg.msg;
+                                    }
+                                }
+                            } catch (e) {
+                                msg = '加载 Navbar 出错';
+                            }
+                            layer.msg(msg);
+                            html = '<p>'+msg+'</p>';
+                            $(_config.errorElem).html(html);
+                        }
+                    },
 					complete: function(xhr, status) {
 						_that.config.elem = $container;
 					}
@@ -262,11 +341,35 @@ layui.define(['element','layer'], function(exports) {
 			}
 		}
 	};
+
+    /**
+	 * 清除缓存 【增】：向 cacheTableName 定义表 插入一个 key 字段，如果该表不存在，则自动建立。【改】：同【增】，会覆盖已经存储的数据
+     * @param data 格式：{ key: '键', value: '值'}
+     */
+	Navbar.prototype.addCached = function(data){
+		layui.data(cacheTableName,data);
+	};
+
+    /**
+	 * 【查】：向 cacheTableName 定义表 读取全部的数据
+     */
+	Navbar.prototype.getCached = function(){
+		return layui.data(cacheTableName);
+	};
+
+	/**
+	 * 删除 cacheTableName 定义表 的 key 字段
+	 * @param key
+	 */
+	Navbar.prototype.removeCached = function(key){
+		layui.data(cacheTableName,{ key: key, remove: true});
+	};
+
 	/**
 	 * 清除缓存
 	 */
 	Navbar.prototype.cleanCached = function(){
-		layui.data(cacheName,null);
+		layui.data(cacheTableName,null);
 	};
 
 	/**

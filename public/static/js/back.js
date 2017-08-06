@@ -28,12 +28,13 @@ Back.init = function () {
     }
 };
 
+
 /**
  * 获取弹出工具
  * @returns {*}
  */
 Back.getLayer = function (){
-    return top.window.layui.layer ? top.window.layui.layer : layui.layer;
+    return top.layui.layer ? top.layui.layer : layui.layer;
 };
 
 /**
@@ -177,17 +178,56 @@ Back.update = function (selector,options,url){
         content: undefined,
     };
     config = $.extend(config,options);
-    //添加
+    var baseUrl = config.content;
+    //编辑
     $(document).off('click','[lay-filter="'+selector+'"]').on('click','[lay-filter="'+selector+'"]',function () {
         var that = $(this);
-        config.content = url || config.content || that.attr('lay-url');
+        var actionUrl = url || baseUrl || that.attr('lay-url');
         var layer = Back.getLayer();
         var id = that.closest('[data-key]').attr('data-key');
-        if (!config.content || !id){
+        if (!actionUrl || !id){
             layer.msg('地址无效');
             return;
         }else{
-            config.content += '?id='+ id;
+            config.content = baseUrl +'?id='+ id;
+        }
+        layer.open(config);
+    });
+};
+
+/**
+ * 操作工厂
+ * @param selector
+ * @param options
+ * @param url
+ * @param key
+ */
+Back.action = function (selector,options,url,key){
+    if (!selector){
+        return;
+    }
+    var config = {
+        scrollbar:false,
+        type: 2,
+        title: '操作提示',
+        shade: 0.3,
+        area: ['1050px', '62.8%'],
+        content: undefined,
+    };
+    config = $.extend(config,options);
+    var baseUrl = config.content;
+    //操作
+    $(document).off('click','[lay-filter="'+selector+'"]').on('click','[lay-filter="'+selector+'"]',function () {
+        var that = $(this);
+        var actionUrl = url || baseUrl || that.attr('lay-url');
+        var layer = Back.getLayer();
+        var id = that.closest('[data-key]').attr('data-key');
+        if (!actionUrl || !id){
+            layer.msg('地址无效');
+            return;
+        }else{
+            key = key || 'id';
+            config.content = baseUrl +'?'+key+'='+ id;
         }
         layer.open(config);
     });
@@ -213,17 +253,18 @@ Back.view = function (selector,options,url){
         content: undefined,
     };
     config = $.extend(config,options);
-    //添加
+    var baseUrl = config.content;
+    //查看
     $(document).off('click','[lay-filter="'+selector+'"]').on('click','[lay-filter="'+selector+'"]',function () {
         var that = $(this);
-        config.content = url || config.content || that.attr('lay-url');
+        var actionUrl = url || baseUrl || that.attr('lay-url');
         var layer = Back.getLayer();
         var id = that.closest('[data-key]').attr('data-key');
-        if (!config.content || !id){
+        if (!actionUrl || !id){
             layer.msg('地址无效');
             return;
         }else{
-            config.content += '?id='+ id;
+            config.content = baseUrl +'?id='+ id;
         }
         layer.open(config);
     });
@@ -280,7 +321,7 @@ Back.delete = function (selector,url,options){
                 },
                 error:function (data) {
                     layer.close(i);
-                    top.layer.msg('删除失败');
+                    layer.msg('删除失败');
                 }
             });
             return false;
@@ -397,7 +438,11 @@ Back.submit = function (_options){
 Back.getSelectCheckboxValues = function (selector, checked) {
     selector = selector || '[lay-group="selected"]';
     var values = [];
-    if (checked === undefined || checked === true) {
+    if (checked === 'all') {
+        $('input' + selector + ':not([lay-filter="selectAll"])').each(function () {
+            values.push($(this).val());
+        });
+    }else if (checked !== false) {
         $('input' + selector + ':not([lay-filter="selectAll"])' + ':checked').each(function () {
             values.push($(this).val());
         });

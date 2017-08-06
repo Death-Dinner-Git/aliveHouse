@@ -42,12 +42,14 @@ class MenuHelper
     private static $_suffix = '.html';
 
     /**
-     * Use to get assigned menu of user.
-     * @param mixed $userId
-     * @param integer $root
-     * @param \Closure $callback use to reformat output.
+     * @var string //路由默认参数
+     */
+    private static $_query = '?iframe=true';
+
+    /**
+     *    * Use to get assigned menu of user.
      * callback should have format like
-     * 
+     *
      * ~~~
      * function ($menu) {
      *    return [
@@ -59,20 +61,26 @@ class MenuHelper
      *    ]
      * }
      * ~~~
-     * @param boolean  $refresh
-     * @return array
+     * @param $userId
+     * @param string $type
+     * @param null $root
+     * @param null $callback
+     * @param bool $refresh
+     * @return array|mixed
      */
-    private static function getAssignedMenu($userId, $root = null, $callback = null, $refresh = false)
+    private static function getAssignedMenu($userId, $type = '1',$root = null, $callback = null, $refresh = false)
     {
         $cache = Configs::getCache();
         $manager = Configs::getIdentity();
+//        var_dump($manager->defaultRoles);
+//        var_dump($manager->getPermissionsByUser($userId));
 
-        $menus = Menu::load()->where(['type'=>'1'])->order('id asc')->column(Menu::getField());
+        $menus = Menu::load()->where(['type'=>$type])->order('id asc')->column(Menu::getField());
         $key = __METHOD__.$userId.Configs::CACHE_TAG;
 
         if ($refresh || $cache === null || ($assigned = $cache->get($key)) === false) {
             $routes = $filter1 = $filter2 = [];
-//            if ($userId !== null) {
+//            if (!($userId === null || $userId == 0)) {
 //                foreach ($manager->getPermissionsByUser($userId) as $name => $value) {
 //                    if ($name[0] === '/') {
 //                        if (substr($name, -2) === '/*') {
@@ -346,18 +354,35 @@ class MenuHelper
      * get Menu list the assigned  of menu for this user.
      * @param $userId
      * @param array $options
+     * @param string $app 'back'=>'1' or'front'=>'2'
      * @param bool $refresh
+     * @param null $prefixUrl
+     * @param null $suffix
+     * @param null $query
      * @return array
      * @throws \think\Exception
      */
-    public static function getMenu($userId, $options = ['class'=>'layui-nav layui-nav-tree'], $refresh = true)
+    public static function getMenu($userId = 0,$app='back', $options = ['class'=>'layui-nav layui-nav-tree'], $refresh = true,$prefixUrl =null,$suffix=null,$query=null)
     {
-        $menus = self::getAssignedMenu($userId, null ,null ,$refresh);
-        if ($menus && $options){
-            $menus = ['menus'=>$menus,'attr'=>$options,'prefix'=>self::$_prefixUrl, 'suffix'=>self::$_suffix.'?iframe=true'];
+        if ($app == 'front'){
+            $type = '2';
         }else{
-            Configs::getIdentity()->logout();
-            throw new \think\Exception('该账号未激活-请联系管理员', 403);
+            $type = '1';
+        }
+        $menus = self::getAssignedMenu($userId, $type,null ,null ,$refresh);
+        if ($menus && $options){
+            $prefixUrl = $prefixUrl ? $prefixUrl : self::$_prefixUrl;
+            $suffix = $suffix ? $suffix : self::$_suffix;
+            $query = $query ? $query : self::$_query;
+            $menus = ['menus'=>$menus,'attr'=>$options,'prefix'=>$prefixUrl, 'suffix'=>$suffix.$query];
+        }else{
+//            Configs::getIdentity()->logout();
+            throw new \think\Exception\HttpException(402,'该账号未激活-请联系管理员',null,['code'=>'402','msg'=>'该账号未激活-请联系管理员'],'402');
+        }
+        if (!IS_AJAX){
+            var_dump($userId);
+            var_dump($menus);
+            exit();
         }
         return $menus;
     }

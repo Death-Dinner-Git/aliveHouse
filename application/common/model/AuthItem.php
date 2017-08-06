@@ -57,18 +57,20 @@ class AuthItem extends Model
     // 更新自动完成列表
     protected $update = [];
 
+    public $typeList = ['1'=>'角色','2'=>'路由'];
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            'rule'=>[
-                ['type','number','类型 无效'],
-                ['name','max:64',],
-                ['rule_name','max:64',],
+            'rule' => [
+                ['type', 'in:1,2', '类型 无效'],
+                ['name', 'max:64',],
+                ['rule_name', 'max:64',],
             ],
-            'msg'=>[]
+            'msg' => []
         ];
     }
 
@@ -89,19 +91,38 @@ class AuthItem extends Model
     }
 
     /**
+     * 获取一个权限的所有下属权限
+     * @param $name
+     * @return array
+     */
+    public static function getHasAssign($name){
+        $ret = [];
+        $helper = self::getHelper();
+        $child = $helper::toArray(AuthItemChild::load()->where(['parent'=>$name])->field('child')->select());
+        if ($child){
+            foreach ($child as $item){
+                $ret[] = ['name'=>$item['child']];
+                $res = self::getHasAssign($item['child']);
+                $ret = $ret + $res;
+            }
+        }
+        return $ret;
+    }
+
+    /**
      * @return \think\model\relation\HasMany
      */
     public function getAuthAssignments()
     {
-        return $this->hasMany(ucfirst(AuthAssignment::tableNameSuffix()), 'name','item_name');
+        return $this->hasMany(ucfirst(AuthAssignment::tableNameSuffix()), 'item_name', 'name');
     }
 
     /**
-     * @return mixed
+     * @return \think\model\relation\HasManyThrough
      */
     public function getBackUsers()
     {
-        return $this->hasMany(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id')->viaTable('{{%back_auth_assignment}}', ['item_name' => 'name']);
+        return $this->hasManyThrough(ucfirst(BackUser::tableNameSuffix()),ucfirst(AuthAssignment::tableNameSuffix()));
     }
 
     /**
@@ -109,39 +130,31 @@ class AuthItem extends Model
      */
     public function getRuleName()
     {
-        return $this->hasOne(ucfirst(AuthRule::tableNameSuffix()), 'rule_name', 'name');
+        return $this->hasOne(ucfirst(AuthRule::tableNameSuffix()), 'name', 'rule_name');
+    }
+
+    /**
+     * @return \think\model\relation\HasOne
+     */
+    public function getParent()
+    {
+        return $this->hasOne(ucfirst(AuthItemChild::tableNameSuffix()), 'child', 'name');
     }
 
     /**
      * @return \think\model\relation\HasMany
-     */
-    public function getAuthItemChildren()
-    {
-        return $this->hasMany(ucfirst(AuthItemChild::tableNameSuffix()), 'name' ,'parent' );
-    }
-
-    /**
-     * @return \think\model\relation\HasMany
-     */
-    public function getAuthItemChildren0()
-    {
-        return $this->hasMany(ucfirst(AuthItemChild::tableNameSuffix()), 'name', 'child' );
-    }
-
-    /**
-     * @return mixed
      */
     public function getChildren()
     {
-        return $this->hasMany(ucfirst(AuthItem::tableNameSuffix()),  'child','name')->viaTable('{{%back_auth_item_child}}', ['parent' => 'name']);
+        return $this->hasMany(ucfirst(AuthItemChild::tableNameSuffix()), 'parent', 'name');
     }
 
     /**
-     * @return mixed
+     * @return \think\model\relation\HasManyThrough
      */
-    public function getParents()
+    public function topics()
     {
-        return $this->hasMany(ucfirst(AuthItem::tableNameSuffix()), 'parent','name')->viaTable('{{%back_auth_item_child}}', ['child' => 'name']);
+        return $this->hasManyThrough('Topic','User');
     }
 
     /**
@@ -149,14 +162,7 @@ class AuthItem extends Model
      */
     public function getBans()
     {
-        return $this->hasMany(ucfirst(Ban::tableNameSuffix()), 'name','item_name');
+        return $this->hasMany(ucfirst(Ban::tableNameSuffix()), 'name', 'item_name');
     }
 
-    /**
-     * @return mixed
-     */
-    public function getBackUsers0()
-    {
-        return $this->hasMany(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id')->viaTable('{{%back_ban}}', ['item_name' => 'name']);
-    }
 }

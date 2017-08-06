@@ -9,9 +9,9 @@ use app\common\components\Configs;
  */
 class Helper
 {
-    public static $_instance;
+    private static $_instance;
     /**
-     * @return Helper
+     * @return \app\common\components\Helper
      */
     public static function getInstance(){
         if (!self::$_instance){

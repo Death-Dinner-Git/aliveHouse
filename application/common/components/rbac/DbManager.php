@@ -97,7 +97,22 @@ class DbManager extends BaseManager
     public $timeFormat = 'Y-m-d H:i:s';
 
 
-    public function __construct()
+    /**
+     * @return \app\common\components\rbac\AuthManager
+     */
+    private static $_instance;
+
+    /**
+     * @return \app\common\components\rbac\DbManager
+     */
+    public static function getInstance(){
+        if (!self::$_instance){
+            self::$_instance = new DbManager();
+        }
+        return self::$_instance;
+    }
+
+    protected function __construct()
     {
         $this->init();
     }

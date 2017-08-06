@@ -6,6 +6,7 @@ use think\Controller;
 use app\common\components\Configs;
 use think\response\View;
 use think\Request;
+use app\common\components\rbac\AccessControl;
 
 /**
  * @description The module Index base controller
@@ -21,8 +22,22 @@ class BaseController extends Controller
     protected function _initialize()
     {
         $_SESSION['identity'] = session('identity');
+        $is_ajax = false;
+        if ($this->getRequest()->isAjax()){
+            $is_ajax = true;
+        }
+        defined('IS_AJAX') or define('IS_AJAX',$is_ajax);
         config('default_module',request()->module());
         $this->assign('URL',$this->getUrl());
+    }
+
+    /**
+     * @description 获取权限检查器
+     * @return \app\common\components\rbac\AccessControl
+     */
+    public function getAccessControl()
+    {
+        return AccessControl::getInstance();
     }
 
     /**
@@ -73,12 +88,13 @@ class BaseController extends Controller
 
     /**
      * @description 导航列表
-     * @param string $group
-     * @return mixed
+     * @param int $userId
+     * @param string $app 'back' 后台 'front'
+     * @return \think\response\Json
      */
-    protected function nav($group = 'main')
+    protected function nav($userId=0, $app = 'back')
     {
-        return json(\app\common\components\MenuHelper::getMenu(1));
+        return json(\app\common\components\MenuHelper::getMenu($userId,$app));
     }
 
     /**

@@ -54,6 +54,24 @@ class ManageController extends BaseController
         }else{
             $this->view->engine->layout('common@layouts/manage-main');
         }
+
+        if ($this->accessCheck());
+    }
+
+    /**
+     * 检查权限
+     * @param int $userId
+     * @param $action
+     * @return bool
+     */
+    protected function accessCheck($userId = 0,$action = null){
+        if (!$userId){
+            $userId = $this->getIdentity('id');
+        }
+        if (!$action){
+            $action = $this->getCurrentUrl();
+        }
+        $this->getAccessControl()->check($userId,$action);
     }
 
     /**

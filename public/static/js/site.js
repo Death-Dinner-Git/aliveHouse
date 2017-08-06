@@ -218,7 +218,7 @@ Site.getLayPager = function (callback) {
  * JS 加载到顶部LoadJS
  * @param url
  */
-Site.loadJS = function loadJS (url, fn) {
+Site.loadJS = function loadJS(url, fn) {
     var ss = document.getElementsByName('script'),
         loaded = false;
     for (var i = 0, len = ss.length; i < len; i++) {
@@ -249,7 +249,7 @@ Site.loadJS = function loadJS (url, fn) {
  * @param src
  * @constructor
  */
-Site.ClearJS = function   (src) {
+Site.ClearJS = function (src) {
     var js = document.getElementsByTagName('head')[0].children;
     var obj = null;
     for (var i = 0; i < js.length; i++) {
@@ -286,7 +286,7 @@ Site.clone = function (obj) {
 };
 
 /*  */
-Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, scroll, shadeClose, refresh,end) {
+Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, scroll, shadeClose, refresh, end) {
     var content = '', stop = true;
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
@@ -300,7 +300,7 @@ Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, sc
             stop = false;
         }, "html");
     } else {
-        scroll = scroll === false ?  'no' : 'yes';
+        scroll = scroll === false ? 'no' : 'yes';
         content = [url, scroll];
         stop = false;
     }
@@ -326,7 +326,7 @@ Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, sc
         id: ele,
         title: '<p style="text-align: center;">' + title + '</p>',
         content: content,
-        end:end
+        end: end
     });
 };
 
@@ -336,7 +336,7 @@ Site.msg = function (content) {
     if (!myLayer) {
         myLayer = layer;
     }
-    return myLayer.msg(content, {time: 2000});
+    return myLayer.msg(content, {time: 1500});
 };
 
 /*  */
@@ -348,7 +348,7 @@ Site.wait = function (content) {
     if (!content) {
         content = "请稍后....";
     }
-    return myLayer.msg(content, {shade: 0.3, time: 1000});
+    return myLayer.msg(content, {shade: 0.3, time: 30000});
 };
 
 /*  */
@@ -464,14 +464,14 @@ Site.tip = function (content) {
  * @param time 提示消失时间: 单位是毫秒（1秒=1000毫秒）。
  * @param shade 弹层外区域:默认是0 。可取值 0到1，如果你想定义别的颜色，可以shade: [0.8, '#393D49']；如果你不想显示遮罩，可以shade: 0
  */
-Site.showTip = function (msg,icon,shift,time,shade) {
-    msg = (msg !== undefined && msg !== '') ? msg : '提示信息缺失' ;
-    icon = (icon === undefined) ? 0 : ( (parseInt(icon) >= 0 && parseInt(icon) <=6) ? parseInt(icon) : 0 );
-    shift = (shift === undefined) ? 0 : ( (parseInt(shift) >= 0 && parseInt(shift) <=6) ? parseInt(shift) : 0 );
-    time = (time === undefined) ? 1000 : ( parseInt(time) > 0? parseInt(time) : 1000 );
-    shade = (shade === undefined) ? 0 : ( (shade >= 0 && shade <=1) ? shade : 0 );
-    var config = {icon: icon,shift: shift,time:time,shade:shade};
-    return top.layer.msg(msg,config);
+Site.showTip = function (msg, icon, shift, time, shade) {
+    msg = (msg !== undefined && msg !== '') ? msg : '提示信息缺失';
+    icon = (icon === undefined) ? 0 : ( (parseInt(icon) >= 0 && parseInt(icon) <= 6) ? parseInt(icon) : 0 );
+    shift = (shift === undefined) ? 0 : ( (parseInt(shift) >= 0 && parseInt(shift) <= 6) ? parseInt(shift) : 0 );
+    time = (time === undefined) ? 1000 : ( parseInt(time) > 0 ? parseInt(time) : 1000 );
+    shade = (shade === undefined) ? 0 : ( (shade >= 0 && shade <= 1) ? shade : 0 );
+    var config = {icon: icon, shift: shift, time: time, shade: shade};
+    return top.layer.msg(msg, config);
 };
 
 /* 确认对话框 */
@@ -493,7 +493,7 @@ Site.confirm = function (url, msg, width, height, shade) {
         content: msg,
         btn: ['确定', '取消'],
         btnAlign: 'c',
-        btn2: function(index, layero){
+        btn2: function (index, layero) {
             myLayer.close(index);
         },
         yes: function () {
@@ -523,7 +523,7 @@ Site.showDialog = function (title, msg, callBack, width, height, shade) {
         content: msg,
         btn: ['确定', '取消'],
         btnAlign: 'c',
-        btn2: function(index, layero){
+        btn2: function (index, layero) {
             myLayer.close(index);
         },
         yes: function (index) {
@@ -601,24 +601,24 @@ Site.imgLoading = function (ele) {
 /*  */
 Site.photos = function (options) {
     var photoConfig = {
-        photos:undefined,
-        url:undefined,
-        parentWin:true,
+        photos: undefined,
+        url: undefined,
+        parentWin: true,
         shade: Site.config.shade,
-        tab:undefined,
-        callback:null
+        tab: undefined,
+        callback: null
     };
-    photoConfig = $.extend(photoConfig,options);
+    photoConfig = $.extend(photoConfig, options);
     var myLayer = Site.getModule('layer', photoConfig.parentWin);
     if (!myLayer) {
         myLayer = layer;
     }
     var index, load;
-    if(!(photoConfig.photos || photoConfig.url)) return;
+    if (!(photoConfig.photos || photoConfig.url)) return;
     var type = typeof photoConfig.photos === "object";
     var photos = type ? photoConfig.photos : {};
     var tab = photoConfig.tab || function (pic, layero) {
-            top.layer.msg(pic.alt,{
+            top.layer.msg(pic.alt, {
                 offset: 't'
             }) //当前图片的一些信息
         };
@@ -653,7 +653,7 @@ Site.photos = function (options) {
                 index = myLayer.photos({
                     photos: data,
                     tab: tab,
-                    shade:photoConfig.shade,
+                    shade: photoConfig.shade,
                     anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
                 });
             },
@@ -662,7 +662,7 @@ Site.photos = function (options) {
                 Site.error('加载失败', true);
             }
         });
-    } else if(type){
+    } else if (type) {
         /**
          *  data 返回格式
          {
@@ -682,10 +682,10 @@ Site.photos = function (options) {
         index = myLayer.photos({
             photos: photos,
             tab: tab,
-            shade:photoConfig.shade,
+            shade: photoConfig.shade,
             anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
         });
-    }else{
+    } else {
         /**
          //HTML示例
          <div id="layer-photos-demo" class="layer-photos-demo">
@@ -698,7 +698,7 @@ Site.photos = function (options) {
             photos: photoConfig.photos,
             parent: document,
             tab: tab,
-            shade:photoConfig.shade,
+            shade: photoConfig.shade,
             anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
         });
     }
@@ -709,7 +709,7 @@ Site.photos = function (options) {
 Site.resizeShowTab = function () {
     if (window.parent) {
         window.parent.$(".layui-show").find("iframe").load();
-    }else {
+    } else {
         $(".layui-show").find("iframe").load();
     }
 };
@@ -720,10 +720,10 @@ Site.resizeShowTab = function () {
  * @param url
  * @return {null}
  */
-Site.getUrlParam = function (name,url) {
+Site.getUrlParam = function (name, url) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
-    if (url){
+    if (url) {
         r = url.substr(url.indexOf('?')).match(reg);
     }
     if (r != null) return unescape(r[2]);
@@ -843,35 +843,35 @@ Site.loadPage = function (pageElement, showTotal) {
         var laypage = layui.laypage;
         showTotal = showTotal || false;
         pageElement = pageElement || 'paging';
-        layui.use(['laypage', 'layer'], function(){
+        layui.use(['laypage', 'layer'], function () {
             var laypage = layui.laypage,
-                _page = $('#'+pageElement),
+                _page = $('#' + pageElement),
                 currentPage = _page.attr('data-currentPage'),
                 total = _page.attr('data-total'),
                 rows = _page.attr('data-rows'),
-                pages = Math.ceil(total/rows);
+                pages = Math.ceil(total / rows);
             laypage({
-                curr:currentPage,
+                curr: currentPage,
                 cont: pageElement,
                 pages: pages,
                 skip: true,
-                hash:true,
-                jump: function(obj,first){
-                    if(obj.curr != currentPage) {
+                hash: true,
+                jump: function (obj, first) {
+                    if (obj.curr != currentPage) {
                         var url = location.href;
-                        if(url.indexOf("?") == -1) {
-                            location.href = url+"?page="+obj.curr;
-                        }else {
+                        if (url.indexOf("?") == -1) {
+                            location.href = url + "?page=" + obj.curr;
+                        } else {
                             var page = Site.getUrlParam('page');
-                            if(page) {
-                                location.href = url.replace("page="+page,"page="+obj.curr);
-                            }else {
-                                location.href = url.replace("?","?page="+obj.curr+"&");
+                            if (page) {
+                                location.href = url.replace("page=" + page, "page=" + obj.curr);
+                            } else {
+                                location.href = url.replace("?", "?page=" + obj.curr + "&");
                             }
                         }
                     }
-                    if(showTotal && total>0){
-                        _page.prepend('<span class="page-total"> 数量: '+(total)+' </span>');
+                    if (showTotal && total > 0) {
+                        _page.prepend('<span class="page-total"> 数量: ' + (total) + ' </span>');
                     }
                 }
             });
@@ -885,8 +885,8 @@ Site.loadPage = function (pageElement, showTotal) {
  * @param full
  * @return {[*,*]}
  */
-Site.getAutoPhoto = function (img,full) {
-    if ( !(img instanceof Image)){
+Site.getAutoPhoto = function (img, full) {
+    if (!(img instanceof Image)) {
         return;
     }
     var imgarea = [img.width, img.height];
@@ -894,20 +894,20 @@ Site.getAutoPhoto = function (img,full) {
 
     //如果 取全屏返回全屏减少 100 的宽高
     //如果 实际图片的宽或者高比 屏幕大（那么进行缩放）
-    if(full){
+    if (full) {
         imgarea[0] = winarea[0];
         imgarea[1] = winarea[1];
-    }else if(imgarea[0]>winarea[0] || imgarea[1]>winarea[1]){
-        var wh = [imgarea[0]/winarea[0],imgarea[1]/winarea[1]];//取宽度缩放比例、高度缩放比例
-        if(wh[0] > wh[1]){//取缩放比例最大的进行缩放
-            imgarea[0] = imgarea[0]/wh[0];
-            imgarea[1] = imgarea[1]/wh[0];
-        } else if(wh[0] < wh[1]){
-            imgarea[0] = imgarea[0]/wh[1];
-            imgarea[1] = imgarea[1]/wh[1];
+    } else if (imgarea[0] > winarea[0] || imgarea[1] > winarea[1]) {
+        var wh = [imgarea[0] / winarea[0], imgarea[1] / winarea[1]];//取宽度缩放比例、高度缩放比例
+        if (wh[0] > wh[1]) {//取缩放比例最大的进行缩放
+            imgarea[0] = imgarea[0] / wh[0];
+            imgarea[1] = imgarea[1] / wh[0];
+        } else if (wh[0] < wh[1]) {
+            imgarea[0] = imgarea[0] / wh[1];
+            imgarea[1] = imgarea[1] / wh[1];
         }
     }
-    return [imgarea[0]+'px', imgarea[1]+'px'];
+    return [imgarea[0] + 'px', imgarea[1] + 'px'];
 };
 
 /**
@@ -917,23 +917,23 @@ Site.getAutoPhoto = function (img,full) {
  * @param error
  * @return {Image}
  */
-Site.loadImage = function(url, callback, error){
+Site.loadImage = function (url, callback, error) {
     var img = new Image();
     img.src = url;
-    if(img.complete){
-        if (typeof callback === "function"){
+    if (img.complete) {
+        if (typeof callback === "function") {
             callback(img)
         }
     }
-    img.onload = function(){
+    img.onload = function () {
         img.onload = null;
-        if (typeof callback === "function"){
+        if (typeof callback === "function") {
             callback(img)
         }
     };
-    img.onerror = function(e){
+    img.onerror = function (e) {
         img.onerror = null;
-        if (typeof callback === "function"){
+        if (typeof callback === "function") {
             error(e);
         }
     };
@@ -1052,10 +1052,10 @@ Site.lazyLoadScroll = function (options) {
     var type = 0;
     _config.scrollHeight = Site.scrollTop(); // 滚动的高度
     _config.bodyHeight = Site.clientHeight(); // body（页面）可见区域的总高度
-    if (_config.element){
+    if (_config.element) {
         _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
         _config.bodyHeight = Site.clientTop(_config.element); // body（页面）可见区域的总高度
-    }else{
+    } else {
         type = 1;
         _config.element = document;
     }
@@ -1066,7 +1066,7 @@ Site.lazyLoadScroll = function (options) {
     $(_config.element).find('img' + '.' + _config.lazyClass).each(function () {
         var $this = $(this);
         var imgTop = Site.offsetTop($this);//（图片纵坐标）
-        if ( ((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) || ((imgTop - _config.scrollHeight) <= Site.clientHeight() && type ) ) {
+        if (((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) || ((imgTop - _config.scrollHeight) <= Site.clientHeight() && type )) {
             Site.lazyImages({img: $this});
             $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
             if (_config.removeUrl) {
@@ -1075,10 +1075,10 @@ Site.lazyLoadScroll = function (options) {
         }
     });
     $(document).on('scroll', _config.element, function (e) {
-        if (type){
+        if (type) {
             _config.scrollHeight = Site.scrollTop(); // 滚动的高度
             _config.bodyHeight = Site.clientHeight(); // body（页面）可见区域的总高度
-        }else {
+        } else {
             _config.scrollHeight = Site.scrollTop(_config.element); // 滚动的高度
             _config.bodyHeight = $(_config.element).height(); //可见区域的总高度
         }
@@ -1095,7 +1095,7 @@ Site.lazyLoadScroll = function (options) {
                 }
                 temp = _config.scrollHeight;
             } else {
-                if (((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) ||　((imgTop - _config.scrollHeight) <= Site.clientHeight() && type )) {
+                if (((imgTop - _config.scrollHeight) >= 0 && (imgTop - _config.scrollHeight) <= _config.bodyHeight) || ((imgTop - _config.scrollHeight) <= Site.clientHeight() && type )) {
                     Site.lazyImages({img: $this});
                     $this.removeClass(_config.lazyClass).removeClass(_config.hasLazyClass).addClass(_config.hasLazyClass);
                     if (_config.removeUrl) {
@@ -1266,9 +1266,14 @@ Site.initBanner = function (data, options) {
         bar = '<div class="' + config.bannerBottom + '">' + barButton.join("") + '</div>';
     }
     content = '<div class="' + config.bannerBody + '">' + contentBody.join("") + '</div>' + control + bar;
-    if (config.wideScreen){
-        $banner.css({position:"absolute",width: "100%",left:'0',right:"0"}).after('<div style="height: '+config.height+'px;visibility: visible;"></div>');
-        content = '<div style="position: relative;width:'+config.width+'px;height:'+config.height+'px;">' + content + '</div>';
+    if (config.wideScreen) {
+        $banner.css({
+            position: "absolute",
+            width: "100%",
+            left: '0',
+            right: "0"
+        }).after('<div style="height: ' + config.height + 'px;visibility: visible;"></div>');
+        content = '<div style="position: relative;width:' + config.width + 'px;height:' + config.height + 'px;">' + content + '</div>';
     }
     $banner.html(content).css({width: config.width, height: config.height});
     //======= HTML 渲染结束 ========//
@@ -1534,9 +1539,9 @@ Site.offsetTop = function (element) {
  */
 Site.scrollTop = function (element) {
     var scrollTop = 0;
-    if (element === undefined){
+    if (element === undefined) {
         scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-    }else {
+    } else {
         scrollTop = $(element).scrollTop();
     }
     return scrollTop;
@@ -1560,7 +1565,7 @@ Site.clientTop = function (element) {
  */
 Site.clientHeight = function (element) {
     var _height = document.documentElement.clientHeight;//获取页面可见高度
-    if (element !== undefined){
+    if (element !== undefined) {
         _height = $(element).height();
     }
     return _height;
@@ -1573,7 +1578,7 @@ Site.clientHeight = function (element) {
  */
 Site.clientWidth = function (element) {
     var _width = document.documentElement.clientWidth;//获取页面可见宽度
-    if (element !== undefined){
+    if (element !== undefined) {
         _width = $(element).width();
     }
     return _width;
@@ -1605,9 +1610,9 @@ Site.getSelectCheckboxValues = function (selector, checked) {
  * @return {*}
  */
 Site.getXhr = function () {
-    if(window.ActiveXObject) {
+    if (window.ActiveXObject) {
         return new ActiveXObject('Microsoft.XMLHTTP');
-    }else if(window.XMLHTTPRequest){
+    } else if (window.XMLHTTPRequest) {
         return new XMLHTTPRequest();
     }
 };
@@ -1617,9 +1622,9 @@ Site.getXhr = function () {
  * @return {*}
  */
 Site.getTab = function () {
-    if (typeof top.window.getActive === 'function'){
+    if (typeof top.window.getActive === 'function') {
         return top.window.getActive();
-    }else {
+    } else {
         return top.window;
     }
 };
@@ -1629,9 +1634,30 @@ Site.getTab = function () {
  */
 Site.reLoad = function () {
     var active = Site.getTab();
-    if(active){
+    if (active) {
         active.location.reload();
     }
+};
+
+/**
+ * 获取特定iframe层的索引
+ * @param win
+ */
+Site.getLayerIndex = function (win) {
+    win = win || window;
+    var layer = Site.getModule('layer');
+    return layer.getFrameIndex(win.name);
+};
+
+/**
+ * 获取iframe页的DOM
+ * @param selector
+ * @param index
+ */
+Site.getLayerIndex = function (selector, index) {
+    var layer = Site.getModule('layer');
+    return layer.getChildFrame(selector, index);
+
 };
 
 /**
@@ -1646,16 +1672,16 @@ Site.reLoad = function () {
 Site.loadStatus = function (dom) {
     dom = dom || document;
 
-    var handler = function (e){
-        if(e.type === 'readystatechange' && dom.readyState !== 'commplete'){
+    var handler = function (e) {
+        if (e.type === 'readystatechange' && dom.readyState !== 'commplete') {
         }
     };
 
-    if(dom.addEventListener){
-        dom.addEventListener('readystatechange', handler,false);
-    }else{
+    if (dom.addEventListener) {
+        dom.addEventListener('readystatechange', handler, false);
+    } else {
         //兼容IE等不支持addEventListener方法的浏览器
-        dom.attachEvent('onreadystatechange',handler);
+        dom.attachEvent('onreadystatechange', handler);
     }
 
 };
@@ -1666,11 +1692,11 @@ Site.loadStatus = function (dom) {
  * @param tag
  * @returns {*}
  */
-Site.getTag = function (str,tag) {
-    var reg = '/<'+tag+'>(.*?)<\/'+tag+'>/';
+Site.getTag = function (str, tag) {
+    var reg = '/<' + tag + '>(.*?)<\/' + tag + '>/';
     reg = eval(reg);
     var ret = '';
-    if (reg.test(str)){
+    if (reg.test(str)) {
         ret = reg.exec(str)[1];
     }
     return ret;
@@ -1716,7 +1742,7 @@ Site.toLowerCase = function (str) {
  * @returns {*}
  */
 Site.toUpper = function (str) {
-    return s.toLowerCase().split(/\s+/).map(function(item, index) {
+    return s.toLowerCase().split(/\s+/).map(function (item, index) {
         return item.slice(0, 1).toUpperCase() + item.slice(1);
     }).join(' ');
 };
@@ -1725,7 +1751,7 @@ Site.toUpper = function (str) {
  * //删除左右两端的空格
  * @param str
  */
-Site.trim = function(str){
+Site.trim = function (str) {
     return str.replace(/(^\s*)|(\s*$)/g, "");
 };
 
@@ -1733,16 +1759,16 @@ Site.trim = function(str){
  * //删除左边的空格
  * @param str
  */
-Site.ltrim = function (str){
-    return str.replace(/(^\s*)/g,"");
+Site.ltrim = function (str) {
+    return str.replace(/(^\s*)/g, "");
 };
 
 /**
  * //删除右边的空格
  * @param str
  */
-Site.rtrim = function (str){
-    return str.replace(/(\s*$)/g,"");
+Site.rtrim = function (str) {
+    return str.replace(/(\s*$)/g, "");
 };
 
 /**
@@ -1750,9 +1776,9 @@ Site.rtrim = function (str){
  * @param jsonData
  * @returns {number}
  */
-Site.getJsonLength = function(jsonData){
+Site.getJsonLength = function (jsonData) {
     var jsonLength = 0;
-    for(var item in jsonData){
+    for (var item in jsonData) {
         jsonLength++;
     }
     return jsonLength;
@@ -1765,31 +1791,31 @@ Site.getJsonLength = function(jsonData){
  * @param times
  * @returns {string}
  */
-Site.date = function (format,times) {
+Site.date = function (format, times) {
     //给Date对象加上自定义属性
-    if (Date.format === undefined){
-        Date.prototype.format = function(format){
+    if (Date.format === undefined) {
+        Date.prototype.format = function (format) {
             var o = {
-                "M+" : this.getMonth()+1, //month
-                "d+" : this.getDate(), //day
-                "h+" : this.getHours(), //hour
-                "m+" : this.getMinutes(), //minute
-                "s+" : this.getSeconds(), //second
-                "q+" : Math.floor((this.getMonth()+3)/3), //quarter
-                "S" : this.getMilliseconds() //millisecond
+                "M+": this.getMonth() + 1, //month
+                "d+": this.getDate(), //day
+                "h+": this.getHours(), //hour
+                "m+": this.getMinutes(), //minute
+                "s+": this.getSeconds(), //second
+                "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
+                "S": this.getMilliseconds() //millisecond
             };
 
-            if(/(y+)/.test(format)) {
-                format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+            if (/(y+)/.test(format)) {
+                format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
             }
 
-            if(/(Y+)/.test(format)) {
-                format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+            if (/(Y+)/.test(format)) {
+                format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
             }
 
-            for(var k in o) {
-                if(new RegExp("("+ k +")").test(format)) {
-                    format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+            for (var k in o) {
+                if (new RegExp("(" + k + ")").test(format)) {
+                    format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
                 }
             }
             // var myDate = new Date();
@@ -1812,10 +1838,10 @@ Site.date = function (format,times) {
     return new Date(times).format(format);
 };
 
-Site.compareDate = function (left,right,format) {
-    if (left.length > 0 && right.length>0) {
+Site.compareDate = function (left, right, format) {
+    if (left.length > 0 && right.length > 0) {
         var sDate = new Date(left.replace(/-/g, "/"));
-        var eDate= new Date(right.replace(/-/g, "/"));
+        var eDate = new Date(right.replace(/-/g, "/"));
         if (sDate > eDate) {
             return false;
         }
@@ -1858,7 +1884,7 @@ Site.strLength = function () {
  * @param cutCount
  * @return {string}
  */
-Site. getCharactersLen = function (charStr, cutCount) {
+Site.getCharactersLen = function (charStr, cutCount) {
     if (charStr == null || charStr == '') return '';
     var totalCount = 0;
     var newStr = '';
@@ -1890,7 +1916,7 @@ Site.getJSVersion = function () {
     var apn = n.appName;
     var v = n.appVersion;
     var ie = v.indexOf('MSIE ');
-    if (ie > 0){
+    if (ie > 0) {
         apv = parseInt(i = v.substring(ie + 5));
         if (apv > 3) {
             apv = parseFloat(i);
@@ -1934,27 +1960,27 @@ Site.getJSVersion = function () {
  * 判断是否是 IE 浏览器
  */
 Site.isIE = function () {
-    if (document.all){
+    if (document.all) {
         alert('IE浏览器');
-    }else{
+    } else {
         alert('非IE浏览器');
     }
-    if (!!window.ActiveXObject){
+    if (!!window.ActiveXObject) {
         alert('IE浏览器');
-    }else{
+    } else {
         alert('非IE浏览器');
     }
     //判断是IE几
-    var isIE=!!window.ActiveXObject;
-    var isIE6=isIE&&!window.XMLHttpRequest;
-    var isIE8=isIE&&!!document.documentMode;
-    var isIE7=isIE&&!isIE6&&!isIE8;
-    if (isIE){
-        if (isIE6){
+    var isIE = !!window.ActiveXObject;
+    var isIE6 = isIE && !window.XMLHttpRequest;
+    var isIE8 = isIE && !!document.documentMode;
+    var isIE7 = isIE && !isIE6 && !isIE8;
+    if (isIE) {
+        if (isIE6) {
             alert('ie6');
-        }else if (isIE8){
+        } else if (isIE8) {
             alert('ie8');
-        }else if (isIE7){
+        } else if (isIE7) {
             alert('ie7');
         }
     }
@@ -1989,15 +2015,15 @@ Site.getOs = function () {
  * @param selector
  * @param submit
  */
-Site.enterSubmit = function (selector,submit) {
+Site.enterSubmit = function (selector, submit) {
     $(selector).onkeypress = function (event) {
         var that = $(this);
         event = (event) ? event : ((window.event) ? window.event : "")
         keyCode = event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode);
         if (keyCode == 13) {
-            if (submit){
+            if (submit) {
                 $(submit).onclick();
-            }else {
+            } else {
                 that.closest('form').submit();
             }
         }
@@ -2010,7 +2036,7 @@ Site.enterSubmit = function (selector,submit) {
  */
 Site.initTextarea = function (selector) {
     selector = selector || '[lay-height="auto"]';
-    $(document).off('keyup',selector).on('keyup',selector,function () {
+    $(document).off('keyup', selector).on('keyup', selector, function () {
         Site.autoTextarea(this);
     });
 };
@@ -2038,7 +2064,8 @@ Site.autoTextarea = function (elem, extra, maxHeight) {
                 return rect.bottom - rect.top -
                     parseFloat(getStyle('paddingTop')) -
                     parseFloat(getStyle('paddingBottom')) + 'px';
-            };
+            }
+            ;
 
             return val;
         } : function (name) {
@@ -2059,7 +2086,8 @@ Site.autoTextarea = function (elem, extra, maxHeight) {
 
         if (!isFirefox && !isOpera) {
             padding = parseInt(getStyle('paddingTop')) + parseInt(getStyle('paddingBottom'));
-        };
+        }
+        ;
         scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
 
         elem.style.height = minHeight + 'px';
@@ -2070,13 +2098,15 @@ Site.autoTextarea = function (elem, extra, maxHeight) {
             } else {
                 height = elem.scrollHeight - padding;
                 style.overflowY = 'hidden';
-            };
+            }
+            ;
             style.height = height + extra + 'px';
             scrollTop += parseInt(style.height) - elem.currHeight;
             document.body.scrollTop = scrollTop;
             document.documentElement.scrollTop = scrollTop;
             elem.currHeight = parseInt(style.height);
-        };
+        }
+        ;
     };
 
     addEvent('propertychange', change);
@@ -2134,7 +2164,8 @@ Site.getCookie = function (name) {
         if (c.indexOf(nameEQ) == 0) {
             return decodeURIComponent(c.substring(nameEQ.length, c.length))
         }
-    } return null
+    }
+    return null
 };
 
 /**
@@ -2144,8 +2175,8 @@ Site.getCookie = function (name) {
  */
 Site.download = function (url) {
     var form = $("form#download-form");   //定义一个form表单
-    if(!form.length >0){
-        $('html body',document).append('<form id="download-form" class="_new"></form>');
+    if (!form.length > 0) {
+        $('html body', document).append('<form id="download-form" class="_new"></form>');
         form = $("form#download-form._new");
     }
     form.attr('style', 'display:none');   //在form表单中添加查询参数
@@ -2160,7 +2191,7 @@ Site.download = function (url) {
  * @param options
  * @param middleWare
  */
-Site.ajax = function(options, middleWare)  {
+Site.ajax = function (options, middleWare) {
     var deferred = $.Deferred();
     var index;
     var $options = $.extend({
@@ -2168,10 +2199,10 @@ Site.ajax = function(options, middleWare)  {
         data: {},
         dataType: 'json',
         type: 'post',
-        beforeSend:function () {
+        beforeSend: function () {
             index = Site.loading();
         }
-    },options);
+    }, options);
 
     $.ajax($options).success(function (data) {
         Site.close(index);
@@ -2186,8 +2217,9 @@ Site.ajax = function(options, middleWare)  {
     });
 
     // 添加中间件
-    if(!middleWare || typeof middleWare !== "function") {
-        middleWare = function(){};
+    if (!middleWare || typeof middleWare !== "function") {
+        middleWare = function () {
+        };
     }
     return deferred.done(middleWare).fail(function (error) {
         Site.msg(error);
@@ -2206,12 +2238,12 @@ Site.uploader = function (options) {
     var index = uploaderIndex;
     uploaderIndex++;
     options = $.extend({
-        elem:'.layui-upload-file',
-        url:'/manage/ajax/uploader',
+        elem: '.layui-upload-file',
+        url: '/manage/ajax/uploader',
         isAjax: true,
-        before:null,  // 上传成功后的回调函数,参数 input 表单
-        success:null, // 上传成功后的回调函数,参数res代表后天返回的数据，input是文件input 表单
-    },options);
+        before: null,  // 上传成功后的回调函数,参数 input 表单
+        success: null, // 上传成功后的回调函数,参数res代表后天返回的数据，input是文件input 表单
+    }, options);
 
     layui.config({
         base: Site.config.layuiBase
@@ -2241,10 +2273,10 @@ Site.search = function (options) {
         targetClass: undefined,          // 输入框目标元素
         parentClass: undefined,          // 父级类
         hiddenClass: undefined,          // 隐藏域input
-        key:'name'
-    },options);
+        key: 'name'
+    }, options);
 
-    if (!options.url || !options.targetClass || !options.parentClass || !options.hiddenClass){
+    if (!options.url || !options.targetClass || !options.parentClass || !options.hiddenClass) {
         return;
     }
     layui.config({
@@ -2254,6 +2286,30 @@ Site.search = function (options) {
     });
 };
 
+/**
+ * 防止网页被嵌入框架 （Frame）代码
+ */
+Site.isHostWindow = function () {
+    // 判断当前的window对象是否是top对象
+    if (window != top) {
+        // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+        top.location.href = window.location.href;
+    }
+};
+
+/**
+ * 防止网页被嵌入框架 （Frame）代码(自己域名能嵌套)
+ */
+Site.isHostNameWindow = function () {
+    try {
+        top.location.hostname;
+        if (top.location.hostname != window.location.hostname) {
+            top.location.href = window.location.href;
+        }
+    } catch (e) {
+        top.location.href = window.location.href;
+    }
+};
 
 $(function () {
 
@@ -2380,7 +2436,7 @@ var processor = {
 /*
  text 转 数组
  */
-var toArray = function(data) {
+var toArray = function (data) {
     return eval('(' + data + ')');
 };
 
@@ -2514,15 +2570,15 @@ function ajaxJump(url, _Callback) {
 //        });
 
 //对字符串处理的方法
-String.prototype.trim=function(str){//删除左右两端的空格
+String.prototype.trim = function (str) {//删除左右两端的空格
     str = str || "";
     return this.replace(/(^\s*)|(\s*$)/g, '');
 };
-String.prototype.ltrim=function(str){//删除左边的空格
+String.prototype.ltrim = function (str) {//删除左边的空格
     str = str || "";
-    return this.replace(/(^\s*)/g,'');
+    return this.replace(/(^\s*)/g, '');
 };
-String.prototype.rtrim=function(str){//删除右边的空格
+String.prototype.rtrim = function (str) {//删除右边的空格
     str = str || "";
-    return this.replace(/(\s*$)/g,'');
+    return this.replace(/(\s*$)/g, '');
 };

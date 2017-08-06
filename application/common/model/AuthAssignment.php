@@ -71,7 +71,7 @@ class AuthAssignment extends Model
      */
     public function getItemName()
     {
-        return $this->hasOne(ucfirst(AuthItem::tableNameSuffix()), 'item_name','name');
+        return $this->hasOne(ucfirst(AuthItem::tableNameSuffix()), 'name', 'item_name');
     }
 
     /**
@@ -79,6 +79,6 @@ class AuthAssignment extends Model
      */
     public function getBackUser()
     {
-        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id');
+        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'id', 'back_user_id');
     }
 }

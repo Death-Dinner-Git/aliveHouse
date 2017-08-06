@@ -6,10 +6,26 @@ use app\common\components\rbac\DbManager;
 
 class AuthManager extends DbManager
 {
+
     /**
-     * @var \app\common\components\rbac\AuthManager
+     * @return \app\common\components\rbac\AuthManager
      */
-    private static $_instance = null;
+    private static $_instance;
+
+    /**
+     * @return \app\common\components\rbac\AuthManager
+     */
+    public static function getInstance(){
+        if (!self::$_instance){
+            self::$_instance = new AuthManager();
+        }
+        return self::$_instance;
+    }
+
+    protected function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Memory cache of assignments
@@ -19,12 +35,6 @@ class AuthManager extends DbManager
     private $_childrenList;
     private $_roleName;
 
-    public static function getInstance(){
-        if (self::$_instance === null) {
-            self::$_instance = new AuthManager();
-        }
-        return self::$_instance;
-    }
 
     /**
      * @inheritdoc

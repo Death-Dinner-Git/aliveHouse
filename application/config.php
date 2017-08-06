@@ -141,7 +141,7 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
-        '_TITLE_'=>'[ alive House ]',
+        '_TITLE_'=>'[ Hao Fang Zhi Ye ]',
         '_LAYUI_'=>'/static/plugins/layui/src',
         '_PLUGINS_'=>'/static/plugins',
         '_SHORTCUT_'=>'/static/images/shortcut-icon-logo.png',
@@ -164,6 +164,14 @@ return [
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '',
 
+    // 抛出了HttpException异常，可以支持定义单独的异常页面的模板地址
+    'http_exception_template'    =>  [
+        // 定义404错误的重定向页面地址
+        404 =>  'common@layouts/404',
+        // 定义403
+        402 =>  'common@layouts/402',
+    ],
+
     // +----------------------------------------------------------------------
     // | 日志设置
     // +----------------------------------------------------------------------
@@ -182,7 +190,14 @@ return [
     // +----------------------------------------------------------------------
     'trace'                  => [
         // 内置Html Console 支持扩展
-        'type' => 'Html',
+        'type' => 'console',
+        'trace_tabs' =>  [
+            'base'=>'基本',
+            'file'=>'文件',
+            'error|notice'=>'错误',
+            'sql'=>'SQL',
+            'debug|log|info'=>'调试',
+        ]
     ],
 
     // +----------------------------------------------------------------------

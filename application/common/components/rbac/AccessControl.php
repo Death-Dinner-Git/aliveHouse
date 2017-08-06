@@ -11,20 +11,62 @@ use app\common\components\rbac\AuthManager;
 
 class AccessControl
 {
+
     /**
-     * @var \app\manage\model\Identity User for check access.
+     * @return \app\common\components\rbac\AccessControl
+     */
+    private static $_instance;
+
+    /**
+     * @return \app\common\components\rbac\AccessControl
+     */
+    public static function getInstance()
+    {
+        if (!self::$_instance) {
+            self::$_instance = new AccessControl();
+        }
+        return self::$_instance;
+    }
+
+    private function __construct()
+    {
+        $this->_authManager = AuthManager::getInstance();
+    }
+
+
+    /**
+     * @var \app\manage\model\Identity
      */
     private $_user;
 
     /**
-     * @var \app\common\components\rbac\AuthManager AuthManager for check access.
+     * @var \app\common\components\rbac\AuthManager
      */
     private $_authManager;
 
     /**
      * @var array List of action that not need to check access.
      */
-    public $allowActions = [];
+    public $allowActions = [
+        '/home/*',
+        '/manage/*',
+        '/manage/index/*',
+        '/manage/auth/*',
+        '/manage/index/nav',
+        '/manage/login/*',
+        '/manage/ajax/*',
+    ];
+
+    /**
+     * @return \app\common\components\rbac\AuthManager
+     */
+    public function getAuthManager()
+    {
+        if (!$this->_authManager) {
+            $this->_authManager = AuthManager::getInstance();
+        }
+        return $this->_authManager;
+    }
 
     /**
      * Get user
@@ -64,51 +106,57 @@ class AccessControl
 
     /**
      * check user
-     * @param Identity|string $userid
-     * @param string $action
+     * @param int $userid
+     * @param null $route
      * @param bool $log
      * @return bool
      */
-    public function check($userid = '',$action = '',$log = true)
+    public function check($userid = 0, $route = null, $log = true)
     {
         $ret = true;
-
-        $user = $this->getUser($userid);
-
-        $result = $this->beforeAction($userid,$action);
-
-        if (!$result){
-            $ret = false;
-            $this->denyAccess($user);
+        if (substr($route, 0, 1) != '/') {
+            $route = '/' . $route;
         }
-        if ($log){
-            $this->afterAction($action,$result);
+        if (!($result = $this->isActive($route))) {
+            $user = $this->getUser($userid);
+
+            $result = $this->beforeAction($userid, $route);
+
+            if (!$result) {
+                $ret = false;
+                $this->denyAccess($user);
+            }
+        }
+
+        if ($log) {
+            $this->afterAction($route, $result);
         }
         return $ret;
     }
 
     /**
      * @param string $userid
-     * @param string $action
+     * @param string $route
      * @return bool
      */
-    protected function beforeAction($userid = '' , $action = '')
+    protected function beforeAction($userid = '', $route = '')
     {
-        $actionId = $action ? $action :$this->getActionUrl();
-        $actionId = trim($actionId,'/');
-        if ($this->can($userid,'/' . $actionId)) {
+        $routeId = $route ? $route : $this->getActionUrl();
+        $routeId = trim($routeId, '/');
+        if ($this->can($userid, '/' . $routeId)) {
             return true;
         }
-
         return false;
     }
 
     /**
-     * @inheritdoc
+     * @param $route
+     * @param $result
      */
-    public function afterAction($action, $result) {
+    public function afterAction($route, $result)
+    {
         $result = $result ? '允许' : '拒绝';
-        Log::record($action.$result);
+        Log::record($route . $result);
     }
 
     /**
@@ -121,56 +169,56 @@ class AccessControl
     protected function denyAccess($user)
     {
         if ($user->isGuest()) {
-            $user->setLogout($user);
+//            $user->setLogout($user);
+            throw new \think\Exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
         } else {
-            throw new Exception('You are not allowed to perform this action.');
+            throw new \think\Exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
         }
     }
 
     /**
-     * @inheritdoc
+     * @param $route
+     * @return bool
      */
-    protected function isActive($action)
+    protected function isActive($route)
     {
-        $uniqueId =$this->getActionUrl();
-        if ($uniqueId === Yii::$app->getErrorHandler()->errorAction) {
-            return false;
-        }
-
-        $user = $this->getUser();
-        if ($user->getIsGuest() && is_array($user->loginUrl) && isset($user->loginUrl[0]) && $uniqueId === trim($user->loginUrl[0], '/')) {
-            return false;
-        }
-
-        if ($this->owner instanceof Module) {
-            // convert action uniqueId into an ID relative to the module
-            $mid = $this->owner->getUniqueId();
-            $id = $uniqueId;
-            if ($mid !== '' && strpos($id, $mid . '/') === 0) {
-                $id = substr($id, strlen($mid) + 1);
-            }
-        } else {
-            $id = $action->id;
-        }
-
-        foreach ($this->allowActions as $route) {
-            if (substr($route, -1) === '*') {
-                $route = rtrim($route, "*");
-                if ($route === '' || strpos($id, $route) === 0) {
-                    return false;
+        $ret = false;
+        $permissions = Config::get('access.default_action');
+        $permissions = array_merge($this->allowActions, $permissions);
+        $permissions = array_unique($permissions);
+        foreach ($permissions as $permission) {
+            if (stristr($permission, '*') !== false) {
+                $tmpPermission = explode('*', $permission);
+                $newPermission = trim($tmpPermission[0], '/');
+                $tmp = explode('/', $newPermission);
+                if (isset($tmp[1])) {
+                    if ($permission == $route) {
+                        $ret = true;
+                        break;
+                    } else {
+                        if (strpos($route, '/' . $tmp[0] . '/' . $tmp[1] . '/') === 0) {
+                            $ret = true;
+                            break;
+                        }
+                    }
+                } else {
+                    if (strpos($route, '/' . $tmp[0] . '/') === 0) {
+                        $ret = true;
+                        break;
+                    }
                 }
             } else {
-                if ($id === $route) {
-                    return false;
+                if ($permission == $route) {
+                    break;
+                } else {
+                    if (strpos($route, $permission.'/') === 0) {
+                        $ret = true;
+                        break;
+                    }
                 }
             }
         }
-
-        if ($action->controller->hasMethod('allowAction') && in_array($action->id, $action->controller->allowAction())) {
-            return false;
-        }
-
-        return true;
+        return $ret;
     }
 
 
@@ -191,41 +239,40 @@ class AccessControl
      * @param $route
      * @return bool
      */
-    protected function can($userid,$route)
+    protected function can($userid, $route)
     {
         $ret = false;
         $manager = $this->getManager();
         $result = $manager->getPermissionsByUser($userid);
         $permissions = array_keys($result);
 
-        foreach ($permissions as $permission){
-            if (stristr($permission,'*') !== false ){
-                $tmpPermission = explode('*',$permission);
-                $newPermission = trim($tmpPermission[0],'/');
-                $tmp = explode('/',$newPermission);
-                if (isset($tmp[1])){
-                    if ($permission == $route){
+        foreach ($permissions as $permission) {
+            if (stristr($permission, '*') !== false) {
+                $tmpPermission = explode('*', $permission);
+                $newPermission = trim($tmpPermission[0], '/');
+                $tmp = explode('/', $newPermission);
+                if (isset($tmp[1])) {
+                    if ($permission == $route) {
                         $ret = true;
                         break;
-                    }else{
-                        if (strpos($route,'/'.$tmp[0].'/'.$tmp[1].'/') === 0 ){
+                    } else {
+                        if (strpos($route, '/' . $tmp[0] . '/' . $tmp[1] . '/') === 0) {
                             $ret = true;
                             break;
                         }
                     }
-                }else{
-                    if (strpos($route,'/'.$tmp[0].'/') === 0 ){
+                } else {
+                    if (strpos($route, '/' . $tmp[0] . '/') === 0) {
                         $ret = true;
                         break;
                     }
                 }
-            }else{
-                if ($permission == $route){
+            } else {
+                if ($permission == $route) {
                     $ret = true;
                     break;
-                }else{
-                    $route = trim($route,'/');
-                    if ($permission == $route){
+                } else {
+                    if (strpos($route, $permission.'/') === 0) {
                         $ret = true;
                         break;
                     }

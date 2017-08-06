@@ -21,6 +21,14 @@
     <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
 
+    <script>
+        // 判断当前的window对象是否是top对象 //防止网页被嵌入框架 （Frame）代码 或者 iframe 检查到登陆失效不能回到顶层。
+        if (window != top) {
+            // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+            top.location.href = window.location.href;
+        }
+    </script>
+
     <style type="text/css">
         .signwrapper {
             background-color: #1c77ac;

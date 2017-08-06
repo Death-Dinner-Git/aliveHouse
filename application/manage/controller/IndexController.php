@@ -98,6 +98,6 @@ class IndexController extends ManageController
      */
     public function navAction()
     {
-        return $this->nav();
+        return $this->nav($this->getIdentity('id'));
     }
 }

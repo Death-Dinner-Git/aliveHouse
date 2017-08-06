@@ -83,12 +83,16 @@ layui.config({
     //------------例子结束--------------
     //本扩展 是使用第二例子方式 设置navbar
     var navs = [];
+    var cachedKey = $('meta[name="cachedKey"][content]').attr('content');
     navbar.set({
         spreadOne: true,
         header:'#dinner-nav-side-header',
         elem: '#dinner-nav-side',
         // data: navs,
-        cached: true,
+        cached: false, //是否使用缓存
+        cacheKey: cachedKey, //缓存键名，此项是开启缓存后生效的
+        isError: true, //如请求json出错，是否提示
+        errorElem: '#user-profile .navbar-error', //出错提示展示容器
         // citeType: 2,
         url: '/manage/index/nav'
     });
