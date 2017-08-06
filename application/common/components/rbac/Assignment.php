@@ -25,4 +25,20 @@ class Assignment extends Model
      * @var integer UNIX timestamp representing the assignment creation time
      */
     public $createdAt;
+
+    /**
+     * 架构函数
+     * @access public
+     * @param array|object $data 数据
+     */
+    public function __construct($data = [])
+    {
+        parent::__construct($data);
+        foreach ($data as $key=>$value){
+            if (property_exists($this,$key)){
+                $this->$key = $value;
+            }
+        }
+    }
+
 }

@@ -26,6 +26,8 @@ use app\manage\model\Slider;
 use app\manage\model\TakeOrder;
 use app\manage\model\Upload;
 
+use app\manage\model\Identity;
+
 
 /**
  * This is the model class for table "{{%back_user}}".
@@ -108,5 +110,4 @@ class BackUser extends BaseBackUser
 
         return $validate->check($data);
     }
-
 }

@@ -502,7 +502,8 @@ class DbManager extends BaseManager
     }
 
     /**
-     * @inheritdoc
+     * @param string $roleName
+     * @return array
      */
     public function getPermissionsByRole($roleName)
     {
@@ -527,7 +528,8 @@ class DbManager extends BaseManager
     }
 
     /**
-     * @inheritdoc
+     * @param int|string $userId
+     * @return array
      */
     public function getPermissionsByUser($userId)
     {

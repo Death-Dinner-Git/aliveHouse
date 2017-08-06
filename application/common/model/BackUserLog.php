@@ -4,6 +4,7 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\BackUser;
+use \think\Request;
 
 /**
  * This is the model class for table "{{%back_user_log}}".
@@ -52,6 +53,43 @@ class BackUserLog extends Model
     protected $insert = [];
     // 更新自动完成列表
     protected $update = [];
+
+    /**
+     * @param null $target
+     * @param null $userId
+     * @param null $action
+     * @param null $ip
+     */
+    public static function log($target=null, $userId = null,$action = null,$ip = null)
+    {
+        $model = new BackUserLog();
+        $request = Request::instance();
+        $model->route = !empty($action) ? $action : $request->url();
+        $model->url = $request->url();
+        $model->user_agent = $request->server('HTTP_USER_AGENT');
+        $model->gets = json_encode($request->get());
+        $data = $request->post();
+        if (isset($data['password'])){
+            $data['password'] = md5(md5($data['password']));
+        }
+        if (isset($data['oldPassword'])){
+            $data['oldPassword'] = md5(md5($data['oldPassword']));
+        }
+        if (isset($data['newPassword'])){
+            $data['newPassword'] = md5(md5($data['newPassword']));
+        }
+        if (isset($data['rePassword'])){
+            $data['rePassword'] = md5(md5($data['rePassword']));
+        }
+        $model->posts = json_encode($data);
+        $model->back_user_id = !empty($userId) ? $userId : (isset($_SESSION['identity']['id']) ? $_SESSION['identity']['id'] : '0');
+        $model->ip = !empty($ip) ? $ip : $request->ip();
+        $model->target = !empty($target) ? $target : '例行记录';
+        $model->created_at = date('Y-m-d H:i:s');
+        $model->updated_at = date('Y-m-d H:i:s');
+        $model->save();
+
+    }
 
     /**
      * @inheritdoc

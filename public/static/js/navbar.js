@@ -172,9 +172,6 @@ layui.define(['element','layer'], function(exports) {
 					},
 					error: function(xhr, status, error) {
                         if(_config.isError){
-                        	console.log(xhr);
-                        	console.log(status);
-                        	console.log(error);
                             var msg;
                             try {
                                 if (typeof xhr.responseJSON.msg !== undefined){

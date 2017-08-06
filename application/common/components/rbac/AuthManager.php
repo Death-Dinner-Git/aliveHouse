@@ -7,6 +7,9 @@ use app\common\components\rbac\DbManager;
 class AuthManager extends DbManager
 {
 
+    //默认角色
+    private $_defaultRoles = ['0','1'];
+
     /**
      * @return \app\common\components\rbac\AuthManager
      */
@@ -34,6 +37,15 @@ class AuthManager extends DbManager
     private $_assignments = [];
     private $_childrenList;
     private $_roleName;
+
+
+    /**
+     * @return array
+     */
+    public function getDefaultRoles()
+    {
+        return $this->defaultRoles;
+    }
 
 
     /**

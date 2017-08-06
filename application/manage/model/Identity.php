@@ -60,9 +60,6 @@ class Identity extends BackUser
     //登录请求路由
     public $loginUrl = 'manage/login/login';
 
-    //登录请求路由
-    public $defaultRoles = ['0'];
-
     //所有账号类型
     private static $departmentList = ['0'=>'全部','1'=>'董事会部门','2'=>'总经理部门','3'=>'业务员部门'];
     //允许登录账号类型
@@ -611,6 +608,7 @@ class Identity extends BackUser
         $this->thisStatus = $ret ? '1' : '0';
         return true;
     }
+
 
     /**
      * log login log

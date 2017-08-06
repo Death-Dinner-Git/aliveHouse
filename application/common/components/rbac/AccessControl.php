@@ -49,12 +49,6 @@ class AccessControl
      */
     public $allowActions = [
         '/home/*',
-        '/manage/*',
-        '/manage/index/*',
-        '/manage/auth/*',
-        '/manage/index/nav',
-        '/manage/login/*',
-        '/manage/ajax/*',
     ];
 
     /**
@@ -156,7 +150,20 @@ class AccessControl
     public function afterAction($route, $result)
     {
         $result = $result ? '允许' : '拒绝';
-        Log::record($route . $result);
+        $user_agent = '';
+        if (Request::instance()->isAjax()){
+            $user_agent .= '_AJAX';
+        }
+        if (Request::instance()->isPjax()){
+            $user_agent .= '_PJAX';
+        }
+        if (Request::instance()->isMobile()){
+            $user_agent .= '_PHONE';
+        }
+
+        $result = $result.'访问：'.$route.$user_agent;
+        Log::record(Request::instance()->url() . $result);
+        Identity::record($result);
     }
 
     /**

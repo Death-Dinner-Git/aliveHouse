@@ -71,35 +71,42 @@ class MenuHelper
     private static function getAssignedMenu($userId, $type = '1',$root = null, $callback = null, $refresh = false)
     {
         $cache = Configs::getCache();
-        $manager = Configs::getIdentity();
-//        var_dump($manager->defaultRoles);
-//        var_dump($manager->getPermissionsByUser($userId));
+        $authManager = Configs::getAuthManager();
 
         $menus = Menu::load()->where(['type'=>$type])->order('id asc')->column(Menu::getField());
         $key = __METHOD__.$userId.Configs::CACHE_TAG;
 
         if ($refresh || $cache === null || ($assigned = $cache->get($key)) === false) {
             $routes = $filter1 = $filter2 = [];
-//            if (!($userId === null || $userId == 0)) {
-//                foreach ($manager->getPermissionsByUser($userId) as $name => $value) {
-//                    if ($name[0] === '/') {
-//                        if (substr($name, -2) === '/*') {
-//                            $name = substr($name, 0, -1);
-//                        }
-//                        $routes[] = $name;
-//                    }
-//                }
-//            }
-//            foreach ($manager->defaultRoles as $role) {
-//                foreach ($manager->getPermissionsByRole($role) as $name => $value) {
-//                    if ($name[0] === '/') {
-//                        if (substr($name, -2) === '/*') {
-//                            $name = substr($name, 0, -1);
-//                        }
-//                        $routes[] = $name;
-//                    }
-//                }
-//            }
+            if (!($userId === null || $userId == 0)) {
+                foreach ($authManager->getPermissionsByUser($userId) as $name => $value) {
+                    if ($name[0] === '/') {
+                        if (substr($name, -2) === '/*') {
+                            $name = substr($name, 0, -1);
+                        }
+                        $routes[] = $name;
+                    }
+                }
+            }
+            foreach ($authManager->getDefaultRoles() as $role) {
+                foreach ($authManager->getPermissionsByRole($role) as $name => $value) {
+                    if ($name[0] === '/') {
+                        if (substr($name, -2) === '/*') {
+                            $name = substr($name, 0, -1);
+                        }
+                        $routes[] = $name;
+                    }
+                }
+            }
+            foreach (\think\Config::get('access.default_action') as $permission) {
+                if ($permission[0] === '/') {
+                    if (substr($permission, -2) === '/*') {
+                        $permission = substr($permission, 0, -1);
+                    }
+                    $routes[] = $permission;
+                }
+            }
+
             $routes = array_unique($routes);
             sort($routes);
             $prefix = '\\';
@@ -114,6 +121,7 @@ class MenuHelper
                 }
             }
             $assigned = [];
+
             if (count($filter2)) {
                 $assigned = Menu::get()->where(['type'=>'1','route'=>['in',$filter2]])->order('id asc')->column('id');
             }
@@ -124,7 +132,10 @@ class MenuHelper
                 }
             }
 
-            $assigned =  Menu::get()->where(['type'=>'1'])->order('id asc')->column('id');
+            //超级管理员，读取全部目录
+            if ($userId == '100'){
+                $assigned =  Menu::get()->where(['type'=>'1'])->order('id asc')->column('id');
+            }
 
             $assigned = static::requiredParent($assigned, $menus);
             $assigned = static::normalizeMenu($assigned, $menus, $callback, $root);
@@ -345,7 +356,7 @@ class MenuHelper
             $menus = self::generateMenuItem($menus);
         }else{
             Configs::getIdentity()->logout();
-            throw new \think\Exception('该账号未激活-请联系管理员', 403);
+            throw new \think\Exception\HttpException(402,'该账号未激活-请联系管理员',null,['code'=>'402','msg'=>'该账号未激活-请联系管理员'],'402');
         }
         return $menus;
     }

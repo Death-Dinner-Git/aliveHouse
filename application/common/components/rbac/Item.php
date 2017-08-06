@@ -41,4 +41,20 @@ class Item extends Model
      * @var integer UNIX timestamp representing the item updating time
      */
     public $updatedAt;
+
+
+    /**
+     * 架构函数
+     * @access public
+     * @param array|object $data 数据
+     */
+    public function __construct($data = [])
+    {
+        parent::__construct($data);
+        foreach ($data as $key=>$value){
+            if (property_exists($this,$key)){
+                $this->$key = $value;
+            }
+        }
+    }
 }

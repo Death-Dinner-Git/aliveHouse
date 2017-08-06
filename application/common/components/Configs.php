@@ -56,6 +56,13 @@ class Configs
     }
 
     /**
+     * @return \app\common\components\rbac\AuthManager
+     */
+    public static function getAuthManager(){
+        return \app\common\components\rbac\AuthManager::getInstance();
+    }
+
+    /**
      * @return \app\manage\model\Menu | null
      */
     public static function getMenu(){

@@ -24,7 +24,6 @@ use app\common\model\Slider;
 use app\common\model\TakeOrder;
 use app\common\model\Upload;
 
-
 /**
  * This is the model class for table "{{%back_user}}".
  *
@@ -216,6 +215,15 @@ class BackUser extends Model
             'logined_at' => '登录时间',
             'updated_at' => '更新时间',
         ];
+    }
+
+    /**
+     * @param null $target
+     * @return bool
+     */
+    public static function record($target=null)
+    {
+        BackUserLog::log($target);
     }
 
     /**
