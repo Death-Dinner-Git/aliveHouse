@@ -15,7 +15,7 @@ return [
     // 服务器地址
     'hostname'        => '127.0.0.1',
 //    'hostname'        => '114.55.42.152',
-//    'hostname'        => '120.77.32.145',
+//    'hostname'        => '120.77.32.145', //57522
     // 数据库名
 //    'database'        => 'ah_alivehouse',
 //    'database'        => 'wofangtaxi',
@@ -28,7 +28,7 @@ return [
 //    'password'        => 'root',
 //    'password'        => 'wofang#car',
     'password'        => 'Haofangzhiye@123',
-//    'password'        => 'wzDarbE7esINiA1fjh@123', // ',S_y*w;r9w?*'  // mysql -u root -h127.0.0.1 -p',S_y*w*;r9w?*' u_api Alivehouse@123 // authentication_string
+//    'password'        => 'wzDarbE7esINiA1fjh@57522', // ',S_y*w;r9w?*'  // mysql -u root -h127.0.0.1 -p',S_y*w*;r9w?*' u_api Alivehouse@123 // authentication_string
     // 端口
     'hostport'        => '3306',
     // 连接dsn

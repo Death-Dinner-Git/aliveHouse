@@ -9,17 +9,47 @@ use app\common\model\City;
 use app\common\model\ImagesNewHouse;
 
 /**
- * This is the model class for table "{{%new_house}}".
+ * This is the model class for table "hfzy_new_house".
  *
  * @property integer $id
  * @property integer $is_delete
  * @property integer $building_base_id
+ * @property string $title
+ * @property integer $city_id
+ * @property integer $county_id
+ * @property string $address
  * @property integer $type
  * @property string $room
- * @property string $description
- * @property string $address
+ * @property integer $hall
+ * @property integer $kitchen
+ * @property integer $toilet
+ * @property integer $veranda
  * @property string $url
  * @property string $url_icon
+ * @property integer $floorsType
+ * @property integer $onFloor
+ * @property integer $floors
+ * @property integer $face
+ * @property integer $houseType
+ * @property integer $fitment
+ * @property integer $eachPrice
+ * @property integer $price
+ * @property integer $years
+ * @property integer $area
+ * @property string $description
+ * @property string $supporting
+ * @property string $traffic
+ * @property string $around
+ * @property string $houseLabel
+ * @property integer $isTop
+ * @property integer $status
+ * @property integer $saleStatus
+ * @property string $contact
+ * @property string $tel
+ * @property string $email
+ * @property string $weChat
+ * @property string $qq
+ * @property integer $created_by
  * @property string $created_at
  * @property string $updated_at
  *
@@ -324,7 +354,14 @@ class NewHouse extends Model
                 ['address','max:255',],
                 ['url','max:255',],
             ],
-            'msg'=>[]
+            'msg'=>[],
+            'data'=>[
+                [['is_delete', 'building_base_id', 'city_id', 'county_id', 'type', 'hall', 'kitchen', 'toilet', 'veranda', 'floorsType', 'onFloor', 'floors', 'face', 'houseType', 'fitment', 'eachPrice', 'price', 'years', 'area', 'isTop', 'status', 'saleStatus', 'created_by'], 'integer'],
+                [['building_base_id', 'title', 'address', 'room', 'url', 'description', 'created_by', 'created_at', 'updated_at'], 'required'],
+                [['description', 'traffic', 'around'], 'string'],
+                [['created_at', 'updated_at'], 'safe'],
+                [['title', 'address', 'room', 'url', 'url_icon', 'supporting', 'houseLabel', 'contact', 'tel', 'email', 'weChat', 'qq'], 'string', 'max' => 255],
+            ],
         ];
     }
 
@@ -337,11 +374,42 @@ class NewHouse extends Model
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'building_base_id' => '楼盘表ID',
-            'type' => '类型;1=类型;默认1;',
-            'room' => '房号',
-            'description' => '详细描述',
+            'title' => '介绍/标题',
+            'city_id' => '城市',
+            'county_id' => '区域/县级',
             'address' => '地址',
+            'type' => '房源类型;1新房2二手房;默认1;',
+            'room' => '房号',
+            'hall' => '大厅',
+            'kitchen' => '厨房',
+            'toilet' => '独卫',
+            'veranda' => '阳台',
             'url' => '封面宣传',
+            'url_icon' => '缩略图',
+            'floorsType' => '所在楼层类型',
+            'onFloor' => '位于楼层',
+            'floors' => '共计楼层',
+            'face' => '房屋朝向',
+            'houseType' => '房屋类型',
+            'fitment' => '装修情况',
+            'eachPrice' => '房屋单价(元/平方米',
+            'price' => '售价',
+            'years' => '建筑年代',
+            'area' => '建筑面积',
+            'description' => '详细描述',
+            'supporting' => '配套设施',
+            'traffic' => '交通状况',
+            'around' => '周边环境',
+            'houseLabel' => '房源标签',
+            'isTop' => '置顶',
+            'status' => '状态',
+            'saleStatus' => '销售状态',
+            'contact' => '联系人',
+            'tel' => '手机/固话',
+            'email' => '邮箱',
+            'weChat' => '微信',
+            'qq' => 'QQ',
+            'created_by' => '创建者',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];

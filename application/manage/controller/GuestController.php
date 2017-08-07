@@ -82,56 +82,46 @@ class GuestController extends ManageController
         //
     }
 
-
     /**
      * @description 显示资源列表
-     * @param int $pageNumber
      * @param string $name
      * @param string $city
      * @param string $address
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $city = null,$address = null)
+    public function indexAction($name = null, $city = null,$address = null)
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
-        $param = ['name'=>'','city'=>'','address'=>''];
-        $query = Guest::load();
-        if ($name && $name != 'guest'){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\'';
-            $query = $query->where($nameWhere);
+        /**
+         * @var $model \app\manage\model\Guest
+         */
+        $model = Guest::load();
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $where[] = ['exp',"`name` like '%".$key."%' "];
         }
-        if ($address && $address != ''){
-            $param['address'] = trim($address);
-            $nameWhere = ' `address` like '.' \'%'.$address.'%\'';
-            $query = $query->where($nameWhere);
+        $address = trim($request->request('address'));
+        if ($address != ''){
+            $where[] = ['exp',"`address` like '%".$address."%' "];
         }
         $lists = Guest::getLevelList();
-        if ($city && $city != ''){
-            $param['city'] = trim($city);
+        $city = trim($request->request('city'));
+        if ($city != ''){
             if (in_array($city,array_keys($lists))){
                 $where =  array_merge($where, ['city_id'=>$city]);
             }
         }
-        $typeLists = Guest::getTypeList();
-        $serverLists = Guest::getServiceList();
 
-        $providerModel = clone $query;
-        $count = $query->where($where)->count();
-        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+        $list = $model->where($where)->order('id DESC')->paginate($each);
 
-        $this->assign('meta_title', "楼盘清单");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('param', $param);
-        $this->assign('lists', $lists);
-        $this->assign('typeLists', $typeLists);
-        $this->assign('serverLists', $serverLists);
+        $this->assign('meta_title', "客户清单");
+        $this->assign('model', $model);
+        $this->assign('list', $list);
         return view('guest/index');
     }
+
 
     /**
      * 显示创建资源表单页.| 保存新建的资源
@@ -141,15 +131,12 @@ class GuestController extends ManageController
     public function createAction()
     {
         $model = new Guest();
-        $lists = Guest::getLevelList();
-        $typeLists = Guest::getTypeList();
-        $serverLists = Guest::getServiceList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Guest']) ? $_POST['Guest'] : []);
+            $data = $model->filter($_POST);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Guest::getValidate();
+                $validate = $model::getValidate();
                 $validate->scene('create');
                 if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
@@ -162,7 +149,11 @@ class GuestController extends ManageController
                 }
             }
         }
-        return view('guest/create',['meta_title'=>'添加客户','lists'=>$lists, 'typeLists'=>$typeLists, 'serverLists'=>$serverLists]);
+        return view('department/create',[
+            'meta_title'=>'添加客户',
+            'meta_util'=>'false',
+            'model'=>$model
+        ]);
     }
 
     /**
