@@ -94,9 +94,10 @@
         <td style="width: 100px;">{$model.username}</td>
         <td>{$model.phone}</td>
         <td>{$model->getDepartment->name}</td>
-        <td style="width: 150px;text-align: center;" class="action">
+        <td style="width: 180px;text-align: center;" class="action">
             <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>
             <label class="layui-btn layui-btn-mini layui-btn-danger" lay-filter="delete">删除</label>
+            <label class="layui-btn layui-btn-mini" lay-filter="assign">管理权限</label>
         </td>
     </tr>
     {/volist}
@@ -111,6 +112,7 @@
         createUrl:"{:url('/manage/user/register')}",
         updateUrl:"{:url('/manage/user/update')}",
         deleteUrl:"{:url('/manage/user/delete')}",
+        assignUrl:"{:url('/manage/ban/assign')}",
     };
     $(function() {
         //分页
@@ -120,6 +122,9 @@
 
         //编辑
         Back.update('update',{content:url.updateUrl,area:['800px','600px']});
+
+        //分配
+        Back.action('assign',{content:url.assignUrl,area:['1200px','88%'],title:'分配权限'});
 
         //删除
         Back.delete('delete',url.deleteUrl);

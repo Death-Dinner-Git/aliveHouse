@@ -165,27 +165,100 @@ class Guest extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public $clientFromList = ['1'=>'已正式客户','2'=>'待开发客户'];
+    public $jobTypeList = ['1' => '过客', '2' => '客户'];
 
-    public $jobTypeList = ['1'=>'过客','2'=>'客户'];
+    public $isBargainList = ['1' => '贵宾', '2' => '普通'];
+    // 需求类别
+    public $requireTypeList = [
+        '1' => '新房',
+        '2' => '二手房',
+        '3' => '综合投资',
+    ];
+    // 需求类别
+    public $askTypeList = [
+        '1' => '网络',
+        '2' => '来电',
+        '3' => '去电',
+        '4' => '来访',
+        '5' => '短信',
+        '6' => '其他',
+    ];
+    // 置业目的
+    public $buyPurposeList = [
+        '1' => '居住',
+        '2' => '养老',
+        '3' => '休闲度假 ',
+        '4' => '投资',
+        '0' => '其他',
+    ];
+    // 客户等级
+    public $clientLevelList = [
+        '1' => '暂未确定',
+        '2' => '近期看房',
+        '3' => '重要客户',
+        '4' => '放弃客户',
+        '5' => '看房客户',
+        '6' => '成交客户',
+        '7' => '退房客户',
+        '11' => 'A级',
+        '12' => 'B级',
+        '13' => 'C级',
+        '14' => 'D级'
+    ];
+    // 客户来源
+    public $clientFromList = [
+        '1' => '好房置业',
+        '10' => '二级代理',
+        '3' => '朋友介绍',
+        '16' => '看房游',
+        '17' => '渠道活动',
+        '18' => '自主开发',
+        '33' => '搜房发帖',
+        '34' => '安居客发帖',
+        '20' => '站外发帖',
+        '29' => '我房发帖',
+        '21' => '二手房',
+        '10' => '二级代理',
+        '15' => '售楼处',
+        '25' => '售楼处来电',
+        '11' => '我房400',
+        '22' => '房盟400',
+        '3' => '朋友介绍',
+        '4' => '客户转介绍',
+        '8' => '户外宣传',
+        '7' => '我房商桥',
+        '9' => '我房互动',
+        '23' => '房盟商桥',
+        '24' => '房盟互动',
+        '6' => '房展会',
+        '33' => '搜房发帖',
+        '34' => '安居客发帖',
+        '12' => '短信促销',
+        '20' => '站外发帖',
+        '29' => '我房发帖',
+        '27' => '一号通来电',
+        '31' => '甲方客户',
+        '19' => '其他'
+    ];
 
-    public $isBargainList = ['1'=>'贵宾','2'=>'普通'];
+    public static $serverList = ['1' => '已正式客户', '2' => '待开发客户'];
 
-    public static $serverList = ['1'=>'已正式客户','2'=>'待开发客户'];
+    public static $typeList = ['1' => '过客', '2' => '客户'];
 
-    public static $typeList = ['1'=>'过客','2'=>'客户'];
+    public static $levelList = ['1' => '贵宾', '2' => '普通'];
 
-    public static $levelList = ['1'=>'贵宾','2'=>'普通'];
-
-    public static function getServiceList(){
+    public static function getServiceList()
+    {
         return self::$serverList;
     }
 
-    public static function getTypeList(){
+    public static function getTypeList()
+    {
         return self::$typeList;
     }
 
-    public static function getLevelList(){
+    public static function getLevelList()
+    {
         return self::$levelList;
     }
 
@@ -195,21 +268,21 @@ class Guest extends Model
     public function rules()
     {
         return [
-            'rule'=>[
-                ['is_delete','in:0,1','时效 无效'],
-                ['type','number','类型 无效'],
-                ['server','number','服务 无效'],
-                ['level','number','等级 无效'],
-                ['ID_cards','max:255',],
-                ['avatar','max:255',],
-                ['real_name','max:64',],
-                ['nickname','max:64',],
-                ['email','max:64',],
-                ['phone','max:32',],
-                ['address','max:32',],
+            'rule' => [
+                ['is_delete', 'in:0,1', '时效 无效'],
+                ['type', 'number', '类型 无效'],
+                ['server', 'number', '服务 无效'],
+                ['level', 'number', '等级 无效'],
+                ['ID_cards', 'max:255',],
+                ['avatar', 'max:255',],
+                ['real_name', 'max:64',],
+                ['nickname', 'max:64',],
+                ['email', 'max:64',],
+                ['phone', 'max:32',],
+                ['address', 'max:32',],
             ],
-            'msg'=>[],
-            'sds'=>[
+            'msg' => [],
+            'sds' => [
                 [['is_delete', 'server', 'type', 'level', 'sex', 'province', 'city', 'clientFrom', 'requireType', 'inHainan', 'askType', 'askDate', 'lastVisitDate', 'nextVisitDate', 'visitNum', 'clientLevel', 'category', 'serviceStatus', 'belongUserId', 'firstUserId', 'arrangeId', 'changeClient', 'belongPid', 'createdId', 'updatedAt', 'createdAt', 'changeAt', 'agentNextId', 'jobType', 'visitHouseAt', 'isBargain', 'agentAt', 'fitmentId', 'showAt'], 'integer'],
                 [['belongPid', 'created_at', 'updated_at'], 'required'],
                 [['created_at', 'updated_at'], 'safe'],
@@ -263,7 +336,7 @@ class Guest extends Model
             'lastVisitDate' => '第一次回访时间',
             'nextVisitDate' => '最近一次回访日期',
             'visitNum' => '回访次数',
-            'clientLevel' => '1暂未确定，2近期看房，3重要客户，4放弃客户，5看房客户，6成交客户，7退房客户',
+            'clientLevel' => '1暂未确定，2近期看房，3重要客户，4放弃客户，5看房客户，6成交客户，7退房客户,11A级，12B级，13C级，14D级',
             'category' => '客户分类',
             'serviceStatus' => '服务状态',
             'belongUserId' => '权属人',

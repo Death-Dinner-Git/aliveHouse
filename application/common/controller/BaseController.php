@@ -22,6 +22,7 @@ class BaseController extends Controller
     protected function _initialize()
     {
         $_SESSION['identity'] = session('identity');
+        $_SESSION['logined_at'] = session('logined_at');
         $is_ajax = false;
         if ($this->getRequest()->isAjax()){
             $is_ajax = true;
@@ -29,6 +30,13 @@ class BaseController extends Controller
         defined('IS_AJAX') or define('IS_AJAX',$is_ajax);
         config('default_module',request()->module());
         $this->assign('URL',$this->getUrl());
+//        $this->assign('_csrf_param','_csrf_'.request()->module());
+//        $this->assign('_csrf_token','_csrf_'.request()->module());
+        if ($_SESSION['logined_at'] != strtotime($_SESSION['identity']['logined_at'])){
+            $_SESSION['logined_at'] = strtotime($_SESSION['identity']['logined_at']);
+            session('logined_at',$_SESSION['logined_at']);
+            $_SESSION['_auth_token_'] = md5($_SESSION['identity']['id'].$_SESSION['identity']['logined_at']);
+        }
     }
 
     /**
@@ -579,7 +587,7 @@ class BaseController extends Controller
      * @return Request
      */
     public function getRequest(){
-        return Request::instance();
+        return \think\Request::instance();
     }
 
     public function _after(){

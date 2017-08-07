@@ -90,7 +90,8 @@ layui.config({
         header:'#dinner-nav-side-header',
         elem: '#dinner-nav-side',
         // data: navs,
-        cached: false, //是否使用缓存
+        cached: true, //是否使用缓存
+        // cachedTime: false, //缓存过期时间
         cacheKey: cachedKey, //缓存键名，此项是开启缓存后生效的
         isError: true, //如请求json出错，是否提示
         errorElem: '#user-profile .navbar-error', //出错提示展示容器

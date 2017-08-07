@@ -2,12 +2,17 @@
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="url" content="">
-    <meta name="cachedKey" content="">
+    <meta name="_csrf_param" content="{$_csrf_param ? $_csrf_param : ''}">
+    <meta name="_csrf_token" content="{$_csrf_token ? $_csrf_token : ''}">
+    <meta name="cachedKey" content="{$_SESSION['_auth_token_'] ? $_SESSION['_auth_token_'] : ''}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
@@ -17,23 +22,14 @@
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="_LAYUI_/layui.js"></script>
 
-    <!--&lt;!&ndash; Fake Loader start &ndash;&gt;-->
-    <!--<link rel="stylesheet" href="_PLUGINS_/fakeloader/css/fakeloader.css">-->
-    <!--<script src="_PLUGINS_/fakeloader/js/fakeloader.js"></script>-->
-    <script>
-//        var _spinner2 = {
-//            timeToHide:1200,
-//            bgColor:"#1abc9c",
-//            spinner:"spinner2",
-//            zIndex:'20170407',
-//            loadCss:{
-//                top:'46%',
-//                left:'50%'
-//            }
-//        };
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/back.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
 
+    <script>
         $(document).ready(function(){
-//            $(".fakeloader").fakeLoader(_spinner2);
             layui.config({
                 base: '/static/js/' //设定扩展模块所在的目录
             }).use(['layer', 'util'], function() {
@@ -61,13 +57,6 @@
 
         });
     </script>
-    <!-- Fake Loader end -->
-
-    <!-- load css -->
-    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/back.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
 
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
 

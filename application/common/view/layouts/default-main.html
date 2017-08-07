@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta name="renderer" content="webkit">
     <meta name="mobile-agent" content="format=html5;url=http://m.alivehouse.com/">
+    <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <meta name="_csrf_param" content="{$_csrf_param ? $_csrf_param : ''}">
+    <meta name="_csrf_token" content="{$_csrf_token ? $_csrf_token : ''}">
 
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
 
@@ -15,23 +19,15 @@
     <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
     <link rel="canonical" href="/home/index/index.html">
 
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
 
-    <!-- Load base CSS -->
-    <link type="text/css" href="/static/css/home/layerBase2.css" rel="stylesheet">
-    <link type="text/css" href="/static/css/home/fkTheme.css" rel="stylesheet" id="jzThemeFrame">
-    <link type="text/css" href="/static/css/home/fkModule.css" rel="stylesheet" id="jzModule2_1">
-    <link type="text/css" href="/static/css/home/searchBoxStyle1.css" rel="stylesheet">
-    <link type="text/css" href="/static/css/home/newSearchBoxStyle.css" rel="stylesheet">
-    <link type="text/css" href="/static/css/home/bannerAnimation.css" rel="stylesheet" >
-    <link type="text/css" href="/static/css/home/jzcusstyle.css" rel="stylesheet">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/home.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
 
-    <!-- This page CSS -->
-    <link type="text/css" href="/static/css/home/floatBtn1.css" rel="stylesheet">
-    <link type="text/css" href="/static/css/home/poshytipAndmCustomScrollbar.css" rel="stylesheet">
-
-    <script type="text/javascript">
-        var _cid = 13775917;
-    </script>
 
     <!-- Define base CSS -->
     <style id="stylemodule"></style>

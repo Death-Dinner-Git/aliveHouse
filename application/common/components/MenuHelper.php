@@ -74,7 +74,7 @@ class MenuHelper
         $authManager = Configs::getAuthManager();
 
         $menus = Menu::load()->where(['type'=>$type])->order('id asc')->column(Menu::getField());
-        $key = __METHOD__.$userId.Configs::CACHE_TAG;
+        $key = __METHOD__.$userId.Configs::CACHE_TAG.(isset($_SESSION['_auth_token_'])?$_SESSION['_auth_token_']:'');
 
         if ($refresh || $cache === null || ($assigned = $cache->get($key)) === false) {
             $routes = $filter1 = $filter2 = [];
