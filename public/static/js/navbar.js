@@ -17,7 +17,7 @@ layui.define(['element','layer'], function(exports) {
 			url: undefined, //数据源地址
 			type: 'GET', //读取方式
 			cached: false, //是否使用缓存
-			cachedTime: false, //缓存过期时间
+			cachedTime: false, //缓存过期时间 单位秒
 			cacheKeyPrefix: 'NAVBAR_', //缓存键名前缀主要是为了唯一性
 			cacheKey: 'navbar', //缓存键名，此项是开启缓存后生效的
 			isError: false, //是否使用请求json出错提示
@@ -87,14 +87,16 @@ layui.define(['element','layer'], function(exports) {
 				}
                 for(var key in cacheNavbarTable){
 					var time = 0,remove;
-					if (typeof cacheTimeValue[key] !== undefined){
-						time = cacheTimeValue[key];
-                        remove = true;
+					if(addTime){
+                        if (typeof cacheTimeValue[key] !== undefined){
+                            time = cacheTimeValue[key];
+                            remove = true;
+                        }
+                        if (remove && time<new Date().getTime()){
+                            layui.data(cacheTableName,{ key: key, remove: true});
+                            layui.data(cacheTableTime,{ key: key, remove: true});
+                        }
 					}
-                    if (!addTime&&key == _config.cacheKey || remove && time<new Date().getTime()){
-                        layui.data(cacheTableName,{ key: key, remove: true});
-                        layui.data(cacheTableTime,{ key: key, remove: true});
-                    }
 					if (key == _config.cacheKey){
                         cacheNavbar = cacheNavbarTable[key];
 						break;

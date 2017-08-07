@@ -2,10 +2,6 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
     <style>
         table td.action{
@@ -14,10 +10,6 @@
         table td.action a button i{
             padding-right: 4px;
         }
-        table td.readed label.had-readed,table td.action a button.had-readed{
-            background-color: #d4d4d4 !important;
-            color: #333333 !important;
-        }
     </style>
 
 </head>
@@ -25,36 +17,34 @@
 
 
 <section>
-    {if condition="isset($meta_title)"}
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>{$meta_title}</legend>
+        <legend>权限清单</legend>
     </fieldset>
-    {/if}
     <div class="layui-field-box">
-        <form class="layui-form layui-form-pane" action="">
+        <form class="layui-form forms layui-form-search layui-form-pane" action="">
             <div class="layui-form-item">
-
-                <label class="layui-form-label">权限:</label>
-                <div class="layui-input-inline">
-                    <input type="text" value="{$param.name}" name="name" placeholder="权限名称" class="layui-input">
+                <div class="layui-input-inline search">
+                    <input type="text" name="keyword" placeholder="权限名称 | 角色" value="{$Think.get.keyword}" class="layui-input">
                 </div>
 
-                <label class="layui-form-label">等级:</label>
+                <label class="layui-form-label">角色:</label>
                 <div class="layui-input-inline">
-                    <select name="type" lay-search >
-                        <option value="0">全部</option>
+                    <select name="level" lay-search >
+                        <option value="">全部</option>
+                        <option value="">全部</option>
                         {volist name="levels" id="item"}
-                        <option value="{$key}" {if condition="$key eq $param.level"}selected{/if}>{$item}</option>
+                        <option value="{$key}" {if condition="$key eq $Think.get.level"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
 
                 <label class="layui-form-label">状态:</label>
                 <div class="layui-input-inline">
-                    <select name="type" lay-search >
-                        <option value="0">全部</option>
-                        {volist name="lists" id="item"}
-                        <option value="{$key}" {if condition="$key eq $param.type"}selected{/if}>{$item}</option>
+                    <select name="ban" lay-search >
+                        <option value="">全部</option>
+                        <option value="">全部</option>
+                        {volist name="model->banList" id="item"}
+                        <option value="{$key}" {if condition="$key eq $Think.get.ban"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
@@ -65,56 +55,53 @@
         </form>
     </div>
 </section>
+<section class="layui-table-action">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <div class="layui-inline">
+                <!--<label class="layui-btn layui-btn-danger" lay-filter="delete">删除</label>-->
+            </div>
+            <div class="layui-inline">
+                <label class="layui-text layui-label"> (共 <em class="layui-color-danger">{$list->total()}</em> 条信息)</label>
+            </div>
+        </div>
+        <div class="layui-inline" style="margin-right: 15px;">
+            <div class="layui-inline">
+                <!--<label class="layui-btn" lay-filter="create">添加</label>-->
+            </div>
+        </div>
+    </div>
+</section>
 
 <table class="layui-table" lay-even="" lay-skin="row">
     <thead>
     <tr>
         <th>序号</th>
-        <th>联系人</th>
-        <th>联系方式</th>
-        <th>联系邮箱</th>
-        <th>联系地址</th>
-        <th>是否已读</th>
+        <th>名称</th>
+        <th>类型</th>
+        <th>描述</th>
         <th style="width:50px; text-align: center">操作</th>
     </tr>
     </thead>
     <tbody>
-    {volist name="dataProvider" id="model" key="key" empty="<tr class='empty'><td colspan='5' style='text-align: center;'> 没有数据 </td> </tr>"}
-    <tr data-key="{$model.id}">
+    {volist name="list" id="model" key="key" empty="<tr class='empty'><td colspan='5' style='text-align: center;'> 没有数据 </td> </tr>"}
+    <tr data-key="{$model.name}">
         <td style="width: 45px;text-align: center;">
-            {$key+($indexOffset)}
+            {$key+(($list->currentPage()-1) * ($list->listRows()))}
         </td>
-        <td style="width: 100px;">{$model.username}</td>
-        <td>{$model.content}</td>
-        <td>{$model.email}</td>
-        <td>{$model.address}</td>
-        <td class="readed">
-            <label class="layui-btn layui-btn-small {if condition="$model.readed eq 2"}had-readed{/if}">
-            <i class="fa fa-paperclip"></i>
-               <span>
-                   {if condition="$model.readed eq 2"}
-                已读
-                {else} 未读
-                {/if}
-               </span>
+        <td>{$model.name}</td>
+        <td>{$model->getTrans('typeList',$model['type'])}</td>
+        <td>{$model.description}</td>
+        <td style="width: 200px;text-align: center;" class="action">
+            <label class="layui-btn layui-btn-mini" lay-filter="assign">
+                <i class="layui-icon">&#xe631;</i> 分配
             </label>
-        </td>
-        <td style="width: 250px;text-align: center;" class="action">
-            <a href="javascript:void(0);">
-                <button onclick="Site.showUrl('查看详情','/manage/ban/view.html?id={$model.id}','62.8%','82%','2',true,'LAY_TRAVEL_{$model.id}',true)" class="layui-btn layui-btn-small" >
-                <i class="fa fa-eye"></i>
-                查看详情
-                </button>
-            </a>
-            <a href="javascript:void(0);">
-                <button onclick="Site.showDialog('设置确认','你确定更新此项状态吗?',function(){updateModel({$model.id});})" class="layui-btn layui-btn-small read-status {if condition="$model.readed eq 2"}had-readed{else}{/if}" >
-                <i class="fa fa-cog"></i>
-                <span>
-                    {if condition="$model.readed eq 2"}设置未读{else}设置已读{/if}
-                </span>
-                </button>
-            </a>
-            <a href="javascript:void(0);"><button onclick="Site.showDialog('信息确认','你确定删除此项数据吗?',function(){deleteModel({$model.id});})" class="layui-btn layui-btn-small"><i class="fa fa-remove"></i>删除</button></a>
+            <label class="layui-btn layui-btn-mini" lay-filter="update">
+                <i class="layui-icon">&#xe642;</i> 编辑
+            </label>
+            <label class="layui-btn layui-btn-danger layui-btn-mini" lay-filter="delete">
+                <i class="layui-icon">&#xe640;</i>删除
+            </label>
         </td>
     </tr>
     {/volist}
@@ -122,109 +109,32 @@
 </table>
 
 <!-- 分页容器 -->
-<div id="paging_0124" style="text-align:right;" data-count="{$count}" data-pages="{$pages}" data-page=""></div>
+<div id="paging" class="paging" data-total="{$list->total()}" data-rows="{$list->listRows()}" data-currentPage="{$list->currentPage()}"></div>
 
 <script>
-    layui.use([ 'layer','laydate', 'form'], function() {});
-    function updateModel(id) {
-        $.ajax({
-            type : "post",
-            url : '/manage/ban/read?id='+ id,
-            dataType : 'json',
-            beforeSend : function() {
-                Site.loading();
-            },
-            success : function(data) {
-                setTimeout(Site.hide(),500);
-                if (data.code == '1'){
-                    if (data.readed !== undefined){
-                        var content = '已读',
-                            action = '设置未读';
-                        if (data.readed != '1'){
-                            content = '未读';
-                            action = '设置已读';
-                            $('[data-key="'+id+'"] .readed label').removeClass('had-readed');
-                            $('[data-key="'+id+'"] .read-status').removeClass('had-readed');
-                        }else{
-                            $('[data-key="'+id+'"] .readed label').removeClass('had-readed').addClass('had-readed');
-                            $('[data-key="'+id+'"] .read-status').removeClass('had-readed').addClass('had-readed');
-                        }
-                        $('[data-key="'+id+'"] .readed label span').html(content);
-                        $('[data-key="'+id+'"] .read-status span').html(action);
-                    }
-                    success('更新成功',true);
-                }else {
-                    Site.hide();
-                    error('更新失败',true);
-                }
-            },
-            error : function(data) {
-                Site.hide();
-                error('更新失败',true);
-            }
-        });
-    }
-    function deleteModel(id) {
-        $.ajax({
-            type : "post",
-            url : '/manage/ban/delete?id='+ id,
-            dataType : 'json',
-            beforeSend : function() {
-                Site.loading();
-            },
-            success : function(data) {
-                setTimeout(Site.hide(),500);
-                if (data.code == '1'){
-                    $('[data-key="'+id+'"]').remove();
-                    success('删除成功',true);
-                }else {
-                    Site.hide();
-                    error('删除失败',true);
-                }
-            },
-            error : function(data) {
-                Site.hide();
-                error('删除失败',true);
-            }
-        });
-    }
-</script>
-<script>
-    $(function() {
-        layui.use(['laypage', 'layer'], function(){
-            var laypage = layui.laypage,
-                element = 'paging_0124',
-                _page = $('#'+element),
-                currPage = Site.getUrlParam('pageNumber'),
-                count = _page.attr('data-count'),
-                pages = _page.attr('data-pages');
-            currPage = currPage > 1 ? currPage : 1;
-            count = count ? count : 0;
-            _page.attr('data-page',currPage);
-            laypage({
-                curr:currPage,
-                cont: element,
-                pages: pages,
-                skip: true,
-                jump: function(obj,first){
-                    if(obj.curr != currPage) {
-                        var url = location.href;
-                        if(url.indexOf("?") == -1) {
-                            location.href = url+"?pageNumber="+obj.curr;
-                        }else {
-                            var page = Site.getUrlParam('pageNumber');
-                            if(page) {
-                                location.href = url.replace("pageNumber="+page,"pageNumber="+obj.curr);
-                            }else {
-                                location.href = url.replace("?","?pageNumber="+obj.curr+"&");
-                            }
-                        }
-                    }
-                    _page.prepend('<span style="display: inline-block;text-align:center;padding: 0 20px;color: #333;font-size: 14px;"> 数量: '+(count)+' </span>');
-                }
-            });
-        });
+    var url = {
+        createUrl:"{:url('/manage/auth/create')}",
+        updateUrl:"{:url('/manage/auth/update')}",
+        assignUrl:"{:url('/manage/auth/assign')}",
+        deleteUrl:"{:url('/manage/auth/delete')}",
+    };
+    layui.use([ 'layer'], function() {
+        //分页
+        Site.loadPage();
+
+        //添加
+        Back.create('create',{content:url.createUrl,area:['800px','650px']});
+
+        //分配
+        Back.action('assign',{content:url.assignUrl,area:['1200px','88%'],title:'分配权限'});
+
+        //编辑
+        Back.update('update',{content:url.updateUrl,area:['800px','650px']});
+
+        //删除
+        Back.delete('delete',url.deleteUrl);
     });
 </script>
 
-</body></html>
+</body>
+</html>

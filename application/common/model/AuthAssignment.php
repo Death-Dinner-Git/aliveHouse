@@ -107,6 +107,6 @@ class AuthAssignment extends Model
      */
     public function getBackUser()
     {
-        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'id', 'back_user_id');
+        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'id', 'user_id');
     }
 }

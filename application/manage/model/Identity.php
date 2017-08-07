@@ -643,6 +643,7 @@ class Identity extends BackUser
         $identity = $_identity->getData();
         $identity['duration'] = $duration+time();
         unset($identity['password']);
+        unset($identity['md5']);
         session(config('identity._identity'),$_identity);
         session(config('identity._duration'),$duration+time());
         session('identity',$identity);
