@@ -15,7 +15,7 @@ use app\manage\model\ContactRead;
 use app\manage\model\CustomerService;
 use app\manage\model\DeleteLog;
 use app\manage\model\Download;
-use app\manage\model\GuestServer;
+use app\manage\model\ClientServer;
 use app\manage\model\Hot;
 use app\manage\model\HouseHostServer;
 use app\manage\model\Notice;
@@ -74,7 +74,7 @@ use app\manage\model\Identity;
  * @property CustomerService[] $customerServices
  * @property DeleteLog[] $deleteLogs
  * @property Download[] $downloads
- * @property GuestServer[] $guestServers
+ * @property ClientServer[] $clientServers
  * @property Hot[] $hots
  * @property HouseHostServer[] $houseHostServers
  * @property Notice[] $notices

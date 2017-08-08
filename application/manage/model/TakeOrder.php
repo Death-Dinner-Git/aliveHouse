@@ -5,7 +5,7 @@ namespace app\manage\model;
 use app\common\model\TakeOrder as BaseTakeOrder;
 use app\manage\validate\TakeOrderValidate;
 use app\manage\model\BackUser;
-use app\manage\model\Guest;
+use app\manage\model\Client;
 
 /**
  * This is the model class for table "{{%take_order}}".
@@ -13,7 +13,7 @@ use app\manage\model\Guest;
  * @property integer $id
  * @property integer $is_delete
  * @property integer $back_user_id
- * @property integer $guest_id
+ * @property integer $client_id
  * @property string $order_code
  * @property integer $house_type
  * @property integer $goods_id
@@ -24,7 +24,7 @@ use app\manage\model\Guest;
  * @property string $updated_at
  *
  * @property BackUser $backUser
- * @property Guest $guest
+ * @property Client $client
  */
 class TakeOrder extends BaseTakeOrder
 {

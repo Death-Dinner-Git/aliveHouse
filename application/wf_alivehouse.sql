@@ -468,10 +468,10 @@ CREATE TABLE IF NOT EXISTS `ah_download` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_guest`
+-- 表的结构 `ah_client`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_guest` (
+CREATE TABLE IF NOT EXISTS `ah_client` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `server` tinyint(1) NOT NULL DEFAULT '1' COMMENT '服务;0=已正式客户,1=待开发客户;默认1;',
@@ -489,23 +489,23 @@ CREATE TABLE IF NOT EXISTS `ah_guest` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='客户表';
 
 --
--- 转存表中的数据 `ah_guest`
+-- 转存表中的数据 `ah_client`
 --
 
-INSERT INTO `ah_guest` (`id`, `is_delete`, `server`, `ID_cards`, `real_name`, `phone`, `nickname`, `address`, `email`, `avatar`, `type`, `level`, `created_at`, `updated_at`) VALUES
+INSERT INTO `ah_client` (`id`, `is_delete`, `server`, `ID_cards`, `real_name`, `phone`, `nickname`, `address`, `email`, `avatar`, `type`, `level`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, '12323232323', '小符', '1026652', '小符', '是的是的', NULL, 'sdsdsdsdsd', 1, 1, '2017-06-02 00:08:59', '2017-06-02 00:08:59'),
 (2, 1, 1, '565665', '程度上的', '656656', '是的是的', 'sdsd', NULL, 'SDsd', 1, 1, '2017-06-02 00:09:31', '2017-06-02 00:09:31');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `ah_guest_server`
+-- 表的结构 `ah_client_server`
 --
 
-CREATE TABLE IF NOT EXISTS `ah_guest_server` (
+CREATE TABLE IF NOT EXISTS `ah_client_server` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `guest_id` bigint(20) NOT NULL COMMENT '客户表ID',
+  `client_id` bigint(20) NOT NULL COMMENT '客户表ID',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
@@ -787,14 +787,14 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (15, '常见问题', NULL, '/manage/index/faq', 14, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (16, '数据统计', NULL, '/manage/data/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (31, '跟进服务', 2, '/manage/services/onServices', 1, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(32, '客户抢接', 2, '/manage/guest/services', 2, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(32, '客户抢接', 2, '/manage/client/services', 2, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (33, '房源抢接', 2, '/manage/house/services', 3, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (34, '反馈抢接', 2, '/manage/contact/services', 4, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (35, '服务清单', 2, '/manage/services/index', 5, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (50, '我的信息', 3, '/manage/user/view', 0, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (51, '修改密码', 3, '/manage/user/resetPassword', 1, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (52, '日志信息', 3, '/manage/user/log', 2, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(70, '客户录入', 4, '/manage/guest/create', 0, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(70, '客户录入', 4, '/manage/client/create', 0, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (71, '房东录入', 4, '/manage/house_host/create', 1, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (72, '新房录入', 4, '/manage/new_house/create', 2, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (73, '二手房录入', 4, '/manage/second_hand_house/create', 3, 3, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -811,12 +811,12 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (96, '房源接收', 5, '/manage/house/receive', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (97, '房源清单', 5, '/manage/house/super', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (98, '楼盘清单', 5, '/manage/build/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(110, '我的客户', 6, '/manage/guest/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(111, '客户录入', 6, '/manage/guest/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(110, '我的客户', 6, '/manage/client/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(111, '客户录入', 6, '/manage/client/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (112, '房东录入', 6, '/manage/house_host/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(114, '客户分配', 6, '/manage/guest/assign', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(115, '客户抢接', 6, '/manage/guest/services', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(116, '客户转接', 6, '/manage/guest/transfer', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(114, '客户分配', 6, '/manage/client/assign', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(115, '客户抢接', 6, '/manage/client/services', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(116, '客户转接', 6, '/manage/client/transfer', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (117, '房源接收', 6, '/manage/house/receive', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (130, '我的反馈', 7, '/manage/contact/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (131, '反馈抢接', 7, '/manage/contact/services', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -828,8 +828,8 @@ INSERT INTO `ah_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data`)
 (170, '管理员清单', 9, '/manage/user/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (171, '添加管理员', 9, '/manage/user/register', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (172, '权限管理', 9, '/manage/ban/index', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(173, '浏览管理日志', 9, '/manage/guest/log', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(174, '浏览删除日志', 9, '/manage/guest/logDelete', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(173, '浏览管理日志', 9, '/manage/client/log', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(174, '浏览删除日志', 9, '/manage/client/logDelete', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (175, '客服推荐', 9, '/manage/customer_service/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (176, '部门管理', 9, '/manage/department/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (190, '首页广告', 10, '/manage/slider/home', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -4598,7 +4598,7 @@ CREATE TABLE IF NOT EXISTS `ah_take_order` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
-  `guest_id` bigint(20) NOT NULL COMMENT '客户表ID',
+  `client_id` bigint(20) NOT NULL COMMENT '客户表ID',
   `order_code` varchar(255) NOT NULL COMMENT '订单号',
   `house_type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类型;1=新房,2=二手房;默认1;',
   `goods_id` bigint(20) NOT NULL COMMENT '目标商品ID',
@@ -4677,7 +4677,7 @@ CREATE TABLE IF NOT EXISTS `ah_upload` (
 CREATE TABLE IF NOT EXISTS `ah_walk` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `guest_id` bigint(20) NOT NULL COMMENT '客户表ID',
+  `client_id` bigint(20) NOT NULL COMMENT '客户表ID',
   `on_server` tinyint(1) NOT NULL DEFAULT '1' COMMENT '跟进;0=未跟进,1=已跟进;默认1;',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
@@ -4816,17 +4816,17 @@ ALTER TABLE `ah_download`
   ADD KEY `back_user_id` (`back_user_id`) USING BTREE;
 
 --
--- Indexes for table `ah_guest`
+-- Indexes for table `ah_client`
 --
-ALTER TABLE `ah_guest`
+ALTER TABLE `ah_client`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ah_guest_server`
+-- Indexes for table `ah_client_server`
 --
-ALTER TABLE `ah_guest_server`
+ALTER TABLE `ah_client_server`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `guest_id` (`guest_id`),
+  ADD KEY `client_id` (`client_id`),
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
@@ -4974,7 +4974,7 @@ ALTER TABLE `ah_slider`
 ALTER TABLE `ah_take_order`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`),
-  ADD KEY `guest_id` (`guest_id`),
+  ADD KEY `client_id` (`client_id`),
   ADD KEY `goods_id` (`goods_id`);
 
 --
@@ -4997,7 +4997,7 @@ ALTER TABLE `ah_upload`
 --
 ALTER TABLE `ah_walk`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `guest_id` (`guest_id`);
+  ADD KEY `client_id` (`client_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -5064,14 +5064,14 @@ ALTER TABLE `ah_department`
 ALTER TABLE `ah_download`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `ah_guest`
+-- AUTO_INCREMENT for table `ah_client`
 --
-ALTER TABLE `ah_guest`
+ALTER TABLE `ah_client`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `ah_guest_server`
+-- AUTO_INCREMENT for table `ah_client_server`
 --
-ALTER TABLE `ah_guest_server`
+ALTER TABLE `ah_client_server`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
 -- AUTO_INCREMENT for table `ah_home_user_log`
@@ -5272,11 +5272,11 @@ ALTER TABLE `ah_download`
   ADD CONSTRAINT `ah_download_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `ah_guest_server`
+-- 限制表 `ah_client_server`
 --
-ALTER TABLE `ah_guest_server`
-  ADD CONSTRAINT `ah_guest_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_guest_server_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `ah_guest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `ah_client_server`
+  ADD CONSTRAINT `ah_client_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ah_client_server_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `ah_client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `ah_home_user_log`
@@ -5360,7 +5360,7 @@ ALTER TABLE `ah_slider`
 --
 ALTER TABLE `ah_take_order`
   ADD CONSTRAINT `ah_take_order_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `ah_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ah_take_order_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `ah_guest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ah_take_order_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `ah_client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `ah_upload`
@@ -5372,7 +5372,7 @@ ALTER TABLE `ah_upload`
 -- 限制表 `ah_walk`
 --
 ALTER TABLE `ah_walk`
-  ADD CONSTRAINT `ah_walk_ibfk_1` FOREIGN KEY (`guest_id`) REFERENCES `ah_guest` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ah_walk_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `ah_client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

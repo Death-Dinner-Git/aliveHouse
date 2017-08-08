@@ -2,33 +2,33 @@
 
 namespace app\manage\model;
 
-use app\common\model\GuestServer as BaseGuestServer;
-use app\manage\validate\GuestServerValidate;
+use app\common\model\ClientServer as BaseClientServer;
+use app\manage\validate\ClientServerValidate;
 
 use app\manage\model\BackUser;
-use app\manage\model\Guest;
+use app\manage\model\Client;
 
 /**
- * This is the model class for table "{{%guest_server}}".
+ * This is the model class for table "{{%client_server}}".
  *
  * @property integer $id
  * @property integer $is_delete
- * @property integer $guest_id
+ * @property integer $client_id
  * @property integer $back_user_id
  * @property string $created_at
  * @property string $updated_at
  *
  * @property BackUser $backUser
- * @property Guest $guest
+ * @property Client $client
  */
-class GuestServer extends BaseGuestServer
+class ClientServer extends BaseClientServer
 {
 
     /**
      * @return Object|\think\Validate
      */
     public static function getValidate(){
-        return GuestServerValidate::load();
+        return ClientServerValidate::load();
     }
 
     /**

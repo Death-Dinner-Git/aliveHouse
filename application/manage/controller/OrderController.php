@@ -92,7 +92,7 @@ class OrderController extends ManageController
         $model = new TakeOrder();
         $lists = TakeOrder::getHouseType();
         $statuses = TakeOrder::getDealStatus();
-        $guests = TakeOrder::getDealStatus();
+        $clients = TakeOrder::getDealStatus();
         $goods = TakeOrder::getDealStatus();
         if ($this->getRequest()->isPost()){
             $data = (isset($_POST['TakeOrder']) ? $_POST['TakeOrder'] : []);
@@ -118,7 +118,7 @@ class OrderController extends ManageController
             'meta_util'=>'false',
             'lists'=>$lists,
             'statuses'=>$statuses,
-            'guests'=>$guests,
+            'clients'=>$clients,
             'goods'=>$goods,
         ]);
     }

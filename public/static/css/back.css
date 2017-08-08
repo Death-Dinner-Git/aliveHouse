@@ -817,6 +817,9 @@ body .layui-footer .layui-main a {
     background-color: #0DBD9F;
     color: #fff;
 }
+.layui-form-select dl dd:hover {
+    background-color: #f2f2f2;
+}
 
 /* =======================================
 	 文本

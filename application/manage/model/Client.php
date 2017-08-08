@@ -2,15 +2,15 @@
 
 namespace app\manage\model;
 
-use app\common\model\Guest as BaseGuest;
-use app\manage\validate\GuestValidate;
+use app\common\model\Client as BaseClient;
+use app\manage\validate\ClientValidate;
 
-use app\manage\model\GuestServer;
+use app\manage\model\ClientServer;
 use app\manage\model\TakeOrder;
 use app\manage\model\Walk;
 
 /**
- * This is the model class for table "{{%guest}}".
+ * This is the model class for table "{{%client}}".
  *
  * @property integer $id
  * @property integer $is_delete
@@ -28,18 +28,18 @@ use app\manage\model\Walk;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property GuestServer[] $guestServers
+ * @property ClientServer[] $clientServers
  * @property TakeOrder[] $takeOrders
  * @property Walk[] $walks
  */
-class Guest extends BaseGuest
+class Client extends BaseClient
 {
 
     /**
      * @return Object|\think\Validate
      */
     public static function getValidate(){
-        return GuestValidate::load();
+        return ClientValidate::load();
     }
 
     /**

@@ -7,8 +7,8 @@ use think\db\Query;
 use think\Config;
 
 /**
- * 公共模型(基于TP5新版Model)
- * @author Dinner
+ * @property array $rules
+ * @property array $attributeLabels
  */
 class Model extends \think\Model
 {
@@ -80,6 +80,14 @@ class Model extends \think\Model
     public function rules(){
         return [];
     }
+
+    /**
+     * @return array
+     */
+    public function attributeLabels(){
+        return [];
+    }
+
 
     //自动日期格式
     public function setDate(){

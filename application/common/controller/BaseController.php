@@ -107,7 +107,7 @@ class BaseController extends Controller
 
     /**
      * @description before action function
-     * if is a guest return true, or return false;
+     * if is a client return true, or return false;
      * @return bool
      */
     protected function isGuest()

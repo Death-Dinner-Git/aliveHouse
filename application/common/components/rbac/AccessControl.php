@@ -168,7 +168,7 @@ class AccessControl
 
     /**
      * Denies the access of the user.
-     * The default implementation will redirect the user to the login page if he is a guest;
+     * The default implementation will redirect the user to the login page if he is a client;
      * if the user is already logged, a 403 HTTP exception will be thrown.
      * @param  Identity $user
      * @throws Exception if the user is already logged in.

@@ -4,22 +4,22 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\BackUser;
-use app\common\model\Guest;
+use app\common\model\Client;
 
 /**
- * This is the model class for table "{{%guest_server}}".
+ * This is the model class for table "{{%client_server}}".
  *
  * @property integer $id
  * @property integer $is_delete
- * @property integer $guest_id
+ * @property integer $client_id
  * @property integer $back_user_id
  * @property string $created_at
  * @property string $updated_at
  *
  * @property BackUser $backUser
- * @property Guest $guest
+ * @property Client $client
  */
-class GuestServer extends Model
+class ClientServer extends Model
 {
 
     /**
@@ -27,12 +27,12 @@ class GuestServer extends Model
      * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
      * @author Sir Fu
      */
-    protected $table = '{{%guest_server}}';
+    protected $table = '{{%client_server}}';
 
     protected $field = [
         'id',
         'is_delete',
-        'guest_id',
+        'client_id',
         'back_user_id',
         'created_at',
         'updated_at',
@@ -51,11 +51,11 @@ class GuestServer extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'guest_id', 'back_user_id'], 'integer'],
-            [['guest_id', 'back_user_id', 'created_at', 'updated_at'], 'required'],
+            [['is_delete', 'client_id', 'back_user_id'], 'integer'],
+            [['client_id', 'back_user_id', 'created_at', 'updated_at'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
-            [['guest_id'], 'exist', 'skipOnError' => true, 'targetClass' => Guest::tableNameSuffix(), 'targetAttribute' => ['guest_id' => 'id']],
+            [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Client::tableNameSuffix(), 'targetAttribute' => ['client_id' => 'id']],
         ];
     }
 
@@ -67,7 +67,7 @@ class GuestServer extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'guest_id' => '客户表ID',
+            'client_id' => '客户表ID',
             'back_user_id' => '后台管理员ID',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
@@ -85,8 +85,8 @@ class GuestServer extends Model
     /**
      * @return \think\model\relation\HasOne
      */
-    public function getGuest()
+    public function getClient()
     {
-        return $this->hasOne(Guest::tableNameSuffix(), ['id' => 'guest_id']);
+        return $this->hasOne(Client::tableNameSuffix(), ['id' => 'client_id']);
     }
 }

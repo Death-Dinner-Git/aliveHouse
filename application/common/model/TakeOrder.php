@@ -4,7 +4,7 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\BackUser;
-use app\common\model\Guest;
+use app\common\model\Client;
 
 /**
  * This is the model class for table "{{%take_order}}".
@@ -12,7 +12,7 @@ use app\common\model\Guest;
  * @property integer $id
  * @property integer $is_delete
  * @property integer $back_user_id
- * @property integer $guest_id
+ * @property integer $client_id
  * @property string $order_code
  * @property integer $house_type
  * @property integer $goods_id
@@ -23,7 +23,7 @@ use app\common\model\Guest;
  * @property string $updated_at
  *
  * @property BackUser $backUser
- * @property Guest $guest
+ * @property Client $client
  */
 class TakeOrder extends Model
 {
@@ -39,7 +39,7 @@ class TakeOrder extends Model
         'id',
         'is_delete',
         'back_user_id',
-        'guest_id',
+        'client_id',
         'order_code',
         'house_type',
         'goods_id',
@@ -80,7 +80,7 @@ class TakeOrder extends Model
                 ['house_type','in:2,1','类型 无效'],
                 ['deal_status','in:2,1','交易状态 无效'],
                 ['back_user_id','number',],
-                ['guest_id','number',],
+                ['client_id','number',],
                 ['house_type','number',],
                 ['goods_id','number',],
                 ['deal_status','number',],
@@ -101,7 +101,7 @@ class TakeOrder extends Model
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'back_user_id' => '后台管理员ID',
-            'guest_id' => '客户表ID',
+            'client_id' => '客户表ID',
             'order_code' => '订单号',
             'house_type' => '类型;1=新房,2=二手房;默认1;',
             'goods_id' => '目标商品ID',
@@ -124,8 +124,8 @@ class TakeOrder extends Model
     /**
      * @return \think\model\relation\HasOne
      */
-    public function getGuest()
+    public function getClient()
     {
-        return $this->hasOne(ucfirst(Guest::tableNameSuffix()), 'guest_id', 'id');
+        return $this->hasOne(ucfirst(Client::tableNameSuffix()), 'client_id', 'id');
     }
 }

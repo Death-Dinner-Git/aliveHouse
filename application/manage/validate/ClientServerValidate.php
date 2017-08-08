@@ -4,7 +4,7 @@ namespace app\manage\validate;
 
 use app\common\validate\Validate;
 
-class GuestValidate extends Validate
+class ClientServerValidate extends Validate
 {
 
     /**

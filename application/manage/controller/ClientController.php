@@ -3,13 +3,13 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Guest;
+use app\manage\model\Client;
 
-use app\manage\model\GuestServer;
+use app\manage\model\ClientServer;
 use app\manage\model\TakeOrder;
 use app\manage\model\Walk;
 
-class GuestController extends ManageController
+class ClientController extends ManageController
 {
 
     /**
@@ -29,7 +29,7 @@ class GuestController extends ManageController
      */
     public function assignAction()
     {
-        //
+//        return view('client/assign');
     }
 
     /**
@@ -84,19 +84,16 @@ class GuestController extends ManageController
 
     /**
      * @description 显示资源列表
-     * @param string $name
-     * @param string $city
-     * @param string $address
      * @return \think\Response
      */
-    public function indexAction($name = null, $city = null,$address = null)
+    public function indexAction()
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Guest
+         * @var $model \app\manage\model\Client
          */
-        $model = Guest::load();
+        $model = Client::load();
         $request = $this->getRequest();
         $key = trim($request->request('keyword'));
         if ($key != ''){
@@ -106,7 +103,7 @@ class GuestController extends ManageController
         if ($address != ''){
             $where[] = ['exp',"`address` like '%".$address."%' "];
         }
-        $lists = Guest::getLevelList();
+        $lists = Client::getLevelList();
         $city = trim($request->request('city'));
         if ($city != ''){
             if (in_array($city,array_keys($lists))){
@@ -119,7 +116,7 @@ class GuestController extends ManageController
         $this->assign('meta_title', "客户清单");
         $this->assign('model', $model);
         $this->assign('list', $list);
-        return view('guest/index');
+        return view('client/index');
     }
 
 
@@ -130,7 +127,7 @@ class GuestController extends ManageController
      */
     public function createAction()
     {
-        $model = new Guest();
+        $model = new Client();
         if ($this->getRequest()->isPost()){
             $data = $model->filter($_POST);
             $data['updated_at'] = date('Y-m-d H:i:s');
@@ -149,7 +146,7 @@ class GuestController extends ManageController
                 }
             }
         }
-        return view('guest/create',[
+        return view('client/create',[
             'meta_title'=>'添加客户',
             'meta_util'=>'false',
             'model'=>$model
@@ -165,7 +162,7 @@ class GuestController extends ManageController
     public function viewAction($id)
     {
         $this->assign('meta_title', "详情");
-        $model = Guest::load()->where(['id'=>$id])->find();
+        $model = Client::load()->where(['id'=>$id])->find();
         return view('config/view',['model'=>$model]);
     }
 
@@ -178,10 +175,10 @@ class GuestController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $lists = Guest::getLevelList();
-        $typeLists = Guest::getTypeList();
-        $serverLists = Guest::getServiceList();
-        $model = Guest::load()->where(['id'=>$id])->where($where)->find();
+        $lists = Client::getLevelList();
+        $typeLists = Client::getTypeList();
+        $serverLists = Client::getServiceList();
+        $model = Client::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
@@ -190,7 +187,7 @@ class GuestController extends ManageController
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Guest::getValidate();
+                $validate = Client::getValidate();
                 $validate->scene('update');
                 if ($validate->check($data) && $model::update($data,['id'=>$id])){
                     $this->success('更新成功','create','',1);
@@ -203,7 +200,7 @@ class GuestController extends ManageController
                 }
             }
         }
-        return view('guest/update',[
+        return view('client/update',[
             'meta_title'=>'添加客户',
             'model'=>$model,
             'lists'=>$lists,
@@ -223,7 +220,7 @@ class GuestController extends ManageController
     {
         $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
         if ($this->getRequest()->isAjax()){
-            $result = Guest::update(['is_delete'=>'0'],['id'=>$id]);
+            $result = Client::update(['is_delete'=>'0'],['id'=>$id]);
             if ($result){
                 $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
             }

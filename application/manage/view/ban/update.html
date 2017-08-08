@@ -83,7 +83,7 @@
             <label class="layui-form-label">客户等级</label>
             <div class="layui-input-block">
                 {volist name="lists" id="item"}
-                <input type="radio" name="Guest[level]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
+                <input type="radio" name="Client[level]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
                 {/volist}
             </div>
         </div>
@@ -92,7 +92,7 @@
             <label class="layui-form-label">服务分类</label>
             <div class="layui-input-block">
                 {volist name="serverLists" id="item"}
-                <input type="radio" name="Guest[server]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
+                <input type="radio" name="Client[server]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
                 {/volist}
             </div>
         </div>
@@ -101,7 +101,7 @@
             <label class="layui-form-label">客户类型</label>
             <div class="layui-input-block">
                 {volist name="typeLists" id="item"}
-                <input type="radio" name="Guest[type]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
+                <input type="radio" name="Client[type]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
                 {/volist}
             </div>
         </div>
@@ -110,7 +110,7 @@
             <label class="layui-form-label">客户等级</label>
             <div class="layui-input-block">
                 {volist name="lists" id="item"}
-                <input type="radio" name="Guest[city_id]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
+                <input type="radio" name="Client[city_id]" value="{$key}" title="{$item}"  {if condition="$key eq 1"}checked=""{/if} >
                 {/volist}
             </div>
         </div>
@@ -118,7 +118,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">客户姓名:</label>
             <div class="layui-input-inline">
-                <input type="text" value="" name="Guest[real_name]" placeholder="客户姓名" class="layui-input">
+                <input type="text" value="" name="Client[real_name]" placeholder="客户姓名" class="layui-input">
             </div>
             <div class="layui-input-inline help-msg">
                 <i class="fa .fa-close"></i>
@@ -129,7 +129,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">身份证:</label>
             <div class="layui-input-inline">
-                <input type="text" value="" name="Guest[ID_cards]" placeholder="身份证" class="layui-input">
+                <input type="text" value="" name="Client[ID_cards]" placeholder="身份证" class="layui-input">
             </div>
             <div class="layui-input-inline help-msg">
                 <i class="fa"></i>
@@ -140,7 +140,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">对外称呼:</label>
             <div class="layui-input-inline">
-                <input type="text" value="" name="Guest[nickname]" placeholder="对外称呼" class="layui-input">
+                <input type="text" value="" name="Client[nickname]" placeholder="对外称呼" class="layui-input">
             </div>
             <div class="layui-input-inline help-msg">
                 <i class="fa"></i>
@@ -151,14 +151,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">客户头像:</label>
             <div class="layui-input-inline">
-                <input type="text" value="" name="Guest[avatar]" placeholder="客户头像" class="layui-input">
+                <input type="text" value="" name="Client[avatar]" placeholder="客户头像" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">手机号码:</label>
             <div class="layui-input-inline">
-                <input type="text" value="" name="Guest[phone]" placeholder="手机号码" class="layui-input">
+                <input type="text" value="" name="Client[phone]" placeholder="手机号码" class="layui-input">
             </div>
             <div class="layui-input-inline help-msg">
                 <i class="fa"></i>
@@ -169,7 +169,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">详细地址:</label>
             <div class="layui-input-inline">
-                <input type="text" value="" name="Guest[address]" placeholder="详细地址" class="layui-input">
+                <input type="text" value="" name="Client[address]" placeholder="详细地址" class="layui-input">
             </div>
             <div class="layui-input-inline help-msg">
                 <i class="fa"></i>

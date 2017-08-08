@@ -35,14 +35,17 @@
 
                 <label class="layui-form-label">关键词:</label>
                 <div class="layui-input-inline">
-                    <input type="text" value="{$Think.get.keyword}" name="keyword" placeholder=" 部门 " class="layui-input">
+                    <input type="text" value="{$Think.get.keyword}" name="keyword" placeholder=" 关键词 " class="layui-input">
                 </div>
 
-                <label class="layui-form-label">状态:</label>
+                <label class="layui-form-label">类别:</label>
                 <div class="layui-input-inline">
-                    <select name="level" lay-search >
-                        <option value="0">全部</option>
-                        <option value=""></option>
+                    <select name="requireType" lay-verify="require" lay-search>
+                        <option value="">需求类别</option>
+                        <option value="">全部</option>
+                        {volist name="model->requireTypeList" id="item" }
+                        <option value="{$key}">{$item}</option>
+                        {/volist}
                     </select>
                 </div>
 
@@ -78,9 +81,9 @@
     <tr>
         <!--<th style="width: 20px;"><input type="checkbox" lay-filter="selectAll" lay-group="tableItem" lay-skin="primary" /></th>-->
         <th>序号</th>
-        <th>名称</th>
-        <th>来源</th>
-        <th>来访</th>
+        <th>客户名称</th>
+        <th>来源方式</th>
+        <th>需求类别</th>
         <th style="width:50px; text-align: center">操作</th>
     </tr>
     </thead>
@@ -93,7 +96,7 @@
         </td>
         <th>{$model.userName}</th>
         <th>{$model->getTrans('clientFromList',$model.clientFrom)}</th>
-        <th>{$model->getTrans('jobTypeList',$model.jobType)}</th>
+        <th>{$model->getTrans('requireTypeList',$model.requireType)}</th>
         <td style="width: 150px;text-align: center;" class="action">
             <button class="layui-btn layui-btn-mini" lay-filter="update">
                 <i class="layui-icon">&#xe642;</i>编辑
@@ -112,9 +115,9 @@
 
 <script>
     var url = {
-        createUrl:"{:url('/manage/guest/create')}",
-        updateUrl:"{:url('/manage/guest/update')}",
-        deleteUrl:"{:url('/manage/guest/delete')}",
+        createUrl:"{:url('/manage/client/create')}",
+        updateUrl:"{:url('/manage/client/update')}",
+        deleteUrl:"{:url('/manage/client/delete')}",
     };
     $(function() {
         //分页

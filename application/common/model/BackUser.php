@@ -13,7 +13,7 @@ use app\common\model\ContactRead;
 use app\common\model\CustomerService;
 use app\common\model\DeleteLog;
 use app\common\model\Download;
-use app\common\model\GuestServer;
+use app\common\model\ClientServer;
 use app\common\model\Hot;
 use app\common\model\HouseHostServer;
 use app\common\model\Notice;
@@ -69,7 +69,7 @@ use app\common\model\Upload;
  * @property CustomerService[] $customerServices
  * @property DeleteLog[] $deleteLogs
  * @property Download[] $downloads
- * @property GuestServer[] $guestServers
+ * @property ClientServer[] $ClientServers
  * @property Hot[] $hots
  * @property HouseHostServer[] $houseHostServers
  * @property Notice[] $notices
@@ -328,9 +328,9 @@ class BackUser extends Model
     /**
      * @return \think\model\relation\HasMany
      */
-    public function getGuestServers()
+    public function getClientServers()
     {
-        return $this->hasMany(ucfirst(GuestServer::tableNameSuffix()), 'id', 'back_user_id');
+        return $this->hasMany(ucfirst(ClientServer::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**

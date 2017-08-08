@@ -4,19 +4,19 @@ namespace app\manage\model;
 
 use app\common\model\Walk as BaseWalk;
 use app\manage\validate\WalkValidate;
-use app\manage\model\Guest;
+use app\manage\model\Client;
 
 /**
  * This is the model class for table "{{%walk}}".
  *
  * @property integer $id
  * @property integer $is_delete
- * @property integer $guest_id
+ * @property integer $client_id
  * @property integer $on_server
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Guest $guest
+ * @property Client $client
  */
 class Walk extends BaseWalk
 {
