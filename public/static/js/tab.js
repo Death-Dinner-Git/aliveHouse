@@ -14,6 +14,7 @@ layui.define(['element','layer'], function(exports) {
                 filter: 1, //过滤方式 可选值 1 或 2  默认为1 以title 为 过滤， 2 以 data-id
                 refresh: true,   //相当于重新加载 与下面的refresh只能生效一个，且优先判断 此项
                 autoRefresh: true, //相当于F5重新刷新
+                isBlank:true , // 附有target属性且开启此项，则打开新页面
                 contextMenu:false,
                 dblclickRefresh:true,
                 iconShow:true, // tab 图标是否显示 默认 显示
@@ -135,6 +136,10 @@ layui.define(['element','layer'], function(exports) {
     Tab.prototype.tabAdd = function(data) {
         var that = this;
         var _config = that.config;
+        if (_config.isBlank && data.target !== undefined && data.target !== false){
+            top.window.open(data.href);
+            return;
+        }
         var tabIndex = that.exists(data.title,data.id || null);
         if(tabIndex === -1) {
             //设置只能同时打开多少个tab选项卡

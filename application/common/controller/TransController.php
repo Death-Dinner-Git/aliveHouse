@@ -10,6 +10,7 @@ use think\Controller;
  */
 class TransController extends Controller
 {
+
     // 全部数据
     private $data = [
         // 需求类别

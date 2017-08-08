@@ -6,6 +6,39 @@ layui.define(['element','layer'], function(exports) {
 		cacheTableName = 'navbarTable',
 		cacheTableTime = 'navbarTime';
 
+    /**
+     * 数据源结构
+     * {
+			"id": "1",
+			"parent": null,
+			"order": "0",
+			"text": "首页",
+			"url": "/admin2.php/Index/Index/index",
+			"data": {
+				"li_class": "",
+				"a_class": "Index-Home",
+				"i_class": "fa fa-home",
+				"attr":{
+					"target":"_blank"
+				}
+			},
+			"children": [
+				{
+					"id": "1",
+					"parent": "2",
+					"order": "0",
+					"text": "列表",
+					"url": "/admin2.php/Index/Index/index",
+					"data": {
+						"li_class": "",
+						"a_class": "Back",
+						"i_class": "fa fa-circle-o"
+					}
+				}
+			]
+		}
+     * @constructor
+     */
 	var Navbar = function() {
 		/**
 		 *  默认配置 
@@ -24,6 +57,7 @@ layui.define(['element','layer'], function(exports) {
 			errorElem: undefined, //出错提示展示容器
 			spreadOne:false, //设置是否只展开一个二级菜单
             citeType:1 , // tab 标题 可选值 1 或 2  默认为1 以 列表 一级显示  ，2 以 tab 标题加入 parent 标题
+            isBlank:true , //
             parentMark:'active_red', // 父级标识
             childMark:'active_red_new', // 子级标识
             notice:[], // 格式 [{url:"地址",id:'xx'}]
@@ -309,13 +343,15 @@ layui.define(['element','layer'], function(exports) {
                                     title = $a.children('cite').attr('data-title') || title;
 								}
 								var id = $a.children('cite').data('id');
+								var target = $a.children('cite').attr('target') || false;
 								var data = {
 									elem: $a,
 									field: {
 										href: href,
 										icon: icon,
 										title: title,
-										id:id
+										id:id,
+										target:target
 									}
 								};
 								callback(data);
@@ -328,13 +364,15 @@ layui.define(['element','layer'], function(exports) {
 							var icon = $a.children('i:first').data('icon');
 							var title = $a.children('cite').text();
                             var id = $a.children('cite').data('id');
+                            var target = $a.children('cite').attr('target') || false;
 							var data = {
 								elem: $a,
 								field: {
 									href: href,
 									icon: icon,
 									title: title,
-                                    id:id
+                                    id:id,
+                                    target:target
 								}
 							};
 							callback(data);
@@ -375,22 +413,22 @@ layui.define(['element','layer'], function(exports) {
 		layui.data(cacheTableName,null);
 	};
 
-	/**
-	 * 获取html字符串
-	 * @param {Object} data
-	 */
-	var getHtml = function(data) {
-		var _options= data.attr || {}, _prefix= data.prefix || '', _suffix= data.suffix || '', menu= data.menus || {},  optionStr = '', ulHtml = '',index = new Date().getTime();
+    /**
+     * 获取html字符串
+     * @param {Object} data
+     */
+    var getHtml = function(data) {
+        var _options= data.attr || {}, _prefix= data.prefix || '', _suffix= data.suffix || '', menu= data.menus || {},  optionStr = '', ulHtml = '',index = new Date().getTime();
         for (var _item in _options) {
             optionStr += _item + '="'+_options[_item]+'"';
         }
         ulHtml += '<ul '+ optionStr +'>';
-		for(var i in menu) {
-			ulHtml += getItem(menu[i]);
-		}
-		ulHtml += '</ul>';
+        for(var i in menu) {
+            ulHtml += getItem(menu[i]);
+        }
+        ulHtml += '</ul>';
 
-		return ulHtml;
+        return ulHtml;
 
         /**
          * 获取每个菜单html字符串
@@ -398,31 +436,37 @@ layui.define(['element','layer'], function(exports) {
          * @param {Object} parent
          * @return {string}
          */
-		function getItem(item,parent) {
-            var  itemTag = 'li', itemHtml = '', _aClass ='', _iClass ='', _liClass ='', _itemUrl, unique = 'NAV_' ,_title = '';
-			if (item.data !== undefined && (item.data !== '' || item.data !== null)){
-				_liClass = (item.data.li_class !== undefined && item.data.li_class !== '') ? item.data.li_class : 'layui-nav-item';
+        function getItem(item,parent) {
+            var  itemTag = 'li', itemHtml = '', _aClass ='', _iClass ='', _liClass ='', _itemUrl, unique = 'NAV_' ,_title = '', _attr = [],_attrContent = '';
+            if (item.data !== undefined && (item.data !== '' || item.data !== null)){
+                _liClass = (item.data.li_class !== undefined && item.data.li_class !== '') ? item.data.li_class : 'layui-nav-item';
                 _aClass = (item.data.a_class !== undefined && item.data.a_class !== '') ? item.data.a_class : '';
                 _iClass = (item.data.i_class !== undefined && item.data.i_class !== '' ) ? item.data.i_class : '';
-			}
+                _attr = (item.data.attr !== undefined && item.data.attr !== '' ) ? item.data.attr : [];
+            }
             if(item.parent !== undefined && item.parent !== null) {
                 _liClass = 'layui-nav-child-item';
                 itemTag = 'dd';
                 if (parent){
                     _title = parent.text + '-';
-				}
+                }
             }
             if(item.id !== undefined && item.id !== null) {
                 unique += item.id;
             }else {
-				unique += index;
-				index++;
-			}
+                unique += index;
+                index++;
+            }
+            if(typeof _attr === "object" ){
+                for(var name in _attr){
+                    _attrContent += name+'="'+_attr[name]+'" ';
+                }
+            }
             if(item.children !== undefined && item.children.length > 0) {
-            	itemHtml += '<a class="'+ _aClass +'" href="javascript:;">' +
+                itemHtml += '<a class="'+ _aClass +'" href="javascript:;">' +
                     '<i class="'+ _iClass +'"></i> ' +
-                    '<cite class="title" data-id="'+unique+'" data-title="'+item.text +'">'+ item.text +'</cite> ' +
-					'<em class="layui-nav-more"></em>' +
+                    '<cite class="title" data-id="'+unique+'" data-title="'+item.text +'" '+_attrContent +'>'+ item.text +'</cite> ' +
+                    '<em class="layui-nav-more"></em>' +
                     '</a>';
                 itemHtml += '<dl class="layui-nav-child">';
                 for(var j in item.children) {
@@ -430,14 +474,14 @@ layui.define(['element','layer'], function(exports) {
                 }
                 itemHtml += '</dl>';
             } else {
-				_itemUrl = _prefix + item.url + _suffix;
-				if (item.url.indexOf('.html?') !== -1 || item.url.indexOf('?') !== -1){
+                _itemUrl = _prefix + item.url + _suffix;
+                if (item.url.indexOf('.html?') !== -1 || item.url.indexOf('?') !== -1){
                     _itemUrl = _prefix + item.url + _suffix.replace(/\.html\?/,'&');
-				}
+                }
                 itemHtml += '<a class="'+ _aClass +'" href="javascript:;" data-url="'+ _itemUrl +'">' +
-					'<i class="'+ _iClass +'" data-icon="'+ _iClass +'"></i> ' +
-					'<cite class="title" data-id="'+unique+'" data-title="'+_title + item.text +'">'+ item.text +'</cite> ' +
-					'</a>';
+                    '<i class="'+ _iClass +'" data-icon="'+ _iClass +'"></i> ' +
+                    '<cite class="title" data-id="'+unique+'" data-title="'+_title + item.text +'" '+_attrContent +'>'+ item.text +'</cite> ' +
+                    '</a>';
             }
             if(item.spread) {
                 itemHtml = '<'+ itemTag +' class="'+ _liClass +' layui-nav-itemed">'+ itemHtml +'</'+ itemTag + '>';
@@ -446,7 +490,7 @@ layui.define(['element','layer'], function(exports) {
             }
             return itemHtml;
         }
-	};
+    };
 
 	var navbar = new Navbar();
 
