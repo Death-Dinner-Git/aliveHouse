@@ -149,7 +149,7 @@ class GuestController extends ManageController
                 }
             }
         }
-        return view('department/create',[
+        return view('guest/create',[
             'meta_title'=>'添加客户',
             'meta_util'=>'false',
             'model'=>$model

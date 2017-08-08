@@ -19,6 +19,7 @@ layui.config({
         elem: '.dinner-tab-box', //设置选项卡容器
         filter:2,
         refresh:true,
+        isBlank:true, //默认开启
         // autoRefresh:true,
         // maxSetting: {
         // 	max: 5,
@@ -137,14 +138,16 @@ layui.config({
                 _icon = $this.data('icon'),
                 _closed = $this.data('closed'),
                 _title = $this.data('title'),
-                _id = $this.data('id');
+                _id = $this.data('id'),
+                _target = $this.attr('target');
             if (_title !== undefined ){
                 tab.tabAdd({
                     href: _url,
                     icon: _icon || 'fa fa-circle-o',
                     closed: _closed,
                     title: _title,
-                    id: _id || null
+                    id: _id || null,
+                    target:_target || false
                 });
             }else{
                 layer.msg('缺少请求标题');
