@@ -44,4 +44,17 @@ class HomeController extends BaseController
         }
 
     }
+
+
+    /**
+     * @description before action function
+     * if is a client return true, or return false;
+     * @return bool
+     */
+    protected function isGuest()
+    {
+        //用户登录检测
+        $uid = \app\home\model\User::isGuest();
+        return $uid ? $uid : false;
+    }
 }

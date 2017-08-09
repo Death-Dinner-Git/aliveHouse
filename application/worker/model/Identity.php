@@ -1,7 +1,7 @@
 <?php
 namespace app\home\model;
 
-use app\home\validate\IdentityValidate;
+use app\home\validate\UserValidate;
 
 use app\common\model\HomeUser;
 
@@ -203,7 +203,7 @@ class Identity extends HomeUser
     /**
      * Logs in a user using the provided username and password.
      * @return boolean whether the user is logged in successfully
-     * @return Identity|bool
+     * @return User|bool
      */
     public function signUp($data)
     {
@@ -214,13 +214,13 @@ class Identity extends HomeUser
             $this->thisTime = date('Y-m-d H:i:s');
             $newPassword = $this->getJoinPassword($data['password']);
             $data['password'] = $this->generateHash($newPassword);
-            $data['reg_ip'] = Identity::getIp();
+            $data['reg_ip'] = User::getIp();
             $data['created_at'] = $this->thisTime;
             $data['updated_at'] = $this->thisTime;
             $db= $this->save($data);  //这里的save()执行的是添加
             if ($db){
                 $code = '8'.$this->department_id.str_pad($this->id,4,'0',STR_PAD_LEFT);
-                Identity::update(['code'=>$code],['id'=>$this->id]);
+                User::update(['code'=>$code],['id'=>$this->id]);
                 $res = $this;
             }
         }
@@ -233,7 +233,7 @@ class Identity extends HomeUser
      * @description Logs in a user using the provided username and password.
      * @return boolean whether the user is logged in successfully
      * @param int $duration
-     * @return Identity|bool|string
+     * @return User|bool|string
      */
     public function login( $duration = 0)
     {
@@ -317,7 +317,7 @@ class Identity extends HomeUser
      * @return Object|\think\Validate
      */
     public static function getValidate(){
-        return IdentityValidate::load();
+        return UserValidate::load();
     }
 
     /**
@@ -404,7 +404,7 @@ class Identity extends HomeUser
      */
     public function isGuest()
     {
-        $user = new Identity();
+        $user = new User();
         $_identity = $user->getIdentity();
         if (empty($_identity)) {
             return 0;
@@ -491,11 +491,11 @@ class Identity extends HomeUser
     /**
      * set a user
      *
-     * @param Identity $_identity
+     * @param User $_identity
      * @param $duration
-     * @return Identity | null
+     * @return User | null
      */
-    protected function setIdentity(Identity $_identity, $duration = 0)
+    protected function setIdentity(User $_identity, $duration = 0)
     {
         session(config('identity._identity'),$_identity);
         return $_identity;
@@ -504,17 +504,17 @@ class Identity extends HomeUser
     /**
      * set a user
      *
-     * @param Identity $_identity
+     * @param User $_identity
      * @param $duration
      * @return string|null
      */
-    protected function setRememberMe(Identity $_identity, $duration = 0)
+    protected function setRememberMe(User $_identity, $duration = 0)
     {
         $duration = (int) $duration;
         if ($duration<1 || !($_identity && $_identity->username)){
             return null;
         }
-        if ( $_identity instanceof Identity){
+        if ( $_identity instanceof User){
             $token = $this->generateRandomString() . '_' . time();
             $db= $this->isUpdate(true,['username'=>$_identity->getData('username')])->save([
                 'token'=> $token,
@@ -530,7 +530,7 @@ class Identity extends HomeUser
     /**
      * Finds user by [[username]]
      * @param string $username
-     * @return Identity|null
+     * @return User|null
      */
     protected function findIdentity($username = null)
     {
@@ -552,7 +552,7 @@ class Identity extends HomeUser
     /**
      * @description Finds identity by [[username]]
      * @param $username
-     * @return Identity | null
+     * @return User | null
      */
     public static function findByUsername($username)
     {
@@ -574,7 +574,7 @@ class Identity extends HomeUser
      * Finds user by [[username]]
      *
      * @param $phone
-     * @return Identity|null
+     * @return User|null
      */
     public static function findByPhone($phone)
     {
@@ -596,7 +596,7 @@ class Identity extends HomeUser
      * Finds user by [[username]]
      *
      * @param $email
-     * @return Identity|null
+     * @return User|null
      */
     public static function findByEmail($email)
     {
@@ -618,7 +618,7 @@ class Identity extends HomeUser
      * Finds user by [[id]]
      *
      * @param $id
-     * @return Identity|null
+     * @return User|null
      */
     public static function getIdentityById($id)
     {
@@ -1053,12 +1053,12 @@ class Identity extends HomeUser
 
     /**
      * @param string|null $name
-     * @return Identity|null
+     * @return User|null
      */
     public static function getIdentity($name = null)
     {
         $identity =  session(config('identity._identity'));
-        if ($identity && $identity instanceof Identity){
+        if ($identity && $identity instanceof User){
             if (!is_string($name) || $name === '') {
                 return $identity;
             }
@@ -1074,14 +1074,14 @@ class Identity extends HomeUser
     /**
      * Finds a Valid user
      *
-     * @param Identity $_identity
+     * @param User $_identity
      * @return bool
      */
-    public static function isValidIdentity(Identity $_identity = null)
+    public static function isValidIdentity(User $_identity = null)
     {
         $res = false;
         if (!$_identity){
-            $_identity = new Identity();
+            $_identity = new User();
             $_identity->getIdentity();
         }
         if (session('user_auth_sign') == self::data_auth_sign($_identity)){

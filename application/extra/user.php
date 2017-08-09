@@ -1,25 +1,25 @@
 <?php
 
-// 后台用户登录扩展配置定义文件
+// 前端用户登录扩展配置定义文件
 return [
     // 当前SESSION登录默认标识
-    'unique'                       => 'identity',
+    'unique'                       => 'user',
     // Identity 位置
-    'default_user_model'            => '\app\manage\model\Identity',
+    'default_model'            => '\app\home\model\User',
     // 登录路由
-    'loginUrl'                        => 'manage/login/login',
+    'loginUrl'                        => 'manage/user/login',
     // 退出路由
-    'logoutUrl'                       => 'manage/login/logout',
+    'logoutUrl'                       => 'manage/user/logout',
     // 注册路由
-    'registerUrl'                     => 'manage/login/register',
+    'registerUrl'                     => 'manage/user/register',
     // 注册路由
-    'resetUrl'                        => 'manage/login/reset',
+    'resetUrl'                        => 'manage/user/reset',
     // 当前用户对象SESSION　key
-    '_identity'                       => '__IDENTITY__',
+    '_user'                       => '__USER__',
     // 当前用户 自动登录 SESSION　key
-    '_auth_key'                       => '__AUTH_KEY__',
+    '_auth_key'                       => '__AUTH_KEY_USER__',
     // 当前用户 登录有效期 SESSION　key
-    '_duration'                       => '__DURATION__',
+    '_duration'                       => '__DURATION_USER__',
     // 当前用户 登录 默认有效期时间
     '_default_duration'               => '1440',
     // 记住我 当前用户 登录 默认有效期时间
@@ -27,7 +27,8 @@ return [
     // 重置密码 默认有效期时间
     '_passwordResetTokenExpire'       => 60*60*2,
     // 登录成功 返回URL
-    '_manage_url'                     => '__MANAGE_URL__',
+    '_home_url'                     => '__USER_URL__',
     // 是否自动登录
     '_auto_login'                     => true,
+
 ];

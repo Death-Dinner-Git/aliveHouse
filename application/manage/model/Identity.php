@@ -400,7 +400,7 @@ class Identity extends BackUser
         session(config('identity._identity'),null);
         session(config('identity._auth_key'), null);
         session(config('identity._duration'),null);
-        session('identity',null);
+        session(config('identity.unique'),null);
         return true;
     }
 
@@ -414,7 +414,7 @@ class Identity extends BackUser
         session(config('identity._identity'),null);
         session(config('identity._auth_key'), null);
         session(config('identity._duration'),null);
-        session('identity',null);
+        session(config('identity.unique'),null);
         return true;
     }
 
@@ -497,7 +497,7 @@ class Identity extends BackUser
         $duration = $duration ? $duration : $default ;
         session(config('identity._auth_key'), $this->data_auth_sign($auth));
         $this->setIdentity($identity, $duration);
-        return $this->isGuest();
+        return self::isGuest();
     }
 
     /**
@@ -523,7 +523,7 @@ class Identity extends BackUser
      * @return integer 0-未登录，大于0-当前登录用户ID
      * @author Sir Fu
      */
-    public function isGuest()
+    public static function isGuest()
     {
         $user = new Identity();
         $_identity = $user->getIdentity();
@@ -646,7 +646,7 @@ class Identity extends BackUser
         unset($identity['md5']);
         session(config('identity._identity'),$_identity);
         session(config('identity._duration'),$duration+time());
-        session('identity',$identity);
+        session(config('identity.unique'),$identity);
         return $_identity;
     }
 

@@ -3,7 +3,6 @@
 namespace app\common\controller;
 
 use think\Controller;
-use app\common\components\Configs;
 use think\response\View;
 use think\Request;
 use app\common\components\rbac\AccessControl;
@@ -30,6 +29,9 @@ class BaseController extends Controller
         $this->assign('URL',$this->getUrl());
     }
 
+    /**
+     * 执行此方法时，需要确定模块。默认\app\manage\model\Identity::isGuest 验证
+     */
     protected function isUser(){
         if (!$this->isGuest()) {
             //还没登录跳转到登录页面
@@ -171,7 +173,7 @@ class BaseController extends Controller
     protected function isGuest()
     {
         //用户登录检测
-        $uid = Configs::getIdentity()->isGuest();
+        $uid = \app\manage\model\Identity::isGuest();
         return $uid ? $uid : false;
     }
 

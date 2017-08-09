@@ -4,7 +4,7 @@ namespace app\home\validate;
 
 use app\common\validate\Validate;
 
-class IdentityValidate extends Validate
+class UserValidate extends Validate
 {
     protected $password;
     protected $rePassword;

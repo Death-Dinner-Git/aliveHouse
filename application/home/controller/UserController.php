@@ -15,8 +15,8 @@ namespace app\home\controller;
 
 use app\common\controller\BaseController;
 use app\common\model\HomeUser;
-use think\captcha\Captcha;
-use app\home\model\Identity;
+//use think\captcha\Captcha;
+use app\home\model\User;
 
 /**
  * 用户控制器
@@ -66,17 +66,17 @@ class UserController extends BaseController
                 'password'=>$password,
             ];
 
-            $validate = Identity::getValidate();
+            $validate = User::getValidate();
             $validate->scene('loginAjax');
 
             if($validate->check($data)){
 
                 //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
-                $identity = new Identity();
+                $identity = new User();
                 $identity->username = $username;
                 $identity->password = $password;
                 $res = $identity->login();
-                if ($res instanceof Identity){
+                if ($res instanceof User){
 
 //                // 验证管理员表里是否有该用户
 //                $account_object = new Access();
@@ -115,7 +115,7 @@ class UserController extends BaseController
      */
     public function logoutAction()
     {
-        Identity::logout();
+        User::logout();
         $this->success('退出成功！', $this->getLoginUrl(),[],1);
     }
 
@@ -151,13 +151,13 @@ class UserController extends BaseController
         }
         $find = false;
 
-        if ($model = Identity::load()->where(['id'=>$id])->find()){
+        if ($model = User::load()->where(['id'=>$id])->find()){
             $find = true;
-        }else if ($model = Identity::findByUsername($id)){
+        }else if ($model = User::findByUsername($id)){
             $find = true;
-        }else if ($model = Identity::findByPhone($id)){
+        }else if ($model = User::findByPhone($id)){
             $find = true;
-        }else if ($model = Identity::findByPasswordResetToken($id)){
+        }else if ($model = User::findByPasswordResetToken($id)){
             $find = true;
         }
 
@@ -172,10 +172,10 @@ class UserController extends BaseController
             $data['oldPassword'] = $request->post('newPassword');
             $data['password'] = $request->post('password');
             $data['rePassword'] = $request->post('rePassword');
-            $validate = Identity::getValidate();
+            $validate = User::getValidate();
             $validate->scene('reset');
             if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
-                $res = Identity::load()->resetUser($id,$data);
+                $res = User::load()->resetUser($id,$data);
                 if ($res){
                     $this->success('更新成功', url('reset',['id'=>$id]),[],1);
                 }else{
@@ -191,7 +191,7 @@ class UserController extends BaseController
 
 
     public function registerAction(){
-        $identity = new Identity();
+        $identity = new User();
         $request = $this->getRequest();
         $token = $request->request('__token__');
         if ( $request->isPost() && $token ){
@@ -201,11 +201,11 @@ class UserController extends BaseController
             $data['phone'] = $request->post('phone');
             $data['password'] = $request->post('password');
             $data['rePassword'] = $request->post('rePassword');
-            $validate = Identity::getValidate();
+            $validate = User::getValidate();
             $validate->scene('register');
             if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
                 $res = $identity->signUp($data);
-                if ($res instanceof Identity){
+                if ($res instanceof User){
                     $this->success('注册成功','login','',1);
                 }else{
                     $this->error($res, 'register','',1);

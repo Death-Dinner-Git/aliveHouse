@@ -1,7 +1,7 @@
 <?php
 namespace app\home\model;
 
-use app\home\validate\IdentityValidate;
+use app\home\validate\UserValidate;
 
 use app\common\model\HomeUser;
 use app\common\model\UserloginLog;
@@ -43,7 +43,7 @@ use think\Request;
  * @property string $updated_at
  *
  */
-class Identity extends HomeUser
+class User extends HomeUser
 {
 
     /**
@@ -54,14 +54,10 @@ class Identity extends HomeUser
     protected $table = '{{%home_user}}';
 
     /**
-     * @var \app\home\model\Identity
+     * @var \app\home\model\User
      */
-    protected static $_identity;
+    protected $_user;
 
-    //所有账号类型
-    private static $typeList = ['0'=>'全部','1'=>'会员','2'=>'VIP'];
-    //允许登录账号类型
-    private static $allowList = ['0','1','2'];
     //允许登录账号 匹配类型
     private static $allowFind = ['username','phone','email'];
     //密码加密前缀
@@ -93,6 +89,8 @@ class Identity extends HomeUser
     public $rePassword;
     //本次 登陆记住我
     public $rememberMe;
+    //本次 登陆找到账号的字段
+    public $thisFindBy = 'username';
     //本次 登陆时间
     public $thisTime = '';
     //本次 登陆IP信息
@@ -191,7 +189,7 @@ class Identity extends HomeUser
      */
     public static function getTypeList()
     {
-        return self::$typeList;
+        return self::T('type');
     }
 
     /**
@@ -199,7 +197,7 @@ class Identity extends HomeUser
      */
     public static function getAllowList()
     {
-        return self::$allowList;
+        return array_keys(self::getTypeList());
     }
 
     /**
@@ -214,7 +212,7 @@ class Identity extends HomeUser
      * Logs in a user using the provided username and password.
      * @param $data array
      * @return boolean whether the user is logged in successfully
-     * @return Identity|bool
+     * @return User|bool
      */
     public function signUp($data)
     {
@@ -227,7 +225,7 @@ class Identity extends HomeUser
             $this->thisTime = date('Y-m-d H:i:s');
             $enPassword = $this->setPassword($data['password']);
             $data['password'] = $enPassword;
-            $data['reg_ip'] = Identity::getIp();
+            $data['reg_ip'] = User::getIp();
             $data['registered_at'] = $this->thisTime;
             $data['updated_at'] = $this->thisTime;
             $data['md5'] = $token;
@@ -259,7 +257,7 @@ class Identity extends HomeUser
      * 更新信息
      * @param $id int
      * @param $data array
-     * @return Identity|bool
+     * @return User|bool
      */
     public function updateUser($id,$data)
     {
@@ -281,7 +279,7 @@ class Identity extends HomeUser
             }
             //更新
             $where['id'] = $id;
-            return Identity::update($data,$where);
+            return User::update($data,$where);
         }
         return $res;
 
@@ -291,7 +289,7 @@ class Identity extends HomeUser
      * 更新信息
      * @param $id int
      * @param $data array
-     * @return Identity|bool
+     * @return User|bool
      */
     public function resetUser($id,$data)
     {
@@ -299,9 +297,9 @@ class Identity extends HomeUser
         $validate = self::getValidate();
         $validate->scene('reset');
         if( $validate->check($data)){
-            $identity = self::getIdentityById($id);
-            $identity->username = $identity->getData('username');
-            if ($identity->validatePassword($data['oldPassword'])){
+            $user = self::getUserById($id);
+            $user->username = $user->getData('username');
+            if ($user->validatePassword($data['oldPassword'])){
                 if(empty($data['password'])){
                     unset($data['password']);
                     unset($data['rePassword']);
@@ -315,7 +313,7 @@ class Identity extends HomeUser
                 }
                 //更新
                 $where['id'] = $id;
-                return Identity::update($data,$where);
+                return User::update($data,$where);
             }
         }
         return $res;
@@ -326,7 +324,7 @@ class Identity extends HomeUser
      * @description Logs in a user using the provided username and password.
      * @return boolean whether the user is logged in successfully
      * @param int $duration
-     * @return Identity|bool|string
+     * @return User|bool|string
      */
     public function login( $duration = 0)
     {
@@ -339,34 +337,32 @@ class Identity extends HomeUser
         $validate = self::getValidate();
         $validate->scene('login');
         if( $validate->check($this -> data)){
-            if ($identity = $this->findIdentity()){
+            if ($user = $this->findUser()){
                 if ( $this->validatePassword($this->password)){
                     if ($this->log()){
                         $this->thisTime = date('Y-m-d H:i:s');
                         $enPassword = $this->setPassword($this->password);
                         //这里的save()执行的是更新
                         $data = [
-                            't.password'=>$enPassword,
-                            't.logined_at'=>$this->thisTime,
-                            't.updated_at'=>$this->thisTime
+                            'password'=>$enPassword,
+                            'logined_at'=>$this->thisTime,
+                            'updated_at'=>$this->thisTime
                         ];
 
                         if ($this->thisIp){
-                            $data['t.ip'] = $this->thisIp;
-                            $data['t.status'] = $this->thisStatus;
+                            $data['ip'] = $this->thisIp;
+                            $data['status'] = $this->thisStatus;
                         }
-                        $result = $identity->load()
-                            ->alias('t')
-                            ->join(Department::tableName().' d','t.department_id = d.id')
-                            ->where(['t.username'=>$this->username])
-                            ->where('d.level','in',self::$allowList)
+                        $result = $user->load()
+                            ->where([$this->thisFindBy=>$this->username])
+                            ->where('type','in',self::getAllowList())
                             ->update($data);
                         if($result){
                             $this->addLog();
                             //if true, default keep one week online;
-                            $default = $this->rememberMe ? config('identity._rememberMe_duration') : ( config('identity._default_duration') ? config('identity._default_duration') : 0 ) ;
+                            $default = $this->rememberMe ? config('user._rememberMe_duration') : ( config('user._default_duration') ? config('user._default_duration') : 0 ) ;
                             $duration = $duration ? $duration : $default ;
-                            $ret = $this->setIdentity($identity, $duration);
+                            $ret = $this->setUser($user, $duration);
                         }else{
                             $ret = '服务出错';
                         }
@@ -392,10 +388,10 @@ class Identity extends HomeUser
      */
     public static function logout()
     {
-        session(config('identity._identity'),null);
-        session(config('identity._auth_key'), null);
-        session(config('identity._duration'),null);
-        session('identity',null);
+        session(config('user._user'),null);
+        session(config('user._auth_key'), null);
+        session(config('user._duration'),null);
+        session(config('user.unique'),null);
         return true;
     }
 
@@ -406,10 +402,10 @@ class Identity extends HomeUser
      */
     public function setLogout($user = null)
     {
-        session(config('identity._identity'),null);
-        session(config('identity._auth_key'), null);
-        session(config('identity._duration'),null);
-        session('identity',null);
+        session(config('user._user'),null);
+        session(config('user._auth_key'), null);
+        session(config('user._duration'),null);
+        session(config('user.unique'),null);
         return true;
     }
 
@@ -417,7 +413,7 @@ class Identity extends HomeUser
      * @return Object|\think\Validate
      */
     public static function getValidate(){
-        return IdentityValidate::load();
+        return UserValidate::load();
     }
 
     /**
@@ -460,15 +456,15 @@ class Identity extends HomeUser
      * @param  string $field
      * @return array|string  用户信息
      */
-    public function getIdentityInfo($id = null, $field = null)
+    public function getUserInfo($id = null, $field = null)
     {
         $ret = [];
         if (!$id) {
             return $ret;
         }
-        $identity = self::getIdentityById($id);
-        if (!$identity){
-            $ret = $identity->getData($field);
+        $user = self::getUserById($id);
+        if (!$user){
+            $ret = $user->getData($field);
 
         }
         return $ret;
@@ -480,19 +476,19 @@ class Identity extends HomeUser
      */
     public function autoLogin($duration = 0)
     {
-        return false;
+        return 0;
         // 记录登录SESSION和COOKIES
-        $identity = $this->getIdentity();
+        $user = $this->getUser();
         $auth = [
-            'uid'      => $identity->id,
-            'username' => $identity->username,
+            'uid'      => $user->id,
+            'username' => $user->username,
         ];
         //if true, default keep one week online;
-        $default = $this->rememberMe ? config('identity._rememberMe_duration') : ( config('identity._default_duration') ? config('identity._default_duration') : 0 ) ;
+        $default = $this->rememberMe ? config('user._rememberMe_duration') : ( config('user._default_duration') ? config('user._default_duration') : 0 ) ;
         $duration = $duration ? $duration : $default ;
-        session(config('identity._auth_key'), $this->data_auth_sign($auth));
-        $this->setIdentity($identity, $duration);
-        return $this->isGuest();
+        session(config('user._auth_key'), $this->data_auth_sign($auth));
+        $this->setUser($user, $duration);
+        return self::isGuest();
     }
 
     /**
@@ -517,16 +513,17 @@ class Identity extends HomeUser
      * 检测用户是否登录
      * @return integer 0-未登录，大于0-当前登录用户ID
      * @author Sir Fu
+     * @return int
      */
-    public function isGuest()
+    public static function isGuest()
     {
-        $user = new Identity();
-        $_identity = $user->getIdentity();
-        if (empty($_identity)) {
+        $user = new User();
+        $_user = $user->getUser();
+        if (empty($_user)) {
             return 0;
         } else {
-            if (self::isValidIdentity($_identity)) {
-                return $_identity->id;
+            if (self::isValidUser($_user)) {
+                return $_user->id;
             } else {
                 return 0;
             }
@@ -543,12 +540,12 @@ class Identity extends HomeUser
         if (!self::$isLog){
             return true;
         }
-        $identity = $this->findIdentity();
-        if ($identity === null) {
+        $user = $this->findUser();
+        if ($user === null) {
             return true;
         }
         $ret = false;
-        $ip = json_decode($identity->getData('ip'), true);
+        $ip = json_decode($user->getData('ip'), true);
         $currentIp = request()->ip();
         if (!$ip){
             $ip = ['last'=>['127.0.0.1',date('Y-m-d H:i:s')], 'current'=>['127.0.0.1',date('Y-m-d H:i:s')],'often'=>[],'haply'=>[],'once'=>[]];
@@ -607,64 +604,64 @@ class Identity extends HomeUser
 
     /**
      * log login log
-     * @param $identity
+     * @param $user
      * @return bool
      */
-    private function addLog($identity = null)
+    private function addLog($user = null)
     {
         if (!self::$isLog){
             return true;
         }
-        if (!$identity){
-            $identity = $this->findIdentity();
+        if (!$user){
+            $user = $this->findUser();
         }
-        if ($identity === null) {
+        if ($user === null) {
             return true;
         }
         $ip = self::get_client_ip();
-        UserloginLog::addLog($identity->id,null,null,'1',$ip);
+        UserloginLog::addLog($user->id,null,null,'1',$ip);
         return true;
     }
 
     /**
      * set a user
      *
-     * @param Identity $_identity
+     * @param User $_user
      * @param $duration
-     * @return Identity | null
+     * @return User | null
      */
-    protected function setIdentity(Identity $_identity, $duration = 0)
+    protected function setUser(User $_user, $duration = 0)
     {
-        $identity = $_identity->getData();
-        $identity['duration'] = $duration+time();
-        unset($identity['password']);
-        unset($identity['md5']);
-        session(config('identity._identity'),$_identity);
-        session(config('identity._duration'),$duration+time());
-        session('identity',$identity);
-        return $_identity;
+        $user = $_user->getData();
+        $user['duration'] = $duration+time();
+        unset($user['password']);
+        unset($user['md5']);
+        session(config('user._user'),$_user);
+        session(config('user._duration'),$duration+time());
+        session(config('user.unique'),$user);
+        return $_user;
     }
 
     /**
      * set a user
      *
-     * @param Identity $_identity
+     * @param User $_user
      * @param $duration
      * @return string|null
      */
-    protected function setRememberMe(Identity $_identity, $duration = 0)
+    protected function setRememberMe(User $_user, $duration = 0)
     {
         $duration = (int) $duration;
-        if ($duration<1 || !($_identity && $_identity->username)){
+        if ($duration<1 || !($_user && $_user->username)){
             return null;
         }
-        if ( $_identity instanceof Identity){
+        if ( $_user instanceof User){
             $token = $this->generateRandomString() . '_' . time();
-            $db= $this->isUpdate(true,['username'=>$_identity->getData('username')])->save([
+            $db= $this->isUpdate(true,['username'=>$_user->getData('username')])->save([
                 'token'=> $token,
             ]);  //这里的save()执行的是更新
             if ($db){
-                session(config('identity._duration'),time());
+                session(config('user._duration'),time());
                 return $token;
             }
         }
@@ -674,29 +671,32 @@ class Identity extends HomeUser
     /**
      * Finds user by [[username]]
      * @param string $username
-     * @return Identity|null
+     * @return User|null
      */
-    protected function findIdentity($username = null)
+    protected function findUser($username = null)
     {
         if (!$username){
             $username = $this->username;
         }
-        if ($this->_identity === null) {
-            $this->_identity = $this->findByUsername($username);
+        if ($this->_user === null) {
+            $this->thisFindBy = 'username';
+            $this->_user = $this->findByUsername($username);
         }
-        if ($this->_identity === null) {
-            $this->_identity = $this->findByPhone($username);
+        if ($this->_user === null) {
+            $this->thisFindBy = 'phone';
+            $this->_user = $this->findByPhone($username);
         }
-        if ($this->_identity === null) {
-            $this->_identity = $this->findByEmail($username);
+        if ($this->_user === null) {
+            $this->thisFindBy = 'email';
+            $this->_user = $this->findByEmail($username);
         }
-        return $this->_identity;
+        return $this->_user;
     }
 
     /**
-     * @description Finds identity by [[username]]
+     * @description Finds user by [[username]]
      * @param $username
-     * @return Identity | null
+     * @return User | null
      */
     public static function findByUsername($username)
     {
@@ -704,13 +704,18 @@ class Identity extends HomeUser
             return null;
         }
 
+        $where = [
+            'is_delete'=>'1',
+            'username'=>$username,
+        ];
+
+        var_dump(self::load()
+            ->where($where)
+            ->where('type','in',self::getAllowList())->buildSql());
+
         return self::load()
-            ->alias('t')
-            ->join(Department::tableName().' d','t.department_id = d.id')
-            ->where(['t.is_delete'=>'1'])
-            ->where(['t.username'=>$username])
-            ->where('d.level','in',self::$allowList)
-            ->field('t.*,d.name as departmentName')
+            ->where($where)
+            ->where('type','in',self::getAllowList())
             ->find();
     }
 
@@ -718,7 +723,7 @@ class Identity extends HomeUser
      * Finds user by [[username]]
      *
      * @param $phone
-     * @return Identity|null
+     * @return User|null
      */
     public static function findByPhone($phone)
     {
@@ -726,13 +731,14 @@ class Identity extends HomeUser
             return null;
         }
 
+        $where = [
+            'is_delete'=>'1',
+            'phone'=>$phone,
+        ];
+
         return self::load()
-            ->alias('t')
-            ->join(Department::tableName().' d','t.department_id = d.id')
-            ->where(['t.is_delete'=>'1'])
-            ->where(['t.phone'=>$phone])
-            ->where('d.level','in',self::$allowList)
-            ->field('t.*,d.name as departmentName')
+            ->where($where)
+            ->where('type','in',self::getAllowList())
             ->find();
     }
 
@@ -740,7 +746,7 @@ class Identity extends HomeUser
      * Finds user by [[username]]
      *
      * @param $email
-     * @return Identity|null
+     * @return User|null
      */
     public static function findByEmail($email)
     {
@@ -748,13 +754,14 @@ class Identity extends HomeUser
             return null;
         }
 
+        $where = [
+            'is_delete'=>'1',
+            'email'=>$email,
+        ];
+
         return self::load()
-            ->alias('t')
-            ->join(Department::tableName().' d','t.department_id = d.id')
-            ->where(['t.is_delete'=>'1'])
-            ->where(['t.email'=>$email])
-            ->where('d.level','in',self::$allowList)
-            ->field('t.*,d.name as departmentName')
+            ->where($where)
+            ->where('type','in',self::getAllowList())
             ->find();
     }
 
@@ -762,21 +769,23 @@ class Identity extends HomeUser
      * Finds user by [[id]]
      *
      * @param $id
-     * @return Identity|null
+     * @return User|null
      */
-    public static function getIdentityById($id)
+    public static function getUserById($id)
     {
         if (empty($id) || !is_numeric($id)) {
             return null;
         }
 
+
+        $where = [
+            'is_delete'=>'1',
+            'id'=>$id,
+        ];
+
         return self::load()
-            ->alias('t')
-            ->join(Department::tableName().' d','t.department_id = d.id')
-            ->where(['t.is_delete'=>'1'])
-            ->where(['t.id'=>$id])
-            ->where('d.level','in',self::$allowList)
-            ->field('t.*,d.name as departmentName')
+            ->where($where)
+            ->where('type','in',self::getAllowList())
             ->find();
     }
 
@@ -787,8 +796,8 @@ class Identity extends HomeUser
      */
     protected function geToken()
     {
-        if (session(config('identity._auth_key'))){
-            return session(config('identity._auth_key'));
+        if (session(config('user._auth_key'))){
+            return session(config('user._auth_key'));
         }
         return null;
     }
@@ -805,7 +814,7 @@ class Identity extends HomeUser
             }
             $_authKey = $this->auth_key;
         }
-        session(config('identity._auth_key'), $_authKey);
+        session(config('user._auth_key'), $_authKey);
     }
 
     /**
@@ -836,19 +845,19 @@ class Identity extends HomeUser
         }
 
         $timestamp = (int) substr($token, strrpos($token, '_') + 1);
-        $duration = config('identity._passwordResetTokenExpire');
+        $duration = config('user._passwordResetTokenExpire');
         return $timestamp + $duration >= time();
     }
 
     /**
-     * @description get the current identity ID ,or the primary key of Identity what is existed in Identity table
+     * @description get the current user ID ,or the primary key of User what is existed in User table
      * @return int|null
      */
     public static function getId()
     {
-        $identity = self::getIdentity();
-        if ($identity){
-            return $identity->id;
+        $user = self::getUser();
+        if ($user){
+            return $user->id;
         }
         return null;
     }
@@ -859,11 +868,11 @@ class Identity extends HomeUser
     public function getAuthKey()
     {
         if (!$this->auth_key){
-            $user = $this->getIdentity();
+            $user = $this->getUser();
             if ($user){
                 $this->auth_key = $user->auth_key;
             }else{
-                $this->auth_key = $this->getIdentity('auth_key');
+                $this->auth_key = $this->getUser('auth_key');
             }
         }
         return $this->auth_key;
@@ -906,11 +915,11 @@ class Identity extends HomeUser
             return false; //Password must be a string and cannot be empty
         }
 
-        $identity = $this->findIdentity();
-        $hash =$identity->getData('password');
+        $user = $this->findUser();
+        $hash =$user->getData('password');
 
         if (self::$useMd5validate || empty($hash)){
-            $hash =$identity->getData('md5');
+            $hash =$user->getData('md5');
             if ($hash == md5(md5($password))){
                 return true;
             }else{
@@ -993,10 +1002,10 @@ class Identity extends HomeUser
             $newPassword = self::$passwordPrefix.$password.self::$passwordSuffix;
         }elseif (self::$encryptType == 2){
             if (!$this->thisTime){//根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
-                $identity = $this->findIdentity();
-                if ($identity){
+                $user = $this->findUser();
+                if ($user){
                     $login_time = self::$login_time;
-                    $this->thisTime = $identity->$login_time;
+                    $this->thisTime = $user->$login_time;
                 }
             }
             $newPassword = self::$passwordPrefix.$password.self::$passwordSuffix.$this->thisTime;
@@ -1209,19 +1218,19 @@ class Identity extends HomeUser
 
     /**
      * @param string|null $name
-     * @return Identity|null
+     * @return User|null
      */
-    public static function getIdentity($name = null)
+    public static function getUser($name = null)
     {
-        $identity =  session(config('identity._identity'));
-        if ($identity && $identity instanceof Identity){
+        $user =  session(config('user._user'));
+        if ($user && $user instanceof User){
             if (!is_string($name) || $name === '') {
-                return $identity;
+                return $user;
             }
 
-            if (is_string($name) && $identity){
-                if (array_key_exists($name, $identity->data)) {
-                    return $identity->data[$name];
+            if (is_string($name) && $user){
+                if (array_key_exists($name, $user->data)) {
+                    return $user->data[$name];
                 }
             }
         }
@@ -1231,22 +1240,22 @@ class Identity extends HomeUser
     /**
      * Finds a Valid user
      *
-     * @param Identity $_identity
+     * @param User $_user
      * @return bool
      */
-    public static function isValidIdentity(Identity $_identity = null)
+    public static function isValidUser(User $_user = null)
     {
         $res = false;
-        if (!$_identity){
-            $_identity = new Identity();
-            $_identity->getIdentity();
+        if (!$_user){
+            $_user = new User();
+            $_user->getUser();
         }
-        if (session(config('identity._auth_key')) == self::data_auth_sign($_identity)){
+        if (session(config('user._auth_key')) == self::data_auth_sign($_user)){
             $res = true;
         }
-        $duration =  session(config('identity._duration'));
-        if ( $duration && $_identity && ($duration + config('identity._default_duration')) > time()){
-            session(config('identity._duration'),time()+config('identity._default_duration'));
+        $duration =  session(config('user._duration'));
+        if ( $duration && $_user && ($duration + config('user._default_duration')) > time()){
+            session(config('user._duration'),time()+config('user._default_duration'));
             $res = true;
         }
         return $res;
@@ -1311,22 +1320,12 @@ class Identity extends HomeUser
                 return $this->data[$name];
             }
 
-            if ($this->getIdentity()) {
-                return $this->getIdentity($name);
+            if ($this->getUser()) {
+                return $this->getUser($name);
             }
         }
 
         return parent::__get($name); // TODO: Change the autogenerated stub
     }
-
-
-    /**
-     * @return \think\model\relation\HasOne
-     */
-    public function getDepartment()
-    {
-        return $this->hasOne(ucfirst(Department::tableNameSuffix()),'id', 'department_id');
-    }
-
 
 }
