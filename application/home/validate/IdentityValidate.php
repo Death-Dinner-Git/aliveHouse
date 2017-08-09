@@ -14,14 +14,15 @@ class IdentityValidate extends Validate
      */
     protected $rule = [
         '__token__|校验数据' =>  ['token'],
-        'username|用户名'  =>  ['require','max'=>32,'min'=>1,'regex:/^(?!_)(?!\d)(?!.*?_$)[\w]+$/','unique:back_user,username'],
-        'department_id|部门'  =>  ['require','number','exist:department,id'],
-        'phone|手机' =>  ['regex:/^(1)([\d]){10}$/','unique:back_user,phone'],
-        'email|邮箱' =>  ['email','unique:back_user,email'],
+        'username|账号'  =>  ['require','max'=>32,'min'=>1,'regex:/^(?!_)(?!\d)(?!.*?_$)[\w]+$/','unique:home_user,username'],
+        'phone|手机' =>  ['regex:/^(1)([\d]){10}$/','unique:home_user,phone'],
+        'email|邮箱' =>  ['email','unique:home_user,email'],
 //        'password|登录密码' =>  ['require','max'=>32,'min'=>6,'regex:/(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+)$)^[\w~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+$/'],
-        'password|登录密码' =>  ['require','max'=>32,'min'=>6,],
+//        'password|登录密码' =>  ['require','max'=>32,'min'=>6,'regex:/(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[\~\!@#\$%\^&\*\(\)_\+\/\.,;\'\\\[\]<>\?:"\|\{\}]+$).{6,20}/'],
+//        'password|登录密码' =>  ['require','max'=>32,'min'=>6,'regex:/^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,32}$/'],
+        'password|登录密码' =>  ['require','max'=>32,'min'=>6],
         'rePassword|确认密码' =>  ['require','max'=>32,'min'=>6, 'confirm:password'],
-        'code'=>['unique:back_user,code'],
+        'code'=>['unique:home_user,code'],
     ];
 
     /**
@@ -29,9 +30,6 @@ class IdentityValidate extends Validate
      */
     protected $message = [
         '__token__.token'  =>  ':attribute 无效',
-        'department_id.require'  =>  ':attribute 不能为空',
-        'department_id.number'  =>  ':attribute 无效',
-        'department_id.exist'  =>  ':attribute 不存在',
         'username.require'  =>  ':attribute 不能为空',
         'username.regex'  =>  ':attribute 只可含有数字、字母、下划线且不以下划线开头结尾，不以数字开头！',
         'username.exist'  =>  ':attribute 不存在',
@@ -40,7 +38,9 @@ class IdentityValidate extends Validate
         'password.regex'  =>  ':attribute 至少由数字、字符、特殊字符三种中的两种组成',
         'rePassword.require'  =>  ':attribute 不能为空',
         'rePassword.comparePassword'  =>  '两次密码 不一致',
+        'rePassword.confirm'  =>  '两次密码 不一致',
         'email' =>  ':attribute 不合法',
+        'phone.unique' =>  '此手机号码已被注册',
         'phone' =>  ':attribute 不合法',
     ];
 
@@ -49,12 +49,22 @@ class IdentityValidate extends Validate
      */
     protected $scene = [
         'create'   =>  ['username','password'],
-        'update'  =>  ['department_id','username','phone','password','rePassword'],
+        'update'  =>  [
+            'username'=>['max'=>32,'min'=>1,'regex:/^(?!_)(?!\d)(?!.*?_$)[\w]+$/','unique:home_user,username'],
+            'phone',
+            'email',
+            'password'=>['max'=>32,'min'=>6,'regex:/(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+)$)^[\w~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+$/'],
+            'rePassword'=>['max'=>32,'min'=>6, 'confirm:password']
+        ],
+        'reset'  =>  [
+            'password'=>['max'=>32,'min'=>6,'regex:/(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+)$)^[\w~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+$/'],
+            'rePassword'=>['max'=>32,'min'=>6, 'confirm:password']
+        ],
         'save'  =>  [],
-        'loginAjax'   =>  ['username'=> 'require|usernameExist:back_user,username'],
-        'login'  =>  ['username','password','__token__'],
-        'signUp'  =>  ['department_id','username','phone','password'],
-        'register'  =>  ['department_id','username','phone','password','rePassword','__token__'],
+        'loginAjax'   =>  ['username'=> 'require|usernameExist:home_user,username','password'],
+        'login'  =>  ['username'=> 'require|usernameExist:home_user,username','password'],
+        'signUp'  =>  ['username','phone','password'],
+        'register'  =>  ['username','phone','password','rePassword','__token__'],
     ];
 
     /**

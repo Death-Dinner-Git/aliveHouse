@@ -13,18 +13,27 @@
 namespace app\home\controller;
 
 
-use app\common\controller\HomeController;
-use app\home\model\User;
-use app\home\model\BaseUser;
-use app\home\model\Manager;
-use app\home\model\Department;
+use app\common\controller\BaseController;
+use app\common\model\HomeUser;
+use think\captcha\Captcha;
+use app\home\model\Identity;
 
 /**
  * 用户控制器
  * @author Sir Fu
  */
-class UserController extends HomeController
+class UserController extends BaseController
 {
+    /**
+     * 初始化方法
+     * @author Sir Fu
+     */
+    protected function _initialize()
+    {
+        parent::_initialize();
+        $this->init();
+    }
+
     /**
      * @description 数据
      * @return mixed
@@ -36,13 +45,88 @@ class UserController extends HomeController
     }
 
     /**
-     * @description 日志
+     * @description back login
+     * @author Sir Fu
+     */
+    public function loginAction()
+    {
+
+        if ( $this->getRequest()->isAjax() && $this->getRequest()->isPost()){
+            $username = trim($this->getRequest()->request('username'));
+            $password = $this->getRequest()->request('password');
+
+//        // 图片验证码校验
+//        if (!$this->checkVerify(input('post.verify')) && 'localhost' !== request()->host() && '127.0.0.1' !== request()->host()) {
+//            $this->error('验证码输入错误');
+//        }
+
+            // 调用当前模型对应的Identity验证器类进行数据验证
+            $data = [
+                'username'=>$username,
+                'password'=>$password,
+            ];
+
+            $validate = Identity::getValidate();
+            $validate->scene('loginAjax');
+
+            if($validate->check($data)){
+
+                //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
+                $identity = new Identity();
+                $identity->username = $username;
+                $identity->password = $password;
+                $res = $identity->login();
+                if ($res instanceof Identity){
+
+//                // 验证管理员表里是否有该用户
+//                $account_object = new Access();
+//                $where['uid']   = $identity->id;
+//                $account_info   = $account_object->where($where)->find();
+//                if (!$account_info) {
+////                    $this->error('该用户没有管理员权限' . $account_object->getError());
+//                }
+
+//                // 跳转
+//                if (0 < $account_info['uid'] && $account_info['uid'] === $identity->id) {
+//                    $this->success('登录成功！', url('Back/index/index'));
+//                } else {
+//                    $this->logoutAction();
+//                }
+                    return json(['status'=>'1','info'=>'登陆成功','url'=>url($this->getHomeUrl())]);
+                }else{
+                    return json(['status'=>'0','info'=>$res]);
+                }
+            }else{
+                return json(['status'=>'0','info'=>$validate->getError()]);
+            }
+        }
+
+        if ( $this->isGuest()) {
+            $this->goHome();
+        }
+
+        // 临时关闭当前模板的布局功能
+        $this->view->engine->layout(false);
+        return view('login',['meta_title'=>'会员登录']);
+    }
+
+    /**
+     * @description Logout action.
+     */
+    public function logoutAction()
+    {
+        Identity::logout();
+        $this->success('退出成功！', $this->getLoginUrl(),[],1);
+    }
+
+    /**
+     * @description 足迹
      * @return string
      */
     public function logAction()
     {
         $this->assign('meta_title', "日志信息");
-        return view('user/layer');
+        return view('user/log');
     }
 
     /**
@@ -51,128 +135,109 @@ class UserController extends HomeController
      */
     public function resetPasswordAction()
     {
-        $this->assign('meta_title', "安排出车界面");
-        return view('user/list');
+        $this->assign('meta_title', "重置");
+        return view('user/reset');
     }
 
     /**
-     * @description 清单
-     * @param bool $super
-     * @param integer $pageNumber
-     * @return string
-     */
-    public function listAction($super = false,$pageNumber = 1)
-    {
-        $where = [];
-        $each = 10;
-        $key = '';
-        $type = '';
-        if (request()->request('key')){
-            $key = trim(request()->request('key'));
-            $where =  array_merge($where, ['real_name'=>$key]);
-        }
-        $typeList = Manager::getManagerList();
-        if ($super == 'true' || request()->request('type')){
-            $type = $super == 'true' ? 'supperAdmin' :request()->request('type');
-            if (in_array($type,array_keys($typeList))){
-                $where =  array_merge($where, ['manager_type'=>$type]);
-            }
-        }
-        $dataProvider = Manager::load()->where($where)->page($pageNumber,$each)->select();
-        $count = Manager::load()->where($where)->count();
-        $this->assign('meta_title', "账号管理");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('key', $key);
-        $this->assign('type', $type);
-        $this->assign('typeList', $typeList);
-        $this->assign('super', $super);
-        return view('user/list');
-    }
-
-    /**
-     * @description 编辑
+     * @description 新增
      * @param $id
-     * @param $target
      * @return string
      */
-    public function updateAction($id,$target = null)
+    public function resetAction($id = 0)
     {
-        $model = Manager::get($id);
-        if (request()->isAjax()){
-            foreach ($_REQUEST as $k=>$value){
-                $_REQUEST[$k] = trim($value);
-            }
-            $res = ['status'=>'n','info'=>'更新失败'];
-            $passed = true;
-            if (isset($_REQUEST['username'])){
-                if ($base = BaseUser::get(['username'=>$_REQUEST['username']])){
-                    if($base->id != $model->base_user_id){
-                        $res['info'] = '已存在此登录名 更新失败';
-                        $passed = false;
-                    }
-                }else{
-                    $model->getBaseUser->username = $_REQUEST['username'];
-                }
-            }
-            if (isset($_REQUEST['realName'])){
-                if (false){
-                    $res['info'] = '已存在此登录名 更新失败';
-                    $passed = false;
-                }else{
-                    if ($model->real_name != $_REQUEST['realName']){
-                        $model->real_name = $_REQUEST['realName'];
-                    }
-                }
-            }
-            if (isset($_REQUEST['password']) && isset($_REQUEST['rePassword'])){
-                if (!empty($_REQUEST['password']) && ($_REQUEST['password'] != $_REQUEST['rePassword'])){
-                    $res['info'] = '两次密码不同';
-                    $passed = false;
-                }else{
-                    if ($model->getBaseUser->password != md5($_REQUEST['password'])){
-                        $model->getBaseUser->password =  md5($_REQUEST['password']);
-                    }
-                }
-            }
-            if(isset($_REQUEST['managerType'])){
-                if (!in_array($_REQUEST['managerType'],array_keys(Manager::getManagerList()))){
-                    $res['info'] = '未找到该管理类型';
-                    $passed = false;
-                }else{
-                    if ($model->manager_type != $_REQUEST['managerType']){
-                        $model->manager_type = $_REQUEST['managerType'];
-                    }
-                }
-            }
-            if (isset($_REQUEST['department'])){
-                if (!Department::get($_REQUEST['department'])){
-                    $res['info'] = '未找到该部门';
-                    $passed = false;
-                }else{
-                    if ($model->department_id != $_REQUEST['department']){
-                        $model->department_id = $_REQUEST['department'];
-                    }
-                }
-            }
-            if ($passed){
-                $res['info'] = '更新成功';
-                $res['status'] = 'y';
-                if ($model->together('getBaseUser')->save()){
-                    $res['info'] = '更新成功';
-                    $model->update_time = date('Y-m-d H:i:s');
-                    $model->save();
-                }
-            }
-            return json($res);
+        if (empty($id)){
+            throw new \think\Exception\HttpException(404,'该账号不存在',null,['code'=>'404','msg'=>'该账号不存在','info'=>'该账号不存在'],'404');
         }
-        $this->assign('meta_title', "更新信息");
-        $this->assign('typeList', Manager::getManagerList());
-        $this->assign('departmentList', Department::getAllDepartment());
-        $this->assign('model', $model);
-        return view('user/update');
+        $find = false;
+
+        if ($model = Identity::load()->where(['id'=>$id])->find()){
+            $find = true;
+        }else if ($model = Identity::findByUsername($id)){
+            $find = true;
+        }else if ($model = Identity::findByPhone($id)){
+            $find = true;
+        }else if ($model = Identity::findByPasswordResetToken($id)){
+            $find = true;
+        }
+
+        if (!$find){
+            throw new \think\Exception\HttpException(404,'该账号不存在',null,['code'=>'404','msg'=>'该账号不存在','info'=>'该账号不存在'],'404');
+        }
+
+        $request = $this->getRequest();
+        if ($request->isPost() || $request->isAjax()){
+            // 调用当前模型对应的Identity验证器类进行数据验证
+            $data = [];
+            $data['oldPassword'] = $request->post('newPassword');
+            $data['password'] = $request->post('password');
+            $data['rePassword'] = $request->post('rePassword');
+            $validate = Identity::getValidate();
+            $validate->scene('reset');
+            if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
+                $res = Identity::load()->resetUser($id,$data);
+                if ($res){
+                    $this->success('更新成功', url('reset',['id'=>$id]),[],1);
+                }else{
+                    $this->error('原密码不正确',  url('reset',['id'=>$id]),[],1);
+                }
+            }else{
+                $this->error($validate->getError(),  url('reset',['id'=>$id]),[],1);
+            }
+        }
+
+        return view('user/reset',['meta_title'=>'修改密码','model'=>$model]);
+    }
+
+
+    public function registerAction(){
+        $identity = new Identity();
+        $request = $this->getRequest();
+        $token = $request->request('__token__');
+        if ( $request->isPost() && $token ){
+            // 调用当前模型对应的Identity验证器类进行数据验证
+            $data = [];
+            $data['username'] = $request->post('username');
+            $data['phone'] = $request->post('phone');
+            $data['password'] = $request->post('password');
+            $data['rePassword'] = $request->post('rePassword');
+            $validate = Identity::getValidate();
+            $validate->scene('register');
+            if($validate->check($data)){ //注意，在模型数据操作的情况下，验证字段的方式，直接传入对象即可验证
+                $res = $identity->signUp($data);
+                if ($res instanceof Identity){
+                    $this->success('注册成功','login','',1);
+                }else{
+                    $this->error($res, 'register','',1);
+                }
+            }else{
+                $this->error($validate->getError(), 'register','',1);
+            }
+        }
+        return view('user/create',['meta_title'=>'会员注册']);
+    }
+
+    /**
+     * @description 图片验证码生成，用于登录和注册
+     * @param $vid
+     * @author Sir Fu
+     */
+    public function verifyAction($vid = 1)
+    {
+        $verify = new Captcha();
+        $verify->entry($vid);
+    }
+
+    /**
+     * @description 检测验证码
+     * @param  integer $code 验证码ID
+     * @param $vid
+     * @return boolean 检测结果
+     */
+    protected function checkVerify($code, $vid = 1)
+    {
+        $verify = new Captcha();
+        return $verify->check($code, $vid);
     }
 
     /**

@@ -74,16 +74,19 @@ class UserloginLog extends Model
         $model->gets = json_encode($request->get());
         $data = $request->post();
         if (isset($data['password'])){
-            $data['password'] = md5(md5($data['password']));
+             unset($data['password']);
         }
         if (isset($data['newPassword'])){
-            $data['newPassword'] = md5(md5($data['newPassword']));
+            unset($data['newPassword']);
         }
         if (isset($data['rePassword'])){
-            $data['rePassword'] = md5(md5($data['rePassword']));
+            unset($data['rePassword']);
+        }
+        if (isset($data['oldPassword'])){
+            unset($data['oldPassword']);
         }
         $model->posts = json_encode($data);
-        $model->user_id = !empty($userId) ? $userId : (isset($_SESSION['identity']['id']) ? $_SESSION['identity']['id'] : '0');
+        $model->user_id = !empty($userId) ? $userId : (isset($_SESSION['identity']['id']) ? $_SESSION['identity']['id'] : '1');
         $model->app = $model->user_id == '0' ? (strtolower($request->module()) == 'home' ? '2' : '1') : $type;
         $model->ip = !empty($ip) ? $ip : $request->ip();
         $model->target = !empty($target) ? $target : ($model->app == '1' ? '后台' : '前台').'登陆记录';

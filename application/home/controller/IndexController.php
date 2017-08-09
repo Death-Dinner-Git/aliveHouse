@@ -32,4 +32,13 @@ class IndexController extends HomeController
         return view('index/index-box');
     }
 
+    /**
+     * @description The APP 全局MISS路由，一个父级操作.
+     * @return string
+     */
+    public function missAction()
+    {
+        return view('index/index');
+    }
+
 }

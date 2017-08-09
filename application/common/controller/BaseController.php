@@ -31,11 +31,20 @@ class BaseController extends Controller
         config('default_module',request()->module());
         $this->assign('URL',$this->getUrl());
 //        $this->assign('_csrf_param','_csrf_'.request()->module());
-//        $this->assign('_csrf_token','_csrf_'.request()->module());
+//        $this->assign('_csrf_token',md5(time()));
         if ($_SESSION['logined_at'] != strtotime($_SESSION['identity']['logined_at'])){
             $_SESSION['logined_at'] = strtotime($_SESSION['identity']['logined_at']);
             session('logined_at',$_SESSION['logined_at']);
             $_SESSION['_auth_token_'] = md5($_SESSION['identity']['id'].$_SESSION['identity']['logined_at']);
+        }
+    }
+
+    protected function isUser(){
+        if (!$this->isGuest()) {
+            //还没登录跳转到登录页面
+            if ( $this->getCurrentUrl() !== strtolower($this->getLoginUrl())){
+                $this->goBack($this->getLoginUrl());
+            }
         }
     }
 
@@ -46,6 +55,60 @@ class BaseController extends Controller
     public function getAccessControl()
     {
         return AccessControl::getInstance();
+    }
+
+    /**
+     * 检查权限
+     * @param int $userId
+     * @param $action
+     * @return bool
+     */
+    protected function accessCheck($userId = 0,$action = null){
+        if (!$userId){
+            $userId = $this->getIdentity('id');
+        }
+        if (!$action){
+            $action = $this->getCurrentUrl();
+        }
+        return $this->getAccessControl()->check($userId,$action);
+    }
+
+    /**
+     * @param null $key
+     * @return string|array|null
+     */
+    protected function getIdentity($key = null){
+        $identity = isset($_SESSION['identity']) ? $_SESSION['identity'] : null;
+        return !$key ? $identity : (isset($identity[$key]) ? $identity[$key] : null);
+    }
+
+    /**
+     * 初始化一些因模块不同，需要不同的配置信息
+     */
+    protected function init(){
+        $module = config('identity.'.$this->getRequest()->module());
+        if ($module){
+            // Identity 位置
+            if (isset($module['default_user_model'])){
+                config('identity.default_user_model',$module['default_user_model']);
+            }
+            // 登录路由
+            if (isset($module['loginUrl'])){
+                config('identity.loginUrl',$module['loginUrl']);
+            }
+            // 退出路由
+            if (isset($module['logoutUrl'])){
+                config('identity.logoutUrl',$module['logoutUrl']);
+            }
+            // 注册路由
+            if (isset($module['registerUrl'])){
+                config('identity.registerUrl',$module['registerUrl']);
+            }
+            // 注册路由
+            if (isset($module['resetUrl'])){
+                config('identity.resetUrl',$module['resetUrl']);
+            }
+        }
     }
 
     /**
@@ -372,34 +435,18 @@ class BaseController extends Controller
         return $data;
     }
 
-//    /**
-//     * @description before action function
-//     * @param $name
-//     * @return string
-//     */
-//    public function _empty($name)
-//    {
-//        return $this->showEmpty($name);
-//    }
-//
-//    /**
-//     * @description show some message when The module action error or empty
-//     * @param $name
-//     * @return string
-//     */
-//    protected function showEmpty($name)
-//    {
-//        return '<div style="width: 100%;height: 600px;display: flex;"><div style="margin: auto;">Would be stop run,when you run "'.$name.'" function in the module. </div></div></div>';
-//    }
-//
-//    /**
-//     * @description The APP 全局MISS路由，一个父级操作.
-//     * @return string
-//     */
-//    public function missAction()
-//    {
-//        return '<div style="width: 100%;height: 600px;display: flex;"><div style="margin: auto;">Would be stop run,because your request route could be matched by the default route preg. </div></div></div>';
-//    }
+    /**
+     * @description The APP 全局MISS路由，一个父级操作.
+     * @return string
+     */
+    public function missAction()
+    {
+        if ($this->getRequest()->isAjax()){
+            $this->HttpException('402');
+        }
+        $name = 'Would be stop run <br> When run '.$this->getUrl();
+        return view('common@layouts/502',['name'=>$name]);
+    }
 
     /**
      * Redirects the browser to the home page.
@@ -552,6 +599,23 @@ class BaseController extends Controller
 
         if (config('identity.registerUrl')){
             return config('identity.registerUrl');
+        }
+        return null;
+    }
+
+    /**
+     * @description Returns the URL what can be reset in the reset page.
+     * @param null $defaultUrl
+     * @return mixed|null|string
+     */
+    public function getResetUrl($defaultUrl = null)
+    {
+        if ($defaultUrl){
+            return $defaultUrl;
+        }
+
+        if (config('identity.resetUrl')){
+            return config('identity.resetUrl');
         }
         return null;
     }

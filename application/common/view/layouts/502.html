@@ -9,8 +9,8 @@ if (isset($exception)) {
     /**
      * @var $exception \think\exception\HttpException
      */
-    $code = '402';
-    $message = '拒绝访问';
+    $code = '502';
+    $message = isset($message) ? $message : '拒绝访问';
     $headers = ['code' => $code, 'msg' => $message];
     $statusCode = $code;
     try {
@@ -19,7 +19,7 @@ if (isset($exception)) {
         $newHeaders = $exception->getHeaders();
         $newStatusCode = $exception->getStatusCode();
     } catch (Exception $ex) {
-        $newCode = '402';
+        $newCode = '502';
         $newMessage = '拒绝访问';
         $newHeaders = ['code' => $newCode, 'msg' => $newMessage];
         $newStatusCode = $newCode;
@@ -77,7 +77,7 @@ if (isset($exception)) {
 <body>
 <div class="container">
     <div class="body">
-        <h1 class="code">$code</h1>
+        <h1 class="code">502</h1>
         <h2 class="message">$message</h2>
     </div>
 </div>

@@ -4,6 +4,7 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\HomeUser;
+use think\Request;
 
 /**
  * This is the model class for table "{{%home_user_log}}".
@@ -53,6 +54,43 @@ class HomeUserLog extends Model
     protected $insert = [];
     // 更新自动完成列表
     protected $update = [];
+
+    /**
+     * @param null $target
+     * @param null $userId
+     * @param null $action
+     * @param null $ip
+     */
+    public static function log($target=null, $userId = null,$action = null,$ip = null)
+    {
+        $model = new BackUserLog();
+        $request = Request::instance();
+        $model->route = !empty($action) ? $action : $request->url();
+        $model->url = $request->url();
+        $model->user_agent = $request->server('HTTP_USER_AGENT');
+        $model->gets = json_encode($request->get());
+        $data = $request->post();
+        if (isset($data['password'])){
+            unset($data['password']);
+        }
+        if (isset($data['newPassword'])){
+            unset($data['newPassword']);
+        }
+        if (isset($data['rePassword'])){
+            unset($data['rePassword']);
+        }
+        if (isset($data['oldPassword'])){
+            unset($data['oldPassword']);
+        }
+        $model->posts = json_encode($data);
+        $model->back_user_id = !empty($userId) ? $userId : (isset($_SESSION['identity']['id']) ? $_SESSION['identity']['id'] : '1');
+        $model->ip = !empty($ip) ? $ip : $request->ip();
+        $model->target = !empty($target) ? $target : '例行记录';
+        $model->created_at = date('Y-m-d H:i:s');
+        $model->updated_at = date('Y-m-d H:i:s');
+        $model->save();
+
+    }
 
     //所有标签类型
     private static $typeList = ['1'=>'PC','2'=>'Android','3'=>'IOS'];

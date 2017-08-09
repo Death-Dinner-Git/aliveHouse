@@ -25,28 +25,10 @@ class ManageController extends BaseController
         parent::_initialize();
 
         // 登录检测,未登录，跳转到登录
-        if (!$this->isGuest()) {
-            //还没登录跳转到登录页面
-            if ( $this->getCurrentUrl() !== strtolower($this->getLoginUrl())){
-                $this->goBack($this->getLoginUrl());
-            }
-        }
+        $this->isUser();
 
         // 获取当前访问地址
         $currentUrl = $this->getCurrentUrl();
-
-        //兼容iframe
-        $url = $this->getUrl();
-        // 权限检测，首页不需要权限
-        if('manage/index/index' === strtolower($currentUrl) || $url === '/'){
-            if ($url === '/'){
-                $url = $url.$this->getHomeUrl();
-            }
-        }else{
-            if (false) {
-                $this->error('权限不足！', url('manage/Index/index'));
-            }
-        }
 
         //模板转换
         if ('manage/index/index' === strtolower($currentUrl)){
@@ -55,31 +37,13 @@ class ManageController extends BaseController
             $this->view->engine->layout('common@layouts/manage-main');
         }
 
-        if ($this->accessCheck());
-    }
-
-    /**
-     * 检查权限
-     * @param int $userId
-     * @param $action
-     * @return bool
-     */
-    protected function accessCheck($userId = 0,$action = null){
-        if (!$userId){
-            $userId = $this->getIdentity('id');
+        //兼容iframe
+        $url = $this->getUrl();
+        // 权限检测，首页不需要权限
+        if (!$this->accessCheck()) {
+            if(!('manage/index/index' === strtolower($currentUrl) || $url === '/manage')){
+                $this->error('拒绝访问', url('home/Index/index'),[],'1');
+            }
         }
-        if (!$action){
-            $action = $this->getCurrentUrl();
-        }
-        $this->getAccessControl()->check($userId,$action);
-    }
-
-    /**
-     * @param null $key
-     * @return string|array|null
-     */
-    protected function getIdentity($key = null){
-        $identity = $_SESSION['identity'];
-        return !$key ? $identity : (isset($identity[$key]) ? $identity[$key] : null);
     }
 }

@@ -70,19 +70,19 @@ class BackUserLog extends Model
         $model->gets = json_encode($request->get());
         $data = $request->post();
         if (isset($data['password'])){
-            $data['password'] = md5(md5($data['password']));
-        }
-        if (isset($data['oldPassword'])){
-            $data['oldPassword'] = md5(md5($data['oldPassword']));
+            unset($data['password']);
         }
         if (isset($data['newPassword'])){
-            $data['newPassword'] = md5(md5($data['newPassword']));
+            unset($data['newPassword']);
         }
         if (isset($data['rePassword'])){
-            $data['rePassword'] = md5(md5($data['rePassword']));
+            unset($data['rePassword']);
+        }
+        if (isset($data['oldPassword'])){
+            unset($data['oldPassword']);
         }
         $model->posts = json_encode($data);
-        $model->back_user_id = !empty($userId) ? $userId : (isset($_SESSION['identity']['id']) ? $_SESSION['identity']['id'] : '0');
+        $model->back_user_id = !empty($userId) ? $userId : (isset($_SESSION['identity']['id']) ? $_SESSION['identity']['id'] : '1');
         $model->ip = !empty($ip) ? $ip : $request->ip();
         $model->target = !empty($target) ? $target : '例行记录';
         $model->created_at = date('Y-m-d H:i:s');

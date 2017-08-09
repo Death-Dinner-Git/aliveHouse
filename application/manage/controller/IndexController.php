@@ -34,6 +34,19 @@ class IndexController extends ManageController
     }
 
     /**
+     * @description The APP 全局MISS路由，一个父级操作.
+     */
+    public function missAction()
+    {
+        if ($this->getRequest()->isAjax()){
+            $this->HttpException('402');
+        }else{
+            $this->HttpException();
+        }
+    }
+
+
+    /**
      * @description 常见问题
      * @param $page
      * @return \think\Request
