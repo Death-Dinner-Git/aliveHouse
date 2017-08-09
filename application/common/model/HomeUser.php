@@ -57,6 +57,7 @@ class HomeUser extends Model
         'id',
         'is_delete',
         'code',
+        'type',
         'phone',
         'phone_verified',
         'email',
@@ -72,6 +73,7 @@ class HomeUser extends Model
         'height',
         'weight',
         'token',
+        'md5',
         'auth_key',
         'password_reset_token',
         'password_reset_code',
@@ -90,17 +92,6 @@ class HomeUser extends Model
     protected $insert = [];
     // 更新自动完成列表
     protected $update = [];
-
-    //所有账号类型
-    private static $regList = ['1'=>'手机','2'=>'电脑','3'=>'平板'];
-
-    /**
-     * @return array
-     */
-    public static function getRegList()
-    {
-        return self::$regList;
-    }
 
     /**
      * @inheritdoc

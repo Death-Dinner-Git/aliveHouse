@@ -41,14 +41,11 @@ class Ban extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public $banList = ['0'=>'无效','1'=>'允许','2'=>'禁止'];
-
     /**
      * @return array
      */
     public static function getBanList(){
-        $model = new Ban();
-        return $model->banList;
+        return self::T('ban');
     }
 
     /**

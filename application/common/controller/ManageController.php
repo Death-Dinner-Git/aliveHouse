@@ -24,6 +24,16 @@ class ManageController extends BaseController
     {
         parent::_initialize();
 
+        $_SESSION['identity'] = session(config('identity.unique'));
+        $_SESSION['logined_at'] = session('logined_at');
+//        $this->assign('_csrf_param','_csrf_'.request()->module());
+//        $this->assign('_csrf_token',md5(time()));
+        if ($_SESSION['logined_at'] != strtotime($_SESSION['identity']['logined_at'])){
+            $_SESSION['logined_at'] = strtotime($_SESSION['identity']['logined_at']);
+            session('logined_at',$_SESSION['logined_at']);
+            $_SESSION['_auth_token_'] = md5($_SESSION['identity']['id'].$_SESSION['identity']['logined_at']);
+        }
+
         // 登录检测,未登录，跳转到登录
         $this->isUser();
 

@@ -109,7 +109,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘类型：</label>
                             <div class="layui-input-block checkbox-left checkbox-primary" style="padding-right: 120px;" lay-error="请至少选择一个楼盘类型">
-                                {volist name="model->typeList" id="item" }
+                                {volist name="model->getValue('type')" id="item" }
                                 <input type="checkbox" name="type[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="type" />
                                 {/volist}
                             </div>
@@ -119,7 +119,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label"><span class="layui-color-danger">*</span>楼盘特色：</label>
                         <div class="layui-input-block checkbox-left checkbox-primary" lay-error="请至少选择一个楼盘特色" style="padding-right: 120px;" >
-                            {volist name="model->featureList" id="item" }
+                            {volist name="model->getValue('feature')" id="item" }
                             <input type="checkbox" name="feature[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="feature" />
                             {/volist}
                             <div class="layui-inline extra layui-width">
@@ -131,7 +131,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label"><span class="layui-color-danger">*</span>装修情况：</label>
                         <div class="layui-input-block checkbox-left checkbox-primary" lay-error="请至少选择一个装修情况" style="padding-right: 120px;">
-                            {volist name="model->decorationList" id="item" }
+                            {volist name="model->getValue('decoration')" id="item" }
                             <input type="checkbox" name="decoration[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="decoration" />
                             {/volist}
                             <div class="layui-inline extra layui-width">
@@ -143,7 +143,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label"><span class="layui-color-danger">*</span>建筑形式：</label>
                         <div class="layui-input-block checkbox-left checkbox-primary" style="padding-right: 120px;">
-                            {volist name="model->buildingTypeList" id="item" }
+                            {volist name="model->getValue('buildingType')" id="item" }
                             <input type="checkbox" name="buildingType[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="buildingType" />
                             {/volist}
                             <div class="layui-inline extra layui-width">
@@ -210,7 +210,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">权重设置：</label>
                         <div class="layui-input-block checkbox-left checkbox-primary" style="padding-right: 120px;">
-                            {volist name="model->weightList" id="item" }
+                            {volist name="model->getValue('weight')" id="item" }
                             <input type="checkbox" name="weight[]" value="{$key}" title="{$item}" />
                             {/volist}
                         </div>
@@ -237,7 +237,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label"><span class="layui-color-danger">*</span>销售状态：</label>
                         <div class="layui-input-block checkbox-primary" style="padding-right: 120px;" lay-error="请选择销售状态">
-                            {volist name="model->saleStatusList" id="item" }
+                            {volist name="model->getValue('saleStatus')" id="item" }
                             <input type="radio" name="saleStatus[]" value="{$key}" title="{$item}" lay-verify="checked" lay-group="saleStatus" />
                             {/volist}
                         </div>
@@ -288,7 +288,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">总价范围：</label>
                         <div class="layui-input-block checkbox-primary" style="padding-right: 120px;">
-                            {volist name="model->priceSumTypeList" id="item" }
+                            {volist name="model->getValue('priceSumType')" id="item" }
                             <input type="checkbox" name="priceSumType[]" value="{$key}" title="{$item}" lay-skin="primary" />
                             {/volist}
                         </div>
@@ -297,7 +297,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">现房期房：</label>
                         <div class="layui-input-block checkbox-primary" style="padding-right: 120px;">
-                            {volist name="model->statusList" id="item" }
+                            {volist name="model->getValue('status')" id="item" }
                             <input type="radio" name="status[]" value="{$key}" title="{$item}" />
                             {/volist}
                         </div>

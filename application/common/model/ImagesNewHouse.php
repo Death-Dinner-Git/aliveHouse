@@ -2,13 +2,13 @@
 
 namespace app\common\model;
 
-use app\common\model\Model;
+use app\common\model\Images;
 
 /**
  * This is the model class for table "{{%images_new_house}}".
  *
  */
-class ImagesNewHouse extends Model
+class ImagesNewHouse extends Images
 {
 
     /**

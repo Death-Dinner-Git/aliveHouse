@@ -25,7 +25,7 @@
             <div class="layui-input-block" style="padding-right: 120px;">
                 <select name="type" lay-verify="require" lay-search>
                     <option value="">选择类型</option>
-                    {volist name="model->typeList" id="item"}
+                    {volist name="model->getValue('type')" id="item"}
                     <option value="{$key}" {if condition="$key eq $model['type']"}selected{/if}>{$item}</option>
                     {/volist}
                 </select>

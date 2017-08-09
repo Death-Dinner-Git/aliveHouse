@@ -54,14 +54,12 @@ class Opinion extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    private static $readList = ['1'=>'未读','2'=>'已读'];
-
     /**
      * @return array
      */
     public static function getReadList()
     {
-        return self::$readList;
+        return self::T('read');
     }
 
     /**

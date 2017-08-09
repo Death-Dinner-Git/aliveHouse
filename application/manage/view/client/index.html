@@ -43,8 +43,8 @@
                     <select name="requireType" lay-verify="require" lay-search>
                         <option value="">需求类别</option>
                         <option value="">全部</option>
-                        {volist name="model->requireTypeList" id="item" }
-                        <option value="{$key}">{$item}</option>
+                        {volist name="lang.requireType" id="item" }
+                        <option value="{$key}" {if condition="$key eq $Think.get.requireType"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
@@ -82,8 +82,9 @@
         <!--<th style="width: 20px;"><input type="checkbox" lay-filter="selectAll" lay-group="tableItem" lay-skin="primary" /></th>-->
         <th>序号</th>
         <th>客户名称</th>
-        <th>来源方式</th>
+        <th>权属人</th>
         <th>需求类别</th>
+        <th>客户来源</th>
         <th style="width:50px; text-align: center">操作</th>
     </tr>
     </thead>
@@ -95,8 +96,9 @@
             {$key+(($list->currentPage()-1) * ($list->listRows()))}
         </td>
         <th>{$model.userName}</th>
-        <th>{$model->getTrans('clientFromList',$model.clientFrom)}</th>
-        <th>{$model->getTrans('requireTypeList',$model.requireType)}</th>
+        <th>{$model.createdBy}</th>
+        <th>{$model->getValue('requireType',$model.requireType)}</th>
+        <th>{$model->getValue('clientFrom',$model.clientFrom,'未知')}</th>
         <td style="width: 150px;text-align: center;" class="action">
             <button class="layui-btn layui-btn-mini" lay-filter="update">
                 <i class="layui-icon">&#xe642;</i>编辑

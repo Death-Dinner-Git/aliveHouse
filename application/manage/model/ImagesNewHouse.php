@@ -2,7 +2,7 @@
 
 namespace app\manage\model;
 
-use app\common\model\ImagesNewHouse as BaseImagesNewHouse;
+use app\common\model\Images;
 
 use app\manage\validate\ImagesValidate;
 
@@ -10,7 +10,7 @@ use app\manage\validate\ImagesValidate;
  * This is the model class for table "{{%images_hand_house}}".
  *
  */
-class ImagesNewHouse extends BaseImagesNewHouse
+class ImagesNewHouse extends Images
 {
 
     /**

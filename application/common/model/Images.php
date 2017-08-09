@@ -35,10 +35,8 @@ class Images extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $typeList = ['1'=>'楼盘','2'=>'新房','3'=>'二手房','4'=>'家装'];
-
     public static function getTypeList(){
-        return self::$typeList;
+        return self::T('type');
     }
 
 

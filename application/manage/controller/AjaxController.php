@@ -58,6 +58,28 @@ class AjaxController extends ManageController
     }
 
     /**
+     * @return \think\response\Json
+     */
+    public function getClient(){
+        $ret = [];
+        $where = ['is_delete'=>'1'];
+//        $model = \app\manage\model\Department::load();
+//        if ($name || ($name = $this->getRequest()->request('name'))){
+//            if ($name != ''){
+//                $nameWhere = " `name` like '%".$name."%' ";
+//                $model->where($nameWhere);
+//            }
+//        }
+//        $list = $model->where($where)->limit(20)->select();
+//        if (!empty($list)){
+//            foreach ($list as $item){
+//                $ret[] = ['id'=>$item['id'],'name'=>$item['name']];
+//            }
+//        }
+        return json($ret);
+    }
+
+    /**
      * @description 获取楼盘
      * @param null $name
      * @return \think\response\Json

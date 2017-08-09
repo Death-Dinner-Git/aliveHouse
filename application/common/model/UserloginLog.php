@@ -55,7 +55,7 @@ class UserloginLog extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public $appList = ['1'=>'后台账户','2'=>'前端用户'];
+    public $appList = [];
 
     /**
      * @param $userId

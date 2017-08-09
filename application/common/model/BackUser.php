@@ -131,15 +131,12 @@ class BackUser extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    //所有账号类型
-    private static $departmentList = ['1'=>'董事部门','2'=>'经理部门','3'=>'业务员部门'];
-
     /**
      * @return array
      */
     public static function getDepartmentList()
     {
-        return self::$departmentList;
+        return self::T('department');
     }
 
     /**

@@ -53,11 +53,11 @@ class IdentityValidate extends Validate
             'username'=>['max'=>32,'min'=>1,'regex:/^(?!_)(?!\d)(?!.*?_$)[\w]+$/','unique:home_user,username'],
             'phone',
             'email',
-            'password'=>['max'=>32,'min'=>6,'regex:/(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+)$)^[\w~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+$/'],
+            'password'=>['max'=>32,'min'=>6],
             'rePassword'=>['max'=>32,'min'=>6, 'confirm:password']
         ],
         'reset'  =>  [
-            'password'=>['max'=>32,'min'=>6,'regex:/(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+)$)^[\w~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+$/'],
+            'password'=>['max'=>32,'min'=>6],
             'rePassword'=>['max'=>32,'min'=>6, 'confirm:password']
         ],
         'save'  =>  [],

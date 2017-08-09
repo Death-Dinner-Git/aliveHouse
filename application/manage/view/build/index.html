@@ -24,13 +24,13 @@
                         <option value="">可选择所属城市</option>
                         <option value="0">全部</option>
                         {volist name="cityLists" id="item"}
-                        <option value="{$key}" {if condition="$key eq $param.city"}selected{/if}>{$item}</option>
+                        <option value="{$key}" {if condition="$key eq $Think.get.city"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
 
                 <div class="layui-input-inline">
-                    <input type="text" value="{$param.address}" name="address" placeholder="楼盘地址" class="layui-input">
+                    <input type="text" value="{$Think.get.address}" name="address" placeholder="楼盘地址" class="layui-input">
                 </div>
 
                 <div class="layui-inline">

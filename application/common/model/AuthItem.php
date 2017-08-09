@@ -57,8 +57,6 @@ class AuthItem extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public $typeList = ['1'=>'角色','2'=>'路由'];
-
     /**
      * @inheritdoc
      */

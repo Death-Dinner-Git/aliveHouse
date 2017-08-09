@@ -57,8 +57,6 @@ class City extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    protected static $_levelList = ['1'=>'省级','2'=>'市级'];
-
     /**
      * @inheritdoc
      */
@@ -128,7 +126,7 @@ class City extends Model
      */
     public static function getLevelList()
     {
-        return self::$_levelList;
+        return self::T('level');
     }
 
 

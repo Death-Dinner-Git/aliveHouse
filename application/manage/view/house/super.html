@@ -140,7 +140,7 @@
         <td>{$model.created_at}</td>
         <td>{$model.getCreatedBy.username}</td>
         <td>{$model.contact}</td>
-        <td>{$model->getTrans('statusList',$model.status)}</td>
+        <td>{$model->getValue('status',$model.status)}</td>
         <td style="width: 150px;" class="action">
             <!--<div class="layui-inline checkbox-left checkbox-mini">-->
                 <!--<input type="checkbox" title="推荐" lay-filter="isHot" lay-skin="default"/>-->

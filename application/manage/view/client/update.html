@@ -69,7 +69,7 @@
                 <div class="layui-input-inline">
                     <select name="requireType" lay-verify="require" lay-search>
                         <option value="">需求类别</option>
-                        {volist name="model->requireTypeList" id="item" }
+                        {volist name="model->getValue('requireType')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -89,7 +89,7 @@
                 <div class="layui-input-inline">
                     <select name="province_id" lay-search lay-filter="province">
                         <option value="">选择省份</option>
-                        {volist name="model->clientFromList" id="item"}
+                        {volist name="city" id="item"}
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -152,7 +152,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="clientFrom" lay-verify="" lay-search>
                         <option value="">客户来源</option>
-                        {volist name="model->clientFromList" id="item" }
+                        {volist name="model->getValue('clientFrom')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -160,7 +160,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="feature" lay-verify="" lay-search>
                         <option value="">客户等级</option>
-                        {volist name="model->clientLevelList" id="item" }
+                        {volist name="model->getValue('clientFrom')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -168,7 +168,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="feature" lay-verify="" lay-search>
                         <option value="">客户需求</option>
-                        {volist name="model->buyPurposeList" id="item" }
+                        {volist name="model->getValue('buyPurpose')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -176,7 +176,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="buyCity" lay-verify="" lay-search>
                         <option value="">购买城市</option>
-                        {volist name="model->askTypeList" id="item" }
+                        {volist name="city" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -184,7 +184,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="askType" lay-verify="" lay-search>
                         <option value="">接洽方式</option>
-                        {volist name="model->askTypeList" id="item" }
+                        {volist name="model->getValue('askType')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -192,7 +192,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="serviceStatus" lay-verify="" lay-search>
                         <option value="">服务状态</option>
-                        {volist name="model->serviceStatusList" id="item" }
+                        {volist name="model->getValue('serviceStatus')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -200,7 +200,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="belongUserId" lay-verify="" lay-search>
                         <option value="">权属人</option>
-                        {volist name="model->askTypeList" id="item" }
+                        {volist name="model->getValue('serviceStatus')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -243,7 +243,6 @@
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label"></label>
-                <input type="hidden" value="{model.id}" name="id" class="layui-input">
                 <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>

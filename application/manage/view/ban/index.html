@@ -41,9 +41,9 @@
                 <label class="layui-form-label">状态:</label>
                 <div class="layui-input-inline">
                     <select name="ban" lay-search >
+                        <option value="">状态</option>
                         <option value="">全部</option>
-                        <option value="">全部</option>
-                        {volist name="model->banList" id="item"}
+                        {volist name="model->getValue('ban')" id="item"}
                         <option value="{$key}" {if condition="$key eq $Think.get.ban"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
@@ -90,7 +90,7 @@
             {$key+(($list->currentPage()-1) * ($list->listRows()))}
         </td>
         <td>{$model.name}</td>
-        <td>{$model->getTrans('typeList',$model['type'])}</td>
+        <td>{$model->getValue('type',$model['type'])}</td>
         <td>{$model.description}</td>
         <td style="width: 200px;text-align: center;" class="action">
             <label class="layui-btn layui-btn-mini" lay-filter="assign">

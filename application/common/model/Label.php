@@ -45,15 +45,12 @@ class Label extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    //所有标签类型
-    private static $typeList = ['1'=>'预定','2'=>'客户','3'=>'房东','4'=>'新房','5'=>'二手房','6'=>'楼盘','7'=>'客服'];
-
     /**
      * @return array
      */
     public static function getTypeList()
     {
-        return self::$typeList;
+        return self::T('type');
     }
 
     /**

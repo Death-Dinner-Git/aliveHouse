@@ -21,8 +21,6 @@ class BaseController extends Controller
      */
     protected function _initialize()
     {
-        $_SESSION['identity'] = session('identity');
-        $_SESSION['logined_at'] = session('logined_at');
         $is_ajax = false;
         if ($this->getRequest()->isAjax()){
             $is_ajax = true;
@@ -30,13 +28,6 @@ class BaseController extends Controller
         defined('IS_AJAX') or define('IS_AJAX',$is_ajax);
         config('default_module',request()->module());
         $this->assign('URL',$this->getUrl());
-//        $this->assign('_csrf_param','_csrf_'.request()->module());
-//        $this->assign('_csrf_token',md5(time()));
-        if ($_SESSION['logined_at'] != strtotime($_SESSION['identity']['logined_at'])){
-            $_SESSION['logined_at'] = strtotime($_SESSION['identity']['logined_at']);
-            session('logined_at',$_SESSION['logined_at']);
-            $_SESSION['_auth_token_'] = md5($_SESSION['identity']['id'].$_SESSION['identity']['logined_at']);
-        }
     }
 
     protected function isUser(){
@@ -88,6 +79,10 @@ class BaseController extends Controller
     protected function init(){
         $module = config('identity.'.$this->getRequest()->module());
         if ($module){
+            // 前端SESSION登录默认标识
+            if (isset($module['unique'])){
+                config('identity.unique',$module['unique']);
+            }
             // Identity 位置
             if (isset($module['default_user_model'])){
                 config('identity.default_user_model',$module['default_user_model']);

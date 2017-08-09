@@ -2,7 +2,8 @@
 
 // 用户登录扩展配置定义文件
 return [
-
+    // 当前SESSION登录默认标识
+    'unique'                       => 'identity',
     // Identity 位置
     'default_user_model'            => '\app\manage\model\Identity',
     // 登录路由
@@ -32,6 +33,8 @@ return [
 
     // 前端的配置，如果检测到是前端，会读取前端值覆盖默认值
     'home'                            =>     [
+        // 前端SESSION登录默认标识
+        'unique'                       => 'user',
         // Identity 位置
         'default_user_model'            => '\app\home\model\Identity',
         // 登录路由

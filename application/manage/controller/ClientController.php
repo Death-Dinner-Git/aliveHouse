@@ -3,7 +3,9 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
+use app\manage\model\City;
 use app\manage\model\Client;
+use app\manage\model\BackUser;
 
 use app\manage\model\ClientServer;
 use app\manage\model\TakeOrder;
@@ -88,7 +90,7 @@ class ClientController extends ManageController
      */
     public function indexAction()
     {
-        $where = ['is_delete'=>'1'];
+        $where = ['t.is_delete'=>'1'];
         $each = 12;
         /**
          * @var $model \app\manage\model\Client
@@ -97,28 +99,31 @@ class ClientController extends ManageController
         $request = $this->getRequest();
         $key = trim($request->request('keyword'));
         if ($key != ''){
-            $where[] = ['exp',"`name` like '%".$key."%' "];
+            $where[] = ['exp',"t.userName like '%".$key."%' "];
         }
-        $address = trim($request->request('address'));
-        if ($address != ''){
-            $where[] = ['exp',"`address` like '%".$address."%' "];
+        $createdBy = trim($request->request('createdBy'));
+        if ($createdBy != ''){
+            $where[] = ['exp',"b.createdBy like '%".$createdBy."%' "];
         }
-        $lists = Client::getLevelList();
-        $city = trim($request->request('city'));
-        if ($city != ''){
-            if (in_array($city,array_keys($lists))){
-                $where =  array_merge($where, ['city_id'=>$city]);
+        $lists = Client::T('requireType');
+        $requireType = trim($request->request('requireType'));
+        if ($requireType != ''){
+            if (in_array($requireType,array_keys($lists))){
+                $where =  array_merge($where, ['requireType'=>$requireType]);
             }
         }
 
-        $list = $model->where($where)->order('id DESC')->paginate($each);
+        $list = $model->alias('t')
+            ->join(BackUser::tableName().' b','t.createdBy = b.id','left')
+            ->where($where)
+            ->field('t.*,b.id,b.username as createdBy')
+            ->order('t.id DESC')->paginate($each);
 
         $this->assign('meta_title', "客户清单");
-        $this->assign('model', $model);
+        $this->assign('lang', Client::Lang());
         $this->assign('list', $list);
         return view('client/index');
     }
-
 
     /**
      * 显示创建资源表单页.| 保存新建的资源
@@ -128,6 +133,7 @@ class ClientController extends ManageController
     public function createAction()
     {
         $model = new Client();
+        $city = City::getCityList();
         if ($this->getRequest()->isPost()){
             $data = $model->filter($_POST);
             $data['updated_at'] = date('Y-m-d H:i:s');
@@ -149,7 +155,8 @@ class ClientController extends ManageController
         return view('client/create',[
             'meta_title'=>'添加客户',
             'meta_util'=>'false',
-            'model'=>$model
+            'model'=>$model,
+            'city'=>$city,
         ]);
     }
 

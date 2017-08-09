@@ -57,12 +57,12 @@ class Menu extends Model
     {
         return [
             ['name', 'require', '名称 不能为空'],
-            ['name', '0,128', '名称 长度为0-128位',  'length', ],
-            ['route', '0,256', '路由地址 长度为0-256位',  'length', ],
-            ['parent', 'number', '父级需要是 数值', ],
-            ['order', 'number', '排序是 数值', ],
-            ['app', self::TYPE_SYS.','.self::TYPE_APP, '类型 只能是'.self::TYPE_SYS.'或'.self::TYPE_APP,  'between', ],
-            ['type', self::TYPE_SYS.','.self::TYPE_APP, '类型 只能是'.self::TYPE_SYS.'或'.self::TYPE_APP,  'between', ],
+            ['name', '0,128', '名称 长度为0-128位', 'length',],
+            ['route', '0,256', '路由地址 长度为0-256位', 'length',],
+            ['parent', 'number', '父级需要是 数值',],
+            ['order', 'number', '排序是 数值',],
+            ['app', self::TYPE_SYS . ',' . self::TYPE_APP, '类型 只能是' . self::TYPE_SYS . '或' . self::TYPE_APP, 'between',],
+            ['type', self::TYPE_SYS . ',' . self::TYPE_APP, '类型 只能是' . self::TYPE_SYS . '或' . self::TYPE_APP, 'between',],
         ];
     }
 
@@ -85,7 +85,8 @@ class Menu extends Model
     /**
      *
      */
-    public static function getField(){
+    public static function getField()
+    {
         $model = new Menu();
         return $model->field;
     }
@@ -93,7 +94,8 @@ class Menu extends Model
     /**
      * @return Object|\think\Validate
      */
-    public static function getValidate(){
+    public static function getValidate()
+    {
         return MenuValidate::load();
     }
 
@@ -102,11 +104,12 @@ class Menu extends Model
      * @param string $scene
      * @return bool
      */
-    public static function check($data,$scene = ''){
+    public static function check($data, $scene = '')
+    {
         $validate = self::getValidate();
 
         //设定场景
-        if (is_string($scene) && $scene !== ''){
+        if (is_string($scene) && $scene !== '') {
             $validate->scene($scene);
         }
 

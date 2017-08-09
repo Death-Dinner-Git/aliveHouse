@@ -141,107 +141,6 @@ class Client extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    // 类型
-    public $typeList = ['1' => '过客', '2' => '客户'];
-    // sex
-    public $sexList = ['1' => '女', '2' => '男'];
-    // 客户来源
-    public $clientFromList = [
-        '1' => '好房置业',
-        '2' => '好房活动',
-        '3' => '朋友介绍',
-        '4' => '看房游',
-        '5' => '自主开发',
-        '6' => '搜房发帖',
-        '7' => '安居客发帖',
-        '8' => '站外发帖',
-        '9' => '好房发帖',
-        '10' => '搜房发帖',
-        '11' => '二手房',
-        '12' => '售楼处',
-        '13' => '售楼处来电',
-        '14' => '好房400',
-        '15' => '客户转介绍',
-        '16' => '户外宣传',
-        '17' => '好房商桥',
-        '18' => '好房互动',
-        '19' => '房展会',
-        '20' => '短信促销',
-        '21' => '一号通来电',
-        '22' => '甲方客户',
-        '23' => '其他'
-    ];
-
-    // 需求类别
-    public $requireTypeList = [
-        '1' => '新房',
-        '2' => '二手房',
-        '3' => '综合投资',
-    ];
-    // 接洽方式
-    public $askTypeList = [
-        '1' => '网络',
-        '2' => '来电',
-        '3' => '去电',
-        '4' => '来访',
-        '5' => '短信',
-        '6' => '其他',
-    ];
-    // 置业目的
-    public $buyPurposeList = [
-        '1' => '居住',
-        '2' => '养老',
-        '3' => '休闲度假 ',
-        '4' => '投资',
-        '0' => '其他',
-    ];
-    // 客户等级
-    public $clientLevelList = [
-        '1' => '暂未确定',
-        '2' => '近期看房',
-        '3' => '重要客户',
-        '4' => '放弃客户',
-        '5' => '看房客户',
-        '6' => '成交客户',
-        '7' => '退房客户',
-        '11' => 'A级',
-        '12' => 'B级',
-        '13' => 'C级',
-        '14' => 'D级'
-    ];
-    // 服务状态
-    public $serviceStatusList = [
-        '1' => '暂未确定',
-        '2' => '近期看房',
-        '3' => '重要客户',
-        '4' => '放弃客户',
-        '5' => '看房客户',
-        '6' => '成交客户',
-        '7' => '退房客户',
-        '11' => 'A级',
-        '12' => 'B级',
-        '13' => 'C级',
-        '14' => 'D级'
-    ];
-    public static $serverList = ['1' => '已正式客户', '2' => '待开发客户'];
-    public static $typeLists = ['1' => '过客', '2' => '客户'];
-    public static $levelList = ['1' => '贵宾', '2' => '普通'];
-
-    public static function getServiceList()
-    {
-        return self::$serverList;
-    }
-
-    public static function getTypeList()
-    {
-        return self::$typeLists;
-    }
-
-    public static function getLevelList()
-    {
-        return self::$levelList;
-    }
-
     /**
      * @inheritdoc
      */
@@ -262,16 +161,6 @@ class Client extends Model
                 ['address', 'max:32',],
             ],
             'msg' => [],
-            'sds' => [
-                [['is_delete', 'type', 'level', 'sex', 'province_id', 'city_id', 'county_id', 'clientFrom', 'requireType', 'inHainan', 'askType', 'askDate', 'visitNum', 'category', 'serviceStatus', 'belongUserId', 'firstUserId', 'arrangeId', 'changeClient', 'belongPid', 'updatedBy', 'createdBy', 'agentNextId', 'isBargain', 'fitmentId'], 'integer'],
-                [['feature', 'notes'], 'string'],
-                [['lastVisitDate', 'nextVisitDate', 'serviceAt', 'updatedAt', 'createdAt', 'visitHouseAt', 'agentAt', 'showAt', 'created_at', 'updated_at'], 'safe'],
-                [['cardId', 'phone', 'tel', 'address', 'agentTel', 'otherName', 'qq', 'birth', 'job'], 'string', 'max' => 32],
-                [['userName', 'email', 'agentName', 'otherPhone', 'belongUser', 'firstUser', 'arrangeUser'], 'string', 'max' => 64],
-                [['avatar', 'delReason', 'seeItem'], 'string', 'max' => 255],
-                [['buyCity'], 'string', 'max' => 100],
-                [['clientPoint'], 'string', 'max' => 1000],
-            ]
         ];
     }
 
@@ -362,5 +251,13 @@ class Client extends Model
     public function getWalks()
     {
         return $this->hasMany(Walk::tableNameSuffix(), ['client_id' => 'id']);
+    }
+
+    /**
+     * @return \think\model\relation\HasMany
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasMany(BackUser::tableNameSuffix(),'id','createdBy');
     }
 }

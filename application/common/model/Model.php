@@ -5,6 +5,7 @@ use think\Db;
 use think\Loader;
 use think\db\Query;
 use think\Config;
+use app\common\components\LangHelper;
 
 /**
  * @property array $rules
@@ -55,23 +56,6 @@ class Model extends \think\Model
 
     public function getTableInfoAll(){
         $sql = "select * from information_schema.columns where table_name='wf_soap_detail' ";
-    }
-
-    public function getTrans($attr = null,$key = null){
-        $ret = '';
-        if (!$attr){
-            return $ret;
-        }
-        if (property_exists($this,$attr)){
-            $data = $this->$attr;
-            if (is_numeric($data)){
-                $ret = $data;
-            }
-            if (isset($data[$key])){
-                $ret = $data[$key];
-            }
-        }
-        return $ret;
     }
 
     /**
@@ -232,5 +216,89 @@ class Model extends \think\Model
             $table = str_replace($prefix,'',$table);
         }
         return $table;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTableSuffix()
+    {
+        $table = $this->getTable();
+        if ($prefix = Config('database.prefix')){
+            $table = str_replace($prefix,'',$table);
+        }
+        return $table;
+    }
+
+    /**
+     * @description 获取 模型 数据包助手
+     * @return \app\common\components\LangHelper
+     */
+    public static function getLangHelper(){
+        return LangHelper::getInstance();
+    }
+
+    /**
+     * @description 获取 当前 模型 的数据包 与实例 getLang 方法同样效果，一个静态方法，一个实例方法
+     * @return array
+     */
+    public static function Lang(){
+        return self::getLangHelper()->get(self::tableNameSuffix());
+    }
+
+    /**
+     * @description 获取 当前 模型 的数据包 与静态 Lang 方法同样效果，一个静态方法，一个实例方法
+     * @return array
+     */
+    public function getLang(){
+        return LangHelper::getInstance()->get($this->getTableSuffix());
+    }
+
+    /**
+     *
+     * @param null $field
+     * @param null $key
+     * @param null $default
+     * @return array|string
+     */
+    public static function T($field=null,$key=null,$default=null){
+        $ret = '';
+        $key = (string)($key);
+        if (is_string($field) && $field != '' && is_string($key) && $key != '' ){
+            $ret = LangHelper::getInstance()->getValue(self::tableNameSuffix(),$field,$key);
+            if (empty($ret)){
+                $ret = (string)$default;
+            }
+        }else if (is_string($field) && $field != ''){
+            $ret = LangHelper::getInstance()->getField(self::tableNameSuffix(),$field);
+            if (empty($ret)){
+                $ret = (array)$default;
+            }
+        }
+        return $ret;
+    }
+
+    /**
+     * @description 获取当前模型数据包值 与 静态 T 方法同样效果，一个静态方法，一个实例方法
+     * @param null $field
+     * @param null $key
+     * @param null $default
+     * @return array|string
+     */
+    public function getValue($field=null,$key=null,$default=null){
+        $ret = '';
+        $key = (string)($key);
+        if (is_string($field) && $field != '' && is_string($key) && $key != '' ){
+            $ret = LangHelper::getInstance()->getValue($this->getTableSuffix(),$field,$key);
+            if (empty($ret)){
+                $ret = (string)$default;
+            }
+        }else if (is_string($field) && $field != ''){
+            $ret = LangHelper::getInstance()->getField($this->getTableSuffix(),$field);
+            if (empty($ret)){
+                $ret = (array)$default;
+            }
+        }
+        return $ret;
     }
 }

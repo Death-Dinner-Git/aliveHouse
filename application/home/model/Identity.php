@@ -170,7 +170,7 @@ class Identity extends HomeUser
                 ['head_url','max:64',],
                 ['password','max:255',],
                 ['token','max:255',],
-                ['md5','max:32',],
+                ['md5','max:64',],
                 ['password_reset_token','max:255',],
                 ['password_reset_code','max:255',],
                 ['reg_type','max:15',],
@@ -234,19 +234,19 @@ class Identity extends HomeUser
             $model = new self();
             $db= $model->save($data);  //这里的save()执行的是添加
             if ($db){
-                $padLength = 4;
-                if($model->id<9999){
-                    $padLength = 4;
+                $padLength = 5;
+                if($model->id<99999){
+                    $padLength = 5;
                 }else if($model->id<999999){
-                    $padLength = 6;
+                    $padLength = 7;
                 }else if($model->id<99999999){
-                    $padLength = 8;
+                    $padLength = 9;
                 }else if($model->id<99999999){
-                    $padLength = 10;
+                    $padLength = 11;
                 }else if($model->id<9999999999){
-                    $padLength = 12;
+                    $padLength = 13;
                 }
-                $code = '80'.str_pad($model->id,$padLength,'0',STR_PAD_LEFT);
+                $code = '1'.str_pad($model->id,$padLength,'0',STR_PAD_LEFT);
                 $model::update(['code'=>$code],['id'=>$model->id]);
                 $res = $model;
             }

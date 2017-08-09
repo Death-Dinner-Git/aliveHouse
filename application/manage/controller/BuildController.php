@@ -17,39 +17,41 @@ class BuildController extends ManageController
 
     /**
      * @description 显示资源列表
-     * @param string $name
-     * @param string $city
-     * @param string $address
      * @return \think\Response
      */
-    public function indexAction($name = null, $city = null,$address = null)
+    public function indexAction()
     {
-        $where = ['is_delete'=>'1'];
+        $where = ['t.is_delete'=>'1'];
         $each = 12;
-        $param = ['name'=>'','city'=>'','address'=>''];
+        /**
+         * @var $model \app\manage\model\BuildingBase
+         */
         $model = BuildingBase::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\'';
-            $model->where($nameWhere);
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $where[] = ['exp',"t.title like '%".$key."%' "];
         }
-        if ($address && $address != ''){
-            $param['address'] = trim($address);
-            $nameWhere = ' `address` like '.' \'%'.$address.'%\'';
-            $model->where($nameWhere);
+        $address = trim($request->request('address'));
+        if ($address != ''){
+            $where[] = ['exp',"t.address like '%".$address."%' "];
         }
         $cityLists = City::getCityList();
-        if ($city && $city != ''){
-            $param['city'] = trim($city);
+        $city = trim($request->request('city'));
+        if ($city != ''){
             if (in_array($city,array_keys($cityLists))){
                 $where =  array_merge($where, ['city_id'=>$city]);
             }
         }
 
-        $list = $model->where($where)->order('id DESC')->paginate($each);
+        $list = $model->alias('t')
+            ->join(BuildingDetail::tableName().' b','t.id = b.building_base_id','left')
+            ->where($where)
+            ->field('t.*,b.building_base_id')
+            ->order('t.id DESC')->paginate($each);
 
         $this->assign('meta_title', "楼盘清单");
-        $this->assign('param', $param);
+        $this->assign('lang', BuildingBase::Lang());
         $this->assign('cityLists', $cityLists);
         $this->assign('list', $list);
         return view('build/index');
@@ -164,7 +166,7 @@ class BuildController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $lists = City::getCityList();
+        $cityLists = City::getCityList();
         $model = BuildingBase::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             $this->error('不存在此楼盘', 'create','',1);
@@ -188,7 +190,7 @@ class BuildController extends ManageController
                 }
             }
         }
-        return view('build/update',['meta_title'=>'更新楼盘','model'=>$model,'lists'=>$lists,]);
+        return view('build/update',['meta_title'=>'更新楼盘','model'=>$model,'cityLists'=>$cityLists,]);
     }
 
     /**

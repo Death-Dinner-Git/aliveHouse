@@ -59,25 +59,20 @@ class Notice extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    //所有账号类型
-    private static $passList = ['1'=>'待审核','2'=>'已通过','3'=>'未通过','4'=>'保存','5'=>'已推送'];
-
     /**
      * @return array
      */
     public static function getPassList()
     {
-        return self::$passList;
+        return self::T('pass');
     }
-
-    private static $readList = ['1'=>'未读','2'=>'已读'];
 
     /**
      * @return array
      */
     public static function getReadList()
     {
-        return self::$readList;
+        return self::T('read');
     }
 
     /**

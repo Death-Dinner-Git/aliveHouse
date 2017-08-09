@@ -94,7 +94,7 @@
             {$key+(($list->currentPage()-1) * ($list->listRows()))}
         </td>
         <th>{$model.name}</th>
-        <th>{$model->getTrans('levelList',$model.level)}</th>
+        <th>{$model->getValue('level',$model.level)}</th>
         <th>{$model.getParent.name}</th>
         <td style="width: 150px;" class="action">
             <label class="layui-btn layui-btn-mini" lay-filter="update">编辑</label>
