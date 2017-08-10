@@ -8,7 +8,7 @@ use app\manage\validate\BuildingContentValidate;
 use app\manage\model\City;
 use app\manage\model\BuildingDetail;
 use app\manage\model\HouseBetter;
-use app\manage\model\NewHouse;
+use app\manage\model\House;
 
 /**
  * This is the model class for table "{{%building_content}}".

@@ -66,6 +66,7 @@ class HomeUser extends Model
         'password',
         'nickname',
         'real_name',
+        'weChat',
         'head_url',
         'sex',
         'signature',

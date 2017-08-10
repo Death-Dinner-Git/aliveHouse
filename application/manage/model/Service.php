@@ -2,40 +2,35 @@
 
 namespace app\manage\model;
 
-use app\common\model\City as BaseCity;
-use app\manage\validate\CityValidate;
+use app\common\model\Service as BaseCustomerService;
+use app\manage\validate\ServiceValidate;
 
-use app\common\model\Region;
-use app\manage\model\BuildingBase;
-use app\manage\model\HandHouse;
+use app\manage\model\BackUser;
 
 /**
- * This is the model class for table "{{%city}}".
+ * This is the model class for table "{{%customer_service}}".
  *
  * @property integer $id
  * @property integer $is_delete
- * @property double $region_id
- * @property integer $parent
- * @property string $name
  * @property integer $level
+ * @property integer $back_user_id
+ * @property integer $duration
+ * @property string $start_at
+ * @property string $end_at
  * @property integer $order
- * @property string $code
- * @property string $name_en
- * @property string $short_name_en
- * @property string $data
+ * @property string $created_at
+ * @property string $updated_at
  *
- * @property BuildingBase[] $buildingBases
- * @property Region $region
- * @property HandHouse[] $secondHandHouses
+ * @property BackUser $backUser
  */
-class City extends BaseCity
+class Service extends BaseCustomerService
 {
 
     /**
      * @return Object|\think\Validate
      */
     public static function getValidate(){
-        return CityValidate::load();
+        return ServiceValidate::load();
     }
 
     /**

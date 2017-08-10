@@ -8,7 +8,7 @@ use app\manage\model\Client;
 use app\manage\model\BackUser;
 
 use app\manage\model\ClientServer;
-use app\manage\model\TakeOrder;
+use app\manage\model\DealOrder;
 use app\manage\model\Walk;
 
 class ClientController extends ManageController
@@ -182,9 +182,6 @@ class ClientController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $lists = Client::getLevelList();
-        $typeLists = Client::getTypeList();
-        $serverLists = Client::getServiceList();
         $model = Client::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
@@ -210,9 +207,7 @@ class ClientController extends ManageController
         return view('client/update',[
             'meta_title'=>'添加客户',
             'model'=>$model,
-            'lists'=>$lists,
-            'typeLists'=>$typeLists,
-            'serverLists'=>$serverLists
+            'lang'=>Client::Lang(),
         ]);
 
     }

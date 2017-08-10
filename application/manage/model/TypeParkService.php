@@ -24,6 +24,16 @@ use app\manage\validate\TypeParkValidate;
 class TypeParkService extends TypePark
 {
 
+    public $type = '7';
+
+    /**
+     * 数据库表名
+     * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
+     * @author Sir Fu
+     */
+    protected $table = '{{%type_park_service}}';
+
+
     /**
      * @return Object|\think\Validate
      */

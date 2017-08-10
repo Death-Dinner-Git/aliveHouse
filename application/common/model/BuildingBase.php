@@ -8,7 +8,7 @@ use app\common\model\BuildingDetail;
 use app\common\model\BuildingContent;
 use app\common\model\ImagesBuilding;
 use app\common\model\HouseBetter;
-use app\common\model\NewHouse;
+use app\common\model\House;
 use app\common\model\BackUser;
 
 /**
@@ -29,7 +29,7 @@ use app\common\model\BackUser;
  * @property BuildingContent $BuildingContent
  * @property images[] $images
  * @property HouseBetter[] $houseBetters
- * @property NewHouse[] $newHouses
+ * @property House[] $newHouses
  * @property BackUser $createdBy
  */
 class BuildingBase extends Model
@@ -148,6 +148,6 @@ class BuildingBase extends Model
      */
     public function getNewHouses()
     {
-        return $this->hasMany(ucfirst(NewHouse::tableNameSuffix()), 'building_base_id', 'id');
+        return $this->hasMany(ucfirst(House::tableNameSuffix()), 'building_base_id', 'id');
     }
 }

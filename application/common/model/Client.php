@@ -4,7 +4,7 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\ClientServer;
-use app\common\model\TakeOrder;
+use app\common\model\DealOrder;
 use app\common\model\Walk;
 
 /**
@@ -67,7 +67,7 @@ use app\common\model\Walk;
  * @property string $updated_at
  *
  * @property ClientServer[] $clientServers
- * @property TakeOrder[] $takeOrders
+ * @property DealOrder[] $takeOrders
  * @property Walk[] $walks
  */
 class Client extends Model
@@ -242,7 +242,7 @@ class Client extends Model
      */
     public function getTakeOrders()
     {
-        return $this->hasMany(TakeOrder::tableNameSuffix(), ['client_id' => 'id']);
+        return $this->hasMany(DealOrder::tableNameSuffix(), ['client_id' => 'id']);
     }
 
     /**

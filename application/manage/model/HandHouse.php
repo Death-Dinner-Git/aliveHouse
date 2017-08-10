@@ -1,43 +1,38 @@
 <?php
 
-namespace app\common\model;
+namespace app\manage\model;
 
-use app\common\model\Type;
-use app\common\model\TypePark;
-use app\manage\validate\TypeParkValidate;
+use app\common\model\HandHouse as BaseSecondHandHouse;
+use app\manage\validate\HandHouseValidate;
+use app\manage\model\HouseHost;
+use app\manage\model\City;
 
 /**
- * This is the model class for table "{{%label_park}}".
+ * This is the model class for table "{{%second_hand_house}}".
  *
  * @property integer $id
  * @property integer $is_delete
- * @property integer $label_id
- * @property integer $target_id
- * @property integer $group
- * @property string $name
+ * @property integer $house_host_id
+ * @property integer $type
+ * @property integer $city_id
+ * @property string $address
+ * @property string $room
  * @property string $description
+ * @property string $url
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Label $label
+ * @property HouseHost $houseHost
+ * @property City $city
  */
-class TypeParkHandHouse extends TypePark
+class HandHouse extends BaseSecondHandHouse
 {
-
-    public $type = '5';
-
-    /**
-     * 数据库表名
-     * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
-     * @author Sir Fu
-     */
-    protected $table = '{{%type_park_hand_house}}';
 
     /**
      * @return Object|\think\Validate
      */
     public static function getValidate(){
-        return TypeParkValidate::load();
+        return HandHouseValidate::load();
     }
 
     /**
@@ -56,4 +51,3 @@ class TypeParkHandHouse extends TypePark
         return $validate->check($data);
     }
 }
-

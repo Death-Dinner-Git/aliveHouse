@@ -4,7 +4,7 @@ namespace app\manage\controller;
 
 use app\common\controller\ManageController;
 use app\manage\model\Contact;
-use app\manage\model\CustomerService;
+use app\manage\model\Service;
 
 class ContactController extends ManageController
 {
@@ -106,8 +106,8 @@ class ContactController extends ManageController
     public function createAction()
     {
         $model = new Contact();
-        $lists = CustomerService::getService();
-        $hotLists = CustomerService::getService(true);
+        $lists = Service::getService();
+        $hotLists = Service::getService(true);
         if ($this->getRequest()->isPost()){
             $data = (isset($_POST['Building']) ? $_POST['Building'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
@@ -180,8 +180,8 @@ class ContactController extends ManageController
     {
         return '';
         $model = new Contact();
-        $lists = CustomerService::getService();
-        $hotLists = CustomerService::getService(true);
+        $lists = Service::getService();
+        $hotLists = Service::getService(true);
         if ($this->getRequest()->isPost()){
             $data = (isset($_POST['Building']) ? $_POST['Building'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');

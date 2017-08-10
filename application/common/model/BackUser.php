@@ -10,7 +10,7 @@ use app\common\model\Department;
 use app\common\model\BackUserLog;
 use app\common\model\Contact;
 use app\common\model\ContactRead;
-use app\common\model\CustomerService;
+use app\common\model\Service;
 use app\common\model\DeleteLog;
 use app\common\model\Download;
 use app\common\model\ClientServer;
@@ -21,7 +21,7 @@ use app\common\model\NoticeRead;
 use app\common\model\Opinion;
 use app\common\model\OpinionRead;
 use app\common\model\Slider;
-use app\common\model\TakeOrder;
+use app\common\model\DealOrder;
 use app\common\model\Upload;
 
 /**
@@ -66,7 +66,7 @@ use app\common\model\Upload;
  * @property BackUserLog[] $backUserLogs
  * @property Contact[] $contacts
  * @property ContactRead[] $contactReads
- * @property CustomerService[] $customerServices
+ * @property Service[] $customerServices
  * @property DeleteLog[] $deleteLogs
  * @property Download[] $downloads
  * @property ClientServer[] $ClientServers
@@ -77,7 +77,7 @@ use app\common\model\Upload;
  * @property Opinion[] $opinions
  * @property OpinionRead[] $opinionReads
  * @property Slider[] $sliders
- * @property TakeOrder[] $takeOrders
+ * @property DealOrder[] $takeOrders
  * @property Upload[] $uploads
  */
 class BackUser extends Model
@@ -303,7 +303,7 @@ class BackUser extends Model
      */
     public function getCustomerServices()
     {
-        return $this->hasMany(ucfirst(CustomerService::tableNameSuffix()), 'id', 'back_user_id');
+        return $this->hasMany(ucfirst(Service::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**
@@ -391,7 +391,7 @@ class BackUser extends Model
      */
     public function getTakeOrders()
     {
-        return $this->hasMany(ucfirst(TakeOrder::tableNameSuffix()), 'id', 'back_user_id');
+        return $this->hasMany(ucfirst(DealOrder::tableNameSuffix()), 'id', 'back_user_id');
     }
 
     /**

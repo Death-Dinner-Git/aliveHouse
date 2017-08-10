@@ -104,18 +104,13 @@ class Config extends Model
 
 
     //所有应用类型
-    private static $appList = ['0'=>'后台','1'=>'前台'];
-
     public static function getAppList(){
-        return self::$appList;
+        return self::T('app');
     }
 
-
     //所有标签类型
-    private static $typeList = ['array'=>'数组','num'=>'数值','picture'=>'图片','select'=>'选择','text'=>'短文本','textarea'=>'长文本','toggle'=>'开关'];
-
     public static function getTypeList(){
-        return self::$typeList;
+        return self::T('type');
     }
 
 }

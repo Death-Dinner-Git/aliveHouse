@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\TakeOrder;
+use app\manage\model\DealOrder;
 
 
 class OrderController extends ManageController
@@ -41,12 +41,12 @@ class OrderController extends ManageController
         $where = ['is_delete'=>'1'];
         $each = 12;
         $param = ['key'=>'','type'=>'','status'=>''];
-        $query = TakeOrder::load();
+        $query = DealOrder::load();
         if ($key && $key != ''){
             $param['key'] = trim($key);
             $where[] = ['exp',"`username` like '%".$key."%' or `contact` like '%".$key."%' or `email` like '%".$key."%' or `address` like '%".$key."%'"];
         }
-        $lists = TakeOrder::getHouseType();
+        $lists = DealOrder::getHouseType();
         if (isset($typeList[0])){
             unset($typeList[0]);
         }
@@ -56,7 +56,7 @@ class OrderController extends ManageController
                 $where = array_merge($where,['house_type'=>$type]);
             }
         }
-        $statuses = TakeOrder::getDealStatus();
+        $statuses = DealOrder::getDealStatus();
         if (isset($typeList[0])){
             unset($typeList[0]);
         }
@@ -89,17 +89,17 @@ class OrderController extends ManageController
      */
     public function createAction()
     {
-        $model = new TakeOrder();
-        $lists = TakeOrder::getHouseType();
-        $statuses = TakeOrder::getDealStatus();
-        $clients = TakeOrder::getDealStatus();
-        $goods = TakeOrder::getDealStatus();
+        $model = new DealOrder();
+        $lists = DealOrder::getHouseType();
+        $statuses = DealOrder::getDealStatus();
+        $clients = DealOrder::getDealStatus();
+        $goods = DealOrder::getDealStatus();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['TakeOrder']) ? $_POST['TakeOrder'] : []);
+            $data = (isset($_POST['DealOrder']) ? $_POST['DealOrder'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = TakeOrder::getValidate();
+                $validate = DealOrder::getValidate();
                 $validate->scene('create');
                 if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);

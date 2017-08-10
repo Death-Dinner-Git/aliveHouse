@@ -14,6 +14,7 @@ namespace app\manage\controller;
 
 
 use app\common\controller\ManageController;
+use app\common\model\Model;
 use app\manage\model\HomeUser;
 use app\manage\model\HomeUserLog;
 
@@ -28,42 +29,33 @@ class HomeUserController extends ManageController
     /**
      * @description 足迹
      * @param integer $id
-     * @param integer $pageNumber
-     * @param string $key
-     * @param string $type
      * @return string
      */
-    public function logAction($id = 0, $pageNumber = 1 ,$key = null, $type = null)
+    public function logAction($id = 0)
     {
         $where = ['home_user_id'=>$id];
-        $param = ['key'=>'','type'=>''];
         $each = 12;
-
-        if ($key && ($key = trim($key)) != ''){
-            $param['key'] = $key;
+        /**
+         * @var $model \app\manage\model\Client
+         */
+        $model = HomeUserLog::load();
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
             $where[] =  ["exp"," `route` like '%".$key."%' or `url` like '%".$key."%' or `user_agent` like '%".$key."%' or `ip` like '%".$key."%' "];
         }
-
-        $lists = HomeUserLog::getTypeList();
-        if ($type && ($type = trim($type)) != ''){
-            $param['type'] = $type;
-            if (in_array($type,array_keys($lists))){
+        $levelLists = HomeUserLog::T('type');
+        $type = trim($request->request('type'));
+        if ($levelLists != ''){
+            if (in_array($type,array_keys($levelLists))){
                 $where =  array_merge($where,['user_agent_type'=>$type]);
             }
         }
-
-        $query = HomeUserLog::load();
-        $providerModel = clone $query;
-        $count = $query->where($where)->count();
-        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+        $list = $model->where($where)->order('id DESC')->paginate($each);
 
         $this->assign('meta_title', "足迹");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('param', $param);
-        $this->assign('lists', $lists);
+        $this->assign('lang', HomeUserLog::Lang());
+        $this->assign('list', $list);
         return view('homeUser/log');
     }
 
@@ -88,31 +80,26 @@ class HomeUserController extends ManageController
 
     /**
      * @description 清单
-     * @param integer $pageNumber
-     * @param string $key
      * @return string
      */
-    public function indexAction($pageNumber = 1,$key = null)
+    public function indexAction()
     {
         $where = ['is_delete'=>'1'];
-        $param = ['key'=>''];
         $each = 12;
-        if ($key && ($key = trim($key)) != ''){
-            $param['key'] = $key;
+        /**
+         * @var $model \app\manage\model\Client
+         */
+        $model = HomeUser::load();
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
             $where[] =  ["exp"," `username` like '%".$key."%' or `real_name` like '%".$key."%' or `email` like '%".$key."%' or `phone` like '%".$key."%' "];
         }
-
-        $query = HomeUser::load();
-        $providerModel = clone $query;
-        $count = $query->where($where)->count();
-        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+        $list = $model->where($where)->order('id DESC')->paginate($each);
 
         $this->assign('meta_title', "用户清单");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('param', $param);
+        $this->assign('lang', HomeUser::Lang());
+        $this->assign('list', $list);
         return view('homeUser/index');
     }
 

@@ -1,43 +1,39 @@
 <?php
 
-namespace app\common\model;
+namespace app\manage\model;
 
-use app\common\model\Type;
-use app\common\model\TypePark;
-use app\manage\validate\TypeParkValidate;
+use app\common\model\DealOrder as BaseTakeOrder;
+use app\manage\validate\TakeOrderValidate;
+use app\manage\model\BackUser;
+use app\manage\model\Client;
 
 /**
- * This is the model class for table "{{%label_park}}".
+ * This is the model class for table "{{%take_order}}".
  *
  * @property integer $id
  * @property integer $is_delete
- * @property integer $label_id
- * @property integer $target_id
- * @property integer $group
- * @property string $name
+ * @property integer $back_user_id
+ * @property integer $client_id
+ * @property string $order_code
+ * @property integer $house_type
+ * @property integer $goods_id
+ * @property integer $deal_status
+ * @property string $money
  * @property string $description
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Label $label
+ * @property BackUser $backUser
+ * @property Client $client
  */
-class TypeParkHandHouse extends TypePark
+class DealOrder extends BaseTakeOrder
 {
-
-    public $type = '5';
-
-    /**
-     * 数据库表名
-     * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
-     * @author Sir Fu
-     */
-    protected $table = '{{%type_park_hand_house}}';
 
     /**
      * @return Object|\think\Validate
      */
     public static function getValidate(){
-        return TypeParkValidate::load();
+        return TakeOrderValidate::load();
     }
 
     /**
@@ -56,4 +52,3 @@ class TypeParkHandHouse extends TypePark
         return $validate->check($data);
     }
 }
-

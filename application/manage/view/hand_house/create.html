@@ -41,6 +41,14 @@
         </div>
 
         <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger">*</span>房东：</label>
+            <div class="layui-input-block" style="padding-right: 120px;">
+                <input type="hidden" name="host_user_id" lay-filter="key" lay-search="refresh" lay-verify="require" placeholder="请输入楼盘名称关键词" class="layui-input" />
+                <input type="text" value="" lay-filter="keyword" lay-verify="require" placeholder="请输入楼盘名称关键词" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-color-danger">*</span>房源地址：</label>
             <div class="layui-input-block" style="padding-right: 120px;">
                 <input type="text" value="" name="address" lay-verify="require" placeholder="请输入房源地址" class="layui-input">
@@ -337,6 +345,7 @@
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label"></label>
+                <input type="hidden" value="{$model.type}" name="type">
                 <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>

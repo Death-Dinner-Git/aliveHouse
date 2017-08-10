@@ -397,7 +397,7 @@ class Identity extends BackUser
      */
     public static function logout()
     {
-        session(config('identity._identity'),null);
+        session(config('identity._user'),null);
         session(config('identity._auth_key'), null);
         session(config('identity._duration'),null);
         session(config('identity.unique'),null);
@@ -411,7 +411,7 @@ class Identity extends BackUser
      */
     public function setLogout($user = null)
     {
-        session(config('identity._identity'),null);
+        session(config('identity._user'),null);
         session(config('identity._auth_key'), null);
         session(config('identity._duration'),null);
         session(config('identity.unique'),null);
@@ -644,7 +644,7 @@ class Identity extends BackUser
         $identity['duration'] = $duration+time();
         unset($identity['password']);
         unset($identity['md5']);
-        session(config('identity._identity'),$_identity);
+        session(config('identity._user'),$_identity);
         session(config('identity._duration'),$duration+time());
         session(config('identity.unique'),$identity);
         return $_identity;
@@ -727,7 +727,7 @@ class Identity extends BackUser
      */
     public static function findByPhone($phone)
     {
-        if (empty($phone) || !in_array('phone',self::getAllowFind())) {
+        if (empty($phone) || !in_array('phone',self::$allowFind)) {
             return null;
         }
 
@@ -1218,7 +1218,7 @@ class Identity extends BackUser
      */
     public static function getIdentity($name = null)
     {
-        $identity =  session(config('identity._identity'));
+        $identity =  session(config('identity._user'));
         if ($identity && $identity instanceof Identity){
             if (!is_string($name) || $name === '') {
                 return $identity;

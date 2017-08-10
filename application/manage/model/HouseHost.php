@@ -6,7 +6,7 @@ use app\common\model\HouseHost as BaseHouseHost;
 use app\manage\validate\HouseHostValidate;
 
 use app\manage\model\HouseHostServer;
-use app\manage\model\SecondHandHouse;
+use app\manage\model\HandHouse;
 
 /**
  * This is the model class for table "{{%house_host}}".
@@ -26,7 +26,7 @@ use app\manage\model\SecondHandHouse;
  * @property string $updated_at
  *
  * @property HouseHostServer[] $houseHostServers
- * @property SecondHandHouse[] $secondHandHouses
+ * @property HandHouse[] $secondHandHouses
  */
 class HouseHost extends BaseHouseHost
 {

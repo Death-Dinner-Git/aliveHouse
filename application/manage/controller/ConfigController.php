@@ -9,51 +9,43 @@ class ConfigController extends ManageController
 {
     /**
      * @description 显示资源列表
-     * @param string $name
-     * @param string $type
-     * @param string $app
      * @return \think\Response
      */
-    public function indexAction($name = null, $type = null,$app = null)
+    public function indexAction()
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
-        if ($this->getRequest()->isPjax()){
-            $param['name'] = 'PJAX';
-        }
+        /**
+         * @var $model \app\manage\model\Config
+         */
         $model = Config::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $model->where($nameWhere);
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $where[] = ['exp',"name like '%".$key."%' or  `title` like '.' '%'.$key.'%' "];
         }
-        $typeList = Config::getTypeList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
-        }
-        if ($type && $type != ''){
-            $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
+        $typeLists = Config::T('type');
+        $type = trim($request->request('type'));
+        if ($type != ''){
+            if (in_array($type,array_keys($typeLists))){
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $appList = Config::getAppList();
-        if ($app && $app != ''){
-            $param['app'] = trim($app);
-            if (in_array($app,array_keys($appList))){
+        $appLists = Config::T('app');
+        $app = trim($request->request('app'));
+        if ($app != ''){
+            if (in_array($app,array_keys($appLists))){
                 $where =  array_merge($where, ['app'=>$app]);
             }
         }
 
         $list = $model->where($where)->order('id DESC')->paginate($each);
 
-        $this->assign('meta_title', "楼盘清单");
-        $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
-        $this->assign('appList', $appList);
+        $this->assign('meta_title', "配置清单");
+        $this->assign('lang', Config::Lang());
         $this->assign('list', $list);
         return view('config/index');
+
     }
 
     /**
@@ -63,28 +55,29 @@ class ConfigController extends ManageController
      */
     public function createAction()
     {
-        $config = new Config();
-        $configList = Config::getTypeList();
-        $appList = Config::getAppList();
+        $model = new Config();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Config']) ? $_POST['Config'] : []);
+            $data = $model->filter($_POST);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Config::getValidate();
+                $validate = $model::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
+                if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return view('config/create',[
+            'meta_title'=>'添加配置',
+            'model'=>$model,
+        ]);
     }
 
     /**
@@ -109,33 +102,33 @@ class ConfigController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new Config();
-        $configList = Config::getTypeList();
-        $appList = Config::getAppList();
         $model = Config::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
-
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Config']) ? $_POST['Config'] : []);
+            $data = $model->filter($_POST);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
                 $validate = Config::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && Config::update($data,['id'=>$id])){
-                    $this->success('更新成功','create','',1);
+                if ($validate->check($data) && $model->save($data)){
+                    $this->success('更新成功','update','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
-                    $this->error($error, 'create','',1);
+                    $this->error($error, 'update','',1);
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('config/update',[
+            'meta_title'=>'编辑标签',
+            'model'=>$model,
+            'lang'=>Config::Lang(),
+        ]);
     }
 
     /**

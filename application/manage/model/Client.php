@@ -6,7 +6,7 @@ use app\common\model\Client as BaseClient;
 use app\manage\validate\ClientValidate;
 
 use app\manage\model\ClientServer;
-use app\manage\model\TakeOrder;
+use app\manage\model\DealOrder;
 use app\manage\model\Walk;
 
 /**
@@ -29,7 +29,7 @@ use app\manage\model\Walk;
  * @property string $updated_at
  *
  * @property ClientServer[] $clientServers
- * @property TakeOrder[] $takeOrders
+ * @property DealOrder[] $takeOrders
  * @property Walk[] $walks
  */
 class Client extends BaseClient

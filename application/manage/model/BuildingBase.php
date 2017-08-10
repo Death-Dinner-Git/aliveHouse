@@ -8,7 +8,7 @@ use app\manage\validate\BuildingBaseValidate;
 use app\manage\model\City;
 use app\manage\model\BuildingDetail;
 use app\manage\model\HouseBetter;
-use app\manage\model\NewHouse;
+use app\manage\model\House;
 
 /**
  * This is the model class for table "{{%building_base}}".
@@ -25,7 +25,7 @@ use app\manage\model\NewHouse;
  * @property City $city
  * @property BuildingDetail[] $buildingDetails
  * @property HouseBetter[] $houseBetters
- * @property NewHouse[] $newHouses
+ * @property House[] $newHouses
  */
 class BuildingBase extends BaseBuildingBase
 {

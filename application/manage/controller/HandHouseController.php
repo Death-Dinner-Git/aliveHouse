@@ -3,112 +3,51 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\BuildingBase;
-use app\manage\model\House;
+use app\manage\model\HouseHost;
 use app\manage\model\HandHouse;
 use app\manage\model\Images;
 use app\manage\model\City;
 
-class HouseController extends ManageController
+class HandHouseController extends ManageController
 {
 
     /**
-     * @description 显示资源列表 //房源清单
-     * @param string $name
-     * @param string $type
-     * @param string $app
-     * @return \think\Response
-     */
-    public function superAction($name = null, $type = null,$app = null)
-    {
-        $where = ['is_delete'=>'1'];
-        $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
-        $model = House::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $model->where($nameWhere);
-        }
-        $cityLists = \app\manage\model\City::getCityList();
-
-        $list = $model->where($where)->order('id DESC')->paginate($each);
-
-        $this->assign('param', $param);
-        $this->assign('cityLists', $cityLists);
-        $this->assign('list', $list);
-        return view('house/super');
-    }
-
-    /**
-     * 显示资源列表
-     *
-     * @return \think\Response
-     */
-    public function servicesAction()
-    {
-        //
-    }
-
-    /**
-     * 显示资源列表
-     *
-     * @return \think\Response
-     */
-    public function transferAction()
-    {
-        //
-    }
-
-    /**
-     * 显示资源列表
-     *
-     * @return \think\Response
-     */
-    public function receiveAction()
-    {
-        //
-    }
-
-    /**
      * @description 显示资源列表
-     * @param string $name
-     * @param string $type
-     * @param string $app
      * @return \think\Response
      */
-    public function indexAction($name = null, $type = null,$app = null)
+    public function indexAction()
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
-        $model = House::load();
-        $name = trim($this->getRequest()->request('name'));
-        if ($name != ''){
-            $where[] = ['exp',"name like '%".$name."%' or `title` like '%".$name."%' "];
+        $model = HandHouse::load();
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $where[] = ['exp',"name like '%".$key."%'  or `title` like '%".$key."%' "];
         }
-        $cityLists = \app\manage\model\City::getCityList();
 
-        $houseType = trim($this->getRequest()->request('houseType'));
-        if ($houseType != ''){
-            $where['houseType'] = ['in',$houseType];
-        }
+        $cityLists = City::getCityList();
 
         $list = $model->where($where)->order('id DESC')->paginate($each);
 
-        $this->assign('lang', House::Lang());
         $this->assign('cityLists', $cityLists);
         $this->assign('list', $list);
-        return view('house/index');
+        $this->assign('lang', HandHouse::Lang());
+        return view('hand_house/index');
     }
 
     /**
      * 显示创建资源表单页.| 保存新建的资源
      *
+     * @param $type int
      * @return \think\Response
      */
-    public function createAction()
+    public function createAction($type = null)
     {
-        $model = new House();
+        if (!$type){
+            $type = isset($_REQUEST['type']) ? $_REQUEST['type'] : '1';
+        }
+        $model = new HandHouse();
         if ($this->getRequest()->isPost()){
             //
             $base = $model->filter($_POST);
@@ -118,7 +57,7 @@ class HouseController extends ManageController
             $base['created_at'] = date('Y-m-d H:i:s');
             $base['building_base_id'] = isset($base['building_base_id']) ? trim($base['building_base_id']) : '0';
             if ($base){
-                $validate = House::getValidate();
+                $validate = HandHouse::getValidate();
                 $validate->scene('create');
                 if ($validate->check($base) && $model->save($base)){
                     $prefix = '/static/uploads/house/'.$model->id.'/';
@@ -163,7 +102,8 @@ class HouseController extends ManageController
             }
         }
         $cityLists = City::getCityList();
-        return view('house/create',['meta_title'=>'添加房源','model'=>$model,'lang'=>House::Lang(),'cityLists'=>$cityLists]);
+        $model->type = $type;
+        return view('hand_house/create',['meta_title'=>'添加二手房源','model'=>$model,'lang'=>HandHouse::Lang(),'cityLists'=>$cityLists]);
     }
 
     /**
@@ -175,8 +115,8 @@ class HouseController extends ManageController
     public function viewAction($id)
     {
         $this->assign('meta_title', "详情");
-        $model = House::load()->where(['id'=>$id])->find();
-        return view('house/view',['model'=>$model]);
+        $model = HandHouse::load()->where(['id'=>$id])->find();
+        return view('hand_house/view',['model'=>$model]);
     }
 
     /**
@@ -188,9 +128,9 @@ class HouseController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $model = new House();
-        $lists = House::getTypeList();
-        $model = House::load()->where(['id'=>$id])->where($where)->find();
+        $model = new HandHouse();
+        $lists = HandHouse::getTypeList();
+        $model = HandHouse::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
@@ -200,9 +140,9 @@ class HouseController extends ManageController
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = House::getValidate();
+                $validate = HandHouse::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && House::update($data,['id'=>$id])){
+                if ($validate->check($data) && HandHouse::update($data,['id'=>$id])){
                     $this->success('更新成功','create','',1);
                 }else{
                     $error = $validate->getError();
@@ -213,7 +153,7 @@ class HouseController extends ManageController
                 }
             }
         }
-        return view('house/update',['meta_title'=>'编辑标签','model'=>$model,'lists'=>$lists]);
+        return view('hand_house/update',['meta_title'=>'编辑标签','model'=>$model,'lists'=>$lists]);
     }
 
     /**
@@ -226,7 +166,7 @@ class HouseController extends ManageController
         $ret = ['status'=>0,'info'=>'删除失败'];
         if ($this->getRequest()->isAjax()){
             $where['id'] = ['in',implode(',',$id)];
-            $result = House::update(['is_delete'=>'0'],$where);
+            $result = HandHouse::update(['is_delete'=>'0'],$where);
             if ($result){
                 $ret = ['status'=>1,'info'=>'删除成功'];
             }

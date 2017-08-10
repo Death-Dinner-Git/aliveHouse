@@ -12,7 +12,7 @@ use app\manage\model\Department;
 use app\manage\model\BackUserLog;
 use app\manage\model\Contact;
 use app\manage\model\ContactRead;
-use app\manage\model\CustomerService;
+use app\manage\model\Service;
 use app\manage\model\DeleteLog;
 use app\manage\model\Download;
 use app\manage\model\ClientServer;
@@ -23,7 +23,7 @@ use app\manage\model\NoticeRead;
 use app\manage\model\Opinion;
 use app\manage\model\OpinionRead;
 use app\manage\model\Slider;
-use app\manage\model\TakeOrder;
+use app\manage\model\DealOrder;
 use app\manage\model\Upload;
 
 use app\manage\model\Identity;
@@ -71,7 +71,7 @@ use app\manage\model\Identity;
  * @property BackUserLog[] $backUserLogs
  * @property Contact[] $contacts
  * @property ContactRead[] $contactReads
- * @property CustomerService[] $customerServices
+ * @property Service[] $customerServices
  * @property DeleteLog[] $deleteLogs
  * @property Download[] $downloads
  * @property ClientServer[] $clientServers
@@ -82,7 +82,7 @@ use app\manage\model\Identity;
  * @property Opinion[] $opinions
  * @property OpinionRead[] $opinionReads
  * @property Slider[] $sliders
- * @property TakeOrder[] $takeOrders
+ * @property DealOrder[] $takeOrders
  * @property Upload[] $uploads
  */
 class BackUser extends BaseBackUser

@@ -5,7 +5,7 @@ namespace app\common\model;
 use app\common\model\Model;
 use app\common\model\BuildingBase;
 use app\common\model\Region;
-use app\common\model\SecondHandHouse;
+use app\common\model\HandHouse;
 
 /**
  * This is the model class for table "{{%city}}".
@@ -24,7 +24,7 @@ use app\common\model\SecondHandHouse;
  *
  * @property BuildingBase[] $buildingBases
  * @property Region $region
- * @property SecondHandHouse[] $secondHandHouses
+ * @property HandHouse[] $secondHandHouses
  */
 class City extends Model
 {
@@ -195,6 +195,13 @@ class City extends Model
     }
 
     /**
+     * @return \think\model\relation\HasOne
+     */
+    public function getParent(){
+        return $this->hasOne(ucfirst(City::tableNameSuffix()), 'id','parent');
+    }
+
+    /**
      * @return \think\model\relation\HasMany
      */
     public function getBuildingBases()
@@ -215,6 +222,6 @@ class City extends Model
      */
     public function getSecondHandHouses()
     {
-        return $this->hasMany(ucfirst(SecondHandHouse::tableNameSuffix()), 'id','city_id');
+        return $this->hasMany(ucfirst(HandHouse::tableNameSuffix()), 'id','city_id');
     }
 }

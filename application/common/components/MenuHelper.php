@@ -123,18 +123,18 @@ class MenuHelper
             $assigned = [];
 
             if (count($filter2)) {
-                $assigned = Menu::get()->where(['type'=>'1','route'=>['in',$filter2]])->order('id asc')->column('id');
+                $assigned = Menu::load()->where(['type'=>'1','route'=>['in',$filter2]])->order('id asc')->column('id');
             }
             if (count($filter1)) {
                 foreach ($filter1 as $filter) {
-                    $query = Menu::get()->where(['type'=>'1','route'=>['like',$filter]])->order('id asc')->column('id');
+                    $query = Menu::load()->where(['type'=>'1','route'=>['like',$filter]])->order('id asc')->column('id');
                     $assigned = array_merge($assigned, $query);
                 }
             }
 
             //超级管理员，读取全部目录
             if ($userId == '100'){
-                $assigned =  Menu::get()->where(['type'=>'1'])->order('id asc')->column('id');
+                $assigned =  Menu::load()->where(['type'=>'1'])->order('id asc')->column('id');
             }
 
             $assigned = static::requiredParent($assigned, $menus);

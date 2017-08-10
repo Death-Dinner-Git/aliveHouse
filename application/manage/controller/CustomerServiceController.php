@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\CustomerService;
+use app\manage\model\Service;
 
 class CustomerServiceController extends ManageController
 {
@@ -19,12 +19,12 @@ class CustomerServiceController extends ManageController
         $where = ['is_delete'=>'1'];
         $each = 12;
         $param = ['key'=>'','level'=>''];
-        $query = CustomerService::load();
+        $query = Service::load();
         if ($key && ($key = trim($key)) != ''){
             $param['key'] = $key;
             $where[] = ['exp',"`username` like '%".$key."%' or `contact` like '%".$key."%' or `email` like '%".$key."%' or `address` like '%".$key."%'"];
         }
-        $lists = CustomerService::getLevelList();
+        $lists = Service::getLevelList();
         if (isset($lists[0])){
             unset($lists[0]);
         }
@@ -56,15 +56,15 @@ class CustomerServiceController extends ManageController
      */
     public function createAction()
     {
-        $model = new CustomerService();
-        $modelList = CustomerService::getTypeList();
-        $appList = CustomerService::getAppList();
+        $model = new Service();
+        $modelList = Service::getTypeList();
+        $appList = Service::getAppList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['CustomerService']) ? $_POST['CustomerService'] : []);
+            $data = (isset($_POST['Service']) ? $_POST['Service'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = CustomerService::getValidate();
+                $validate = Service::getValidate();
                 $validate->scene('create');
                 if ($validate->check($data) && $model->save($data)){
                     $this->success('添加成功','create','',1);
@@ -89,7 +89,7 @@ class CustomerServiceController extends ManageController
     public function viewAction($id)
     {
         $this->assign('meta_title', "详情");
-        $model = CustomerService::load()->where(['id'=>$id])->find();
+        $model = Service::load()->where(['id'=>$id])->find();
         return view('customerService/view',['model'=>$model]);
     }
 
@@ -102,22 +102,22 @@ class CustomerServiceController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $model = new CustomerService();
-        $modelList = CustomerService::getTypeList();
-        $appList = CustomerService::getAppList();
-        $model = CustomerService::load()->where(['id'=>$id])->where($where)->find();
+        $model = new Service();
+        $modelList = Service::getTypeList();
+        $appList = Service::getAppList();
+        $model = Service::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
 
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['CustomerService']) ? $_POST['CustomerService'] : []);
+            $data = (isset($_POST['Service']) ? $_POST['Service'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = CustomerService::getValidate();
+                $validate = Service::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && CustomerService::update($data,['id'=>$id])){
+                if ($validate->check($data) && Service::update($data,['id'=>$id])){
                     $this->success('更新成功','create','',1);
                 }else{
                     $error = $validate->getError();
@@ -141,7 +141,7 @@ class CustomerServiceController extends ManageController
     {
         $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
         if ($this->getRequest()->isAjax()){
-            $result = CustomerService::update(['is_delete'=>'0'],['id'=>$id]);
+            $result = Service::update(['is_delete'=>'0'],['id'=>$id]);
             if ($result){
                 $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
             }

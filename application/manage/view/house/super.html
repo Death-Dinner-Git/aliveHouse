@@ -22,10 +22,7 @@
                 <div class="layui-input-inline">
                     <select name="level" lay-search >
                         <option value="">可选择类型</option>
-                        <option value="0">全部</option>
-                        {volist name="typeLists" id="item"}
-                        <option value="{$key}" {if condition="$key eq $param.type"}selected{/if}>{$item}</option>
-                        {/volist}
+                        <option value="">全部</option>
                     </select>
                 </div>
 

@@ -1,91 +1,47 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
-
-    <!-- load css -->
-    <link rel="stylesheet" type="text/css" href="_LAYUI_/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
-
-    <!-- For site js -->
-    <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/bootstrap.js"></script>
-    <script type="text/javascript" src="_LAYUI_/layui.js"></script>
 
     <title>{$meta_title ? $meta_title.' - ' : ''}_TITLE_</title>
 
     <style>
-        #CreateForm .layui-form-item{
-            font-size: 14px;
+        .layui-form-item {
+            margin-bottom: 24px;
         }
-        #CreateForm .layui-form-item .layui-form-label{
-            width: 130px;
+        .layui-form-item .layui-inline:nth-child(2) .layui-form-label{
+            width: 185px !important;
         }
-        #CreateForm .layui-form-item .layui-input-block{
-            margin-left: 160px;
+
+        .layui-form-item .layui-input-block.right-width {
+            padding-right: 120px;
         }
-        #CreateForm .layui-form-item .layui-input-inline{
-            width: 220px;
+        .layui-input-inline{
+            margin-bottom: 5px;
         }
-        #CreateForm .layui-form-item .layui-input-inline .layui-input{
-            font-size: 14px;
-        }
-        .help-hint{
-            display: block;
-            width: 100%;
-            padding-left: 30px;
-            height: 38px;
-            line-height: 38px;
-            border-radius: 2px;
-            text-align: left;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        .help-msg .fa{
-            position: absolute;
-            border-radius: 50%;
-            margin: 10px;
-            width: 14px;
-            height: 14px;
-            text-align: center;
-            vertical-align: middle;
-        }
-        .help-msg .fa.fa-close,.help-msg .fa.fa-check{
-            border: 1px solid #d4d4d4;
-        }
-        .help-msg .fa-close:before{
-            color: #E85445;
-        }
-        .help-msg .fa-check:before{
-            color: #0DBD9F;
+        .layui-elem-field.layui-field-title.noTopLine{
+            border-top: none;
         }
     </style>
 
 </head>
+<body>
 
-<body style="max-width: 800px;max-height: 600px;margin: auto;">
+<section style="max-width:1200px;margin: 0 auto 30px;position: relative;">
 
-<section style="margin: 20px;">
-    {if condition="isset($meta_title)"}
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend style="text-align: center;">{$meta_title}</legend>
+    <fieldset class="layui-elem-field layui-field-title noTopLine" style="margin-top: 20px;">
+        <legend style="text-align: center;">添加地区</legend>
     </fieldset>
-    {/if}
-    <form class="layui-form forms" id="defaultForm" action="/manage/config/update" method="post" style="padding: 15px 0">
+
+    <form class="layui-form forms" id="defaultForm" action="" method="post" style="padding: 15px 0">
 
         <div class="layui-form-item">
             <label class="layui-form-label">上级城市:</label>
-            <div class="layui-input-block" style="padding-right: 120px;">
-                <select name="City[parent]" lay-search >
+            <div class="layui-input-block right-width">
+                <select name="parent" lay-search >
                     <option value="0">请选择</option>
                     {volist name="cityList" id="item"}
-                    <option value="{$key}">{$item}</option>
+                    <option value="{$key}" {if condition="$key eq $model.parent"}selected{/if} >{$item}</option>
                     {/volist}
                 </select>
             </div>
@@ -93,29 +49,35 @@
 
         <div class="layui-form-item">
             <label class="layui-form-label">城市名称:</label>
-            <div class="layui-input-block" style="padding-right: 120px;">
-                <input type="text" value="" name="City[name]" placeholder="城市名称" class="layui-input">
+            <div class="layui-input-block right-width">
+                <input type="text" value="{$model.name}" name="name" placeholder="城市名称" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">城市备注:</label>
-            <div class="layui-input-block" style="padding-right: 120px;">
-                <input type="text" value="" name="City[data]" placeholder="城市备注" class="layui-input">
+            <div class="layui-input-block right-width">
+                <input type="text" value="{$model.data}" name="data" placeholder="城市备注" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label"></label>
-            <div class="layui-input-inline">
+            <div class="layui-inline">
+                <label class="layui-form-label"></label>
+                <input type="hidden" value="{$model.id}" name="id" >
                 <button class="layui-btn" lay-submit="" lay-filter="submit">添加</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
+
     </form>
+
 </section>
 
+<script src="__JS__/site.js"></script>
+<script src="__JS__/back.js"></script>
 <script>
+
 
     layui.use(['form'],function () {
         var form = layui.form();
@@ -129,7 +91,7 @@
         Back.submit(options);
 
         Site.search({
-            url: '/manage/ajax/getDepartment',
+            url: '/manage/ajax/getCity',
             targetClass: '[lay-filter="targetParent"]',      // 输入框目标元素
             parentClass: '.layui-input-block',          // 父级类
             hiddenClass: '[lay-filter="parent"]',          // 隐藏域input

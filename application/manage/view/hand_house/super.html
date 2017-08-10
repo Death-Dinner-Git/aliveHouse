@@ -20,11 +20,11 @@
                     <input type="text" name="keyword" placeholder="输入关键词" value="{$Think.get.keyword}" class="layui-input">
                 </div>
                 <div class="layui-input-inline">
-                    <select name="houseType" lay-search >
+                    <select name="level" lay-search >
                         <option value="">可选择类型</option>
-                        <option value="">全部</option>
-                        {volist name="lang['houseType']" id="item"}
-                        <option value="{$key}" {if condition="$key eq $Think.get.houseType"}selected{/if}>{$item}</option>
+                        <option value="0">全部</option>
+                        {volist name="typeLists" id="item"}
+                        <option value="{$key}" {if condition="$key eq $param.type"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>
                 </div>
@@ -160,8 +160,8 @@
 
 <script>
     var url = {
-        createHouseUrl:"{:url('/manage/house/create')}",
-        createHandHouseUrl:"{:url('/manage/hand_house/create')}",
+        createNewHouseUrl:"{:url('/manage/house/create?type=1')}",
+        createHandHouseUrl:"{:url('/manage/house/create?type=2')}",
         updateUrl:"{:url('/manage/house/update')}",
         viewUrl:"{:url('/manage/house/view')}",
         deleteUrl:"{:url('/manage/house/delete')}"
@@ -171,7 +171,7 @@
         Site.loadPage();
 
         //添加新房
-        Back.create('createNewHouse',{content:url.createHouseUrl,area:['1050px','88%']});
+        Back.create('createNewHouse',{content:url.createNewHouseUrl,area:['1050px','88%']});
 
         //添加二手房房
         Back.create('createHandHouse',{content:url.createHandHouseUrl,area:['1050px','88%']});

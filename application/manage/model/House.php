@@ -1,43 +1,36 @@
 <?php
 
-namespace app\common\model;
+namespace app\manage\model;
 
-use app\common\model\Type;
-use app\common\model\TypePark;
-use app\manage\validate\TypeParkValidate;
+use app\common\model\House as BaseNewHouse;
+use app\manage\validate\HouseValidate;
+use app\manage\model\BuildingBase;
 
 /**
- * This is the model class for table "{{%label_park}}".
+ * This is the model class for table "{{%new_house}}".
  *
  * @property integer $id
  * @property integer $is_delete
- * @property integer $label_id
- * @property integer $target_id
- * @property integer $group
- * @property string $name
+ * @property integer $building_base_id
+ * @property integer $type
+ * @property string $room
  * @property string $description
+ * @property string $address
+ * @property string $url
+ * @property string $url_icon
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Label $label
+ * @property BuildingBase $buildingBase
  */
-class TypeParkHandHouse extends TypePark
+class House extends BaseNewHouse
 {
-
-    public $type = '5';
-
-    /**
-     * 数据库表名
-     * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
-     * @author Sir Fu
-     */
-    protected $table = '{{%type_park_hand_house}}';
 
     /**
      * @return Object|\think\Validate
      */
     public static function getValidate(){
-        return TypeParkValidate::load();
+        return HouseValidate::load();
     }
 
     /**
@@ -56,4 +49,3 @@ class TypeParkHandHouse extends TypePark
         return $validate->check($data);
     }
 }
-

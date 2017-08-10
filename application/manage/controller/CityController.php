@@ -13,35 +13,31 @@ class CityController extends ManageController
      *
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $level = null)
+    public function indexAction()
     {
         $where = ['is_delete'=>'1'];
         $each = 12;
-        $param = ['name'=>'','level'=>''];
-        $query = City::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $where[] = [ 'exp', ' `name` like '.' \'%'.$name.'%\''.' '];
+        /**
+         * @var $model \app\manage\model\Client
+         */
+        $model = City::load();
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $where[] = ['exp',"name like '%".$key."%' "];
         }
-        $lists = City::getLevelList();
-        if ($level && ($level = trim($level)) != ''){
-            $param['level'] = trim($level);
-            if (in_array($level,array_keys($lists))){
+        $levelLists = City::T('level');
+        $level = trim($request->request('level'));
+        if ($levelLists != ''){
+            if (in_array($level,array_keys($levelLists))){
                 $where =  array_merge($where, ['level'=>$level]);
             }
         }
+        $list = $model->where($where)->order('parent DESC')->paginate($each);
 
-        $providerModel = clone $query;
-        $count = $query->where($where)->count();
-        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
-
-        $this->assign('meta_title', "城市清单");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('param', $param);
-        $this->assign('lists', $lists);
+        $this->assign('meta_title', "客户清单");
+        $this->assign('lang', City::Lang());
+        $this->assign('list', $list);
         return view('city/index');
     }
 
@@ -123,33 +119,34 @@ class CityController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new Config();
-        $configList = Config::getTypeList();
-        $appList = Config::getAppList();
-        $model = Config::load()->where(['id'=>$id])->where($where)->find();
+        $model = City::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
-
+        $cityList = City::getCityList();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Config']) ? $_POST['Config'] : []);
+            $data = $model->filter($_POST);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Config::getValidate();
+                $validate = City::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && Config::update($data,['id'=>$id])){
-                    $this->success('更新成功','create','',1);
+                if ($validate->check($data) && $model->save($data)){
+                    $this->success('更新成功','update','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
-                    $this->error($error, 'create','',1);
+                    $this->error($error, 'update','',1);
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('city/update',[
+            'meta_title'=>'编辑城市',
+            'model'=>$model,
+            'cityList'=>$cityList,
+        ]);
     }
 
     /**

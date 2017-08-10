@@ -4,7 +4,7 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\HouseHostServer;
-use app\common\model\SecondHandHouse;
+use app\common\model\HandHouse;
 
 /**
  * This is the model class for table "{{%house_host}}".
@@ -24,7 +24,7 @@ use app\common\model\SecondHandHouse;
  * @property string $updated_at
  *
  * @property HouseHostServer[] $houseHostServers
- * @property SecondHandHouse[] $secondHandHouses
+ * @property HandHouse[] $secondHandHouses
  */
 class HouseHost extends Model
 {
@@ -109,6 +109,6 @@ class HouseHost extends Model
      */
     public function getSecondHandHouses()
     {
-        return $this->hasMany(SecondHandHouse::tableNameSuffix(), ['house_host_id' => 'id']);
+        return $this->hasMany(HandHouse::tableNameSuffix(), ['house_host_id' => 'id']);
     }
 }
