@@ -1292,15 +1292,21 @@ class Helper
         if (empty($resultSet) || !(is_array($resultSet) || is_object($resultSet))){
             return $ret;
         }
-        $item = current($resultSet);
-        if ($resultSet instanceof \think\Model) {
+        $isTrueArray = false;
+        if ($resultSet instanceof \think\Model){
             $ret = $resultSet->toArray();
-        } elseif($item instanceof \think\Model){
-            foreach ($resultSet as $value){
-                $ret[] = $value->toArray();
+        }else if (is_array($resultSet)){
+            foreach ($resultSet as $model){
+                if ($model instanceof \think\Model){
+                    $ret[] = $model->toArray();
+                }else{
+                    $isTrueArray = true;
+                    break;
+                }
             }
-        } else {
-            $ret = (array)$resultSet;
+        }
+        if ($isTrueArray){
+            $ret = $resultSet;
         }
         return $ret;
     }

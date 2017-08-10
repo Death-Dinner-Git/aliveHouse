@@ -72,7 +72,7 @@ INSERT INTO `hfzy_auth_item` (`name`, `type`, `description`, `rule_name`, `data`
 ('/log/*', 2, '日记路由', NULL, '', '2017-08-06 20:35:34', '2017-08-06 20:38:59'),
 ('/manage/index/home', 2, '后台首页2', NULL, '', '2017-08-06 23:48:45', '2017-08-06 23:48:45'),
 ('/manage/index/index', 2, '后台首页', NULL, '', '2017-08-06 23:45:27', '2017-08-06 23:48:20'),
-('/manage/login/*', 2, '后台登陆', NULL, '', '2017-08-06 23:46:26', '2017-08-06 23:46:26'),
+('/manage/login/*', 2, '后台登录', NULL, '', '2017-08-06 23:46:26', '2017-08-06 23:46:26'),
 ('/opinion/*', 2, '意见路由', NULL, '', '2017-08-06 20:35:16', '2017-08-06 20:40:04'),
 ('/order/*', 2, '订单路由', NULL, '', '2017-08-06 20:34:33', '2017-08-06 20:40:33'),
 ('/user/*', 2, '用户控制路由', NULL, '', '2017-08-06 20:46:41', '2017-08-06 20:49:06'),
@@ -5026,7 +5026,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_user_login_log` (
   `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'IP',
   `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='登陆记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='登录记录';
 
 -- --------------------------------------------------------
 

@@ -70,7 +70,7 @@ class LoginController extends BaseController
 //                } else {
 //                    $this->logoutAction();
 //                }
-                    return json(['status'=>'1','info'=>'登陆成功','url'=>url($this->getHomeUrl())]);
+                    return json(['status'=>'1','info'=>'登录成功','url'=>url($this->getHomeUrl())]);
                 }else{
                     return json(['status'=>'0','info'=>$res]);
                 }

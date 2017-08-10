@@ -398,6 +398,28 @@ layui.define('layer', function (exports) {
                                 }
                             }
                         },
+                        // isString 使用方式 lay-verify="isString" lay-length="6|20" lay-error="XXX"
+                        isString: function (value, item) {
+                            var $this = $(item);
+                            var length = $this.attr('lay-length');
+                            if (length){
+                                length = length.split('|');
+                                var message = $this.attr('lay-error') || '超过限定长度';
+                                var pattern;
+                                if (length.length >= 2){
+                                    pattern = '^.{'+length[0]+','+length[1]+'}$';
+                                    message = $this.attr('lay-error') || '限定在'+length[0]+'-'+length[1]+'长度';
+                                }else if (length.length == 1){
+                                    pattern = '^.{0,'+length[0]+'}$';
+                                    message = $this.attr('lay-error') || '超过限定长度'+length[0];
+                                }
+                                value = value.replace(/[^\x00-\xff]/g,'aaa');
+                                var regex = new RegExp(pattern);
+                                if (!value.match(regex)) {
+                                    return message;
+                                }
+                            }
+                        },
                         compare: function (value, item) {
                             var $this = $(item);
                             var check = $this.attr('lay-compare');

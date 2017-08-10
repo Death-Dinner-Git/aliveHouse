@@ -2,6 +2,9 @@
 
 namespace app\common\controller;
 
+use app\common\model\BackUser;
+use app\common\model\BuildingDetail;
+use app\common\model\Department;
 use think\Controller;
 use think\response\View;
 use think\Request;
@@ -21,24 +24,82 @@ class BaseController extends Controller
     protected function _initialize()
     {
         $is_ajax = false;
-        if ($this->getRequest()->isAjax()){
+        if ($this->getRequest()->isAjax()) {
             $is_ajax = true;
         }
-        defined('IS_AJAX') or define('IS_AJAX',$is_ajax);
-        config('default_module',request()->module());
-        $this->assign('URL',$this->getUrl());
+        defined('IS_AJAX') or define('IS_AJAX', $is_ajax);
+        config('default_module', request()->module());
+        $this->assign('URL', $this->getUrl());
+    }
+
+    /**
+     * 初始化一些因模块不同，需要不同的配置信息
+     * @param string $module
+     */
+    protected function init($module = 'manage')
+    {
+        $module = config($module);
+        if ($module) {
+            config('identity',array_merge(config('identity'),$module));
+        }
+    }
+
+    /**
+     * @param string $module
+     */
+    protected function setSession($module = 'identity')
+    {
+        $_SESSION[$module] = session(config($module . '.unique'));
+        $_SESSION['logined_at'] = session('logined_at');
+//        $this->assign('_csrf_param','_csrf_'.request()->module());
+//        $this->assign('_csrf_token',md5(time()));
+        if ($_SESSION['logined_at'] != strtotime($_SESSION[$module]['logined_at'])) {
+            $_SESSION['logined_at'] = strtotime($_SESSION[$module]['logined_at']);
+            session('logined_at', $_SESSION['logined_at']);
+            $_SESSION['_auth_token_'] = md5($_SESSION[$module]['id'] . $_SESSION[$module]['logined_at']);
+        }
     }
 
     /**
      * 执行此方法时，需要确定模块。默认\app\manage\model\Identity::isGuest 验证
      */
-    protected function isUser(){
+    protected function isUser()
+    {
         if (!$this->isGuest()) {
             //还没登录跳转到登录页面
-            if ( $this->getCurrentUrl() !== strtolower($this->getLoginUrl())){
+            if ($this->getCurrentUrl() !== strtolower($this->getLoginUrl())) {
                 $this->goBack($this->getLoginUrl());
             }
         }
+    }
+
+    /**
+     * @description before action function
+     * if is a client return true, or return false;
+     * @param  string $module
+     * @return bool
+     */
+    protected function isGuest($module = 'manage')
+    {
+        $ret = true;
+        //用户登录检测
+        $model = config('identity.default_model');
+        if (class_exists($model)){
+            $uid = $model::isGuest();
+            return $uid ? $uid : false;
+        }
+        return $ret;
+    }
+
+    /**
+     * @param null $key
+     * @param string $module
+     * @return null
+     */
+    protected function getIdentity($key = null, $module = 'identity')
+    {
+        $identity = isset($_SESSION[$module]) ? $_SESSION[$module] : null;
+        return !$key ? $identity : (isset($identity[$key]) ? $identity[$key] : null);
     }
 
     /**
@@ -56,56 +117,15 @@ class BaseController extends Controller
      * @param $action
      * @return bool
      */
-    protected function accessCheck($userId = 0,$action = null){
-        if (!$userId){
+    protected function accessCheck($userId = 0, $action = null)
+    {
+        if (!$userId) {
             $userId = $this->getIdentity('id');
         }
-        if (!$action){
+        if (!$action) {
             $action = $this->getCurrentUrl();
         }
-        return $this->getAccessControl()->check($userId,$action);
-    }
-
-    /**
-     * @param null $key
-     * @return string|array|null
-     */
-    protected function getIdentity($key = null){
-        $identity = isset($_SESSION['identity']) ? $_SESSION['identity'] : null;
-        return !$key ? $identity : (isset($identity[$key]) ? $identity[$key] : null);
-    }
-
-    /**
-     * 初始化一些因模块不同，需要不同的配置信息
-     */
-    protected function init(){
-        $module = config('identity.'.$this->getRequest()->module());
-        if ($module){
-            // 前端SESSION登录默认标识
-            if (isset($module['unique'])){
-                config('identity.unique',$module['unique']);
-            }
-            // Identity 位置
-            if (isset($module['default_user_model'])){
-                config('identity.default_user_model',$module['default_user_model']);
-            }
-            // 登录路由
-            if (isset($module['loginUrl'])){
-                config('identity.loginUrl',$module['loginUrl']);
-            }
-            // 退出路由
-            if (isset($module['logoutUrl'])){
-                config('identity.logoutUrl',$module['logoutUrl']);
-            }
-            // 注册路由
-            if (isset($module['registerUrl'])){
-                config('identity.registerUrl',$module['registerUrl']);
-            }
-            // 注册路由
-            if (isset($module['resetUrl'])){
-                config('identity.resetUrl',$module['resetUrl']);
-            }
-        }
+        return $this->getAccessControl()->check($userId, $action);
     }
 
     /**
@@ -125,7 +145,7 @@ class BaseController extends Controller
     public function getHomeUrl()
     {
         // 获取默认路由
-        return strtolower(config('default_module').'/'.config('default_controller').'/'.config('default_action'));
+        return strtolower(config('default_module') . '/' . config('default_controller') . '/' . config('default_action'));
     }
 
     /**
@@ -140,15 +160,15 @@ class BaseController extends Controller
 
     /**
      * 渲染模板输出
-     * @param string    $template 模板文件
-     * @param array     $vars 模板变量
-     * @param array     $replace 模板替换
-     * @param integer   $code 状态码
-     * @param array  $header
-     * @param array  $options 输出参数
+     * @param string $template 模板文件
+     * @param array $vars 模板变量
+     * @param array $replace 模板替换
+     * @param integer $code 状态码
+     * @param array $header
+     * @param array $options 输出参数
      * @return \think\response\View
      */
-    public function view($template = '', $vars = [], $replace = [], $code = 200,$header = [], $options = [])
+    public function view($template = '', $vars = [], $replace = [], $code = 200, $header = [], $options = [])
     {
         $view = new View($template, $code, $header, $options);
         return $view->replace($replace)->assign($vars);
@@ -160,21 +180,9 @@ class BaseController extends Controller
      * @param string $app 'back' 后台 'front'
      * @return \think\response\Json
      */
-    protected function nav($userId=0, $app = 'back')
+    protected function nav($userId = 0, $app = 'back')
     {
-        return json(\app\common\components\MenuHelper::getMenu($userId,$app));
-    }
-
-    /**
-     * @description before action function
-     * if is a client return true, or return false;
-     * @return bool
-     */
-    protected function isGuest()
-    {
-        //用户登录检测
-        $uid = \app\manage\model\Identity::isGuest();
-        return $uid ? $uid : false;
+        return json(\app\common\components\MenuHelper::getMenu($userId, $app));
     }
 
     /**
@@ -184,9 +192,9 @@ class BaseController extends Controller
      */
     public function unlink($file)
     {
-        if (!is_file($file)){
+        if (!is_file($file)) {
             return false;
-        }else{
+        } else {
 //            //$d不是static目录下的文件不给予删除
 //            if (strstr($file,'/static/') === false){
 //                return false;
@@ -202,7 +210,7 @@ class BaseController extends Controller
      * @param bool $root
      * @return bool
      */
-    public function deleteFolder($pathStr,$root = true)
+    public function deleteFolder($pathStr, $root = true)
     {
         if (!is_dir($pathStr)) {
 //            if (strstr($pathStr, '/back/') !== false){
@@ -214,7 +222,7 @@ class BaseController extends Controller
         }
 
         //$d不是static目录下的文件不给予删除
-        if (!(strstr($pathStr,'/uploads/') === true || $pathStr === RUNTIME_PATH)){
+        if (!(strstr($pathStr, '/uploads/') === true || $pathStr === RUNTIME_PATH)) {
             return false;
         }
 
@@ -236,7 +244,7 @@ class BaseController extends Controller
         }
         closedir($dh);
         //删除当前文件夹：
-        if ($root){
+        if ($root) {
             if (!rmdir($pathStr)) {
                 return false;
             }
@@ -250,7 +258,7 @@ class BaseController extends Controller
      * @param bool $clear
      * @return bool|mixed|string
      */
-    public function getFolder($pathStr = './',$clear = false)
+    public function getFolder($pathStr = './', $clear = false)
     {
         $pathStr = $this->getPath($pathStr);
         if (strrchr($pathStr, "/") != "/") {
@@ -289,16 +297,17 @@ class BaseController extends Controller
      * @param $to
      * @return bool
      */
-    public function copy($from,$to){
+    public function copy($from, $to)
+    {
         $from = $this->getPath($from);
         $to = $this->getPath($to);
-        if (!file_exists($from)){
+        if (!file_exists($from)) {
             return false;
         }
-        if (!file_exists($to)){
+        if (!file_exists($to)) {
             $this->getFolder(pathinfo($to, PATHINFO_DIRNAME));
         }
-        @copy($from,$to);
+        @copy($from, $to);
         return true;
     }
 
@@ -306,28 +315,30 @@ class BaseController extends Controller
      * 获取有效根目录
      * @return string
      */
-    public function getWebPath(){
+    public function getWebPath()
+    {
         $path = ROOT_PATH;
         if (strrchr($path, DIRECTORY_SEPARATOR) != DIRECTORY_SEPARATOR) {
             $path .= DIRECTORY_SEPARATOR;
         }
-        return $path .'public';
+        return $path . 'public';
     }
 
     /**
      * @param $path
      * @return string
      */
-    public function getPath($path){
+    public function getPath($path)
+    {
         $prefix = $this->getWebPath();
         if (strpos($path, $prefix) === false) {
-            if (substr($path,0,1) == '.') {
-                $path = substr($path,1);
+            if (substr($path, 0, 1) == '.') {
+                $path = substr($path, 1);
             }
-            if (substr($path,0,1) != '/') {
+            if (substr($path, 0, 1) != '/') {
                 $path = '/' . $path;
             }
-            $path = $this->getWebPath().$path;
+            $path = $this->getWebPath() . $path;
         }
         return $path;
     }
@@ -355,13 +366,13 @@ class BaseController extends Controller
             foreach ($data as $k => $v) {
                 if (is_scalar($v)) {
                     if (is_array($data)) {
-                        if (strstr($v, '\"') === false){
-                            $v = str_replace('"','\"',$v);
+                        if (strstr($v, '\"') === false) {
+                            $v = str_replace('"', '\"', $v);
                         }
                         $data[$k] = urlencode($v);
                     } else if (is_object($data)) {
-                        if (strstr($v, '\"') === false){
-                            $v = str_replace('"','\"',$v);
+                        if (strstr($v, '\"') === false) {
+                            $v = str_replace('"', '\"', $v);
                         }
                         $data->$k = urlencode($v);
                     }
@@ -388,10 +399,10 @@ class BaseController extends Controller
     public function arrayToString($data = [], $line = false)
     {
         $format = '';
-        if ($line){
+        if ($line) {
             $format = PHP_EOL;
         }
-        if (!is_array($data)){
+        if (!is_array($data)) {
             return '';
         }
         $ret = self::arrayImplode($data, $format);
@@ -422,12 +433,12 @@ class BaseController extends Controller
             $tmp = '';
             foreach ($data as $kk => $vv) {
                 if (substr($vv, 0, 1) == '[') {
-                    $tmp .= "'" . $kk . "' => " . $vv . ", ".$format;
+                    $tmp .= "'" . $kk . "' => " . $vv . ", " . $format;
                 } else {
-                    $tmp .= "'" . $kk . "' => '" . $vv . "', ".$format;
+                    $tmp .= "'" . $kk . "' => '" . $vv . "', " . $format;
                 }
             }
-            $data = "[".$format . rtrim($tmp, ", ".$format) .$format. "]".$format;
+            $data = "[" . $format . rtrim($tmp, ", " . $format) . $format . "]" . $format;
         }
         return $data;
     }
@@ -438,11 +449,11 @@ class BaseController extends Controller
      */
     public function missAction()
     {
-        if ($this->getRequest()->isAjax()){
+        if ($this->getRequest()->isAjax()) {
             $this->HttpException('402');
         }
-        $name = 'Would be stop run <br> When run '.$this->getUrl();
-        return view('common@layouts/502',['name'=>$name]);
+        $name = 'Would be stop run <br> When run ' . $this->getUrl();
+        return view('common@layouts/502', ['name' => $name]);
     }
 
     /**
@@ -477,16 +488,16 @@ class BaseController extends Controller
      * @param array $params
      * @param int $code
      */
-    public function goBack($defaultUrl = null,$params = [],$code = 302)
+    public function goBack($defaultUrl = null, $params = [], $code = 302)
     {
-        if ($defaultUrl){
-            $this->redirect($defaultUrl,$params,$code);
+        if ($defaultUrl) {
+            $this->redirect($defaultUrl, $params, $code);
         }
 
-        $backUrl = (array) session(config('identity._manage_url'));
-        if (!empty($backUrl)){
+        $backUrl = (array)session(config('identity._home_url'));
+        if (!empty($backUrl)) {
             $index = count($backUrl);
-            $this->success('正在恢复...',$backUrl[$index-1],1);
+            $this->success('正在恢复...', $backUrl[$index - 1], 1);
         }
 
         $this->goHome();
@@ -505,14 +516,14 @@ class BaseController extends Controller
      */
     public function getReturnUrl($defaultUrl = null)
     {
-        if ($defaultUrl){
+        if ($defaultUrl) {
             return $defaultUrl;
         }
 
-        $backUrl = (array) session(config('identity._manage_url'));
-        if (!empty($backUrl)){
+        $backUrl = (array)session(config('identity._home_url'));
+        if (!empty($backUrl)) {
             $index = count($backUrl);
-            return $backUrl[$index-1];
+            return $backUrl[$index - 1];
         }
 
         return $this->getHomeUrl();
@@ -531,22 +542,22 @@ class BaseController extends Controller
      */
     public function setReturnUrl($url = null)
     {
-        if (!$url){
+        if (!$url) {
             $url = request()->url();
         }
-        if ( stristr($url,$this->getLoginUrl()) ||  stristr($url,$this->getRegisterUrl()) || stristr($url,$this->getLogoutUrl()) ){
+        if (stristr($url, $this->getLoginUrl()) || stristr($url, $this->getRegisterUrl()) || stristr($url, $this->getLogoutUrl())) {
             return;
         }
-        $path = session(config('identity._manage_url'));
-        $path = (array) $path;
-        if (end($path) != $url){
+        $path = session(config('identity._home_url'));
+        $path = (array)$path;
+        if (end($path) != $url) {
             $path[] = $url;
         }
-        if (count($path) >3){
+        if (count($path) > 3) {
             unset($path[0]);
             $path = array_values($path);
         }
-        session(config('identity._manage_url'),$path);
+        session(config('identity._home_url'), $path);
     }
 
     /**
@@ -556,11 +567,11 @@ class BaseController extends Controller
      */
     public function getLoginUrl($defaultUrl = null)
     {
-        if ($defaultUrl){
+        if ($defaultUrl) {
             return $defaultUrl;
         }
 
-        if (config('identity.loginUrl')){
+        if (config('identity.loginUrl')) {
             return config('identity.loginUrl');
         }
         return null;
@@ -573,11 +584,11 @@ class BaseController extends Controller
      */
     public function getLogoutUrl($defaultUrl = null)
     {
-        if ($defaultUrl){
+        if ($defaultUrl) {
             return $defaultUrl;
         }
 
-        if (config('identity.logoutUrl')){
+        if (config('identity.logoutUrl')) {
             return config('identity.logoutUrl');
         }
         return null;
@@ -590,11 +601,11 @@ class BaseController extends Controller
      */
     public function getRegisterUrl($defaultUrl = null)
     {
-        if ($defaultUrl){
+        if ($defaultUrl) {
             return $defaultUrl;
         }
 
-        if (config('identity.registerUrl')){
+        if (config('identity.registerUrl')) {
             return config('identity.registerUrl');
         }
         return null;
@@ -607,38 +618,40 @@ class BaseController extends Controller
      */
     public function getResetUrl($defaultUrl = null)
     {
-        if ($defaultUrl){
+        if ($defaultUrl) {
             return $defaultUrl;
         }
 
-        if (config('identity.resetUrl')){
+        if (config('identity.resetUrl')) {
             return config('identity.resetUrl');
         }
         return null;
     }
 
-    public function HttpException($statusCode = null, $message = null, array $headers = [], $code = null){
-        if (empty($statusCode)){
+    public function HttpException($statusCode = null, $message = null, array $headers = [], $code = null)
+    {
+        if (empty($statusCode)) {
             $statusCode = '404';
         }
-        if (empty($code)){
+        if (empty($code)) {
             $code = $statusCode;
         }
-        if (empty($message)){
+        if (empty($message)) {
             $message = '请求不存在';
         }
-        if (empty($headers)){
-            $headers = ['code'=>$code,'msg'=>$message,'info'=>$message];
+        if (empty($headers)) {
+            $headers = ['code' => $code, 'msg' => $message, 'info' => $message];
         }
-        throw new \think\Exception\HttpException($statusCode,$message,null,$headers,$code);
+        throw new \think\Exception\HttpException($statusCode, $message, null, $headers, $code);
     }
 
 
     /**
      * @return \app\common\components\Helper
      */
-    public static function getHelper(){
-        if (!self::$_helper){
+    public static function getHelper()
+    {
+        if (!self::$_helper) {
             self::$_helper = \app\common\components\Helper::getInstance();
         }
         return self::$_helper;
@@ -647,17 +660,19 @@ class BaseController extends Controller
     /**
      * @return Request
      */
-    public function getRequest(){
+    public function getRequest()
+    {
         return \think\Request::instance();
     }
 
-    public function _after(){
+    public function _after()
+    {
 
     }
 
     public function __destruct()
     {
         $this->_after();
-        $this -> setReturnUrl();
+        $this->setReturnUrl();
     }
 }

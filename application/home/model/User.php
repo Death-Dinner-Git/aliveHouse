@@ -87,15 +87,15 @@ class User extends HomeUser
     public $password;
     //本次 重设密码
     public $rePassword;
-    //本次 登陆记住我
+    //本次 登录记住我
     public $rememberMe;
-    //本次 登陆找到账号的字段
+    //本次 登录找到账号的字段
     public $thisFindBy = 'username';
-    //本次 登陆时间
+    //本次 登录时间
     public $thisTime = '';
-    //本次 登陆IP信息
+    //本次 登录IP信息
     public $thisIp;
-    //本次 登陆是否异常
+    //本次 登录是否异常
     public $thisStatus;
 
     /**
@@ -224,6 +224,7 @@ class User extends HomeUser
             // $this->thisTime 根据此值是否有值判断是否属于新增会员的密码，否则是老会员登录验证密码
             $this->thisTime = date('Y-m-d H:i:s');
             $enPassword = $this->setPassword($data['password']);
+            $data['type'] = '1';
             $data['password'] = $enPassword;
             $data['reg_ip'] = User::getIp();
             $data['registered_at'] = $this->thisTime;
@@ -708,10 +709,6 @@ class User extends HomeUser
             'is_delete'=>'1',
             'username'=>$username,
         ];
-
-        var_dump(self::load()
-            ->where($where)
-            ->where('type','in',self::getAllowList())->buildSql());
 
         return self::load()
             ->where($where)

@@ -16,20 +16,12 @@ class HomeController extends BaseController
         // 前台模板
         $this->view->engine->layout('common@layouts/default-index');
         // 初始化
-        $this->init();
+        $this->init('user');
 
-        $_SESSION['identity'] = session(config('identity.unique'));
-        $_SESSION['logined_at'] = session('logined_at');
-//        $this->assign('_csrf_param','_csrf_'.request()->module());
-//        $this->assign('_csrf_token',md5(time()));
-        if ($_SESSION['logined_at'] != strtotime($_SESSION['identity']['logined_at'])){
-            $_SESSION['logined_at'] = strtotime($_SESSION['identity']['logined_at']);
-            session('logined_at',$_SESSION['logined_at']);
-            $_SESSION['_auth_token_'] = md5($_SESSION['identity']['id'].$_SESSION['identity']['logined_at']);
-        }
+        $this->setSession('user');
 
-//        // 登录检测,未登录，跳转到登录
-//        $this->isUser();
+        // 登录检测,未登录，跳转到登录
+        $this->isUser();
 
         // 获取当前访问地址
         $currentUrl = $this->getCurrentUrl();
@@ -38,23 +30,19 @@ class HomeController extends BaseController
         $url = $this->getUrl();
         // 权限检测，首页不需要权限
         if (!$this->accessCheck()) {
-            if(!('home/index/index' === strtolower($currentUrl) || $url === '/')){
-                $this->error('拒绝访问', url('home/Index/index'),[],'1');
+            if (!('home/index/index' === strtolower($currentUrl) || $url === '/')) {
+                $this->error('拒绝访问', url('home/Index/index'), [], '1');
             }
         }
-
     }
-
 
     /**
-     * @description before action function
-     * if is a client return true, or return false;
-     * @return bool
+     * @param null $key
+     * @return string|array|null
      */
-    protected function isGuest()
+    protected function getUser($key = null)
     {
-        //用户登录检测
-        $uid = \app\home\model\User::isGuest();
-        return $uid ? $uid : false;
+        return $this->getIdentity($key , 'user');
     }
+
 }

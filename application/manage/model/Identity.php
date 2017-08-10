@@ -97,9 +97,9 @@ class Identity extends BackUser
     public $rememberMe;
     //时间
     public $thisTime = '';
-    //本次登陆IP信息
+    //本次登录IP信息
     public $thisIp;
-    //本次登陆是否异常
+    //本次登录是否异常
     public $thisStatus;
 
     /**

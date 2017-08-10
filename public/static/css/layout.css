@@ -2660,3 +2660,8 @@ hr.line.dashed, hr.upLine.dashed {
     z-index: 2;
 }
 
+.layout-content {
+    background: #fff;
+    border-bottom: 1px solid #c7d1d2;
+    border-radius: 5px;
+}

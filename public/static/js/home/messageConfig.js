@@ -23,7 +23,7 @@ if(typeof LS=="undefined"){
         nextPager: "下一页",
         prevPager: "上一页",
         favorite: "收藏本站",
-        otherAccountLogin: "其他账号登陆",
+        otherAccountLogin: "其他账号登录",
         memberInputAcct: "请输入您的帐号。",
         memberInputPwd: "请输入您的密码。",
         memberInputCaptcha: "请输入验证码。",

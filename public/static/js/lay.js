@@ -288,7 +288,7 @@ var _oem = false;
 var _siteVer = 10;
 var _manageStatus = false;
 var _webRightBar = false;
-var _isMemberLogin = false;// 会员是否登陆了
+var _isMemberLogin = false;// 会员是否登录了
 
 
 var nav2SubMenu = [];

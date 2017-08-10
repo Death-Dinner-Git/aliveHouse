@@ -119,58 +119,49 @@ class Model extends \think\Model
         }
 
         parent::__construct($data);
+
+        // 设置当前数据表和模型名
+        if (!empty($this->table)) {
+            $pattern = '{{%(.*?)}}';
+            if (preg_match($pattern,$this->table)){
+                $this->table = ltrim($this->table,'{{%');
+                $this->table = rtrim($this->table,'}}');
+            }
+            if ($prefix = Config('database.prefix')){
+                if (strpos($this->table,$prefix) !== 0){
+                    $this->table = $prefix.$this->table;
+                }
+            }
+            $this->setTable($this->table);
+        }
     }
 
     /**
-     * 获取当前模型的数据库查询对象
-     * @access public
-     * @param bool $baseQuery 是否调用全局查询范围
-     * @return Query
+     * @param null|array|\think\Model $resultSet
+     * @return array
      */
-    public function db($baseQuery = true)
-    {
-        $model = $this->class;
-        if (!isset(self::$links[$model])) {
-            // 合并数据库配置
-            if (!empty($this->connection)) {
-                if (is_array($this->connection)) {
-                    $connection = array_merge(Config::get('database'), $this->connection);
-                } else {
-                    $connection = $this->connection;
-                }
-            } else {
-                $connection = [];
-            }
-            // 设置当前模型 确保查询返回模型对象
-            $query = Db::connect($connection)->getQuery($model, $this->query);
-
-            // 设置当前数据表和模型名
-            if (!empty($this->table)) {
-                $pattern = '{{%(.*?)}}';
-                if (preg_match($pattern,$this->table)){
-                    $this->table = ltrim($this->table,'{{%');
-                    $this->table = rtrim($this->table,'}}');
-                    if ($prefix = Config('database.prefix')){
-                        $this->table = $prefix.$this->table;
-                    }
-                }
-                $query->setTable($this->table);
-            } else {
-                $query->name($this->name);
-            }
-
-            if (!empty($this->pk)) {
-                $query->pk($this->pk);
-            }
-
-            self::$links[$model] = $query;
+    public function asArray($resultSet = null){
+        $ret = [];
+        if (empty($resultSet) || !(is_array($resultSet) || is_object($resultSet))){
+            return $ret;
         }
-        // 全局作用域
-        if ($baseQuery && method_exists($this, 'base')) {
-            call_user_func_array([$this, 'base'], [& self::$links[$model]]);
+        $isTrueArray = false;
+        if ($resultSet instanceof $this){
+            $ret = $resultSet->toArray();
+        }else if (is_array($resultSet)){
+            foreach ($resultSet as $model){
+                if ($model instanceof $this){
+                    $ret[] = $model->toArray();
+                }else{
+                    $isTrueArray = true;
+                    break;
+                }
+            }
         }
-        // 返回当前模型的数据库查询对象
-        return self::$links[$model];
+        if ($isTrueArray){
+            $ret = $resultSet;
+        }
+        return $ret;
     }
 
     /**

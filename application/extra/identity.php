@@ -5,7 +5,7 @@ return [
     // 当前SESSION登录默认标识
     'unique'                       => 'identity',
     // Identity 位置
-    'default_user_model'            => '\app\manage\model\Identity',
+    'default_model'            => '\app\manage\model\Identity',
     // 登录路由
     'loginUrl'                        => 'manage/login/login',
     // 退出路由
@@ -15,7 +15,7 @@ return [
     // 注册路由
     'resetUrl'                        => 'manage/login/reset',
     // 当前用户对象SESSION　key
-    '_identity'                       => '__IDENTITY__',
+    '_user'                           => '__IDENTITY__',
     // 当前用户 自动登录 SESSION　key
     '_auth_key'                       => '__AUTH_KEY__',
     // 当前用户 登录有效期 SESSION　key
@@ -27,7 +27,9 @@ return [
     // 重置密码 默认有效期时间
     '_passwordResetTokenExpire'       => 60*60*2,
     // 登录成功 返回URL
-    '_manage_url'                     => '__MANAGE_URL__',
+    '_home_url'                     => '__MANAGE_URL__',
     // 是否自动登录
     '_auto_login'                     => true,
+    // 登录成功 返回URL
 ];
+

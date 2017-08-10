@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
 
     <script>
-        // 判断当前的window对象是否是top对象 //防止网页被嵌入框架 （Frame）代码 或者 iframe 检查到登陆失效不能回到顶层。
+        // 判断当前的window对象是否是top对象 //防止网页被嵌入框架 （Frame）代码 或者 iframe 检查到登录失效不能回到顶层。
         if (window != top) {
             // 如果不是，将top对象的网址自动导向被嵌入网页的网址
             top.location.href = window.location.href;
@@ -241,7 +241,7 @@
 
                     <!--login box begin-->
                     <div class="login-title">
-                        <h2 style="text-align:center; color: #FFF; margin-bottom: 0;padding-top: 15px;"> 登陆 - 好房置业 </h2>
+                        <h2 style="text-align:center; color: #FFF; margin-bottom: 0;padding-top: 15px;"> 登录 </h2>
                     </div>
 
                     <form id="Login" class="layui-form" action="/manage/login/login" method="post">
@@ -288,7 +288,7 @@
                         <div class="field submit-field">
                             <div class="layui-form-item">
                                  <span id="StandardSubmit">
-                                     <input type="button" value="确定登陆" id="Submit_1" title="确定登陆" class="login-text" lay-submit="" lay-filter="submit" />
+                                     <input type="button" value="确定登录" id="Submit_1" title="确定登录" class="login-text" lay-submit="" lay-filter="submit" />
                                  </span>
                             </div>
                         </div>
@@ -385,7 +385,7 @@
 
             if (username.replace(/(^\s*)|(\s*$)/g, '') === ''){
                 $('input[name="username"]',$form).val('');
-                layer.msg('登陆账号不能为空');
+                layer.msg('登录账号不能为空');
                 return;
             }
 
@@ -415,7 +415,7 @@
                 error:function (data) {
                     onSubmit = false;
                     layer.close(index);
-                    layer.msg('登陆失败');
+                    layer.msg('登录失败');
                 }
             });
             //必须中断

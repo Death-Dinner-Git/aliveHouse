@@ -294,7 +294,7 @@ class Identity extends HomeUser
      */
     public static function logout()
     {
-        session(config('identity._identity'),null);
+        session(config('identity._user'),null);
         session(config('identity._auth_key'), null);
         session(config('identity._duration'),null);
         return true;
@@ -307,7 +307,7 @@ class Identity extends HomeUser
      */
     public function setLogout($user = null)
     {
-        session(config('identity._identity'),null);
+        session(config('identity._user'),null);
         session(config('identity._auth_key'), null);
         session(config('identity._duration'),null);
         return true;
@@ -497,7 +497,7 @@ class Identity extends HomeUser
      */
     protected function setIdentity(User $_identity, $duration = 0)
     {
-        session(config('identity._identity'),$_identity);
+        session(config('identity._user'),$_identity);
         return $_identity;
     }
 
@@ -1057,7 +1057,7 @@ class Identity extends HomeUser
      */
     public static function getIdentity($name = null)
     {
-        $identity =  session(config('identity._identity'));
+        $identity =  session(config('identity._user'));
         if ($identity && $identity instanceof User){
             if (!is_string($name) || $name === '') {
                 return $identity;

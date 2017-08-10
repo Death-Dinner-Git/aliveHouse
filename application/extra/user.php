@@ -7,13 +7,13 @@ return [
     // Identity 位置
     'default_model'            => '\app\home\model\User',
     // 登录路由
-    'loginUrl'                        => 'manage/user/login',
+    'loginUrl'                        => 'home/user/login',
     // 退出路由
-    'logoutUrl'                       => 'manage/user/logout',
+    'logoutUrl'                       => 'home/user/logout',
     // 注册路由
-    'registerUrl'                     => 'manage/user/register',
+    'registerUrl'                     => 'home/user/register',
     // 注册路由
-    'resetUrl'                        => 'manage/user/reset',
+    'resetUrl'                        => 'home/user/reset',
     // 当前用户对象SESSION　key
     '_user'                       => '__USER__',
     // 当前用户 自动登录 SESSION　key
@@ -30,5 +30,4 @@ return [
     '_home_url'                     => '__USER_URL__',
     // 是否自动登录
     '_auto_login'                     => true,
-
 ];

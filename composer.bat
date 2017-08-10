@@ -4,8 +4,8 @@
 
 @D:
 
-@cd upupw\wf_cars\
+@cd upupw\alivehouse\
 
-@php think Socket
+@composer update
 
 @endlocal

@@ -89,7 +89,7 @@ class UserloginLog extends Model
         $model->user_id = !empty($userId) ? $userId : (isset($_SESSION['identity']['id']) ? $_SESSION['identity']['id'] : '1');
         $model->app = $model->user_id == '0' ? (strtolower($request->module()) == 'home' ? '2' : '1') : $type;
         $model->ip = !empty($ip) ? $ip : $request->ip();
-        $model->target = !empty($target) ? $target : ($model->app == '1' ? '后台' : '前台').'登陆记录';
+        $model->target = !empty($target) ? $target : ($model->app == '1' ? '后台' : '前台').'登录记录';
         $model->created_at = date('Y-m-d H:i:s');
         $model->updated_at = date('Y-m-d H:i:s');
         $model->save();
