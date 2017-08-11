@@ -189,6 +189,7 @@
             color: #fff;
             line-height: 20px;
             background: #f4f4f4;
+            border-radius: 2px;
         }
         #Login .login-text{
             background: rgba(0,0,0,0);
@@ -254,9 +255,6 @@
                                 <span id="StandardUsername">
                                     <input type="text"  name="username" id="username_1" class="login-text Username" value="" maxlength="32" placeholder="会员名称 | 邮箱 | 手机号" >
                                 </span>
-                                <span class="field-success" style="display: none;">
-                                    <i class="fa fa-check-square"></i>
-                                 </span>
                             </div>
                         </div>
 
@@ -265,9 +263,6 @@
                                 <label id="password-label" for="password_1"><i class="fa fa-key" title="登录密码"></i></label>
                                 <span id="StandardPassword">
                                     <input type="password" name="password" id="password_1"  class="login-text" maxlength="40" placeholder="登录密码" >
-                                </span>
-                                <span class="field-success" style="display: none;">
-                                    <i class="fa fa-check-square"></i>
                                 </span>
                             </div>
                         </div>
@@ -324,6 +319,7 @@
     window.onload = function () {
         $('.fa').html('');
     };
+
     var _width = document.documentElement.clientWidth;//获取页面可见宽度
     var offsetX1 = 700;
     var offsetX2 = 250;

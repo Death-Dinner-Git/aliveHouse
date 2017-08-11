@@ -27,7 +27,7 @@ class LNode{
         $this->mNext=null;
     }
 }
-class SingleLinkedList{
+class LinkedList{
     //头结点数据
     public $mElem;
     //下一结点指针

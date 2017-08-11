@@ -21,7 +21,7 @@
  * @version   $Id$
  +------------------------------------------------------------------------------
  */
-class Dir extends Think implements IteratorAggregate
+class Dir implements IteratorAggregate
 {//类定义开始
 
 	private $_values = array();
@@ -529,7 +529,3 @@ class Dir extends Think implements IteratorAggregate
 
 }//类定义结束
 
-if(!class_exists('DirectoryIterator')) {
-	class DirectoryIterator extends Dir {}
-}
-?>
