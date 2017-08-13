@@ -28,7 +28,7 @@ class AuthController extends ManageController
         }
         $type = trim($this->getRequest()->request('type'));
         if ($type != '') {
-            if (in_array($type, array_keys($model->getValue('type')))) {
+            if (in_array($type, array_keys($model->getLists('type')))) {
                 $where = array_merge($where, ['type' => $type]);
             }
         }
@@ -56,7 +56,7 @@ class AuthController extends ManageController
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data) {
                 $type = isset($data['type']) ? $data['type'] : '2';
-                if (!in_array($type, array_keys($model->getValue('type')))) {
+                if (!in_array($type, array_keys($model->getLists('type')))) {
                     $this->error('无效类型', 'create', '', 1);
                 }
                 if ($type == '2' && isset($data['name'])) {
@@ -124,7 +124,7 @@ class AuthController extends ManageController
         if ($request->isPost()) {
             // 调用当前模型对应的Identity验证器类进行数据验证
             $data = $model->filter($_POST);
-            if (!in_array($data['type'], array_keys($model->getValue('type')))) {
+            if (!in_array($data['type'], array_keys($model->getLists('type')))) {
                 $this->error('无效类型', url('update', ['id' => $id]), [], 1);
             }
             if ($data['type'] == '2' && $data['name'] != $model->name) {

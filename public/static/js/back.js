@@ -19,6 +19,8 @@ Back.config = {
     getCity:'/manage/ajax/getCity',
 };
 
+Back.layer =  top.layui.layer ? top.layui.layer : layui.layer;
+
 /* 初始化操作 */
 Back.init = function () {
     if (typeof Site === "undefined") {
@@ -26,15 +28,6 @@ Back.init = function () {
             top.layui.layer.msg('未加载Site类,Back功能可能受限');
         }
     }
-};
-
-
-/**
- * 获取弹出工具
- * @returns {*}
- */
-Back.getLayer = function (){
-    return top.layui.layer ? top.layui.layer : layui.layer;
 };
 
 /**
@@ -52,10 +45,10 @@ Back.goSearch = function (keyword){
 Back.tableBase = function (){
     layui.use(['layer','form', 'laydate'], function () {
         var laydate = layui.laydate,
-            form = layui.form(),
-            layer = top.layui.layer ? top.layui.layer : layui.layer ;
+            form = layui.form();
+        Back.layer = top.layui.layer ? top.layui.layer : layui.layer ;
 
-        $(document).off('click', '[lay-filter="date"]').on('click', '[lay-filter="date"]', function () {
+        $(document).off('click', '[lay-filter="date"]').on('click', '[lay-filter="date"]:not([readonly]):not([disabled])', function () {
             var that = $(this);
             var date = {
                 elem: this,
@@ -67,8 +60,11 @@ Back.tableBase = function (){
             laydate(date);
         });
 
-        $(document).off('click', '[lay-filter="startDate"]').on('click', '[lay-filter="startDate"]', function () {
-            var that = this;
+        $(document).off('click', '[lay-filter="startDate"]').on('click', '[lay-filter="startDate"]:not([readonly]):not([disabled])', function () {
+            var that = $(this);
+            if (that.hasAttribute('readonly') || that.hasAttribute('disabled')){
+                return;
+            }
             var date = {
                 elem: this,
                 istime: true,
@@ -79,8 +75,11 @@ Back.tableBase = function (){
             laydate(date);
         });
 
-        $(document).off('click', '[lay-filter="endDate"]').on('click', '[lay-filter="endDate"]', function () {
-            var that = this;
+        $(document).off('click', '[lay-filter="endDate"]').on('click', '[lay-filter="endDate"]:not([readonly]):not([disabled])', function () {
+            var that = $(this);
+            if (that.hasAttribute('readonly') || that.hasAttribute('disabled')){
+                return;
+            }
             var date = {
                 elem: this,
                 istime: true,
@@ -150,12 +149,11 @@ Back.create = function (selector,options,url){
     $(document).off('click','[lay-filter="'+selector+'"]').on('click','[lay-filter="'+selector+'"]',function () {
         var that = $(this);
         config.content = url || config.content || that.attr('lay-url');
-        var layer = Back.getLayer();
         if (!config.content){
-            layer.msg('地址无效');
+            Back.layer.msg('地址无效');
             return;
         }
-        layer.open(config);
+        Back.layer.open(config);
     });
 };
 
@@ -183,15 +181,14 @@ Back.update = function (selector,options,url){
     $(document).off('click','[lay-filter="'+selector+'"]').on('click','[lay-filter="'+selector+'"]',function () {
         var that = $(this);
         var actionUrl = url || baseUrl || that.attr('lay-url');
-        var layer = Back.getLayer();
         var id = that.closest('[data-key]').attr('data-key');
         if (!actionUrl || !id){
-            layer.msg('地址无效');
+            Back.layer.msg('地址无效');
             return;
         }else{
             config.content = baseUrl +'?id='+ id;
         }
-        layer.open(config);
+        Back.layer.open(config);
     });
 };
 
@@ -220,7 +217,6 @@ Back.action = function (selector,options,url,key){
     $(document).off('click','[lay-filter="'+selector+'"]').on('click','[lay-filter="'+selector+'"]',function () {
         var that = $(this);
         var actionUrl = url || baseUrl || that.attr('lay-url');
-        var layer = Back.getLayer();
         var id = that.closest('[data-key]').attr('data-key');
         if (!actionUrl || !id){
             layer.msg('地址无效');
@@ -229,7 +225,7 @@ Back.action = function (selector,options,url,key){
             key = key || 'id';
             config.content = baseUrl +'?'+key+'='+ id;
         }
-        layer.open(config);
+        Back.layer.open(config);
     });
 };
 
@@ -258,15 +254,14 @@ Back.view = function (selector,options,url){
     $(document).off('click','[lay-filter="'+selector+'"]').on('click','[lay-filter="'+selector+'"]',function () {
         var that = $(this);
         var actionUrl = url || baseUrl || that.attr('lay-url');
-        var layer = Back.getLayer();
         var id = that.closest('[data-key]').attr('data-key');
         if (!actionUrl || !id){
-            layer.msg('地址无效');
+            Back.layer.msg('地址无效');
             return;
         }else{
             config.content = baseUrl +'?id='+ id;
         }
-        layer.open(config);
+        Back.layer.open(config);
     });
 };
 
@@ -282,7 +277,6 @@ Back.delete = function (selector,url,options){
     }
     var item;
     var param = {id:[]};
-    var layer = Back.getLayer();
     var config = {
         title:'删除提示',
         area: ['600px','300px'],
@@ -292,10 +286,10 @@ Back.delete = function (selector,url,options){
         btn: ['确定', '取消'],
         btnAlign: 'c',
         btn2: function(index, layero){
-            layer.close(index);
+            Back.layer.close(index);
         },
         yes:function(index) {
-            layer.close(index);
+            Back.layer.close(index);
             var i;
             $.ajax({
                 url:url,
@@ -305,7 +299,7 @@ Back.delete = function (selector,url,options){
                     i = top.layer.load(1, {shade:0.1});
                 },
                 success:function (data) {
-                    layer.close(i);
+                    Back.layer.close(i);
                     if (data.status == 1){
                         if (param.id){
                             $.each(param.id,function (index,item) {
@@ -316,12 +310,12 @@ Back.delete = function (selector,url,options){
                         }
                     }
                     if (data.info !== undefined){
-                        layer.msg(data.info);
+                        Back.layer.msg(data.info);
                     }
                 },
                 error:function (data) {
-                    layer.close(i);
-                    layer.msg('删除失败');
+                    Back.layer.close(i);
+                    Back.layer.msg('删除失败');
                 }
             });
             return false;
@@ -345,15 +339,15 @@ Back.delete = function (selector,url,options){
         }
         if (!has)
         {
-            layer.msg('请选择删除项');
+            Back.layer.msg('请选择删除项');
             return false;
         }
         url = url || item.attr('lay-url');
         if (!url){
-            layer.msg('地址无效');
+            Back.layer.msg('地址无效');
             return;
         }
-        layer.open(config);
+        Back.layer.open(config);
     });
 };
 

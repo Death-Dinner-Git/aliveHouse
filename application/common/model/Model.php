@@ -233,16 +233,29 @@ class Model extends \think\Model
      * @description 获取 当前 模型 的数据包 与实例 getLang 方法同样效果，一个静态方法，一个实例方法
      * @return array
      */
-    public static function Lang(){
-        return self::getLangHelper()->get(self::tableNameSuffix());
+    public static function Lang($field=null){
+        $field = (string)($field);
+        if (is_string($field) && $field != ''){
+            $ret = LangHelper::getInstance()->getField(self::tableNameSuffix(),$field);
+        }else{
+            $ret = LangHelper::getInstance()->get(self::tableNameSuffix());
+        }
+        return $ret;
     }
 
     /**
      * @description 获取 当前 模型 的数据包 与静态 Lang 方法同样效果，一个静态方法，一个实例方法
+     * @param null $field
      * @return array
      */
-    public function getLang(){
-        return LangHelper::getInstance()->get($this->getTableSuffix());
+    public function getLang($field=null){
+        $field = (string)($field);
+        if (is_string($field) && $field != ''){
+            $ret = LangHelper::getInstance()->getField($this->getTableSuffix(),$field);
+        }else{
+            $ret = LangHelper::getInstance()->get($this->getTableSuffix());
+        }
+        return $ret;
     }
 
     /**
@@ -270,7 +283,21 @@ class Model extends \think\Model
     }
 
     /**
-     * @description 获取当前模型数据包值 与 静态 T 方法同样效果，一个静态方法，一个实例方法
+     * @description 获取当前模型数据包值所有值 与 静态 T 方法同样效果，一个静态方法，一个实例方法
+     * @param null $field
+     * @return array
+     */
+    public function getLists($field=null){
+        $field = (string)($field);
+        $ret = [];
+        if (is_string($field) && $field != ''){
+            $ret = LangHelper::getInstance()->getField($this->getTableSuffix(),$field);
+        }
+        return $ret;
+    }
+
+    /**
+     * @description 获取当前模型数据包值  与 静态 T 方法同样效果，一个静态方法，一个实例方法
      * @param null $field
      * @param null $key
      * @param null $default
@@ -283,11 +310,6 @@ class Model extends \think\Model
             $ret = LangHelper::getInstance()->getValue($this->getTableSuffix(),$field,$key);
             if (empty($ret)){
                 $ret = (string)$default;
-            }
-        }else if (is_string($field) && $field != ''){
-            $ret = LangHelper::getInstance()->getField($this->getTableSuffix(),$field);
-            if (empty($ret)){
-                $ret = (array)$default;
             }
         }
         return $ret;

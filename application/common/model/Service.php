@@ -6,7 +6,7 @@ use app\common\model\Model;
 use app\common\model\BackUser;
 
 /**
- * This is the model class for table "{{%customer_service}}".
+ * This is the model class for table "{{%service}}".
  *
  * @property integer $id
  * @property integer $is_delete
@@ -29,7 +29,7 @@ class Service extends Model
      * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
      * @author Sir Fu
      */
-    protected $table = '{{%customer_service}}';
+    protected $table = '{{%service}}';
 
     protected $field = [
         'id',
@@ -50,12 +50,6 @@ class Service extends Model
     protected $insert = [];
     // 更新自动完成列表
     protected $update = [];
-
-    public static $levelList = ['1'=>'普通客服','2'=>'金牌客服'];
-
-    public static function getLevelList(){
-        return self::$levelList;
-    }
 
     /**
      * @param bool $hot

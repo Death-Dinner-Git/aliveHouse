@@ -12,9 +12,10 @@ use app\common\model\ContactRead;
  *
  * @property integer $id
  * @property integer $is_delete
- * @property string $username
+ * @property string $name
  * @property string $contact
  * @property string $email
+ * @property string $weChat
  * @property string $address
  * @property string $content
  * @property integer $home_user_id
@@ -40,9 +41,10 @@ class Contact extends Model
     protected $field = [
         'id',
         'is_delete',
-        'username',
+        'name',
         'contact',
         'email',
+        'weChat',
         'address',
         'content',
         'home_user_id',
@@ -59,12 +61,6 @@ class Contact extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $readType = ['1'=>'未读','2'=>'已读'];
-
-    public static function getReadType(){
-        return self::$readType;
-    }
-
     /**
      * @inheritdoc
      */
@@ -73,12 +69,10 @@ class Contact extends Model
         return [
             'rule'=>[
                 ['is_delete','in:0,1','时效 无效'],
-                ['username','max:255',],
-                ['contact','max:255',],
+                ['name','max:64',],
+                ['contact','max:32',],
                 ['email','max:255',],
                 ['address','max:200',],
-                ['name_en','max:100',],
-                ['short_name_en','max:10',],
             ],
             'msg'=>[]
         ];
@@ -92,9 +86,10 @@ class Contact extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=无效;1=有效;',
-            'username' => '联系人',
+            'name' => '联系人',
             'contact' => '联系方式',
             'email' => '邮箱',
+            'weChat' => '微信',
             'address' => '联系地址',
             'content' => '联系内容',
             'home_user_id' => '前端用户表ID',

@@ -3,6 +3,8 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
+use app\manage\model\BackUser;
+use app\manage\model\Client;
 use app\manage\model\Contact;
 use app\manage\model\Service;
 
@@ -16,85 +18,79 @@ class ContactController extends ManageController
 
     /**
      * @description 显示资源列表
-     * @param int $pageNumber
-     * @param string $key
-     * @param string $status
      * @return \think\Response
      */
-    public function superAction($pageNumber = 1,$key = null, $status = null)
+    public function superAction()
     {
-        $where = ['is_delete'=>'1'];
+        $where = ['t.is_delete'=>'1'];
         $each = 12;
-        $param = ['key'=>'','status'=>''];
-        $query = Contact::load();
-        if ($key && $key != ''){
-            $param['key'] = trim($key);
-            $where[] = ['exp',"`username` like '%".$key."%' or `contact` like '%".$key."%' or `email` like '%".$key."%' or `address` like '%".$key."%'"];
+        $model = Contact::load();
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $where[] = ['exp',"`t`.`name` like '%".$key."%' or `t`.`contact` like '%".$key."%' or `t`.`email` like '%".$key."%' or `t`.`address` like '%".$key."%'"];
         }
-        $lists = Contact::getReadType();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
-        }
-        if ($status && $status != ''){
-            $param['status'] = trim($status);
-            if (in_array($status,array_keys($lists))){
-                $where = array_merge($where,['readed'=>$status]);
+        $readType = Contact::lang('readed');
+        $readed = trim($request->request('readed'));
+        if ($readed != ''){
+            if (in_array($readed,array_keys($readType))){
+                $where = array_merge($where,['readed'=>$readed]);
             }
         }
 
-        $providerModel = clone $query;
-        $count = $query->where($where)->count();
-        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+        $join = [
+            [BackUser::tableName().' b','t.back_user_id = b.id','left'],
+            [Client::tableName().' c','t.home_user_id = c.id','left'],
+        ];
 
-        $this->assign('meta_title', "全部求购清单");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('param', $param);
-        $this->assign('lists', $lists);
+        $list = $model->alias('t')
+            ->join($join)
+            ->where($where)
+            ->field('t.*,b.id,b.username as belongUser,c.id,c.username as clientName')
+            ->order('t.id DESC')->paginate($each);
+
+        $this->assign('meta_title', "我的求购清单");
+        $this->assign('lang', Contact::Lang());
+        $this->assign('list', $list);
         return view('contact/index');
     }
 
     /**
      * @description 显示资源列表
-     * @param int $pageNumber
-     * @param string $key
-     * @param string $status
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$key = null, $status = null)
+    public function indexAction()
     {
-        $where = ['is_delete'=>'1'];
+        $where = ['t.is_delete'=>'1','b.id'=>$this->getIdentity('id')];
         $each = 12;
-        $param = ['key'=>'','status'=>''];
-        $query = Contact::load();
-        if ($key && ($key = trim($key)) != ''){
-            $param['key'] = $key;
-            $where[] = ['exp',"`username` like '%".$key."%' or `contact` like '%".$key."%' or `email` like '%".$key."%' or `address` like '%".$key."%'"];
+        $model = Contact::load();
+        $request = $this->getRequest();
+        $key = trim($request->request('keyword'));
+        if ($key != ''){
+            $where[] = ['exp',"`t`.`name` like '%".$key."%' or `t`.`contact` like '%".$key."%' or `t`.`email` like '%".$key."%' or `t`.`address` like '%".$key."%'"];
         }
-        $lists = Contact::getReadType();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
-        }
-        if ($status && ($status = trim($status)) != ''){
-            $param['status'] = $status;
-            if (in_array($status,array_keys($lists))){
-                $where = array_merge($where,['readed'=>$status]);
+        $readType = Contact::lang('readed');
+        $readed = trim($request->request('readed'));
+        if ($readed != ''){
+            if (in_array($readed,array_keys($readType))){
+                $where = array_merge($where,['readed'=>$readed]);
             }
         }
 
-        $providerModel = clone $query;
-        $count = $query->where($where)->count();
-        $dataProvider = $providerModel->where($where)->page($pageNumber,$each)->select();
+        $join = [
+            [BackUser::tableName().' b','t.back_user_id = b.id','left'],
+            [Client::tableName().' c','t.home_user_id = c.id','left'],
+        ];
+
+        $list = $model->alias('t')
+            ->join($join)
+            ->where($where)
+            ->field('t.*,b.id,b.username as belongUser,c.id,c.username as clientName')
+            ->order('t.id DESC')->paginate($each);
 
         $this->assign('meta_title', "我的求购清单");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('param', $param);
-        $this->assign('lists', $lists);
+        $this->assign('lang', Contact::Lang());
+        $this->assign('list', $list);
         return view('contact/index');
     }
 

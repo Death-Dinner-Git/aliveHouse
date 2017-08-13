@@ -69,7 +69,7 @@
                 <div class="layui-input-inline">
                     <select name="requireType" lay-verify="require" lay-search>
                         <option value="">需求类别</option>
-                        {volist name="model->getValue('requireType')" id="item" }
+                        {volist name="model->getLists('requireType')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -152,7 +152,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="clientFrom" lay-verify="" lay-search>
                         <option value="">客户来源</option>
-                        {volist name="model->getValue('clientFrom')" id="item" }
+                        {volist name="model->getLists('clientFrom')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -160,7 +160,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="feature" lay-verify="" lay-search>
                         <option value="">客户等级</option>
-                        {volist name="model->getValue('clientFrom')" id="item" }
+                        {volist name="model->getLists('clientFrom')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -168,7 +168,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="feature" lay-verify="" lay-search>
                         <option value="">客户需求</option>
-                        {volist name="model->getValue('buyPurpose')" id="item" }
+                        {volist name="model->getLists('buyPurpose')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -184,7 +184,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="askType" lay-verify="" lay-search>
                         <option value="">接洽方式</option>
-                        {volist name="model->getValue('askType')" id="item" }
+                        {volist name="model->getLists('askType')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -192,7 +192,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="serviceStatus" lay-verify="" lay-search>
                         <option value="">服务状态</option>
-                        {volist name="model->getValue('serviceStatus')" id="item" }
+                        {volist name="model->getLists('serviceStatus')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>
@@ -200,7 +200,7 @@
                 <div class="layui-input-inline" style="width: 150px;">
                     <select name="belongUserId" lay-verify="" lay-search>
                         <option value="">权属人</option>
-                        {volist name="model->getValue('serviceStatus')" id="item" }
+                        {volist name="model->getLists('serviceStatus')" id="item" }
                         <option value="{$key}">{$item}</option>
                         {/volist}
                     </select>

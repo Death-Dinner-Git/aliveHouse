@@ -9,7 +9,7 @@ use app\common\model\City;
 use app\common\model\ImagesNewHouse;
 
 /**
- * This is the model class for table "hfzy_new_house".
+ * This is the model class for table "{{%house}}".
  *
  * @property integer $id
  * @property integer $is_delete
@@ -54,7 +54,6 @@ use app\common\model\ImagesNewHouse;
  * @property string $updated_at
  *
  * @property BuildingBase $buildingBase
- * @property BackUser $createdBy
  */
 class House extends Model
 {
@@ -64,7 +63,7 @@ class House extends Model
      * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
      * @author Sir Fu
      */
-    protected $table = '{{%new_house}}';
+    protected $table = '{{%house}}';
 
     protected $field = [
         'id',
@@ -149,9 +148,8 @@ class House extends Model
             'city_id' => '城市',
             'county_id' => '区域/县级',
             'address' => '地址',
-            'type' => '房源类型;1新房2二手房;默认1;',
-            'code' => '门牌号',
-            'room' => '卧室',
+            'type' => '类型',
+            'room' => '房号',
             'hall' => '大厅',
             'kitchen' => '厨房',
             'toilet' => '独卫',
@@ -164,7 +162,7 @@ class House extends Model
             'face' => '房屋朝向',
             'houseType' => '房屋类型',
             'fitment' => '装修情况',
-            'eachPrice' => '房屋单价(元/平方米',
+            'eachPrice' => '房屋单价(元/平方米)',
             'price' => '售价',
             'years' => '建筑年代',
             'area' => '建筑面积',

@@ -14,9 +14,10 @@ use app\manage\model\ContactRead;
  *
  * @property integer $id
  * @property integer $is_delete
- * @property string $username
+ * @property string $name
  * @property string $contact
  * @property string $email
+ * @property string $weChat
  * @property string $address
  * @property string $content
  * @property integer $home_user_id

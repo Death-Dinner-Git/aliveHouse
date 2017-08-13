@@ -11,7 +11,7 @@ class ServiceValidate extends Validate
      * @var array
      */
     protected $rule = [
-        'is_delete|标签','require|in:0,1',
+        'is_delete|标识','require|in:0,1',
     ];
 
     /**

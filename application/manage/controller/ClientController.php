@@ -8,7 +8,7 @@ use app\manage\model\Client;
 use app\manage\model\BackUser;
 
 use app\manage\model\ClientServer;
-use app\manage\model\DealOrder;
+use app\manage\model\Deal;
 use app\manage\model\Walk;
 
 class ClientController extends ManageController

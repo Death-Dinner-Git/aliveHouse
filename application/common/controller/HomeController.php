@@ -13,6 +13,9 @@ class HomeController extends BaseController
     protected function _initialize()
     {
         parent::_initialize();
+        if ($this->getRequest()->ip() != '127.0.0.1'){
+            config('app_debug',false);
+        }
         // 前台模板
         $this->view->engine->layout('common@layouts/default-index');
         // 初始化
@@ -20,8 +23,8 @@ class HomeController extends BaseController
 
         $this->setSession('user');
 
-        // 登录检测,未登录，跳转到登录
-        $this->isUser();
+//        // 登录检测,未登录，跳转到登录
+//        $this->isUser();
 
         // 获取当前访问地址
         $currentUrl = $this->getCurrentUrl();

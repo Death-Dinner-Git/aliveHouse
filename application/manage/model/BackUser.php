@@ -23,7 +23,7 @@ use app\manage\model\NoticeRead;
 use app\manage\model\Opinion;
 use app\manage\model\OpinionRead;
 use app\manage\model\Slider;
-use app\manage\model\DealOrder;
+use app\manage\model\Deal;
 use app\manage\model\Upload;
 
 use app\manage\model\Identity;
@@ -82,7 +82,7 @@ use app\manage\model\Identity;
  * @property Opinion[] $opinions
  * @property OpinionRead[] $opinionReads
  * @property Slider[] $sliders
- * @property DealOrder[] $takeOrders
+ * @property Deal[] $takeOrders
  * @property Upload[] $uploads
  */
 class BackUser extends BaseBackUser

@@ -30,6 +30,11 @@ class BaseController extends Controller
         defined('IS_AJAX') or define('IS_AJAX', $is_ajax);
         config('default_module', request()->module());
         $this->assign('URL', $this->getUrl());
+        $app_debug = \app\common\model\Config::load()->where(['name'=>'APP_DEBUG'])->value('value');
+        config('app_debug',($app_debug? true :false));
+        if ($this->getRequest()->ip() != '127.0.0.1'){
+            config('app_debug',false);
+        }
     }
 
     /**

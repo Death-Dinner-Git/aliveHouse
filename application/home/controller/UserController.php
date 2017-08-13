@@ -31,6 +31,9 @@ class UserController extends BaseController
     protected function _initialize()
     {
         parent::_initialize();
+        if ($this->getRequest()->ip() != '127.0.0.1'){
+            config('app_debug',false);
+        }
         // 初始化
         $this->init('user');
 
@@ -54,7 +57,7 @@ class UserController extends BaseController
     public function loginAction()
     {
 
-        if (false && $this->getRequest()->isAjax() && $this->getRequest()->isPost()) {
+        if ($this->getRequest()->isAjax() && $this->getRequest()->isPost()) {
             $username = trim($this->getRequest()->request('username'));
             $password = $this->getRequest()->request('password');
 
@@ -104,9 +107,9 @@ class UserController extends BaseController
             }
         }
 
-//        if ($this->isGuest()) {
-//            $this->goHome();
-//        }
+        if ($this->isGuest()) {
+            $this->goHome();
+        }
 
         // 临时关闭当前模板的布局功能
         $this->view->engine->layout(false);

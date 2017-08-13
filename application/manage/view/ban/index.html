@@ -43,7 +43,7 @@
                     <select name="ban" lay-search >
                         <option value="">状态</option>
                         <option value="">全部</option>
-                        {volist name="model->getValue('ban')" id="item"}
+                        {volist name="model->getLists('ban')" id="item"}
                         <option value="{$key}" {if condition="$key eq $Think.get.ban"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>

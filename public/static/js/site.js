@@ -8,6 +8,7 @@
 var _width = document.documentElement.clientWidth;//获取页面可见宽度
 var _height = document.documentElement.clientHeight;//获取页面可见高度
 var jquery, element, layer, util, form, code, laydate, flow, layedit, upload, laypage;
+var zIndex = new Date().getTime();
 
 if (typeof Site === "undefined") {
     Site = {};
@@ -331,12 +332,13 @@ Site.showUrl = function (title, url, width, height, type, maxmin, ele, shade, sc
 };
 
 /*  */
-Site.msg = function (content) {
+Site.msg = function (content, options) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
     }
-    return myLayer.msg(content, {time: 1500});
+    options = $.extend({time: 1500}, options);
+    return myLayer.msg(content, options);
 };
 
 /*  */
@@ -446,7 +448,7 @@ Site.success = function (content) {
 };
 
 /*  */
-Site.tip = function (content) {
+Site.Alert = function (content) {
     var myLayer = Site.getModule('layer');
     if (!myLayer) {
         myLayer = layer;
@@ -2116,6 +2118,101 @@ Site.autoTextarea = function (elem, extra, maxHeight) {
 };
 
 /**
+ * 自定义 提示信息
+ */
+Site.initTip = function () {
+    $(document).off('click', '[lay-filter="tooltip"]',showTip).on('click', '[lay-filter="tooltip"]', function (e) {
+        showTip(e);
+    });
+    $(document).off('click',hideTip).on('click',function (e) {
+        hideTip(e);
+    });
+    function showTip(e) {
+        var container = $('.layui-tooltip-container .tooltip-body', document);
+        if (container.length<1) {
+            $('body', document).append('<div class="layui-tooltip-container"><div class="tooltip-body"></div></div>');
+            container = $('.layui-tooltip-container .tooltip-body', document);
+        }
+        var that = $(e.target),
+            arrow = that.attr('lay-arrow') || 'auto',
+            x = e.clientX, y = e.clientY,
+            text = that.attr('lay-text') || that.text(),
+            index = that.attr('lay-index');
+        var tip = container.find('.tooltip[lay-index="' + index + '"]');
+        if (tip.length<1) {
+            index = ++zIndex;
+            that.attr('lay-index',index);
+            if (arrow == 'auto'){
+                var _x = _width - x,_y = _height - y;
+                var horizontal = x > _x ? 'left' : 'right';
+                var vertical = y > _y ? 'top' : 'bottom';
+                arrow = vertical + '-' + horizontal;
+                that.attr('lay-arrow',arrow);
+            }
+            var html = '<div class="tooltip" lay-arrow="' + arrow + '" lay-index="' + index + '" style="display: none;">' +
+                '<div class="tooltip-arrow"></div>' +
+                '<div class="tooltip-inner"></div></div>';
+            container.append(html);
+            tip = container.find('.tooltip[lay-index="' + index + '"]');
+        }
+        tip.find('.tooltip-inner').html(text);
+        var width = tip.width(), height = tip.height(),left = x,top = y;
+
+        switch (arrow){
+            case 'in':{
+                left = x - (width/2);
+                top = y-(height/2);
+            }break;
+            case 'top':{
+                left = x - (width/2);
+                top = y-20-height;
+            }break;
+            case 'right':{
+                left = x+20;
+                top = y-(height/2);
+            }break;
+            case 'bottom':{
+                left = x - (width/2);
+                top = y+20;
+            }break;
+            case 'left':{
+                left = x-20-width;
+                top = y-(height/2);
+            }break;
+            case 'top-left':{
+                left = x-5-width;
+                top = y-15-height;
+            }break;
+            case 'top-right':{
+                left = x+5;
+                top = y-15-height;
+            }break;
+            case 'bottom-left':{
+                left = x-10-width;
+                top = y+30;
+            }break;
+            case 'bottom-right':{
+                left = x+10;
+                top = y+30;
+            }break;
+            default:{
+                that.attr('lay-arrow','bottom');
+                left = x - (width/2);
+                top = y+30;
+            }break
+        }
+        tip.css({left:left,top:top});
+        container.find('.tooltip[lay-index="' + index + '"]').show().siblings().hide();
+    }
+    function hideTip(e) {
+        var target = $(e.target);
+        if(target.closest('.layui-tooltip-container').length<1 && target.attr('lay-filter') != 'tooltip'){
+            $('.layui-tooltip-container .tooltip').hide();
+        }
+    }
+};
+
+/**
  * JS 写Cookie
  * @param name
  * @param value
@@ -2287,6 +2384,78 @@ Site.search = function (options) {
 };
 
 /**
+ * 提交表单
+ * @param _options
+ */
+Site.submit = function (_options) {
+    var options = $.extend(
+        {
+            form: 'form[action]',  // form 提交 对应的选择器
+            url: undefined,  // form 提交地址
+            submit: 'submit',  // 提交选择器
+            success: undefined, // 提交成功执行回调,参数是返回数据
+            isClose: true, // 提交成功后关闭弹出层
+            isReload: false, // 提交成功后刷新当前窗口
+            verify: {} // 自定义验证规则
+        }, _options);
+    layui.use(['layer', 'forms'], function () {
+        var layer = top.layui.layer || layui.layer;
+
+        //绑定form提交
+        var forms = layui.forms().create({ELEM: options.form});
+
+        //自定义验证规则
+        forms.verify(options.verify);
+
+        //监听提交
+        forms.on('submit(' + options.submit + ')', function (data) {
+            var param = $(data.form).serialize(), $form = $(data.form), url = options.url || $form.attr('action'),
+                index;
+            if (url === undefined || url === '') {
+                //没有提交地址 中断
+                url = window.location.href;
+            }
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: param,
+                beforeSend: function () {
+                    index = layer.load(1, {shade: 0.1});
+                },
+                success: function (data) {
+                    layer.close(index);
+                    if (data.msg !== undefined || data.info !== undefined) {
+                        layer.msg(data.msg || data.info);
+                    }
+                    if (data.code == '1' || data.status == '1') {
+                        if (typeof options.success === 'function') {
+                            options.success(data);
+                        }
+
+                        if (options.isClose) {
+                            layer.close(layer.getFrameIndex(window.name));
+                        }
+
+                        if (options.isReload) {
+                            Site.reLoad();
+                        }
+
+                    }
+                },
+                error: function (data) {
+                    layer.close(index);
+                    layer.msg('提交出错');
+                }
+            });
+            //必须中断
+            return false;
+        });
+
+    });
+};
+
+/**
  * 防止网页被嵌入框架 （Frame）代码
  */
 Site.isHostWindow = function () {
@@ -2320,6 +2489,8 @@ $(function () {
             top.window.addTab(this);
         });
     }
+
+    Site.initTip();
 
     Site.initTextarea();
 

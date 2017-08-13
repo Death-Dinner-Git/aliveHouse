@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2017-08-10 03:24:58
+-- Generation Time: 2017-08-14 02:22:57
 -- 服务器版本： 10.1.9-MariaDB-log
 -- PHP Version: 7.0.1
 
@@ -72,7 +72,7 @@ INSERT INTO `hfzy_auth_item` (`name`, `type`, `description`, `rule_name`, `data`
 ('/log/*', 2, '日记路由', NULL, '', '2017-08-06 20:35:34', '2017-08-06 20:38:59'),
 ('/manage/index/home', 2, '后台首页2', NULL, '', '2017-08-06 23:48:45', '2017-08-06 23:48:45'),
 ('/manage/index/index', 2, '后台首页', NULL, '', '2017-08-06 23:45:27', '2017-08-06 23:48:20'),
-('/manage/login/*', 2, '后台登录', NULL, '', '2017-08-06 23:46:26', '2017-08-06 23:46:26'),
+('/manage/login/*', 2, '后台登陆', NULL, '', '2017-08-06 23:46:26', '2017-08-06 23:46:26'),
 ('/opinion/*', 2, '意见路由', NULL, '', '2017-08-06 20:35:16', '2017-08-06 20:40:04'),
 ('/order/*', 2, '订单路由', NULL, '', '2017-08-06 20:34:33', '2017-08-06 20:40:33'),
 ('/user/*', 2, '用户控制路由', NULL, '', '2017-08-06 20:46:41', '2017-08-06 20:49:06'),
@@ -197,12 +197,12 @@ CREATE TABLE IF NOT EXISTS `hfzy_back_user` (
 --
 
 INSERT INTO `hfzy_back_user` (`id`, `is_delete`, `code`, `department_id`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `md5`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
-(1, 1, '00000000', 1, '00000000000', 0, NULL, 0, '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(100, 1, '810100', 1, '10086110120', 0, NULL, 0, 'hfzy', '$2y$13$0L0hdHcZ/N0GYiV/PJ0Ac./VGoLb48I6J8Q0V1RclTaC3cr8T68oC', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-09 23:51:41"],"current":["127.0.0.1","2017-08-10 03:24:08"],"often":["127.0.0.1"],"haply":["127.0.0.1"],"once":{"127.0.0.1":[1,"2017-08-10 03:24:08"]}}', '127.0.0.1', NULL, NULL, '2017-08-10 03:24:08', '2017-08-10 03:24:08'),
+(1, 1, '000000', 1, '00000000000', 0, NULL, 0, '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(100, 1, '810100', 1, '10086110120', 0, NULL, 0, 'hfzy', '$2y$13$rqzSRgFWv8BwkVWgOXd5uOXcsnvh0AWkqDHCp5n3xkgVOKWsQ6JAa', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-14 00:26:10"],"current":["127.0.0.1","2017-08-14 00:29:06"],"often":["127.0.0.1"],"haply":["127.0.0.1"],"once":{"127.0.0.1":[1,"2017-08-14 00:29:06"]}}', '127.0.0.1', NULL, NULL, '2017-08-14 00:29:06', '2017-08-14 00:29:06'),
 (101, 1, '810101', 1, '10086110000', 0, NULL, 0, 'username', '$2y$13$P03uTcIfPFNu.bu2zcfgn.Y0wG7Ys/THyXus/W.FuwWiI5w9ZGtt2', 'nickname', 'realName', NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, '2017-08-05 02:08:44', '2017-08-05 02:08:44'),
 (102, 1, '810102', 2, '10086110001', 0, NULL, 0, 'jingli', '$2y$13$ayMgS29zEOU/DgsCR7bdsuAlntMe35788sgwbgj1iTAdZ3ck7/IFq', 'nickname', 'realName', NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, 'd5f11ace1096430249d206b8f0a7db9c', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-08-07 00:49:24"],"current":["127.0.0.1","2017-08-07 00:49:24"],"often":[],"haply":[],"once":{"127.0.0.1":[1,"2017-08-07 00:49:24"]}}', '0.0.0.0', NULL, NULL, '2017-08-07 00:49:24', '2017-08-07 00:49:24'),
 (103, 1, '830103', 1, '10086110119', 0, NULL, 0, 'hf_jishu', '$2y$13$WXPpQkCavlVzd8kGgbr87urw24SRrZiasUY4dbjXMeHBMkZcoYS3.', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-08-07 03:44:49"],"current":["127.0.0.1","2017-08-07 03:44:49"],"often":[],"haply":[],"once":{"127.0.0.1":[1,"2017-08-07 03:44:49"]}}', '127.0.0.1', NULL, NULL, '2017-08-07 03:44:49', '2017-08-07 03:44:49'),
-(104, 1, '830104', 3, '13656465566', 0, NULL, 0, 'hf_yewu', '$2y$13$QqJLO5FW9.Osyd9piM/PQumWFTdSCChYFiIh1P8UGrCSnltCUjVNW', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, NULL, '127.0.0.1', NULL, '2017-08-05 01:32:29', '2017-08-05 03:56:58', '2017-08-05 03:58:32');
+(104, 1, '830104', 3, '13656465566', 0, NULL, 0, 'hf_yewu', '$2y$13$X.0CrI3/DliyBNa.22BCUOSpGiQze91cwsGONJpNhKN5QcrhI8nlm', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-08-13 15:11:34"],"current":["127.0.0.1","2017-08-13 20:31:44"],"often":[],"haply":[],"once":{"127.0.0.1":[3,"2017-08-13 20:31:44"]}}', '127.0.0.1', NULL, '2017-08-05 01:32:29', '2017-08-13 20:31:44', '2017-08-13 20:31:44');
 
 -- --------------------------------------------------------
 
@@ -519,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_client_server` (
 CREATE TABLE IF NOT EXISTS `hfzy_config` (
   `id` int(10) unsigned NOT NULL COMMENT '配置ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
-  `app` tinyint(1) unsigned DEFAULT '0' COMMENT '应用;0=后台;1=前台;',
+  `app` tinyint(1) unsigned DEFAULT '1' COMMENT '应用;1=后台;2=前台;',
   `title` varchar(32) NOT NULL DEFAULT '' COMMENT '配置标题',
   `name` varchar(32) DEFAULT NULL COMMENT '配置标识',
   `value` text NOT NULL COMMENT '配置值',
@@ -538,36 +538,36 @@ CREATE TABLE IF NOT EXISTS `hfzy_config` (
 --
 
 INSERT INTO `hfzy_config` (`id`, `is_delete`, `app`, `title`, `name`, `value`, `group`, `type`, `options`, `tip`, `created_at`, `updated_at`, `order`, `status`) VALUES
-(1, 1, 0, '站点开关', 'TOGGLE_WEB_SITE', '1', 1, 'toggle', '0:关闭\r\n1:开启', '站点关闭后将不能访问', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
-(2, 1, 0, '网站标题', 'WEB_SITE_TITLE', 'Hao Fang Zhi Ye', 1, 'text', '', '网站标题前台显示标题', '2017-08-03 01:57:20', '2017-08-03 01:57:20', 2, 1),
-(3, 1, 0, '网站口号', 'WEB_SITE_SLOGAN', '海南情义房地产营销策划有限公司 好房置业', 1, 'text', '', '网站口号、宣传标语、一句话介绍', '2017-08-03 01:56:42', '2017-08-03 01:56:42', 3, 1),
-(4, 1, 0, '网站LOGO', 'WEB_SITE_LOGO', '', 1, 'picture', '', '网站LOGO', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 1),
-(5, 1, 0, '网站反色LOGO', 'WEB_SITE_LOGO_INVERSE', '', 1, 'picture', '', '匹配深色背景上的LOGO', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 1),
-(6, 1, 0, '网站描述', 'WEB_SITE_DESCRIPTION', '海南情义房地产营销策划有限公司 好房置业', 1, 'textarea', '', '网站搜索引擎描述', '2017-08-03 01:56:22', '2017-08-03 01:56:22', 6, 1),
-(7, 1, 0, '网站关键字', 'WEB_SITE_KEYWORD', '海南情义房地产营销策划有限公司 好房置业', 1, 'textarea', '', '网站搜索引擎关键字', '2017-08-03 01:56:01', '2017-08-03 01:56:01', 7, 1),
-(8, 1, 0, '版权信息', 'WEB_SITE_COPYRIGHT', 'Copyright © 海南情义房地产营销策划有限公司 All rights reserved.', 1, 'text', '', '设置在网站底部显示的版权信息，如“版权所有 © 2014-2015 科斯克网络科技”', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, 1),
-(9, 1, 0, '网站备案号', 'WEB_SITE_ICP', 'XXX 号', 1, 'text', '', '设置在网站底部显示的备案号，如“苏ICP备1502009号"', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 9, 1),
-(10, 1, 0, '站点统计', 'WEB_SITE_STATISTICS', '', 1, 'textarea', '', '支持百度、Google、cnzz等所有Javascript的统计代码', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10, 1),
-(11, 1, 0, '公司名称', 'COMPANY_TITLE', '海南情义房地产营销策划有限公司', 3, 'text', '', '', '2017-08-03 01:55:37', '2017-08-03 01:55:37', 1, 1),
-(12, 1, 0, '公司地址', 'COMPANY_ADDRESS', '海南省海口市XXX', 3, 'text', '', '', '2017-08-03 01:54:16', '2017-08-03 01:54:16', 2, 1),
-(13, 1, 0, '公司邮箱', 'COMPANY_EMAIL', 'service@haofangzhiye.com', 3, 'text', '', '', '2017-08-03 01:53:58', '2017-08-03 01:53:58', 3, 1),
-(14, 1, 0, '公司电话', 'COMPANY_PHONE', 'XXX', 3, 'text', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 1),
-(15, 1, 0, '公司QQ', 'COMPANY_QQ', 'XXX', 3, 'text', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 1),
-(16, 1, 0, '公司QQ群', 'COMPANY_QQQUN', 'XXX', 3, 'text', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, 1),
-(17, 1, 0, '网站二维码', 'QR_CODE', '', 3, 'picture', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 7, 1),
-(18, 1, 0, 'IOS二维码', 'QR_IOS', '', 3, 'picture', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, 1),
-(19, 1, 0, '安卓二维码', 'QR_ANDROID', '', 3, 'picture', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 9, 1),
-(20, 1, 0, '微信二维码', 'QR_WEIXIN', '', 3, 'picture', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10, 1),
-(21, 1, 0, '文件上传大小', 'UPLOAD_FILE_SIZE', '2', 5, 'num', '', '文件上传大小单位：MB', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
-(22, 1, 0, '图片上传大小', 'UPLOAD_IMAGE_SIZE', '0.5', 5, 'num', '', '图片上传大小单位：MB', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 1),
-(23, 1, 0, '后台多标签', 'ADMIN_TABS', '0', 5, 'toggle', '0:关闭\r\n1:开启', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, 1),
-(24, 1, 0, '分页数量', 'ADMIN_PAGE_ROWS', '10', 5, 'num', '', '分页时每页的记录数', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 1),
-(25, 1, 0, '后台主题', 'ADMIN_THEME', 'admin', 5, 'select', 'admin:默认主题\r\naliyun:阿里云风格', '后台界面主题', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 1),
-(26, 1, 0, '导航分组', 'NAV_GROUP_LIST', 'top:顶部导航\nmain:主导航\nbottom:底部导航\nwap_bottom:Wap底部导航', 5, 'array', '', '导航分组', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, 1),
-(27, 1, 0, '配置分组', 'CONFIG_GROUP_LIST', '1:基本\r\n3:扩展\r\n5:系统\r\n7:部署', 5, 'array', '', '配置分组', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 7, 1),
-(28, 1, 0, '开发模式', 'DEVELOP_MODE', '1', 7, 'toggle', '1:开启\r\n0:关闭', '开发模式下会显示菜单管理、配置管理、数据字典等开发者工具', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
-(29, 1, 0, '页面Trace', 'APP_TRACE', '0', 7, 'toggle', '0:关闭\r\n1:开启', '是否显示页面Trace信息', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 1),
-(30, 1, 0, '', NULL, '', 0, '', '', '', '2017-06-01 21:49:07', '2017-06-01 21:49:07', 0, 0);
+(1, 1, 1, '站点开关', 'TOGGLE_WEB_SITE', '1', 1, 'toggle', '0:关闭\r\n1:开启', '站点关闭后将不能访问', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
+(2, 1, 1, '网站标题', 'WEB_SITE_TITLE', 'Hao Fang Zhi Ye', 1, 'text', '', '网站标题前台显示标题', '2017-08-03 01:57:20', '2017-08-03 01:57:20', 2, 1),
+(3, 1, 1, '网站口号', 'WEB_SITE_SLOGAN', '海南情义房地产营销策划有限公司 好房置业', 1, 'text', '', '网站口号、宣传标语、一句话介绍', '2017-08-03 01:56:42', '2017-08-03 01:56:42', 3, 1),
+(4, 1, 1, '网站LOGO', 'WEB_SITE_LOGO', '', 1, 'picture', '', '网站LOGO', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 1),
+(5, 0, 1, '网站反色LOGO', 'WEB_SITE_LOGO_INVERSE', '', 1, 'picture', '', '匹配深色背景上的LOGO', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 1),
+(6, 1, 1, '网站描述', 'WEB_SITE_DESCRIPTION', '海南情义房地产营销策划有限公司 好房置业', 1, 'textarea', '', '网站搜索引擎描述', '2017-08-03 01:56:22', '2017-08-03 01:56:22', 6, 1),
+(7, 1, 1, '网站关键字', 'WEB_SITE_KEYWORD', '海南情义房地产营销策划有限公司 好房置业', 1, 'textarea', '', '网站搜索引擎关键字', '2017-08-03 01:56:01', '2017-08-03 01:56:01', 7, 1),
+(8, 1, 1, '版权信息', 'WEB_SITE_COPYRIGHT', 'Copyright © 海南情义房地产营销策划有限公司 All rights reserved.', 1, 'text', '', '设置在网站底部显示的版权信息，如“版权所有 © 2017-2017好房置业”', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, 1),
+(9, 1, 1, '网站备案号', 'WEB_SITE_ICP', 'XXX 号', 1, 'text', '', '设置在网站底部显示的备案号，如“琼ICP备1502017号"', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 9, 1),
+(10, 0, 1, '站点统计', 'WEB_SITE_STATISTICS', '', 1, 'textarea', '', '支持百度、Google、cnzz等所有Javascript的统计代码', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10, 1),
+(11, 1, 1, '公司名称', 'COMPANY_TITLE', '【 Hao Fang Zhi Ye 】', 3, 'text', '', '', '2017-08-03 01:55:37', '2017-08-03 01:55:37', 1, 1),
+(12, 1, 1, '公司地址', 'COMPANY_ADDRESS', '海南省海口市XXX', 3, 'text', '', '', '2017-08-03 01:54:16', '2017-08-03 01:54:16', 2, 1),
+(13, 1, 1, '公司邮箱', 'COMPANY_EMAIL', 'service@haofangzhiye.com', 3, 'text', '', '', '2017-08-03 01:53:58', '2017-08-03 01:53:58', 3, 1),
+(14, 1, 1, '公司电话', 'COMPANY_PHONE', 'XXX', 3, 'text', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 1),
+(15, 1, 1, '公司QQ', 'COMPANY_QQ', 'XXX', 3, 'text', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 1),
+(16, 1, 1, '公司QQ群', 'COMPANY_QQQUN', 'XXX', 3, 'text', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, 1),
+(17, 1, 1, '网站二维码', 'QR_CODE', '', 3, 'picture', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 7, 1),
+(18, 0, 1, 'IOS二维码', 'QR_IOS', '', 3, 'picture', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, 1),
+(19, 0, 1, '安卓二维码', 'QR_ANDROID', '', 3, 'picture', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 9, 1),
+(20, 1, 1, '微信二维码', 'QR_WEIXIN', 'XXX', 3, 'picture', '', '', '2017-08-10 23:12:59', '2017-08-10 23:12:59', 10, 1),
+(21, 0, 1, '文件上传大小', 'UPLOAD_FILE_SIZE', '2', 5, 'num', '', '文件上传大小单位：MB', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
+(22, 0, 1, '图片上传大小', 'UPLOAD_IMAGE_SIZE', '0.5', 5, 'num', '', '图片上传大小单位：MB', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 1),
+(23, 0, 1, '后台多标签', 'ADMIN_TABS', '0', 5, 'toggle', '0:关闭\r\n1:开启', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, 1),
+(24, 0, 1, '分页数量', 'ADMIN_PAGE_ROWS', '10', 5, 'num', '', '分页时每页的记录数', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 1),
+(25, 0, 1, '后台主题', 'ADMIN_THEME', 'admin', 5, 'select', 'admin:默认主题\r\naliyun:阿里云风格', '后台界面主题', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 1),
+(26, 0, 1, '导航分组', 'NAV_GROUP_LIST', 'top:顶部导航\nmain:主导航\nbottom:底部导航\nwap_bottom:Wap底部导航', 5, 'array', '', '导航分组', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, 1),
+(27, 0, 1, '配置分组', 'CONFIG_GROUP_LIST', '1:基本\r\n3:扩展\r\n5:系统\r\n7:部署', 5, 'array', '', '配置分组', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 7, 1),
+(28, 1, 1, '开发模式', 'DEVELOP_MODE', '1', 7, 'toggle', '1:开启\r\n0:关闭', '开发模式下会显示菜单管理、配置管理、数据字典等开发者工具', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1),
+(29, 1, 1, '页面Trace', 'APP_TRACE', '0', 7, 'toggle', '0:关闭\r\n1:开启', '是否显示页面Trace信息', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 1),
+(30, 1, 1, '是否开启调试', 'APP_DEBUG', '1', 7, 'toggle', '0:关闭 1:开启', '', '2017-08-12 00:28:06', '2017-08-12 00:28:06', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -578,17 +578,31 @@ INSERT INTO `hfzy_config` (`id`, `is_delete`, `app`, `title`, `name`, `value`, `
 CREATE TABLE IF NOT EXISTS `hfzy_contact` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '联系人',
-  `contact` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '联系方式',
+  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '联系人',
+  `contact` varchar(32) COLLATE utf8_unicode_ci NOT NULL COMMENT '联系方式',
   `email` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '邮箱',
+  `weChat` varchar(64) CHARACTER SET utf8 NOT NULL COMMENT '微信',
   `address` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '联系地址',
   `content` text COLLATE utf8_unicode_ci NOT NULL COMMENT '联系内容',
-  `home_user_id` bigint(20) DEFAULT NULL COMMENT '前端用户表ID',
-  `back_user_id` bigint(20) DEFAULT NULL COMMENT '后台业务员ID',
-  `readed` tinyint(1) DEFAULT '0' COMMENT '是否阅读; 0=未读 ,1=已读',
+  `home_user_id` bigint(20) DEFAULT '0' COMMENT '前端用户表ID',
+  `back_user_id` bigint(20) DEFAULT '0' COMMENT '后台业务员ID',
+  `readed` tinyint(1) DEFAULT '1' COMMENT '是否阅读; 1=未读 ,2=已读',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='联系我们';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='联系我们';
+
+--
+-- 转存表中的数据 `hfzy_contact`
+--
+
+INSERT INTO `hfzy_contact` (`id`, `is_delete`, `name`, `contact`, `email`, `weChat`, `address`, `content`, `home_user_id`, `back_user_id`, `readed`, `created_at`, `updated_at`) VALUES
+(1, 1, '符先生', '10086110119', '9099@qq.com', 'iloveyou', '海南儋州', '求购儋州市怡心花园120平米一套', 100, 104, 1, '2017-08-13 03:56:10', NULL),
+(2, 1, '符先生', '10086110119', '9099@qq.com', 'iloveyou', '海南儋州', '求购儋州市怡心花园120平米一套', 100, 104, 1, '2017-08-13 03:56:59', NULL),
+(4, 1, '附小上单', '23', '23', '2', '低声道', '23', 100, 104, 1, '2017-08-13 04:08:02', NULL),
+(7, 1, 'sdd', 'sds', 'sds', 'sd', 'sd', 'dsds', 100, 104, 1, '2017-08-13 04:09:57', NULL),
+(8, 1, 'sdd', 'sds', 'sds', 'sd', 'sd', 'dsds', 100, 104, 1, '2017-08-13 04:11:51', NULL),
+(9, 1, 'sds', 'sds', 'sds', 'sds', 'sds', 'sds', 100, 104, 1, '2017-08-13 04:13:01', NULL),
+(10, 1, 'sds', 'sds', 'sds', 'sds', 'sds', 'sds', 100, 104, 1, '2017-08-13 04:13:23', NULL);
 
 -- --------------------------------------------------------
 
@@ -612,21 +626,82 @@ CREATE TABLE IF NOT EXISTS `hfzy_contact_read` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `hfzy_customer_service`
+-- 表的结构 `hfzy_deal`
 --
 
-CREATE TABLE IF NOT EXISTS `hfzy_customer_service` (
-  `id` bigint(20) NOT NULL COMMENT 'ID',
-  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `level` tinyint(1) NOT NULL DEFAULT '1' COMMENT '等级;0=普通客服;1=金牌客服;',
-  `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
-  `duration` int(11) DEFAULT NULL COMMENT '有效时间',
-  `start_at` varchar(10) DEFAULT NULL COMMENT '开始时间',
-  `end_at` varchar(10) DEFAULT NULL COMMENT '结束时间',
-  `order` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '拖拽顺序',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客服推荐表';
+CREATE TABLE IF NOT EXISTS `hfzy_deal` (
+  `id` int(20) unsigned NOT NULL COMMENT 'ID',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效，1正常，2失效',
+  `arrange_id` bigint(20) DEFAULT NULL COMMENT '带看单id',
+  `client_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '客户表id',
+  `belongUserId` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '权属人id',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类型：1新房，2二手房',
+  `building_base_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '楼盘id',
+  `hand_house_id` bigint(20) NOT NULL COMMENT '房东id',
+  `sellerId` bigint(20) NOT NULL DEFAULT '0' COMMENT '销售者id',
+  `sellerTel` varchar(64) DEFAULT '' COMMENT '销售人电话',
+  `buildingReback` float(6,0) DEFAULT NULL COMMENT '楼盘返点',
+  `dealAward` int(6) DEFAULT NULL COMMENT '成交奖励',
+  `houseNo` varchar(20) DEFAULT '' COMMENT '房号',
+  `area` int(11) DEFAULT NULL COMMENT '面积',
+  `eachPrice` float(20,0) NOT NULL COMMENT '成交单价',
+  `total` int(11) NOT NULL DEFAULT '0' COMMENT '房款总价',
+  `earnestDate` datetime NOT NULL COMMENT '认购时间',
+  `earnest` varchar(20) NOT NULL DEFAULT '' COMMENT '定金金额',
+  `dealDate` varchar(20) NOT NULL DEFAULT '' COMMENT '成交时间',
+  `signDate` varchar(20) NOT NULL DEFAULT '' COMMENT '签约时间',
+  `preference` varchar(200) NOT NULL DEFAULT '' COMMENT '优惠备注',
+  `preferencePrice` int(6) unsigned NOT NULL DEFAULT '0' COMMENT '优惠金额',
+  `preferenceWay` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '优惠方式(1:优先从成交奖励减，不够再从总房款减；2：从总房款减 )',
+  `payWay` tinyint(1) NOT NULL DEFAULT '0' COMMENT '付款方式;1一次性，2按揭，3分期付款',
+  `isBack` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否结佣：1未结佣，2部分结佣，3全部结佣',
+  `firstDate` varchar(20) NOT NULL DEFAULT '' COMMENT '首款时间',
+  `firstMoney` varchar(20) NOT NULL DEFAULT '' COMMENT '首款金额',
+  `lastDate` varchar(20) NOT NULL DEFAULT '' COMMENT '付后款时间',
+  `lastMoney` varchar(20) NOT NULL DEFAULT '' COMMENT '后款金额',
+  `notes` varchar(500) NOT NULL DEFAULT '' COMMENT '备注',
+  `recepter` varchar(20) NOT NULL DEFAULT '' COMMENT '签约者',
+  `receptPhone` varchar(20) NOT NULL DEFAULT '' COMMENT '签约者手机',
+  `preSenter` varchar(20) NOT NULL DEFAULT '' COMMENT '预备签约者',
+  `status` tinyint(1) DEFAULT NULL COMMENT '状态',
+  `prePhone` varchar(20) NOT NULL DEFAULT '' COMMENT '签约预备手机号',
+  `checkedAt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '审核时间',
+  `checkedBy` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `updatedBy` bigint(20) DEFAULT NULL COMMENT '更新者',
+  `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `createdBy` bigint(20) DEFAULT NULL COMMENT '创建者',
+  `createdAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `accounted` int(6) DEFAULT NULL COMMENT '可结金额',
+  `url` varchar(150) DEFAULT NULL COMMENT '成交单',
+  `url_icon` varchar(150) DEFAULT NULL COMMENT '成交单略缩图'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='成交记录表';
+
+--
+-- 转存表中的数据 `hfzy_deal`
+--
+
+INSERT INTO `hfzy_deal` (`id`, `is_delete`, `arrange_id`, `client_id`, `belongUserId`, `type`, `building_base_id`, `hand_house_id`, `sellerId`, `sellerTel`, `buildingReback`, `dealAward`, `houseNo`, `area`, `eachPrice`, `total`, `earnestDate`, `earnest`, `dealDate`, `signDate`, `preference`, `preferencePrice`, `preferenceWay`, `payWay`, `isBack`, `firstDate`, `firstMoney`, `lastDate`, `lastMoney`, `notes`, `recepter`, `receptPhone`, `preSenter`, `status`, `prePhone`, `checkedAt`, `checkedBy`, `updatedBy`, `updatedAt`, `createdBy`, `createdAt`, `accounted`, `url`, `url_icon`) VALUES
+(1, 1, NULL, 3, 100, 1, 0, 0, 0, '', 2, NULL, '1105', 120, 10000, 1200000, '2017-08-13 00:00:00', '50000', '', '2017-08-13', '', 6300, 1, 1, 0, '', '', '', '', '为了稳住客户，给客户优惠6300元', '签约者', '10086110119', '', 1, '', '0000-00-00 00:00:00', 0, NULL, '2017-08-13 01:59:12', 100, '2017-08-13 01:59:12', NULL, '/static/uploads/deal/1/b152effafd59bff9ce5706034e5bbbc6.jpg', '/static/uploads/deal/1/b152effafd59bff9ce5706034e5bbbc6_icon.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `hfzy_deal_scale`
+--
+
+CREATE TABLE IF NOT EXISTS `hfzy_deal_scale` (
+  `id` bigint(20) unsigned NOT NULL COMMENT 'id',
+  `deal_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '购房明细id',
+  `client_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '客户id',
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '1表示权属，2表示地接',
+  `belongId` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '业务人员id',
+  `belongName` varchar(64) NOT NULL DEFAULT '' COMMENT '业务人员',
+  `scale` float(6,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '业绩所占比例',
+  `departmentId` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '部门id',
+  `performance` float(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '业绩',
+  `payment` float(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '提成基数',
+  `earnestDate` datetime NOT NULL COMMENT '认购时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='成交比例表';
 
 -- --------------------------------------------------------
 
@@ -693,6 +768,57 @@ CREATE TABLE IF NOT EXISTS `hfzy_download` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `hfzy_hand_house`
+--
+
+CREATE TABLE IF NOT EXISTS `hfzy_hand_house` (
+  `id` bigint(20) NOT NULL COMMENT 'ID',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `house_host_id` bigint(20) NOT NULL COMMENT '房东表ID',
+  `title` varchar(255) NOT NULL COMMENT '介绍/标题',
+  `city_id` bigint(20) DEFAULT NULL COMMENT '城市',
+  `county_id` bigint(20) DEFAULT NULL COMMENT '区域/县级',
+  `address` varchar(255) NOT NULL COMMENT '地址',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类型',
+  `code` varchar(64) DEFAULT NULL COMMENT '门牌号',
+  `room` tinyint(1) DEFAULT NULL COMMENT '卧室',
+  `hall` tinyint(2) DEFAULT NULL COMMENT '大厅',
+  `kitchen` tinyint(2) DEFAULT NULL COMMENT '厨房',
+  `toilet` tinyint(2) DEFAULT NULL COMMENT '独卫',
+  `veranda` tinyint(2) DEFAULT NULL COMMENT '阳台',
+  `url` varchar(255) NOT NULL COMMENT '封面宣传',
+  `url_icon` varchar(255) DEFAULT NULL COMMENT '缩略图',
+  `floorsType` tinyint(2) DEFAULT NULL COMMENT '所在楼层类型',
+  `onFloor` int(11) DEFAULT NULL COMMENT '位于楼层',
+  `floors` int(11) DEFAULT NULL COMMENT '共计楼层',
+  `face` tinyint(2) DEFAULT NULL COMMENT '房屋朝向',
+  `houseType` tinyint(2) DEFAULT NULL COMMENT '房屋类型',
+  `fitment` tinyint(2) DEFAULT NULL COMMENT '装修情况',
+  `eachPrice` int(11) DEFAULT NULL COMMENT '房屋单价(元/平方米)',
+  `price` int(11) DEFAULT NULL COMMENT '售价',
+  `years` int(11) DEFAULT NULL COMMENT '建筑年代',
+  `area` int(11) DEFAULT NULL COMMENT '建筑面积',
+  `description` text NOT NULL COMMENT '详细描述',
+  `supporting` varchar(255) DEFAULT NULL COMMENT '配套设施',
+  `traffic` text COMMENT '交通状况',
+  `around` text COMMENT '周边环境',
+  `houseLabel` varchar(255) DEFAULT NULL COMMENT '房源标签',
+  `isTop` tinyint(1) DEFAULT NULL COMMENT '置顶',
+  `status` tinyint(1) DEFAULT NULL COMMENT '状态',
+  `saleStatus` tinyint(1) DEFAULT NULL COMMENT '销售状态',
+  `contact` varchar(255) DEFAULT NULL COMMENT '联系人',
+  `tel` varchar(255) DEFAULT NULL COMMENT '手机/固话',
+  `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
+  `weChat` varchar(255) DEFAULT NULL COMMENT '微信',
+  `qq` varchar(255) DEFAULT NULL COMMENT 'QQ',
+  `created_by` bigint(20) NOT NULL COMMENT '创建者',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='二手房表';
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `hfzy_home_user`
 --
 
@@ -700,7 +826,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_home_user` (
   `id` bigint(20) NOT NULL COMMENT '自增ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `code` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '会员编号ID',
-  `type` tinyint(1) DEFAULT NULL COMMENT '类型',
+  `type` tinyint(1) DEFAULT '1' COMMENT '类型1普通用户2常驻用户3贵宾用户',
   `phone` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '手机号码',
   `phone_verified` tinyint(1) unsigned DEFAULT '0' COMMENT '手机号码是否已验证;"0"表示没有验证,"1"表示已验证',
   `email` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '邮箱',
@@ -709,6 +835,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_home_user` (
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '密码',
   `nickname` varchar(64) CHARACTER SET utf8 DEFAULT NULL COMMENT '昵称',
   `real_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '真实姓名',
+  `weChat` varchar(64) CHARACTER SET utf8 DEFAULT NULL COMMENT '微信',
   `head_url` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像地址',
   `sex` enum('男','女') COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '性别',
   `signature` varchar(32) COLLATE utf8_unicode_ci DEFAULT '什么都没有留下...' COMMENT '个性签名',
@@ -727,14 +854,15 @@ CREATE TABLE IF NOT EXISTS `hfzy_home_user` (
   `registered_at` datetime DEFAULT NULL COMMENT '注册时间',
   `logined_at` datetime DEFAULT NULL COMMENT '登录时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台用户表';
 
 --
 -- 转存表中的数据 `hfzy_home_user`
 --
 
-INSERT INTO `hfzy_home_user` (`id`, `is_delete`, `code`, `type`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `md5`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
-(100, 1, '100100', NULL, '10086110110', 0, NULL, 0, 'iloveyou', '$2y$13$W2f9sNidx0ugchE/my/43u1QtIP3yIF8/a9K1GM87t7WweJXc0omK', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, NULL, '127.0.0.1', NULL, '2017-08-09 21:58:33', NULL, '2017-08-09 21:58:33');
+INSERT INTO `hfzy_home_user` (`id`, `is_delete`, `code`, `type`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `weChat`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `md5`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
+(100, 1, '100100', 1, '10086110110', 0, NULL, 0, 'iloveyou', '$2y$13$LEdih.ohMLwZy7tcK3CAy.wWN1oK.Fyfn.zXnKNS2OZ3aIg27cn8e', NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-08-10 04:43:19"],"current":["127.0.0.1","2017-08-10 04:43:19"],"often":[],"haply":[],"once":{"127.0.0.1":[1,"2017-08-10 04:43:19"]}}', '127.0.0.1', NULL, '2017-08-09 21:58:33', '2017-08-10 04:43:19', '2017-08-10 04:43:19'),
+(102, 1, '100102', 1, '13656465564', 0, NULL, 0, 'hfzy', '$2y$13$yItFA6C4WEKwPfI3F3/h0.nIRE0/.ADAWGvl0xBF9HKsTQ/PVp4N2', NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-11 22:05:26"],"current":["127.0.0.1","2017-08-11 23:55:53"],"often":[],"haply":["127.0.0.1"],"once":{"127.0.0.1":[11,"2017-08-11 23:55:53"]}}', '127.0.0.1', NULL, '2017-08-10 04:10:42', '2017-08-11 23:55:53', '2017-08-11 23:55:53');
 
 -- --------------------------------------------------------
 
@@ -780,6 +908,65 @@ CREATE TABLE IF NOT EXISTS `hfzy_hot` (
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='推荐表';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `hfzy_house`
+--
+
+CREATE TABLE IF NOT EXISTS `hfzy_house` (
+  `id` bigint(20) NOT NULL COMMENT 'ID',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `building_base_id` bigint(20) NOT NULL COMMENT '楼盘表ID',
+  `title` varchar(255) NOT NULL COMMENT '介绍/标题',
+  `city_id` bigint(20) DEFAULT NULL COMMENT '城市',
+  `county_id` bigint(20) DEFAULT NULL COMMENT '区域/县级',
+  `address` varchar(255) NOT NULL COMMENT '地址',
+  `type` tinyint(1) DEFAULT NULL COMMENT '类型',
+  `room` varchar(64) DEFAULT NULL COMMENT '房号',
+  `hall` tinyint(2) DEFAULT NULL COMMENT '大厅',
+  `kitchen` tinyint(2) DEFAULT NULL COMMENT '厨房',
+  `toilet` tinyint(2) DEFAULT NULL COMMENT '独卫',
+  `veranda` tinyint(2) DEFAULT NULL COMMENT '阳台',
+  `url` varchar(255) NOT NULL COMMENT '封面宣传',
+  `url_icon` varchar(255) DEFAULT NULL COMMENT '缩略图',
+  `floorsType` tinyint(2) DEFAULT NULL COMMENT '所在楼层类型',
+  `onFloor` int(11) DEFAULT NULL COMMENT '位于楼层',
+  `floors` int(11) DEFAULT NULL COMMENT '共计楼层',
+  `face` tinyint(2) DEFAULT NULL COMMENT '房屋朝向',
+  `houseType` tinyint(2) DEFAULT NULL COMMENT '房屋类型',
+  `fitment` tinyint(2) DEFAULT NULL COMMENT '装修情况',
+  `eachPrice` int(11) DEFAULT NULL COMMENT '房屋单价(元/平方米)',
+  `price` int(11) DEFAULT NULL COMMENT '售价',
+  `years` int(11) DEFAULT NULL COMMENT '建筑年代',
+  `area` int(11) DEFAULT NULL COMMENT '建筑面积',
+  `description` text NOT NULL COMMENT '详细描述',
+  `supporting` varchar(255) DEFAULT NULL COMMENT '配套设施',
+  `traffic` text COMMENT '交通状况',
+  `around` text COMMENT '周边环境',
+  `houseLabel` varchar(255) DEFAULT NULL COMMENT '房源标签',
+  `isTop` tinyint(1) DEFAULT NULL COMMENT '置顶',
+  `status` tinyint(1) DEFAULT NULL COMMENT '状态',
+  `saleStatus` tinyint(1) DEFAULT NULL COMMENT '销售状态',
+  `contact` varchar(255) DEFAULT NULL COMMENT '联系人',
+  `tel` varchar(255) DEFAULT NULL COMMENT '手机/固话',
+  `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
+  `weChat` varchar(255) DEFAULT NULL COMMENT '微信',
+  `qq` varchar(255) DEFAULT NULL COMMENT 'QQ',
+  `created_by` bigint(20) NOT NULL COMMENT '创建者',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间'
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='新房表';
+
+--
+-- 转存表中的数据 `hfzy_house`
+--
+
+INSERT INTO `hfzy_house` (`id`, `is_delete`, `building_base_id`, `title`, `city_id`, `county_id`, `address`, `type`, `room`, `hall`, `kitchen`, `toilet`, `veranda`, `url`, `url_icon`, `floorsType`, `onFloor`, `floors`, `face`, `houseType`, `fitment`, `eachPrice`, `price`, `years`, `area`, `description`, `supporting`, `traffic`, `around`, `houseLabel`, `isTop`, `status`, `saleStatus`, `contact`, `tel`, `email`, `weChat`, `qq`, `created_by`, `created_at`, `updated_at`) VALUES
+(14, 1, 1, 'sdsad', 3, 0, 'sd', 1, '4', 1, 1, 2, 2, '/static/uploads/tmp/0/639dcc23964cbe9026fa251f32171027.jpg', NULL, 3, 5, 12, 3, 1, 3, 12000, 1200000, 2015, 120, 'ssdsdwe23sdsad', '13,14', 'sffsdfwefwef', 'sdfsdfwe', '1,4,11,12', NULL, 1, 1, 'we', NULL, '10086111@qq.com', '1008611', '1008611', 4, '2017-08-02 22:47:21', '2017-08-02 22:47:21'),
+(15, 1, 37, '新房测试', 2, 0, '新房地址', 1, '5', 1, 1, 2, 1, '/static/uploads/tmp/0/c4f42f746b12a69dcab07783fb747d1c.jpg', NULL, 3, 7, 14, 4, 1, 3, 20000, 2000000, 2016, 100, '好房子不要错过', '2,3,13,14,15', '好交通', '好的配套', '1,3,12,13', NULL, 3, 1, NULL, NULL, 'QQ', '1008611', '1008611', 4, '2017-08-02 23:34:35', '2017-08-02 23:34:35'),
+(16, 1, 57, '观澜湖', 2, 0, '观澜湖', 1, '5', 2, 1, 2, 2, '/static/uploads/house/16/49733c0c60bbe3be771919db59b82fe4.jpg', '/static/uploads/house/16/49733c0c60bbe3be771919db59b82fe4_icon.jpg', 2, 8, 20, 3, 1, 4, 434, 232, 24, 24, '234', '1,14,15', '观澜湖', '观澜湖', '1,11,13', NULL, 3, 1, NULL, NULL, '观澜湖', '观澜湖', '观澜湖', 4, '2017-08-03 00:44:33', '2017-08-03 00:44:33');
 
 -- --------------------------------------------------------
 
@@ -1003,6 +1190,125 @@ CREATE TABLE IF NOT EXISTS `hfzy_label_park` (
 -- --------------------------------------------------------
 
 --
+-- 替换视图以便查看 `hfzy_label_park_building`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_label_park_building` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`label_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_label_park_client`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_label_park_client` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`label_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_label_park_hand_house`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_label_park_hand_house` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`label_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_label_park_host`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_label_park_host` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`label_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_label_park_new_house`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_label_park_new_house` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`label_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_label_park_prepare`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_label_park_prepare` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`label_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_label_park_service`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_label_park_service` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`label_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `hfzy_menu`
 --
 
@@ -1027,7 +1333,7 @@ INSERT INTO `hfzy_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data
 (4, '信息录入', NULL, NULL, 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (5, '房源管理', NULL, NULL, 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (6, '客户管理', NULL, NULL, 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(7, '反馈管理', NULL, NULL, 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(7, '求购管理', NULL, NULL, 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (8, '交易管理', NULL, NULL, 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (9, '员工管理', NULL, NULL, 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (10, '广告管理', NULL, NULL, 9, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -1046,14 +1352,14 @@ INSERT INTO `hfzy_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data
 (52, '日志信息', 3, '/manage/user/log', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (70, '客户录入', 4, '/manage/client/create', 0, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (71, '房东录入', 4, '/manage/house_host/create', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(72, '新房录入', 4, '/manage/new_house/create', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(73, '二手房录入', 4, '/manage/second_hand_house/create', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(72, '新房录入', 4, '/manage/house/create', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(73, '二手房录入', 4, '/manage/hand_house/create', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (75, '楼盘录入', 4, '/manage/build/create', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (76, '交易录入', 4, '/manage/order/create', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (77, '录入清单', 4, '/manage/import/index', 7, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (90, '我的房源', 5, '/manage/house/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(91, '新房录入', 5, '/manage/new_house/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(92, '二手房录入', 5, '/manage/second_hand_house/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(91, '新房录入', 5, '/manage/house/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(92, '二手房录入', 5, '/manage/hand_house/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (93, '出租录入', 5, '/manage/rent/create', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (94, '房源抢接', 5, '/manage/house/services', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (95, '房源转接', 5, '/manage/house/transfer', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -1070,25 +1376,25 @@ INSERT INTO `hfzy_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data
 (131, '求购抢接', 7, '/manage/contact/services', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (132, '求购清单', 7, '/manage/contact/super', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (133, '求购分配', 7, '/manage/contact/assign', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(150, '我的交易', 8, '/manage/order/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(151, '交易清单', 8, '/manage/order/super', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(152, '交易录入', 8, '/manage/order/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(150, '我的交易', 8, '/manage/deal/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(151, '交易清单', 8, '/manage/deal/super', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(152, '交易录入', 8, '/manage/deal/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (170, '管理员清单', 9, '/manage/user/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (171, '添加管理员', 9, '/manage/user/register', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (172, '权限管理', 9, '/manage/auth/index', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (173, '浏览管理日志', 9, '/manage/client/log', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (174, '浏览删除日志', 9, '/manage/client/logDelete', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(175, '客服推荐', 9, '/manage/customer_service/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(175, '客服推荐', 9, '/manage/service/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (176, '部门管理', 9, '/manage/department/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (190, '首页广告', 10, '/manage/slider/home', 0, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (191, '家装广告', 10, '/manage/slider/homeBetter', 1, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (192, '新房广告', 10, '/manage/slider/newHouse', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(193, '二手房广告', 10, '/manage/slider/secondHandHouse', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(193, '二手房广告', 10, '/manage/slider/handHouse', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (195, '楼盘广告', 10, '/manage/slider/build', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (196, '联系我们广告', 10, '/manage/slider/contact', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (230, '企业信息', 12, '/manage/maintain/company', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (231, '新房资讯', 12, '/manage/new_house/hot', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(232, '二手房资讯', 12, '/manage/second_hand_house/hot', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(232, '二手房资讯', 12, '/manage/hand_house/hot', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (234, '楼盘资讯', 12, '/manage/build/hot', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (235, '楼市资讯', 12, '/manage/hot/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (236, '客户反馈', 12, '/manage/opinion/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -1115,65 +1421,6 @@ INSERT INTO `hfzy_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data
 (277, '用户清单', 14, '/manage/home_user/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (278, '标签清单', 14, '/manage/label/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (279, '类型清单', 14, '/manage/type/index', 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `hfzy_new_house`
---
-
-CREATE TABLE IF NOT EXISTS `hfzy_new_house` (
-  `id` bigint(20) NOT NULL COMMENT 'ID',
-  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `building_base_id` bigint(20) NOT NULL COMMENT '楼盘表ID',
-  `title` varchar(255) NOT NULL COMMENT '介绍/标题',
-  `city_id` bigint(20) DEFAULT NULL COMMENT '城市',
-  `county_id` bigint(20) DEFAULT NULL COMMENT '区域/县级',
-  `address` varchar(255) NOT NULL COMMENT '地址',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '房源类型;1新房2二手房;默认1;',
-  `room` varchar(255) NOT NULL COMMENT '房号',
-  `hall` tinyint(2) DEFAULT NULL COMMENT '大厅',
-  `kitchen` tinyint(2) DEFAULT NULL COMMENT '厨房',
-  `toilet` tinyint(2) DEFAULT NULL COMMENT '独卫',
-  `veranda` tinyint(2) DEFAULT NULL COMMENT '阳台',
-  `url` varchar(255) NOT NULL COMMENT '封面宣传',
-  `url_icon` varchar(255) DEFAULT NULL COMMENT '缩略图',
-  `floorsType` tinyint(2) DEFAULT NULL COMMENT '所在楼层类型',
-  `onFloor` int(11) DEFAULT NULL COMMENT '位于楼层',
-  `floors` int(11) DEFAULT NULL COMMENT '共计楼层',
-  `face` tinyint(2) DEFAULT NULL COMMENT '房屋朝向',
-  `houseType` tinyint(2) DEFAULT NULL COMMENT '房屋类型',
-  `fitment` tinyint(2) DEFAULT NULL COMMENT '装修情况',
-  `eachPrice` int(11) DEFAULT NULL COMMENT '房屋单价(元/平方米)',
-  `price` int(11) DEFAULT NULL COMMENT '售价',
-  `years` int(11) DEFAULT NULL COMMENT '建筑年代',
-  `area` int(11) DEFAULT NULL COMMENT '建筑面积',
-  `description` text NOT NULL COMMENT '详细描述',
-  `supporting` varchar(255) DEFAULT NULL COMMENT '配套设施',
-  `traffic` text COMMENT '交通状况',
-  `around` text COMMENT '周边环境',
-  `houseLabel` varchar(255) DEFAULT NULL COMMENT '房源标签',
-  `isTop` tinyint(1) DEFAULT NULL COMMENT '置顶',
-  `status` tinyint(1) DEFAULT NULL COMMENT '状态',
-  `saleStatus` tinyint(1) DEFAULT NULL COMMENT '销售状态',
-  `contact` varchar(255) DEFAULT NULL COMMENT '联系人',
-  `tel` varchar(255) DEFAULT NULL COMMENT '手机/固话',
-  `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
-  `weChat` varchar(255) DEFAULT NULL COMMENT '微信',
-  `qq` varchar(255) DEFAULT NULL COMMENT 'QQ',
-  `created_by` bigint(20) NOT NULL COMMENT '创建者',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='新房表';
-
---
--- 转存表中的数据 `hfzy_new_house`
---
-
-INSERT INTO `hfzy_new_house` (`id`, `is_delete`, `building_base_id`, `title`, `city_id`, `county_id`, `address`, `type`, `room`, `hall`, `kitchen`, `toilet`, `veranda`, `url`, `url_icon`, `floorsType`, `onFloor`, `floors`, `face`, `houseType`, `fitment`, `eachPrice`, `price`, `years`, `area`, `description`, `supporting`, `traffic`, `around`, `houseLabel`, `isTop`, `status`, `saleStatus`, `contact`, `tel`, `email`, `weChat`, `qq`, `created_by`, `created_at`, `updated_at`) VALUES
-(14, 1, 1, 'sdsad', 3, 0, 'sd', 1, '4', 1, 1, 2, 2, '/static/uploads/tmp/0/639dcc23964cbe9026fa251f32171027.jpg', NULL, 3, 5, 12, 3, 1, 3, 12000, 1200000, 2015, 120, 'ssdsdwe23sdsad', '13,14', 'sffsdfwefwef', 'sdfsdfwe', '1,4,11,12', NULL, 1, 1, 'we', NULL, '10086111@qq.com', '1008611', '1008611', 4, '2017-08-02 22:47:21', '2017-08-02 22:47:21'),
-(15, 1, 37, '新房测试', 2, 0, '新房地址', 1, '5', 1, 1, 2, 1, '/static/uploads/tmp/0/c4f42f746b12a69dcab07783fb747d1c.jpg', NULL, 3, 7, 14, 4, 1, 3, 20000, 2000000, 2016, 100, '好房子不要错过', '2,3,13,14,15', '好交通', '好的配套', '1,3,12,13', NULL, 3, 1, NULL, NULL, 'QQ', '1008611', '1008611', 4, '2017-08-02 23:34:35', '2017-08-02 23:34:35'),
-(16, 1, 57, '观澜湖', 2, 0, '观澜湖', 1, '5', 2, 1, 2, 2, '/static/uploads/house/16/49733c0c60bbe3be771919db59b82fe4.jpg', '/static/uploads/house/16/49733c0c60bbe3be771919db59b82fe4_icon.jpg', 2, 8, 20, 3, 1, 4, 434, 232, 24, 24, '234', '1,14,15', '观澜湖', '观澜湖', '1,11,13', NULL, 3, 1, NULL, NULL, '观澜湖', '观澜湖', '观澜湖', 4, '2017-08-03 00:44:33', '2017-08-03 00:44:33');
 
 -- --------------------------------------------------------
 
@@ -4857,22 +5104,30 @@ INSERT INTO `hfzy_region` (`id`, `code`, `name`, `parent`, `level`, `order`, `na
 -- --------------------------------------------------------
 
 --
--- 表的结构 `hfzy_second_hand_house`
+-- 表的结构 `hfzy_service`
 --
 
-CREATE TABLE IF NOT EXISTS `hfzy_second_hand_house` (
+CREATE TABLE IF NOT EXISTS `hfzy_service` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `house_host_id` bigint(20) NOT NULL COMMENT '房东表ID',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类型;0=,1=;默认1;',
-  `city_id` bigint(20) NOT NULL COMMENT '城市表ID',
-  `address` varchar(255) NOT NULL COMMENT '地址',
-  `room` varchar(255) NOT NULL COMMENT '房号',
-  `description` varchar(255) NOT NULL COMMENT '详细描述',
-  `url` varchar(255) NOT NULL COMMENT '封面宣传',
+  `level` tinyint(1) NOT NULL DEFAULT '1' COMMENT '等级;0=普通客服;1=金牌客服;',
+  `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
+  `duration` int(11) DEFAULT '0' COMMENT '有效时间',
+  `start_at` varchar(10) DEFAULT '0' COMMENT '开始时间',
+  `end_at` varchar(10) DEFAULT '0' COMMENT '结束时间',
+  `order` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '拖拽顺序',
   `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='二手房表';
+  `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='客服推荐表';
+
+--
+-- 转存表中的数据 `hfzy_service`
+--
+
+INSERT INTO `hfzy_service` (`id`, `is_delete`, `level`, `back_user_id`, `duration`, `start_at`, `end_at`, `order`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 104, NULL, NULL, NULL, 1, '2017-08-13 00:00:00', '2017-08-13 00:00:00'),
+(2, 1, 2, 100, 0, '', '', 1, '2017-08-14 02:00:10', NULL),
+(3, 1, 2, 103, 0, '', '', 1, '2017-08-14 02:03:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -4911,27 +5166,6 @@ CREATE TABLE IF NOT EXISTS `hfzy_slider` (
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告表';
-
--- --------------------------------------------------------
-
---
--- 表的结构 `hfzy_take_order`
---
-
-CREATE TABLE IF NOT EXISTS `hfzy_take_order` (
-  `id` bigint(20) NOT NULL COMMENT 'ID',
-  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
-  `client_id` bigint(20) NOT NULL COMMENT '客户表ID',
-  `order_code` varchar(255) NOT NULL COMMENT '订单号',
-  `house_type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类型;1=新房,2=二手房;默认1;',
-  `goods_id` bigint(20) NOT NULL COMMENT '目标商品ID',
-  `deal_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '交易状态;0=失败,1=成功;默认1;',
-  `money` varchar(255) NOT NULL COMMENT '交易金额',
-  `description` varchar(255) NOT NULL COMMENT '备注',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='交易表';
 
 -- --------------------------------------------------------
 
@@ -4985,6 +5219,125 @@ CREATE TABLE IF NOT EXISTS `hfzy_type_park` (
 -- --------------------------------------------------------
 
 --
+-- 替换视图以便查看 `hfzy_type_park_building`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_type_park_building` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`type_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_type_park_client`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_type_park_client` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`type_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_type_park_hand_house`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_type_park_hand_house` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`type_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_type_park_host`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_type_park_host` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`type_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_type_park_new_house`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_type_park_new_house` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`type_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_type_park_prepare`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_type_park_prepare` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`type_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `hfzy_type_park_service`
+--
+CREATE TABLE IF NOT EXISTS `hfzy_type_park_service` (
+`id` bigint(20)
+,`is_delete` tinyint(1)
+,`type_id` bigint(20)
+,`target_id` bigint(20)
+,`type` tinyint(1)
+,`name` varchar(32)
+,`description` varchar(255)
+,`created_at` datetime
+,`updated_at` datetime
+);
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `hfzy_upload`
 --
 
@@ -5026,7 +5379,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_user_login_log` (
   `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'IP',
   `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='登录记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='登陆记录';
 
 -- --------------------------------------------------------
 
@@ -5078,6 +5431,132 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `hfzy_images_new_house`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_images_new_house` AS (select `hfzy_images`.`id` AS `id`,`hfzy_images`.`target_id` AS `target_id`,`hfzy_images`.`type` AS `type`,`hfzy_images`.`url` AS `url`,`hfzy_images`.`url_icon` AS `url_icon`,`hfzy_images`.`url_title` AS `url_title`,`hfzy_images`.`created_at` AS `created_at` from `hfzy_images` where (`hfzy_images`.`type` = '2'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_label_park_building`
+--
+DROP TABLE IF EXISTS `hfzy_label_park_building`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_label_park_building` AS (select `hfzy_label_park`.`id` AS `id`,`hfzy_label_park`.`is_delete` AS `is_delete`,`hfzy_label_park`.`label_id` AS `label_id`,`hfzy_label_park`.`target_id` AS `target_id`,`hfzy_label_park`.`type` AS `type`,`hfzy_label_park`.`name` AS `name`,`hfzy_label_park`.`description` AS `description`,`hfzy_label_park`.`created_at` AS `created_at`,`hfzy_label_park`.`updated_at` AS `updated_at` from `hfzy_label_park` where (`hfzy_label_park`.`type` = '6'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_label_park_client`
+--
+DROP TABLE IF EXISTS `hfzy_label_park_client`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_label_park_client` AS (select `hfzy_label_park`.`id` AS `id`,`hfzy_label_park`.`is_delete` AS `is_delete`,`hfzy_label_park`.`label_id` AS `label_id`,`hfzy_label_park`.`target_id` AS `target_id`,`hfzy_label_park`.`type` AS `type`,`hfzy_label_park`.`name` AS `name`,`hfzy_label_park`.`description` AS `description`,`hfzy_label_park`.`created_at` AS `created_at`,`hfzy_label_park`.`updated_at` AS `updated_at` from `hfzy_label_park` where (`hfzy_label_park`.`type` = '2'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_label_park_hand_house`
+--
+DROP TABLE IF EXISTS `hfzy_label_park_hand_house`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_label_park_hand_house` AS (select `hfzy_label_park`.`id` AS `id`,`hfzy_label_park`.`is_delete` AS `is_delete`,`hfzy_label_park`.`label_id` AS `label_id`,`hfzy_label_park`.`target_id` AS `target_id`,`hfzy_label_park`.`type` AS `type`,`hfzy_label_park`.`name` AS `name`,`hfzy_label_park`.`description` AS `description`,`hfzy_label_park`.`created_at` AS `created_at`,`hfzy_label_park`.`updated_at` AS `updated_at` from `hfzy_label_park` where (`hfzy_label_park`.`type` = '5'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_label_park_host`
+--
+DROP TABLE IF EXISTS `hfzy_label_park_host`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_label_park_host` AS (select `hfzy_label_park`.`id` AS `id`,`hfzy_label_park`.`is_delete` AS `is_delete`,`hfzy_label_park`.`label_id` AS `label_id`,`hfzy_label_park`.`target_id` AS `target_id`,`hfzy_label_park`.`type` AS `type`,`hfzy_label_park`.`name` AS `name`,`hfzy_label_park`.`description` AS `description`,`hfzy_label_park`.`created_at` AS `created_at`,`hfzy_label_park`.`updated_at` AS `updated_at` from `hfzy_label_park` where (`hfzy_label_park`.`type` = '3'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_label_park_new_house`
+--
+DROP TABLE IF EXISTS `hfzy_label_park_new_house`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_label_park_new_house` AS (select `hfzy_label_park`.`id` AS `id`,`hfzy_label_park`.`is_delete` AS `is_delete`,`hfzy_label_park`.`label_id` AS `label_id`,`hfzy_label_park`.`target_id` AS `target_id`,`hfzy_label_park`.`type` AS `type`,`hfzy_label_park`.`name` AS `name`,`hfzy_label_park`.`description` AS `description`,`hfzy_label_park`.`created_at` AS `created_at`,`hfzy_label_park`.`updated_at` AS `updated_at` from `hfzy_label_park` where (`hfzy_label_park`.`type` = '4'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_label_park_prepare`
+--
+DROP TABLE IF EXISTS `hfzy_label_park_prepare`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_label_park_prepare` AS (select `hfzy_label_park`.`id` AS `id`,`hfzy_label_park`.`is_delete` AS `is_delete`,`hfzy_label_park`.`label_id` AS `label_id`,`hfzy_label_park`.`target_id` AS `target_id`,`hfzy_label_park`.`type` AS `type`,`hfzy_label_park`.`name` AS `name`,`hfzy_label_park`.`description` AS `description`,`hfzy_label_park`.`created_at` AS `created_at`,`hfzy_label_park`.`updated_at` AS `updated_at` from `hfzy_label_park` where (`hfzy_label_park`.`type` = '1'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_label_park_service`
+--
+DROP TABLE IF EXISTS `hfzy_label_park_service`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_label_park_service` AS (select `hfzy_label_park`.`id` AS `id`,`hfzy_label_park`.`is_delete` AS `is_delete`,`hfzy_label_park`.`label_id` AS `label_id`,`hfzy_label_park`.`target_id` AS `target_id`,`hfzy_label_park`.`type` AS `type`,`hfzy_label_park`.`name` AS `name`,`hfzy_label_park`.`description` AS `description`,`hfzy_label_park`.`created_at` AS `created_at`,`hfzy_label_park`.`updated_at` AS `updated_at` from `hfzy_label_park` where (`hfzy_label_park`.`type` = '7'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_type_park_building`
+--
+DROP TABLE IF EXISTS `hfzy_type_park_building`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_type_park_building` AS (select `hfzy_type_park`.`id` AS `id`,`hfzy_type_park`.`is_delete` AS `is_delete`,`hfzy_type_park`.`type_id` AS `type_id`,`hfzy_type_park`.`target_id` AS `target_id`,`hfzy_type_park`.`type` AS `type`,`hfzy_type_park`.`name` AS `name`,`hfzy_type_park`.`description` AS `description`,`hfzy_type_park`.`created_at` AS `created_at`,`hfzy_type_park`.`updated_at` AS `updated_at` from `hfzy_type_park` where (`hfzy_type_park`.`type` = '6'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_type_park_client`
+--
+DROP TABLE IF EXISTS `hfzy_type_park_client`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_type_park_client` AS (select `hfzy_type_park`.`id` AS `id`,`hfzy_type_park`.`is_delete` AS `is_delete`,`hfzy_type_park`.`type_id` AS `type_id`,`hfzy_type_park`.`target_id` AS `target_id`,`hfzy_type_park`.`type` AS `type`,`hfzy_type_park`.`name` AS `name`,`hfzy_type_park`.`description` AS `description`,`hfzy_type_park`.`created_at` AS `created_at`,`hfzy_type_park`.`updated_at` AS `updated_at` from `hfzy_type_park` where (`hfzy_type_park`.`type` = '2'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_type_park_hand_house`
+--
+DROP TABLE IF EXISTS `hfzy_type_park_hand_house`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_type_park_hand_house` AS (select `hfzy_type_park`.`id` AS `id`,`hfzy_type_park`.`is_delete` AS `is_delete`,`hfzy_type_park`.`type_id` AS `type_id`,`hfzy_type_park`.`target_id` AS `target_id`,`hfzy_type_park`.`type` AS `type`,`hfzy_type_park`.`name` AS `name`,`hfzy_type_park`.`description` AS `description`,`hfzy_type_park`.`created_at` AS `created_at`,`hfzy_type_park`.`updated_at` AS `updated_at` from `hfzy_type_park` where (`hfzy_type_park`.`type` = '5'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_type_park_host`
+--
+DROP TABLE IF EXISTS `hfzy_type_park_host`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_type_park_host` AS (select `hfzy_type_park`.`id` AS `id`,`hfzy_type_park`.`is_delete` AS `is_delete`,`hfzy_type_park`.`type_id` AS `type_id`,`hfzy_type_park`.`target_id` AS `target_id`,`hfzy_type_park`.`type` AS `type`,`hfzy_type_park`.`name` AS `name`,`hfzy_type_park`.`description` AS `description`,`hfzy_type_park`.`created_at` AS `created_at`,`hfzy_type_park`.`updated_at` AS `updated_at` from `hfzy_type_park` where (`hfzy_type_park`.`type` = '3'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_type_park_new_house`
+--
+DROP TABLE IF EXISTS `hfzy_type_park_new_house`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_type_park_new_house` AS (select `hfzy_type_park`.`id` AS `id`,`hfzy_type_park`.`is_delete` AS `is_delete`,`hfzy_type_park`.`type_id` AS `type_id`,`hfzy_type_park`.`target_id` AS `target_id`,`hfzy_type_park`.`type` AS `type`,`hfzy_type_park`.`name` AS `name`,`hfzy_type_park`.`description` AS `description`,`hfzy_type_park`.`created_at` AS `created_at`,`hfzy_type_park`.`updated_at` AS `updated_at` from `hfzy_type_park` where (`hfzy_type_park`.`type` = '4'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_type_park_prepare`
+--
+DROP TABLE IF EXISTS `hfzy_type_park_prepare`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_type_park_prepare` AS (select `hfzy_type_park`.`id` AS `id`,`hfzy_type_park`.`is_delete` AS `is_delete`,`hfzy_type_park`.`type_id` AS `type_id`,`hfzy_type_park`.`target_id` AS `target_id`,`hfzy_type_park`.`type` AS `type`,`hfzy_type_park`.`name` AS `name`,`hfzy_type_park`.`description` AS `description`,`hfzy_type_park`.`created_at` AS `created_at`,`hfzy_type_park`.`updated_at` AS `updated_at` from `hfzy_type_park` where (`hfzy_type_park`.`type` = '1'));
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `hfzy_type_park_service`
+--
+DROP TABLE IF EXISTS `hfzy_type_park_service`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hfzy_type_park_service` AS (select `hfzy_type_park`.`id` AS `id`,`hfzy_type_park`.`is_delete` AS `is_delete`,`hfzy_type_park`.`type_id` AS `type_id`,`hfzy_type_park`.`target_id` AS `target_id`,`hfzy_type_park`.`type` AS `type`,`hfzy_type_park`.`name` AS `name`,`hfzy_type_park`.`description` AS `description`,`hfzy_type_park`.`created_at` AS `created_at`,`hfzy_type_park`.`updated_at` AS `updated_at` from `hfzy_type_park` where (`hfzy_type_park`.`type` = '7'));
 
 --
 -- Indexes for dumped tables
@@ -5206,11 +5685,16 @@ ALTER TABLE `hfzy_contact_read`
   ADD KEY `contact_id` (`contact_id`);
 
 --
--- Indexes for table `hfzy_customer_service`
+-- Indexes for table `hfzy_deal`
 --
-ALTER TABLE `hfzy_customer_service`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `back_user_id` (`back_user_id`);
+ALTER TABLE `hfzy_deal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hfzy_deal_scale`
+--
+ALTER TABLE `hfzy_deal_scale`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hfzy_delete_log`
@@ -5232,6 +5716,13 @@ ALTER TABLE `hfzy_department`
 ALTER TABLE `hfzy_download`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`) USING BTREE;
+
+--
+-- Indexes for table `hfzy_hand_house`
+--
+ALTER TABLE `hfzy_hand_house`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `back_user_id` (`created_by`);
 
 --
 -- Indexes for table `hfzy_home_user`
@@ -5256,6 +5747,14 @@ ALTER TABLE `hfzy_home_user_log`
 ALTER TABLE `hfzy_hot`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`);
+
+--
+-- Indexes for table `hfzy_house`
+--
+ALTER TABLE `hfzy_house`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `building_base_id` (`building_base_id`),
+  ADD KEY `back_user_id` (`created_by`);
 
 --
 -- Indexes for table `hfzy_house_better`
@@ -5306,14 +5805,6 @@ ALTER TABLE `hfzy_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `hfzy_new_house`
---
-ALTER TABLE `hfzy_new_house`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `building_base_id` (`building_base_id`),
-  ADD KEY `back_user_id` (`created_by`);
-
---
 -- Indexes for table `hfzy_notice`
 --
 ALTER TABLE `hfzy_notice`
@@ -5360,12 +5851,11 @@ ALTER TABLE `hfzy_region`
   ADD KEY `level` (`level`);
 
 --
--- Indexes for table `hfzy_second_hand_house`
+-- Indexes for table `hfzy_service`
 --
-ALTER TABLE `hfzy_second_hand_house`
+ALTER TABLE `hfzy_service`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `house_host_id` (`house_host_id`),
-  ADD KEY `city_id` (`city_id`);
+  ADD KEY `back_user_id` (`back_user_id`);
 
 --
 -- Indexes for table `hfzy_session`
@@ -5379,15 +5869,6 @@ ALTER TABLE `hfzy_session`
 ALTER TABLE `hfzy_slider`
   ADD PRIMARY KEY (`id`),
   ADD KEY `back_user_id` (`back_user_id`);
-
---
--- Indexes for table `hfzy_take_order`
---
-ALTER TABLE `hfzy_take_order`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `back_user_id` (`back_user_id`),
-  ADD KEY `client_id` (`client_id`),
-  ADD KEY `goods_id` (`goods_id`);
 
 --
 -- Indexes for table `hfzy_type`
@@ -5472,17 +5953,17 @@ ALTER TABLE `hfzy_config`
 -- AUTO_INCREMENT for table `hfzy_contact`
 --
 ALTER TABLE `hfzy_contact`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `hfzy_contact_read`
 --
 ALTER TABLE `hfzy_contact_read`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `hfzy_customer_service`
+-- AUTO_INCREMENT for table `hfzy_deal`
 --
-ALTER TABLE `hfzy_customer_service`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+ALTER TABLE `hfzy_deal`
+  MODIFY `id` int(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hfzy_delete_log`
 --
@@ -5499,10 +5980,15 @@ ALTER TABLE `hfzy_department`
 ALTER TABLE `hfzy_download`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
+-- AUTO_INCREMENT for table `hfzy_hand_house`
+--
+ALTER TABLE `hfzy_hand_house`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+--
 -- AUTO_INCREMENT for table `hfzy_home_user`
 --
 ALTER TABLE `hfzy_home_user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=102;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=103;
 --
 -- AUTO_INCREMENT for table `hfzy_home_user_log`
 --
@@ -5513,6 +5999,11 @@ ALTER TABLE `hfzy_home_user_log`
 --
 ALTER TABLE `hfzy_hot`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+--
+-- AUTO_INCREMENT for table `hfzy_house`
+--
+ALTER TABLE `hfzy_house`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `hfzy_house_better`
 --
@@ -5549,11 +6040,6 @@ ALTER TABLE `hfzy_label_park`
 ALTER TABLE `hfzy_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=280;
 --
--- AUTO_INCREMENT for table `hfzy_new_house`
---
-ALTER TABLE `hfzy_new_house`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=17;
---
 -- AUTO_INCREMENT for table `hfzy_notice`
 --
 ALTER TABLE `hfzy_notice`
@@ -5584,19 +6070,14 @@ ALTER TABLE `hfzy_opinion_read`
 ALTER TABLE `hfzy_region`
   MODIFY `id` double NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5029;
 --
--- AUTO_INCREMENT for table `hfzy_second_hand_house`
+-- AUTO_INCREMENT for table `hfzy_service`
 --
-ALTER TABLE `hfzy_second_hand_house`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+ALTER TABLE `hfzy_service`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `hfzy_slider`
 --
 ALTER TABLE `hfzy_slider`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
---
--- AUTO_INCREMENT for table `hfzy_take_order`
---
-ALTER TABLE `hfzy_take_order`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
 -- AUTO_INCREMENT for table `hfzy_type`
@@ -5707,12 +6188,6 @@ ALTER TABLE `hfzy_contact_read`
   ADD CONSTRAINT `hfzy_contact_read_ibfk_2` FOREIGN KEY (`contact_id`) REFERENCES `hfzy_contact` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `hfzy_customer_service`
---
-ALTER TABLE `hfzy_customer_service`
-  ADD CONSTRAINT `hfzy_customer_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- 限制表 `hfzy_delete_log`
 --
 ALTER TABLE `hfzy_delete_log`
@@ -5735,6 +6210,12 @@ ALTER TABLE `hfzy_home_user_log`
 --
 ALTER TABLE `hfzy_hot`
   ADD CONSTRAINT `hfzy_hot_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `hfzy_house`
+--
+ALTER TABLE `hfzy_house`
+  ADD CONSTRAINT `hfzy_house_ibfk_1` FOREIGN KEY (`building_base_id`) REFERENCES `hfzy_building_base` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `hfzy_house_better`
@@ -5783,24 +6264,16 @@ ALTER TABLE `hfzy_opinion_read`
   ADD CONSTRAINT `hfzy_opinion_read_ibfk_2` FOREIGN KEY (`opinion_id`) REFERENCES `hfzy_opinion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `hfzy_second_hand_house`
+-- 限制表 `hfzy_service`
 --
-ALTER TABLE `hfzy_second_hand_house`
-  ADD CONSTRAINT `hfzy_second_hand_house_ibfk_1` FOREIGN KEY (`house_host_id`) REFERENCES `hfzy_house_host` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hfzy_second_hand_house_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `hfzy_city` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hfzy_service`
+  ADD CONSTRAINT `hfzy_customer_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `hfzy_slider`
 --
 ALTER TABLE `hfzy_slider`
   ADD CONSTRAINT `hfzy_slider_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- 限制表 `hfzy_take_order`
---
-ALTER TABLE `hfzy_take_order`
-  ADD CONSTRAINT `hfzy_take_order_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hfzy_take_order_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `hfzy_client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `hfzy_upload`

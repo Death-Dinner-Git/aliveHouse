@@ -2,8 +2,8 @@
 
 namespace app\manage\model;
 
-use app\common\model\DealOrder as BaseTakeOrder;
-use app\manage\validate\TakeOrderValidate;
+use app\common\model\Deal as BaseDeal;
+use app\manage\validate\DealValidate;
 use app\manage\model\BackUser;
 use app\manage\model\Client;
 
@@ -26,14 +26,14 @@ use app\manage\model\Client;
  * @property BackUser $backUser
  * @property Client $client
  */
-class DealOrder extends BaseTakeOrder
+class Deal extends BaseDeal
 {
 
     /**
      * @return Object|\think\Validate
      */
     public static function getValidate(){
-        return TakeOrderValidate::load();
+        return DealValidate::load();
     }
 
     /**

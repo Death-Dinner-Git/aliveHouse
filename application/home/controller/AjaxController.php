@@ -1,10 +1,10 @@
 <?php
 
-namespace app\manage\controller;
+namespace app\home\controller;
 
-use app\common\controller\ManageController;
+use app\common\controller\HomeController;
 
-class AjaxController extends ManageController
+class AjaxController extends HomeController
 {
 
     /**
@@ -33,25 +33,27 @@ class AjaxController extends ManageController
     }
 
     /**
-     * @description 获取部门
-     * @param null $name
      * @return \think\response\Json
      */
-    public function getDepartmentAction($name=null)
-    {
+    public function getServiceAction(){
         $ret = [];
-        $where = ['is_delete'=>'1'];
-        $model = \app\manage\model\Department::load();
-        if ($name || ($name = $this->getRequest()->request('name'))){
-            if ($name != ''){
-                $nameWhere = " `name` like '%".$name."%' ";
-                $model->where($nameWhere);
-            }
+        $where = ['t.is_delete'=>'1', 'b.is_delete'=>'1',];
+        $model = \app\manage\model\Service::load();
+        $name = trim($this->getRequest()->request('name'));
+        if ($name != ''){
+            $where[] = ['exp'," `b`.`username` like '%".$name."%' "];
         }
-        $list = $model->where($where)->limit(20)->select();
+
+        $list = $model->alias('t')
+            ->join(\app\manage\model\BackUser::tableName().' b','t.back_user_id = b.id','left')
+            ->where($where)
+            ->field('t.*,b.id,b.id as serviceId,b.username as serviceName')
+            ->order('t.order')
+            ->limit(20)
+            ->select();
         if (!empty($list)){
             foreach ($list as $item){
-                $ret[] = ['id'=>$item['id'],'name'=>$item['name']];
+                $ret[] = ['id'=>$item['serviceId'],'name'=>$item['serviceName']];
             }
         }
         return json($ret);
@@ -72,26 +74,6 @@ class AjaxController extends ManageController
         if (!empty($list)){
             foreach ($list as $item){
                 $ret[] = ['id'=>$item['id'],'name'=>$item['userName']];
-            }
-        }
-        return json($ret);
-    }
-
-    /**
-     * @return \think\response\Json
-     */
-    public function getBackUserAction(){
-        $ret = [];
-        $where = ['is_delete'=>'1'];
-        $model = \app\manage\model\BackUser::load();
-        $name = trim($this->getRequest()->request('name'));
-        if ($name != ''){
-            $where[] = ['exp'," `username` like '%".$name."%' "];
-        }
-        $list = $model->where($where)->limit(20)->select();
-        if (!empty($list)){
-            foreach ($list as $item){
-                $ret[] = ['id'=>$item['id'],'name'=>$item['username']];
             }
         }
         return json($ret);
@@ -133,16 +115,6 @@ class AjaxController extends ManageController
             $config['fileField'] = $_REQUEST['file'];
         }
         $ret = \app\common\components\Uploader::action($config);
-        return json($ret);
-    }
-
-    /**
-     * @description 手机
-     * @return \think\response\Json
-     */
-    public function phoneAction()
-    {
-        $ret = ['code'=>'1','param'=>$_REQUEST];
         return json($ret);
     }
 

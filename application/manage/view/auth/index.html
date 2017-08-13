@@ -33,7 +33,7 @@
                     <select name="type" lay-search >
                         <option value="">全部</option>
                         <option value="">全部</option>
-                        {volist name="model->getValue('type')" id="item"}
+                        {volist name="model->getLists('type')" id="item"}
                         <option value="{$key}" {if condition="$key eq $Think.get.type"}selected{/if}>{$item}</option>
                         {/volist}
                     </select>

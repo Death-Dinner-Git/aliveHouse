@@ -7,25 +7,21 @@ use app\common\model\BackUser;
 use app\common\model\Client;
 
 /**
- * This is the model class for table "{{%take_order}}".
+ * This is the model class for table "{{%deal_scale}}".
  *
- * @property integer $id
- * @property integer $is_delete
- * @property integer $back_user_id
- * @property integer $client_id
- * @property string $order_code
- * @property integer $house_type
- * @property integer $goods_id
- * @property integer $deal_status
- * @property string $money
- * @property string $description
- * @property string $created_at
- * @property string $updated_at
- *
- * @property BackUser $backUser
- * @property Client $client
+ * @property string $id
+ * @property string $deal_id
+ * @property string $client_id
+ * @property integer $type
+ * @property string $belongId
+ * @property string $belongName
+ * @property double $scale
+ * @property string $departmentId
+ * @property double $performance
+ * @property double $payment
+ * @property string $earnestDate
  */
-class DealOrder extends Model
+class DealScale extends Model
 {
 
     /**
@@ -33,21 +29,20 @@ class DealOrder extends Model
      * 加格式‘{{%}}’表示使用表前缀，或者直接完整表名
      * @author Sir Fu
      */
-    protected $table = '{{%take_order}}';
+    protected $table = '{{%deal_scale}}';
 
     protected $field = [
         'id',
-        'is_delete',
-        'back_user_id',
+        'deal_id',
         'client_id',
-        'order_code',
-        'house_type',
-        'goods_id',
-        'deal_status',
-        'money',
-        'description',
-        'created_at',
-        'updated_at',
+        'type',
+        'belongId',
+        'belongName',
+        'scale',
+        'departmentId',
+        'performance',
+        'payment',
+        'earnestDate',
     ];
 
     // 保存自动完成列表
@@ -63,10 +58,10 @@ class DealOrder extends Model
         return self::$houseType;
     }
 
-    public static $dealStatus = ['1'=>'成交','2'=>'取消'];
+    public static $status = ['1'=>'成交','2'=>'取消'];
 
     public static function getDealStatus(){
-        return self::$dealStatus;
+        return self::$status;
     }
 
     /**
@@ -98,18 +93,17 @@ class DealOrder extends Model
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'back_user_id' => '后台管理员ID',
-            'client_id' => '客户表ID',
-            'order_code' => '订单号',
-            'house_type' => '类型;1=新房,2=二手房;默认1;',
-            'goods_id' => '目标商品ID',
-            'deal_status' => '交易状态;2=失败,1=成功;默认1;',
-            'money' => '交易金额',
-            'description' => '备注',
-            'created_at' => '创建时间',
-            'updated_at' => '修改时间',
+            'id' => 'id',
+            'deal_id' => '购房明细id',
+            'client_id' => '客户id',
+            'type' => '1表示权属，2表示地接',
+            'belongId' => '业务人员id',
+            'belongName' => '业务人员',
+            'scale' => '业绩所占比例',
+            'departmentId' => '部门id',
+            'performance' => '业绩',
+            'payment' => '提成基数',
+            'earnestDate' => '认购时间',
         ];
     }
 

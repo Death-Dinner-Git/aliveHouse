@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="url" content="">
-    <meta name="mobile-agent" content="format=html5;url=http://m.wofang.com/">
+    <meta name="mobile-agent" content="format=html5;url=http://m.haofangzhiye.com/">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="_SHORTCUT_" type="image/x-icon">
@@ -31,7 +31,8 @@
 
     <style type="text/css">
         .signwrapper {
-            background-color: #1c77ac;
+            /*background-color: #1c77ac;*/
+            background-color: #f4f4f4;
             background-image: url(/static/images/light.png);
             background-repeat: no-repeat;
             background-position: center;
@@ -39,10 +40,11 @@
             background-size: cover;
         }
         .sign-overlay {
-            background-color: #1c77ac;
+            background-color: #ffffff;
             background-image: url(/static/images/loginbg.png);
+            /*background-image: url(/static/uploads/theme/login/login-hot.jpg);*/
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: bottom;
             background-attachment: fixed;
             background-size: cover;
             position: fixed;
@@ -52,6 +54,35 @@
             left: 0;
             z-index: 100;
             opacity: 0.372;
+        }
+        .signwrapper.signwrapper-blue{
+            background-color: #1c77ac;
+        }
+        .sign-overlay.sign-overlay-red{
+            background-color: #ff6633;
+        }
+        .sign-overlay[data-type="hot"]{
+            background-color: #f4f4f4;
+            background-image: url(/static/uploads/theme/login/hot.jpg);
+            background-position: cover;
+            opacity: 0.8;
+        }
+        .sign-overlay[data-type="back"]{
+            background-color: #f4f4f4;
+            background-image: url(/static/uploads/theme/login/build.jpg);
+            background-position: center;
+            background-size: cover;
+            opacity: 0.372;
+        }
+        .sign-overlay[data-type="phone"]{
+            background-color: #f4f4f4;
+            background-image: url(/static/uploads/theme/login/phone.jpg);
+            opacity: 0.6;
+        }
+        .sign-overlay[data-type="phone-1"]{
+            background-color: #f4f4f4;
+            background-image: url(/static/uploads/theme/login/phone-1.jpg);
+            opacity: 0.6;
         }
         /*云*/
         .signpanel {
@@ -135,7 +166,7 @@
             display: flex;
             width: 370px;
             height: 36px;
-            padding: 28px !important;
+            padding: 28px 0 !important;
             margin: auto;
         }
         #Login .layui-form-item{
@@ -201,7 +232,13 @@
             border-bottom: 1px solid #f4f4f4;
         }
         #Login #StandardSubmit .login-text{
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(0,0,0,0);
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+        .phone #Login #StandardSubmit .login-text{
+            background: rgba(0,0,0,0.5);
             border: 1px solid rgba(0,0,0,0);
             border-radius: 2px;
             opacity: 0.8;
@@ -223,9 +260,9 @@
     <title>登录</title>
 
 </head>
-<body class="signwrapper">
+<body class="signwrapper phone">
 
-<div class="sign-overlay"></div>
+<div class="sign-overlay" data-type="back"></div>
 <div class="signpanel">
     <div id="cloud1" class="cloud" style="background-position: 700px 100px;"></div>
     <div id="cloud2" class="cloud" style="background-position: 250px 460px;"></div>
@@ -238,7 +275,7 @@
         <div class="layui-layout layui-layout-back" id="layui_layout">
 
             <section id="content-container" style="display:flex; position:fixed;top: 0px;left: 0px;right: 0px;bottom: 0px;">
-                <div id="content-body" class="signin" style="margin:-25px auto auto;width: 440px;min-height: 400px;">
+                <div id="content-body" class="signin" style="margin:-25px auto auto;width: 375px;min-height: 400px;">
 
                     <!--login box begin-->
                     <div class="login-title">
