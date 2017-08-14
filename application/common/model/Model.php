@@ -301,7 +301,7 @@ class Model extends \think\Model
      * @param null $field
      * @param null $key
      * @param null $default
-     * @return array|string
+     * @return string
      */
     public function getValue($field=null,$key=null,$default=null){
         $ret = '';

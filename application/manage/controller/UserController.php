@@ -72,7 +72,7 @@ class UserController extends ManageController
      */
     public function indexAction($super = false)
     {
-        $where = ['is_delete' => '1'];
+        $where = ['is_delete' => '1','id'=>['not in','1']];
         $each = 12;
         $model = BackUser::load();
         $request = $this->getRequest();
@@ -152,14 +152,12 @@ class UserController extends ManageController
             // 调用当前模型对应的Identity验证器类进行数据验证
             $data = [];
             $data['department_id'] = $request->post('department_id');
-            $data['username'] = $request->post('username');
             $data['phone'] = $request->post('phone');
             $data['password'] = $request->post('password');
             $data['rePassword'] = $request->post('rePassword');
-            $old_username = $request->post('old_username');
             $old_phone = $request->post('old_phone');
             $old_department_id = $request->post('old_department_id');
-            if ($model->username != $old_username || $model->phone != $old_phone || $model->department_id != $old_department_id) {
+            if ($model->phone != $old_phone || $model->department_id != $old_department_id) {
                 $this->error('非法操作', url('update', ['id' => $id]), [], 1);
             }
             if ($model->department_id == $data['department_id']) {
@@ -167,9 +165,6 @@ class UserController extends ManageController
             }
             if ($model->phone == $data['phone']) {
                 unset($data['phone']);
-            }
-            if ($model->username == $data['username']) {
-                unset($data['username']);
             }
             $validate = Identity::getValidate();
             $validate->scene('update');

@@ -44,10 +44,10 @@ class MenuHelper
     /**
      * @var string //路由默认参数
      */
-    private static $_query = '?iframe=true';
+    private static $_query = '';
 
     /**
-     *    * Use to get assigned menu of user.
+     * Use to get assigned menu of user.
      * callback should have format like
      *
      * ~~~

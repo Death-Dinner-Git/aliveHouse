@@ -51,6 +51,7 @@ class LangHelper
         'back_user' => [
             // 账号类型
             'department' => ['1' => '董事部门', '2' => '经理部门', '3' => '业务员部门'],
+            'permission' => ['1' => '董事部门', '2' => '经理部门', '3' => '业务员部门'],
         ],
         'back_user_log' => [],
         'ban' => [

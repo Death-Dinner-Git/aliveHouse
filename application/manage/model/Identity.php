@@ -251,6 +251,9 @@ class Identity extends BackUser
                 }else if($model->id<9999999999){
                     $padLength = 12;
                 }
+                if (isset($data['department_id'])){
+                    Identity::setRoleByDepartmentId($model->id,$data['department_id']);
+                }
                 $code = '8'.$model->department_id.str_pad($model->id,$padLength,'0',STR_PAD_LEFT);
                 $model::update(['code'=>$code],['id'=>$model->id]);
                 $res = $model;
@@ -286,7 +289,17 @@ class Identity extends BackUser
             }
             //更新
             $where['id'] = $id;
-            return Identity::update($data,$where);
+            $model = BackUser::load()->where($where)->find();
+            $res = Identity::update($data,$where);
+            if (empty($res->getError())){
+                if (isset($data['department_id'])){
+                    Identity::removeRoleByDepartmentId($id,$model->department_id);
+                    Identity::setRoleByDepartmentId($id,$data['department_id']);
+                }
+            }else{
+                $res = $res->getError();
+            }
+            return $res;
         }
         return $res;
 

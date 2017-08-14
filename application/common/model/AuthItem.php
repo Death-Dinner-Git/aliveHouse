@@ -89,6 +89,22 @@ class AuthItem extends Model
     }
 
     /**
+     * @param $route
+     * @return array|false|mixed|\PDOStatement|string|\think\Model
+     */
+    public static function findByRoute($route){
+        return AuthItem::load()->where(['name' => $route,'type'=>'2'])->find();
+    }
+
+    /**
+     * @param $role
+     * @return array|false|mixed|\PDOStatement|string|\think\Model
+     */
+    public static function findByRole($role){
+        return AuthItem::load()->where(['name' => $role,'type'=>'1'])->find();
+    }
+
+    /**
      * 获取一个权限的所有下属权限
      * @param $name
      * @return array

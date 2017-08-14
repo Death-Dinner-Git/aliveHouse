@@ -145,32 +145,32 @@ class BackUser extends Model
     public function rules()
     {
         return [
-            'rule'=>[
-                ['is_delete','number','时效 无效'],
-                ['department_id','number','部门 无效'],
-                ['height','number','身高 无效'],
-                ['weight','number','体重 无效'],
-                ['status','number','状态 无效'],
-                ['username','require','用户名 不能为空'],
-                ['password','require','密码 不能为空'],
-                ['department_id','require','部门 不能为空'],
-                ['sex','in:男,女',],
-                ['code','max:32',],
-                ['username','max:32',],
-                ['signature','max:32',],
-                ['auth_key','max:32',],
-                ['reg_ip','max:32',],
-                ['email','max:64',],
-                ['nickname','max:64',],
-                ['real_name','max:64',],
-                ['head_url','max:64',],
-                ['password','max:255',],
-                ['token','max:255',],
-                ['password_reset_token','max:255',],
-                ['password_reset_code','max:255',],
-                ['reg_type','max:15',],
+            'rule' => [
+                ['is_delete', 'number', '时效 无效'],
+                ['department_id', 'number', '部门 无效'],
+                ['height', 'number', '身高 无效'],
+                ['weight', 'number', '体重 无效'],
+                ['status', 'number', '状态 无效'],
+                ['username', 'require', '用户名 不能为空'],
+                ['password', 'require', '密码 不能为空'],
+                ['department_id', 'require', '部门 不能为空'],
+                ['sex', 'in:男,女',],
+                ['code', 'max:32',],
+                ['username', 'max:32',],
+                ['signature', 'max:32',],
+                ['auth_key', 'max:32',],
+                ['reg_ip', 'max:32',],
+                ['email', 'max:64',],
+                ['nickname', 'max:64',],
+                ['real_name', 'max:64',],
+                ['head_url', 'max:64',],
+                ['password', 'max:255',],
+                ['token', 'max:255',],
+                ['password_reset_token', 'max:255',],
+                ['password_reset_code', 'max:255',],
+                ['reg_type', 'max:15',],
             ],
-            'msg'=>[]
+            'msg' => []
         ];
     }
 
@@ -216,9 +216,8 @@ class BackUser extends Model
 
     /**
      * @param null $target
-     * @return bool
      */
-    public static function record($target=null)
+    public static function record($target = null)
     {
         BackUserLog::log($target);
     }
@@ -226,12 +225,49 @@ class BackUser extends Model
     /**
      * 设置角色
      * @param null $id
-     * @param null $role
-     * @return array|\think\response\Json
+     * @param null $permission
+     * @return array
      */
-    public static function setRole($id = null, $role = null)
+    public static function setRole($id = null, $permission = null)
     {
-        return AuthAssignment::setRole($id,$role);
+        return AuthAssignment::setRole($id, $permission);
+    }
+
+    /**
+     * 设置角色
+     * @param null $id
+     * @param null $departmentId
+     * @return array
+     */
+    public static function setRoleByDepartmentId($id = null, $departmentId = null)
+    {
+        $permissionList = self::Lang('permission');
+        $permission = isset($permissionList[$departmentId]) ? $permissionList[$departmentId] : '';
+        return self::setRole($id, $permission);
+    }
+
+    /**
+     * 移除角色
+     * @param null $id
+     * @param null $permission
+     * @return array
+     */
+    public static function removeRole($id = null, $permission = null)
+    {
+        return AuthAssignment::removeRole($id, $permission);
+    }
+
+    /**
+     * 移除角色
+     * @param null $id
+     * @param null $departmentId
+     * @return array
+     */
+    public static function removeRoleByDepartmentId($id = null, $departmentId = null)
+    {
+        $permissionList = self::Lang('permission');
+        $permission = isset($permissionList[$departmentId]) ? $permissionList[$departmentId] : '';
+        return self::removeRole($id, $permission);
     }
 
     /**
