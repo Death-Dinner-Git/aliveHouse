@@ -62,32 +62,6 @@ class Hot extends Model
     // 更新自动完成列表
     protected $update = [];
 
-    public static $is_passedList = ['1'=>'已通过','2'=>'审核中','3'=>'未通过'];
-
-    public static $typeList = ['1'=>'首页','2'=>'新房','3'=>'二手房','4'=>'出租','5'=>'楼房','6'=>'交易'];
-
-    public static $appList = ['1'=>'后台','2'=>'前台'];
-
-    public static $statusList = ['1'=>'预定','2'=>'上架','3'=>'下架'];
-
-
-
-    public static function getPassList(){
-        return self::$is_passedList;
-    }
-
-    public static function getTypeList(){
-        return self::$typeList;
-    }
-
-    public static function getAppList(){
-        return self::$appList;
-    }
-
-    public static function getStatusList(){
-        return self::$statusList;
-    }
-
     /**
      * @param array | string $where
      * @return array
@@ -97,7 +71,6 @@ class Hot extends Model
         $query = Hot::load()->where([
             'is_delete'=>'1',
             'is_passed'=>'1',
-            'app'=>'1',
             'status'=>'2',
         ]);
         if ($where){
@@ -155,9 +128,10 @@ class Hot extends Model
             'is_delete' => '时效;0=失效,1=有效;默认1;',
             'is_passed' => '审核;1=已通过,2=审核中,3=未通过;默认1;',
             'back_user_id' => '后台管理员ID',
-            'type' => '父级类型:0=默认,1=首页,2=新房,3=二手房,4=出租,5=楼房,6=交易,;默认1;',
+            'type' => '父级类型:0=默认,1=首页,2=新房,3=二手房,4=楼盘,5=交易,;默认1;',
             'url' => '图片地址',
-            'target' => '目标地址',
+            'url_icon' => '图片缩略图',
+            'target' => '跳转地址',
             'base_id' => '基础外键',
             'title' => '标题',
             'start_at' => '开始时间',

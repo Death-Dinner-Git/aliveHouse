@@ -51,11 +51,15 @@ class MaintainController extends ManageController
 
     /**
      * 删除缓存
-     *
-     * @return \think\Response
      */
     public function cacheAction()
     {
-        //
+        $ret = ['status'=>'0','info'=>'清楚失败'];
+        if ($this->getIdentity('department_id') == '1'){
+            $this->clearCache();
+            $this->clearTemp();
+            $ret = ['status'=>'1','info'=>'清楚成功'];
+        }
+        return json($ret);
     }
 }

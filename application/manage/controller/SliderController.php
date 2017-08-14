@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use think\Request;
+use app\manage\model\Slider;
 
 class SliderController extends ManageController
 {
@@ -18,52 +18,38 @@ class SliderController extends ManageController
 
     /**
      * @description 显示资源列表
-     * @param int $pageNumber
-     * @param string $name
-     * @param string $type
-     * @param string $app
      * @return \think\Response
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
+    public function indexAction()
     {
         $where = ['is_delete'=>'1'];
-        $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
-        $query = Ban::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $query = $query->where($nameWhere);
-        }
-        $typeList = Ban::getTypeList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
-        }
-        if ($type && $type != ''){
-            $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
+        $each = 20;
+        $model = Slider::load();
+        $request = $this->getRequest();
+        $lang = Slider::Lang();
+        $type = trim($request->request('type'));
+        if ($type != ''){
+            if (in_array($type,array_keys($lang['type']))){
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $appList = Ban::getAppList();
-        if ($app && $app != ''){
-            $param['app'] = trim($app);
-            if (in_array($app,array_keys($appList))){
+        $app = trim($request->request('app'));
+        if ($app != ''){
+            if (in_array($app,array_keys($lang['app']))){
                 $where =  array_merge($where, ['app'=>$app]);
             }
         }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Ban::load()->where($where)->count();
-
-        $this->assign('meta_title', "标签清单");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
-        $this->assign('appList', $appList);
-        return view('config/index');
+        $status = trim($request->request('status'));
+        if ($status != ''){
+            if (in_array($status,array_keys($lang['status']))){
+                $where =  array_merge($where, ['status'=>$status]);
+            }
+        }
+        $list = $model->where($where)->order('`order` ASC')->paginate($each);
+        $this->assign('meta_title', "广告清单");
+        $this->assign('model', $model);
+        $this->assign('list', $list);
+        return view('slider/index');
     }
 
     /**
@@ -73,28 +59,39 @@ class SliderController extends ManageController
      */
     public function createAction()
     {
-        $config = new Ban();
-        $configList = Ban::getTypeList();
-        $appList = Ban::getAppList();
+        $model = new Slider();
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Ban']) ? $_POST['Ban'] : []);
-            $data['updated_at'] = date('Y-m-d H:i:s');
-            $data['created_at'] = date('Y-m-d H:i:s');
+            $data = $model->filter($_POST);
             if ($data){
-                $validate = Ban::getValidate();
+                $validate = Slider::getValidate();
                 $validate->scene('create');
-                if ($validate->check($data) && $config->save($data)){
+                $data['back_user_id'] = $this->getIdentity('id');
+                $data['back_user_id'] = $this->getIdentity('id');
+                $data['created_at'] = date('Y-m-d H:i:s');
+                if ($validate->check($data) && $model->save($data)){
+                    $type = $model->getValue('typeName',$data['type'],'default');
+                    $prefix = '/static/uploads/slider/'.$type.'/'.$model->id.'/';
+                    //
+                    $to = $prefix.pathinfo($data['url'],PATHINFO_BASENAME);
+                    $from = $data['url'];
+                    $model->url = $to;
+                    $this->copy($from,$to);
+                    $icon = pathinfo($from,PATHINFO_DIRNAME).'/'.pathinfo($from,PATHINFO_FILENAME).'_icon.'.pathinfo($from,PATHINFO_EXTENSION);
+                    $to = $prefix.pathinfo($icon,PATHINFO_BASENAME);
+                    $model->url_icon = $to;
+                    $this->copy($icon,$to);
+                    $model->isUpdate(true)->save();
                     $this->success('添加成功','create','',1);
                 }else{
                     $error = $validate->getError();
                     if (empty($error)){
-                        $error = $config->getError();
+                        $error = $model->getError();
                     }
                     $this->error($error, 'create','',1);
                 }
             }
         }
-        return view('config/create',['meta_title'=>'添加配置','appList'=>$appList,'configList'=>$configList]);
+        return view('slider/create',['meta_title'=>'添加广告','model'=>$model]);
     }
 
     /**

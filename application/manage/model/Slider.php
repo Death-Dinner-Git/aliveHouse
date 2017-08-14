@@ -15,6 +15,7 @@ use app\manage\model\BackUser;
  * @property integer $back_user_id
  * @property integer $type
  * @property string $url
+ * @property string $url_icon
  * @property string $target
  * @property string $title
  * @property string $start_at

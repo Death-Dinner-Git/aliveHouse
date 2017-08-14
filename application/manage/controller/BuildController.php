@@ -2,7 +2,6 @@
 
 namespace app\manage\controller;
 
-use app\common\components\Helper;
 use app\common\controller\ManageController;
 use app\manage\model\BuildingBase;
 use app\manage\model\City;
@@ -12,8 +11,6 @@ use app\manage\model\Images;
 
 class BuildController extends ManageController
 {
-
-    public function hotAction(){}
 
     /**
      * @description 显示资源列表

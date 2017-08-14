@@ -3,58 +3,157 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Ban;
+use app\manage\model\Hot;
 
 class HotController extends ManageController
 {
+
     /**
-     * @description 显示资源列表
-     * @param int $pageNumber
-     * @param string $name
-     * @param string $type
-     * @param string $app
-     * @return \think\Response
+     * @return \think\response\View
      */
-    public function indexAction($pageNumber = 1,$name = null, $type = null,$app = null)
-    {
+    public function indexAction(){
         $where = ['is_delete'=>'1'];
-        $each = 12;
-        $param = ['name'=>'','type'=>'','app'=>''];
-        $query = Ban::load();
-        if ($name && $name != ''){
-            $param['name'] = trim($name);
-            $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
-            $query = $query->where($nameWhere);
-        }
-        $typeList = Ban::getTypeList();
-        if (isset($typeList[0])){
-            unset($typeList[0]);
-        }
-        if ($type && $type != ''){
-            $param['type'] = trim($type);
-            if (in_array($type,array_keys($typeList))){
+        $each = 20;
+        $model = Hot::load();
+        $request = $this->getRequest();
+        $lang = Hot::Lang();
+        $type = trim($request->request('type'));
+        if ($type != ''){
+            if (in_array($type,array_keys($lang['type']))){
                 $where =  array_merge($where, ['type'=>$type]);
             }
         }
-        $appList = Ban::getAppList();
-        if ($app && $app != ''){
-            $param['app'] = trim($app);
-            if (in_array($app,array_keys($appList))){
+        $pass = trim($request->request('pass'));
+        if ($pass != ''){
+            if (in_array($pass,array_keys($lang['pass']))){
+                $where =  array_merge($where, ['pass'=>$pass]);
+            }
+        }
+        $app = trim($request->request('app'));
+        if ($app != ''){
+            if (in_array($app,array_keys($lang['app']))){
                 $where =  array_merge($where, ['app'=>$app]);
             }
         }
-        $dataProvider =$query->where($where)->page($pageNumber,$each)->select();
-        $count = Ban::load()->where($where)->count();
+        $status = trim($request->request('status'));
+        if ($status != ''){
+            if (in_array($status,array_keys($lang['status']))){
+                $where =  array_merge($where, ['status'=>$status]);
+            }
+        }
+        $list = $model->where($where)->order('`order` ASC')->paginate($each);
+        $this->assign('meta_title', "楼市资讯");
+        $this->assign('model', $model);
+        $this->assign('list', $list);
+        return view('hot/index');
+    }
 
-        $this->assign('meta_title', "标签清单");
-        $this->assign('pages', ceil(($count)/$each));
-        $this->assign('dataProvider', $dataProvider);
-        $this->assign('indexOffset', (($pageNumber-1)*$each));
-        $this->assign('count', $count);
-        $this->assign('param', $param);
-        $this->assign('typeList', $typeList);
-        $this->assign('appList', $appList);
-        return view('config/index');
+    /**
+     * @return \think\response\View
+     */
+    public function buildAction(){
+        $where = ['is_delete'=>'1','type'=>'4'];
+        $each = 20;
+        $model = Hot::load();
+        $request = $this->getRequest();
+        $lang = Hot::Lang();
+        $type = trim($request->request('type'));
+        if ($type != ''){
+            if (in_array($type,array_keys($lang['type']))){
+                $where =  array_merge($where, ['type'=>$type]);
+            }
+        }
+        $pass = trim($request->request('pass'));
+        if ($pass != ''){
+            if (in_array($pass,array_keys($lang['pass']))){
+                $where =  array_merge($where, ['pass'=>$pass]);
+            }
+        }
+        $app = trim($request->request('app'));
+        if ($app != ''){
+            if (in_array($app,array_keys($lang['app']))){
+                $where =  array_merge($where, ['app'=>$app]);
+            }
+        }
+        $status = trim($request->request('status'));
+        if ($status != ''){
+            if (in_array($status,array_keys($lang['status']))){
+                $where =  array_merge($where, ['status'=>$status]);
+            }
+        }
+        $list = $model->where($where)->order('`order` ASC')->paginate($each);
+        $this->assign('meta_title', "楼盘资讯");
+        $this->assign('model', $model);
+        $this->assign('list', $list);
+        return view('hot/list');
+    }
+
+    /**
+     * @return \think\response\View
+     */
+    public function houseAction(){
+        $where = ['is_delete'=>'1','type'=>'2'];
+        $each = 20;
+        $model = Hot::load();
+        $request = $this->getRequest();
+        $lang = Hot::Lang();
+        $type = trim($request->request('type'));
+        if ($type != ''){
+            if (in_array($type,array_keys($lang['type']))){
+                $where =  array_merge($where, ['type'=>$type]);
+            }
+        }
+        $app = trim($request->request('app'));
+        if ($app != ''){
+            if (in_array($app,array_keys($lang['app']))){
+                $where =  array_merge($where, ['app'=>$app]);
+            }
+        }
+        $status = trim($request->request('status'));
+        if ($status != ''){
+            if (in_array($status,array_keys($lang['status']))){
+                $where =  array_merge($where, ['status'=>$status]);
+            }
+        }
+        $list = $model->where($where)->order('`order` ASC')->paginate($each);
+        $this->assign('meta_title', "新房资讯");
+        $this->assign('model', $model);
+        $this->assign('list', $list);
+        return view('hot/list');
+    }
+
+    /**
+     * @return \think\response\View
+     */
+    public function handHouseAction(){
+        $where = ['is_delete'=>'1','type'=>'3'];
+        $each = 20;
+        $model = Hot::load();
+        $request = $this->getRequest();
+        $lang = Hot::Lang();
+        $type = trim($request->request('type'));
+        if ($type != ''){
+            if (in_array($type,array_keys($lang['type']))){
+                $where =  array_merge($where, ['type'=>$type]);
+            }
+        }
+        $app = trim($request->request('app'));
+        if ($app != ''){
+            if (in_array($app,array_keys($lang['app']))){
+                $where =  array_merge($where, ['app'=>$app]);
+            }
+        }
+        $status = trim($request->request('status'));
+        if ($status != ''){
+            if (in_array($status,array_keys($lang['status']))){
+                $where =  array_merge($where, ['status'=>$status]);
+            }
+        }
+        $list = $model->where($where)->order('`order` ASC')->paginate($each);
+        $this->assign('meta_title', "二手房资讯");
+        $this->assign('model', $model);
+        $this->assign('list', $list);
+        return view('hot/list');
     }
 
     /**

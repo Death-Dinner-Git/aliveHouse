@@ -77,7 +77,7 @@ use app\common\model\Upload;
  * @property Opinion[] $opinions
  * @property OpinionRead[] $opinionReads
  * @property Slider[] $sliders
- * @property DealOrder[] $takeOrders
+ * @property Deal[] $takeOrders
  * @property Upload[] $uploads
  */
 class BackUser extends Model

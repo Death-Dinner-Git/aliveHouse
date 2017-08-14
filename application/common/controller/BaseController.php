@@ -213,9 +213,10 @@ class BaseController extends Controller
      * @description 删除文件夹及其文件夹下所有文件
      * @param $pathStr
      * @param bool $root
+     * @param bool $canDelete
      * @return bool
      */
-    public function deleteFolder($pathStr, $root = true)
+    public function deleteFolder($pathStr, $root = true,$canDelete = false)
     {
         if (!is_dir($pathStr)) {
 //            if (strstr($pathStr, '/back/') !== false){
@@ -227,8 +228,12 @@ class BaseController extends Controller
         }
 
         //$d不是static目录下的文件不给予删除
-        if (!(strstr($pathStr, '/uploads/') === true || $pathStr === RUNTIME_PATH)) {
-            return false;
+        if (!(strstr($pathStr, '/uploads/') === true || $pathStr === RUNTIME_PATH || $pathStr === CACHE_PATH || $pathStr === TEMP_PATH)) {
+            if (!$canDelete){
+                return false;
+            }
+        }else{
+            $canDelete = true;
         }
 
         if (!is_dir($pathStr)) {
@@ -241,9 +246,9 @@ class BaseController extends Controller
             if ($file != "." && $file != "..") {
                 $fullpath = $pathStr . "/" . $file;
                 if (!is_dir($fullpath)) {
-                    unlink($fullpath);
+                    @unlink($fullpath);
                 } else {
-                    $this->deleteFolder($fullpath);
+                    $this->deleteFolder($fullpath,$root,$canDelete);
                 }
             }
         }
@@ -597,6 +602,22 @@ class BaseController extends Controller
             return config('identity.logoutUrl');
         }
         return null;
+    }
+
+    /**
+     * 清楚 CACHE 缓存文件
+     */
+    protected function clearCache(){
+        $path = CACHE_PATH;
+        $this->deleteFolder($path);
+    }
+
+    /**
+     * 清楚 TEMP 缓存文件
+     */
+    protected function clearTemp(){
+        $path = TEMP_PATH;
+        $this->deleteFolder($path);
     }
 
     /**

@@ -43,6 +43,7 @@ class Slider extends Model
         'back_user_id',
         'type',
         'url',
+        'url_icon',
         'target',
         'title',
         'start_at',
@@ -50,6 +51,7 @@ class Slider extends Model
         'order',
         'app',
         'status',
+        'isDefault',
         'created_at',
         'updated_at',
     ];
@@ -67,13 +69,9 @@ class Slider extends Model
     public function rules()
     {
         return [
-            [['is_delete', 'is_passed', 'back_user_id', 'type', 'order', 'app', 'status'], 'integer'],
-            [['back_user_id', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['url', 'target'], 'string', 'max' => 255],
-            [['title'], 'string', 'max' => 80],
-            [['start_at', 'end_at'], 'string', 'max' => 10],
-            [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
+            'rule' => [
+            ],
+            'msg' => []
         ];
     }
 
@@ -85,17 +83,19 @@ class Slider extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'is_passed' => '审核;0=未通过,1=审核中,2=已通过;默认1;',
+            'is_passed' => '审核;1=未通过,2=审核中,3=已通过;默认2;',
             'back_user_id' => '后台管理员ID',
             'type' => '父级类型:0=默认,1=首页,2=新房,3=二手房,4=出租,5=楼房,6=联系我们,;默认1;',
             'url' => '图片地址',
-            'target' => '目标地址',
+            'url_icon' => '图片略缩图',
+            'target' => '跳转地址',
             'title' => '标题',
             'start_at' => '开始时间',
             'end_at' => '结束时间',
             'order' => '拖拽顺序',
-            'app' => '应用;0=后台;1=前台;',
+            'app' => '应用;1=后台;2=前台;',
             'status' => '状态;0=失效,1=预定,1=上架,2=下架;默认1;',
+            'isDefault' => '是否是默认图片',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];
@@ -106,6 +106,6 @@ class Slider extends Model
      */
     public function getBackUser()
     {
-        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'back_user_id', 'id');
+        return $this->hasOne(ucfirst(BackUser::tableNameSuffix()), 'id', 'back_user_id');
     }
 }
