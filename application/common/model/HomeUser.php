@@ -13,6 +13,7 @@ use app\common\model\Opinion;
  * @property integer $id
  * @property integer $is_delete
  * @property string $code
+ * @property integer $type
  * @property string $phone
  * @property integer $phone_verified
  * @property string $email
@@ -21,6 +22,11 @@ use app\common\model\Opinion;
  * @property string $password
  * @property string $nickname
  * @property string $real_name
+ * @property string $ID_cards
+ * @property string $province
+ * @property string $city
+ * @property string $county
+ * @property string $weChat
  * @property string $head_url
  * @property string $sex
  * @property string $signature
@@ -28,6 +34,7 @@ use app\common\model\Opinion;
  * @property integer $height
  * @property integer $weight
  * @property string $token
+ * @property string $md5
  * @property string $auth_key
  * @property string $password_reset_token
  * @property string $password_reset_code
@@ -41,6 +48,7 @@ use app\common\model\Opinion;
  *
  * @property Contact[] $contacts
  * @property HomeUserLog[] $homeUserLogs
+ * @property HouseHostServer[] $houseHostServers
  * @property Opinion[] $opinions
  */
 class HomeUser extends Model
@@ -66,6 +74,10 @@ class HomeUser extends Model
         'password',
         'nickname',
         'real_name',
+        'ID_cards',
+        'province',
+        'city',
+        'county',
         'weChat',
         'head_url',
         'sex',
@@ -134,6 +146,7 @@ class HomeUser extends Model
             'id' => '自增ID',
             'is_delete' => '时效;0=无效;1=有效;',
             'code' => '会员编号ID',
+            'type' => '类型1普通用户2成交用户3贵宾用户4卖家用户',
             'phone' => '手机号码',
             'phone_verified' => '手机号码是否已验证;\"0\"表示没有验证,\"1\"表示已验证',
             'email' => '邮箱',
@@ -142,6 +155,11 @@ class HomeUser extends Model
             'password' => '密码',
             'nickname' => '昵称',
             'real_name' => '真实姓名',
+            'ID_cards' => '身份证',
+            'province' => '省份',
+            'city' => '城市',
+            'county' => '区/县',
+            'weChat' => '微信',
             'head_url' => '头像地址',
             'sex' => '性别',
             'signature' => '个性签名',
@@ -149,6 +167,7 @@ class HomeUser extends Model
             'height' => '身高/单位CM',
             'weight' => '体重/单位KG',
             'token' => '当前token',
+            'md5' => 'MD5',
             'auth_key' => '自动密匙',
             'password_reset_token' => '重置密匙',
             'password_reset_code' => '验证码',

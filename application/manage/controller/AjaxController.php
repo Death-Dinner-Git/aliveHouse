@@ -123,6 +123,31 @@ class AjaxController extends ManageController
     }
 
     /**
+     * @description 获取房东
+     * @param null $name
+     * @return \think\response\Json
+     */
+    public function getHostAction($name=null)
+    {
+        $ret = [];
+        $where = ['is_delete'=>'1','type'=>'4'];
+        $model = \app\manage\model\HomeUser::load();
+        if ($name || ($name = $this->getRequest()->request('name'))){
+            if ($name != ''){
+                $nameWhere = " `real_name` like '%".$name."%' ";
+                $model->where($nameWhere);
+            }
+        }
+        $list = $model->where($where)->limit(20)->select();
+        if (!empty($list)){
+            foreach ($list as $item){
+                $ret[] = ['id'=>$item['id'],'name'=>$item['real_name']];
+            }
+        }
+        return json($ret);
+    }
+
+    /**
      * @description 上传器
      * @return \think\response\Json
      */

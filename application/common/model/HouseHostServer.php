@@ -4,7 +4,7 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\BackUser;
-use app\common\model\HouseHost;
+use app\common\model\HomeUser;
 
 /**
  * This is the model class for table "{{%house_host_server}}".
@@ -17,7 +17,7 @@ use app\common\model\HouseHost;
  * @property string $updated_at
  *
  * @property BackUser $backUser
- * @property HouseHost $houseHost
+ * @property HomeUser $houseHost
  */
 class HouseHostServer extends Model
 {
@@ -55,7 +55,7 @@ class HouseHostServer extends Model
             [['house_host_id', 'back_user_id', 'created_at', 'updated_at'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['back_user_id'], 'exist', 'skipOnError' => true, 'targetClass' => BackUser::tableNameSuffix(), 'targetAttribute' => ['back_user_id' => 'id']],
-            [['house_host_id'], 'exist', 'skipOnError' => true, 'targetClass' => HouseHost::tableNameSuffix(), 'targetAttribute' => ['house_host_id' => 'id']],
+            [['house_host_id'], 'exist', 'skipOnError' => true, 'targetClass' => HomeUser::tableNameSuffix(), 'targetAttribute' => ['house_host_id' => 'id']],
         ];
     }
 
@@ -85,8 +85,8 @@ class HouseHostServer extends Model
     /**
      * @return \think\model\relation\HasOne
      */
-    public function getHouseHost()
+    public function getHomeUser()
     {
-        return $this->hasOne(HouseHost::tableNameSuffix(), ['id' => 'house_host_id']);
+        return $this->hasOne(HomeUser::tableNameSuffix(), ['id' => 'house_host_id']);
     }
 }

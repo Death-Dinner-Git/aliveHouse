@@ -7,7 +7,7 @@
 
     <style>
         .layui-form-item {
-            margin-bottom: 24px;
+            margin-bottom: 30px;
         }
         .layui-form-item .layui-inline:nth-child(2) .layui-form-label{
             width: 185px !important;
@@ -51,7 +51,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-color-danger"></span>标题:</label>
             <div class="layui-input-block right-width">
-                <input type="text" value="" name="title" lay-verify="" placeholder="标题" class="layui-input">
+                <input type="text" value="" name="title" lay-verify="" maxlength="80" placeholder="标题" class="layui-input">
             </div>
         </div>
 
@@ -84,7 +84,7 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block" style="padding-right: 120px;">
-                <input type="file" id="url_file" name="file[]" placeholder="上传图片" multiple class="layui-upload-file">
+                <input type="file" id="url_file" name="file" placeholder="上传图片" class="layui-upload-file">
                 <input type="hidden" value="" name="url" id="url" placeholder="上传图片" class="layui-input">
                 <div lay-filter="show" style="display:none;border: 1px solid #e6e6e6;border-radius: 2px;max-width: 700px;"></div>
             </div>
@@ -94,6 +94,13 @@
             <label class="layui-form-label"><span class="layui-color-danger"></span>跳转地址:</label>
             <div class="layui-input-block right-width">
                 <input type="text" value="" name="target" lay-verify="" placeholder="跳转地址" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-color-danger"></span>附加介绍:</label>
+            <div class="layui-input-block right-width">
+                <textarea type="text" value="" name="description" lay-verify="" placeholder="附加介绍" class="layui-textarea"></textarea>
             </div>
         </div>
 

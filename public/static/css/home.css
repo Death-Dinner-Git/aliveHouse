@@ -511,6 +511,170 @@
 }
 
 /* =======================================
+	 标签	label
+================================== */
+
+
+/* =======================================
+	 徽章	badge
+================================== */
+
+/* =======================================
+	 警告框 提示框 hover tip
+================================== */
+.layui-tooltip-container{
+    position: fixed;
+    width: 100%;
+    top:0;
+    left: 0;
+}
+.layui-tooltip-container .tooltip-body{
+    position: relative;
+    width: 100%;
+}
+
+.tooltip {
+    width: auto;
+    height: auto;
+    position: absolute;
+    z-index: 9999;
+    display: block;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.8;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: normal;
+    filter: alpha(opacity=0);
+    opacity: 0.7;
+    line-break: auto;
+}
+
+[lay-filter="tooltip"]{
+    cursor: pointer;
+}
+
+[lay-filter="tooltip"]:hover{
+    opacity: 0.9;
+    color: #00a0e9;
+}
+
+.tooltip[lay-arrow="in"] {
+    filter: alpha(opacity=90);
+    opacity: .9;
+}
+
+.tooltip[lay-arrow="top"] {
+    padding: 5px 0;
+    margin-top: -3px;
+}
+
+.tooltip[lay-arrow="right"] {
+    padding: 0 5px;
+    margin-left: 3px;
+}
+
+.tooltip[lay-arrow="bottom"] {
+    padding: 5px 0;
+    margin-top: 3px;
+}
+
+.tooltip[lay-arrow="left"] {
+    padding: 0 5px;
+    margin-left: -3px;
+}
+
+.tooltip-inner {
+    max-width: 300px;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    background-color: #000;
+    border-radius: 2px;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.tooltip[lay-arrow="top"] .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px 8px 0;
+    border-top-color: #000;
+}
+
+.tooltip[lay-arrow="top-left"] .tooltip-arrow {
+    right: 0;
+    bottom: 0;
+    margin-bottom: -9px;
+    border-width: 10px 0 0 8px;
+    border-top-color: #000;
+}
+
+.tooltip[lay-arrow="top-right"] .tooltip-arrow {
+    bottom: 0;
+    left: 0;
+    margin-bottom: -9px;
+    border-width: 10px 8px 0 0;
+    border-top-color: #000;
+}
+
+.tooltip[lay-arrow="right"] .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -8px;
+    border-width: 8px 8px 8px 0;
+    border-right-color: #000;
+}
+
+.tooltip[lay-arrow="left"] .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+    border-width: 8px 0 8px 8px;
+    border-left-color: #000;
+}
+
+.tooltip[lay-arrow="bottom"] .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 0 8px 8px;
+    border-bottom-color: #000;
+}
+
+.tooltip[lay-arrow="bottom-left"] .tooltip-arrow {
+    top: 0;
+    right: 0;
+    margin-top: -9px;
+    border-width: 0 0 10px 8px;
+    border-bottom-color: #000;
+}
+
+.tooltip[lay-arrow="bottom-right"] .tooltip-arrow {
+    top: 0;
+    left: 0;
+    margin-top: -9px;
+    border-width: 0 8px 10px 0;
+    border-bottom-color: #000;
+}
+
+/* =======================================
 		collapse
 ================================== */
 

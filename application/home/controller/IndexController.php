@@ -3,6 +3,9 @@
 namespace app\home\controller;
 
 use app\common\controller\HomeController;
+use app\common\model\Slider;
+use app\common\model\HandHouse;
+use app\common\model\House;
 
 /**
  * 默认控制器
@@ -16,10 +19,52 @@ class IndexController extends HomeController
      */
     public function indexAction()
     {
-        // 临时选择其他模板的布局功能
-//        $this->view->engine->layout('layouts/index');
+        $list = [];
+        $where = ['type'=>'2'];
+        $slider = Slider::getSlider($where);
+        foreach ($slider as $item){
+            $list[] = [
+                'title'=>$item['title'],
+                'desc'=>$item['description'],
+                'target'=>$item['target'],
+                'url'=>$item['url'],
+            ];
+        }
+        if (empty($list)){
+            $where = ['type'=>'1'];
+            $slider = Slider::getSlider($where);
+            foreach ($slider as $item){
+                $list[] = [
+                    'title'=>$item['title'],
+                    'desc'=>$item['description'],
+                    'target'=>$item['target'],
+                    'url'=>$item['url'],
+                ];
+            }
+        }
+        if (empty($list)){
+            $list[] = [
+                'title'=>'',
+                'desc'=>'',
+                'target'=>'',
+                'url'=>'/static/uploads/theme/home/theme-banner.jpg',
+            ];
+        }
+        $slider = json_encode($list);
+
+        //二手房
+        $handHouseModel = HandHouse::load();
+        $handHouse = $handHouseModel->where([])->select();
+
+        //新房
+        $houseModel = House::load();
+        $house = $houseModel->where([])->select();
+
         return view('index/index',[
-            'meta_title'=>'首页'
+            'meta_title'=>'首页',
+            'slider'=>$slider,
+            'handHouse'=>$handHouse,
+            'house'=>$house,
         ]);
     }
 

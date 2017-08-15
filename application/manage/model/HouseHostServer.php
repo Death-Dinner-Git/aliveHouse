@@ -6,7 +6,7 @@ use app\common\model\HouseHostServer as BaseHouseHostServer;
 use app\manage\validate\HouseHostServerValidate;
 
 use app\manage\model\BackUser;
-use app\manage\model\HouseHost;
+use app\manage\model\HomeUser;
 
 /**
  * This is the model class for table "{{%house_host_server}}".
@@ -19,7 +19,7 @@ use app\manage\model\HouseHost;
  * @property string $updated_at
  *
  * @property BackUser $backUser
- * @property HouseHost $houseHost
+ * @property HomeUser $houseHost
  */
 class HouseHostServer extends BaseHouseHostServer
 {

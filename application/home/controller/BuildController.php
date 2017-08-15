@@ -3,6 +3,7 @@
 namespace app\home\controller;
 
 use app\common\controller\HomeController;
+use app\common\model\Slider;
 
 /**
  * 默认控制器

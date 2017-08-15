@@ -990,14 +990,16 @@ Site.lazyImages = function (options) {
             $this.parent().css({
                 position: 'relative',
                 display: 'inline-block',
-                width: $this.width(),
-                height: $this.height(),
+                width: '100%',
+                height: '100%',
                 background: '#f4f4f4'
             });
             $this.attr('src', Site.config.imageError).css({
                 position: 'absolute',
                 width: _width,
                 height: _height,
+                border: '1px solid #e2e2e2',
+                borderRadius: '2px',
                 left: '50%',
                 top: '50%',
                 marginLeft: -(_width / 2),
@@ -1164,7 +1166,7 @@ Site.lazyLoad = function (options) {
 
 /**
  *
- * @param data
+ * @param data [{"title":"xxx","desc":"","target":"","url":"","url_icon":""}]
  * @param options
  */
 Site.initBanner = function (data, options) {
@@ -1193,10 +1195,11 @@ Site.initBanner = function (data, options) {
         hiddenBar: false,//设置是否隐藏底部导航条
         targetType: "2",
         wideScreen: false,
-        autoPlay: true,//自动播放
+        autoPlay: false,//自动播放
         interval: 6000,//播放间隔
         barColor: false,//背景色
         hiddenControl: false,//设置隐藏左右切换按钮
+        loading: '/static/images/loading.png',//设置懒加载等待图
     };
     var config = $.extend($default, options);
     var $banner = $(config.banner);
@@ -1227,7 +1230,7 @@ Site.initBanner = function (data, options) {
         control = '';
     //渲染HTML
     for (var i = 0; i < imageData.length; i++) {
-        var item = '', aPicAttr = '', aDescAttr = '', alt = '', desc = '', btn = '', barDesc = '';
+        var item = '', aPicAttr = '', aDescAttr = '', alt = '', desc = '', btn = '', barDesc = '',icon='',title='';
         if (imageData[i].target !== undefined && imageData[i].target !== '') {
             if (config.targetType == '2') {
                 aPicAttr = ' target="_blank" href="' + imageData[i].target + '"';
@@ -1238,19 +1241,26 @@ Site.initBanner = function (data, options) {
         }
         if (imageData[i].title !== undefined) {
             alt = ' alt="' + imageData[i].title + '"';
+            title = ' title="' + imageData[i].title + '"';
         }
         if (imageData[i].desc !== undefined && imageData[i].desc !== '') {
-            desc = '<h3><a hidefocus="true" ' + aDescAttr + ' ><span>' + imageData[i].desc + '</span></a></h3>';
+            // desc = '<h3><a hidefocus="true" ' + aDescAttr + ' ><span>' + imageData[i].desc + '</span></a></h3>';
             barDesc = imageData[i].desc;
         }
+        if (typeof imageData[i].url_icon !== undefined){
+            icon = 'src="'+imageData[i].url_icon+'" ';
+        }
         item = '<span class="item">' +
-            '<a hidefocus="true" ' + aPicAttr + '>' +
-            '<img data-url="' + imageData[i].src + '" ' + alt + ' style="width:' + config.width + 'px;height:' + config.height + 'px;" />' +
+            '<a hidefocus="true" ' + aPicAttr + ' style="width:' + config.width + 'px;height:' + config.height + 'px;" >' +
+            '<img class="item-img" '+icon+'data-url="' + imageData[i].url + '" ' + alt + title + ' style="width:' + config.width + 'px;height:' + config.height + 'px;" />' +
+            '<div class="layout-loading-container" style="width:' + config.width + 'px;height:' + config.height + 'px;position: relative;">' +
+            '<img class="layout-loading" src="'+config.loading+'" style="position:absolute;left:50%;top:50%;margin-left:-40px;margin-top:-40px;width:80px;height:80px;z-index:-1;" />' +
+            '</div>' +
             '</a> ' + desc + '</span>';
 
         btn = '<span data-cid="' + i + '" data-title="' + barDesc + '"></span>';
         if (config.barType == '1') {
-            btn = '<span data-cid="' + i + '" data-title="' + barDesc + '">' + (i + 1) + '</span>';
+            btn = '<span data-cid="' + i + '" lay-text="' + barDesc + '" lay-filter="tooltitle" >' + (i + 1) + '</span>';
         }
 
         barButton.push(btn);
@@ -1360,8 +1370,16 @@ Site.initBanner = function (data, options) {
         if (loadImage[k] === true) {
             return;
         }
-        var img = $bannerBody.find('.item').eq(k).find('img');
-        Site.lazyImages({img: img});
+        var img = $bannerBody.find('.item').eq(k).find('img.item-img');
+        Site.lazyImages({
+            img: img,
+            error:function () {
+                $bannerBody.find('.item').eq(k).find('.layout-loading-container').remove();
+            },
+            callback:function () {
+                $bannerBody.find('.item').eq(k).find('.layout-loading-container').remove();
+            }
+        });
         loadImage[k] = true;
     }
 
@@ -2127,10 +2145,11 @@ Site.initTip = function () {
     $(document).off('click',hideTip).on('click',function (e) {
         hideTip(e);
     });
+    $('[lay-text][lay-filter="tooltitle"]',document).hover(showTip,hideTip);
     function showTip(e) {
         var container = $('.layui-tooltip-container .tooltip-body', document);
         if (container.length<1) {
-            $('body', document).append('<div class="layui-tooltip-container"><div class="tooltip-body"></div></div>');
+            $('body', document).append('<div class="layui-tooltip-container" style="z-index: '+index+';"><div class="tooltip-body"></div></div>');
             container = $('.layui-tooltip-container .tooltip-body', document);
         }
         var that = $(e.target),
@@ -2149,7 +2168,7 @@ Site.initTip = function () {
                 arrow = vertical + '-' + horizontal;
                 that.attr('lay-arrow',arrow);
             }
-            var html = '<div class="tooltip" lay-arrow="' + arrow + '" lay-index="' + index + '" style="display: none;">' +
+            var html = '<div class="tooltip" lay-arrow="' + arrow + '" lay-index="' + index + '" style="display: none;z-index: '+index+';">' +
                 '<div class="tooltip-arrow"></div>' +
                 '<div class="tooltip-inner"></div></div>';
             container.append(html);
