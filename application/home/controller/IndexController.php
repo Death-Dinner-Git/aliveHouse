@@ -6,6 +6,7 @@ use app\common\controller\HomeController;
 use app\common\model\Slider;
 use app\common\model\HandHouse;
 use app\common\model\House;
+use app\common\model\News;
 
 /**
  * 默认控制器
@@ -60,11 +61,16 @@ class IndexController extends HomeController
         $houseModel = House::load();
         $house = $houseModel->where([])->select();
 
+        // 资讯
+        $newsModel = News::load();
+        $news = $newsModel->where([])->select();
+
         return view('index/index',[
             'meta_title'=>'首页',
             'slider'=>$slider,
             'handHouse'=>$handHouse,
             'house'=>$house,
+            'news'=>$news,
         ]);
     }
 

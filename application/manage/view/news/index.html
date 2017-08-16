@@ -73,7 +73,7 @@
                         <option value="">类型</option>
                         <option value="">全部</option>
                         {volist name="model->getLists('type')" id="item" }
-                        <option value="{$key}" {if condition="$key eq $Think.get.type"}selected{/if}>{$item}</option>
+                        <option value="{$key}" {if condition="$key eq $Think.get.type"}selected{/if}>{$item}资讯</option>
                         {/volist}
                     </select>
                 </div>
@@ -122,7 +122,7 @@
         <div class="img">
             <img src="{$model.url_icon}" title="{$model.title}" alt="{$model.title}">
         </div>
-        <div class="title">
+        <div class="title" lay-filter="tooltitle" lay-text="{$model.description}">
             <p>{$model.title}</p>
         </div>
         <div style="text-align: center;" class="action">
@@ -142,9 +142,9 @@
 
 <script>
     var url = {
-        createUrl:"{:url('/manage/hot/create')}",
-        updateUrl:"{:url('/manage/hot/update')}",
-        deleteUrl:"{:url('/manage/hot/delete')}",
+        createUrl:"{:url('/manage/news/create')}",
+        updateUrl:"{:url('/manage/news/update')}",
+        deleteUrl:"{:url('/manage/news/delete')}",
     };
     $(function() {
         //分页

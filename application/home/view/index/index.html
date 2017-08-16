@@ -582,78 +582,18 @@
                     <div class="" style="width: 62.8%;">
                         <table class="layui-table" lay-skin="nob" lay-bg="none">
                             <thead>
-                            <tr>
-                                <th>名称</th>
-                                <th>金额</th>
-                                <th>户型</th>
-                                <th>交易方式</th>
-                                <th>更新时间</th>
-                            </tr>
                             </thead>
                             <tbody>
+
+                            {volist name="house" id="model"}
                             <tr>
-                                <td>XXXXXXXXXX</td>
-                                <td>00000</td>
-                                <td>1.2.3.4</td>
-                                <td>现金</td>
-                                <td>2017.07.01</td>
+                                <td style="width: 310px; height: 340px;">
+                                    <img alt="{$model.title}" title="" src="{$model.url_icon}" style="width:310.0px;height:282.0px;">
+                                </td>
+                                <td lay-filter="tooltitle" lay-text="{$model.description}">{$model.title}</td>
+                                <td>{$model.created_at|toDate='Y-m-d'}</td>
                             </tr>
-                            <tr>
-                                <td>XXXXXXXXXX</td>
-                                <td>00000</td>
-                                <td>1.2.3.4</td>
-                                <td>现金</td>
-                                <td>2017.07.01</td>
-                            </tr>
-                            <tr>
-                                <td>XXXXXXXXXX</td>
-                                <td>00000</td>
-                                <td>1.2.3.4</td>
-                                <td>现金</td>
-                                <td>2017.07.01</td>
-                            </tr>
-                            <tr>
-                                <td>XXXXXXXXXX</td>
-                                <td>00000</td>
-                                <td>1.2.3.4</td>
-                                <td>现金</td>
-                                <td>2017.07.01</td>
-                            </tr>
-                            <tr>
-                                <td>XXXXXXXXXX</td>
-                                <td>00000</td>
-                                <td>1.2.3.4</td>
-                                <td>现金</td>
-                                <td>2017.07.01</td>
-                            </tr>
-                            <tr>
-                                <td>XXXXXXXXXX</td>
-                                <td>00000</td>
-                                <td>1.2.3.4</td>
-                                <td>现金</td>
-                                <td>2017.07.01</td>
-                            </tr>
-                            <tr>
-                                <td>XXXXXXXXXX</td>
-                                <td>00000</td>
-                                <td>1.2.3.4</td>
-                                <td>现金</td>
-                                <td>2017.07.01</td>
-                            </tr>
-                            <tr>
-                                <td>XXXXXXXXXX</td>
-                                <td>00000</td>
-                                <td>1.2.3.4</td>
-                                <td>现金</td>
-                                <td>2017.07.01</td>
-                            </tr>
-                            <tr>
-                                <td>XXXXXXXXXX</td>
-                                <td>00000</td>
-                                <td>1.2.3.4</td>
-                                <td>现金</td>
-                                <td>2017.07.01</td>
-                            </tr>
+                            {/volist}
                             </tbody>
                         </table>
                     </div>
