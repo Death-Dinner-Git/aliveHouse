@@ -3,9 +3,9 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Hot;
+use app\manage\model\News;
 
-class HotController extends ManageController
+class NewsController extends ManageController
 {
 
     /**
@@ -14,9 +14,9 @@ class HotController extends ManageController
     public function indexAction(){
         $where = ['is_delete'=>'1'];
         $each = 20;
-        $model = Hot::load();
+        $model = News::load();
         $request = $this->getRequest();
-        $lang = Hot::Lang();
+        $lang = News::Lang();
         $type = trim($request->request('type'));
         if ($type != ''){
             if (in_array($type,array_keys($lang['type']))){
@@ -45,7 +45,7 @@ class HotController extends ManageController
         $this->assign('meta_title', "楼市资讯");
         $this->assign('model', $model);
         $this->assign('list', $list);
-        return view('hot/index');
+        return view('news/index');
     }
 
     /**
@@ -55,18 +55,18 @@ class HotController extends ManageController
      */
     public function createAction()
     {
-        $model = new Hot();
+        $model = new News();
         if ($this->getRequest()->isPost()){
             $data = $model->filter($_POST);
             if ($data){
-                $validate = Hot::getValidate();
+                $validate = News::getValidate();
                 $validate->scene('create');
                 $data['back_user_id'] = $this->getIdentity('id');
                 $data['back_user_id'] = $this->getIdentity('id');
                 $data['created_at'] = date('Y-m-d H:i:s');
                 if ($validate->check($data) && $model->save($data)){
                     $type = $model->getValue('typeName',$data['type'],'default');
-                    $prefix = '/static/uploads/Hot/'.$type.'/'.$model->id.'/';
+                    $prefix = '/static/uploads/News/'.$type.'/'.$model->id.'/';
                     //
                     $to = $prefix.pathinfo($data['url'],PATHINFO_BASENAME);
                     $from = $data['url'];
@@ -87,7 +87,7 @@ class HotController extends ManageController
                 }
             }
         }
-        return view('hot/create',['meta_title'=>'添加推荐','model'=>$model]);
+        return view('news/create',['meta_title'=>'添加推荐','model'=>$model]);
     }
 
     /**
@@ -99,8 +99,8 @@ class HotController extends ManageController
     public function viewAction($id)
     {
         $this->assign('meta_title', "详情");
-        $model = Ban::load()->where(['id'=>$id])->find();
-        return view('config/view',['model'=>$model]);
+        $model = News::load()->where(['id'=>$id])->find();
+        return view('news/view',['model'=>$model]);
     }
 
     /**
@@ -112,22 +112,20 @@ class HotController extends ManageController
     public function updateAction($id)
     {
         $where = ['is_delete'=>'1'];
-        $config = new Ban();
-        $configList = Ban::getTypeList();
-        $appList = Ban::getAppList();
-        $model = Ban::load()->where(['id'=>$id])->where($where)->find();
+        $config = new News();
+        $model = News::load()->where(['id'=>$id])->where($where)->find();
         if (!$model){
             return '';
         }
 
         if ($this->getRequest()->isPost()){
-            $data = (isset($_POST['Ban']) ? $_POST['Ban'] : []);
+            $data = (isset($_POST['News']) ? $_POST['News'] : []);
             $data['updated_at'] = date('Y-m-d H:i:s');
             $data['created_at'] = date('Y-m-d H:i:s');
             if ($data){
-                $validate = Ban::getValidate();
+                $validate = News::getValidate();
                 $validate->scene('update');
-                if ($validate->check($data) && Ban::update($data,['id'=>$id])){
+                if ($validate->check($data) && News::update($data,['id'=>$id])){
                     $this->success('更新成功','create','',1);
                 }else{
                     $error = $validate->getError();
@@ -138,7 +136,7 @@ class HotController extends ManageController
                 }
             }
         }
-        return view('config/update',['meta_title'=>'编辑标签','model'=>$model,'appList'=>$appList,'configList'=>$configList]);
+        return view('news/update',['meta_title'=>'编辑标签','model'=>$model]);
     }
 
     /**
@@ -151,7 +149,7 @@ class HotController extends ManageController
     {
         $ret = ['code'=>0,'msg'=>'删除失败','delete_id'=>$id];
         if ($this->getRequest()->isAjax()){
-            $result = Ban::update(['is_delete'=>'0'],['id'=>$id]);
+            $result = News::update(['is_delete'=>'0'],['id'=>$id]);
             if ($result){
                 $ret = ['code'=>1,'msg'=>'删除成功','delete_id'=>$id];
             }

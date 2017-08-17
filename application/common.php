@@ -10,3 +10,12 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+
+
+function toDate($date = '', $format = '')
+{
+    if (empty($format)) {
+        return $date;
+    }
+    return date($format,strtotime($date));
+}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2017-08-14 02:22:57
+-- Generation Time: 2017-08-17 02:16:51
 -- 服务器版本： 10.1.9-MariaDB-log
 -- PHP Version: 7.0.1
 
@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_auth_assignment` (
 --
 
 INSERT INTO `hfzy_auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
+('业务员部门', 104, '2017-08-15 00:00:00'),
 ('前端权限总权限', 1, '2017-08-07 00:00:00'),
 ('董事部门', 100, '2017-08-07 00:00:00');
 
@@ -70,7 +71,7 @@ INSERT INTO `hfzy_auth_item` (`name`, `type`, `description`, `rule_name`, `data`
 ('/home/*', 2, '前端模块', NULL, '', '2017-05-27 00:00:00', '2017-08-06 20:23:35'),
 ('/house/*', 2, '房源总权限', NULL, '', '2017-08-06 20:27:00', '2017-08-06 20:28:14'),
 ('/log/*', 2, '日记路由', NULL, '', '2017-08-06 20:35:34', '2017-08-06 20:38:59'),
-('/manage/index/home', 2, '后台首页2', NULL, '', '2017-08-06 23:48:45', '2017-08-06 23:48:45'),
+('/manage/index/home', 2, '后台面板', NULL, '', '2017-08-06 23:48:45', '2017-08-14 21:14:05'),
 ('/manage/index/index', 2, '后台首页', NULL, '', '2017-08-06 23:45:27', '2017-08-06 23:48:20'),
 ('/manage/login/*', 2, '后台登陆', NULL, '', '2017-08-06 23:46:26', '2017-08-06 23:46:26'),
 ('/opinion/*', 2, '意见路由', NULL, '', '2017-08-06 20:35:16', '2017-08-06 20:40:04'),
@@ -198,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_back_user` (
 
 INSERT INTO `hfzy_back_user` (`id`, `is_delete`, `code`, `department_id`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `md5`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
 (1, 1, '000000', 1, '00000000000', 0, NULL, 0, '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(100, 1, '810100', 1, '10086110120', 0, NULL, 0, 'hfzy', '$2y$13$rqzSRgFWv8BwkVWgOXd5uOXcsnvh0AWkqDHCp5n3xkgVOKWsQ6JAa', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-14 00:26:10"],"current":["127.0.0.1","2017-08-14 00:29:06"],"often":["127.0.0.1"],"haply":["127.0.0.1"],"once":{"127.0.0.1":[1,"2017-08-14 00:29:06"]}}', '127.0.0.1', NULL, NULL, '2017-08-14 00:29:06', '2017-08-14 00:29:06'),
+(100, 1, '810100', 1, '10086110120', 0, NULL, 0, 'hfzy', '$2y$13$Xotp7NzWRAFxQ1FVGO.DBOt44dP0oGJxT5npe.H4LtKyAkUixM7ZO', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-17 00:09:46"],"current":["127.0.0.1","2017-08-17 00:51:10"],"often":["127.0.0.1"],"haply":["127.0.0.1"],"once":{"127.0.0.1":[1,"2017-08-17 00:51:10"]}}', '127.0.0.1', NULL, NULL, '2017-08-17 00:51:10', '2017-08-17 00:51:10'),
 (101, 1, '810101', 1, '10086110000', 0, NULL, 0, 'username', '$2y$13$P03uTcIfPFNu.bu2zcfgn.Y0wG7Ys/THyXus/W.FuwWiI5w9ZGtt2', 'nickname', 'realName', NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, NULL, '0.0.0.0', NULL, NULL, '2017-08-05 02:08:44', '2017-08-05 02:08:44'),
 (102, 1, '810102', 2, '10086110001', 0, NULL, 0, 'jingli', '$2y$13$ayMgS29zEOU/DgsCR7bdsuAlntMe35788sgwbgj1iTAdZ3ck7/IFq', 'nickname', 'realName', NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, 'd5f11ace1096430249d206b8f0a7db9c', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-08-07 00:49:24"],"current":["127.0.0.1","2017-08-07 00:49:24"],"often":[],"haply":[],"once":{"127.0.0.1":[1,"2017-08-07 00:49:24"]}}', '0.0.0.0', NULL, NULL, '2017-08-07 00:49:24', '2017-08-07 00:49:24'),
 (103, 1, '830103', 1, '10086110119', 0, NULL, 0, 'hf_jishu', '$2y$13$WXPpQkCavlVzd8kGgbr87urw24SRrZiasUY4dbjXMeHBMkZcoYS3.', NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-08-07 03:44:49"],"current":["127.0.0.1","2017-08-07 03:44:49"],"often":[],"haply":[],"once":{"127.0.0.1":[1,"2017-08-07 03:44:49"]}}', '127.0.0.1', NULL, NULL, '2017-08-07 03:44:49', '2017-08-07 03:44:49'),
@@ -222,7 +223,69 @@ CREATE TABLE IF NOT EXISTS `hfzy_back_user_log` (
   `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'IP',
   `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='后台访问记录';
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='后台访问记录';
+
+--
+-- 转存表中的数据 `hfzy_back_user_log`
+--
+
+INSERT INTO `hfzy_back_user_log` (`id`, `back_user_id`, `route`, `url`, `user_agent`, `gets`, `posts`, `target`, `ip`, `created_at`, `updated_at`) VALUES
+(1, 100, '/manage/index/index', '/manage/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/index/index', '127.0.0.1', '2017-08-17 00:51:11', '2017-08-17 00:51:11'),
+(2, 100, '/manage/index/nav', '/manage/index/nav', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/index/nav_AJAX', '127.0.0.1', '2017-08-17 00:51:11', '2017-08-17 00:51:11'),
+(3, 100, '/manage/index/home.html?iframe=true', '/manage/index/home.html?iframe=true', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '{"iframe":"true"}', '[]', '允许访问：/manage/index/home', '127.0.0.1', '2017-08-17 00:51:11', '2017-08-17 00:51:11'),
+(4, 100, '/manage/slider/index.html', '/manage/slider/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/slider/index', '127.0.0.1', '2017-08-17 00:51:21', '2017-08-17 00:51:21'),
+(5, 100, '/manage/hot/index.html', '/manage/hot/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/hot/index', '127.0.0.1', '2017-08-17 00:51:26', '2017-08-17 00:51:26'),
+(6, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 00:57:23', '2017-08-17 00:57:23'),
+(7, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 00:58:17', '2017-08-17 00:58:17'),
+(8, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 00:58:32', '2017-08-17 00:58:32'),
+(9, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:01:30', '2017-08-17 01:01:30'),
+(10, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:02:57', '2017-08-17 01:02:57'),
+(11, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:03:15', '2017-08-17 01:03:15'),
+(12, 100, '/manage/news/create', '/manage/news/create', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/create', '127.0.0.1', '2017-08-17 01:03:15', '2017-08-17 01:03:15'),
+(13, 100, '/manage/news/create', '/manage/news/create', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/create', '127.0.0.1', '2017-08-17 01:03:35', '2017-08-17 01:03:35'),
+(14, 100, '/manage/news/create', '/manage/news/create', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/create', '127.0.0.1', '2017-08-17 01:03:53', '2017-08-17 01:03:53'),
+(15, 100, '/manage/ajax/uploader?file=file', '/manage/ajax/uploader?file=file', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '{"file":"file"}', '[]', '允许访问：/manage/ajax/uploader', '127.0.0.1', '2017-08-17 01:04:34', '2017-08-17 01:04:34'),
+(16, 100, '/manage/news/create', '/manage/news/create', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '{"type":"5","title":"\\u6210\\u4ea4\\u4e86\\u4e00\\u5927\\u7b14","status":"2","start_at":"2017-08-17","end_at":"2017-08-31","url":"\\/static\\/uploads\\/tmp\\/0\\/cabc6f5d1b3340bac6b9ee1de79cd032.jpg","target":"","description":"\\u7ed3\\u7b97\\u4ef7\\u80af\\u5fb7\\u57fa\\u79c1\\u642d\\u4e71\\u5efa","isDefault":"1"}', '允许访问：/manage/news/create_AJAX', '127.0.0.1', '2017-08-17 01:04:56', '2017-08-17 01:04:56'),
+(17, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:04:57', '2017-08-17 01:04:57'),
+(18, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:06:54', '2017-08-17 01:06:54'),
+(19, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:11:34', '2017-08-17 01:11:34'),
+(20, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:12:26', '2017-08-17 01:12:26'),
+(21, 100, '/manage/news/create', '/manage/news/create', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/create', '127.0.0.1', '2017-08-17 01:12:28', '2017-08-17 01:12:28'),
+(22, 100, '/manage/ajax/uploader?file=file', '/manage/ajax/uploader?file=file', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '{"file":"file"}', '[]', '允许访问：/manage/ajax/uploader', '127.0.0.1', '2017-08-17 01:12:42', '2017-08-17 01:12:42'),
+(23, 100, '/manage/news/create', '/manage/news/create', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '{"type":"5","title":"sjkladsjlasdjlsd","status":"2","start_at":"2017-08-17","end_at":"2017-08-31","url":"\\/static\\/uploads\\/tmp\\/0\\/94f85e74f3ac2150236891e1e4c8e1a8.jpg","target":"","description":"wefdsd\\u90fd\\u662f\\u6492\\u8303\\u5fb7\\u8428\\u8303\\u5fb7\\u8428\\u53d1\\u751f\\u7684\\u8303\\u5fb7\\u8428\\u53d1\\u7684","isDefault":"1"}', '允许访问：/manage/news/create_AJAX', '127.0.0.1', '2017-08-17 01:12:51', '2017-08-17 01:12:51'),
+(24, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:12:51', '2017-08-17 01:12:51'),
+(25, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:13:34', '2017-08-17 01:13:34'),
+(26, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:13:34', '2017-08-17 01:13:34'),
+(27, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:13:38', '2017-08-17 01:13:38'),
+(28, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:14:26', '2017-08-17 01:14:26'),
+(29, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:14:27', '2017-08-17 01:14:27'),
+(30, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:14:27', '2017-08-17 01:14:27'),
+(31, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:14:28', '2017-08-17 01:14:28'),
+(32, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:15:06', '2017-08-17 01:15:06'),
+(33, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:15:34', '2017-08-17 01:15:34'),
+(34, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:16:08', '2017-08-17 01:16:08'),
+(35, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:20:57', '2017-08-17 01:20:57'),
+(36, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:21:09', '2017-08-17 01:21:09'),
+(37, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:21:11', '2017-08-17 01:21:11'),
+(38, 100, '/manage/news/index.html', '/manage/news/index.html', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/manage/news/index', '127.0.0.1', '2017-08-17 01:22:27', '2017-08-17 01:22:27'),
+(39, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:24:34', '2017-08-17 01:24:34'),
+(40, 100, '/home/index/undefined', '/home/index/undefined', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/undefined', '127.0.0.1', '2017-08-17 01:24:34', '2017-08-17 01:24:34'),
+(41, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:27:06', '2017-08-17 01:27:06'),
+(42, 100, '/home/index/undefined', '/home/index/undefined', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/undefined', '127.0.0.1', '2017-08-17 01:27:06', '2017-08-17 01:27:06'),
+(43, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:29:35', '2017-08-17 01:29:35'),
+(44, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:29:48', '2017-08-17 01:29:48'),
+(45, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:30:06', '2017-08-17 01:30:06'),
+(46, 100, '/home/index/undefined', '/home/index/undefined', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/undefined', '127.0.0.1', '2017-08-17 01:30:06', '2017-08-17 01:30:06'),
+(47, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:30:23', '2017-08-17 01:30:23'),
+(48, 100, '/home/index/undefined', '/home/index/undefined', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/undefined', '127.0.0.1', '2017-08-17 01:30:24', '2017-08-17 01:30:24'),
+(49, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:33:17', '2017-08-17 01:33:17'),
+(50, 100, '/home/index/undefined', '/home/index/undefined', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/undefined', '127.0.0.1', '2017-08-17 01:33:17', '2017-08-17 01:33:17'),
+(51, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:33:31', '2017-08-17 01:33:31'),
+(52, 100, '/home/index/undefined', '/home/index/undefined', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/undefined', '127.0.0.1', '2017-08-17 01:33:32', '2017-08-17 01:33:32'),
+(53, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:33:37', '2017-08-17 01:33:37'),
+(54, 100, '/home/index/undefined', '/home/index/undefined', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/undefined', '127.0.0.1', '2017-08-17 01:33:37', '2017-08-17 01:33:37'),
+(55, 100, '/home/index/index', '/home/index/index', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/index', '127.0.0.1', '2017-08-17 01:36:21', '2017-08-17 01:36:21'),
+(56, 100, '/home/index/undefined', '/home/index/undefined', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '[]', '允许访问：/home/index/undefined', '127.0.0.1', '2017-08-17 01:36:22', '2017-08-17 01:36:22');
 
 -- --------------------------------------------------------
 
@@ -814,7 +877,14 @@ CREATE TABLE IF NOT EXISTS `hfzy_hand_house` (
   `created_by` bigint(20) NOT NULL COMMENT '创建者',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='二手房表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='二手房表';
+
+--
+-- 转存表中的数据 `hfzy_hand_house`
+--
+
+INSERT INTO `hfzy_hand_house` (`id`, `is_delete`, `house_host_id`, `title`, `city_id`, `county_id`, `address`, `type`, `code`, `room`, `hall`, `kitchen`, `toilet`, `veranda`, `url`, `url_icon`, `floorsType`, `onFloor`, `floors`, `face`, `houseType`, `fitment`, `eachPrice`, `price`, `years`, `area`, `description`, `supporting`, `traffic`, `around`, `houseLabel`, `isTop`, `status`, `saleStatus`, `contact`, `tel`, `email`, `weChat`, `qq`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, 1, 0, '二手房', 2, 0, '海口是是是', 1, NULL, 3, 1, 1, 2, 1, '/static/uploads/house/1/e013049c7bc1e21999398e353fda890f.jpg', '/static/uploads/house/1/e013049c7bc1e21999398e353fda890f_icon.jpg', 3, 12, 20, 2, 2, 4, 8000, 800000, 2015, 100, '是滴是滴所', '1,2,3,4,5,11,13,14,16', '是滴是滴所', '是滴是滴', '1,2', NULL, 1, 1, NULL, NULL, '909@qq.com', 'sd32s', '9090985', 100, '2017-08-16 01:09:13', '2017-08-16 01:09:13');
 
 -- --------------------------------------------------------
 
@@ -826,7 +896,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_home_user` (
   `id` bigint(20) NOT NULL COMMENT '自增ID',
   `is_delete` tinyint(1) unsigned DEFAULT '1' COMMENT '时效;0=无效;1=有效;',
   `code` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '会员编号ID',
-  `type` tinyint(1) DEFAULT '1' COMMENT '类型1普通用户2常驻用户3贵宾用户',
+  `type` tinyint(1) DEFAULT '1' COMMENT '类型1普通用户2成交用户3贵宾用户4卖家用户',
   `phone` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '手机号码',
   `phone_verified` tinyint(1) unsigned DEFAULT '0' COMMENT '手机号码是否已验证;"0"表示没有验证,"1"表示已验证',
   `email` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '邮箱',
@@ -835,6 +905,10 @@ CREATE TABLE IF NOT EXISTS `hfzy_home_user` (
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '密码',
   `nickname` varchar(64) CHARACTER SET utf8 DEFAULT NULL COMMENT '昵称',
   `real_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '真实姓名',
+  `ID_cards` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '身份证',
+  `province` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '省份',
+  `city` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '城市',
+  `county` varchar(32) CHARACTER SET utf8 DEFAULT NULL COMMENT '区/县',
   `weChat` varchar(64) CHARACTER SET utf8 DEFAULT NULL COMMENT '微信',
   `head_url` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像地址',
   `sex` enum('男','女') COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '性别',
@@ -860,9 +934,9 @@ CREATE TABLE IF NOT EXISTS `hfzy_home_user` (
 -- 转存表中的数据 `hfzy_home_user`
 --
 
-INSERT INTO `hfzy_home_user` (`id`, `is_delete`, `code`, `type`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `weChat`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `md5`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
-(100, 1, '100100', 1, '10086110110', 0, NULL, 0, 'iloveyou', '$2y$13$LEdih.ohMLwZy7tcK3CAy.wWN1oK.Fyfn.zXnKNS2OZ3aIg27cn8e', NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-08-10 04:43:19"],"current":["127.0.0.1","2017-08-10 04:43:19"],"often":[],"haply":[],"once":{"127.0.0.1":[1,"2017-08-10 04:43:19"]}}', '127.0.0.1', NULL, '2017-08-09 21:58:33', '2017-08-10 04:43:19', '2017-08-10 04:43:19'),
-(102, 1, '100102', 1, '13656465564', 0, NULL, 0, 'hfzy', '$2y$13$yItFA6C4WEKwPfI3F3/h0.nIRE0/.ADAWGvl0xBF9HKsTQ/PVp4N2', NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-11 22:05:26"],"current":["127.0.0.1","2017-08-11 23:55:53"],"often":[],"haply":["127.0.0.1"],"once":{"127.0.0.1":[11,"2017-08-11 23:55:53"]}}', '127.0.0.1', NULL, '2017-08-10 04:10:42', '2017-08-11 23:55:53', '2017-08-11 23:55:53');
+INSERT INTO `hfzy_home_user` (`id`, `is_delete`, `code`, `type`, `phone`, `phone_verified`, `email`, `email_verified`, `username`, `password`, `nickname`, `real_name`, `ID_cards`, `province`, `city`, `county`, `weChat`, `head_url`, `sex`, `signature`, `birthday`, `height`, `weight`, `token`, `md5`, `auth_key`, `password_reset_token`, `password_reset_code`, `status`, `ip`, `reg_ip`, `reg_type`, `registered_at`, `logined_at`, `updated_at`) VALUES
+(100, 1, '100100', 4, '10086110110', 0, NULL, 0, 'iloveyou', '$2y$13$LEdih.ohMLwZy7tcK3CAy.wWN1oK.Fyfn.zXnKNS2OZ3aIg27cn8e', NULL, '张三', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 0, '{"last":["127.0.0.1","2017-08-10 04:43:19"],"current":["127.0.0.1","2017-08-10 04:43:19"],"often":[],"haply":[],"once":{"127.0.0.1":[1,"2017-08-10 04:43:19"]}}', '127.0.0.1', NULL, '2017-08-09 21:58:33', '2017-08-10 04:43:19', '2017-08-10 04:43:19'),
+(102, 1, '100102', 4, '13656465564', 0, NULL, 0, 'hfzy', '$2y$13$yItFA6C4WEKwPfI3F3/h0.nIRE0/.ADAWGvl0xBF9HKsTQ/PVp4N2', NULL, '李四', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '什么都没有留下...', NULL, NULL, NULL, NULL, '14e1b600b1fd579f47433b88e8d85291', NULL, NULL, NULL, 1, '{"last":["127.0.0.1","2017-08-11 22:05:26"],"current":["127.0.0.1","2017-08-11 23:55:53"],"often":[],"haply":["127.0.0.1"],"once":{"127.0.0.1":[11,"2017-08-11 23:55:53"]}}', '127.0.0.1', NULL, '2017-08-10 04:10:42', '2017-08-11 23:55:53', '2017-08-11 23:55:53');
 
 -- --------------------------------------------------------
 
@@ -883,7 +957,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_home_user_log` (
   `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'IP',
   `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前天访问记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='前台访问记录';
 
 -- --------------------------------------------------------
 
@@ -896,15 +970,17 @@ CREATE TABLE IF NOT EXISTS `hfzy_hot` (
   `is_delete` tinyint(1) DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
   `is_passed` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核;0=未通过,1=审核中,2=已通过;默认1;',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=默认,1=首页,2=新房,3=二手房,4=出租,5=楼房,6=客服,7=交易,;默认1;',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:1=默认,2=新房,3=二手房,4=楼盘,5=交易,;默认1;',
   `url` varchar(255) DEFAULT NULL COMMENT '图片地址',
+  `url_icon` varchar(255) DEFAULT NULL COMMENT '略缩图',
   `target` varchar(255) DEFAULT NULL COMMENT '目标地址',
   `title` varchar(80) DEFAULT NULL COMMENT '标题',
+  `description` text COMMENT '详细介绍',
   `start_at` varchar(10) DEFAULT NULL COMMENT '开始时间',
   `end_at` varchar(10) DEFAULT NULL COMMENT '结束时间',
   `order` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '拖拽顺序',
-  `app` tinyint(1) NOT NULL DEFAULT '1' COMMENT '应用;0=后台;1=前台;',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态;0=失效,1=预定,2=上架,3=下架;默认1;',
+  `app` tinyint(1) NOT NULL DEFAULT '2' COMMENT '应用;0=后台;1=前台;',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态:1=预定,2=上架,3=下架,4失效;默认1;',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='推荐表';
@@ -964,9 +1040,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_house` (
 --
 
 INSERT INTO `hfzy_house` (`id`, `is_delete`, `building_base_id`, `title`, `city_id`, `county_id`, `address`, `type`, `room`, `hall`, `kitchen`, `toilet`, `veranda`, `url`, `url_icon`, `floorsType`, `onFloor`, `floors`, `face`, `houseType`, `fitment`, `eachPrice`, `price`, `years`, `area`, `description`, `supporting`, `traffic`, `around`, `houseLabel`, `isTop`, `status`, `saleStatus`, `contact`, `tel`, `email`, `weChat`, `qq`, `created_by`, `created_at`, `updated_at`) VALUES
-(14, 1, 1, 'sdsad', 3, 0, 'sd', 1, '4', 1, 1, 2, 2, '/static/uploads/tmp/0/639dcc23964cbe9026fa251f32171027.jpg', NULL, 3, 5, 12, 3, 1, 3, 12000, 1200000, 2015, 120, 'ssdsdwe23sdsad', '13,14', 'sffsdfwefwef', 'sdfsdfwe', '1,4,11,12', NULL, 1, 1, 'we', NULL, '10086111@qq.com', '1008611', '1008611', 4, '2017-08-02 22:47:21', '2017-08-02 22:47:21'),
-(15, 1, 37, '新房测试', 2, 0, '新房地址', 1, '5', 1, 1, 2, 1, '/static/uploads/tmp/0/c4f42f746b12a69dcab07783fb747d1c.jpg', NULL, 3, 7, 14, 4, 1, 3, 20000, 2000000, 2016, 100, '好房子不要错过', '2,3,13,14,15', '好交通', '好的配套', '1,3,12,13', NULL, 3, 1, NULL, NULL, 'QQ', '1008611', '1008611', 4, '2017-08-02 23:34:35', '2017-08-02 23:34:35'),
-(16, 1, 57, '观澜湖', 2, 0, '观澜湖', 1, '5', 2, 1, 2, 2, '/static/uploads/house/16/49733c0c60bbe3be771919db59b82fe4.jpg', '/static/uploads/house/16/49733c0c60bbe3be771919db59b82fe4_icon.jpg', 2, 8, 20, 3, 1, 4, 434, 232, 24, 24, '234', '1,14,15', '观澜湖', '观澜湖', '1,11,13', NULL, 3, 1, NULL, NULL, '观澜湖', '观澜湖', '观澜湖', 4, '2017-08-03 00:44:33', '2017-08-03 00:44:33');
+(16, 1, 57, '观澜湖', 2, 0, '观澜湖', 1, '5', 2, 1, 2, 2, '/static/uploads/house/1/8bbf82da511d83eb5207c284010a9374.jpg', '/static/uploads/house/1/8bbf82da511d83eb5207c284010a9374_icon.jpg', 2, 8, 20, 3, 1, 4, 434, 232, 24, 24, '234', '1,14,15', '观澜湖', '观澜湖', '1,11,13', NULL, 3, 1, NULL, NULL, '观澜湖', '观澜湖', '观澜湖', 4, '2017-08-03 00:44:33', '2017-08-03 00:44:33');
 
 -- --------------------------------------------------------
 
@@ -990,28 +1064,6 @@ CREATE TABLE IF NOT EXISTS `hfzy_house_better` (
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='家装广告表';
-
--- --------------------------------------------------------
-
---
--- 表的结构 `hfzy_house_host`
---
-
-CREATE TABLE IF NOT EXISTS `hfzy_house_host` (
-  `id` bigint(20) NOT NULL COMMENT 'ID',
-  `ID_cards` varchar(255) DEFAULT NULL COMMENT '身份证',
-  `real_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '真实姓名',
-  `phone` varchar(32) DEFAULT NULL COMMENT '手机号码',
-  `nickname` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '昵称',
-  `address` varchar(32) DEFAULT NULL COMMENT '地址',
-  `email` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '邮箱',
-  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像地址',
-  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `city_id` bigint(20) NOT NULL COMMENT '城市表ID',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类型;0=过客,1=客户;默认1;',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='房东表';
 
 -- --------------------------------------------------------
 
@@ -1042,7 +1094,7 @@ CREATE TABLE IF NOT EXISTS `hfzy_images` (
   `url_icon` varchar(255) DEFAULT NULL COMMENT '缩略图',
   `url_title` varchar(255) DEFAULT NULL COMMENT '图片广告标题',
   `created_at` datetime DEFAULT NULL COMMENT '创建时间'
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='图片表';
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='图片表';
 
 --
 -- 转存表中的数据 `hfzy_images`
@@ -1082,7 +1134,10 @@ INSERT INTO `hfzy_images` (`id`, `target_id`, `type`, `url`, `url_icon`, `url_ti
 (31, 60, 1, '/static/uploads/buildingDetail/60/3e668399d714b8082d28958b501ff63b.jpg', '/static/uploads/buildingDetail/60/3e668399d714b8082d28958b501ff63b_icon.jpg', '观澜湖', '2017-08-03 00:42:14'),
 (32, 16, 2, '/static/uploads/house/16/18ff7e2d0de31037328d6a092c5942aa.jpg', '/static/uploads/house/16/18ff7e2d0de31037328d6a092c5942aa_icon.jpg', '观澜湖', '2017-08-03 00:44:33'),
 (33, 16, 2, '/static/uploads/house/16/34fa9915d61ebadd5a952c518b2d0772.jpg', '/static/uploads/house/16/34fa9915d61ebadd5a952c518b2d0772_icon.jpg', '观澜湖', '2017-08-03 00:44:33'),
-(34, 16, 2, '/static/uploads/house/16/10391ee586f74f41983ea58aecd422df.jpg', '/static/uploads/house/16/10391ee586f74f41983ea58aecd422df_icon.jpg', '观澜湖', '2017-08-03 00:44:33');
+(34, 16, 2, '/static/uploads/house/16/10391ee586f74f41983ea58aecd422df.jpg', '/static/uploads/house/16/10391ee586f74f41983ea58aecd422df_icon.jpg', '观澜湖', '2017-08-03 00:44:33'),
+(35, 1, 2, '/static/uploads/house/1/d77c2bf7490350c006c88671c1827bb0.jpg', '/static/uploads/house/1/d77c2bf7490350c006c88671c1827bb0_icon.jpg', '二手房', '2017-08-16 01:09:13'),
+(36, 1, 2, '/static/uploads/house/1/9e0e4b1a24c1bc3a4d2962bdd935d9de.jpg', '/static/uploads/house/1/9e0e4b1a24c1bc3a4d2962bdd935d9de_icon.jpg', '二手房', '2017-08-16 01:09:13'),
+(37, 1, 2, '/static/uploads/house/1/8bbf82da511d83eb5207c284010a9374.jpg', '/static/uploads/house/1/8bbf82da511d83eb5207c284010a9374_icon.jpg', '二手房', '2017-08-16 01:09:13');
 
 -- --------------------------------------------------------
 
@@ -1361,21 +1416,21 @@ INSERT INTO `hfzy_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data
 (91, '新房录入', 5, '/manage/house/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (92, '二手房录入', 5, '/manage/hand_house/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (93, '出租录入', 5, '/manage/rent/create', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(94, '房源抢接', 5, '/manage/house/services', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(95, '房源转接', 5, '/manage/house/transfer', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(96, '房源接收', 5, '/manage/house/receive', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(94, '房源抢接', 5, '/manage/house/services', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(95, '房源转接', 5, '/manage/house/transfer', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(96, '房源接收', 5, '/manage/house/receive', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (97, '房源清单', 5, '/manage/house/super', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (98, '楼盘清单', 5, '/manage/build/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (110, '我的客户', 6, '/manage/client/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (111, '客户录入', 6, '/manage/client/create', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (112, '房东录入', 6, '/manage/house_host/create', 2, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(114, '客户分配', 6, '/manage/client/assign', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(115, '客户抢接', 6, '/manage/client/services', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(116, '客户转接', 6, '/manage/client/transfer', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(114, '客户分配', 6, '/manage/client/assign', 4, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(115, '客户抢接', 6, '/manage/client/services', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(116, '客户转接', 6, '/manage/client/transfer', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (130, '我的求购', 7, '/manage/contact/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(131, '求购抢接', 7, '/manage/contact/services', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(131, '求购抢接', 7, '/manage/contact/get', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (132, '求购清单', 7, '/manage/contact/super', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(133, '求购分配', 7, '/manage/contact/assign', 3, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(133, '求购分配', 7, '/manage/contact/assign', 3, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (150, '我的交易', 8, '/manage/deal/index', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (151, '交易清单', 8, '/manage/deal/super', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (152, '交易录入', 8, '/manage/deal/create', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -1393,12 +1448,10 @@ INSERT INTO `hfzy_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data
 (195, '楼盘广告', 10, '/manage/slider/build', 5, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (196, '联系我们广告', 10, '/manage/slider/contact', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (230, '企业信息', 12, '/manage/maintain/company', 0, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(231, '新房资讯', 12, '/manage/new_house/hot', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(232, '二手房资讯', 12, '/manage/hand_house/hot', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(234, '楼盘资讯', 12, '/manage/build/hot', 4, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(235, '楼市资讯', 12, '/manage/hot/index', 5, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(236, '客户反馈', 12, '/manage/opinion/index', 6, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
-(237, '友情链接', 12, '/manage/links/index', 7, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(231, '楼市资讯', 12, '/manage/news/index', 1, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(232, '楼市推荐', 12, '/manage/hot/index', 2, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(236, '客户反馈', 12, '/manage/opinion/index', 6, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
+(237, '广告清单', 12, '/manage/slider/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (238, '广告录入', 12, '/manage/slider/create', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (239, '网站主题', 12, '/manage/maintain/theme', 9, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (240, '生成页面', 12, '/manage/maintain/page', 10, 2, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
@@ -1421,6 +1474,48 @@ INSERT INTO `hfzy_menu` (`id`, `name`, `parent`, `route`, `order`, `type`, `data
 (277, '用户清单', 14, '/manage/home_user/index', 7, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (278, '标签清单', 14, '/manage/label/index', 8, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}'),
 (279, '类型清单', 14, '/manage/type/index', 9, 1, '{"li_class":"","a_class":"Back","i_class":"fa fa-circle-o"}');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `hfzy_news`
+--
+
+CREATE TABLE IF NOT EXISTS `hfzy_news` (
+  `id` bigint(20) NOT NULL COMMENT 'ID',
+  `is_delete` tinyint(1) DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
+  `is_passed` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核;0=未通过,1=审核中,2=已通过;默认1;',
+  `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:1=默认,2=新房,3=二手房,4=楼盘,5=交易,;默认1;',
+  `url` varchar(255) DEFAULT NULL COMMENT '图片地址',
+  `url_icon` varchar(255) DEFAULT NULL COMMENT '略缩图',
+  `title` varchar(80) DEFAULT NULL COMMENT '标题',
+  `description` text COMMENT '详细介绍',
+  `start_at` varchar(10) DEFAULT NULL COMMENT '开始时间',
+  `end_at` varchar(10) DEFAULT NULL COMMENT '结束时间',
+  `order` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '拖拽顺序',
+  `app` tinyint(1) NOT NULL DEFAULT '2' COMMENT '应用;0=后台;1=前台;',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态;1=预定,2=发布,3=过期,4失效;默认1',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间'
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='资讯表';
+
+--
+-- 转存表中的数据 `hfzy_news`
+--
+
+INSERT INTO `hfzy_news` (`id`, `is_delete`, `is_passed`, `back_user_id`, `type`, `url`, `url_icon`, `title`, `description`, `start_at`, `end_at`, `order`, `app`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(2, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(3, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(4, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(5, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(6, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(7, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(8, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(9, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(10, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00'),
+(11, 1, 1, 100, 5, '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8.jpg', '/static/uploads/News/deal/1/94f85e74f3ac2150236891e1e4c8e1a8_icon.jpg', 'sjkladsjlasdjlsd', 'wefdsd都是撒范德萨范德萨发生的范德萨发的', '2017-08-17', '2017-08-31', 1, 2, 2, '2017-08-17 01:12:51', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -5152,20 +5247,33 @@ CREATE TABLE IF NOT EXISTS `hfzy_session` (
 CREATE TABLE IF NOT EXISTS `hfzy_slider` (
   `id` bigint(20) NOT NULL COMMENT 'ID',
   `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '时效;0=失效,1=有效;默认1;',
-  `is_passed` tinyint(1) NOT NULL DEFAULT '1' COMMENT '审核;0=未通过,1=审核中,2=已通过;默认1;',
+  `is_passed` tinyint(1) NOT NULL DEFAULT '2' COMMENT '审核;1=未通过,2=审核中,3=已通过;默认2',
   `back_user_id` bigint(20) NOT NULL COMMENT '后台管理员ID',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:0=默认,1=首页,2=新房,3=二手房,4=出租,5=楼房,6=联系我们,;默认1;',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '父级类型:1=默认,2=首页,3=新房,4=二手房,5=出租,6=楼房,7=联系我们,;默认1;',
   `url` varchar(255) DEFAULT NULL COMMENT '图片地址',
-  `target` varchar(255) DEFAULT NULL COMMENT '目标地址',
+  `url_icon` varchar(150) DEFAULT NULL COMMENT '略缩图',
+  `target` varchar(255) DEFAULT NULL COMMENT '跳转地址',
   `title` varchar(80) DEFAULT NULL COMMENT '标题',
-  `start_at` varchar(10) DEFAULT NULL COMMENT '开始时间',
-  `end_at` varchar(10) DEFAULT NULL COMMENT '结束时间',
+  `description` text COMMENT '详细介绍',
+  `start_at` varchar(20) DEFAULT NULL COMMENT '开始时间',
+  `end_at` varchar(20) DEFAULT NULL COMMENT '结束时间',
   `order` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '拖拽顺序',
-  `app` tinyint(1) NOT NULL DEFAULT '1' COMMENT '应用;0=后台;1=前台;',
+  `app` tinyint(1) NOT NULL DEFAULT '1' COMMENT '应用;1=后台;2=前台',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态;0=失效,1=预定,1=上架,2=下架;默认1;',
+  `isDefault` tinyint(1) DEFAULT '2' COMMENT '是否是默认图片',
   `created_at` datetime NOT NULL COMMENT '创建时间',
-  `updated_at` datetime NOT NULL COMMENT '修改时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告表';
+  `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='广告表';
+
+--
+-- 转存表中的数据 `hfzy_slider`
+--
+
+INSERT INTO `hfzy_slider` (`id`, `is_delete`, `is_passed`, `back_user_id`, `type`, `url`, `url_icon`, `target`, `title`, `description`, `start_at`, `end_at`, `order`, `app`, `status`, `isDefault`, `created_at`, `updated_at`) VALUES
+(1, 1, 3, 100, 1, '/static/uploads/slider/home/1/505e6d54d7b1c38a65fee57d44da7b58.jpg', '/static/uploads/slider/home/1/505e6d54d7b1c38a65fee57d44da7b58_icon.jpg', 'http://www.alivehouse.com/home/contact/contact.html', '楼盘标题', '附加介绍！！！！', '2017-08-15', '2017-08-31', 1, 1, 3, 2, '2017-08-15 20:50:31', NULL),
+(2, 1, 3, 100, 1, '/static/uploads/slider/home/2/cfcd365993f3133f45c812565560a0f5.jpg', '/static/uploads/slider/home/2/cfcd365993f3133f45c812565560a0f5_icon.jpg', 'http://www.alivehouse.com/home/contact/contact.html', 'boom sakala boom!', '介绍！！！！！！！！！！！！！！！！', '2017-08-15', '2017-08-31', 0, 1, 3, 1, '2017-08-15 20:59:14', NULL),
+(3, 1, 3, 100, 1, '/static/uploads/slider/home/3/dd6ec23189f817425edb1f196419b0b0.jpg', '/static/uploads/slider/home/3/dd6ec23189f817425edb1f196419b0b0_icon.jpg', 'http://www.alivehouse.com/home/contact/contact.html', '标题是什么', '世界的科技收款等级！！！！！！！！！！！', '2017-08-15', '2017-08-31', 1, 1, 3, 1, '2017-08-15 20:59:42', NULL),
+(4, 1, 3, 100, 1, '/static/uploads/slider/home/4/1d726268bf538970ccbaeed8d8dab2e1.jpg', '/static/uploads/slider/home/4/1d726268bf538970ccbaeed8d8dab2e1_icon.jpg', 'http://www.alivehouse.com/home/contact/contact.html', '首页广告', '收到就好上看到几十块！！！！！！！！！！！', '2017-08-15', '2017-08-31', 1, 1, 3, 1, '2017-08-15 21:00:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -5379,7 +5487,14 @@ CREATE TABLE IF NOT EXISTS `hfzy_user_login_log` (
   `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'IP',
   `created_at` datetime DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime DEFAULT NULL COMMENT '更新时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='登陆记录';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='登陆记录';
+
+--
+-- 转存表中的数据 `hfzy_user_login_log`
+--
+
+INSERT INTO `hfzy_user_login_log` (`id`, `user_id`, `app`, `route`, `url`, `user_agent`, `gets`, `posts`, `target`, `ip`, `created_at`, `updated_at`) VALUES
+(1, 100, NULL, 'manage/login/login', '/manage/login/login', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', '[]', '{"__token__":"c9395bfc440be660bd6f4691cbc37a59","username":"hfzy"}', '127.0.0.1', '1', '2017-08-17 00:51:10', '2017-08-17 00:51:10');
 
 -- --------------------------------------------------------
 
@@ -5764,12 +5879,6 @@ ALTER TABLE `hfzy_house_better`
   ADD KEY `back_user_id` (`back_user_id`);
 
 --
--- Indexes for table `hfzy_house_host`
---
-ALTER TABLE `hfzy_house_host`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `hfzy_house_host_server`
 --
 ALTER TABLE `hfzy_house_host_server`
@@ -5803,6 +5912,13 @@ ALTER TABLE `hfzy_label_park`
 --
 ALTER TABLE `hfzy_menu`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hfzy_news`
+--
+ALTER TABLE `hfzy_news`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `back_user_id` (`back_user_id`);
 
 --
 -- Indexes for table `hfzy_notice`
@@ -5918,7 +6034,7 @@ ALTER TABLE `hfzy_back_user`
 -- AUTO_INCREMENT for table `hfzy_back_user_log`
 --
 ALTER TABLE `hfzy_back_user_log`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `hfzy_building_base`
 --
@@ -5983,7 +6099,7 @@ ALTER TABLE `hfzy_download`
 -- AUTO_INCREMENT for table `hfzy_hand_house`
 --
 ALTER TABLE `hfzy_hand_house`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hfzy_home_user`
 --
@@ -6010,11 +6126,6 @@ ALTER TABLE `hfzy_house`
 ALTER TABLE `hfzy_house_better`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
 --
--- AUTO_INCREMENT for table `hfzy_house_host`
---
-ALTER TABLE `hfzy_house_host`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
---
 -- AUTO_INCREMENT for table `hfzy_house_host_server`
 --
 ALTER TABLE `hfzy_house_host_server`
@@ -6023,7 +6134,7 @@ ALTER TABLE `hfzy_house_host_server`
 -- AUTO_INCREMENT for table `hfzy_images`
 --
 ALTER TABLE `hfzy_images`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `hfzy_label`
 --
@@ -6039,6 +6150,11 @@ ALTER TABLE `hfzy_label_park`
 --
 ALTER TABLE `hfzy_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=280;
+--
+-- AUTO_INCREMENT for table `hfzy_news`
+--
+ALTER TABLE `hfzy_news`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `hfzy_notice`
 --
@@ -6078,7 +6194,7 @@ ALTER TABLE `hfzy_service`
 -- AUTO_INCREMENT for table `hfzy_slider`
 --
 ALTER TABLE `hfzy_slider`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `hfzy_type`
 --
@@ -6098,7 +6214,7 @@ ALTER TABLE `hfzy_upload`
 -- AUTO_INCREMENT for table `hfzy_user_login_log`
 --
 ALTER TABLE `hfzy_user_login_log`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增ID',AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hfzy_walk`
 --
@@ -6206,12 +6322,6 @@ ALTER TABLE `hfzy_home_user_log`
   ADD CONSTRAINT `hfzy_home_user_log_ibfk_1` FOREIGN KEY (`home_user_id`) REFERENCES `hfzy_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 限制表 `hfzy_hot`
---
-ALTER TABLE `hfzy_hot`
-  ADD CONSTRAINT `hfzy_hot_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- 限制表 `hfzy_house`
 --
 ALTER TABLE `hfzy_house`
@@ -6228,13 +6338,19 @@ ALTER TABLE `hfzy_house_better`
 --
 ALTER TABLE `hfzy_house_host_server`
   ADD CONSTRAINT `hfzy_house_host_server_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hfzy_house_host_server_ibfk_2` FOREIGN KEY (`house_host_id`) REFERENCES `hfzy_house_host` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hfzy_house_host_server_ibfk_2` FOREIGN KEY (`house_host_id`) REFERENCES `hfzy_home_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `hfzy_label_park`
 --
 ALTER TABLE `hfzy_label_park`
   ADD CONSTRAINT `hfzy_label_ibfk_1` FOREIGN KEY (`label_id`) REFERENCES `hfzy_label` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `hfzy_news`
+--
+ALTER TABLE `hfzy_news`
+  ADD CONSTRAINT `hfzy_news_ibfk_1` FOREIGN KEY (`back_user_id`) REFERENCES `hfzy_back_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `hfzy_notice`
