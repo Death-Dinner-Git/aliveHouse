@@ -1247,7 +1247,7 @@ Site.initBanner = function (data, options) {
             // desc = '<h3><a hidefocus="true" ' + aDescAttr + ' ><span>' + imageData[i].desc + '</span></a></h3>';
             barDesc = imageData[i].desc;
         }
-        if (typeof imageData[i].url_icon !== undefined){
+        if (imageData[i].url_icon !== undefined){
             icon = 'src="'+imageData[i].url_icon+'" ';
         }
         item = '<span class="item">' +
@@ -1289,7 +1289,6 @@ Site.initBanner = function (data, options) {
     }
     $banner.html(content).css({width: config.width, height: config.height});
     //======= HTML 渲染结束 ========//
-
     var $bannerBody = $(config.banner + ' .' + config.bannerBody);
     var $bannerPrev = $(config.banner + ' .' + config.bannerPrev);
     var $bannerNext = $(config.banner + ' .' + config.bannerNext);

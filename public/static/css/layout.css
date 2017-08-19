@@ -2853,6 +2853,13 @@ hr.line.dashed, hr.upLine.dashed {
     color: #FF5722;
 }
 
+.layui-summary{
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /*
 颜色
 */
