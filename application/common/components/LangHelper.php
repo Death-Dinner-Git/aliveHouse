@@ -745,8 +745,8 @@ class LangHelper
         'menu' => [],
         'news' => [
             'pass' => ['1' => '已通过', '2' => '审核中', '3' => '未通过'],
-            'type' => ['2' => '新房', '3' => '二手房', '4' => '楼盘', '5' => '交易'],
-            'typeName' => ['2' => 'newHouse', '3' => 'handHouse', '4' => 'build', '5' => 'deal'],
+            'type' => ['3' => '新房', '4' => '二手房', '5' => '楼房', '6' => '家装', '7' => '交易'],
+            'typeName' => ['3' => 'newHouse', '4' => 'handHouse', '5' => 'build', '6' => 'better', '7' => 'deal'],
             'app' => ['1' => '后台', '2' => '前台'],
             'status' => ['1' => '预定', '2' => '发布', '3' => '过期', '4' => '失效'],
             'createStatus' => ['1' => '预定', '2' => '发布', '3' => '过期'],
@@ -767,11 +767,20 @@ class LangHelper
         'region' => [],
         'session' => [],
         'slider' => [
-            'type' => ['1' => '默认', '2' => '首页', '3' => '新房', '4' => '二手房', '5' => '楼房', '6' => '联系我们'],
-            'typeName' => ['1' => 'default', '2' => 'home', '3' => 'newHouse', '4' => 'handHouse', '5' => 'build', '6' => 'contact'],
+            'type' => ['1' => '默认', '2' => '首页', '3' => '新房', '4' => '二手房', '5' => '房产资讯', '6' => '家装', '7' => '联系我们'],
+            'typeName' => ['1' => 'default', '2' => 'home', '3' => 'newHouse', '4' => 'handHouse', '5' => 'house', '6' => 'better', '7' => 'contact'],
             'app' => ['1' => '后台', '2' => '前台'],
+            'isDefault' => ['1' => '是', '2' => '否'],
             'status' => ['1' => '预定', '2' => '上架', '3' => '下架', '4' => '失效'],
             'createStatus' => ['1' => '预定', '2' => '上架', '3' => '下架'],
+            'default' => [
+                '2' => '/static/uploads/theme/home/theme-banner.jpg',
+                '3' => '/static/uploads/theme/new-house/theme-banner-new-house.jpg',
+                '4' => '/static/uploads/theme/theme-banner-second-hand-house.jpg',
+                '5' => '/static/uploads/theme/build/theme-banner-build.jpg',
+                '6' => '/static/uploads/theme/better/theme-banner-better.jpg',
+                '7' => '/static/uploads/theme/contact/theme-banner-contact.jpg'
+            ],
         ],
         'type' => [
             // 类型所属类别
@@ -869,7 +878,6 @@ class LangHelper
         }
         return $ret;
     }
-
 
     /**
      * @param null $type

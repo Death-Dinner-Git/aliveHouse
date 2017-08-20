@@ -19,6 +19,14 @@ if (typeof Home === "undefined") {
 Home.init = function () {
 };
 
+Home.searchProduct = function () {
+
+};
+
+Home.searchProductByKey = function () {
+
+};
+
 
 $(function () {
 

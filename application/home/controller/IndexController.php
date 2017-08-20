@@ -14,6 +14,10 @@ use app\common\model\News;
  */
 class IndexController extends HomeController
 {
+
+    //广告类别
+    private $sliderType = 2;
+
     /**
      * 默认方法
      * @author Sir Fu
@@ -21,7 +25,7 @@ class IndexController extends HomeController
     public function indexAction()
     {
         $list = [];
-        $where = ['type'=>'2'];
+        $where = ['type'=>$this->sliderType];
         $slider = Slider::getSlider($where);
         foreach ($slider as $item){
             $list[] = [
@@ -32,8 +36,8 @@ class IndexController extends HomeController
             ];
         }
         if (empty($list)){
-            $where = ['type'=>'1'];
-            $slider = Slider::getSlider($where);
+            $where = array_merge($where,['isDefault'=>'1']);
+            $slider = Slider::getSlider($where,null,true);
             foreach ($slider as $item){
                 $list[] = [
                     'title'=>$item['title'],
@@ -48,7 +52,7 @@ class IndexController extends HomeController
                 'title'=>'',
                 'desc'=>'',
                 'target'=>'',
-                'url'=>'/static/uploads/theme/home/theme-banner.jpg',
+                'url'=>Slider::T('default',$this->sliderType),
             ];
         }
         $slider = json_encode($list);

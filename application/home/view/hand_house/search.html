@@ -31,7 +31,7 @@
 <section id="webContainerMiddle" class="webContainerMiddle">
 
 	<!-- This webBannerTable start -->
-	<section id="webBannerTable" class="webBannerTable flex" style="min-height: 300px;">
+	<section id="webBannerTable" class="webBannerTable flex" style="">
 
 		<!-- This bannerAbsTable start -->
 		<section id="bannerAbsTable" class="absTopTable">
@@ -39,7 +39,7 @@
 		</section>
 		<!-- This bannerAbsTable end -->
 
-		<div id="banner-body" class="flex" style="display: block;min-height: 300px;">
+		<div id="banner-body" class="flex" style="">
 
 			<!-- This bannerTopTable start -->
 			<section id="bannerTopTable" class="topTable" style="display: none;">
@@ -101,8 +101,6 @@
 				<!-- 顶级主体 中间 区域导航开启 -->
 				<section class="centerTable flex-middle-center">
 
-					<div id="webBanner" style="width: 1200px; overflow: hidden; height: 300px;"></div>
-
 				</section>
 				<!-- 顶级主体 中间 区域导航结束 -->
 
@@ -126,11 +124,160 @@
 		<div class="alive-layout">
 
 			<div class="alive-header" style="min-height: 50px;">
-				<form class="layui-form search-box" action="{:url('search')}" method="get" id="searchForm" style="margin-top: 50px;">
+				<form class="layui-form search-box" action="" method="get" id="searchForm">
 					<div class="search-container">
 						<div class="search-body">
-							<input class="layui-input search-input" type="text" name="keyword" value="" style="width:960px;display: inline-block;" placeholder="请输入区域或小区名开始找房">
-							<button type="submit" class="search-submit layui-btn layui-btn-danger" lay-filter="submit">搜索</button>
+							<div class="layui-form-item" style="padding: 0 35px;">
+								<input class="layui-input search-input" type="text" name="keyword" value="{$Think.get.keyword}" style="width:960px;display: inline-block;" placeholder="请输入区域或小区名开始找房" >
+								<button type="submit" class="search-submit layui-btn layui-btn-danger" lay-filter="submit">搜索</button>
+							</div>
+						</div>
+						<div class="layout-colla-content layout-show">
+							<div class="layui-form-item">
+								<label class="layui-form-label">房屋类型：</label>
+								<div class="layui-input-block">
+									<input type="radio" name="noHouseType" value="1" title="不限" {notempty name="Think.get.noHouseType"}checked{/notempty}>
+									{volist name="model->getLists('houseType')" id="item" }
+									<input type="checkbox" name="houseType[]" value="{$key}" lay-skin="primary" title="{$item}">
+									{/volist}
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">楼层类型：</label>
+								<div class="layui-input-block">
+									<input type="radio" name="noFloorsType" value="1" title="不限" {empty name="Think.get.floorsType"}checked{/empty}>
+									{volist name="model->getLists('floorsType')" id="item" }
+									<input type="checkbox" name="floorsType[]" value="{$key}" lay-skin="primary" title="{$item}">
+									{/volist}
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<label class="layui-form-label">房源房型：</label>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="room" lay-search >
+											<option value="">选择居室</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('room')" id="item" }
+											<option value="{$key}">{$item} 室</option>
+											{/volist}
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="hall" lay-search >
+											<option value="">选择大厅</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('hall')" id="item" }
+											<option value="{$key}">{$item} 厅</option>
+											{/volist}
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="kitchen" lay-search >
+											<option value="">选择厨房</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('kitchen')" id="item" }
+											<option value="{$key}">{$item} 厨</option>
+											{/volist}
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="toilet" lay-search >
+											<option value="">选择独卫</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('toilet')" id="item" }
+											<option value="{$key}">{$item} 卫</option>
+											{/volist}
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="veranda" lay-search >
+											<option value="">选择阳台</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('veranda')" id="item" }
+											<option value="{$key}">{$item} 台</option>
+											{/volist}
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="face" lay-search >
+											<option value="">选择朝向</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('face')" id="item" }
+											<option value="{$key}">{$item} 朝向</option>
+											{/volist}
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">房源标签：</label>
+								<div class="layui-input-block">
+									<input type="radio" name="noHouseLabel" value="1" title="不限" {empty name="Think.get.houseLabel"}checked{/empty}>
+									{volist name="model->getLists('houseLabel')" id="item" }
+									<input type="checkbox" name="houseLabel[]" value="{$key}" lay-skin="primary" title="{$item}">
+									{/volist}
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">装修状况：</label>
+								<div class="layui-input-block">
+									<input type="radio" name="noFitment" value="1" title="不限" {empty name="Think.get.fitment"}checked{/empty}>
+									{volist name="model->getLists('fitment')" id="item" }
+									<input type="checkbox" name="fitment[]" value="{$key}" lay-skin="primary" title="{$item}">
+									{/volist}
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<label class="layui-form-label">价格大小：</label>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="eachPrice" lay-search >
+											<option value="">均价范围</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('eachPrice')" id="item" }
+											<option value="{$key}">{$item}</option>
+											{/volist}
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="price" lay-search >
+											<option value="">总价范围</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('price')" id="item" }
+											<option value="{$key}">{$item}</option>
+											{/volist}
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="area" lay-search >
+											<option value="">面积范围</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('area')" id="item" }
+											<option value="{$key}">{$item}</option>
+											{/volist}
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="create" lay-search >
+											<option value="">发布时间</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('create')" id="item" }
+											<option value="{$key}">{$item}</option>
+											{/volist}
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width: 130px;">
+										<select name="update" lay-search >
+											<option value="">更新时间</option>
+											<option value="">不限</option>
+											{volist name="model->getLists('update')" id="item" }
+											<option value="{$key}">{$item}</option>
+											{/volist}
+										</select>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</form>
@@ -352,22 +499,6 @@
 <script>
 
     $(function () {
-        var data = JSON.parse('{$slider}');
-        var options = {
-            "banner": "#webBanner",
-            "height": 300,
-            "isWidth":true,
-            "playTime": 6000,
-            "animateTime": 628,
-            "interval": 6000,
-            "btnType": 1,
-            "targetType": "2",
-//            "wideScreen": true,
-//            "autoPlay":true,
-            hiddenBar: true,//设置是否隐藏底部导航条
-            hiddenControl: true,//设置隐藏左右切换按钮
-        };
-        Site.initBanner(data,options);
 
     });
 
