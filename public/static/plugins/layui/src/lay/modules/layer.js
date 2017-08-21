@@ -1034,23 +1034,18 @@ layer.photos = function(options, loop, key){
   var dict = {};
   options = options || {};
   if(!options.photos) return;
+    var type = options.photos.constructor === Object;
+    var photos = type ? options.photos : {}, data = photos.data || [];
+    var start = photos.start || 0;
+    dict.imgIndex = (start|0) + 1;
 
-  //此处更改，因为源代码有问题
-  var type = typeof options.photos === "object";
-  var photos = type ? options.photos : {}, data = photos.data || [];
-  var start = photos.start || 0;
-  dict.imgIndex = (start|0) + 1;
-  
-  options.img = options.img || 'img';
+    options.img = options.img || 'img';
 
-  //增加一个查询上限，为了iframe查询
-  options.parent = options.parent || document;
-  
-  var success = options.success;
-  delete options.success;
+    var success = options.success;
+    delete options.success;
 
   if(!type){ //页面直接获取
-    var parent = $(options.photos,options.parent), pushData = function(){
+    var parent = $(options.photos), pushData = function(){
       data = [];
       parent.find(options.img).each(function(index){
         var othis = $(this);

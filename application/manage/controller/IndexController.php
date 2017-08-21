@@ -34,6 +34,16 @@ class IndexController extends ManageController
     }
 
     /**
+     * @description 控制面板
+     * @author Sir Fu
+     */
+    public function createAction()
+    {
+        $this->assign('meta_title', "验证测试");
+        return view('create');
+    }
+
+    /**
      * @description The APP 全局MISS路由，一个父级操作.
      */
     public function missAction()

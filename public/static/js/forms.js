@@ -420,6 +420,13 @@ layui.define('layer', function (exports) {
                                 }
                             }
                         },
+                        isPercent:function (value,item) {
+                            var $this = $(item);
+                            var regex = new RegExp(/^([1-9]{1}[0-9]{0,1}|0|100)(\.(\d){1,2}){0,1}$/);
+                            if (!value.match(regex)) {
+                                return $this.attr('lay-error') || '百分比值';
+                            }
+                        },
                         compare: function (value, item) {
                             var $this = $(item);
                             var check = $this.attr('lay-compare');
