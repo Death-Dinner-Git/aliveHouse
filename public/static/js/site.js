@@ -1187,18 +1187,20 @@ Site.initBanner = function (data, options) {
         bannerNext: "bannerNext",
         switchStyle: "switchBtn",
         bannerBottom: "bannerBottom",
+        isHeight: false,
         height: "0",
+        isWidth: false,
         width: "0",
         playTime: "4000",
         animateTime: "1500",
-        barType: "1", //底部类型
+        barType: "2", //底部类型; 支持 1或 2 ，默认为 2
         hiddenBar: false,//设置是否隐藏底部导航条
+        hiddenControl: false,//设置隐藏左右切换按钮
         targetType: "2",
-        wideScreen: false,
+        wideScreen: false, //
         autoPlay: false,//自动播放
         interval: 6000,//播放间隔
         barColor: false,//背景色
-        hiddenControl: false,//设置隐藏左右切换按钮
         loading: '/static/images/loading.png',//设置懒加载等待图
     };
     var config = $.extend($default, options);
@@ -1220,6 +1222,12 @@ Site.initBanner = function (data, options) {
         if (config.height <= 0) {
             config.height = height > 0 ? height : config.width / 1200 * 400;
         }
+    }
+    if (config.isHeight){
+        config.height = _height;
+    }
+    if (config.isWidth){
+        config.width = _width;
     }
     imageData = data;
     imageWidth = config.width;
@@ -1247,7 +1255,7 @@ Site.initBanner = function (data, options) {
             // desc = '<h3><a hidefocus="true" ' + aDescAttr + ' ><span>' + imageData[i].desc + '</span></a></h3>';
             barDesc = imageData[i].desc;
         }
-        if (typeof imageData[i].url_icon !== undefined){
+        if (imageData[i].url_icon !== undefined){
             icon = 'src="'+imageData[i].url_icon+'" ';
         }
         item = '<span class="item">' +
@@ -1259,8 +1267,10 @@ Site.initBanner = function (data, options) {
             '</a> ' + desc + '</span>';
 
         btn = '<span data-cid="' + i + '" data-title="' + barDesc + '"></span>';
-        if (config.barType == '1') {
-            btn = '<span data-cid="' + i + '" lay-text="' + barDesc + '" lay-filter="tooltitle" >' + (i + 1) + '</span>';
+        if (config.barType == '2') {
+            btn = '<span class="barType-2" data-cid="' + i + '" lay-text="' + barDesc + '" lay-filter="tooltitle" ></span>';
+        }else if (config.barType == '1') {
+            btn = '<span class="barType-1" data-cid="' + i + '" lay-text="' + barDesc + '" lay-filter="tooltitle" >' + (i + 1) + '</span>';
         }
 
         barButton.push(btn);
@@ -1289,7 +1299,6 @@ Site.initBanner = function (data, options) {
     }
     $banner.html(content).css({width: config.width, height: config.height});
     //======= HTML 渲染结束 ========//
-
     var $bannerBody = $(config.banner + ' .' + config.bannerBody);
     var $bannerPrev = $(config.banner + ' .' + config.bannerPrev);
     var $bannerNext = $(config.banner + ' .' + config.bannerNext);

@@ -1592,13 +1592,13 @@ a:focus {
     height: 40px;
 }
 
-#webBanner .bannerBottom span {
+#webBanner .bannerBottom span{
     display: inline-block;
     width: 12px;
     height: 12px;
     padding: 5px;
     margin: 0 5px;
-    color: #1fb5ac;
+    color: #ff5722;
     font-size: 12px;
     text-align: center;
     line-height: 12px;
@@ -1611,8 +1611,24 @@ a:focus {
 
 #webBanner .bannerBottom span:hover, #webBanner .bannerBottom .active {
     color: #FFFFFF;
-    background-color: #727272;
+    background-color: #ff5722;
     opacity: 1;
+}
+
+#webBanner .bannerBottom span.barType-1{
+
+}
+
+#webBanner .bannerBottom span.barType-2{
+    width: 36px;
+    padding: 2px;
+    border-radius: 2px;
+    background-color: #9c9c9c;
+}
+
+#webBanner .bannerBottom span.barType-2:hover,#webBanner .bannerBottom span.barType-2.active{
+    width: 120px;
+    background-color: #ff5722;
 }
 
 #webBanner .bannerBody .item {
@@ -2783,6 +2799,7 @@ hr.line.dashed, hr.upLine.dashed {
 }
 .layui-form-select dl dd:hover {
     background-color: #f2f2f2;
+    color: #222;
 }
 
 /* =======================================
@@ -2851,6 +2868,13 @@ hr.line.dashed, hr.upLine.dashed {
 .layui-text-danger{
     background-color: #fff;
     color: #FF5722;
+}
+
+.layui-summary{
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /*
@@ -3128,6 +3152,10 @@ hr.line.dashed, hr.upLine.dashed {
 
 .layui-form-checked:not([lay-skin="primary"]) span, .layui-form-checked:not([lay-skin="primary"]):hover span {
     background-color: #0DBD9F;
+}
+
+.layui-form-item .layui-form-checkbox[lay-skin="primary"] {
+    margin-top: 6px;
 }
 
 .layui-form-checkbox[lay-skin="primary"]:hover i{

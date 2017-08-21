@@ -34,8 +34,8 @@
 	<article id="webBannerTable" class="webBannerTable flex" style="min-height: 300px;">
 
 		<!-- This bannerAbsTable start -->
-		<section id="bannerAbsTable" class="absTopTable"
-				 style="display:block;min-height: 300px;background-size: cover;background: #F4F4F4 url('/static/uploads/theme/new-house/theme-banner-new-house.jpg') no-repeat center;">
+		<section id="bannerAbsTable" class="absTopTable">
+
 		</section>
 		<!-- This bannerAbsTable end -->
 
@@ -76,6 +76,8 @@
 
 				<!-- 顶级主体 中间 区域导航开启 -->
 				<section class="centerTable flex-middle-center">
+
+					<div id="webBanner" style="width: 1200px; overflow: hidden; height: 300px;"></div>
 
 				</section>
 				<!-- 顶级主体 中间 区域导航结束 -->
@@ -366,6 +368,30 @@
 
 </section>
 <!-- This webContainerBottom end 下 结束 -->
+
+<script>
+
+    $(function () {
+        var data = JSON.parse('{$slider}');
+        var options = {
+            "banner": "#webBanner",
+            "height": 300,
+			"isWidth":true,
+            "playTime": 6000,
+            "animateTime": 628,
+            "interval": 6000,
+            "btnType": 1,
+            "targetType": "2",
+//            "wideScreen": true,
+//            "autoPlay":true,
+            hiddenBar: true,//设置是否隐藏底部导航条
+            hiddenControl: true,//设置隐藏左右切换按钮
+        };
+        Site.initBanner(data,options);
+
+    });
+
+</script>
 
 </body>
 </html>
