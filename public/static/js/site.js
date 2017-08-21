@@ -68,6 +68,7 @@ Site.init = function () {
         shadeMobile.on('click', function () {
             $('body').removeClass('site-mobile');
         });
+
     });
 };
 

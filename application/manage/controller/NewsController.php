@@ -66,7 +66,7 @@ class NewsController extends ManageController
                 $data['created_at'] = date('Y-m-d H:i:s');
                 if ($validate->check($data) && $model->save($data)){
                     $type = $model->getValue('typeName',$data['type'],'default');
-                    $prefix = '/static/uploads/News/'.$type.'/'.$model->id.'/';
+                    $prefix = '/static/uploads/news/'.$type.'/'.$model->id.'/';
                     //
                     $to = $prefix.pathinfo($data['url'],PATHINFO_BASENAME);
                     $from = $data['url'];

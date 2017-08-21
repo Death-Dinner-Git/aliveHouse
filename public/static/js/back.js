@@ -22,7 +22,7 @@ Back.config = {
 Back.layer =  top.layui.layer ? top.layui.layer : layui.layer;
 
 /* 初始化操作 */
-Back.init = function () {
+Back.prototype.init = function () {
     if (typeof Site === "undefined") {
         if(top.layui.layer !== "undefined" ){
             top.layui.layer.msg('未加载Site类,Back功能可能受限');
@@ -34,7 +34,7 @@ Back.init = function () {
  * 快捷搜索
  * @param keyword
  */
-Back.goSearch = function (keyword){
+Back.prototype.goSearch = function (keyword){
     $('form.layui-form-search input[name="keyword"]').val(keyword);
     $("form.layui-form-search").submit();
 };
@@ -42,7 +42,7 @@ Back.goSearch = function (keyword){
 /**
  * 信息列表基础操作
  */
-Back.tableBase = function (){
+Back.prototype.tableBase = function (){
     layui.use(['layer','form', 'laydate'], function () {
         var laydate = layui.laydate,
             form = layui.form();
@@ -102,15 +102,36 @@ Back.tableBase = function (){
 
                 // input
                 $form.find('input:not([lay-reset])').each(function () {
-                    $(this).val('');
+                    var that = $(this);
+                    if (that.attr('type') == 'checkbox' || that.attr('type') == 'radio'){
+                        this.checked = false;
+                    }else {
+                        that.val('');
+                    }
                 });
 
                 // textarea
                 $form.find('textarea:not([lay-reset])').each(function () {
                     $(this).html('');
                 });
+
+                // input
+                $form.find('[lay-default]').each(function () {
+                    var that = $(this);
+                    if (that.attr('type') == 'checkbox' || that.attr('type') == 'radio'){
+                        this.checked = true;
+                    }else {
+                        that.val(that.attr('lay-default'));
+                    }
+                });
             }
             form.render();
+        });
+
+        // 重置搜索
+        $(document).off('click', '[lay-filter="reset-reload"]').on('click', '[lay-filter="reset-reload"]', function (e) {
+            e.preventDefault();
+            window.location.href = window.location.pathname;
         });
 
         //全选 | 全不选
@@ -132,7 +153,7 @@ Back.tableBase = function (){
  * @param options
  * @param url
  */
-Back.create = function (selector,options,url){
+Back.prototype.create = function (selector,options,url){
     if (!selector){
         return;
     }
@@ -163,7 +184,7 @@ Back.create = function (selector,options,url){
  * @param options
  * @param url
  */
-Back.update = function (selector,options,url){
+Back.prototype.update = function (selector,options,url){
     if (!selector){
         return;
     }
@@ -199,7 +220,7 @@ Back.update = function (selector,options,url){
  * @param url
  * @param key
  */
-Back.action = function (selector,options,url,key){
+Back.prototype.action = function (selector,options,url,key){
     if (!selector){
         return;
     }
@@ -235,7 +256,7 @@ Back.action = function (selector,options,url,key){
  * @param options
  * @param url
  */
-Back.view = function (selector,options,url){
+Back.prototype.view = function (selector,options,url){
     if (!selector){
         return;
     }
@@ -271,7 +292,7 @@ Back.view = function (selector,options,url){
  * @param url
  * @param options
  */
-Back.delete = function (selector,url,options){
+Back.prototype.delete = function (selector,url,options){
     if (!selector){
         return;
     }
@@ -355,7 +376,7 @@ Back.delete = function (selector,url,options){
  * 提交表单
  * @param _options
  */
-Back.submit = function (_options){
+Back.prototype.submit = function (_options){
     var options = $.extend(
         {
             form:'form[action]',  // form 提交 对应的选择器
@@ -429,7 +450,7 @@ Back.submit = function (_options){
  * @param checked //类别是 选择 或 不选择
  * @returns {Array}
  */
-Back.getSelectCheckboxValues = function (selector, checked) {
+Back.prototype.getSelectCheckboxValues = function (selector, checked) {
     selector = selector || '[lay-group="selected"]';
     var values = [];
     if (checked === 'all') {
@@ -452,7 +473,7 @@ Back.getSelectCheckboxValues = function (selector, checked) {
  * 手风琴
  * @param selector
  */
-Back.accordion = function(selector)  {
+Back.prototype.accordion = function(selector)  {
     selector = selector || '.layui-accordion';
     var icon = ['&#xe602;','&#xe61a;'];
     $(document).off('click', selector+'[lay-for]').on('click', selector+'[lay-for]', function () {

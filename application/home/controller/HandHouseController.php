@@ -6,6 +6,7 @@ use app\common\controller\HomeController;
 use app\common\model\Slider;
 use app\common\model\HomeUser;
 use app\common\model\HandHouse;
+use app\common\model\LabelParkHandHouse;
 use app\common\model\News;
 
 /**
@@ -86,14 +87,150 @@ class HandHouseController extends HomeController
      */
     public function searchAction()
     {
-
+        $where = ['is_delete'=>'1'];
+        $order = ['id'=>'DESC'];
+        $each = 12;
         //二手房
         $model = HandHouse::load();
-        $house = $model->where([])->select();
+        $request = $this->getRequest()->request();
+
+        $key = isset($request['keyword']) ? $request['keyword'] : '';
+        $key = trim($key);
+        if ($key != ''){
+            $where[] = ['exp'," `title` like '%".$key."%'  or `address` like '%".$key."%' "];
+        }
+
+        $houseType = isset($request['houseType']) ? $request['houseType'] : [];
+        if (!empty($houseType)){
+            $where[] = ['exp',"`houseType` in (".implode(',',$houseType).")"];
+        }
+
+        $floorsType = isset($request['floorsType']) ? $request['floorsType'] : [];
+        if (!empty($floorsType)){
+            $where[] = ['exp',"`floorsType` in (".implode(',',$floorsType).")"];
+        }
+
+        $room = isset($request['room']) ? $request['room'] : '';
+        $room = trim($room);
+        if ($room != ''){
+            $where = array_merge($where,['room'=>$room]);
+        }
+
+        $hall = isset($request['hall']) ? $request['hall'] : '';
+        $hall = trim($hall);
+        if ($hall != ''){
+            $where = array_merge($where,['hall'=>$hall]);
+        }
+
+        $kitchen = isset($request['kitchen']) ? $request['kitchen'] : '';
+        $kitchen = trim($kitchen);
+        if ($kitchen != ''){
+            $where = array_merge($where,['kitchen'=>$kitchen]);
+        }
+
+        $toilet = isset($request['toilet']) ? $request['toilet'] : '';
+        $toilet = trim($toilet);
+        if ($toilet != ''){
+            $where = array_merge($where,['toilet'=>$toilet]);
+        }
+
+        $veranda = isset($request['veranda']) ? $request['veranda'] : '';
+        $veranda = trim($veranda);
+        if ($veranda != ''){
+            $where = array_merge($where,['veranda'=>$veranda]);
+        }
+
+        $face = isset($request['face']) ? $request['face'] : '';
+        $face = trim($face);
+        if ($face != ''){
+            $where = array_merge($where,['face'=>$face]);
+        }
+
+        $houseLabel = isset($request['houseLabel']) ? $request['houseLabel'] : [];
+        if (!empty($houseLabel)){
+            $where[] = ['exp',"`houseLabel` in (".implode(',',$houseLabel).")"];
+        }
+
+        $fitment = isset($request['fitment']) ? $request['fitment'] : [];
+        if (!empty($fitment)){
+            $where[] = ['exp',"`fitment` in (".implode(',',$fitment).")"];
+        }
+
+        $eachPrice = isset($request['eachPrice']) ? $request['eachPrice'] : '';
+        $eachPrice = trim($eachPrice);
+        if ($eachPrice != ''){
+            $eachPriceValue = $model->getValue('eachPriceValue',$eachPrice);
+            $value = explode(',',$eachPriceValue);
+            if (count($value) == 2){
+                if ($value[1] == '<'){
+                    $where[] = ['exp',"`eachPrice` <= ".$value[0]];
+                }elseif ($value[1] == '>'){
+                    $where[] = ['exp',"`eachPrice` >= ".$value[0]];
+                }else{
+                    $where[] = ['exp',"`eachPrice` between ".implode(' and ',$value)];
+                }
+            }
+        }
+
+        $price = isset($request['price']) ? $request['price'] : '';
+        $price = trim($price);
+        if ($price != ''){
+            $priceValue = $model->getValue('priceValue',$price);
+            $value = explode(',',$priceValue);
+            if (count($value) == 2){
+                if ($value[1] == '<'){
+                    $where[] = ['exp',"`price` <= ".$value[0]];
+                }elseif ($value[1] == '>'){
+                    $where[] = ['exp',"`price` >= ".$value[0]];
+                }else{
+                    $where[] = ['exp',"`price` between ".implode(' and ',$value)];
+                }
+            }
+        }
+
+        $area = isset($request['area']) ? $request['area'] : '';
+        $area = trim($area);
+        if ($area != ''){
+            $areaValue = $model->getValue('areaValue',$area);
+            $value = explode(',',$areaValue);
+            if (count($value) == 2){
+                if ($value[1] == '<'){
+                    $where[] = ['exp',"`area` <= ".$value[0]];
+                }elseif ($value[1] == '>'){
+                    $where[] = ['exp',"`area` >= ".$value[0]];
+                }else{
+                    $where[] = ['exp',"`area` between ".implode(' and ',$value)];
+                }
+            }
+        }
+
+        $create = isset($request['create']) ? $request['create'] : '';
+        $create = trim($create);
+        if ($create != ''){
+            $createValue = $model->getValue('createValue',$create);
+            if ($createValue == '<'){
+                $where[] = ['exp',"`created_at` <= ".date('Y-m-d',time()-$create*24*60*60)];
+            }else{
+                $where[] = ['exp',"`created_at` >= ".date('Y-m-d',time()-$create*24*60*60)];
+            }
+        }
+
+        $update = isset($request['update']) ? $request['update'] : '';
+        $update = trim($update);
+        if ($update != ''){
+            $updateValue = $model->getValue('updateValue',$update);
+            if ($updateValue == '<'){
+                $where[] = ['exp',"`updated_at` <= ".date('Y-m-d',time()-$update*24*60*60)];
+            }else{
+                $where[] = ['exp',"`updated_at` >= ".date('Y-m-d',time()-$update*24*60*60)];
+            }
+        }
+
+        $list = $model->where($where)->order($order)->paginate($each);
 
         return view('hand_house/search',[
             'meta_title'=>'查找二手房',
-            'house'=>$house,
+            'list'=>$list,
             'model'=>$model,
         ]);
     }

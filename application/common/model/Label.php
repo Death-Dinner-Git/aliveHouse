@@ -34,6 +34,7 @@ class Label extends Model
         'type',
         'name',
         'description',
+        'fieldName',
         'created_at',
         'updated_at',
     ];
@@ -82,6 +83,7 @@ class Label extends Model
             'type' => '父级类型:1=预定,2=客户,3=房东,4=新房,5=二手房,6=楼盘,7=客服,8=;默认1;',
             'name' => '标签',
             'description' => '标签备注',
+            'fieldName' => '过滤字段',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];

@@ -3,7 +3,7 @@
 namespace app\common\model;
 
 use app\common\model\Model;
-use app\common\model\HouseHost;
+use app\common\model\HomeUser;
 use app\common\model\City;
 
 /**
@@ -65,7 +65,7 @@ class HandHouse extends Model
     protected $field = [
         'id',
         'is_delete',
-        'house_host_id',
+        'house_user_id',
         'title',
         'city_id',
         'county_id',
@@ -142,7 +142,7 @@ class HandHouse extends Model
         return [
             'id' => 'ID',
             'is_delete' => '时效;0=失效,1=有效;默认1;',
-            'house_host_id' => '房东表ID',
+            'house_user_id' => '房东表ID',
             'title' => '介绍/标题',
             'city_id' => '城市',
             'county_id' => '区域/县级',
@@ -186,11 +186,19 @@ class HandHouse extends Model
     }
 
     /**
+     * @return \think\model\relation\HasMany
+     */
+    public function getLabelPark()
+    {
+        return $this->hasMany(\app\manage\model\LabelPark::tableNameSuffix(), 'target_id','id');
+    }
+
+    /**
      * @return \think\model\relation\HasOne
      */
-    public function getHouseHost()
+    public function getHomeUser()
     {
-        return $this->hasOne(HouseHost::tableNameSuffix(), ['id' => 'house_host_id']);
+        return $this->hasOne(HomeUser::tableNameSuffix(), ['id' => 'house_user_id']);
     }
 
     /**
