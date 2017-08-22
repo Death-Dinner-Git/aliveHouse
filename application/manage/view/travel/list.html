@@ -56,7 +56,7 @@
 
 <fieldset class="layui-elem-field">
     <legend style="margin: 0px auto !important;">
-        <label class="layui-btn" onclick="Site.showUrl('','/manage/travel/showCar.html','72%','88%','2',true,true,'LAY_TRAVEL_FALL')" lay-submit="">弹出显示</label>
+        <label class="layui-btn" onclick="Site.showUrl('','/travel/showCar.html','72%','88%','2',true,true,'LAY_TRAVEL_FALL')" lay-submit="">弹出显示</label>
     </legend>
     <div class="layui-field-box" style="height: 400px;">
         <div id="map">
@@ -96,7 +96,7 @@
         <td style="width: 100px;"><?php echo \app\manage\model\TakeCarOrder::getOrderByCarId($model['car_id']); ?></td>
         <td style="width: 100px;"><?php echo \app\manage\model\TakeCarOrder::getNearby($model['getCar']['lat'],$model['getCar']['lng']); ?></td>
         <td style="width: 150px;text-align: center;" class="action">
-            <a href="javascript:void(0);"><button onclick="Site.showUrl('查看实时位置','/manage/travel/liveAddress.html?id={$model.car_id}','72%','88%','2',true,true,'LAY_TRAVEL_{$model.id}')" class="layui-btn layui-btn-small"><i class="fa fa-search"></i>查看实时位置</button></a>
+            <a href="javascript:void(0);"><button onclick="Site.showUrl('查看实时位置','/travel/liveAddress.html?id={$model.car_id}','72%','88%','2',true,true,'LAY_TRAVEL_{$model.id}')" class="layui-btn layui-btn-small"><i class="fa fa-search"></i>查看实时位置</button></a>
         </td>
     </tr>
     {/volist}
@@ -183,7 +183,7 @@
                 var htmlDiv = "<div id='car"+obj.carId+"'>信息加载中...</div>";
                 $.ajax({
                     type : "post",
-                    url : '/manage/travel/carInfo?driverId='+obj.userId+'&time='+ new Date().getTime(),
+                    url : '/travel/carInfo?driverId='+obj.userId+'&time='+ new Date().getTime(),
                     dataType : 'json',
                     beforeSend:function () {
                         openInfo(htmlDiv,e,obj.carId);
@@ -231,7 +231,7 @@
     function refreshCarLocal(){
         $.ajax({
             type : "post",
-            url : '/manage/travel/carLocal?time='+ new Date().getTime(),
+            url : '/travel/carLocal?time='+ new Date().getTime(),
             dataType : 'json',
             success : function(data) {
                 if (data.code == '1'){

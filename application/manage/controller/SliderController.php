@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Slider;
+use app\common\model\Slider;
 
 class SliderController extends ManageController
 {

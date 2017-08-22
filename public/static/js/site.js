@@ -2587,7 +2587,7 @@ Site.uploader = function (options) {
     uploaderIndex++;
     options = $.extend({
         elem: '.layui-upload-file',
-        url: '/manage/ajax/uploader',
+        url: '/ajax/uploader',
         isAjax: true,
         before: null,  // 上传成功后的回调函数,参数 input 表单
         success: null, // 上传成功后的回调函数,参数res代表后天返回的数据，input是文件input 表单
@@ -2972,7 +2972,7 @@ function ajaxJump(url, _Callback) {
 //
 //        layer.open({
 //            type: 2,
-//            content: 'http://www.alivehouse.com/manage',
+//            content: 'http://www.alivehouse.com',
 //            success: function(layero, index){
 //                // 在父窗口中获取iframe中的元素
 //                // 格式 $("#iframe的ID").contents().find("#iframe中的控件ID")

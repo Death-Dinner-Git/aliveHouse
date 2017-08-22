@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Download;
+use app\common\model\Download;
 
 class DownloadController extends ManageController
 {

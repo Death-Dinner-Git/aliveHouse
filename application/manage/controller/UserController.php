@@ -14,9 +14,9 @@ namespace app\manage\controller;
 
 
 use app\common\controller\ManageController;
-use app\manage\model\BackUser;
-use app\manage\model\Identity;
-use app\manage\model\Department;
+use app\common\model\BackUser;
+use app\common\model\Identity;
+use app\common\model\Department;
 
 /**
  * 用户控制器

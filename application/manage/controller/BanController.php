@@ -4,8 +4,8 @@ namespace app\manage\controller;
 
 use app\common\components\rbac\Assignment;
 use app\common\controller\ManageController;
-use app\manage\model\BackUser;
-use app\manage\model\Ban;
+use app\common\model\BackUser;
+use app\common\model\Ban;
 use app\common\model\AuthItem;
 use app\common\model\AuthAssignment;
 
@@ -20,7 +20,7 @@ class BanController extends ManageController
         $where = [];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Ban
+         * @var $model \app\common\model\Ban
          */
         $model = Ban::load();
         $request = $this->getRequest();

@@ -22,7 +22,7 @@ if (typeof Home === "undefined") {
  */
 Home.config = {
     layuiBase: '/static/js/',
-    getCity:'/manage/ajax/getCity',
+    getCity:'/ajax/getCity',
 };
 
 /* 初始化操作 */

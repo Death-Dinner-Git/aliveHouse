@@ -4,6 +4,7 @@ namespace app\common\model;
 
 use app\common\model\Model;
 use app\common\model\BackUser;
+use app\common\validate\HotValidate;
 
 /**
  * This is the model class for table "{{%hot}}".

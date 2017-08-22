@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Upload;
+use app\common\model\Upload;
 
 class UploadController extends ManageController
 {

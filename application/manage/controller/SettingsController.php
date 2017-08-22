@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Config;
+use app\common\model\Config;
 
 class SettingsController extends ManageController
 {

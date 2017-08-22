@@ -3,8 +3,8 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Client;
-use app\manage\model\Deal;
+use app\common\model\Client;
+use app\common\model\Deal;
 
 
 class DealController extends ManageController

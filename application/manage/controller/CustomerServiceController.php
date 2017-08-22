@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Service;
+use app\common\model\Service;
 
 class CustomerServiceController extends ManageController
 {

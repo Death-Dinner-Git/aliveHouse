@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Label;
+use app\common\model\Label;
 
 class LabelController extends ManageController
 {

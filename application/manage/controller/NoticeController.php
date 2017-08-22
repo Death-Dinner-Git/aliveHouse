@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Notice;
+use app\common\model\Notice;
 
 class NoticeController extends ManageController
 {

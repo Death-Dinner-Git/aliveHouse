@@ -23,7 +23,7 @@ class AjaxController extends ManageController
         if ($level|| ($level = $this->getRequest()->get('level'))){
             $where = array_merge($where,['level'=>$level]);
         }
-        $cityList = \app\manage\model\City::getCityList($where);
+        $cityList = \app\common\model\City::getCityList($where);
         if (!empty($cityList)){
             foreach ($cityList as $key => $value){
                 $ret[] = ['id'=>$key,'name'=>$value];
@@ -41,7 +41,7 @@ class AjaxController extends ManageController
     {
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\manage\model\Department::load();
+        $model = \app\common\model\Department::load();
         if ($name || ($name = $this->getRequest()->request('name'))){
             if ($name != ''){
                 $nameWhere = " `name` like '%".$name."%' ";
@@ -63,7 +63,7 @@ class AjaxController extends ManageController
     public function getClientAction(){
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\manage\model\Client::load();
+        $model = \app\common\model\Client::load();
         $name = trim($this->getRequest()->request('name'));
         if ($name != ''){
             $where[] = ['exp'," `userName` like '%".$name."%' "];
@@ -83,7 +83,7 @@ class AjaxController extends ManageController
     public function getBackUserAction(){
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\manage\model\BackUser::load();
+        $model = \app\common\model\BackUser::load();
         $name = trim($this->getRequest()->request('name'));
         if ($name != ''){
             $where[] = ['exp'," `username` like '%".$name."%' "];
@@ -106,7 +106,7 @@ class AjaxController extends ManageController
     {
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\manage\model\BuildingBase::load();
+        $model = \app\common\model\BuildingBase::load();
         if ($name || ($name = $this->getRequest()->request('name'))){
             if ($name != ''){
                 $nameWhere = " `title` like '%".$name."%' or `titlePinyin` like '%".$name."%'";
@@ -131,7 +131,7 @@ class AjaxController extends ManageController
     {
         $ret = [];
         $where = ['is_delete'=>'1','type'=>'4'];
-        $model = \app\manage\model\HomeUser::load();
+        $model = \app\common\model\HomeUser::load();
         if ($name || ($name = $this->getRequest()->request('name'))){
             if ($name != ''){
                 $nameWhere = " `real_name` like '%".$name."%' ";

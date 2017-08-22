@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Ban;
+use app\common\model\Ban;
 
 class MenuController extends ManageController
 {

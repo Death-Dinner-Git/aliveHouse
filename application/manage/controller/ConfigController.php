@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Config;
+use app\common\model\Config;
 
 class ConfigController extends ManageController
 {
@@ -16,7 +16,7 @@ class ConfigController extends ManageController
         $where = ['is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Config
+         * @var $model \app\common\model\Config
          */
         $model = Config::load();
         $request = $this->getRequest();

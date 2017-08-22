@@ -138,7 +138,7 @@
 								<label class="layui-form-label">房屋类型：</label>
 								<div class="layui-input-block">
 									{php}$request = request()->request();{/php}
-									<input type="radio" name="noHouseType" value="1" title="不限" lay-filter="the-one" lay-group="houseType" lay-default {if condition="!isset($request['houseType'])"}checked{/if} >
+									<input type="radio" name="noHouseType" value="1" title="不限" lay-filter="the-one" lay-group="houseType" lay-default {eq name="Think.get.noHouseType" value="1"}checked{/eq} >
 									{volist name="model->getLists('houseType')" id="item" }
 									<input type="checkbox" name="houseType[]" value="{$key}" lay-filter="the-other" lay-group="houseType" lay-skin="primary" title="{$item}" {if condition="isset($request['houseType'])"}{in name="key" value="$request.houseType"}checked{/in}{/if} >
 									{/volist}
@@ -147,7 +147,7 @@
 							<div class="layui-form-item">
 								<label class="layui-form-label">楼层类型：</label>
 								<div class="layui-input-block">
-									<input type="radio" name="noFloorsType" value="1" title="不限" lay-filter="the-one" lay-group="floorsType" lay-default {if condition="!isset($request['floorsType'])"}checked{/if} >
+									<input type="radio" name="noFloorsType" value="1" title="不限" lay-filter="the-one" lay-group="floorsType" lay-default {eq name="Think.get.noFloorsType" value="1"}checked{/eq} >
 									{volist name="model->getLists('floorsType')" id="item" }
 									<input type="checkbox" name="floorsType[]" value="{$key}" lay-filter="the-other" lay-group="floorsType"  lay-skin="primary" title="{$item}" {if condition="isset($request['floorsType'])"}{in name="key" value="$request.floorsType"}checked{/in}{/if} >
 									{/volist}
@@ -215,7 +215,7 @@
 							<div class="layui-form-item">
 								<label class="layui-form-label">房源标签：</label>
 								<div class="layui-input-block">
-									<input type="radio" name="noHouseLabel" value="1" title="不限" lay-filter="the-one" lay-group="houseLabel" lay-default {if condition="!isset($request['houseLabel'])"}checked{/if} >
+									<input type="radio" name="noHouseLabel" value="1" title="不限" lay-filter="the-one" lay-group="houseLabel" lay-default {eq name="Think.get.noHouseLabel" value="1"}checked{/eq} >
 									{volist name="model->getLists('houseLabel')" id="item" }
 									<input type="checkbox" name="houseLabel[]" value="{$key}" lay-filter="the-other" lay-group="houseLabel" lay-skin="primary" title="{$item}" {if condition="isset($request['houseLabel'])"}{in name="key" value="$request.houseLabel"}checked{/in}{/if} >
 									{/volist}
@@ -224,7 +224,16 @@
 							<div class="layui-form-item">
 								<label class="layui-form-label">装修状况：</label>
 								<div class="layui-input-block">
-									<input type="radio" name="noFitment" value="1" title="不限" lay-filter="the-one" lay-group="fitment" lay-default {if condition="!isset($request['fitment'])"}checked{/if} >
+									<input type="radio" name="noFitment" value="1" title="不限" lay-filter="the-one" lay-group="fitment" lay-default {eq name="Think.get.noFitment" value="1"}checked{/eq} >
+									{volist name="model->getLists('fitment')" id="item" }
+									<input type="checkbox" name="fitment[]" value="{$key}" lay-filter="the-other" lay-group="fitment" lay-skin="primary" title="{$item}" {if condition="isset($request['fitment'])"}{in name="key" value="$request.fitment"}checked{/in}{/if}>
+									{/volist}
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">基础设施：</label>
+								<div class="layui-input-block">
+									<input type="radio" name="noSupporting" value="1" title="不限" lay-filter="the-one" lay-group="fitment" lay-default {eq name="Think.get.noSupporting" value="1"}checked{/eq} >
 									{volist name="model->getLists('fitment')" id="item" }
 									<input type="checkbox" name="fitment[]" value="{$key}" lay-filter="the-other" lay-group="fitment" lay-skin="primary" title="{$item}" {if condition="isset($request['fitment'])"}{in name="key" value="$request.fitment"}checked{/in}{/if}>
 									{/volist}
@@ -293,7 +302,7 @@
 
 						<div class="alive-body alive-upLevel">
 
-							{volist name="list" id="model"}
+							{volist name="list" id="model" empty="<p style='display:inline-block;font-size: 16px;width:100%;color:#ff5722;text-align: center;'>没有符合你要的房源</p>"}
 							<div class="alive-layout alive-upLevel">
 
 								<div class="alive-header" style="height: 25px;"></div>

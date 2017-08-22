@@ -3,10 +3,10 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\HouseHost;
-use app\manage\model\HandHouse;
-use app\manage\model\Images;
-use app\manage\model\City;
+use app\common\model\HouseHost;
+use app\common\model\HandHouse;
+use app\common\model\Images;
+use app\common\model\City;
 
 class HandHouseController extends ManageController
 {

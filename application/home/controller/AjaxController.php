@@ -23,7 +23,7 @@ class AjaxController extends HomeController
         if ($level|| ($level = $this->getRequest()->get('level'))){
             $where = array_merge($where,['level'=>$level]);
         }
-        $cityList = \app\manage\model\City::getCityList($where);
+        $cityList = \app\common\model\City::getCityList($where);
         if (!empty($cityList)){
             foreach ($cityList as $key => $value){
                 $ret[] = ['id'=>$key,'name'=>$value];
@@ -38,14 +38,14 @@ class AjaxController extends HomeController
     public function getServiceAction(){
         $ret = [];
         $where = ['t.is_delete'=>'1', 'b.is_delete'=>'1',];
-        $model = \app\manage\model\Service::load();
+        $model = \app\common\model\Service::load();
         $name = trim($this->getRequest()->request('name'));
         if ($name != ''){
             $where[] = ['exp'," `b`.`username` like '%".$name."%' "];
         }
 
         $list = $model->alias('t')
-            ->join(\app\manage\model\BackUser::tableName().' b','t.back_user_id = b.id','left')
+            ->join(\app\common\model\BackUser::tableName().' b','t.back_user_id = b.id','left')
             ->where($where)
             ->field('t.*,b.id,b.id as serviceId,b.username as serviceName')
             ->order('t.order')
@@ -65,7 +65,7 @@ class AjaxController extends HomeController
     public function getClientAction(){
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\manage\model\Client::load();
+        $model = \app\common\model\Client::load();
         $name = trim($this->getRequest()->request('name'));
         if ($name != ''){
             $where[] = ['exp'," `userName` like '%".$name."%' "];
@@ -88,7 +88,7 @@ class AjaxController extends HomeController
     {
         $ret = [];
         $where = ['is_delete'=>'1'];
-        $model = \app\manage\model\BuildingBase::load();
+        $model = \app\common\model\BuildingBase::load();
         if ($name || ($name = $this->getRequest()->request('name'))){
             if ($name != ''){
                 $nameWhere = " `title` like '%".$name."%' or `titlePinyin` like '%".$name."%'";

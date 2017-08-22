@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Opinion;
+use app\common\model\Opinion;
 
 class OpinionController extends ManageController
 {

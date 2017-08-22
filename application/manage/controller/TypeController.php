@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Type;
+use app\common\model\Type;
 
 class TypeController extends ManageController
 {

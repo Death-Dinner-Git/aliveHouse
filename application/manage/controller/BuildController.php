@@ -3,11 +3,11 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\BuildingBase;
-use app\manage\model\City;
-use app\manage\model\BuildingDetail;
-use app\manage\model\BuildingContent;
-use app\manage\model\Images;
+use app\common\model\BuildingBase;
+use app\common\model\City;
+use app\common\model\BuildingDetail;
+use app\common\model\BuildingContent;
+use app\common\model\Images;
 
 class BuildController extends ManageController
 {
@@ -21,7 +21,7 @@ class BuildController extends ManageController
         $where = ['t.is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\BuildingBase
+         * @var $model \app\common\model\BuildingBase
          */
         $model = BuildingBase::load();
         $request = $this->getRequest();

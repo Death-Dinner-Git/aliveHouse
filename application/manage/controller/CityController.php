@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\City;
+use app\common\model\City;
 use think\Request;
 
 class CityController extends ManageController
@@ -18,7 +18,7 @@ class CityController extends ManageController
         $where = ['is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Client
+         * @var $model \app\common\model\Client
          */
         $model = City::load();
         $request = $this->getRequest();

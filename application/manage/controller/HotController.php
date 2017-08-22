@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\Hot;
+use app\common\model\Hot;
 
 class HotController extends ManageController
 {

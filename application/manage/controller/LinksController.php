@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\OnLinks;
+use app\common\model\OnLinks;
 
 class LinksController extends ManageController
 {

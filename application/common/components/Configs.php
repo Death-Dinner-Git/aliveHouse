@@ -26,14 +26,14 @@ class Configs
     private static $_manageUser = '\app\manage\model\Identity';
 
     /**
-     * @return \app\manage\model\Menu
+     * @return \app\common\model\Menu
      */
-    private static $_menu = '\app\manage\model\Menu';
+    private static $_menu = '\app\common\model\Menu';
 
     /**
-     * @return \app\manage\model\BackUserLog
+     * @return \app\common\model\BackUserLog
      */
-    private static $_manageLog = '\app\manage\model\BackUserLog';
+    private static $_manageLog = '\app\common\model\BackUserLog';
 
     /**
      * @return \think\Cache | null
@@ -63,7 +63,7 @@ class Configs
     }
 
     /**
-     * @return \app\manage\model\Menu | null
+     * @return \app\common\model\Menu | null
      */
     public static function getMenu(){
         if (!class_exists(self::$_menu)){
@@ -73,7 +73,7 @@ class Configs
     }
 
     /**
-     * @return \app\manage\model\BackUserLog | null
+     * @return \app\common\model\BackUserLog | null
      */
     public static function getBackUserLog(){
         if (!class_exists(self::$_manageLog)){

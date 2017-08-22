@@ -4,7 +4,7 @@ namespace app\manage\controller;
 
 use app\common\components\rbac\DbManager;
 use app\common\controller\ManageController;
-use app\manage\model\Department;
+use app\common\model\Department;
 
 class DepartmentController extends ManageController
 {

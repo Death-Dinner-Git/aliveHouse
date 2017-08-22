@@ -3,7 +3,7 @@
 namespace app\home\controller;
 
 use app\common\controller\HomeController;
-use app\manage\model\Contact;
+use app\common\model\Contact;
 use app\common\model\Slider;
 
 /**

@@ -5,6 +5,7 @@ namespace app\common\model;
 use app\common\model\Model;
 use app\common\model\HomeUser;
 use app\common\model\City;
+use app\common\model\LabelParkHandHouse;
 
 /**
  * This is the model class for table "{{%hand_house}}".
@@ -190,7 +191,7 @@ class HandHouse extends Model
      */
     public function getLabelPark()
     {
-        return $this->hasMany(\app\manage\model\LabelPark::tableNameSuffix(), 'target_id','id');
+        return $this->hasMany(ucfirst(LabelParkHandHouse::tableNameSuffix()), 'target_id','id');
     }
 
     /**
@@ -198,7 +199,7 @@ class HandHouse extends Model
      */
     public function getHomeUser()
     {
-        return $this->hasOne(HomeUser::tableNameSuffix(), ['id' => 'house_user_id']);
+        return $this->hasOne(ucfirst(HomeUser::tableNameSuffix()), 'house_user_id', 'id');
     }
 
     /**
@@ -206,6 +207,6 @@ class HandHouse extends Model
      */
     public function getCity()
     {
-        return $this->hasOne(City::tableNameSuffix(), ['id' => 'city_id']);
+        return $this->hasOne(ucfirst(City::tableNameSuffix()), 'city_id', 'id');
     }
 }

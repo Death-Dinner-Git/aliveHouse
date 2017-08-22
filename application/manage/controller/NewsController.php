@@ -3,7 +3,7 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\News;
+use app\common\model\News;
 
 class NewsController extends ManageController
 {

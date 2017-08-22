@@ -155,7 +155,7 @@
 
             <div class="alive-body">
                 <div class="alive-flex alive-upLevel" style="width:100%;height:600px;position: relative;overflow: hidden;">
-                    <form class="layui-form forms" id="defaultForm" action="/home/contact/create" method="post" style="padding: 15px 0">
+                    <form class="layui-form forms" id="defaultForm" action="/contact/create" method="post" style="padding: 15px 0">
 
                         <div class="layui-form-item">
 
@@ -263,7 +263,7 @@
         Site.submit(options);
 
         Site.search({
-            url: '/home/ajax/getService',
+            url: '/ajax/getService',
             targetClass: '[lay-filter="service"]',          // 输入框目标元素
             parentClass: '.layui-input-inline',          // 父级类
             hiddenClass: '[name="back_user_id"]',          // 隐藏域input

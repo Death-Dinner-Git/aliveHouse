@@ -15,8 +15,8 @@ namespace app\manage\controller;
 
 use app\common\controller\ManageController;
 use app\common\model\Model;
-use app\manage\model\HomeUser;
-use app\manage\model\HomeUserLog;
+use app\common\model\HomeUser;
+use app\common\model\HomeUserLog;
 
 /**
  * 用户控制器
@@ -36,7 +36,7 @@ class HomeUserController extends ManageController
         $where = ['home_user_id'=>$id];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Client
+         * @var $model \app\common\model\Client
          */
         $model = HomeUserLog::load();
         $request = $this->getRequest();
@@ -87,7 +87,7 @@ class HomeUserController extends ManageController
         $where = ['is_delete'=>'1'];
         $each = 12;
         /**
-         * @var $model \app\manage\model\Client
+         * @var $model \app\common\model\Client
          */
         $model = HomeUser::load();
         $request = $this->getRequest();

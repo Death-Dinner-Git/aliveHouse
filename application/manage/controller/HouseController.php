@@ -3,11 +3,11 @@
 namespace app\manage\controller;
 
 use app\common\controller\ManageController;
-use app\manage\model\BuildingBase;
-use app\manage\model\House;
-use app\manage\model\HandHouse;
-use app\manage\model\Images;
-use app\manage\model\City;
+use app\common\model\BuildingBase;
+use app\common\model\House;
+use app\common\model\HandHouse;
+use app\common\model\Images;
+use app\common\model\City;
 
 class HouseController extends ManageController
 {
@@ -30,7 +30,7 @@ class HouseController extends ManageController
             $nameWhere = ' `name` like '.' \'%'.$name.'%\''.' or `title` like '.' \'%'.$name.'%\' ';
             $model->where($nameWhere);
         }
-        $cityLists = \app\manage\model\City::getCityList();
+        $cityLists = \app\common\model\City::getCityList();
 
         $list = $model->where($where)->order('id DESC')->paginate($each);
 
@@ -86,7 +86,7 @@ class HouseController extends ManageController
         if ($name != ''){
             $where[] = ['exp',"name like '%".$name."%' or `title` like '%".$name."%' "];
         }
-        $cityLists = \app\manage\model\City::getCityList();
+        $cityLists = \app\common\model\City::getCityList();
 
         $houseType = trim($this->getRequest()->request('houseType'));
         if ($houseType != ''){
