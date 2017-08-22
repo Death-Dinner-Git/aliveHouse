@@ -128,9 +128,9 @@
 			<div class="alive-header" style="min-height: 50px;">
 				<form class="layui-form search-box" action="{:url('search')}" method="get" id="searchForm" style="margin-top: 50px;">
 					<div class="search-container">
-						<div class="search-body">
-							<input class="layui-input search-input" type="text" name="keyword" value="" style="width:960px;display: inline-block;" placeholder="请输入区域或小区名开始找房">
-							<button type="submit" class="search-submit layui-btn layui-btn-danger" lay-filter="submit">搜索</button>
+						<div class="search-body" style="position: relative;">
+							<input class="layui-input search-input" type="text" name="keyword" value="" style="width:1200px;display: inline-block;" placeholder="请输入楼盘或小区名开始找房">
+							<button type="submit" class="search-submit layui-btn layui-btn-danger" lay-filter="submit" style="position: absolute;right: 0;top: 0;">搜索</button>
 						</div>
 					</div>
 				</form>
@@ -144,91 +144,52 @@
 
 						<div class="alive-body alive-upLevel">
 
+
+							{volist name="house" id="model" empty="<p style='display:inline-block;font-size: 16px;width:100%;color:#ff5722;text-align: center;'>没有符合你要的房源</p>"}
 							<div class="alive-layout alive-upLevel">
 
-								<div class="alive-header" style="height: 50px;"></div>
+								<div class="alive-header" style="height: 25px;"></div>
 
 								<div class="alive-body alive-upLevel">
-									<div class="alive-level" style="width:100%;min-height:300px;position: relative;overflow: hidden;">
+									<div class="alive-level" style="width:100%;min-height:200px;position: relative;overflow: hidden;">
 
-										<div style="width: 280px;">
-											<img class="" alt="" title="" src="/static/uploads/ima06.jpg">
+										<div style="width: 220px;">
+											<img class="" alt="" title="" src="{$model.url_icon}" style="border-radius: 2px;">
 										</div>
 										<div style="flex: 1;">
-											<p style="clear:both;"><span style="color:#333333;font-family:helvetica, arial, Pingfang, &#39;PingFang SC&#39;, &#39;Hiragino Sans GB&#39;, &#39;Microsoft Yahei&#39;, STHeiti, sans-serif;font-size:28px;font-weight:bold;line-height:33px;"></span></p><p style="line-height:3em;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:20px;">温暖又温馨，中等装修给你不一样的感觉</span></strong></p>
-											<p style="line-height:3em;"><span style="font-family:微软雅黑;color:#333333;font-size:17px;">普通装修 &nbsp; 2室2厅 &nbsp; 2003年建造</span></p>
-											<p style="line-height:3em;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;"><span style="font-size:14px;color:#666666;">海珠区-滨江西</span></span></p>
+											<p style="line-height:3em;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:20px;">{$model.title}</span></strong></p>
+											<p style="line-height:3em;"><span style="font-family:微软雅黑;color:#333333;font-size:17px;">{$model->getValue('fitment',$model.fitment)} &nbsp; {$model->getValue('room',$model.room)}室{$model->getValue('hall',$model.hall)}厅 &nbsp; {$model.years}年建造</span></p>
+											<p style="line-height:3em;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;"><span style="font-size:14px;color:#666666;">{$model.address}</span></span></p>
 											<p style="line-height:3em;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;"><span style="font-size:14px;color:#666666;"><br></span></span></p>
 											<p style="clear:both;"><br></p>
 											<p style="clear:both;">
-												<img src="/static/images/gold-address.png" width="74" height="22" alt=" "> &nbsp;
-												<img src="/static/images/goods-background.png" width="60" height="22" alt=" ">
+												{php}$label = explode(',',$model->houseLabel);{/php}
+												{volist name="label" id="item"}
+												<label class="layui-btn layui-btn-mini layui-btn-danger">{$model->getValue('houseLabel',$item)}</label>
+												{/volist}
 											</p>
 										</div>
 										<div style="width: 240px;">
 											<p style="text-align:center;"><span style="font-family:微软雅黑;font-size:22px;color:#333333;"><br></span></p>
 											<p style="text-align:center;"><span style="font-family:微软雅黑;font-size:22px;color:#333333;"><br></span></p>
-											<p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;">129平米</span></p>
+											<p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;">{$model.area}平米</span></p>
 										</div>
 										<div style="width: 200px;">
 											<p style="line-height:2em;text-align:center;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:26px;"><br></span></strong></p>
 											<p style="line-height:2em;text-align:left;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:26px;"><br></span></strong></p>
-											<p style="line-height:2em;text-align:left;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:26px;">108万</span></strong></p>
-											<p style="line-height:2em;text-align:left;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;"><span style="font-size:13px;color:#666666;">8372元/平米</span></span></p>
+											<p style="line-height:2em;text-align:left;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:26px;">{$model.price/10000}万</span></strong></p>
+											<p style="line-height:2em;text-align:left;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;"><span style="font-size:13px;color:#666666;">{$model.eachPrice}元/平米</span></span></p>
 											<p><br></p>
 										</div>
 
 									</div>
 								</div>
 
-								<div class="alive-footer"></div>
+								<div class="alive-footer" style="height: 25px;"></div>
 
 							</div>
-
 							<hr>
-
-							<div class="alive-layout alive-upLevel">
-
-								<div class="alive-header" style="height: 50px;"></div>
-
-								<div class="alive-body alive-upLevel">
-									<div class="alive-level" style="width:100%;min-height:300px;position: relative;overflow: hidden;">
-
-										<div style="width: 280px;">
-											<img class="" alt="" title="" src="/static/uploads/ima06.jpg">
-										</div>
-										<div style="flex: 1;">
-											<p style="clear:both;"><span style="color:#333333;font-family:helvetica, arial, Pingfang, &#39;PingFang SC&#39;, &#39;Hiragino Sans GB&#39;, &#39;Microsoft Yahei&#39;, STHeiti, sans-serif;font-size:28px;font-weight:bold;line-height:33px;"></span></p><p style="line-height:3em;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:20px;">温暖又温馨，中等装修给你不一样的感觉</span></strong></p>
-											<p style="line-height:3em;"><span style="font-family:微软雅黑;color:#333333;font-size:17px;">普通装修 &nbsp; 2室2厅 &nbsp; 2003年建造</span></p>
-											<p style="line-height:3em;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;"><span style="font-size:14px;color:#666666;">海珠区-滨江西</span></span></p>
-											<p style="line-height:3em;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;"><span style="font-size:14px;color:#666666;"><br></span></span></p>
-											<p style="clear:both;"><br></p>
-											<p style="clear:both;">
-												<img src="/static/images/gold-address.png" width="74" height="22" alt=" "> &nbsp;
-												<img src="/static/images/goods-background.png" width="60" height="22" alt=" ">
-											</p>
-										</div>
-										<div style="width: 240px;">
-											<p style="text-align:center;"><span style="font-family:微软雅黑;font-size:22px;color:#333333;"><br></span></p>
-											<p style="text-align:center;"><span style="font-family:微软雅黑;font-size:22px;color:#333333;"><br></span></p>
-											<p style="text-align:center;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;">129平米</span></p>
-										</div>
-										<div style="width: 200px;">
-											<p style="line-height:2em;text-align:center;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:26px;"><br></span></strong></p>
-											<p style="line-height:2em;text-align:left;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:26px;"><br></span></strong></p>
-											<p style="line-height:2em;text-align:left;"><strong><span style="font-family:微软雅黑;color:#FE8300;font-size:26px;">108万</span></strong></p>
-											<p style="line-height:2em;text-align:left;"><span style="font-family:微软雅黑;font-size:18px;color:#333333;"><span style="font-size:13px;color:#666666;">8372元/平米</span></span></p>
-											<p><br></p>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="alive-footer"></div>
-
-							</div>
-
-							<hr>
+							{/volist}
 
 						</div>
 
@@ -256,10 +217,11 @@
 
 						<div class="alive-body">
 							<div class="alive-flex outer">
+								{volist name="house" id="model" empty="<p style='display:inline-block;font-size: 16px;width:100%;color:#ff5722;text-align: center;'>没有符合你要的房源</p>"}
 								<div class="item" style="width: 290px;height: 330px;">
 									<div class="itemIcon">
-										<a hidefocus="true" href="/static/uploads/ima05.jpg" target="_blank">
-											<img alt="汇景新城急租" src="/static/uploads/ima05.jpg" title=""
+										<a hidefocus="true" href="{$model.url}" target="_blank">
+											<img alt="{$model.title}" src="{$model.url_icon}" title=""
 												 style="width: inherit; height: inherit;">
 										</a>
 									</div>
@@ -267,51 +229,10 @@
 										<a hidefocus="true"
 										   href="/"
 										   target="_blank"
-										   title="汇景新城急租">汇景新城急租</a>
+										   title="{$model.title}">{$model.title}</a>
 									</div>
 								</div>
-								<div class="item" style="width: 290px;height: 330px;">
-									<div class="itemIcon">
-										<a hidefocus="true" href="/static/uploads/ima05.jpg" target="_blank">
-											<img alt="汇景新城急租" src="/static/uploads/ima05.jpg" title=""
-												 style="width: inherit; height: inherit;">
-										</a>
-									</div>
-									<div class="itemTitle" style="height: 100px;">
-										<a hidefocus="true"
-										   href="/"
-										   target="_blank"
-										   title="汇景新城急租">汇景新城急租</a>
-									</div>
-								</div>
-								<div class="item" style="width: 290px;height: 330px;">
-									<div class="itemIcon">
-										<a hidefocus="true" href="/static/uploads/ima05.jpg" target="_blank">
-											<img alt="汇景新城急租" src="/static/uploads/ima05.jpg" title=""
-												 style="width: inherit; height: inherit;">
-										</a>
-									</div>
-									<div class="itemTitle" style="height: 100px;">
-										<a hidefocus="true"
-										   href="/"
-										   target="_blank"
-										   title="汇景新城急租">汇景新城急租</a>
-									</div>
-								</div>
-								<div class="item" style="width: 290px;height: 330px;">
-									<div class="itemIcon">
-										<a hidefocus="true" href="/static/uploads/ima05.jpg" target="_blank">
-											<img alt="汇景新城急租" src="/static/uploads/ima05.jpg" title=""
-												 style="width: inherit; height: inherit;">
-										</a>
-									</div>
-									<div class="itemTitle" style="height: 100px;">
-										<a hidefocus="true"
-										   href="/"
-										   target="_blank"
-										   title="汇景新城急租">汇景新城急租</a>
-									</div>
-								</div>
+								{/volist}
 							</div>
 						</div>
 

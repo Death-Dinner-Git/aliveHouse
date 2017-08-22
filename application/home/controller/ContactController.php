@@ -5,6 +5,8 @@ namespace app\home\controller;
 use app\common\controller\HomeController;
 use app\common\model\Contact;
 use app\common\model\Slider;
+use app\common\model\Service;
+use app\common\model\BackUser;
 
 /**
  * 默认控制器
@@ -67,6 +69,135 @@ class ContactController extends HomeController
     }
 
     /**
+     * 显示创建资源表单页
+     *
+     * @return \think\Response
+     */
+    public function contactAction()
+    {
+
+        $this->useLayoutMain();
+
+        return view('contact/contact',[
+            'meta_title'=>'联系我们',
+        ]);
+    }
+
+    /**
+     * 显示创建资源表单页
+     *
+     * @return \think\Response
+     */
+    public function hotServiceAction()
+    {
+        $list = [];
+        $where = ['type'=>$this->sliderType];
+        $slider = Slider::getSlider($where);
+        foreach ($slider as $item){
+            $list[] = [
+                'title'=>$item['title'],
+                'desc'=>$item['description'],
+                'target'=>$item['target'],
+                'url'=>$item['url'],
+            ];
+        }
+        if (empty($list)){
+            $where = array_merge($where,['isDefault'=>'1']);
+            $slider = Slider::getSlider($where,null,true);
+            foreach ($slider as $item){
+                $list[] = [
+                    'title'=>$item['title'],
+                    'desc'=>$item['description'],
+                    'target'=>$item['target'],
+                    'url'=>$item['url'],
+                ];
+            }
+        }
+        if (empty($list)){
+            $list[] = [
+                'title'=>'',
+                'desc'=>'',
+                'target'=>'',
+                'url'=>Slider::T('default',$this->sliderType),
+            ];
+        }
+        $slider = json_encode($list);
+
+        $each = 12;
+        $model = Service::load();
+        $list = $model->alias('t')
+            ->join([BackUser::tableName()=>'b'],'t.back_user_id = b.id')
+            ->where([
+                't.is_delete'=>'1',
+                'b.is_delete'=>'1',
+                't.level'=>'2',
+            ])->order('t.order','ASC')->relation('getBackUser')->paginate($each);
+
+        return view('contact/hotService',[
+            'meta_title'=>'金牌客服',
+            'slider'=>$slider,
+            'list'=>$list,
+        ]);
+    }
+
+    /**
+     * 显示创建资源表单页
+     *
+     * @return \think\Response
+     */
+    public function serviceAction()
+    {
+        $list = [];
+        $where = ['type'=>$this->sliderType];
+        $slider = Slider::getSlider($where);
+        foreach ($slider as $item){
+            $list[] = [
+                'title'=>$item['title'],
+                'desc'=>$item['description'],
+                'target'=>$item['target'],
+                'url'=>$item['url'],
+            ];
+        }
+        if (empty($list)){
+            $where = array_merge($where,['isDefault'=>'1']);
+            $slider = Slider::getSlider($where,null,true);
+            foreach ($slider as $item){
+                $list[] = [
+                    'title'=>$item['title'],
+                    'desc'=>$item['description'],
+                    'target'=>$item['target'],
+                    'url'=>$item['url'],
+                ];
+            }
+        }
+        if (empty($list)){
+            $list[] = [
+                'title'=>'',
+                'desc'=>'',
+                'target'=>'',
+                'url'=>Slider::T('default',$this->sliderType),
+            ];
+        }
+        $slider = json_encode($list);
+
+        $each = 12;
+        $model = Service::load();
+        $list = $model->alias('t')
+            ->join([BackUser::tableName()=>'b'],'t.back_user_id = b.id')
+            ->where([
+                't.is_delete'=>'1',
+                'b.is_delete'=>'1',
+            ])->order('t.order','ASC')->relation('getBackUser')->paginate($each);
+
+        return view('contact/hotService',[
+            'meta_title'=>'客服清单',
+            'slider'=>$slider,
+            'list'=>$list,
+        ]);
+    }
+
+
+    /**
      * 显示创建资源表单页.| 保存新建的资源
      *
      * @return \think\Response
@@ -96,6 +227,5 @@ class ContactController extends HomeController
         }
         return json($ret);
     }
-
 
 }

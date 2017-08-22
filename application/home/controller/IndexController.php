@@ -79,12 +79,27 @@ class IndexController extends HomeController
     }
 
     /**
-     * 默认方法
+     * 卖房
      * @author Sir Fu
      */
-    public function homeAction()
+    public function sellAction()
     {
-        return view('index/index-box');
+
+        $this->useLayoutMain();
+
+        return view('index/sell');
+    }
+
+    /**
+     * 意见
+     * @author Sir Fu
+     */
+    public function opinionAction()
+    {
+
+        $this->useLayoutMain();
+
+        return view('index/opinion');
     }
 
     /**

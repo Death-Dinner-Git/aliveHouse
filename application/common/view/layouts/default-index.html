@@ -110,19 +110,45 @@
                 //使用内部工具组件
                 util.fixbar({
                     top: true,
-                    // bar1: true,
-                    bar2: true,
+                    bar1: '&#xe606;',
+                    bar2: '&#xe607;',
                     css: {right: 15, bottom: 55},
                     click: function (type) {
                         if (type === 'bar1') {
-                            layer.msg('工具一');
+                            contact();
                         } else if (type === 'bar2') {
-                            layer.msg('工具二');
+                            opinion();
                         } else if (type === 'top') {
 //                            layer.msg('返回顶层');
                         }
                     }
                 });
+
+                function contact() {
+                    layer.open({
+                        scrollbar: false,
+                        type: 2,
+                        title: false,
+                        shade: 0.3,
+                        area: ['1230px', '630px'],
+                        content: "{:url('contact/contact')}"
+                    });
+                }
+
+                function opinion() {
+                    layer.open({
+                        scrollbar: false,
+                        type: 2,
+                        title: false,
+                        shade: 0.3,
+                        area: ['1230px', '630px'],
+                        content: "{:url('index/opinion')}"
+                    });
+                }
+
+                $(document).on('click','[lay-filter="contact"]',contact);
+
+                $(document).on('click','[lay-filter="opinion"]',opinion);
             });
         });
     </script>

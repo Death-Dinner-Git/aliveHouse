@@ -68,6 +68,13 @@ class HouseController extends HomeController
         $houseModel = House::load();
         $house = $houseModel->where([])->select();
 
+        foreach ($house as  $value){
+            for ($k=0;$k<10;$k++){
+                $house[] = $value;
+            }
+            break;
+        }
+
         // 资讯
         $newsModel = News::load();
         $news = $newsModel->where(['type'=>$this->newsType])->select();

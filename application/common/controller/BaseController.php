@@ -472,7 +472,7 @@ class BaseController extends Controller
      */
     public function goHome()
     {
-        $this->redirect($this->getHomeUrl());
+        $this->redirect(url($this->getHomeUrl()));
     }
 
     /**
@@ -577,7 +577,7 @@ class BaseController extends Controller
         }
 
         if (config('identity.loginUrl')) {
-            return config('identity.loginUrl');
+            return url(config('identity.loginUrl'));
         }
         return null;
     }

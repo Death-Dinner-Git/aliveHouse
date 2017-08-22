@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title> [ Home ] </title>
+
+    <style>
+        .layui-form-item {
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+        .layui-form-item .layui-inline:nth-child(2) .layui-form-label{
+            width: 60px !important;
+        }
+
+        .layui-form-item .layui-input-block.right-width {
+            padding-right: 120px;
+        }
+
+        .layui-input-inline{
+            width: 235px!important;
+            margin-bottom: 5px;
+        }
+        .layui-form-item .layui-input-block input[name="address"]{
+            width: 600px;
+        }
+        .layui-input:focus,.layui-textarea:focus{
+            border-color: #0DBD9F !important;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- This webContainerTop start 上 开始 -->
+<section id="webContainerTop" style="display: none;">
+
+    <!-- This absTopForms start -->
+    <section id="absTopTable">
+
+    </section>
+    <!-- This absTopForms end -->
+
+    <!-- This fullTopForms start -->
+    <section id="fullTopTable">
+
+    </section>
+    <!-- This fullTopForms end -->
+
+</section>
+<!-- This webContainerTop end 上 结束 -->
+
+<!-- This webContainerMiddle start 中 开始 -->
+<section id="webContainerMiddle" class="webContainerMiddle">
+
+    <!-- This webBannerTable start -->
+    <section id="webBannerTable" class="webBannerTable flex" style="min-height: 300px;">
+
+        <!-- This bannerAbsTable start -->
+        <section id="bannerAbsTable" class="absTopTable">
+
+        </section>
+        <!-- This bannerAbsTable end -->
+
+        <div id="banner-body" class="flex" style="display: block;min-height: 300px;">
+
+            <!-- This bannerTopTable start -->
+            <section id="bannerTopTable" class="topTable" style="display: none;">
+
+                <!-- 左侧 区域开启 -->
+                <section class="leftTable flex-top-left" style="display: none;">
+
+                </section>
+                <!-- 左侧 区域结束 -->
+
+                <!-- 中间 区域开启 -->
+                <section class="centerTable flex-top-center" style="display: none;">
+
+                </section>
+                <!-- 中间 区域结束 -->
+
+                <!-- 右侧 区域开启 -->
+                <section class="rightTable flex-top-right" style="display: none;">
+
+                </section>
+                <!-- 右侧 区域结束 -->
+
+            </section>
+            <!-- This bannerTopTable end -->
+
+            <!-- This bannerMiddleTable start -->
+            <section id="bannerMiddleTable" class="middleTable">
+
+                <!-- 顶级主体 左侧 区域开启 -->
+                <section class="leftTable flex-middle-left" style="display: none;">
+
+                </section>
+                <!-- 顶级主体 左侧 区域结束 -->
+
+                <!-- 顶级主体 中间 区域导航开启 -->
+                <section class="centerTable flex-middle-center">
+
+                    <div id="webBanner" style="width: 1200px; overflow: hidden; height: 300px;"></div>
+
+                </section>
+                <!-- 顶级主体 中间 区域导航结束 -->
+
+                <!-- 顶级主体 右侧 区域导航开启 -->
+                <section class="rightTable flex-middle-right" style="display: none;">
+
+                </section>
+                <!-- 顶级主体右侧区域导航结束 -->
+
+            </section>
+            <!-- This bannerMiddleTable end -->
+
+            <!-- This bannerBottomTable start -->
+            <section id="bannerBottomTable" class="bottomTable">
+
+                <!-- 左侧 区域开启 -->
+                <section class="leftTable flex-bottom-left" style="display: none;">
+
+                </section>
+                <!-- 左侧 区域结束 -->
+
+                <!-- 中间 区域开启 -->
+                <section class="centerTable flex-bottom-center" style="display: none;">
+
+                </section>
+                <!-- 中间 区域结束 -->
+
+                <!-- 右侧 区域开启 -->
+                <section class="rightTable flex-bottom-left" style="display: none;">
+
+                </section>
+                <!-- 右侧 区域结束 -->
+
+            </section>
+            <!-- This bannerBottomTable end -->
+
+        </div>
+
+    </section>
+    <!-- This webBannerTable end -->
+
+    <!-- This webBannerTable start -->
+    <section id="webContentBody" class="webContentBody">
+
+        <div class="alive-layout">
+
+            <div class="alive-header" style="height: 50px;"></div>
+
+            <div class="alive-body">
+                <div class="alive-flex alive-upLevel" style="width:100%;min-height:350px;position: relative;overflow: hidden;">
+                    <div class="alive-layout">
+
+                        <div class="alive-header"></div>
+
+                        <div class="alive-body">
+                            <div id="homeSecondHandHouse" class="alive-flex outer">
+                                {volist name="list" id="model"}
+                                <div class="item" style="width: 275px;height: 350px;margin: 5px;border: 1px solid #e2e2e2;border-radius: 2px;">
+                                    <div class="itemIcon" style="text-align: center;">
+                                        <a hidefocus="true" href="{:url('service/view/'.$model['id'])}" target="_blank">
+                                            <img alt="{$model.username}" data-url="{$model.head_url?$model.head_url:'/static/images/default-user.png'}" title="{$model.username}" lay-text="{$model.username}" lay-filter="tooltitle"
+                                                 style="width: 200px; height: 200px;border-radius: 50%;margin:5px auto;">
+                                        </a>
+                                    </div>
+                                    <div class="alive-upLevel half itemTitle" style="height: 100px;">
+                                        <div class="itemDesc">
+                                            <p>
+                                                客服姓名：<span>{$model.username}</span>
+                                                <br/>
+                                                客联方式：<span>{$model.phone}</span>
+                                            </p>
+                                        </div>
+                                        <div class="alive-level half">
+                                            <div class="alive-bottomLeft house-price">{$model.username}</div>
+                                            <div class="alive-bottomRight house-date">
+                                                <a hidefocus="true" href="/" target="_blank" title="{$model.username}">
+                                                    预约客服
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {/volist}
+                            </div>
+                        </div>
+
+                        <div class="alive-footer"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="alive-footer" style="height: 50px;"></div>
+
+        </div>
+
+    </section>
+    <!-- This webBannerTable end -->
+
+</section>
+<!-- This webContainerMiddle end 中 结束 -->
+
+<!-- This webContainerBottom start 下 开始 -->
+<section id="webContainerBottom" style="display: none;">
+
+    <!-- This fullBottomForms start -->
+    <section id="fullBottomTable">
+
+    </section>
+    <!-- This fullBottomForms end -->
+
+    <!-- This absBottomForms start -->
+    <section id="absBottomTable">
+
+    </section>
+    <!-- This absBottomForms end -->
+
+</section>
+<!-- This webContainerBottom end 下 结束 -->
+
+<script>
+    $(function () {
+        var options = {
+            form: '#defaultForm',
+            success: function (data) {
+                $('[lay-filter="reset"]').trigger('click');
+            }
+        };
+        Site.submit(options);
+
+        Site.search({
+            url: '/ajax/getService',
+            targetClass: '[lay-filter="service"]',          // 输入框目标元素
+            parentClass: '.layui-input-inline',          // 父级类
+            hiddenClass: '[name="back_user_id"]',          // 隐藏域input
+            key:'name'
+        });
+
+        var data = JSON.parse('{$slider}');
+        var barOptions = {
+            "banner": "#webBanner",
+            "height": 300,
+            "isWidth":true,
+            "playTime": 6000,
+            "animateTime": 628,
+            "interval": 6000,
+            "btnType": 1,
+            "targetType": "2",
+//            "wideScreen": true,
+//            "autoPlay":true,
+            hiddenBar: true,//设置是否隐藏底部导航条
+            hiddenControl: true,//设置隐藏左右切换按钮
+        };
+        Site.initBanner(data,barOptions);
+
+    });
+</script>
+
+</body>
+</html>

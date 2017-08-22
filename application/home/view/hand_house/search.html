@@ -374,10 +374,11 @@
 
 						<div class="alive-body">
 							<div class="alive-flex outer">
+								{volist name="list" id="model" empty="<p style='display:inline-block;font-size: 16px;width:100%;color:#ff5722;text-align: center;'>没有符合你要的房源</p>"}
 								<div class="item" style="width: 290px;height: 330px;">
 									<div class="itemIcon">
-										<a hidefocus="true" href="/static/uploads/ima05.jpg" target="_blank">
-											<img alt="汇景新城急租" src="/static/uploads/ima05.jpg" title=""
+										<a hidefocus="true" href="{$model.url}" target="_blank">
+											<img alt="{$model.title}" src="{$model.url_icon}" title=""
 												 style="width: inherit; height: inherit;">
 										</a>
 									</div>
@@ -385,51 +386,10 @@
 										<a hidefocus="true"
 										   href="/"
 										   target="_blank"
-										   title="汇景新城急租">汇景新城急租</a>
+										   title="{$model.title}">{$model.title}</a>
 									</div>
 								</div>
-								<div class="item" style="width: 290px;height: 330px;">
-									<div class="itemIcon">
-										<a hidefocus="true" href="/static/uploads/ima05.jpg" target="_blank">
-											<img alt="汇景新城急租" src="/static/uploads/ima05.jpg" title=""
-												 style="width: inherit; height: inherit;">
-										</a>
-									</div>
-									<div class="itemTitle" style="height: 100px;">
-										<a hidefocus="true"
-										   href="/"
-										   target="_blank"
-										   title="汇景新城急租">汇景新城急租</a>
-									</div>
-								</div>
-								<div class="item" style="width: 290px;height: 330px;">
-									<div class="itemIcon">
-										<a hidefocus="true" href="/static/uploads/ima05.jpg" target="_blank">
-											<img alt="汇景新城急租" src="/static/uploads/ima05.jpg" title=""
-												 style="width: inherit; height: inherit;">
-										</a>
-									</div>
-									<div class="itemTitle" style="height: 100px;">
-										<a hidefocus="true"
-										   href="/"
-										   target="_blank"
-										   title="汇景新城急租">汇景新城急租</a>
-									</div>
-								</div>
-								<div class="item" style="width: 290px;height: 330px;">
-									<div class="itemIcon">
-										<a hidefocus="true" href="/static/uploads/ima05.jpg" target="_blank">
-											<img alt="汇景新城急租" src="/static/uploads/ima05.jpg" title=""
-												 style="width: inherit; height: inherit;">
-										</a>
-									</div>
-									<div class="itemTitle" style="height: 100px;">
-										<a hidefocus="true"
-										   href="/"
-										   target="_blank"
-										   title="汇景新城急租">汇景新城急租</a>
-									</div>
-								</div>
+								{/volist}
 							</div>
 						</div>
 

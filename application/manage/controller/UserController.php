@@ -15,7 +15,7 @@ namespace app\manage\controller;
 
 use app\common\controller\ManageController;
 use app\common\model\BackUser;
-use app\common\model\Identity;
+use app\manage\model\Identity;
 use app\common\model\Department;
 
 /**

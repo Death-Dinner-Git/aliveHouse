@@ -27,75 +27,125 @@
     <link rel="stylesheet" type="text/css" href="__CSS__/home.css" media="all">
     <link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css" media="all">
 
-
     <!-- Define base CSS -->
-    <style id="stylemodule"></style>
     <style id="styleWebSite" type="text/css">
-        #memberBar{width:1200px;}
-        #webTop{width:1200px;}
-        #absTopForms{width:1200px;}
-        .webNavDefault{width:1200px;}
-        #webHeader{width:1200px;}
-        #absForms{width:1200px;}
-        div#webContainer{width:1200px;}
-        #absBottomForms{width:1200px;}
-        #webFooter{width:1200px;}
-        div.webNav .navMainContent{width:1200px;}
-        div.nav .navMainContent{width:1200px;}
-        .fullmeasureContent{width:1200px;}
-        #fk-webHeaderZone {width:1200px;margin-left:-600.0px;}
-        #fk-webFooterZone {width:1200px;margin-left:-600.0px;}
-        #fk-webBannerZone {width:1200px;margin-left:-600.0px;}
-        #webBanner{width:100%;}
+        #header-content-container {
+            width: 1200px;
+        }
+
+        #main-content-container {
+            width: 1200px;
+        }
+
+        #footer-content-container {
+            width: 1200px;
+        }
+
+        #extra-content-container {
+            width: 1200px;
+        }
+
+        #memberBar {
+            width: 1200px;
+        }
+
+        #webTop {
+            width: 1200px;
+        }
+
+        #absTopForms {
+            width: 1200px;
+        }
+
+        .webNavDefault {
+            width: 1200px;
+        }
+
+        #webHeader {
+            width: 1200px;
+        }
+
+        #absForms {
+            width: 1200px;
+        }
+
+        div#webContainer {
+            width: 1200px;
+        }
+
+        #absBottomForms {
+            width: 1200px;
+        }
+
+        #webFooter {
+            width: 1200px;
+        }
+
+        div.webNav .navMainContent {
+            width: 1200px;
+        }
+
+        div.nav .navMainContent {
+            width: 1200px;
+        }
+
+        .fullmeasureContent {
+            width: 1200px;
+        }
+
+        #webBanner {
+            width: 100%;
+        }
     </style>
-    <style id="styleTitle" type="text/css"></style>
+
+    <script>
+
+        $(document).ready(function () {
+            layui.use(['layer', 'util'], function () {
+                var $ = layui.jquery,
+                    layer = layui.layer,
+                    util = layui.util;
+
+                //回到顶部
+                //使用内部工具组件
+                util.fixbar({
+                    top: true,
+                    css: {right: 15, bottom: 55},
+                    click: function (type) {
+                        if (type === 'top') {
+//                            layer.msg('返回顶层');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
 </head>
-<body class="g_body g_locale2052 g_cusSiteWidth">
+<body id="alive-site-body" lay-position="rel">
 
 
-<div id="g_main" class="g_main g_col2 " style="width: 1903px;">
+<section id="alive-site-main" class="alive-site-main">
 
-    <div id="web" class="g_web ">
+    <article id="alive-site-web" class="alive-site-web">
 
-        <!-- 顶部区域开启 -->
-        <section id="web-header-container" class="web-header-container">
-            {include file="common@layouts/default-header" /}
-        </section>
-        <!-- 顶级区域结束 -->
+        <!-- 中部 部区域开启 -->
+        <section id="web-main-container" class="web-main-container">
 
-        <div class="clearfloat"></div>
+            <!-- 右侧 主体内容开启 -->
+            <article id="main-content-container" class="main-content-container">
 
-        <!-- 中部部区域开启 -->
-        <section id="web-main-container" class="web-main-container" style="min-height: 600px;background-color: rgba(0,0,0,0);">
+                {__CONTENT__}
 
-            <!-- 右侧主体内容开启 -->
-            {__CONTENT__}
-            <!-- 右侧主体内容结束 -->
+            </article>
+            <!-- 右侧 主体内容结束 -->
 
         </section>
-        <!-- 中部区域结束 -->
+        <!-- 中部 区域结束 -->
 
-        <div class="clearfloat"></div>
+    </article>
 
-        <!-- 底部区域开启 -->
-        <section id="web-footer-container" class="web-footer-container">
-            {include file="common@layouts/default-footer" /}
-        </section>
-        <!-- 底部区域结束 -->
-
-        <div class="clearfloat"></div>
-
-        <!-- 其他区域开启 -->
-        <section id="web-extra-container" class="web-extra-container">
-        </section>
-        <!-- 其他区域结束 -->
-
-        <div class="clearfloat"></div>
-
-    </div>
-
-</div>
+</section>
 
 <!-- fakeLoader start -->
 <div class="fakeloader"></div>
@@ -103,28 +153,28 @@
 
 
 <!-- fixed Left-Top -->
-<div class="floatLeftTop" style="top: 0px;">
+<div id="flexLeftTop" class="flexLeftTop">
     <div id="floatLeftTopForms" class="forms sideForms floatForms">
 
     </div>
 </div>
 
 <!-- fixed Right-Top -->
-<div class="floatRightTop" style="top: 0px;">
+<div id="flexRightTop" class="flexRightTop">
     <div id="floatRightTopForms" class="forms sideForms floatForms">
 
     </div>
 </div>
 
 <!-- fixed Left-Bottom -->
-<div class="floatLeftBottom">
+<div id="flexLeftBottom" class="flexLeftBottom">
     <div id="floatLeftBottomForms" class="forms sideForms floatForms">
 
     </div>
 </div>
 
 <!-- fixed Right-Bottom -->
-<div class="floatRightBottom">
+<div id="flexRightBottom" class="flexRightBottom">
     <div id="floatRightBottomForms" class="forms sideForms floatForms">
 
     </div>
@@ -132,6 +182,10 @@
 
 <!-- background music -->
 <div id="bgMusic" class="bgMusic"></div>
+
+<script src="__JS__/site.js"></script>
+
+<script src="__JS__/home.js"></script>
 
 </body>
 </html>

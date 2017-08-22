@@ -17,7 +17,7 @@ class HomeController extends BaseController
             config('app_debug',false);
         }
         // 前台模板
-        $this->view->engine->layout('common@layouts/default-index');
+        $this->useLayoutIndex();
         // 初始化
         $this->init('user');
 
@@ -37,6 +37,16 @@ class HomeController extends BaseController
                 $this->error('拒绝访问', url('home/Index/index'), [], '1');
             }
         }
+    }
+
+    public function useLayoutIndex(){
+        // 前台模板
+        $this->view->engine->layout('common@layouts/default-index');
+    }
+
+    public function useLayoutMain(){
+        // 前台模板
+        $this->view->engine->layout('common@layouts/default-main');
     }
 
     /**
