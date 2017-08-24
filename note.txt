@@ -1,0 +1,21 @@
+宝塔地址 http://47.94.105.213:8888
+Qiche0816 Qiche!@#123
+
+服务器外网地址：
+外网地址 47.94.105.213
+账号root 密码Qiche!@#123
+内网地址 172.17.245.253
+
+数据库账号资料
+phpmyadmin 访问地址：http://47.94.105.213:888/phpmyadmin_cb02c96b06f6144e/index.php；
+数据库 账号 root  密码 qiche2017
+
+FTP账号资料
+ftp://47.94.105.213:21
+用户：atalivecar
+密码：@atalivecar
+
+数据库账号资料
+数据库名：atalivecar
+用户：atalivecar
+密码：@atalivecar
