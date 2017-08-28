@@ -30,11 +30,153 @@ class BaseController extends Controller
         defined('IS_AJAX') or define('IS_AJAX', $is_ajax);
         config('default_module', request()->module());
         $this->assign('URL', $this->getUrl());
-        $app_debug = \app\common\model\Config::load()->where(['name'=>'APP_DEBUG'])->value('value');
-        config('app_debug',($app_debug? true :false));
-        if ($this->getRequest()->ip() != '127.0.0.1'){
-            config('app_debug',false);
+        $app_debug = \app\common\model\Config::load()->where(['name' => 'APP_DEBUG'])->value('value');
+        config('app_debug', ($app_debug ? true : false));
+        if ($this->getRequest()->ip() != '127.0.0.1') {
+            config('app_debug', false);
         }
+    }
+
+    /**
+     * 获取下级部门 或 上级部门
+     * @param int $departmentId // 获取的部门开始节点
+     * @param bool $up // 为 true 是获取上级部门，为false获取下级部门，默认为 true
+     * @param null|array $allDepartments // 获取全部部门链表
+     * @return bool|int|array //返回true|int|array,且不为空，则存在上下级关系，否则是不存在上下级。默认返回false
+     */
+    public function getDepartmentGroup($departmentId, $up = true, $allDepartments = null)
+    {
+        global $ret;
+        global $list;
+        global $isThat;
+        global $level;
+        if (!$allDepartments) {
+            $allDepartments = [
+                '5' => [
+                    'id' => '5',
+                    'pid' => '0',
+                    'child' => [
+                        '15' => [
+                            'id' => '15',
+                            'pid' => '5',
+                            'child' => [
+                                '25' => [
+                                    'id' => '25',
+                                    'pid' => '25',
+                                    'child' => [
+                                        '35' => [
+                                            'id' => '35',
+                                            'pid' => '25',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                        '19' => [
+                            'id' => '19',
+                            'pid' => '5',
+                            'child' => [
+                                '29' => [
+                                    'id' => '29',
+                                    'pid' => '19',
+                                    'child' => [
+                                        '39' => [
+                                            'id' => '39',
+                                            'pid' => '29',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                '6' => [
+                    'id' => '6',
+                    'pid' => '0',
+                    'child' => [
+                        '17' => [
+                            'id' => '17',
+                            'pid' => '6',
+                            'child' => [
+                                '28' => [
+                                    'id' => '28',
+                                    'pid' => '17',
+                                    'child' => [
+                                        '34' => [
+                                            'id' => '34',
+                                            'pid' => '28',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                        '16' => [
+                            'id' => '16',
+                            'pid' => '6',
+                            'child' => [
+                                '26' => [
+                                    'id' => '26',
+                                    'pid' => '16',
+                                    'child' => [
+                                        '36' => [
+                                            'id' => '36',
+                                            'pid' => '26',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ];
+        }
+        if ($departmentId) {
+            if (empty($level)) {
+                $level = 1;
+            } else {
+                $level++;
+            }
+            foreach ($allDepartments as $key => $item) {
+                $isThat = false;
+                $ret[$level] = $item['id'];
+                if (!$up) {
+                    $list[] = $item['id'];
+                }
+                if ($item['id'] == $departmentId) {
+                    if ($up) {
+                        unset($ret[$level]);
+                        $isThat = true;
+                    } else {
+                        $list = [];
+                        $isThat = false;
+                        $this->getDepartmentGroup($departmentId, $up, $item['child']);
+                        $isThat = true;
+                        $ret = $list;
+                    }
+                    break;
+                }
+                if (isset($item['child'])) {
+                    $this->getDepartmentGroup($departmentId, $up, $item['child']);
+                }
+                if ($isThat) {
+                    break;
+                }
+            }
+            if ($isThat) {
+                unset($list);
+                unset($level);
+                unset($isThat);
+            } else {
+                unset($ret[$level]);
+                $level--;
+                if ($up) {
+                    unset($ret[$level]);
+                }
+            }
+        }
+        $tmp = $ret;
+        unset($ret);
+        return $tmp;
     }
 
     /**
@@ -45,7 +187,7 @@ class BaseController extends Controller
     {
         $module = config($module);
         if ($module) {
-            config('identity',array_merge(config('identity'),$module));
+            config('identity', array_merge(config('identity'), $module));
         }
     }
 
@@ -89,7 +231,7 @@ class BaseController extends Controller
         $ret = true;
         //用户登录检测
         $model = config('identity.default_model');
-        if (class_exists($model)){
+        if (class_exists($model)) {
             $uid = $model::isGuest();
             return $uid ? $uid : false;
         }
@@ -216,7 +358,7 @@ class BaseController extends Controller
      * @param bool $canDelete
      * @return bool
      */
-    public function deleteFolder($pathStr, $root = true,$canDelete = false)
+    public function deleteFolder($pathStr, $root = true, $canDelete = false)
     {
         if (!is_dir($pathStr)) {
             return false;
@@ -224,10 +366,10 @@ class BaseController extends Controller
 
         //$d不是static目录下的文件不给予删除
         if (!(strstr($pathStr, '/uploads/') === true || $pathStr === RUNTIME_PATH || $pathStr === CACHE_PATH || $pathStr === TEMP_PATH)) {
-            if (!$canDelete){
+            if (!$canDelete) {
                 return false;
             }
-        }else{
+        } else {
             $canDelete = true;
         }
 
@@ -243,7 +385,7 @@ class BaseController extends Controller
                 if (!is_dir($fullpath)) {
                     @unlink($fullpath);
                 } else {
-                    $this->deleteFolder($fullpath,$root,$canDelete);
+                    $this->deleteFolder($fullpath, $root, $canDelete);
                 }
             }
         }
@@ -602,7 +744,8 @@ class BaseController extends Controller
     /**
      * 清楚 CACHE 缓存文件
      */
-    protected function clearCache(){
+    protected function clearCache()
+    {
         $path = CACHE_PATH;
         $this->deleteFolder($path);
     }
@@ -610,7 +753,8 @@ class BaseController extends Controller
     /**
      * 清楚 TEMP 缓存文件
      */
-    protected function clearTemp(){
+    protected function clearTemp()
+    {
         $path = TEMP_PATH;
         $this->deleteFolder($path);
     }
