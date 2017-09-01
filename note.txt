@@ -10,12 +10,7 @@ Qiche0816 Qiche!@#123
 phpmyadmin 访问地址：http://47.94.105.213:888/phpmyadmin_cb02c96b06f6144e/index.php；
 数据库 账号 root  密码 qiche2017
 
-FTP账号资料
-ftp://47.94.105.213:21
-用户：atalivecar
-密码：@atalivecar
-
 数据库账号资料
-数据库名：atalivecar
-用户：atalivecar
-密码：@atalivecar
+数据库名：onalivecar
+用户：onalivecar
+密码：@onalivecar
