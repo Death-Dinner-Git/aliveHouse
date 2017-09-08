@@ -7,13 +7,80 @@ use think\db\Query;
 use think\Config;
 use app\common\components\LangHelper;
 use think\Request;
+use app\common\model\IModel;
 
 /**
  * @property array $rules
  * @property array $attributeLabels
  */
-class Model extends \think\Model
+class Model extends \think\Model implements IModel
 {
+
+    // 保存自动完成列表
+    protected $auto = [];
+    // 新增自动完成列表
+    protected $insert = ['created_at'];
+    // 更新自动完成列表
+    protected $update = ['updated_at'];
+
+    /**
+     * 插入自动 赋值创建时间
+     */
+    public function setCreatedAtAttr(){
+        return $this->setDate();
+    }
+
+    /**
+     * 更新自动 赋值更新时间
+     */
+    public function setUpdatedAtAttr(){
+        return $this->setDate();
+    }
+
+    /**
+     * 扩展插入自动
+     * @param array $insert
+     * @param bool $all
+     */
+    public function extendInsert($insert = [],$all = false)
+    {
+        if ($all){
+            $this->insert = $insert;
+        }else{
+            $this->insert = array_merge($this->insert,$insert);
+        }
+        if (!in_array('created_at',$this->insert)){
+            array_push($this->insert,'created_at');
+        }
+    }
+
+    /**
+     * 扩展更新自动
+     * @param array $update
+     * @param bool $all
+     */
+    public function extendUpdate($update = [],$all = false)
+    {
+        if ($all){
+            $this->update = $update;
+        }else{
+            $this->update = array_merge($this->update,$update);
+        }
+        if (!in_array('updated_at',$this->update)){
+            array_push($this->update,'updated_at');
+        }
+    }
+
+    //自动日期格式
+    public function setDate(){
+        return date('Y-m-d H:i:s');
+    }
+
+    //自动时间戳
+    public function setTime(){
+        return time();
+    }
+
 
     /**
      * @return \app\common\components\Helper
@@ -71,17 +138,6 @@ class Model extends \think\Model
      */
     public function attributeLabels(){
         return [];
-    }
-
-
-    //自动日期格式
-    public function setDate(){
-        return date('Y-m-d H:i:s');
-    }
-
-    //自动时间戳
-    public function setTime(){
-        return time();
     }
 
     /**

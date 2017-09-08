@@ -56,6 +56,8 @@ class Department extends Model
         return self::T('level');
     }
 
+    protected static $departments;
+
     /**
      * @inheritdoc
      */
@@ -90,6 +92,67 @@ class Department extends Model
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];
+    }
+
+
+    /**
+     * 获取上级部门
+     * @param int $departmentId // 获取的部门开始节点
+     * @param bool $up // 为 true 是获取上级部门，为false获取下级部门，默认为 true
+     * @return bool|int|array //返回true|int|array,且不为空，则存在上下级关系，否则是不存在上下级。默认返回false
+     */
+    protected static function getDepartmentGroup($departmentId, $up = true)
+    {
+        $ret = [];
+        $allDepartments = self::getAllDepartment();
+        if ($up){
+            $parent = $departmentId;
+            while ($parent != '0'){
+                $item = isset($allDepartments[$parent])? $allDepartments[$parent] : 0;
+                if (!$item){
+                    $parent = '0';
+                }else{
+                    $parent = $item['parent'];
+                    $ret[] = $item['id'];
+                }
+            }
+            sort($ret);
+        }else{
+            foreach ($allDepartments as $allDepartment){
+                $allDepartments[$allDepartment['parent']] = $allDepartment;
+            }
+            $parent = $departmentId;
+            while ($parent != '0'){
+                $item = isset($allDepartments[$parent])? $allDepartments[$parent] : 0;
+                if (!$item){
+                    $parent = '0';
+                }else{
+                    $parent = $item['parent'];
+                    $ret[] = $item['id'];
+                }
+            }
+            sort($ret);
+        }
+        return $ret;
+    }
+
+    /**
+     * 获取全部部门链表
+     * @return array
+     */
+    protected static function getAllDepartment()
+    {
+        if (!self::$departments) {
+            $allDepartments = M('RoleDepartment')->field('id,pid,name,level')->where('status=5')->order('level DESC, pid ASC')->select();
+            $newDepartments = [];
+            foreach ($allDepartments as $item) {
+                $newDepartments[$item['id']] = $item;
+            }
+            $allDepartments = $newDepartments;
+            ksort($allDepartments);
+            self::$departments = $allDepartments;
+        }
+        return self::$departments;
     }
 
     /**
