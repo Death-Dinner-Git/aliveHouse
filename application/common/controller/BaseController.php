@@ -17,6 +17,7 @@ use app\common\components\rbac\AccessControl;
  */
 class BaseController extends Controller
 {
+
     protected static $_helper;
 
     /**

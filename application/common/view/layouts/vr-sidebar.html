@@ -1,0 +1,50 @@
+
+<section>
+
+    <div class="webTopSide bs-webTopSide" id="webTopSide" lay-filter="topSide" lay-side="close">
+        <div class="side-overlay" lay-filter="overlay"></div>
+        <div class="side-body" id="sideBody" lay-filter="side">
+            <div class="user-photo" id="user_profile" style="position: absolute;">
+                <a href="/user/view" class="img" title="个人信息">
+                    <img class="user-images" src="/static/images/default-user.png" title="个人信息" alt="我的头像" />
+                </a>
+                <p>你好！{if condition="isset($_SESSION[$identity]['username'])"}{$_SESSION[$identity]['username']}{/if}, 欢迎登录</p>
+            </div>
+            <ul class="layui-nav layui-nav-tree">
+                <li class="layui-nav-item " style="">
+                    <a class="" href="/notice/index.html">
+                        <i class="layui-icon">&#xe600;</i>
+                        <cite class="title" title="消息">消息</cite>
+                    </a>
+                </li>
+                <li class="layui-nav-item " style="">
+                    <a class="" href="/set/user.html">
+                        <i class="layui-icon">&#xe600;</i>
+                        <cite class="title" title="设置">设置</cite>
+                    </a>
+                </li>
+                <li class="layui-nav-item " style="">
+                    <a class="" href="/log/index.html">
+                        <i class="layui-icon">&#xe600;</i>
+                        <cite class="title" title="日记管理">日记管理</cite>
+                    </a>
+                </li>
+                <li class="layui-nav-item " style="">
+                    <a class="Index-Home" href="/index/faq.html">
+                        <i class="layui-icon">&#xe600;</i>
+                        <cite class="title" title="常见问题">常见问题</cite>
+                    </a>
+                </li>
+                <li class="layui-nav-item " style="">
+                    <a class="" href="/user/logout.html">
+                        <i class="layui-icon">&#xe600;</i>
+                        <cite class="title" title="退出" target="_self">退出</cite>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="clearfloat"></div>
+
+</section>

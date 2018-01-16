@@ -20,6 +20,8 @@ if($_SERVER['HTTP_HOST'] == 'cms.alivehouse.com'){ //绑定三级域名 cms 到�
     define('BIND_MODULE','phone');
 }elseif ($_SERVER['HTTP_HOST'] == 'api.alivehouse.com'){ //绑定三级域名 api 到接口
     define('BIND_MODULE','api');
+}elseif ($_SERVER['HTTP_HOST'] == 'vr.alivehouse.com'){ //绑定三级域名 vr 到接口
+    define('BIND_MODULE','vr');
 }else{ // 其他所有的请求绑定到前端
     define('BIND_MODULE','home');
 }

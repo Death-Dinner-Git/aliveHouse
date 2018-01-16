@@ -141,6 +141,7 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
+        '_STATIC_'=>'/static',
         '_TITLE_'=>'[ Hao Fang Zhi Ye ]',
         '_LAYUI_'=>'/static/plugins/layui/src',
         '_PLUGINS_'=>'/static/plugins',

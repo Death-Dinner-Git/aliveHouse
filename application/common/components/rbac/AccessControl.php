@@ -175,10 +175,14 @@ class AccessControl
      */
     protected function denyAccess($user)
     {
-        if ($user->isGuest()) {
+        if ($user){
+            if ($user->isGuest()) {
 //            $user->setLogout($user);
-            throw new \think\Exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
-        } else {
+                throw new \think\Exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
+            } else {
+                throw new \think\Exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
+            }
+        }else{
             throw new \think\Exception\HttpException(402, '没权限执行此操作', null, ['code' => '402', 'msg' => '没权限执行此操作'], '402');
         }
     }

@@ -32,11 +32,11 @@ class HomeController extends BaseController
         //兼容iframe
         $url = $this->getUrl();
         // 权限检测，首页不需要权限
-        if (!$this->accessCheck()) {
-            if (!('home/index/index' === strtolower($currentUrl) || $url === '/')) {
-                $this->error('拒绝访问', url('home/Index/index'), [], '1');
-            }
-        }
+//        if (!$this->accessCheck()) {
+//            if (!('home/index/index' === strtolower($currentUrl) || $url === '/')) {
+//                $this->error('拒绝访问', url('home/Index/index'), [], '1');
+//            }
+//        }
     }
 
     public function useLayoutIndex(){

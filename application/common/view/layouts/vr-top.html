@@ -1,0 +1,26 @@
+
+<section class="webTopBox bs-webTopBox" id="webTopBox" style="height:50px;top: 0;background-color: #F4F4F4;">
+
+    <div id="webTop" class="webTop">
+
+        <div class="webTopBack" lay-filter="back">
+            <i class="layui-icon">&#xe65c;</i>
+        </div>
+
+        <div class="webTopItem" lay-filter="middle">
+            <h3>{$meta_title ? $meta_title : ''}</h3>
+        </div>
+
+        <div class="webSideToggle" lay-filter="toggle">
+            <i class="layui-icon">&#xe600;</i>
+        </div>
+
+        <!-- 左侧侧边导航开始 -->
+        {include file="common@layouts/vr-sidebar" /}
+        <!-- 左侧侧边导航结束 -->
+
+    </div>
+
+    <div class="clearfloat"></div>
+
+</section>

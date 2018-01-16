@@ -1,0 +1,163 @@
+﻿<krpano version="1.19" title="Virtual Tour">
+
+	<!-- 更改路径 加前缀 %SWFPATH%/  -->
+	<include url="%SWFPATH%/skin/vtourskin.xml" />
+
+	<!-- 添加图标 -->
+	<style name="button" type="container" width="38" height="38" bgcapture="true" align="lefttop" edge="center" children="false" scalechildren="true"/>
+	<style name="text-awesome" url="plugins/textfield.swf"
+		   css="font-family:Arial; font-size:24px; color:#ffffff;text-align:center;" background="false" align="center" x="0" y="0" vcenter="true"  />
+
+	<layer name="buttonbar" type="container" width="50" height="250" align="righttop" y="10" keep="true">
+		<layer name="lb" style="button" x="20" y="20"  onclick="js('clicki();')" >
+			<layer name="lico" style="text-awesome" html="[a title='简介' style='background:rgba(0,0,0,.5); font-size:20px;line-height:24px; border-radius:100%;padding:5px;color:#fff;display:block;width:24px;height:24px;' class='fa fa-info'/]"/>
+		</layer>
+		<layer name="tel" style="button" x="20" y="70" onclick="js('opentel();')">
+			<layer name="telico" style="text-awesome" html="[a title='电话' style='background:rgba(0,0,0,.5); font-size:20px;line-height:24px; border-radius:100%;padding:5px;color:#fff;display:block;width:24px;height:24px;' class='fa fa-volume-control-phone'/]"/>
+		</layer>
+		<layer name="dump" style="button" x="20" y="120" onclick="js('thum();')">
+			<layer name="dumpico" style="text-awesome" html="[a class='mythumb fa fa-thumbs-o-up' title='点赞' style='background:rgba(0,0,0,.5); font-size:20px;line-height:24px; border-radius:100%;padding:5px;color:#fff;display:block;width:24px;height:24px;'/]"/>
+		</layer>
+		<layer name="share" style="button" x="20" y="170" onclick="js('shareVr();')">
+			<layer name="shareico" style="text-awesome" html="[a href='javascript:void(0);' style='background:rgba(0,0,0,.5); font-size:20px;line-height:24px; border-radius:100%;padding:5px;color:#fff;display:block;width:24px;height:24px;' target='_blank' title='分享' class='fa fa-share-alt'/]"/>
+		</layer>
+		<!-- <layer name="music" style="button" x="20" y="220">
+			<layer name="musicico" style="text-awesome" html="[a title='音乐' style='background:rgba(0,0,0,.5); font-size:20px;line-height:24px; border-radius:100%;padding:5px;color:#fff;display:block;width:24px;height:24px;'  class='fa fa-music'/]"/>
+		</layer>
+		<layer name="skin_btn_sound"  style="skin_base|skin_glow" crop="64|704|64|64"  align="right"   ox="0"   x="20"   y="220"  scale="0.5" onclick="pausesoundtoggle(bggsnd);switch(crop,64|704|40|64,64|704|64|64);"  /> -->
+
+	</layer>
+
+	<events name="buttonbarevents" keep="true" devices="fullscreensupport"
+			onxmlcomplete="buttonbar_update_fullscreenbuttons();"
+			onenterfullscreen="buttonbar_update_fullscreenbuttons();"
+			onexitfullscreen ="buttonbar_update_fullscreenbuttons();"
+	/>
+
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<!-- littleplanetintro 为 true 默认是false -->
+	<!-- title 为 false 默认是 true -->
+	<skin_settings maps="false"
+				   maps_type="google"
+				   maps_bing_api_key=""
+				   maps_google_api_key=""
+				   maps_zoombuttons="false"
+				   gyro="true"
+				   webvr="true"
+				   webvr_gyro_keeplookingdirection="false"
+				   webvr_prev_next_hotspots="true"
+				   littleplanetintro="ture"
+				   title="false"
+				   thumbs="true"
+				   thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+				   thumbs_opened="true"
+				   thumbs_text="true"
+				   thumbs_dragging="true"
+				   thumbs_onhoverscrolling="false"
+				   thumbs_scrollbuttons="false"
+				   thumbs_scrollindicator="false"
+				   thumbs_loop="true"
+				   tooltips_buttons="false"
+				   tooltips_thumbs="true"
+				   tooltips_hotspots="true"
+				   tooltips_mapspots="false"
+				   deeplinking="false"
+				   loadscene_flags="MERGE"
+				   loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+				   loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+				   loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+				   loadingtext="loading..."
+				   layout_width="100%"
+				   layout_maxwidth="814"
+				   controlbar_width="-24"
+				   controlbar_height="40"
+				   controlbar_offset="20"
+				   controlbar_offset_closed="-40"
+				   controlbar_overlap.no-fractionalscaling="10"
+				   controlbar_overlap.fractionalscaling="0"
+				   design_skin_images="vtourskin.png"
+				   design_bgcolor="0x2D3E50"
+				   design_bgalpha="0.8"
+				   design_bgborder="0"
+				   design_bgroundedge="1"
+				   design_bgshadow="0 4 10 0x000000 0.3"
+				   design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+				   design_thumbborder_padding="2"
+				   design_thumbborder_bgroundedge="0"
+				   design_text_css="color:#FFFFFF; font-family:Arial;"
+				   design_text_shadow="1"
+	/>
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+
+
+	<!-- startup action - load the first scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+	</action>
+
+	<!-- 自动旋转参数 -->
+	<autorotate enabled="true"
+				waittime="3.0"
+				speed="3.0"
+				horizon="0.0"
+				tofov="90"
+	/>
+
+	<events
+			name="onautorotateevents"  keep="true"
+			onautorotateoneround="nextscene()" />
+
+	<action name="nextscene">
+		autorotate.stop();wait(0);
+		set(ns, get(scene[get(xml.scene)].index));
+		set(maxs, get(scene.count));
+		add(ns,1);
+		if(ns == maxs, set(ns,0));
+		loadscene(get(scene[get(ns)].name), null, MERGE, BLEND(1.5));
+		autorotate.start();
+	</action>
+
+	switch(autorotate.enabled);
+
+	<scene name="scene_shoulouzhongxin_sphere" title="售楼中心" onstart="" thumburl="panos/shoulouzhongxin_sphere.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="186.149" vlookat="0.538" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/shoulouzhongxin_sphere.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/shoulouzhongxin_sphere.tiles/pano_%s.jpg" />
+		</image>
+
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-153.450" atv="1.237" linkedscene="scene_wendemujiudain_sphere" />
+	</scene>
+
+	<scene name="scene_wendemujiudain_sphere" title="温德姆酒店" onstart="" thumburl="panos/wendemujiudain_sphere.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="171.041" vlookat="-1.538" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/wendemujiudain_sphere.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/wendemujiudain_sphere.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-164.226" atv="1.787" linkedscene="scene_shoulouzhongxin_sphere" />
+
+	</scene>
+
+	<!-- 加载模板  -->
+	<include url="%SWFPATH%/layout.xml" />
+
+</krpano>

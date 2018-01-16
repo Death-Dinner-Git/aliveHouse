@@ -1,0 +1,4564 @@
+---------------------------------------------------------------
+[ 2018-01-16T15:42:14+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] m.alivehouse.com/ [运行时间：0.069408s][吞吐率：14.41req/s] [内存消耗：502.24kb] [文件加载：83]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'phone'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'phone',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jsjq5mkv3u65l5phc3pkhmbbj6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'm.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010553s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.018883s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000522s ]
+---------------------------------------------------------------
+[ 2018-01-16T15:42:15+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] m.alivehouse.com/ [运行时间：0.049991s][吞吐率：20.00req/s] [内存消耗：502.22kb] [文件加载：83]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'phone'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'phone',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jsjq5mkv3u65l5phc3pkhmbbj6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'm.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001421s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.026631s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000520s ]
+---------------------------------------------------------------
+[ 2018-01-16T15:42:17+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] m.alivehouse.com/ [运行时间：0.048124s][吞吐率：20.78req/s] [内存消耗：502.22kb] [文件加载：83]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'phone'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'phone',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jsjq5mkv3u65l5phc3pkhmbbj6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'm.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001118s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.028513s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001229s ]
+---------------------------------------------------------------
+[ 2018-01-16T15:42:22+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] cms.alivehouse.com/ [运行时间：0.322668s][吞吐率：3.10req/s] [内存消耗：403.95kb] [文件加载：71]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'manage'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'manage',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'cms.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002725s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.042245s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000743s ]
+---------------------------------------------------------------
+[ 2018-01-16T15:42:22+08:00 ] 127.0.0.1 127.0.0.1 GET /login/login
+[ info ] cms.alivehouse.com/login/login [运行时间：0.096611s][吞吐率：10.35req/s] [内存消耗：464.31kb] [文件加载：74]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'manage'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'manage',
+    1 => 'login',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=dofv7060uatu59oms8p6a269s6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'cms.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\manage\controller\LoginController->loginAction[ D:\upupw\www\aliveHouse\application\manage\controller\LoginController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/manage\view\login\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010694s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.023797s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000774s ]
+---------------------------------------------------------------
+[ 2018-01-16T15:42:29+08:00 ] 127.0.0.1 127.0.0.1 GET /login/login
+[ info ] m.alivehouse.com/login/login [运行时间：0.006628s][吞吐率：150.87req/s] [内存消耗：188.65kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'phone'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'phone',
+    1 => 'login',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jsjq5mkv3u65l5phc3pkhmbbj6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'm.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T15:42:47+08:00 ] 127.0.0.1 127.0.0.1 GET /login/login
+[ info ] cms.alivehouse.com/login/login [运行时间：0.037078s][吞吐率：26.97req/s] [内存消耗：418.12kb] [文件加载：70]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'manage'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'manage',
+    1 => 'login',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=dofv7060uatu59oms8p6a269s6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'cms.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\manage\controller\LoginController->loginAction[ D:\upupw\www\aliveHouse\application\manage\controller\LoginController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/manage\view\login\login.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002757s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.022981s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000359s ]
+---------------------------------------------------------------
+[ 2018-01-16T15:42:48+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] m.alivehouse.com/ [运行时间：0.033527s][吞吐率：29.83req/s] [内存消耗：502.16kb] [文件加载：83]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'phone'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'phone',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=jsjq5mkv3u65l5phc3pkhmbbj6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'm.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000640s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.020557s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000501s ]
+---------------------------------------------------------------
+[ 2018-01-16T15:42:52+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] www.alivehouse.com/ [运行时间：0.096471s][吞吐率：10.37req/s] [内存消耗：688.73kb] [文件加载：78]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=mmpto72192ghdkg0qd4udp8as4',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'www.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\IndexController->indexAction[ D:\upupw\www\aliveHouse\application\home\controller\IndexController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/home\view\index\index.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+  2 => 'slider',
+  3 => 'handHouse',
+  4 => 'house',
+  5 => 'news',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000775s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.018436s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_slider` [ RunTime:0.012147s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_slider` WHERE  `is_delete` = 1  AND `is_passed` = 3  AND `status` = 3  AND (  `start_at` <= '2018-01-16' )  AND (  `end_at` >= '2018-01-16' )  AND `type` = 2 ORDER BY `order` ASC LIMIT 6 [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_slider` WHERE  `is_delete` = 1  AND `is_passed` = 3  AND `status` = 3  AND `type` = 2  AND `isDefault` = 1 ORDER BY `order` ASC LIMIT 6 [ RunTime:0.000567s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_hand_house` [ RunTime:0.012742s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_hand_house` [ RunTime:0.000625s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_house` [ RunTime:0.013373s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_house` [ RunTime:0.000503s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_news` [ RunTime:0.013682s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_news` [ RunTime:0.000444s ]
+---------------------------------------------------------------
+[ 2018-01-16T15:46:06+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.265988s][吞吐率：3.76req/s] [内存消耗：543.92kb] [文件加载：74]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'home'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\IndexController->indexAction[ D:\upupw\www\aliveHouse\application\home\controller\IndexController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/home\view\index\index.html [ array (
+  0 => 'URL',
+  1 => 'meta_title',
+  2 => 'slider',
+  3 => 'handHouse',
+  4 => 'house',
+  5 => 'news',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010302s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.061723s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000443s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_slider` [ RunTime:0.098756s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_slider` WHERE  `is_delete` = 1  AND `is_passed` = 3  AND `status` = 3  AND (  `start_at` <= '2018-01-16' )  AND (  `end_at` >= '2018-01-16' )  AND `type` = 2 ORDER BY `order` ASC LIMIT 6 [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_slider` WHERE  `is_delete` = 1  AND `is_passed` = 3  AND `status` = 3  AND `type` = 2  AND `isDefault` = 1 ORDER BY `order` ASC LIMIT 6 [ RunTime:0.000484s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_hand_house` [ RunTime:0.039420s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_hand_house` [ RunTime:0.000782s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_house` [ RunTime:0.016391s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_house` [ RunTime:0.000621s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_news` [ RunTime:0.017974s ]
+[ sql ] [ SQL ] SELECT * FROM `hfzy_news` [ RunTime:0.000482s ]
+---------------------------------------------------------------
+[ 2018-01-16T15:50:24+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.009113s][吞吐率：109.74req/s] [内存消耗：188.42kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:24+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.024537s][吞吐率：40.75req/s] [内存消耗：227.96kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:24+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.006230s][吞吐率：160.51req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:24+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.005735s][吞吐率：174.37req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:34+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.016897s][吞吐率：59.18req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:34+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.006930s][吞吐率：144.30req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:34+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.007173s][吞吐率：139.41req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:35+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.014632s][吞吐率：68.34req/s] [内存消耗：227.79kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:35+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.004455s][吞吐率：224.46req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:35+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.005448s][吞吐率：183.55req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:35+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.011671s][吞吐率：85.68req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:35+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.004685s][吞吐率：213.45req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:04:35+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.004826s][吞吐率：207.21req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.025206s][吞吐率：39.67req/s] [内存消耗：227.79kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.006325s][吞吐率：158.10req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.006723s][吞吐率：148.74req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.015178s][吞吐率：65.88req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.008357s][吞吐率：119.66req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.009403s][吞吐率：106.35req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.016793s][吞吐率：59.55req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.004835s][吞吐率：206.83req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.007053s][吞吐率：141.79req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:43+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.012004s][吞吐率：83.31req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:44+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.004679s][吞吐率：213.72req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:44+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.011284s][吞吐率：88.62req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:44+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.004573s][吞吐率：218.68req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:07:44+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.004578s][吞吐率：218.43req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:20+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.014261s][吞吐率：70.12req/s] [内存消耗：227.79kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:20+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.004966s][吞吐率：201.37req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:20+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.007243s][吞吐率：138.07req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:20+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.010728s][吞吐率：93.21req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:20+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.005586s][吞吐率：179.01req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:21+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.012257s][吞吐率：81.59req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:21+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.006384s][吞吐率：156.64req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:21+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.010889s][吞吐率：91.84req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:21+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.011904s][吞吐率：84.01req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:21+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.005262s][吞吐率：190.04req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:08:21+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.009467s][吞吐率：105.63req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:05+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.019472s][吞吐率：51.36req/s] [内存消耗：227.79kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:05+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.004308s][吞吐率：232.13req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:05+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.003571s][吞吐率：280.03req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:06+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.008878s][吞吐率：112.64req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:06+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.006358s][吞吐率：157.28req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:06+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.009265s][吞吐率：107.93req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:06+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.009848s][吞吐率：101.54req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:06+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.004756s][吞吐率：210.26req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:06+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.005815s][吞吐率：171.97req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:06+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.015186s][吞吐率：65.85req/s] [内存消耗：226.85kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:06+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.005307s][吞吐率：188.43req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:09:06+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.006630s][吞吐率：150.83req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:06+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.018016s][吞吐率：55.51req/s] [内存消耗：218.54kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:06+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.006405s][吞吐率：156.13req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:06+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.012699s][吞吐率：78.75req/s] [内存消耗：218.54kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:06+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.007257s][吞吐率：137.80req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:07+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.007554s][吞吐率：132.38req/s] [内存消耗：218.54kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:07+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.002954s][吞吐率：338.52req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:07+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.003169s][吞吐率：315.55req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:07+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.010335s][吞吐率：96.76req/s] [内存消耗：218.54kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:07+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.005128s][吞吐率：195.01req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:07+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.005408s][吞吐率：184.91req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:08+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.012334s][吞吐率：81.08req/s] [内存消耗：218.54kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:08+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.006957s][吞吐率：143.74req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:08+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.007393s][吞吐率：135.27req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:08+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.009494s][吞吐率：105.33req/s] [内存消耗：218.54kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:08+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.006882s][吞吐率：145.31req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:08+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.009420s][吞吐率：106.16req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:51+08:00 ] 127.0.0.1 127.0.0.1 GET /index
+[ info ] vr.alivehouse.com/index [运行时间：0.009690s][吞吐率：103.20req/s] [内存消耗：227.39kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:51+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.003395s][吞吐率：294.54req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/index',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:51+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.003488s][吞吐率：286.69req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/index',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:55+08:00 ] 127.0.0.1 127.0.0.1 GET /sdsd
+[ info ] vr.alivehouse.com/sdsd [运行时间：0.003414s][吞吐率：292.90req/s] [内存消耗：218.49kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'sdsd',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:10:55+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.004394s][吞吐率：227.59req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/sdsd',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:11:01+08:00 ] 127.0.0.1 127.0.0.1 GET /Index
+[ info ] vr.alivehouse.com/Index [运行时间：0.003973s][吞吐率：251.70req/s] [内存消耗：226.81kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:11:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.002920s][吞吐率：342.45req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Index',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:11:01+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.003082s][吞吐率：324.49req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Index',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:11:25+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.007382s][吞吐率：135.47req/s] [内存消耗：226.79kb] [文件加载：54]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:11:25+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.003395s][吞吐率：294.56req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:11:25+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.005111s][吞吐率：195.66req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:12:54+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.150327s][吞吐率：6.65req/s] [内存消耗：535.11kb] [文件加载：73]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001655s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.094631s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000757s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:12:54+08:00 ] 127.0.0.1 127.0.0.1 GET /manage/login/login
+[ info ] vr.alivehouse.com/manage/login/login [运行时间：0.006508s][吞吐率：153.66req/s] [内存消耗：218.63kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'manage',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:12:54+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.004785s][吞吐率：208.98req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:12:56+08:00 ] 127.0.0.1 127.0.0.1 GET /manage/login/login
+[ info ] vr.alivehouse.com/manage/login/login [运行时间：0.014348s][吞吐率：69.70req/s] [内存消耗：218.63kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'manage',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:12:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.008193s][吞吐率：122.06req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:12:56+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.007359s][吞吐率：135.89req/s] [内存消耗：218.93kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:12:59+08:00 ] 127.0.0.1 127.0.0.1 GET /manage/login/login
+[ info ] vr.alivehouse.com/manage/login/login [运行时间：0.014405s][吞吐率：69.42req/s] [内存消耗：218.63kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'manage',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:12:59+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.005430s][吞吐率：184.16req/s] [内存消耗：218.93kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:12:59+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.005978s][吞吐率：167.28req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:16+08:00 ] 127.0.0.1 127.0.0.1 GET /manage/login/login
+[ info ] vr.alivehouse.com/manage/login/login [运行时间：0.008637s][吞吐率：115.78req/s] [内存消耗：218.63kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'manage',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:16+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.003903s][吞吐率：256.22req/s] [内存消耗：218.93kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:16+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.003897s][吞吐率：256.61req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:16+08:00 ] 127.0.0.1 127.0.0.1 GET /manage/login/login
+[ info ] vr.alivehouse.com/manage/login/login [运行时间：0.013496s][吞吐率：74.10req/s] [内存消耗：218.63kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'manage',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:16+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.007088s][吞吐率：141.08req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:16+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.005650s][吞吐率：176.99req/s] [内存消耗：218.93kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:16+08:00 ] 127.0.0.1 127.0.0.1 GET /manage/login/login
+[ info ] vr.alivehouse.com/manage/login/login [运行时间：0.013248s][吞吐率：75.48req/s] [内存消耗：218.63kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'manage',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:16+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.006451s][吞吐率：155.02req/s] [内存消耗：218.93kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:16+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.010538s][吞吐率：94.90req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:19+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ info ] vr.alivehouse.com/ [运行时间：0.054966s][吞吐率：18.19req/s] [内存消耗：404.70kb] [文件加载：73]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001460s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.044737s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000463s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:16:19+08:00 ] 127.0.0.1 127.0.0.1 GET /manage/login/login
+[ info ] vr.alivehouse.com/manage/login/login [运行时间：0.002653s][吞吐率：376.91req/s] [内存消耗：218.57kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'manage',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:19+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.002740s][吞吐率：364.94req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:19+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.002744s][吞吐率：364.44req/s] [内存消耗：218.93kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/manage/login/login',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:23+08:00 ] 127.0.0.1 127.0.0.1 GET /static/css/app/app.css
+[ info ] vr.alivehouse.com/static/css/app/app.css [运行时间：0.004492s][吞吐率：222.62req/s] [内存消耗：218.94kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:23+08:00 ] 127.0.0.1 127.0.0.1 GET /static/js/app/app.js
+[ info ] vr.alivehouse.com/static/js/app/app.js [运行时间：0.004576s][吞吐率：218.53req/s] [内存消耗：218.91kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'static',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'app' => 'app',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:16:39+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour
+[ info ] vr.alivehouse.com/Tour [运行时间：0.080192s][吞吐率：12.47req/s] [内存消耗：405.71kb] [文件加载：75]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\index\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010257s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.019809s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000300s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:17:03+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour
+[ info ] vr.alivehouse.com/Tour [运行时间：0.057951s][吞吐率：17.26req/s] [内存消耗：405.30kb] [文件加载：75]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002529s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.024024s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000539s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:17:03+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/css/reset.css
+[ info ] vr.alivehouse.com/Public/vr/css/reset.css [运行时间：0.005337s][吞吐率：187.37req/s] [内存消耗：218.95kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'reset',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:03+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/tour.js
+[ info ] vr.alivehouse.com/Public/vr/tour.js [运行时间：0.004765s][吞吐率：209.87req/s] [内存消耗：218.41kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:03+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/font-awesome-4.7.0/css/font-awesome.min.css
+[ info ] vr.alivehouse.com/Public/vr/font-awesome-4.7.0/css/font-awesome.min.css [运行时间：0.006138s][吞吐率：162.92req/s] [内存消耗：219.09kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  0 => 'css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:03+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/layer/layer.js
+[ info ] vr.alivehouse.com/Public/vr/layer/layer.js [运行时间：0.006292s][吞吐率：158.94req/s] [内存消耗：218.95kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'layer' => 'layer',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:03+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/jquery.min.js
+[ info ] vr.alivehouse.com/Public/vr/jquery.min.js [运行时间：0.003995s][吞吐率：250.30req/s] [内存消耗：218.45kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:07+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/font-awesome-4.7.0/css/font-awesome.min.css
+[ info ] vr.alivehouse.com/Public/vr/font-awesome-4.7.0/css/font-awesome.min.css [运行时间：0.002954s][吞吐率：338.55req/s] [内存消耗：219.09kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  0 => 'css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:08+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour
+[ info ] vr.alivehouse.com/Tour [运行时间：0.048635s][吞吐率：20.56req/s] [内存消耗：383.01kb] [文件加载：71]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001326s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.032498s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000674s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:17:08+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/css/reset.css
+[ info ] vr.alivehouse.com/Public/vr/css/reset.css [运行时间：0.002940s][吞吐率：340.14req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'reset',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:08+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/layer/layer.js
+[ info ] vr.alivehouse.com/Public/vr/layer/layer.js [运行时间：0.002681s][吞吐率：372.99req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'layer' => 'layer',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:08+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/tour.js
+[ info ] vr.alivehouse.com/Public/vr/tour.js [运行时间：0.003477s][吞吐率：287.60req/s] [内存消耗：218.53kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:08+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/font-awesome-4.7.0/css/font-awesome.min.css
+[ info ] vr.alivehouse.com/Public/vr/font-awesome-4.7.0/css/font-awesome.min.css [运行时间：0.003461s][吞吐率：288.92req/s] [内存消耗：219.22kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  0 => 'css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:08+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/jquery.min.js
+[ info ] vr.alivehouse.com/Public/vr/jquery.min.js [运行时间：0.002926s][吞吐率：341.78req/s] [内存消耗：218.57kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:09+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour
+[ info ] vr.alivehouse.com/Tour [运行时间：0.049639s][吞吐率：20.15req/s] [内存消耗：382.70kb] [文件加载：71]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003062s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.029272s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000489s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:17:09+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/tour.js
+[ info ] vr.alivehouse.com/Public/vr/tour.js [运行时间：0.002939s][吞吐率：340.25req/s] [内存消耗：218.53kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:09+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/css/reset.css
+[ info ] vr.alivehouse.com/Public/vr/css/reset.css [运行时间：0.002794s][吞吐率：357.91req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'reset',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:09+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/layer/layer.js
+[ info ] vr.alivehouse.com/Public/vr/layer/layer.js [运行时间：0.003174s][吞吐率：315.05req/s] [内存消耗：219.08kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'layer' => 'layer',
+)
+[ info ] [ LOG ] INIT File
+] [ PARAM ] array (
+  0 => 'css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:09+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/jquery.min.js
+[ info ] vr.alivehouse.com/Public/vr/jquery.min.js [运行时间：0.004429s][吞吐率：225.78req/s] [内存消耗：218.57kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:19+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour
+[ info ] vr.alivehouse.com/Tour [运行时间：0.042870s][吞吐率：23.33req/s] [内存消耗：382.70kb] [文件加载：71]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002143s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.021132s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000339s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:17:19+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/css/reset.css
+[ info ] vr.alivehouse.com/Public/vr/css/reset.css [运行时间：0.002912s][吞吐率：343.40req/s] [内存消耗：218.95kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => 'text/css,*/*;q=0.1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'css' => 'reset',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:19+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/layer/layer.js
+[ info ] vr.alivehouse.com/Public/vr/layer/layer.js [运行时间：0.002800s][吞吐率：357.14req/s] [内存消耗：218.95kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'layer' => 'layer',
+)
+[ info ] [ LOG ] INIT File
+] [ PARAM ] array (
+  0 => 'css',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:19+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/jquery.min.js
+[ info ] vr.alivehouse.com/Public/vr/jquery.min.js [运行时间：0.003368s][吞吐率：296.92req/s] [内存消耗：218.45kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:17:19+08:00 ] 127.0.0.1 127.0.0.1 GET /Public/vr/tour.js
+[ info ] vr.alivehouse.com/Public/vr/tour.js [运行时间：0.006871s][吞吐率：145.54req/s] [内存消耗：218.41kb] [文件加载：49]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Public',
+    2 => 'vr',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://vr.alivehouse.com/Tour',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-01-16T16:19:09+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour
+[ info ] vr.alivehouse.com/Tour [运行时间：0.045201s][吞吐率：22.12req/s] [内存消耗：404.70kb] [文件加载：75]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002843s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.016214s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000409s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:19:11+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour
+[ info ] vr.alivehouse.com/Tour [运行时间：0.024640s][吞吐率：40.58req/s] [内存消耗：383.01kb] [文件加载：71]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001237s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.015973s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000402s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:19:39+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour
+[ info ] vr.alivehouse.com/Tour [运行时间：0.049127s][吞吐率：20.36req/s] [内存消耗：404.63kb] [文件加载：75]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010237s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.014579s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000679s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:19:48+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour?id=12
+[ info ] vr.alivehouse.com/Tour?id=12 [运行时间：0.186723s][吞吐率：5.36req/s] [内存消耗：383.41kb] [文件加载：71]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '12',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004292s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.163893s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000695s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:19:54+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour?id=13
+[ info ] vr.alivehouse.com/Tour?id=13 [运行时间：0.092240s][吞吐率：10.84req/s] [内存消耗：383.14kb] [文件加载：71]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '13',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002117s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.068549s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.001975s ]
+---------------------------------------------------------------
+[ 2018-01-16T16:20:01+08:00 ] 127.0.0.1 127.0.0.1 GET /Tour?id=12
+[ info ] vr.alivehouse.com/Tour?id=12 [运行时间：0.023763s][吞吐率：42.08req/s] [内存消耗：383.15kb] [文件加载：71]
+[ info ] [ LANG ] D:\upupw\www\aliveHouse\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'vr'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vr',
+    1 => 'Tour',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3n9pjiqgugnca9b7ku3j4mvho6',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'vr.alivehouse.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '12',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\vr\controller\TourController->indexAction[ D:\upupw\www\aliveHouse\application\vr\controller\TourController.php ]
+[ info ] [ VIEW ] D:\upupw\www\aliveHouse\public/../application/vr\view\tour\index.html [ array (
+  0 => 'URL',
+  1 => 'id',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000843s ] mysql:dbname=haofangzhiye;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hfzy_config` [ RunTime:0.015492s ]
+[ sql ] [ SQL ] SELECT `value` FROM `hfzy_config` WHERE  `name` = 'APP_DEBUG' LIMIT 1 [ RunTime:0.000437s ]

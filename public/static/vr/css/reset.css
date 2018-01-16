@@ -1,0 +1,180 @@
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:center;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;padding: 0;margin: 0;outline: none;}
+/*html,body{height: 100%;}*/
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:12px arial,\5b8b\4f53;color:#333;outline:0;}
+body{background:#fff;font-family: "microsoft yahei";}
+a,a:hover{color:#333;}
+/*解决点击a链接的时候出现蓝色边框及背景*/
+a{ -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color:transparent; }
+input{border: none;outline: none;background: none;}
+input:disabled{background: none;}
+textarea{border: none;background: none;overflow:auto;resize:none;}
+/*a,span,p,h1,label,input,button,label,textarea{font-family: "microsoft yahei";}*/
+button{outline: none;border: none;}
+.fl{float: left !important;}
+.fr{float: right !important;}
+.fn{float: none !important;}
+.tr{text-align: right;}
+.white-bg{background: #fff;}
+.db{display: block;}
+.pbt{padding: 1.2rem 0;}
+.mb10{margin-bottom: 10px;}
+.mt10{margin-top: 10px;}
+.mt15{margin-top: 15px !important;}
+.mt20{margin-top: 20px;}
+.m20{margin: 20px 0;}
+.mt30{margin-top: 30px;}
+.pt0{padding-top: 0 !important;}
+.p0{padding: 0 !important;}
+.plc{padding: 0 15px 10px !important;}
+.t44{top: 44px !important;}
+.t54{top: 54px !important;}
+.t88{top: 88px !important;}
+.t90{top: 90px !important;}
+.t95{top: 95px !important;}
+.mr10{margin-right: 10px;}
+.ml10{margin-left: 10px;}
+.fwn{font-weight: normal !important;}
+.hide{display: none;}
+.clear{clear: both;}
+.block{background-color: #f5f5f5;height: .5rem;}
+.block10{height: 10px;}
+.block20{height: 20px;}
+.bgg{background-color: #f5f5f5 !important;}
+.mrn{margin-right: 0 !important;}
+.tc{text-align: center !important;}
+.tl{text-align: left !important;}
+.wa{width:  auto !important;padding-left: 20px !important;}
+.m0{margin: 0 !important;}
+.mr{margin-right: 35px !important;}
+.p5{padding: 0 5px;}
+.black{color: #333 !important;}
+.dinner-contextmenu{
+  position: absolute;line-height: 36px;
+  border: 1px solid #d2d2d2;background-color: white;z-index: 19940201;border-radius: 2px;white-space: nowrap;top:30px;
+  /*width: 100px;height: 200px; */
+}
+.dinner-contextmenu ul li{
+  padding: 0 15px;
+}
+.dinner-contextmenu ul li:hover{
+  background-color: #eee;
+  cursor: pointer;
+}
+.cur{
+  cursor: pointer;
+}
+.dec_txt{
+  color: #FF5722;
+}
+::-webkit-input-placeholder{color: #999;}
+/*修改下拉*/
+/*
+.layui-colla-item h2{border: 1px solid #e2e2e2;}
+.layui-colla-item h2.short{border: 1px solid #e2e2e2;position: absolute;left: 940px;top: 20px;height: 36px;}
+.choice{position: relative;}*/
+.active_btn{
+  background-color: #5FB878!important;
+  color: #fff!important;
+}
+/*to_top*/
+.to_top{
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  display: none;
+  margin-bottom: 5px;
+  width: 40px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  border-radius: 2px;
+  background-color: #444;
+  background-color: rgba(0,0,0,.6);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+.to_top i{
+  font-size: 24px;
+  color: #fff;
+}
+.main{
+  padding-bottom: 100px;
+}
+.main::after{
+  content: '';
+  display: table;
+  clear: both;
+}
+/*分页样式*/
+#page span.rows{
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+#page span.rows b,#page span.rows em{color: #ff5722;}
+#page span.ellipsis,#page span.current, #page a,#page input[type=button]{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 15px;
+    border: 1px solid #e2e2e2;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 -5px 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+}
+#page input[type=button]{
+	background: #009688;
+	border-color: #009688;
+	color: #fff;
+	cursor: pointer;
+}
+#page span.current {
+    background-color: #009688;
+    color: #fff;
+    border-color: #009688;
+}
+#page input.jump {
+    width: 50px;
+    margin: 0 5px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #e2e2e2;
+    border-radius: 2px;
+    vertical-align: top;
+    background-color: #fff;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+}
+.menuList .layui-form table.ke-container span{padding:0;}
+.clearfix:after{
+  content: '';
+  display: table;
+  clear: both;
+}
+/*blue*/
+/*点击事件*/
+.bg_blue>a,.bg_blue .layui-nav-child-item.layui-this a{
+  /*background-color: #3B9FE1!important;*/
+  /*color: #fff!important;*/
+}
+/*覆盖事件*/
